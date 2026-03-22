@@ -85,6 +85,15 @@ Plans:
 - 14개 계산기 각각 독립 라우트
 - 2026년 최저임금 등 최신 기준 반영
 
+**Plans:** 5 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — severance-pay, dismissal-notice, annual-leave-pay (LABOR-01~03)
+- [ ] 04-02-PLAN.md — overtime-pay, weekly-holiday-pay, minimum-wage-check (LABOR-04~06)
+- [ ] 04-03-PLAN.md — unfair-dismissal, industrial-accident, maternity-leave (LABOR-07~09)
+- [ ] 04-04-PLAN.md — parental-leave, unemployment-benefit, ordinary-wage (LABOR-10~12)
+- [ ] 04-05-PLAN.md — average-wage, shutdown-allowance (LABOR-13~14)
+
 ## Phase 5: 세금 계산기 (12개)
 
 **Goal:** 세금 관련 계산기 12개 구현
