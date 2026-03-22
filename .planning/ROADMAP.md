@@ -56,7 +56,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — attorney-fee, lawsuit-cost, stamp-fee (COURT-01~03)
 - [x] 02-02-PLAN.md — service-fee, small-claims, payment-order (COURT-04~06)
-- [ ] 02-03-PLAN.md — civil-mediation, family-court, e-court (COURT-07~09)
+- [x] 02-03-PLAN.md — civil-mediation, family-court, e-court (COURT-07~09)
 
 ## Phase 3: 가사/가족법 계산기 (8개)
 
