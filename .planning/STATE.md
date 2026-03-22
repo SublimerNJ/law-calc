@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:29:48.459Z"
+last_updated: "2026-03-22T16:37:28.796Z"
 progress:
   total_phases: 10
   completed_phases: 2
-  total_plans: 7
-  completed_plans: 7
+  total_plans: 10
+  completed_plans: 9
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산
-**Current focus:** Phase 02 — court-calculators
+**Current focus:** Phase 03 — family-calculators
 
 ## Current Phase
 
-- **Phase:** 2
-- **Status:** Executing Phase 02
+- **Phase:** 3
+- **Status:** Executing Phase 03
 - **Plans:** 4/4 [COMPLETE]
 
 ## Decisions
@@ -40,6 +40,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 02]: Attorney fee 8-tier bracket with 30M cap; stamp fee 100won ceiling rounding
 - [Phase 02]: Payment order uses totalParties (creditor+debtors) for service fee
 - [Phase 02]: Reused stamp fee formula across civil-mediation, family-court, e-court calculators
+- [Phase 03]: Gift tax prior-gift credit subtracts tax on prior gifts from combined tax
 
 ## Session Log
 
