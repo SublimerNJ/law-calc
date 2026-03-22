@@ -10,7 +10,7 @@
 | 1 | 4/4 | Complete   | 2026-03-22 |
 | 2 | 2/3 | In Progress|  |
 | 3 | 3/3 | Complete   | 2026-03-22 |
-| 4 | 노동/근로 계산기 | LABOR-01~14 | High |
+| 4 | 2/5 | In Progress|  |
 | 5 | 세금 계산기 | TAX-01~12 | High |
 | 6 | 부동산 계산기 | REALTY-01~07 | Medium |
 | 7 | 교통/형사 계산기 | TRAFFIC-01~06 | Medium |
@@ -85,11 +85,11 @@ Plans:
 - 14개 계산기 각각 독립 라우트
 - 2026년 최저임금 등 최신 기준 반영
 
-**Plans:** 5 plans
+**Plans:** 2/5 plans executed
 
 Plans:
-- [ ] 04-01-PLAN.md — severance-pay, dismissal-notice, annual-leave-pay (LABOR-01~03)
-- [ ] 04-02-PLAN.md — overtime-pay, weekly-holiday-pay, minimum-wage-check (LABOR-04~06)
+- [x] 04-01-PLAN.md — severance-pay, dismissal-notice, annual-leave-pay (LABOR-01~03)
+- [x] 04-02-PLAN.md — overtime-pay, weekly-holiday-pay, minimum-wage-check (LABOR-04~06)
 - [ ] 04-03-PLAN.md — unfair-dismissal, industrial-accident, maternity-leave (LABOR-07~09)
 - [ ] 04-04-PLAN.md — parental-leave, unemployment-benefit, ordinary-wage (LABOR-10~12)
 - [ ] 04-05-PLAN.md — average-wage, shutdown-allowance (LABOR-13~14)
