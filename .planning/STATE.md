@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:48:01.999Z"
+last_updated: "2026-03-22T16:56:53.022Z"
 progress:
   total_phases: 10
   completed_phases: 4
-  total_plans: 15
-  completed_plans: 15
+  total_plans: 19
+  completed_plans: 16
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산
-**Current focus:** Phase 04 — labor-calculators
+**Current focus:** Phase 05 — tax-calculators
 
 ## Current Phase
 
-- **Phase:** 4
-- **Status:** Executing Phase 04
+- **Phase:** 5
+- **Status:** Executing Phase 05
 - **Plans:** 4/4 [COMPLETE]
 
 ## Decisions
@@ -51,6 +51,9 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 04]: 2026 parental leave multi-tier caps with single-parent override
 - [Phase 04]: Average wage uses calendar days (역일수) per 근로기준법 제2조
 - [Phase 04]: Shutdown allowance shows both avg70% and ordinary wage side-by-side
+- [Phase 05]: Registration tax minimum 6,000 won floor per local tax law
+- [Phase 05]: VAT dual mode: supply-based vs total-price-based calculation
+- [Phase 05]: KOSPI agriculture tax 0.03% separate from securities tax 0.03%
 
 ## Session Log
 

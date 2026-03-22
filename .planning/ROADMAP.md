@@ -109,7 +109,7 @@ Plans:
 Plans:
 - [ ] 05-01-PLAN.md — income-tax, capital-gains-tax, comprehensive-income-tax (TAX-01~03)
 - [ ] 05-02-PLAN.md — acquisition-tax, comprehensive-property-tax, property-tax (TAX-04~06)
-- [ ] 05-03-PLAN.md — registration-tax, vat, securities-tax (TAX-07~09)
+- [x] 05-03-PLAN.md — registration-tax, vat, securities-tax (TAX-07~09)
 - [ ] 05-04-PLAN.md — year-end-tax, four-insurances, rent-tax-credit (TAX-10~12)
 
 ## Phase 6: 부동산 계산기 (7개)
