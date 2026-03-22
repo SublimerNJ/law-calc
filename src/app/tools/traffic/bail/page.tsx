@@ -1,0 +1,268 @@
+'use client';
+
+import { useState } from 'react';
+import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+
+const tool = TOOLS.find(t => t.id === 'bail')!;
+const category = CATEGORIES.find(c => c.id === 'traffic')!;
+
+interface CrimeType {
+  id: string;
+  name: string;
+  minBail: number;
+  maxBail: number;
+}
+
+const CRIME_TYPES: CrimeType[] = [
+  { id: 'fraud', name: '사기죄 (형법 제347조)', minBail: 3_000_000, maxBail: 30_000_000 },
+  { id: 'embezzlement', name: '횡령/배임죄', minBail: 3_000_000, maxBail: 30_000_000 },
+  { id: 'assault', name: '폭행/상해죄', minBail: 1_000_000, maxBail: 10_000_000 },
+  { id: 'theft', name: '절도죄', minBail: 1_000_000, maxBail: 5_000_000 },
+  { id: 'drunk-driving-injury', name: '음주운전 치사상', minBail: 5_000_000, maxBail: 50_000_000 },
+  { id: 'drugs', name: '마약범죄', minBail: 10_000_000, maxBail: 100_000_000 },
+  { id: 'sex-crime', name: '성범죄', minBail: 5_000_000, maxBail: 50_000_000 },
+  { id: 'attempted-murder', name: '살인미수', minBail: 30_000_000, maxBail: 100_000_000 },
+  { id: 'other', name: '기타', minBail: 1_000_000, maxBail: 10_000_000 },
+];
+
+type PriorRecord = 'none' | 'one' | 'two-plus';
+type RiskLevel = 'low' | 'medium' | 'high';
+
+interface BailResult {
+  baseBail: number;
+  assetBased: number;
+  priorMultiplier: number;
+  flightMultiplier: number;
+  evidenceMultiplier: number;
+  finalBail: number;
+  rangeLow: number;
+  rangeHigh: number;
+}
+
+function calculateBail(
+  crimeId: string,
+  assets: number,
+  priorRecord: PriorRecord,
+  flightRisk: RiskLevel,
+  evidenceRisk: RiskLevel
+): BailResult | null {
+  const crime = CRIME_TYPES.find(c => c.id === crimeId);
+  if (!crime) return null;
+
+  // Base bail: midpoint of min-max
+  const baseBail = Math.round((crime.minBail + crime.maxBail) / 2);
+
+  // Asset-based: 10-30% of assets depending on crime severity
+  const severityFactor = crime.maxBail >= 50_000_000 ? 0.3 : crime.maxBail >= 10_000_000 ? 0.2 : 0.1;
+  const assetBased = Math.round(assets * severityFactor);
+
+  // Use the higher of base or asset-based
+  let amount = Math.max(baseBail, assetBased);
+
+  // Prior record multiplier
+  const priorMultiplier = priorRecord === 'two-plus' ? 2.0 : priorRecord === 'one' ? 1.5 : 1.0;
+
+  // Flight risk multiplier
+  const flightMultiplier = flightRisk === 'high' ? 1.8 : flightRisk === 'medium' ? 1.3 : 1.0;
+
+  // Evidence destruction risk multiplier
+  const evidenceMultiplier = evidenceRisk === 'high' ? 1.5 : evidenceRisk === 'medium' ? 1.2 : 1.0;
+
+  let finalBail = Math.round(amount * priorMultiplier * flightMultiplier * evidenceMultiplier);
+
+  // Cap at 500M
+  const CAP = 500_000_000;
+  if (finalBail > CAP) finalBail = CAP;
+
+  // Range: 80% ~ 120%
+  const rangeLow = Math.round(finalBail * 0.8);
+  const rangeHigh = Math.min(Math.round(finalBail * 1.2), CAP);
+
+  return {
+    baseBail,
+    assetBased,
+    priorMultiplier,
+    flightMultiplier,
+    evidenceMultiplier,
+    finalBail,
+    rangeLow,
+    rangeHigh,
+  };
+}
+
+function formatNumber(n: number): string {
+  return n.toLocaleString('ko-KR');
+}
+
+export default function BailPage() {
+  const [crimeId, setCrimeId] = useState(CRIME_TYPES[0].id);
+  const [assets, setAssets] = useState('');
+  const [priorRecord, setPriorRecord] = useState<PriorRecord>('none');
+  const [flightRisk, setFlightRisk] = useState<RiskLevel>('low');
+  const [evidenceRisk, setEvidenceRisk] = useState<RiskLevel>('low');
+  const [result, setResult] = useState<BailResult | null>(null);
+
+  const handleCalculate = () => {
+    const assetVal = parseInt(assets.replace(/,/g, ''), 10) || 0;
+    setResult(calculateBail(crimeId, assetVal, priorRecord, flightRisk, evidenceRisk));
+  };
+
+  const handleAssetsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/[^0-9]/g, '');
+    setAssets(raw);
+  };
+
+  return (
+    <CalculatorLayout tool={tool} category={category}>
+      <div className="premium-card p-6 mb-4">
+        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+
+        <div className="mb-4">
+          <label className="block text-sm text-gray-400 mb-2">죄의 종류</label>
+          <select
+            value={crimeId}
+            onChange={e => setCrimeId(e.target.value)}
+            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+          >
+            {CRIME_TYPES.map(c => (
+              <option key={c.id} value={c.id}>{c.name}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-sm text-gray-400 mb-2">피의자/피고인 재산 (원)</label>
+          <input
+            type="text"
+            inputMode="numeric"
+            value={assets ? parseInt(assets).toLocaleString('ko-KR') : ''}
+            onChange={handleAssetsChange}
+            placeholder="예: 100,000,000"
+            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+          />
+          {assets && (
+            <p className="text-xs text-gray-500 mt-1">{parseInt(assets).toLocaleString('ko-KR')}원</p>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-sm text-gray-400 mb-2">전과 여부</label>
+          <div className="flex gap-4 flex-wrap">
+            {([
+              { value: 'none' as const, label: '없음' },
+              { value: 'one' as const, label: '동종 전과 1회' },
+              { value: 'two-plus' as const, label: '동종 전과 2회 이상' },
+            ]).map(opt => (
+              <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="priorRecord"
+                  checked={priorRecord === opt.value}
+                  onChange={() => setPriorRecord(opt.value)}
+                  className="accent-[#ef4444]"
+                />
+                <span className="text-sm text-gray-300">{opt.label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-sm text-gray-400 mb-2">도주 위험성</label>
+          <div className="flex gap-4">
+            {([
+              { value: 'low' as const, label: '낮음' },
+              { value: 'medium' as const, label: '보통' },
+              { value: 'high' as const, label: '높음' },
+            ]).map(opt => (
+              <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="flightRisk"
+                  checked={flightRisk === opt.value}
+                  onChange={() => setFlightRisk(opt.value)}
+                  className="accent-[#ef4444]"
+                />
+                <span className="text-sm text-gray-300">{opt.label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-sm text-gray-400 mb-2">증거인멸 위험</label>
+          <div className="flex gap-4">
+            {([
+              { value: 'low' as const, label: '낮음' },
+              { value: 'medium' as const, label: '보통' },
+              { value: 'high' as const, label: '높음' },
+            ]).map(opt => (
+              <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="evidenceRisk"
+                  checked={evidenceRisk === opt.value}
+                  onChange={() => setEvidenceRisk(opt.value)}
+                  className="accent-[#ef4444]"
+                />
+                <span className="text-sm text-gray-300">{opt.label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <button
+          onClick={handleCalculate}
+          className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: category.color }}
+        >
+          계산하기
+        </button>
+      </div>
+
+      {result !== null && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm text-gray-400 mb-1">예상 보석금 범위</p>
+              <p className="text-2xl font-bold" style={{ color: category.color }}>
+                {formatNumber(result.rangeLow)}원 ~ {formatNumber(result.rangeHigh)}원
+              </p>
+            </div>
+
+            <div className="bg-[#0d1424] rounded-lg p-4 space-y-2">
+              <p className="text-sm text-gray-400 font-semibold mb-2">산정 근거</p>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <span className="text-gray-400">기준 보석금 (죄종 중간값)</span>
+                <span className="text-white text-right">{formatNumber(result.baseBail)}원</span>
+                <span className="text-gray-400">재산 기준값</span>
+                <span className="text-white text-right">{formatNumber(result.assetBased)}원</span>
+                <span className="text-gray-400">전과 가중</span>
+                <span className="text-white text-right">x{result.priorMultiplier}</span>
+                <span className="text-gray-400">도주 위험 가중</span>
+                <span className="text-white text-right">x{result.flightMultiplier}</span>
+                <span className="text-gray-400">증거인멸 위험 가중</span>
+                <span className="text-white text-right">x{result.evidenceMultiplier}</span>
+              </div>
+            </div>
+
+            <div className="bg-yellow-900/30 border border-yellow-800 rounded-lg p-3">
+              <p className="text-sm text-yellow-400 font-semibold">
+                실제 보석금은 법원의 재량에 따라 크게 다를 수 있습니다. 이 계산기는 실무상 참고 기준에 따른 예상치이며, 법적 효력이 없습니다.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs text-gray-500">
+              법적 근거: 형사소송법 제94조, 제99조. 보석금은 법원이 피고인의 자력, 범죄의 성질과 정상 등을 고려하여 결정합니다.
+            </p>
+          </div>
+        </div>
+      )}
+    </CalculatorLayout>
+  );
+}
