@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:37:43.911Z"
+last_updated: "2026-03-22T16:38:00.347Z"
 progress:
   total_phases: 10
   completed_phases: 3
@@ -43,6 +43,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 03]: Gift tax prior-gift credit subtracts tax on prior gifts from combined tax
 - [Phase 03]: Alimony uses midpoint of adjusted range as estimate
 - [Phase 03]: Child support uses simplified 2026 7-bracket income table
+- [Phase 03]: 2026 inheritance tax 5-bracket progressive rates with spouse/lump-sum deductions
 
 ## Session Log
 
