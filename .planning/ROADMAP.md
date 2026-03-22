@@ -68,6 +68,13 @@ Plans:
 - 8개 계산기 각각 독립 라우트
 - 한국 법률 기준 정확한 계산
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — alimony, child-support, property-division (FAMILY-01~03)
+- [ ] 03-02-PLAN.md — inheritance-tax, legal-inheritance, forced-heirship (FAMILY-04~06)
+- [ ] 03-03-PLAN.md — gift-tax, inheritance-order (FAMILY-07~08)
+
 ## Phase 4: 노동/근로 계산기 (14개)
 
 **Goal:** 노동/근로 관련 계산기 14개 구현
