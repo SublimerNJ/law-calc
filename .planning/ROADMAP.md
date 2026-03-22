@@ -35,7 +35,7 @@
 **Plans:** 4 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Next.js scaffolding, design tokens, tools-data (70 tools)
+- [x] 01-01-PLAN.md — Next.js scaffolding, design tokens, tools-data (70 tools)
 - [ ] 01-02-PLAN.md — Header, Footer, ThemeToggle, layout wiring
 - [ ] 01-03-PLAN.md — Parallax hero, scroll animations
 - [ ] 01-04-PLAN.md — Main page assembly, Card, CalculatorLayout, SEO
