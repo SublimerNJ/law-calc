@@ -233,6 +233,34 @@ export default function DrunkDrivingPage() {
             </div>
           )}
 
+          {/* BAC 기준표 */}
+          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm text-gray-400 mb-3">혈중알코올농도 처벌 기준표</p>
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-[#1e2d4a]">
+                  <th className="py-2 text-left text-gray-500">BAC</th>
+                  <th className="py-2 text-left text-gray-500">행정처분</th>
+                  <th className="py-2 text-left text-gray-500">형사처벌</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { range: '0.03% 미만', admin: '해당 없음', criminal: '해당 없음', active: result.bac < 0.03 },
+                  { range: '0.03~0.08%', admin: '면허정지', criminal: '1년↓ 징역 / 500만↓ 벌금', active: result.bac >= 0.03 && result.bac < 0.08 },
+                  { range: '0.08~0.2%', admin: '면허취소', criminal: '1~2년 징역 / 500~1000만 벌금', active: result.bac >= 0.08 && result.bac < 0.2 },
+                  { range: '0.2% 이상', admin: '면허취소 (가중)', criminal: '2~5년 징역 / 1000~2000만 벌금', active: result.bac >= 0.2 },
+                ].map((row, i) => (
+                  <tr key={i} className={`border-b border-[#1e2d4a]/50 ${row.active ? 'bg-red-500/10' : ''}`}>
+                    <td className="py-2" style={{ color: row.active ? '#ef4444' : '#9ca3af' }}>{row.range}</td>
+                    <td className="py-2 text-gray-300">{row.admin}</td>
+                    <td className="py-2 text-gray-300">{row.criminal}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 도로교통법 제44조, 제148조의2 (2026년 기준)

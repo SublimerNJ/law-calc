@@ -333,6 +333,21 @@ export default function CapitalGainsTaxPage() {
             ))}
           </div>
 
+          {result.gain > 0 && (
+            <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-[#1e2d4a]">
+              <div>
+                <p className="text-sm text-gray-400 mb-1">실효세율 (양도차익 대비)</p>
+                <p className="text-lg text-white">{(result.totalTax / result.gain * 100).toFixed(2)}%</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-400 mb-1">실수령액 (양도가 - 취득가 - 세금)</p>
+                <p className="text-lg font-semibold" style={{ color: category.color }}>
+                  {formatNumber(result.gain - result.totalTax)}원
+                </p>
+              </div>
+            </div>
+          )}
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 소득세법 제94~118조, 조세특례제한법 1세대1주택 비과세
