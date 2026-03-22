@@ -166,9 +166,25 @@ export default function RentConversionPage() {
             </p>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+{result.mode === 'jeonse-to-wolse'
+  ? `월세 = (전세금 - 보증금) × 전환율 ÷ 12\n  = (${formatNumber(parseInt(jeonse))} - ${formatNumber(parseInt(deposit) || 0)}) × ${conversionRate}% ÷ 12\n  = ${formatNumber(result.amount)}원/월`
+  : `전세금 = 보증금 + (월세 × 12 ÷ 전환율)\n  = ${formatNumber(parseInt(deposit) || 0)} + (${formatNumber(parseInt(wolse))} × 12 ÷ ${conversionRate}%)\n  = ${formatNumber(result.amount)}원`}
+            </pre>
+          </div>
+
+          {result.mode === 'jeonse-to-wolse' && (
+            <div className="mb-4">
+              <p className="text-sm text-gray-400 mb-1">연간 월세 합계</p>
+              <p className="text-lg text-white">{formatNumber(result.amount * 12)}원/년</p>
+            </div>
+          )}
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 주택임대차보호법 제7조의2
+              법적 근거: 주택임대차보호법 제7조의2 | 법정 상한: 한국은행 기준금리 + 2%p
             </p>
           </div>
         </div>

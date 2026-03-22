@@ -261,9 +261,28 @@ export default function AcquisitionTaxPage() {
             </div>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-1">실효 부담률</p>
+            <p className="text-lg text-white">{(result.total / result.acquisitionPrice * 100).toFixed(2)}%</p>
+            <p className="text-xs text-gray-500 mt-1">취득가액 대비 총 세금 비율 (취득세+농특세+교육세)</p>
+          </div>
+
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+{`취득세 = ${formatNumber(result.acquisitionPrice)} × ${(result.taxRate * 100).toFixed(1)}% = ${formatNumber(result.acquisitionTax)}원
+농특세 = ${result.ruralSpecialTax > 0 ? `${formatNumber(result.acquisitionTax)} × 10% = ${formatNumber(result.ruralSpecialTax)}원` : '면제 (85m² 이하 주택)'}
+교육세 = ${formatNumber(result.acquisitionTax)} × 20% = ${formatNumber(result.localEducationTax)}원
+합계 = ${formatNumber(result.total)}원`}
+            </pre>
+          </div>
+
           <div className="pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 지방세법 제11조(취득세율), 농어촌특별세법 제5조
+              법적 근거: 지방세법 제11조, 농어촌특별세법 제5조, 지방교육세법 제5조
+            </p>
+            <p className="text-xs text-gray-500 mt-1">
+              1주택 6~9억: 보간세율 적용 | 2주택 조정지역 8% | 3주택+ 조정지역 12%
             </p>
           </div>
         </div>

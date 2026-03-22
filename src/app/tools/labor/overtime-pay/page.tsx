@@ -189,9 +189,29 @@ export default function OvertimePayPage() {
             </div>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+{`시간급 = ${monthlyWage ? formatNumber(parseInt(monthlyWage)) : '0'} ÷ ${weeklyHours === 40 ? 209 : 226} = ${formatNumber(result.hourlyWage)}원
+${result.overtimePay > 0 ? `\n연장근로 = ${formatNumber(result.hourlyWage)} × ${overtimeHours}h × 1.5배 = ${formatNumber(result.overtimePay)}원` : ''}${result.nightPay > 0 ? `\n야간근로 = ${formatNumber(result.hourlyWage)} × ${nightHours}h × 0.5배(가산) = ${formatNumber(result.nightPay)}원` : ''}${result.holidayPay > 0 ? `\n휴일근로 = ${formatNumber(result.hourlyWage)} × ${holidayHours}h × 1.5배${holidayOvertimeHours && parseFloat(holidayOvertimeHours) > 0 ? ` + ${formatNumber(result.hourlyWage)} × ${holidayOvertimeHours}h × 2.0배` : ''} = ${formatNumber(result.holidayPay)}원` : ''}`}
+            </pre>
+          </div>
+
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-3">수당 배율 기준</p>
+            <table className="w-full text-xs">
+              <tbody>
+                <tr className="border-b border-[#1e2d4a]/50"><td className="py-2 text-gray-300">연장근로</td><td className="py-2 text-right text-gray-400">통상시급 × 1.5배</td></tr>
+                <tr className="border-b border-[#1e2d4a]/50"><td className="py-2 text-gray-300">야간근로 (22~06시)</td><td className="py-2 text-right text-gray-400">통상시급 × 0.5배 (가산)</td></tr>
+                <tr className="border-b border-[#1e2d4a]/50"><td className="py-2 text-gray-300">휴일근로 (8h 이내)</td><td className="py-2 text-right text-gray-400">통상시급 × 1.5배</td></tr>
+                <tr><td className="py-2 text-gray-300">휴일 연장 (8h 초과)</td><td className="py-2 text-right text-gray-400">통상시급 × 2.0배</td></tr>
+              </tbody>
+            </table>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 근로기준법 제56조(연장·야간 및 휴일 근로)
+              법적 근거: 근로기준법 제56조 | 야간수당은 기본급에 이미 포함된 시간의 추가분(0.5배)만 가산
             </p>
           </div>
         </div>
