@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T17:05:40.453Z"
+last_updated: "2026-03-22T17:05:53.612Z"
 progress:
   total_phases: 10
   completed_phases: 6
   total_plans: 30
-  completed_plans: 22
+  completed_plans: 23
 ---
 
 # Project State
@@ -61,6 +61,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 05]: Capital gains general long-term holding rates (6-30%) separate from 1-house rates (12-40%)
 - [Phase 08-debt-calculators]: Late payment calculator shows both 5% and 12% rates simultaneously with toggle emphasis
 - [Phase 06]: LTV regions: speculative 40%, regulated 50%, general 70%; DTI regions: speculative 40%, regulated 50%, general 60%
+- [Phase 08]: Interest Rate Cap Act 20% ceiling as hard cap for loan interest
 
 ## Session Log
 
