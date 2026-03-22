@@ -13,7 +13,7 @@
 | 4 | 5/5 | Complete   | 2026-03-22 |
 | 5 | 4/4 | Complete   | 2026-03-22 |
 | 6 | 부동산 계산기 | REALTY-01~07 | Medium |
-| 7 | 교통/형사 계산기 | TRAFFIC-01~06 | Medium |
+| 7 | 1/2 | In Progress|  |
 | 8 | 채권/이자 계산기 | DEBT-01~04 | Low |
 | 9 | 손해배상 계산기 | DAMAGES-01~06 | Medium |
 | 10 | 기타 법률도구 & 마무리 | MISC-01~04 | Low |
@@ -125,8 +125,8 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — deposit-return, rent-conversion, brokerage-fee (REALTY-01~03)
-- [ ] 06-02-PLAN.md — subscription-score, dsr (REALTY-04~05)
+- [x] 06-01-PLAN.md — deposit-return, rent-conversion, brokerage-fee (REALTY-01~03)
+- [x] 06-02-PLAN.md — subscription-score, dsr (REALTY-04~05)
 - [x] 06-03-PLAN.md — ltv, dti (REALTY-06~07)
 
 ## Phase 7: 교통/형사 계산기 (6개)
@@ -139,10 +139,10 @@ Plans:
 - 6개 계산기 각각 독립 라우트
 - 음주운전 처벌 기준 등 최신 법률 반영
 
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 
 Plans:
-- [ ] 07-01-PLAN.md — accident-settlement, fault-ratio, drunk-driving (TRAFFIC-01~03)
+- [x] 07-01-PLAN.md — accident-settlement, fault-ratio, drunk-driving (TRAFFIC-01~03)
 - [ ] 07-02-PLAN.md — speeding-fine, fine-penalty, bail (TRAFFIC-04~06)
 
 ## Phase 8: 채권/이자 계산기 (4개)

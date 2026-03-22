@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T17:06:03.381Z"
+last_updated: "2026-03-22T17:06:29.765Z"
 progress:
   total_phases: 10
-  completed_phases: 6
+  completed_phases: 7
   total_plans: 30
-  completed_plans: 24
+  completed_plans: 26
 ---
 
 # Project State
@@ -63,6 +63,12 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 06]: LTV regions: speculative 40%, regulated 50%, general 70%; DTI regions: speculative 40%, regulated 50%, general 60%
 - [Phase 08]: Interest Rate Cap Act 20% ceiling as hard cap for loan interest
 - [Phase 09-damages-calculators]: Used midpoint of case-law ranges for defamation base with +-30% display range
+- [Phase 06]: Brokerage fee uses converted deposit (보증금+월세x100) for wolse rate determination
+- [Phase 07]: Disability solatium grades 1-14 with fixed amounts per 2026 standards
+- [Phase 07]: 8 predefined accident types with 5 modifier checkboxes for fault ratio
+- [Phase 07]: 4-tier BAC penalty brackets with prior record and accident aggravation
+- [Phase 06]: Select dropdowns with pre-scored options for subscription score calculator
+- [Phase 06]: DSR boundary uses <= for 40%/50% threshold checks
 
 ## Session Log
 
