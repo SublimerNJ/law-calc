@@ -49,9 +49,8 @@ export default function SeverancePayPage() {
     const eligible = totalDays >= 365;
     const threeMonthDays = getThreeMonthDays(end);
     const dailyAvgWage = wage / threeMonthDays;
-    const severancePay = eligible
-      ? Math.floor(dailyAvgWage * 30 * (totalDays / 365))
-      : 0;
+    // 1년 미만도 비례 퇴직금 산정 (근로자퇴직급여 보장법 제8조)
+    const severancePay = Math.floor(dailyAvgWage * 30 * (totalDays / 365));
 
     setResult({
       severancePay,
@@ -123,16 +122,16 @@ export default function SeverancePayPage() {
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
 
-          {!result.eligible ? (
-            <div className="mb-4 p-4 rounded-lg bg-red-500/10 border border-red-500/30">
-              <p className="text-sm text-red-400">
-                재직기간이 1년 미만(총 {formatNumber(result.totalDays)}일)으로 퇴직금이 발생하지 않습니다.
+          {!result.eligible && (
+            <div className="mb-4 p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
+              <p className="text-sm text-yellow-400">
+                재직기간이 1년 미만(총 {formatNumber(result.totalDays)}일)입니다. 법정 퇴직금 의무는 1년 이상 근무 시 발생하나, 취업규칙이나 근로계약에 따라 비례 퇴직금이 지급될 수 있습니다.
               </p>
             </div>
-          ) : (
+          )}
             <>
               <div className="mb-4">
-                <p className="text-sm text-gray-400 mb-1">퇴직금</p>
+                <p className="text-sm text-gray-400 mb-1">{result.eligible ? '퇴직금' : '비례 퇴직금 (참고용)'}</p>
                 <p className="text-2xl font-bold" style={{ color: category.color }}>
                   {formatNumber(result.severancePay)}원
                 </p>
@@ -157,7 +156,6 @@ export default function SeverancePayPage() {
                 </div>
               </div>
             </>
-          )}
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">

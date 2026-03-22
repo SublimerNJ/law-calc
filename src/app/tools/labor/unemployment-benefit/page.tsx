@@ -83,7 +83,7 @@ export default function UnemploymentBenefitPage() {
         <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">퇴직 전 3개월 평균 월임금 (원)</label>
+          <label className="block text-sm text-gray-400 mb-2">퇴직 전 3개월 평균 월임금 (세전, 원)</label>
           <input
             type="text"
             inputMode="numeric"

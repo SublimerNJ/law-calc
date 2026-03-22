@@ -70,6 +70,7 @@ export default function DismissalNoticePage() {
             placeholder="0 = 즉시해고"
             className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
           />
+          <p className="text-xs text-gray-500 mt-1">실제 받은 예고 기간. 0 = 예고 없이 즉시해고 (30일분 수당 전액 지급)</p>
         </div>
 
         <button
