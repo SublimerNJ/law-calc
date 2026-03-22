@@ -62,8 +62,15 @@ export default function AttorneyFeePage() {
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
 
+        <div className="mb-2 p-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a]">
+          <p className="text-xs text-gray-400">
+            💡 이 계산기는 <strong className="text-gray-300">변호사 선임 비용</strong>이 아닌, 소송에서 이겨서 상대방에게 청구할 수 있는 <strong className="text-gray-300">변호사보수 소송비용 산입 한도</strong>를 계산합니다.
+          </p>
+        </div>
+
         <div className="mb-4">
           <label className="block text-sm text-gray-400 mb-2">소가 (원)</label>
+          <p className="text-xs text-gray-500 mb-1">소가 = 소송에서 청구하는 금액</p>
           <input
             type="text"
             inputMode="numeric"

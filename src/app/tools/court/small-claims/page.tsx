@@ -26,11 +26,12 @@ export default function SmallClaimsPage() {
   const tool = TOOLS.find((t) => t.id === 'small-claims')!;
   const category = CATEGORIES.find((c) => c.id === 'court')!;
 
-  const [amount, setAmount] = useState(10_000_000);
+  const [amount, setAmount] = useState('10000000');
   const [parties, setParties] = useState(2);
 
-  const isOverLimit = amount > MAX_AMOUNT;
-  const clampedAmount = Math.min(amount, MAX_AMOUNT);
+  const numAmount = parseInt(amount, 10) || 0;
+  const isOverLimit = numAmount > MAX_AMOUNT;
+  const clampedAmount = Math.min(numAmount, MAX_AMOUNT);
 
   const stampFee = calcStampFee(clampedAmount);
   const serviceFee = parties * 10 * UNIT_COST;
@@ -49,10 +50,11 @@ export default function SmallClaimsPage() {
           <div>
             <label className="block text-sm text-gray-400 mb-1">청구금액 (원)</label>
             <input
-              type="number"
-              min={0}
-              value={amount}
-              onChange={(e) => setAmount(Math.max(0, Number(e.target.value)))}
+              type="text"
+              inputMode="numeric"
+              value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
+              onChange={(e) => setAmount(e.target.value.replace(/[^0-9]/g, ''))}
+              placeholder="예: 10,000,000"
               className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-white focus:outline-none focus:border-[var(--color-brand-primary)]"
             />
             {isOverLimit && (

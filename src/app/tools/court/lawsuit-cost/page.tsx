@@ -25,8 +25,8 @@ function calculateStampFee(amount: number): number {
   return Math.ceil(fee / 100) * 100;
 }
 
-function calculateServiceFee(partyCount: number): number {
-  return partyCount * 15 * 4_500;
+function calculateServiceFee(partyCount: number, rounds: number): number {
+  return partyCount * rounds * 4_500;
 }
 
 function formatNumber(n: number): string {
@@ -40,6 +40,7 @@ export default function LawsuitCostPage() {
   const [result, setResult] = useState<{
     stampFee: number;
     serviceFee: number;
+    serviceRounds: number;
     total: number;
   } | null>(null);
 
@@ -52,10 +53,12 @@ export default function LawsuitCostPage() {
     // 항소심/상고심: 인지대 1.5배
     if (level >= 2) stampFee = Math.ceil((stampFee * 1.5) / 100) * 100;
 
-    const serviceFee = calculateServiceFee(parties);
+    const serviceRounds = level === 1 ? 10 : level === 2 ? 8 : 5;
+    const serviceFee = calculateServiceFee(parties, serviceRounds);
     setResult({
       stampFee,
       serviceFee,
+      serviceRounds,
       total: stampFee + serviceFee,
     });
   };
@@ -72,6 +75,7 @@ export default function LawsuitCostPage() {
 
         <div className="mb-4">
           <label className="block text-sm text-gray-400 mb-2">소가 (원)</label>
+          <p className="text-xs text-gray-500 mb-1">소가 = 소송에서 청구하는 금액</p>
           <input
             type="text"
             inputMode="numeric"
@@ -137,7 +141,7 @@ export default function LawsuitCostPage() {
                 </td>
               </tr>
               <tr className="border-b border-[#1e2d4a]">
-                <td className="py-3 text-sm text-gray-400">송달료</td>
+                <td className="py-3 text-sm text-gray-400">송달료 ({partyCount}명 x {result.serviceRounds}회 x 4,500원)</td>
                 <td className="py-3 text-right text-white font-medium">
                   {formatNumber(result.serviceFee)}원
                 </td>
@@ -153,7 +157,7 @@ export default function LawsuitCostPage() {
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              인지대: 민사소송등인지법 별표 기준 | 송달료: 당사자 수 x 15회 x 4,500원 (2024년 기준)
+              인지대: 민사소송등인지법 별표 기준 | 송달료: 당사자 수 x 15회 x 4,500원 (2026년 기준)
             </p>
           </div>
         </div>
