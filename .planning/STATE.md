@@ -1,14 +1,14 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: executing
-last_updated: "2026-03-22T17:13:06.844Z"
+milestone: v1.1
+milestone_name: 계산기 품질 개선
+status: active
+last_updated: "2026-03-23"
 progress:
-  total_phases: 10
-  completed_phases: 10
-  total_plans: 30
-  completed_plans: 30
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
 
 # Project State
@@ -18,13 +18,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산
-**Current focus:** Phase 10 — misc-tools
+**Current focus:** v1.1 — 70개 계산기 품질 개선
 
 ## Current Phase
 
-- **Phase:** 10
-- **Status:** Executing Phase 10
-- **Plans:** 4/4 [COMPLETE]
+- **Phase:** Not started (defining requirements)
+- **Status:** Defining requirements
+- **Plans:** —
 
 ## Decisions
 

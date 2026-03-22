@@ -8,6 +8,15 @@
 
 법률 관련 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구를 제공하여, 사용자가 머무르고 반복 방문하게 만든다 (= 애드센스 수익 극대화).
 
+## Current Milestone: v1.1 계산기 품질 개선
+
+**Goal:** 70개 계산기 전체를 유저 시나리오 기반으로 점검하여 기대-결과 불일치, 계산 정확도, UX 문제를 수정한다.
+
+**Target features:**
+- 유저 기대와 실제 결과의 불일치 수정 (이름 vs 제공 기능)
+- 계산 정확도 검증 및 수정 (법률 기준 대비)
+- UX 개선 (입력 가이드, 결과 이해도, 흐름)
+
 ## Requirements
 
 ### Validated
@@ -82,4 +91,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-22 after initialization*
+*Last updated: 2026-03-23 after milestone v1.1 start — calculator quality improvement*
