@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:47:19.519Z"
+last_updated: "2026-03-22T16:47:55.647Z"
 progress:
   total_phases: 10
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 15
-  completed_plans: 12
+  completed_plans: 15
 ---
 
 # Project State
@@ -47,6 +47,8 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 04]: Severance pay uses actual calendar days for 3-month period
 - [Phase 04]: Annual leave pay supports 40h (209h) and 44h (226h) weekly schedules
 - [Phase 04]: 2026 minimum wage 10,030won constant; holiday overtime 8h split at 1.5x/2.0x
+- [Phase 04]: Industrial accident tab UI for 3 benefit types; disability pension 1-7 grades only
+- [Phase 04]: 2026 parental leave multi-tier caps with single-parent override
 
 ## Session Log
 
