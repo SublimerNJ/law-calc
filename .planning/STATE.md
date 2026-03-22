@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T17:05:26.130Z"
+last_updated: "2026-03-22T17:05:40.453Z"
 progress:
   total_phases: 10
   completed_phases: 6
@@ -60,6 +60,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 05]: 2026 income tax 8-bracket progressive rates (6-45%) reused across all 3 tax calculators
 - [Phase 05]: Capital gains general long-term holding rates (6-30%) separate from 1-house rates (12-40%)
 - [Phase 08-debt-calculators]: Late payment calculator shows both 5% and 12% rates simultaneously with toggle emphasis
+- [Phase 06]: LTV regions: speculative 40%, regulated 50%, general 70%; DTI regions: speculative 40%, regulated 50%, general 60%
 
 ## Session Log
 

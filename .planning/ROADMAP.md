@@ -127,7 +127,7 @@ Plans:
 Plans:
 - [ ] 06-01-PLAN.md — deposit-return, rent-conversion, brokerage-fee (REALTY-01~03)
 - [ ] 06-02-PLAN.md — subscription-score, dsr (REALTY-04~05)
-- [ ] 06-03-PLAN.md — ltv, dti (REALTY-06~07)
+- [x] 06-03-PLAN.md — ltv, dti (REALTY-06~07)
 
 ## Phase 7: 교통/형사 계산기 (6개)
 
