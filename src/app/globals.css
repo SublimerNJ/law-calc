@@ -26,6 +26,51 @@
   color-scheme: dark;
 }
 
+/* Light theme overrides */
+.light {
+  --color-background: #f8f9fc;
+  --color-foreground: #1a1a2e;
+
+  --color-surface-50: #ffffff;
+  --color-surface-100: #f1f3f8;
+  --color-surface-200: #e4e7ef;
+  --color-surface-300: #d1d5e0;
+
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+  --color-border-default: rgba(0, 0, 0, 0.1);
+  --color-border-hover: rgba(201, 168, 76, 0.4);
+
+  color-scheme: light;
+}
+
+.light body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.light .premium-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.light .premium-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(201, 168, 76, 0.08);
+}
+
+.light .text-gradient-gold {
+  background: linear-gradient(135deg, #a0842e 0%, #c9a84c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 *,
 *::before,
 *::after {

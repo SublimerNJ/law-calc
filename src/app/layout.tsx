@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -30,9 +32,11 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-foreground)] font-sans antialiased selection:bg-[#c9a84c] selection:text-black">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <main className="flex-1 relative z-10">
+          <Header />
+          <main className="flex-1 relative z-10 pt-20">
             {children}
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
