@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:57:24.101Z"
+last_updated: "2026-03-22T16:57:40.589Z"
 progress:
   total_phases: 10
   completed_phases: 5
@@ -57,6 +57,8 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 05]: Year-end tax simplified card deduction; four insurances 150-under employer rates; rent credit checkbox eligibility UX
 - [Phase 05]: 2026 acquisition tax linear interpolation for 6-9억 single-home bracket
 - [Phase 05]: Comprehensive property tax 7-bracket progressive rates with senior deduction
+- [Phase 05]: 2026 income tax 8-bracket progressive rates (6-45%) reused across all 3 tax calculators
+- [Phase 05]: Capital gains general long-term holding rates (6-30%) separate from 1-house rates (12-40%)
 
 ## Session Log
 
