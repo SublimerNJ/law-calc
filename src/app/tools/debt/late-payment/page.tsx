@@ -157,6 +157,19 @@ export default function LatePaymentPage() {
             </div>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`원금 × 지연이율 × 일수 ÷ 365 = 지연손해금
+
+민사 법정이자 (연 5%)
+  = ${formatNumber(result.principal)}원 × 5% × ${result.days}일 ÷ 365 = ${formatNumber(result.civilInterest)}원
+
+소송촉진법 지연이자 (연 12%)
+  = ${formatNumber(result.principal)}원 × 12% × ${result.days}일 ÷ 365 = ${formatNumber(result.lawsuitInterest)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제397조(이행지체), 소송촉진 등에 관한 특례법 제3조(연 12%)

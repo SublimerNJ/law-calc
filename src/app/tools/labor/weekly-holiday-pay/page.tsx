@@ -143,6 +143,17 @@ export default function WeeklyHolidayPayPage() {
             </div>
           )}
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`주휴시간 = 주근로시간 ÷ 40 × 8
+수당 = 주휴시간 × 시간당 통상임금
+
+주휴시간 = min(${weeklyHours}, 40)h ÷ 40 × 8 = ${result.weeklyHolidayHours.toFixed(1)}시간
+수당 = ${result.weeklyHolidayHours.toFixed(1)}시간 × ${formatNumber(parseInt(hourlyWage))}원 = ${formatNumber(result.amount)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 근로기준법 제55조(휴일), 시행령 제30조

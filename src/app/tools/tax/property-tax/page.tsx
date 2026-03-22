@@ -212,6 +212,18 @@ export default function PropertyTaxPage() {
             </div>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`공시가격 × 공정시장가액비율 × 세율 = 재산세
+
+과세표준 = ${formatNumber(result.standardValue)}원 × ${(result.fairMarketRatio * 100).toFixed(0)}% = ${formatNumber(result.taxBase)}원
+재산세 = 과세표준 구간별 세율 적용 = ${formatNumber(result.propertyTax)}원
+지방교육세 = 재산세 × 20% = ${formatNumber(result.localEducationTax)}원${result.urbanAreaTax > 0 ? `\n도시지역분 = 과세표준 × 0.14% = ${formatNumber(result.urbanAreaTax)}원` : ''}
+합계 세액 = ${formatNumber(result.total)}원`}
+            </pre>
+          </div>
+
           <div className="pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 지방세법 제110조(과세표준), 제111조(세율)

@@ -212,6 +212,22 @@ export default function VatPage() {
             </>
           )}
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {result.mode === 'supply'
+                ? `공급가액 × 10% = 부가가치세
+
+매출세액 = ${formatNumber(result.salesSupply!)}원 × 10% = ${formatNumber(result.salesVat!)}원
+매입세액 = ${formatNumber(result.purchaseSupply!)}원 × 10% = ${formatNumber(result.purchaseVat!)}원
+${result.isRefund ? '환급세액' : '납부세액'} = 매출세액 - 매입세액 = ${formatNumber(Math.abs(result.payableTax!))}원`
+                : `총액 ÷ 1.1 = 공급가액
+
+공급가액 = ${formatNumber(result.supplyTotal!)}원 ÷ 1.1 = ${formatNumber(result.supplyBase!)}원
+부가가치세 = ${formatNumber(result.supplyTotal!)}원 - ${formatNumber(result.supplyBase!)}원 = ${formatNumber(result.supplyVat!)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 부가가치세법 제30조(세율 10%), 제38조(매입세액 공제) - 부가가치세의 세율은 10%이며, 매출세액에서 매입세액을 공제하여 납부세액을 산출합니다.

@@ -144,6 +144,17 @@ export default function LtvPage() {
             )}
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`주택가격 × LTV비율 = 최대 대출가능액
+
+현재 LTV = 대출금액 ÷ 주택가격 × 100
+최대 대출가능액 = 주택가격 × 규제 LTV(${result.regulationLimit}%) ÷ 100
+              = ${formatNumber(result.maxLoan)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 금융위원회 LTV 규제 (2022.8 이후 기준). 무주택 실수요자 예외 및 서민 특례는 별도 조건 적용.

@@ -172,6 +172,17 @@ export default function DtiPage() {
             )}
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`연간 원리금 ÷ 연소득 = DTI%
+
+DTI = (주담대 연간 원리금 + 기타대출 연간 이자) ÷ 연소득 × 100
+    = (${formatNumber(result.annualMortgage)}원 + ${formatNumber(result.annualOtherInterest)}원) ÷ ${formatNumber(parseInt(annualIncome))}원 × 100
+    = ${result.dti.toFixed(1)}%  (규제기준: ${result.regulationLimit}%)`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500 mb-2">
               법적 근거: 금융위원회 DTI 규제 (금융감독원 여신심사 가이드라인)

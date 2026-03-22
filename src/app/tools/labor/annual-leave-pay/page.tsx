@@ -138,6 +138,18 @@ export default function AnnualLeavePayPage() {
             </div>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`시급 × 8시간 × 미사용일수 = 연차수당
+
+시급 = 월 통상임금 ÷ 월 기준시간
+     = ${formatNumber(parseInt(monthlyWage))}원 ÷ ${result.monthlyBaseHours}시간 = ${formatNumber(result.hourlyWage)}원/시간
+1일 통상임금 = ${formatNumber(result.hourlyWage)}원 × 8시간 = ${formatNumber(result.dailyWage)}원
+연차수당 합계 = ${formatNumber(result.dailyWage)}원 × ${result.days}일 = ${formatNumber(result.totalPay)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 근로기준법 제60조(연차 유급휴가), 제61조(연차휴가의 사용 촉진) - 사용자는 근로자의 미사용 연차휴가에 대하여 통상임금을 지급하여야 합니다.

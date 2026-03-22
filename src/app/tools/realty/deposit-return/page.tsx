@@ -119,6 +119,20 @@ export default function DepositReturnPage() {
             </p>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`보증금 반환 계산 (지연이자 포함)
+
+지연이자 = 보증금 × 연체이자율(%) ÷ 100 × 지연일수 ÷ 365
+합계 반환액 = 보증금 원금 + 지연이자
+
+예시) 보증금 ${formatNumber(result.deposit)}원 × ${rate}% × ${days}일 ÷ 365
+      = 지연이자 ${formatNumber(result.interest)}원
+      = 합계 ${formatNumber(result.total)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 주택임대차보호법 제3조의2, 민법 제387조
