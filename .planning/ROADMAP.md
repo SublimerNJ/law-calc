@@ -174,7 +174,7 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 09-01-PLAN.md — damages-general, defamation, medical-malpractice (DAMAGES-01~03)
+- [x] 09-01-PLAN.md — damages-general, defamation, medical-malpractice (DAMAGES-01~03)
 - [ ] 09-02-PLAN.md — lost-income, disability-compensation, product-liability (DAMAGES-04~06)
 
 ## Phase 10: 기타 법률도구 & 마무리 (4개)
