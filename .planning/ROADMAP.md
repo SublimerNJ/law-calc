@@ -142,6 +142,12 @@ Plans:
 - 4개 계산기 각각 독립 라우트
 - 법정이자율 정확 반영
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 08-01-PLAN.md — legal-interest, late-payment (DEBT-01~02)
+- [ ] 08-02-PLAN.md — loan-interest, unjust-enrichment (DEBT-03~04)
+
 ## Phase 9: 손해배상 계산기 (6개)
 
 **Goal:** 손해배상 관련 계산기 6개 구현
