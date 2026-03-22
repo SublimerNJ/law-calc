@@ -154,6 +154,14 @@ export default function DamagesGeneralPage() {
             </p>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+{`재산손해 = ${formatNumber(parseInt(propertyDamage) || 0)} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.adjustedProperty)}원${includeConsolation ? `\n위자료 = ${formatNumber(getConsolationBase())} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.consolation)}원` : ''}
+총 배상액 = ${formatNumber(result.adjustedProperty)}${includeConsolation ? ` + ${formatNumber(result.consolation)}` : ''} = ${formatNumber(result.total)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제750조(불법행위), 제763조(과실상계)
