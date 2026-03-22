@@ -122,6 +122,13 @@ Plans:
 - 7개 계산기 각각 독립 라우트
 - DSR/LTV/DTI 등 금융 계산 정확성
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — deposit-return, rent-conversion, brokerage-fee (REALTY-01~03)
+- [ ] 06-02-PLAN.md — subscription-score, dsr (REALTY-04~05)
+- [ ] 06-03-PLAN.md — ltv, dti (REALTY-06~07)
+
 ## Phase 7: 교통/형사 계산기 (6개)
 
 **Goal:** 교통/형사 관련 계산기 6개 구현
