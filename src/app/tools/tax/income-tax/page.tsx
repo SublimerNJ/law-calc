@@ -195,6 +195,52 @@ export default function IncomeTaxPage() {
             ))}
           </div>
 
+          <div className="grid grid-cols-2 gap-4 mb-4 mt-4 pt-4 border-t border-[#1e2d4a]">
+            <div>
+              <p className="text-sm text-gray-400 mb-1">월 환산 세금</p>
+              <p className="text-lg text-white">{formatNumber(Math.floor(result.totalTax / 12))}원/월</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400 mb-1">실효세율</p>
+              <p className="text-lg text-white">
+                {salary ? ((result.totalTax / parseInt(salary)) * 100).toFixed(2) : '0'}%
+              </p>
+            </div>
+          </div>
+
+          {/* 세율 구간표 */}
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-3">2026년 소득세 세율표</p>
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-[#1e2d4a]">
+                  <th className="py-2 text-left text-gray-500">과세표준</th>
+                  <th className="py-2 text-right text-gray-500">세율</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { label: '1,400만원 이하', rate: '6%', max: 14_000_000 },
+                  { label: '1,400만~5,000만원', rate: '15%', max: 50_000_000 },
+                  { label: '5,000만~8,800만원', rate: '24%', max: 88_000_000 },
+                  { label: '8,800만~1.5억원', rate: '35%', max: 150_000_000 },
+                  { label: '1.5억~3억원', rate: '38%', max: 300_000_000 },
+                  { label: '3억~5억원', rate: '40%', max: 500_000_000 },
+                  { label: '5억~10억원', rate: '42%', max: 1_000_000_000 },
+                  { label: '10억원 초과', rate: '45%', max: Infinity },
+                ].map((b, i) => {
+                  const isActive = result.taxBase > 0 && (i === 0 ? result.taxBase <= b.max : result.taxBase <= b.max && (i === 0 || result.taxBase > [14_000_000, 50_000_000, 88_000_000, 150_000_000, 300_000_000, 500_000_000, 1_000_000_000][i-1]));
+                  return (
+                    <tr key={i} className={`border-b border-[#1e2d4a]/50 ${isActive ? 'bg-[#3b82f6]/10' : ''}`}>
+                      <td className="py-2 text-gray-300">{b.label}</td>
+                      <td className="py-2 text-right" style={{ color: isActive ? category.color : '#9ca3af' }}>{b.rate}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 소득세법 제47조(근로소득공제), 제55조(세율), 제59조(세액공제)
