@@ -9,7 +9,7 @@
 |-------|------|-------------|-----------------|
 | 1 | 4/4 | Complete   | 2026-03-22 |
 | 2 | 2/3 | In Progress|  |
-| 3 | 가사/가족법 계산기 | FAMILY-01~08 | Medium |
+| 3 | 3/3 | Complete   | 2026-03-22 |
 | 4 | 노동/근로 계산기 | LABOR-01~14 | High |
 | 5 | 세금 계산기 | TAX-01~12 | High |
 | 6 | 부동산 계산기 | REALTY-01~07 | Medium |
@@ -68,11 +68,11 @@ Plans:
 - 8개 계산기 각각 독립 라우트
 - 한국 법률 기준 정확한 계산
 
-**Plans:** 3 plans
+**Plans:** 3/3 plans complete
 
 Plans:
 - [x] 03-01-PLAN.md — alimony, child-support, property-division (FAMILY-01~03)
-- [ ] 03-02-PLAN.md — inheritance-tax, legal-inheritance, forced-heirship (FAMILY-04~06)
+- [x] 03-02-PLAN.md — inheritance-tax, legal-inheritance, forced-heirship (FAMILY-04~06)
 - [x] 03-03-PLAN.md — gift-tax, inheritance-order (FAMILY-07~08)
 
 ## Phase 4: 노동/근로 계산기 (14개)
