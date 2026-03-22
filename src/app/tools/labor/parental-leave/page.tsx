@@ -173,6 +173,12 @@ export default function ParentalLeavePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`1~3개월: 월급 × 80% (상한 200만원, 하한 70만원)
+4개월~: 월급 × 50% (상한 120만원, 하한 70만원)
+월 급여액 합계의 25%는 복직 후 사후지급`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 고용보험법 제70조(육아휴직급여), 제73조의2(육아기 근로시간 단축급여) | 2026년 기준
             </p>

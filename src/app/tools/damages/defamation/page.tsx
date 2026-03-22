@@ -162,6 +162,10 @@ export default function DefamationPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`기본위자료 × 매체배율 × 피해자배율 × 심각도배율 × 기간배율 = 위자료`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 형법 제307조/제311조, 민법 제750조, 정보통신망법 제70조
             </p>

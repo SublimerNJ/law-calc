@@ -208,6 +208,12 @@ export default function MedicalMalpracticePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`(치료비 + 향후치료비 + 일실수입) × 과실비율 = 재산상 손해
+위자료기준 × 후유장해율 × 과실비율 = 후유장해 위자료
+합계 = 재산상 손해 + 위자료`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 의료법, 민법 제750조, 의료사고 피해구제 및 의료분쟁 조정 등에 관한 법률
             </p>

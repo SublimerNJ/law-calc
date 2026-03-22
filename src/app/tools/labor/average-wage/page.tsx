@@ -226,6 +226,10 @@ export default function AverageWagePage() {
           )}
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`3개월 총임금 ÷ 3개월 역일수 = 1일 평균임금`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 근로기준법 제2조제1항제6호 (평균임금 정의), 제6조 (균등처우)
             </p>

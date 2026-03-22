@@ -210,6 +210,12 @@ export default function LostIncomePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`월소득 × 노동능력상실률 × 호프만계수 = 일실수입
+(호프만계수 = Σ 1/(1+0.05/12×k), k=1~잔여개월)
+총액 × (1 - 과실비율) = 과실상계 후 일실수입`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 대법원 1989.3.28 선고 88다카21219 (호프만식 계산법). 본 계산은 참고용이며 실제 소송에서는 법원 판단에 따라 달라질 수 있습니다.
             </p>

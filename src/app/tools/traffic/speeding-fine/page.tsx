@@ -250,6 +250,12 @@ export default function SpeedingFinePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`초과속도 구간별 기본 범칙금/과태료
+× 차량유형 배율 (버스·화물: ×1.2)
+× 보호구역 배율 (어린이·노인구역: ×2)`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 도로교통법 시행령 별표 8 (2026년 기준). 실제 처분은 경찰 재량에 따라 달라질 수 있습니다.
             </p>

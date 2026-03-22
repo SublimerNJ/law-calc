@@ -252,6 +252,12 @@ export default function ProductLiabilityPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`손해액 × 과실비율 = 재산상 배상액
+위자료기준 × 과실비율 = 위자료 (개인 피해자)
+재산상 배상액 × 3 = 징벌적 배상 최대액 (법원 재량)`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 제조물 책임법 제3조, 제3조의2 (징벌적 손해배상). 본 계산은 참고용이며 실제 배상액은 법원 판단에 따라 달라질 수 있습니다.
             </p>

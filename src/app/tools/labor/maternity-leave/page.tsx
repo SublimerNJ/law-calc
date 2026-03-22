@@ -175,6 +175,12 @@ export default function MaternityLeavePage() {
           </div>
 
           <div className="mt-6 p-4 bg-[#1e2d4a]/50 rounded-lg">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`[고용보험 지급] min(1일 통상임금, 상한액) × 고용보험 지급일수
+[사업주 부담] 1일 통상임금 × 사업주 부담일수
+(대기업: 첫 60일 사업주 부담, 나머지 고용보험 지급)`}
+            </pre>
             <p className="text-xs text-gray-400 leading-relaxed">
               <strong className="text-gray-300">법적 근거:</strong> 근로기준법 제74조(출산전후휴가), 고용보험법 제76조
             </p>

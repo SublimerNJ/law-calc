@@ -179,6 +179,11 @@ export default function DisabilityCompensationPage() {
           )}
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`1일 평균임금 × 등급별 지급일수 = 장해보상 일시금
+(연금: 1일 평균임금 × 연금일수 ÷ 12 = 월 연금액)`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 산업재해보상보험법 제57조, 별표 2. 본 계산은 참고용이며 실제 지급액은 근로복지공단 심사에 따라 달라질 수 있습니다.
             </p>

@@ -285,6 +285,25 @@ export default function IndustrialAccidentPage() {
           )}
 
           <div className="mt-6 p-4 bg-[#1e2d4a]/50 rounded-lg">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            {result.type === 'absence' && (
+              <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`평균임금 × 70% = 1일 휴업급여
+(최저임금 80% 미만 시 최저임금 80% 적용)
+1일 휴업급여 × 요양일수 = 총 휴업급여`}
+              </pre>
+            )}
+            {result.type === 'disability' && (
+              <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`평균임금 × 등급별 일수 = 장해급여 일시금
+(연금: 평균임금 × 연금일수 ÷ 12 = 월 연금액)`}
+              </pre>
+            )}
+            {result.type === 'nursing' && (
+              <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`정액 간병급여(상시: 41,170원 / 수시: 27,450원) × 간병일수`}
+              </pre>
+            )}
             <p className="text-xs text-gray-400 leading-relaxed">
               <strong className="text-gray-300">법적 근거:</strong> 산업재해보상보험법 제52조(휴업급여), 제57조(장해급여), 제61조(간병급여)
             </p>

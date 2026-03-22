@@ -148,6 +148,11 @@ export default function SecuritiesTaxPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`양도금액 × 세율 = 증권거래세
+(코스피: 양도금액 × 0.03% 농어촌특별세 별도)`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 증권거래세법 제8조(세율) - 증권거래세는 주권 등의 양도가액에 해당 세율을 적용하여 산출합니다.
             </p>

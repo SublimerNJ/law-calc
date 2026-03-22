@@ -257,6 +257,12 @@ export default function BailPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`기본보석금(죄종 중간값) vs 재산기준값 → 높은 값 선택
+× 전과 가중배율 × 도주위험 배율 × 증거인멸 배율
+= 예상 보석금 (상한 5억원)`}
+            </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 형사소송법 제94조, 제99조. 보석금은 법원이 피고인의 자력, 범죄의 성질과 정상 등을 고려하여 결정합니다.
             </p>

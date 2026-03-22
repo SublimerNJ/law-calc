@@ -172,6 +172,11 @@ export default function RentTaxCreditPage() {
             )}
 
             <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
+              <p className="font-semibold text-gray-400 mb-1">계산식</p>
+              <pre className="font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+{`min(월세 × 12, 1,000만원) × 공제율 = 세액공제액
+(총급여 5,500만원 이하: 20%, 초과: 17%)`}
+              </pre>
               <p className="font-semibold text-gray-400 mb-1">법적 근거</p>
               <p>소득세법 제95조의2 (월세액 세액공제). 2026년 기준. 실제 공제 결과와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
             </div>
