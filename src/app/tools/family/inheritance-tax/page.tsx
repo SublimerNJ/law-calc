@@ -174,6 +174,22 @@ export default function InheritanceTaxPage() {
             </div>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`총 상속재산가액     ${formatNumber(parseInput(grossEstate))}원
+(-) 채무/장례비    ${formatNumber(parseInput(debts) + Math.min(parseInput(funeralExpenses), 15_000_000))}원
+= 과세가액         ${formatNumber(result.taxableBase)}원
+(-) 공제 합계      ${formatNumber(result.totalDeduction)}원
+    일괄공제       500,000,000원${hasSpouse ? `\n    배우자공제     ${formatNumber(result.totalDeduction - 500_000_000)}원` : ''}
+────────────────────────────────
+과세표준           ${formatNumber(result.taxableAmount)}원
+× 세율             ${result.rate}
+────────────────────────────────
+산출세액           ${formatNumber(result.tax)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 상속세 및 증여세법 제25조~제27조

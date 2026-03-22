@@ -151,6 +151,20 @@ export default function DsrPage() {
             </div>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`연간 원리금 상환액  ${formatNumber(result.annualRepayment)}원
+÷ 연소득           ${formatNumber(result.annualIncome)}원
+× 100
+────────────────────────────────
+DSR                ${result.dsr}%
+
+은행권 기준 (40%):  ${result.bankOk ? '적합' : '초과'}
+비은행권 기준 (50%): ${result.nonBankOk ? '적합' : '초과'}`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 금융위원회 DSR 규제 (2026년 현행 기준)

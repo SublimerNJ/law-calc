@@ -236,6 +236,26 @@ export default function ComprehensiveIncomeTaxPage() {
             ))}
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`종합소득금액        ${formatNumber(result.totalIncome)}원
+(-) 소득공제 합계   ${formatNumber(result.totalDeduction)}원
+    기본공제        ${formatNumber(result.basicDeduction)}원
+    국민연금공제    ${formatNumber(result.pensionDeduction)}원
+    건강보험료공제  ${formatNumber(result.healthDeduction)}원
+────────────────────────────────
+과세표준           ${formatNumber(result.taxBase)}원
+× 세율             ${result.rate}
+= 산출세액         ${formatNumber(result.computedTax)}원
+(-) 표준세액공제   ${formatNumber(result.standardCredit)}원
+= 결정세액         ${formatNumber(result.determinedTax)}원
+(+) 지방소득세     ${formatNumber(result.localTax)}원
+────────────────────────────────
+총 납부세액        ${formatNumber(result.totalTax)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 소득세법 제14조(종합소득), 제55조(세율), 제56조(세액공제)

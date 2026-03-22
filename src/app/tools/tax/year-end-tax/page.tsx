@@ -371,6 +371,31 @@ export default function YearEndTaxPage() {
               </p>
             </div>
 
+            <div className="mb-4">
+              <p className="text-sm text-gray-400 mb-2">계산식</p>
+              <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+                {`총급여액            ${formatNumber(result.grossPay)}원
+(-) 근로소득공제    ${formatNumber(result.earnedDeduction)}원
+= 근로소득금액      ${formatNumber(result.earnedIncome)}원
+(-) 기본공제        ${formatNumber(result.basicDeduction)}원
+(-) 카드소득공제    ${formatNumber(result.cardDeduction)}원
+────────────────────────────────
+과세표준            ${formatNumber(result.taxableIncome)}원
+= 산출세액          ${formatNumber(result.computedTax)}원
+(-) 세액공제 합계   ${formatNumber(result.totalCredit)}원
+    근로소득세액공제 ${formatNumber(result.earnedCredit)}원
+    자녀세액공제    ${formatNumber(result.childCredit)}원
+    의료비세액공제  ${formatNumber(result.medicalCredit)}원
+    교육비세액공제  ${formatNumber(result.educationCredit)}원
+    기부금세액공제  ${formatNumber(result.donationCredit)}원
+    월세세액공제    ${formatNumber(result.rentCredit)}원
+────────────────────────────────
+결정세액            ${formatNumber(result.finalTax)}원
+(-) 기납부세액      ${formatNumber(result.withheld)}원
+= 환급/추가납부     ${result.refund >= 0 ? '+' : ''}${formatNumber(result.refund)}원`}
+              </pre>
+            </div>
+
             <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
               <p className="font-semibold text-gray-400 mb-1">법적 근거</p>
               <p>소득세법 제137조~제140조 (연말정산). 2026년 기준 세율 및 공제율 적용. 실제 연말정산 결과와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>

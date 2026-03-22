@@ -185,6 +185,18 @@ export default function PropertyDivisionPage() {
             </div>
           )}
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {`총재산             ${formatNumber(result.totalAssets)}원
+× 기여도           ${result.contributionRate}%
+────────────────────────────────
+취득예상액          ${formatNumber(result.claimantShare)}원
+(-) 청구인 명의재산 ${formatNumber(result.claimantShare - result.paymentFromOpponent)}원
+= 상대방 지급액     ${formatNumber(result.paymentFromOpponent)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제839조의2 (재산분할청구권)
