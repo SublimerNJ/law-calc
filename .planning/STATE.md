@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:28:26.400Z"
+last_updated: "2026-03-22T16:28:47.628Z"
 progress:
   total_phases: 10
   completed_phases: 1
   total_plans: 7
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Project State
@@ -38,6 +38,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 01]: CategorySection wrapper pattern for scroll-animated category grids
 - [Phase 01]: CalculatorLayout shell pattern: breadcrumbs + header + 2-col + sidebar for all calculators
 - [Phase 02]: Attorney fee 8-tier bracket with 30M cap; stamp fee 100won ceiling rounding
+- [Phase 02]: Payment order uses totalParties (creditor+debtors) for service fee
 
 ## Session Log
 

@@ -8,7 +8,7 @@
 | Phase | Name | Requirements | Est. Complexity |
 |-------|------|-------------|-----------------|
 | 1 | 4/4 | Complete   | 2026-03-22 |
-| 2 | 소송/법원 계산기 | COURT-01~09 | Medium |
+| 2 | 2/3 | In Progress|  |
 | 3 | 가사/가족법 계산기 | FAMILY-01~08 | Medium |
 | 4 | 노동/근로 계산기 | LABOR-01~14 | High |
 | 5 | 세금 계산기 | TAX-01~12 | High |
@@ -51,11 +51,11 @@ Plans:
 - 입력값에 따른 정확한 계산 결과 출력
 - 메인 페이지 카테고리에서 링크 동작
 
-**Plans:** 3 plans
+**Plans:** 2/3 plans executed
 
 Plans:
 - [x] 02-01-PLAN.md — attorney-fee, lawsuit-cost, stamp-fee (COURT-01~03)
-- [ ] 02-02-PLAN.md — service-fee, small-claims, payment-order (COURT-04~06)
+- [x] 02-02-PLAN.md — service-fee, small-claims, payment-order (COURT-04~06)
 - [ ] 02-03-PLAN.md — civil-mediation, family-court, e-court (COURT-07~09)
 
 ## Phase 3: 가사/가족법 계산기 (8개)
