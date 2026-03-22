@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T17:10:50.261Z"
+last_updated: "2026-03-22T17:13:06.844Z"
 progress:
   total_phases: 10
-  completed_phases: 9
+  completed_phases: 10
   total_plans: 30
-  completed_plans: 29
+  completed_plans: 30
 ---
 
 # Project State
@@ -72,6 +72,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 09]: Used monthly Hoffman coefficient for lost income calculation
 - [Phase 07]: Speeding fine tiered brackets per 도로교통법 시행령 별표 8
 - [Phase 07]: Bail calculator uses midpoint + multiplicative risk factors with 500M cap
+- [Phase 10-misc-tools]: Dynamic sitemap from TOOLS array with env-based base URL
 
 ## Session Log
 
