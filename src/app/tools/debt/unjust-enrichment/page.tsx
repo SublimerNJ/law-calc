@@ -54,7 +54,8 @@ export default function UnjustEnrichmentPage() {
         <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">부당이득 원금 (원)</label>
+          <label className="block text-sm text-gray-400 mb-2">부당이득 금액 (원)</label>
+          <p className="text-xs text-gray-500 mb-1">상대방이 부당하게 취득한 금액 (예: 초과 지급액, 착오 송금액)</p>
           <input
             type="text"
             inputMode="numeric"
@@ -133,16 +134,21 @@ export default function UnjustEnrichmentPage() {
             <p className="text-lg text-white">{formatNumber(result.principal)}원</p>
           </div>
 
-          <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">법정이자 (연 5%)</p>
-            <p className="text-lg text-white">{formatNumber(result.interest)}원</p>
-          </div>
+          {beneficiaryType === 'bad' && (
+            <div className="mb-4">
+              <p className="text-sm text-gray-400 mb-1">법정이자 (연 5%)</p>
+              <p className="text-lg text-white">{formatNumber(result.interest)}원</p>
+            </div>
+          )}
 
           <div className="mb-4">
             <p className="text-sm text-gray-400 mb-1">반환 합계</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
-              {formatNumber(result.total)}원
+              {formatNumber(beneficiaryType === 'bad' ? result.total : result.principal)}원
             </p>
+            {beneficiaryType === 'good' && (
+              <p className="text-xs text-gray-500 mt-1">선의 수익자는 현존이익 한도 내 반환 (이자 미포함)</p>
+            )}
           </div>
 
           <div className="mb-4">
