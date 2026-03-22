@@ -164,6 +164,12 @@ Plans:
 - 6개 계산기 각각 독립 라우트
 - 일실수입 등 복잡한 계산 로직 정확
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 09-01-PLAN.md — damages-general, defamation, medical-malpractice (DAMAGES-01~03)
+- [ ] 09-02-PLAN.md — lost-income, disability-compensation, product-liability (DAMAGES-04~06)
+
 ## Phase 10: 기타 법률도구 & 마무리 (4개)
 
 **Goal:** 나머지 도구 4개 + 전체 QA + SEO 마무리
