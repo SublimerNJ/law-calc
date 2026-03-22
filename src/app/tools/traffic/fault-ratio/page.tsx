@@ -198,6 +198,9 @@ export default function FaultRatioPage() {
             <p className="text-xs text-gray-500">
               법적 근거: 교통사고 과실비율 인정기준 (금융감독원/법원)
             </p>
+            <p className="text-xs text-gray-500 mt-1">
+              표준 과실비율이며, 실제 과실 판정은 블랙박스·목격자·현장 증거에 따라 달라집니다.
+            </p>
           </div>
         </div>
       )}

@@ -21,7 +21,7 @@ function earnedIncomeDeduction(gross: number): number {
   if (gross <= 5_000_000) return gross * 0.7;
   if (gross <= 15_000_000) return 3_500_000 + (gross - 5_000_000) * 0.4;
   if (gross <= 45_000_000) return 7_500_000 + (gross - 15_000_000) * 0.15;
-  if (gross <= 100_000_000) return 12_000_000 + (gross - 45_000_000) * 0.05;
+  if (gross <= 100_000_000) return 12_450_000 + (gross - 45_000_000) * 0.05;
   return 14_750_000 + (gross - 100_000_000) * 0.02;
 }
 

@@ -143,7 +143,7 @@ export default function SecuritiesTaxPage() {
 
           <div className="mb-4 p-3 rounded-lg bg-blue-500/10 border border-blue-500/30">
             <p className="text-sm text-blue-400">
-              2025년 이후 코스피 증권거래세율 0.03% 적용 (농어촌특별세 0.03% 별도)
+              2026년 현재 코스피 증권거래세율 0.03% 적용 (농어촌특별세 0.03% 별도)
             </p>
           </div>
 

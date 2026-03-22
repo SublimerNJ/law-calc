@@ -138,7 +138,7 @@ export default function LoanInterestPage() {
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 이자제한법 제2조 (최고이자율 연 20%, 2021.7.7 시행)
+              법적 근거: 이자제한법 제2조 (2026년 현행 최고이자율 연 20%)
             </p>
           </div>
         </div>

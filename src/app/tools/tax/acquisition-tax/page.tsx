@@ -38,7 +38,7 @@ function calculateAcquisitionTax(
         taxRate = 0.01;
       } else if (price <= 900_000_000) {
         // Linear interpolation 1%~3%
-        taxRate = ((price / 100_000_000) - 3) * (1 / 3) / 100;
+        taxRate = 0.01 + (price - 600_000_000) / 300_000_000 * 0.02;
         // Clamp
         if (taxRate < 0.01) taxRate = 0.01;
         if (taxRate > 0.03) taxRate = 0.03;

@@ -153,7 +153,7 @@ export default function DsrPage() {
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 금융위원회 가계부채관리방안(2021.10), DSR 규제
+              법적 근거: 금융위원회 DSR 규제 (2026년 현행 기준)
             </p>
           </div>
         </div>
