@@ -158,8 +158,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 08-01-PLAN.md — legal-interest, late-payment (DEBT-01~02)
-- [ ] 08-02-PLAN.md — loan-interest, unjust-enrichment (DEBT-03~04)
+- [x] 08-01-PLAN.md — legal-interest, late-payment (DEBT-01~02)
+- [x] 08-02-PLAN.md — loan-interest, unjust-enrichment (DEBT-03~04)
 
 ## Phase 9: 손해배상 계산기 (6개)
 

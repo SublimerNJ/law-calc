@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:57:40.589Z"
+last_updated: "2026-03-22T17:05:26.130Z"
 progress:
   total_phases: 10
-  completed_phases: 5
-  total_plans: 19
-  completed_plans: 19
+  completed_phases: 6
+  total_plans: 30
+  completed_plans: 22
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산
-**Current focus:** Phase 05 — tax-calculators
+**Current focus:** Phase 09 — damages-calculators
 
 ## Current Phase
 
-- **Phase:** 5
-- **Status:** Executing Phase 05
+- **Phase:** 6
+- **Status:** Executing Phase 09
 - **Plans:** 4/4 [COMPLETE]
 
 ## Decisions
@@ -59,6 +59,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 05]: Comprehensive property tax 7-bracket progressive rates with senior deduction
 - [Phase 05]: 2026 income tax 8-bracket progressive rates (6-45%) reused across all 3 tax calculators
 - [Phase 05]: Capital gains general long-term holding rates (6-30%) separate from 1-house rates (12-40%)
+- [Phase 08-debt-calculators]: Late payment calculator shows both 5% and 12% rates simultaneously with toggle emphasis
 
 ## Session Log
 
