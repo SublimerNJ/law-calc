@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:57:13.150Z"
+last_updated: "2026-03-22T16:57:24.101Z"
 progress:
   total_phases: 10
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 19
-  completed_plans: 18
+  completed_plans: 19
 ---
 
 # Project State
@@ -55,6 +55,8 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 05]: VAT dual mode: supply-based vs total-price-based calculation
 - [Phase 05]: KOSPI agriculture tax 0.03% separate from securities tax 0.03%
 - [Phase 05]: Year-end tax simplified card deduction; four insurances 150-under employer rates; rent credit checkbox eligibility UX
+- [Phase 05]: 2026 acquisition tax linear interpolation for 6-9억 single-home bracket
+- [Phase 05]: Comprehensive property tax 7-bracket progressive rates with senior deduction
 
 ## Session Log
 

@@ -11,7 +11,7 @@
 | 2 | 2/3 | In Progress|  |
 | 3 | 3/3 | Complete   | 2026-03-22 |
 | 4 | 5/5 | Complete   | 2026-03-22 |
-| 5 | 3/4 | In Progress|  |
+| 5 | 4/4 | Complete   | 2026-03-22 |
 | 6 | 부동산 계산기 | REALTY-01~07 | Medium |
 | 7 | 교통/형사 계산기 | TRAFFIC-01~06 | Medium |
 | 8 | 채권/이자 계산기 | DEBT-01~04 | Low |
@@ -104,10 +104,10 @@ Plans:
 - 12개 계산기 각각 독립 라우트
 - 2026년 세율 기준 반영
 
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 Plans:
-- [ ] 05-01-PLAN.md — income-tax, capital-gains-tax, comprehensive-income-tax (TAX-01~03)
+- [x] 05-01-PLAN.md — income-tax, capital-gains-tax, comprehensive-income-tax (TAX-01~03)
 - [x] 05-02-PLAN.md — acquisition-tax, comprehensive-property-tax, property-tax (TAX-04~06)
 - [x] 05-03-PLAN.md — registration-tax, vat, securities-tax (TAX-07~09)
 - [x] 05-04-PLAN.md — year-end-tax, four-insurances, rent-tax-credit (TAX-10~12)
