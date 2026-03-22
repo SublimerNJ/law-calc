@@ -39,6 +39,7 @@ Plans:
 - [x] 01-02-PLAN.md — Header, Footer, ThemeToggle, layout wiring
 - [x] 01-03-PLAN.md — Parallax hero, scroll animations
 - [x] 01-04-PLAN.md — Main page assembly, Card, CalculatorLayout, SEO
+
 ## Phase 2: 소송/법원 계산기 (9개)
 
 **Goal:** 소송 관련 비용 계산기 9개 구현
@@ -49,6 +50,13 @@ Plans:
 - 9개 페이지 각각 독립 라우트로 접근 가능
 - 입력값에 따른 정확한 계산 결과 출력
 - 메인 페이지 카테고리에서 링크 동작
+
+**Plans:** 3 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — attorney-fee, lawsuit-cost, stamp-fee (COURT-01~03)
+- [ ] 02-02-PLAN.md — service-fee, small-claims, payment-order (COURT-04~06)
+- [ ] 02-03-PLAN.md — civil-mediation, family-court, e-court (COURT-07~09)
 
 ## Phase 3: 가사/가족법 계산기 (8개)
 
