@@ -116,7 +116,7 @@ export default function ChildSupportPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">양육자(청구인) 월 소득 (만원)</label>
+          <label className="block text-sm text-gray-400 mb-2">양육자 월 소득 (만원)</label>
           <input
             type="number"
             inputMode="numeric"
@@ -129,7 +129,7 @@ export default function ChildSupportPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">비양육자(상대방) 월 소득 (만원)</label>
+          <label className="block text-sm text-gray-400 mb-2">비양육자 월 소득 (만원)</label>
           <input
             type="number"
             inputMode="numeric"

@@ -154,6 +154,9 @@ export default function InheritanceTaxPage() {
             <div>
               <p className="text-sm text-gray-400 mb-1">공제 합계</p>
               <p className="text-lg text-white">{formatNumber(result.totalDeduction)}원</p>
+              <p className="text-xs text-gray-500 mt-1">
+                일괄공제 5억원{hasSpouse ? ` + 배우자공제 ${formatNumber(Math.max(500_000_000, Math.min(parseInput(grossEstate) * 0.5, 3_000_000_000)))}원` : ''} 적용
+              </p>
             </div>
             <div>
               <p className="text-sm text-gray-400 mb-1">과세표준</p>

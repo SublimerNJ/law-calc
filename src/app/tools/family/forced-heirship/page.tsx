@@ -190,7 +190,7 @@ export default function ForcedHeirshipPage() {
             className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">
-            법정상속분 계산기로 먼저 확인하세요
+            <a href="/tools/family/legal-inheritance" className="text-[#ec4899] underline hover:opacity-80">법정상속분 계산기</a>로 먼저 확인하세요
           </p>
         </div>
 

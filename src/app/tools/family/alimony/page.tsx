@@ -81,6 +81,12 @@ export default function AlimonyPage() {
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
 
+        <div className="mb-4 p-3 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
+          <p className="text-xs text-gray-400">
+            💡 위자료는 법원이 개별 사안을 종합적으로 판단하여 결정합니다. 이 계산기는 <strong className="text-gray-300">판례 기반 예상 범위</strong>를 제공하며, 실제 법원 결정과 차이가 있을 수 있습니다.
+          </p>
+        </div>
+
         <div className="mb-4">
           <label className="block text-sm text-gray-400 mb-2">혼인기간 (년)</label>
           <input
