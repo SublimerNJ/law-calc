@@ -37,12 +37,26 @@ function getAgeFactor(age: AgeGroup): number {
   }
 }
 
+const INCOME_TABLE = [
+  { max: 200, label: '200만원 미만', amount: 400_000 },
+  { max: 400, label: '200~400만원', amount: 600_000 },
+  { max: 600, label: '400~600만원', amount: 800_000 },
+  { max: 800, label: '600~800만원', amount: 1_000_000 },
+  { max: 1000, label: '800~1,000만원', amount: 1_200_000 },
+  { max: 1500, label: '1,000~1,500만원', amount: 1_400_000 },
+  { max: Infinity, label: '1,500만원 이상', amount: 1_600_000 },
+];
+
 interface ChildSupportResult {
   monthlyTotal: number;
   noncustodialPayment: number;
   custodialPayment: number;
   combinedIncome: number;
   noncustodialShare: number;
+  basePerChild: number;
+  incomeTableIdx: number;
+  ageFactor: number;
+  multiChildFactor: number;
 }
 
 function calculateChildSupport(
@@ -64,7 +78,10 @@ function calculateChildSupport(
   const noncustodialPayment = Math.floor(monthlyTotal * noncustodialShare);
   const custodialPayment = monthlyTotal - noncustodialPayment;
 
-  return { monthlyTotal, noncustodialPayment, custodialPayment, combinedIncome, noncustodialShare };
+  const incomeTableIdx = INCOME_TABLE.findIndex(t => combinedIncome < t.max);
+  const multiChildFactor = childCount === '1' ? 1.0 : childCount === '2' ? 1.8 : 2.4;
+
+  return { monthlyTotal, noncustodialPayment, custodialPayment, combinedIncome, noncustodialShare, basePerChild, incomeTableIdx: incomeTableIdx >= 0 ? incomeTableIdx : INCOME_TABLE.length - 1, ageFactor: getAgeFactor(ageGroup), multiChildFactor };
 }
 
 function formatNumber(n: number): string {
@@ -198,14 +215,50 @@ export default function ChildSupportPage() {
             <p className="text-lg text-white">{formatNumber(result.combinedIncome)}만원</p>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-1">연간 양육비</p>
+            <p className="text-lg text-white">{formatNumber(result.monthlyTotal * 12)}원</p>
+          </div>
+
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">산출 근거</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+{`합산소득: ${formatNumber(result.combinedIncome)}만원 → 1인당 기준: ${formatNumber(result.basePerChild)}원
+자녀수 배율: ×${result.multiChildFactor}
+나이 배율: ×${result.ageFactor}
+
+월 양육비 = ${formatNumber(result.basePerChild)} × ${result.multiChildFactor} × ${result.ageFactor} = ${formatNumber(result.monthlyTotal)}원
+비양육자 부담 = ${formatNumber(result.monthlyTotal)} × ${(result.noncustodialShare * 100).toFixed(1)}% = ${formatNumber(result.noncustodialPayment)}원`}
+            </pre>
+          </div>
+
+          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm text-gray-400 mb-3">양육비 산정 기준표 (합산소득별 1인당)</p>
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-[#1e2d4a]">
+                  <th className="py-2 text-left text-xs text-gray-500">합산 월소득</th>
+                  <th className="py-2 text-right text-xs text-gray-500">자녀 1인 기준</th>
+                </tr>
+              </thead>
+              <tbody>
+                {INCOME_TABLE.map((row, i) => (
+                  <tr key={i} className={`border-b border-[#1e2d4a]/50 ${i === result.incomeTableIdx ? 'bg-[#ec4899]/10' : ''}`}>
+                    <td className="py-2 text-gray-300">{row.label}</td>
+                    <td className="py-2 text-right" style={{ color: i === result.incomeTableIdx ? category.color : '#9ca3af' }}>
+                      {formatNumber(row.amount)}원
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제833조, 서울가정법원 양육비산정기준표(2026)
             </p>
-          </div>
-
-          <div className="mt-3">
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 mt-1">
               본 계산기는 참고용이며, 실제 법원 결정과 다를 수 있습니다.
             </p>
           </div>
