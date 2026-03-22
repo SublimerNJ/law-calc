@@ -142,6 +142,10 @@ export default function StatuteOfLimitationsPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+            <p className="text-xs text-gray-500 font-mono">기산일 + 시효기간 = 만료일</p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">법적 근거: {result.legalBasis}, 민법 제162조~제164조, 상법 제64조</p>
           </div>
         </div>

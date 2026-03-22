@@ -137,6 +137,10 @@ export default function LoanInterestPage() {
           )}
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+            <p className="text-xs text-gray-500 font-mono">원금 × 이자율 × 기간/365 = 이자</p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 이자제한법 제2조 (2026년 현행 최고이자율 연 20%)
             </p>

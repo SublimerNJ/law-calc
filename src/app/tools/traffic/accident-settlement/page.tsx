@@ -198,6 +198,10 @@ export default function AccidentSettlementPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+            <p className="text-xs text-gray-500 font-mono">치료비 + 위자료 - 과실상계 = 합의금</p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 교통사고처리특례법, 손해배상 산정기준 (2026)
             </p>

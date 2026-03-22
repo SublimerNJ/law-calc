@@ -195,6 +195,10 @@ export default function FaultRatioPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+            <p className="text-xs text-gray-500 font-mono">기본과실 + 수정요소 = 최종 과실비율</p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 교통사고 과실비율 인정기준 (금융감독원/법원)
             </p>

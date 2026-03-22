@@ -169,6 +169,11 @@ export default function UnjustEnrichmentPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+            <p className="text-xs text-gray-500 font-mono">원금 × 5% × 일수/365 = 이자</p>
+            <p className="text-xs text-gray-500 font-mono mt-1">원금 + 이자 = 합계</p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제741조(부당이득의 내용), 제748조(수익자의 반환범위)
             </p>

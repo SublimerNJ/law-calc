@@ -174,6 +174,10 @@ export default function SubscriptionScorePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+            <p className="text-xs text-gray-500 font-mono">무주택기간 + 부양가족 + 청약통장 = 총점</p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 주택공급에 관한 규칙 별표1 (청약가점제 점수산정 기준표)
             </p>

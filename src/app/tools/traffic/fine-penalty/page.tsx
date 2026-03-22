@@ -243,6 +243,10 @@ export default function FinePenaltyPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+            <p className="text-xs text-gray-500 font-mono">벌금/과태료 구간 적용 → 자진신고 20% 감경 → 미납 월 3% 가산</p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
               법적 근거: 도로교통법, 질서위반행위규제법. 실제 금액은 위반 상황에 따라 달라질 수 있습니다.
             </p>

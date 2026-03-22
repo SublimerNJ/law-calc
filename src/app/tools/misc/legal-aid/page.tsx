@@ -154,6 +154,10 @@ export default function LegalAidPage() {
           )}
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+            <p className="text-xs text-gray-500 font-mono">월소득 vs 기준중위소득 125% 비교</p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">법적 근거: 법률구조법 제7조, 법률구조법 시행령</p>
           </div>
         </div>
