@@ -135,28 +135,38 @@ export default function LegalInterestPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-1">원금 + 이자 합계</p>
+            <p className="text-lg text-white font-semibold">{formatNumber(result.principal + result.interest)}원</p>
+          </div>
+
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+{`이자 = 원금 × 연이율 × (일수 ÷ 365)
+  = ${formatNumber(result.principal)} × ${result.rate}% × (${formatNumber(result.days)} ÷ 365)
+  = ${formatNumber(result.interest)}원`}
+            </pre>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">원금</p>
-              <p className="text-lg text-white">{formatNumber(result.principal)}원</p>
+              <p className="text-xs text-gray-400 mb-1">원금</p>
+              <p className="text-sm text-white">{formatNumber(result.principal)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">적용 이율</p>
-              <p className="text-lg text-white">연 {result.rate}%</p>
+              <p className="text-xs text-gray-400 mb-1">적용 이율</p>
+              <p className="text-sm text-white">연 {result.rate}%</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">기간</p>
-              <p className="text-lg text-white">{formatNumber(result.days)}일</p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-400 mb-1">연환산 이자율</p>
-              <p className="text-lg text-white">연 {result.rate}%</p>
+              <p className="text-xs text-gray-400 mb-1">기간</p>
+              <p className="text-sm text-white">{formatNumber(result.days)}일</p>
             </div>
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제379조 (법정이율 연 5%), 상사법정이율 연 6%
+              법적 근거: 민법 제379조 (법정이율 연 5%), 상법 제54조 (상사법정이율 연 6%)
             </p>
           </div>
         </div>

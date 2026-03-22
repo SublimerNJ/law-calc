@@ -13,10 +13,30 @@ type LeaseType = 'jeonse' | 'wolse';
 interface Result {
   transactionAmount: number;
   rate: number;
+  cap?: number;
   fee: number;
+  capApplied: boolean;
   vat: number;
   total: number;
+  formula: string;
 }
+
+const SALE_TABLE = [
+  { max: 50_000_000, label: '5천만원 미만', rate: '0.6%', cap: '25만원' },
+  { max: 200_000_000, label: '5천만~2억원', rate: '0.5%', cap: '80만원' },
+  { max: 900_000_000, label: '2억~9억원', rate: '0.4%', cap: '없음' },
+  { max: 1_200_000_000, label: '9억~12억원', rate: '0.5%', cap: '없음' },
+  { max: 1_500_000_000, label: '12억~15억원', rate: '0.6%', cap: '없음' },
+  { max: Infinity, label: '15억원 이상', rate: '0.7%', cap: '없음' },
+];
+
+const LEASE_TABLE = [
+  { max: 50_000_000, label: '5천만원 미만', rate: '0.5%', cap: '20만원' },
+  { max: 100_000_000, label: '5천만~1억원', rate: '0.4%', cap: '30만원' },
+  { max: 300_000_000, label: '1억~3억원', rate: '0.3%', cap: '없음' },
+  { max: 600_000_000, label: '3억~6억원', rate: '0.4%', cap: '없음' },
+  { max: Infinity, label: '6억원 이상', rate: '0.5%', cap: '없음' },
+];
 
 function getSaleRate(amount: number): { rate: number; cap?: number } {
   if (amount < 50_000_000) return { rate: 0.006, cap: 250_000 };
@@ -69,19 +89,29 @@ export default function BrokerageFeePage() {
       rateInfo = getLeaseRate(transactionAmount);
     }
 
-    let fee = Math.floor(transactionAmount * rateInfo.rate);
-    if (rateInfo.cap !== undefined) {
-      fee = Math.min(fee, rateInfo.cap);
-    }
+    const rawFee = Math.floor(transactionAmount * rateInfo.rate);
+    const capApplied = rateInfo.cap !== undefined && rawFee > rateInfo.cap;
+    const fee = capApplied ? rateInfo.cap! : rawFee;
 
     const vat = Math.floor(fee * 0.1);
+
+    let formula = `${formatNumber(transactionAmount)} × ${(rateInfo.rate * 100).toFixed(1)}% = ${formatNumber(rawFee)}원`;
+    if (capApplied) {
+      formula += `\n→ 상한 ${formatNumber(rateInfo.cap!)}원 적용`;
+    }
+    if (txType === 'lease' && leaseType === 'wolse') {
+      formula = `환산보증금 = ${formatNumber(amountVal)} + ${formatNumber(parseInt(monthlyRent, 10))} × 100 = ${formatNumber(transactionAmount)}원\n${formula}`;
+    }
 
     setResult({
       transactionAmount,
       rate: rateInfo.rate,
+      cap: rateInfo.cap,
       fee,
+      capApplied,
       vat,
       total: fee + vat,
+      formula,
     });
   };
 
@@ -204,9 +234,48 @@ export default function BrokerageFeePage() {
             </p>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              {result.formula}
+            </pre>
+          </div>
+
+          <div className="mb-4 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
+            <p className="text-xs text-yellow-400">
+              부가세는 법인 중개사무소만 부과됩니다. 개인 공인중개사는 부가세 면제 대상입니다.
+            </p>
+          </div>
+
+          {/* 요율 기준표 */}
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-3">{txType === 'sale' ? '매매' : '임대차'} 중개보수 요율표</p>
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-[#1e2d4a]">
+                  <th className="py-2 text-left text-gray-500">거래금액</th>
+                  <th className="py-2 text-right text-gray-500">상한요율</th>
+                  <th className="py-2 text-right text-gray-500">한도액</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(txType === 'sale' ? SALE_TABLE : LEASE_TABLE).map((row, i) => {
+                  const isActive = result.transactionAmount < row.max && (i === 0 || result.transactionAmount >= (txType === 'sale' ? SALE_TABLE : LEASE_TABLE)[i-1]?.max || 0);
+                  return (
+                    <tr key={i} className={`border-b border-[#1e2d4a]/50 ${isActive ? 'bg-[#8b5cf6]/10' : ''}`}>
+                      <td className="py-2 text-gray-300">{row.label}</td>
+                      <td className="py-2 text-right" style={{ color: isActive ? category.color : '#9ca3af' }}>{row.rate}</td>
+                      <td className="py-2 text-right" style={{ color: isActive ? category.color : '#9ca3af' }}>{row.cap}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 공인중개사법 시행규칙 별표1
+              법적 근거: 공인중개사법 시행규칙 별표1 | 월세 환산: 보증금 + (월세 × 100)
             </p>
           </div>
         </div>
