@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T17:07:03.301Z"
+last_updated: "2026-03-22T17:07:29.670Z"
 progress:
   total_phases: 10
-  completed_phases: 8
+  completed_phases: 9
   total_plans: 30
-  completed_plans: 27
+  completed_plans: 28
 ---
 
 # Project State
@@ -70,6 +70,8 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 06]: Select dropdowns with pre-scored options for subscription score calculator
 - [Phase 06]: DSR boundary uses <= for 40%/50% threshold checks
 - [Phase 09]: Used monthly Hoffman coefficient for lost income calculation
+- [Phase 07]: Speeding fine tiered brackets per 도로교통법 시행령 별표 8
+- [Phase 07]: Bail calculator uses midpoint + multiplicative risk factors with 500M cap
 
 ## Session Log
 

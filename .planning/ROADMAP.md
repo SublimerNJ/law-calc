@@ -143,7 +143,7 @@ Plans:
 
 Plans:
 - [x] 07-01-PLAN.md — accident-settlement, fault-ratio, drunk-driving (TRAFFIC-01~03)
-- [ ] 07-02-PLAN.md — speeding-fine, fine-penalty, bail (TRAFFIC-04~06)
+- [x] 07-02-PLAN.md — speeding-fine, fine-penalty, bail (TRAFFIC-04~06)
 
 ## Phase 8: 채권/이자 계산기 (4개)
 
