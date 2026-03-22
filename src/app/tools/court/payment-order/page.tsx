@@ -115,6 +115,17 @@ export default function PaymentOrderPage() {
           </div>
         </div>
 
+        {/* Formula */}
+        <div className="premium-card p-6 space-y-3">
+          <h3 className="text-sm font-semibold text-gray-400">계산식</h3>
+          <pre className="font-mono text-xs text-gray-300 bg-[var(--color-surface-200)] rounded-lg p-3 whitespace-pre-wrap">
+{`소송인지대: ${formatNumber(lawsuitStampFee)}원
+× 1/10 = 지급명령인지대: ${formatNumber(paymentOrderStampFee)}원
++ 송달료: ${formatNumber(serviceFee)}원
+= 합계: ${formatNumber(total)}원`}
+          </pre>
+        </div>
+
         {/* Info */}
         <div className="premium-card p-6 space-y-3">
           <h3 className="text-sm font-semibold text-gray-400">지급명령 안내</h3>

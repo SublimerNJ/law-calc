@@ -111,7 +111,14 @@ export default function DismissalNoticePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs text-gray-500">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{`통상임금: ${monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : 0}원
+÷ 30 = 1일 통상임금: ${formatNumber(result.dailyWage)}원
+× (30 - ${noticeDays}일) = 미지급 ${result.unpaidDays}일
+= 해고예고수당: ${formatNumber(result.allowance)}원`}
+            </pre>
+            <p className="text-xs text-gray-500 mt-3">
               법적 근거: 근로기준법 제26조 - 사용자는 근로자를 해고하려면 적어도 30일 전에 예고를 하여야 하고, 30일 전에 예고를 하지 아니하였을 때에는 30일분 이상의 통상임금을 지급하여야 합니다.
             </p>
           </div>

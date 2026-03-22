@@ -257,7 +257,17 @@ export default function ForcedHeirshipPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs text-gray-500">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{`기초재산: ${formatNumber(result.baseEstate)}원
+× 법정상속분: ${statutorySharePct}%
+= 법정상속분액: ${formatNumber(result.statutoryShareAmount)}원
+× 유류분비율: ${result.forcedRatio === 1/2 ? '1/2' : '1/3'} (${getClaimantLabel(claimantType)})
+= 유류분액: ${formatNumber(result.forcedHeirshipAmount)}원
+- 실제취득액: ${formatNumber(result.actualReceived)}원
+= 유류분 부족액: ${formatNumber(result.shortfall)}원`}
+            </pre>
+            <p className="text-xs text-gray-500 mt-3">
               법적 근거: 민법 제1112조~제1118조
             </p>
           </div>

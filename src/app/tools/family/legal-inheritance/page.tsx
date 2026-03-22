@@ -256,7 +256,12 @@ export default function LegalInheritancePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs text-gray-500">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{`상속비율: 배우자 1.5 : 자녀 1 (민법 제1009조)
+${result.heirs.map(h => `${h.type}(${h.count}명): ${formatPercent(h.totalShare)}`).join('\n')}`}
+            </pre>
+            <p className="text-xs text-gray-500 mt-3">
               법적 근거: 민법 제1000조, 제1003조, 제1009조
             </p>
           </div>

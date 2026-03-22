@@ -215,7 +215,16 @@ export default function ECourtPage() {
             </div>
           </div>
 
-          <div className="mt-6 space-y-2 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-6 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{`일반인지대: ${formatNumber(result.regularStampFee)}원
+× 0.9 = 전자소송인지대: ${formatNumber(result.eCourtStampFee)}원
+(할인액: -${formatNumber(result.discount)}원)`}
+            </pre>
+          </div>
+
+          <div className="mt-4 space-y-2">
             <p className="text-xs text-gray-500">
               전자소송 이용 시 전자적 송달이 가능하여 송달료가 추가 절감될 수 있습니다.
             </p>

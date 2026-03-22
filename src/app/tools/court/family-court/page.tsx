@@ -177,6 +177,16 @@ export default function FamilyCourtPage() {
           </div>
 
           <div className="mt-6 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{`사건유형: ${result.caseLabel}
+인지대: ${formatNumber(result.stampFee)}원
++ 송달료: ${formatNumber(result.serviceFee)}원
+= 합계: ${formatNumber(result.total)}원`}
+            </pre>
+          </div>
+
+          <div className="mt-4">
             <p className="text-xs text-gray-500">
               법적 근거: 가사소송법, 가사소송규칙 별표
             </p>

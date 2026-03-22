@@ -137,7 +137,17 @@ export default function CivilMediationPage() {
             </div>
           </div>
 
-          <div className="mt-6 space-y-2 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-6 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{`소송인지대: ${formatNumber(result.lawsuitStampFee)}원
+× 1/5 = 조정인지대: ${formatNumber(result.mediationStampFee)}원
++ 송달료: ${formatNumber(result.serviceFee)}원
+= 합계: ${formatNumber(result.total)}원`}
+            </pre>
+          </div>
+
+          <div className="mt-4 space-y-2">
             <p className="text-xs text-gray-500">
               조정 성립 시 재판상 화해와 동일한 효력(집행권원)
             </p>

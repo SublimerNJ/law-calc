@@ -207,7 +207,13 @@ export default function MinimumWageCheckPage() {
           )}
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs text-gray-500">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{mode === 'monthly'
+  ? `월급: ${monthlySalary ? parseInt(monthlySalary).toLocaleString('ko-KR') : 0}원\n÷ 기준시간 ${result.monthlyBaseHours}시간\n= 실제 시급: ${formatNumber(result.actualHourly)}원\nvs 최저임금: ${formatNumber(MINIMUM_WAGE_2026)}원`
+  : `실제 시급: ${formatNumber(result.actualHourly)}원\nvs 최저임금: ${formatNumber(MINIMUM_WAGE_2026)}원\n차액: ${formatNumber(result.hourlyDiff)}원`}
+            </pre>
+            <p className="text-xs text-gray-500 mt-3">
               법적 근거: 최저임금법 제6조, 2026년 최저임금 고시 (10,030원/시간)
             </p>
           </div>

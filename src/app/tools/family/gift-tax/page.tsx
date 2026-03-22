@@ -207,7 +207,15 @@ export default function GiftTaxPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs text-gray-500">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{`증여액: ${formatNumber(result.giftAmount)}원
+- 공제: ${formatNumber(result.exclusion)}원
+= 과세표준: ${formatNumber(result.taxableAmount)}원
+× 세율: ${result.rate > 0 ? `${result.rate * 100}%` : '0%'}
+= 납부세액: ${formatNumber(result.finalTax)}원`}
+            </pre>
+            <p className="text-xs text-gray-500 mt-3">
               법적 근거: 상속세 및 증여세법 제53조~제56조
             </p>
           </div>

@@ -190,7 +190,18 @@ export default function UnfairDismissalPage() {
             )}
           </div>
 
-          <div className="mt-6 p-4 bg-[#1e2d4a]/50 rounded-lg">
+          <div className="mt-6 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+{`1일 평균임금: ${formatNumber(result.dailyAvgWage)}원
+× 미복직일수: ${formatNumber(result.dismissalDays)}일
+= 임금상당액: ${formatNumber(result.grossCompensation)}원
+- 중간수입: ${formatNumber(result.interimDeduction)}원
+= 보상금 예상액: ${formatNumber(result.netCompensation)}원`}
+            </pre>
+          </div>
+
+          <div className="mt-4 p-4 bg-[#1e2d4a]/50 rounded-lg">
             <p className="text-xs text-gray-400 leading-relaxed">
               <strong className="text-gray-300">법적 근거:</strong> 근로기준법 제30조(구제명령 등), 제33조(이행강제금)
             </p>
