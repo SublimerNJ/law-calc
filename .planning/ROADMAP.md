@@ -16,7 +16,7 @@
 | 7 | 1/2 | In Progress|  |
 | 8 | 채권/이자 계산기 | DEBT-01~04 | Low |
 | 9 | 손해배상 계산기 | DAMAGES-01~06 | Medium |
-| 10 | 기타 법률도구 & 마무리 | MISC-01~04 | Low |
+| 10 | 1/2 | In Progress|  |
 
 ## Phase 1: 프로젝트 기반 & 디자인 시스템
 
