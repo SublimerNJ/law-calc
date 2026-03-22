@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:47:55.647Z"
+last_updated: "2026-03-22T16:48:01.999Z"
 progress:
   total_phases: 10
   completed_phases: 4
@@ -49,6 +49,8 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 04]: 2026 minimum wage 10,030won constant; holiday overtime 8h split at 1.5x/2.0x
 - [Phase 04]: Industrial accident tab UI for 3 benefit types; disability pension 1-7 grades only
 - [Phase 04]: 2026 parental leave multi-tier caps with single-parent override
+- [Phase 04]: Average wage uses calendar days (역일수) per 근로기준법 제2조
+- [Phase 04]: Shutdown allowance shows both avg70% and ordinary wage side-by-side
 
 ## Session Log
 
