@@ -25,9 +25,11 @@ interface WageCheckResult {
 function calculateFromMonthly(monthlySalary: number, weeklyHours: number): WageCheckResult {
   const monthlyBaseHours = weeklyHours === 40 ? 209 : 226;
   const actualHourly = Math.floor(monthlySalary / monthlyBaseHours);
-  const isViolation = actualHourly < MINIMUM_WAGE_2026;
+  // 월급 기준으로 직접 비교 (시간급 내림에 의한 오판 방지)
+  const minimumMonthly = MINIMUM_WAGE_2026 * monthlyBaseHours;
+  const isViolation = monthlySalary < minimumMonthly;
   const hourlyDiff = Math.max(0, MINIMUM_WAGE_2026 - actualHourly);
-  const monthlyShortage = Math.max(0, hourlyDiff * monthlyBaseHours);
+  const monthlyShortage = Math.max(0, minimumMonthly - monthlySalary);
   const annualShortage = monthlyShortage * 12;
 
   return { actualHourly, isViolation, hourlyDiff, monthlyShortage, annualShortage, monthlyBaseHours };

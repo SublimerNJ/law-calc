@@ -85,10 +85,22 @@ function calculate(
   const trnMs = new Date(transferDate).getTime();
   const holdingYears = Math.floor((trnMs - acqMs) / (365 * 24 * 60 * 60 * 1000));
 
-  // Exemption check
+  // 1세대1주택 비과세 판단
   let exemptionNote: string | null = null;
-  if (isSingleHouse && holdingYears >= 2) {
-    exemptionNote = '1세대1주택 비과세 가능 (양도가액 12억 이하 전액, 초과분 과세)';
+  let taxableGain = gain;
+
+  if (isSingleHouse && holdingYears >= 2 && gain > 0) {
+    const EXEMPTION_LIMIT = 1_200_000_000;
+    if (transferPrice <= EXEMPTION_LIMIT) {
+      // 양도가액 12억 이하: 전액 비과세
+      exemptionNote = '1세대1주택 비과세 적용 (양도가액 12억 이하 전액 비과세)';
+      taxableGain = 0;
+    } else {
+      // 양도가액 12억 초과: 초과분에 비례하여 과세
+      const taxableRatio = (transferPrice - EXEMPTION_LIMIT) / transferPrice;
+      taxableGain = Math.floor(gain * taxableRatio);
+      exemptionNote = `1세대1주택 비과세 일부 적용 (12억 초과분 ${(taxableRatio * 100).toFixed(1)}%에 대해 과세)`;
+    }
   }
 
   // Long-term holding deduction
@@ -100,10 +112,10 @@ function calculate(
   } else {
     longTermRate = getGeneralLongTermRate(holdingYears);
   }
-  const longTermDeduction = Math.floor(gain > 0 ? gain * longTermRate : 0);
+  const longTermDeduction = Math.floor(taxableGain > 0 ? taxableGain * longTermRate : 0);
 
   const basicDeduction = 2_500_000;
-  const taxBase = Math.max(gain - longTermDeduction - basicDeduction, 0);
+  const taxBase = Math.max(taxableGain - longTermDeduction - basicDeduction, 0);
 
   // Tax rate determination
   let computedTax: number;

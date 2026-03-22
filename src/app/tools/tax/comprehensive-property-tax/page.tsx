@@ -170,7 +170,7 @@ export default function ComprehensivePropertyTaxPage() {
 
         {singleHousehold && (
           <div className="mb-4">
-            <label className="block text-sm text-gray-400 mb-2">연령 (세) - 고령자공제용</label>
+            <label className="block text-sm text-gray-400 mb-2">연령 (세) - 고령자공제용 (1세대1주택 거주용만 적용)</label>
             <input
               type="text"
               inputMode="numeric"
