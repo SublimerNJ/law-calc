@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:56:53.022Z"
+last_updated: "2026-03-22T16:57:13.150Z"
 progress:
   total_phases: 10
   completed_phases: 4
   total_plans: 19
-  completed_plans: 16
+  completed_plans: 18
 ---
 
 # Project State
@@ -54,6 +54,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - [Phase 05]: Registration tax minimum 6,000 won floor per local tax law
 - [Phase 05]: VAT dual mode: supply-based vs total-price-based calculation
 - [Phase 05]: KOSPI agriculture tax 0.03% separate from securities tax 0.03%
+- [Phase 05]: Year-end tax simplified card deduction; four insurances 150-under employer rates; rent credit checkbox eligibility UX
 
 ## Session Log
 
