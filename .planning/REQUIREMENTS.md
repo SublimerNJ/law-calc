@@ -10,16 +10,16 @@
 - [x] **INFRA-01**: Next.js 16 프로젝트 scaffolding (App Router, TypeScript, Tailwind 4)
 - [x] **INFRA-02**: 공통 레이아웃 (Header, Footer, 반응형)
 - [x] **INFRA-03**: 카테고리별 도구 데이터 구조 (tools-data.ts)
-- [ ] **INFRA-04**: 공통 계산기 UI 컴포넌트 (입력폼, 결과표시, 차트)
+- [x] **INFRA-04**: 공통 계산기 UI 컴포넌트 (입력폼, 결과표시, 차트)
 - [x] **INFRA-05**: 다크/라이트 테마 지원
-- [ ] **INFRA-06**: SEO 메타데이터 (각 페이지별 title, description, OG)
+- [x] **INFRA-06**: SEO 메타데이터 (각 페이지별 title, description, OG)
 
 ### Design & UX
 
 - [x] **DESIGN-01**: 패럴랙스 스크롤 히어로 섹션
 - [x] **DESIGN-02**: 미니멀 + 법률 신뢰감 디자인 (네이비/골드 톤)
-- [ ] **DESIGN-03**: 카테고리별 아이콘 및 색상 구분
-- [ ] **DESIGN-04**: 반응형 그리드 (모바일 2열, 태블릿 3열, 데스크탑 5열)
+- [x] **DESIGN-03**: 카테고리별 아이콘 및 색상 구분
+- [x] **DESIGN-04**: 반응형 그리드 (모바일 2열, 태블릿 3열, 데스크탑 5열)
 - [x] **DESIGN-05**: 스크롤 기반 섹션 애니메이션
 
 ### 소송/법원 (9개)

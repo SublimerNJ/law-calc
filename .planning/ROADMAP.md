@@ -7,7 +7,7 @@
 
 | Phase | Name | Requirements | Est. Complexity |
 |-------|------|-------------|-----------------|
-| 1 | 3/4 | In Progress|  |
+| 1 | 4/4 | Complete   | 2026-03-22 |
 | 2 | 소송/법원 계산기 | COURT-01~09 | Medium |
 | 3 | 가사/가족법 계산기 | FAMILY-01~08 | Medium |
 | 4 | 노동/근로 계산기 | LABOR-01~14 | High |
@@ -32,13 +32,13 @@
 - 공통 계산기 레이아웃 컴포넌트 존재
 
 
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 Plans:
 - [x] 01-01-PLAN.md — Next.js scaffolding, design tokens, tools-data (70 tools)
 - [x] 01-02-PLAN.md — Header, Footer, ThemeToggle, layout wiring
 - [x] 01-03-PLAN.md — Parallax hero, scroll animations
-- [ ] 01-04-PLAN.md — Main page assembly, Card, CalculatorLayout, SEO
+- [x] 01-04-PLAN.md — Main page assembly, Card, CalculatorLayout, SEO
 ## Phase 2: 소송/법원 계산기 (9개)
 
 **Goal:** 소송 관련 비용 계산기 9개 구현

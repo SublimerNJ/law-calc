@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-22T16:15:29.735Z"
+last_updated: "2026-03-22T16:18:41.956Z"
 progress:
   total_phases: 10
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 4
-  completed_plans: 3
+  completed_plans: 4
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 
 - **Phase:** 1
 - **Status:** Executing Phase 01
-- **Plans:** 2/4
+- **Plans:** 4/4 [COMPLETE]
 
 ## Decisions
 
@@ -35,6 +35,8 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - IntersectionObserver one-shot pattern for scroll animations
 - [Phase 01]: Gold LT logo with category dropdown nav pattern
 - [Phase 01]: Light theme via .light CSS class overrides
+- [Phase 01]: CategorySection wrapper pattern for scroll-animated category grids
+- [Phase 01]: CalculatorLayout shell pattern: breadcrumbs + header + 2-col + sidebar for all calculators
 
 ## Session Log
 
@@ -43,3 +45,4 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 | 2026-03-23 | — | Project initialized | PROJECT.md, REQUIREMENTS.md, ROADMAP.md created |
 | 2026-03-23 | 01 | Plan 01-01 executed | Next.js scaffold + 70-tool data structure |
 | 2026-03-23 | 01 | Plan 01-03 executed | Parallax hero + scroll-animated category sections |
+| 2026-03-23 | 01 | Plan 01-04 executed | Main page assembly + CalculatorLayout + 70 static tool pages |
