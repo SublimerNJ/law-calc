@@ -1,0 +1,136 @@
+# Roadmap: 법률 도구 (Legal Tools)
+
+**Created:** 2026-03-23
+**Milestone:** v1.0 — 70개 법률 계산기 통합 웹사이트
+
+## Phase Overview
+
+| Phase | Name | Requirements | Est. Complexity |
+|-------|------|-------------|-----------------|
+| 1 | 프로젝트 기반 & 디자인 시스템 | INFRA-01~06, DESIGN-01~05 | High |
+| 2 | 소송/법원 계산기 | COURT-01~09 | Medium |
+| 3 | 가사/가족법 계산기 | FAMILY-01~08 | Medium |
+| 4 | 노동/근로 계산기 | LABOR-01~14 | High |
+| 5 | 세금 계산기 | TAX-01~12 | High |
+| 6 | 부동산 계산기 | REALTY-01~07 | Medium |
+| 7 | 교통/형사 계산기 | TRAFFIC-01~06 | Medium |
+| 8 | 채권/이자 계산기 | DEBT-01~04 | Low |
+| 9 | 손해배상 계산기 | DAMAGES-01~06 | Medium |
+| 10 | 기타 법률도구 & 마무리 | MISC-01~04 | Low |
+
+## Phase 1: 프로젝트 기반 & 디자인 시스템
+
+**Goal:** Next.js 프로젝트 scaffolding, 패럴랙스 히어로, 공통 컴포넌트, 카테고리 데이터 구조 완성
+
+**Requirements:** INFRA-01~06, DESIGN-01~05
+
+**Success Criteria:**
+- `npm run dev`로 로컬 실행 가능
+- 패럴랙스 히어로 섹션이 스크롤 시 동작
+- 카테고리별 빈 섹션이 메인 페이지에 표시
+- 다크/라이트 테마 전환 동작
+- 공통 계산기 레이아웃 컴포넌트 존재
+
+
+**Plans:** 4 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Next.js scaffolding, design tokens, tools-data (70 tools)
+- [ ] 01-02-PLAN.md — Header, Footer, ThemeToggle, layout wiring
+- [ ] 01-03-PLAN.md — Parallax hero, scroll animations
+- [ ] 01-04-PLAN.md — Main page assembly, Card, CalculatorLayout, SEO
+## Phase 2: 소송/법원 계산기 (9개)
+
+**Goal:** 소송 관련 비용 계산기 9개 구현
+
+**Requirements:** COURT-01~09
+
+**Success Criteria:**
+- 9개 페이지 각각 독립 라우트로 접근 가능
+- 입력값에 따른 정확한 계산 결과 출력
+- 메인 페이지 카테고리에서 링크 동작
+
+## Phase 3: 가사/가족법 계산기 (8개)
+
+**Goal:** 가사/가족법 관련 계산기 8개 구현
+
+**Requirements:** FAMILY-01~08
+
+**Success Criteria:**
+- 8개 계산기 각각 독립 라우트
+- 한국 법률 기준 정확한 계산
+
+## Phase 4: 노동/근로 계산기 (14개)
+
+**Goal:** 노동/근로 관련 계산기 14개 구현
+
+**Requirements:** LABOR-01~14
+
+**Success Criteria:**
+- 14개 계산기 각각 독립 라우트
+- 2026년 최저임금 등 최신 기준 반영
+
+## Phase 5: 세금 계산기 (12개)
+
+**Goal:** 세금 관련 계산기 12개 구현
+
+**Requirements:** TAX-01~12
+
+**Success Criteria:**
+- 12개 계산기 각각 독립 라우트
+- 2026년 세율 기준 반영
+
+## Phase 6: 부동산 계산기 (7개)
+
+**Goal:** 부동산 관련 계산기 7개 구현
+
+**Requirements:** REALTY-01~07
+
+**Success Criteria:**
+- 7개 계산기 각각 독립 라우트
+- DSR/LTV/DTI 등 금융 계산 정확성
+
+## Phase 7: 교통/형사 계산기 (6개)
+
+**Goal:** 교통/형사 관련 계산기 6개 구현
+
+**Requirements:** TRAFFIC-01~06
+
+**Success Criteria:**
+- 6개 계산기 각각 독립 라우트
+- 음주운전 처벌 기준 등 최신 법률 반영
+
+## Phase 8: 채권/이자 계산기 (4개)
+
+**Goal:** 채권/이자 관련 계산기 4개 구현
+
+**Requirements:** DEBT-01~04
+
+**Success Criteria:**
+- 4개 계산기 각각 독립 라우트
+- 법정이자율 정확 반영
+
+## Phase 9: 손해배상 계산기 (6개)
+
+**Goal:** 손해배상 관련 계산기 6개 구현
+
+**Requirements:** DAMAGES-01~06
+
+**Success Criteria:**
+- 6개 계산기 각각 독립 라우트
+- 일실수입 등 복잡한 계산 로직 정확
+
+## Phase 10: 기타 법률도구 & 마무리 (4개)
+
+**Goal:** 나머지 도구 4개 + 전체 QA + SEO 마무리
+
+**Requirements:** MISC-01~04
+
+**Success Criteria:**
+- 4개 도구 구현 완료
+- 전체 70개 도구 메인 페이지에서 접근 가능
+- sitemap.ts 생성
+- 전체 빌드 성공 (`npm run build`)
+
+---
+*Roadmap created: 2026-03-23*
