@@ -95,7 +95,7 @@ export default function UnemploymentBenefitPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">피보험기간</label>
+          <label className="block text-sm text-gray-400 mb-2">피보험기간 (고용보험 가입기간)</label>
           <select
             value={period}
             onChange={e => setPeriod(e.target.value)}
@@ -190,9 +190,59 @@ export default function UnemploymentBenefitPage() {
             </div>
           </div>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-1">월 환산 금액 (약)</p>
+            <p className="text-lg text-white">{formatNumber(result.dailyPayment * 30)}원/월</p>
+          </div>
+
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+{`기초일액 = (월급 × 12) ÷ 365 × 60%
+  = (${monthlyWage ? formatNumber(parseInt(monthlyWage)) : '0'} × 12) ÷ 365 × 0.6
+  = ${formatNumber(result.dailyBase)}원/일
+
+1일 지급액 = ${result.upperApplied ? `상한 적용 → ${formatNumber(DAILY_UPPER)}원` : result.lowerApplied ? `하한 적용 → ${formatNumber(result.dailyLower)}원` : `${formatNumber(result.dailyPayment)}원 (상한·하한 미적용)`}
+
+총 실업급여 = ${formatNumber(result.dailyPayment)} × ${result.days}일 = ${formatNumber(result.total)}원`}
+            </pre>
+          </div>
+
+          {/* 소정급여일수 기준표 */}
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-3">소정급여일수 기준표</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-[#1e2d4a]">
+                    <th className="py-2 text-left text-gray-500">피보험기간</th>
+                    <th className="py-2 text-right text-gray-500">50세 미만</th>
+                    <th className="py-2 text-right text-gray-500">50세 이상</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {PERIOD_OPTIONS.map(p => {
+                    const isActive = p.value === period;
+                    return (
+                      <tr key={p.value} className={`border-b border-[#1e2d4a]/50 ${isActive ? 'bg-[#f59e0b]/10' : ''}`}>
+                        <td className="py-2 text-gray-300">{p.label}</td>
+                        <td className="py-2 text-right" style={{ color: isActive && ageGroup === 'under50' ? category.color : '#9ca3af' }}>
+                          {BENEFIT_DAYS.under50[p.value]}일
+                        </td>
+                        <td className="py-2 text-right" style={{ color: isActive && ageGroup === 'over50' ? category.color : '#9ca3af' }}>
+                          {BENEFIT_DAYS.over50[p.value]}일
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 고용보험법 제46조(구직급여일액), 제50조(소정급여일수) | 2026년 기준 상한 {formatNumber(DAILY_UPPER)}원/일
+              법적 근거: 고용보험법 제46조, 제50조 | 2026년 기준 상한 {formatNumber(DAILY_UPPER)}원/일, 하한 최저임금 80%
             </p>
           </div>
         </div>

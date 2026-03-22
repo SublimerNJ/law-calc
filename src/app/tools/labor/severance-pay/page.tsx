@@ -94,19 +94,18 @@ export default function SeverancePayPage() {
 
         <div className="mb-6">
           <label className="block text-sm text-gray-400 mb-2">퇴직 전 3개월 총 임금 (원)</label>
+          <p className="text-xs text-gray-500 mb-1">기본급 + 고정수당 + 연장근로수당 등 3개월 합계 (세전)</p>
           <input
             type="text"
             inputMode="numeric"
             value={totalWage ? parseInt(totalWage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
-            placeholder="예: 9,000,000"
+            placeholder="예: 9,000,000 (월급 300만 × 3개월)"
             className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
           />
-          {totalWage && (
-            <p className="text-xs text-gray-500 mt-1">
-              {parseInt(totalWage).toLocaleString('ko-KR')}원 (기본급 + 수당 합계)
-            </p>
-          )}
+          <p className="text-xs text-gray-500 mt-1">
+            💡 월급이 일정하다면: 월급 × 3 입력 (예: 월 300만원 → 900만원)
+          </p>
         </div>
 
         <button
@@ -157,9 +156,25 @@ export default function SeverancePayPage() {
               </div>
             </>
 
+          <div className="mb-4">
+            <p className="text-sm text-gray-400 mb-2">계산식</p>
+            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+{`1일 평균임금 = 3개월 총임금 ÷ 3개월 일수
+  = ${totalWage ? formatNumber(parseInt(totalWage)) : '0'} ÷ ${result.threeMonthDays}일
+  = ${formatNumber(result.dailyAvgWage)}원/일
+
+퇴직금 = 1일 평균임금 × 30일 × (재직일수 ÷ 365)
+  = ${formatNumber(result.dailyAvgWage)} × 30 × (${formatNumber(result.totalDays)} ÷ 365)
+  = ${formatNumber(result.severancePay)}원`}
+            </pre>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">
-              법적 근거: 근로자퇴직급여 보장법 제8조 제1항 - 퇴직금은 계속근로기간 1년에 대하여 30일분 이상의 평균임금을 퇴직금으로 지급하여야 합니다.
+              법적 근거: 근로자퇴직급여 보장법 제8조 제1항
+            </p>
+            <p className="text-xs text-gray-500 mt-1">
+              퇴직금 = 1일 평균임금 × 30일 × (계속근로기간 ÷ 365일)
             </p>
           </div>
         </div>
