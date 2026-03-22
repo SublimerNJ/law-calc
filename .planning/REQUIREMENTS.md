@@ -8,10 +8,10 @@
 ### Infrastructure & Layout
 
 - [x] **INFRA-01**: Next.js 16 프로젝트 scaffolding (App Router, TypeScript, Tailwind 4)
-- [ ] **INFRA-02**: 공통 레이아웃 (Header, Footer, 반응형)
+- [x] **INFRA-02**: 공통 레이아웃 (Header, Footer, 반응형)
 - [x] **INFRA-03**: 카테고리별 도구 데이터 구조 (tools-data.ts)
 - [ ] **INFRA-04**: 공통 계산기 UI 컴포넌트 (입력폼, 결과표시, 차트)
-- [ ] **INFRA-05**: 다크/라이트 테마 지원
+- [x] **INFRA-05**: 다크/라이트 테마 지원
 - [ ] **INFRA-06**: SEO 메타데이터 (각 페이지별 title, description, OG)
 
 ### Design & UX
