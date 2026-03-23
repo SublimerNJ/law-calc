@@ -64,7 +64,7 @@ export default function PrivacyPage() {
             본 개인정보처리방침에 대한 문의사항이 있으시면 아래로 연락해주시기 바랍니다.
           </p>
           <p className="mt-2 text-slate-600">
-            이메일: contact@law-calc.com
+            이메일: sublimernj@gmail.com
           </p>
         </section>
       </div>

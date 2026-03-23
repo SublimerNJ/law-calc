@@ -83,7 +83,7 @@ export default function AboutPage() {
         <section>
           <h2 className="text-lg font-semibold text-slate-900 mb-3">문의</h2>
           <p className="text-slate-600">
-            이메일: contact@law-calc.com
+            이메일: sublimernj@gmail.com
           </p>
         </section>
       </div>
