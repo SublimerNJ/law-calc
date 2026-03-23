@@ -1,7 +1,7 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.1
-milestone_name: 계산기 품질 개선
+milestone: v1.2
+milestone_name: UI/UX 개편 및 라이트 테마 적용
 status: active
 last_updated: "2026-03-23"
 progress:
@@ -18,13 +18,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산
-**Current focus:** v1.1 — 70개 계산기 품질 개선
+**Current focus:** v1.2 — UI/UX 개편 및 라이트 테마 적용
 
-## Current Phase
+## Current Position
 
-- **Phase:** Not started (defining requirements)
-- **Status:** Defining requirements
-- **Plans:** —
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-03-23 — Milestone v1.2 started
 
 ## Decisions
 
