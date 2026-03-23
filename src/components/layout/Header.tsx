@@ -3,14 +3,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { CATEGORIES } from '@/lib/tools-data';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full glass-panel border-b-0 border-white/5">
+    <header className="fixed top-0 z-50 w-full bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -18,10 +17,10 @@ export default function Header() {
             href="/"
             className="flex items-center gap-3 transition-transform hover:scale-105"
           >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#c9a84c] to-[#e8d48b] flex items-center justify-center shadow-[0_0_15px_rgba(201,168,76,0.3)]">
-              <span className="text-black text-sm font-bold">LT</span>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#1e3a8a] to-[#3b82f6] flex items-center justify-center shadow-[0_0_15px_rgba(30,58,138,0.3)]">
+              <span className="text-white text-sm font-bold">LT</span>
             </div>
-            <span className="text-2xl font-sans text-gradient-gold font-bold tracking-wide">
+            <span className="text-2xl font-sans text-[#1e3a8a] font-bold tracking-wide">
               법률 계산기
             </span>
           </Link>
@@ -34,10 +33,10 @@ export default function Header() {
               onMouseEnter={() => setIsCategoryOpen(true)}
               onMouseLeave={() => setIsCategoryOpen(false)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300">
+              <button className="flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300">
                 카테고리
                 <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180 text-[#c9a84c]' : ''}`}
+                  className={`w-4 h-4 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180 text-[#1e3a8a]' : ''}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -48,17 +47,17 @@ export default function Header() {
               </button>
 
               {isCategoryOpen && (
-                <div className="absolute top-full right-0 w-72 glass-panel border border-white/10 rounded-2xl shadow-2xl overflow-hidden py-2">
+                <div className="absolute top-full right-0 w-72 bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden py-2">
                   {CATEGORIES.map((cat) => (
                     <Link
                       key={cat.id}
                       href={`/#${cat.id}`}
-                      className="flex items-center gap-3 px-5 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-[#c9a84c] transition-all duration-300"
+                      className="flex items-center gap-3 px-5 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#1e3a8a] transition-all duration-300"
                     >
                       <span className="text-lg opacity-80">{cat.icon}</span>
                       <div>
                         <span className="font-medium">{cat.name}</span>
-                        <p className="text-xs text-gray-500 mt-0.5">{cat.description}</p>
+                        <p className="text-xs text-slate-500 mt-0.5">{cat.description}</p>
                       </div>
                     </Link>
                   ))}
@@ -68,20 +67,17 @@ export default function Header() {
 
             <Link
               href="/"
-              className="text-sm font-medium text-gray-300 hover:text-[#c9a84c] transition-colors duration-300"
+              className="text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300"
             >
               전체 도구
             </Link>
-
-            <ThemeToggle />
           </nav>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 transition-all"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 transition-all"
               aria-label="메뉴"
             >
               {isMenuOpen ? (
@@ -99,18 +95,17 @@ export default function Header() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-white/10 py-4">
+          <div className="md:hidden border-t border-slate-200 py-4">
             <div className="grid grid-cols-2 gap-3 pb-4">
               {CATEGORIES.map((cat) => (
                 <Link
                   key={cat.id}
                   href={`/#${cat.id}`}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all"
-                  style={{ borderColor: `${cat.color}20` }}
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-all"
                 >
                   <span className="text-2xl">{cat.icon}</span>
-                  <span className="text-xs font-medium text-gray-300">{cat.name}</span>
+                  <span className="text-xs font-medium text-slate-700">{cat.name}</span>
                 </Link>
               ))}
             </div>
