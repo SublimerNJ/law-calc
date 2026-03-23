@@ -9,19 +9,19 @@ interface CalculatorLayoutProps {
 
 export default function CalculatorLayout({ tool, category, children }: CalculatorLayoutProps) {
   return (
-    <div className="tool-page-bg min-h-screen">
+    <div className="bg-slate-50 min-h-screen">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-gray-500 mb-6">
-          <Link href="/" className="hover:text-white transition-colors">
+        <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6">
+          <Link href="/" className="hover:text-slate-900 transition-colors">
             홈
           </Link>
           <span>/</span>
-          <Link href={`/#${category.id}`} className="hover:text-white transition-colors">
+          <Link href={`/#${category.id}`} className="hover:text-slate-900 transition-colors">
             {category.name}
           </Link>
           <span>/</span>
-          <span className="text-gray-400">{tool.name}</span>
+          <span className="text-slate-600">{tool.name}</span>
         </nav>
 
         {/* Header */}
@@ -33,8 +33,8 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
             {tool.icon}
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">{tool.name}</h1>
-            <p className="text-sm text-gray-500">{tool.description}</p>
+            <h1 className="text-2xl font-bold text-slate-900">{tool.name}</h1>
+            <p className="text-sm text-slate-500">{tool.description}</p>
           </div>
         </div>
 
@@ -45,7 +45,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
           </div>
           <div className="lg:col-span-1">
             {/* Sidebar placeholder for ads/related tools */}
-            <div className="premium-card p-4 text-center text-xs text-gray-600">
+            <div className="bg-white border border-slate-200 p-4 text-center text-xs text-slate-500 rounded-2xl">
               광고 영역
             </div>
           </div>
@@ -55,7 +55,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
         <div className="mt-8">
           <Link
             href={`/#${category.id}`}
-            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
