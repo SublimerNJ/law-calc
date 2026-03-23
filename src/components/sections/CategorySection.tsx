@@ -12,9 +12,12 @@ interface CategorySectionProps {
 export default function CategorySection({ category, children, toolCount }: CategorySectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setIsReducedMotion(prefersReducedMotion);
+
     if (prefersReducedMotion) {
       setIsVisible(true);
       return;
@@ -43,11 +46,32 @@ export default function CategorySection({ category, children, toolCount }: Categ
       id={category.id}
       className="scroll-mt-24"
       style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+        opacity: isVisible || isReducedMotion ? 1 : 0,
+        transform: isVisible || isReducedMotion ? 'translate3d(0, 0, 0)' : 'translate3d(0, 30px, 0)',
         transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
       }}
     >
+      {!isReducedMotion && (
+        <style dangerouslySetInnerHTML={{__html: `
+          #${category.id} .stagger-container > * > * {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+          }
+          ${isVisible ? `
+            #${category.id} .stagger-container > * > * {
+              opacity: 1;
+              transform: translate3d(0, 0, 0);
+            }
+            ${Array.from({ length: 30 }).map((_, i) => `
+              #${category.id} .stagger-container > * > *:nth-child(${i + 1}) {
+                transition-delay: ${0.1 + i * 0.05}s;
+              }
+            `).join('')}
+          ` : ''}
+        `}} />
+      )}
+
       {/* Category header */}
       <div className="flex items-center gap-3 mb-4">
         <div
@@ -74,7 +98,9 @@ export default function CategorySection({ category, children, toolCount }: Categ
       />
 
       {/* Tool cards slot */}
-      {children}
+      <div className="stagger-container">
+        {children}
+      </div>
     </section>
   );
 }
