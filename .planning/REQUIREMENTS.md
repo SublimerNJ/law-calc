@@ -122,9 +122,9 @@
 ## v1.2 Requirements (UI/UX 개편)
 
 ### Design & UX 개편
-- [ ] **REVAMP-01**: 라이트 테마 전면 적용 (기존 네이비/골드에서 신뢰감 있는 밝은 톤으로 변경)
+- [x] **REVAMP-01**: 라이트 테마 전면 적용 (기존 네이비/골드에서 신뢰감 있는 밝은 톤으로 변경)
 - [ ] **REVAMP-02**: 패럴랙스 스크롤링 원칙 적용 (Performance First, transform/opacity만 애니메이션)
-- [ ] **REVAMP-03**: AI 생성 느낌 탈피를 위한 전문적인 법률 도구 UI 디자인 개편
+- [x] **REVAMP-03**: AI 생성 느낌 탈피를 위한 전문적인 법률 도구 UI 디자인 개편
 - [ ] **REVAMP-04**: 반응형 패럴랙스 (모바일/reduced-motion 환경에서는 효과 비활성화)
 
 ## v2 Requirements
