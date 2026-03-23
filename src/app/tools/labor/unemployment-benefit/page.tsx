@@ -158,13 +158,18 @@ export default function UnemploymentBenefitPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <p className="text-sm text-gray-400 mb-1">소정급여일수</p>
-              <p className="text-lg text-white">{result.days}일</p>
+          <div className="grid grid-cols-3 gap-3 mb-4">
+            <div className="p-3 rounded-lg bg-[#0d1424]">
+              <p className="text-xs text-gray-400 mb-1">수령 기간</p>
+              <p className="text-lg text-white font-semibold">{Math.floor(result.days / 30)}개월</p>
+              <p className="text-xs text-gray-500">({result.days}일)</p>
             </div>
-            <div>
-              <p className="text-sm text-gray-400 mb-1">1일 지급액</p>
+            <div className="p-3 rounded-lg bg-[#0d1424]">
+              <p className="text-xs text-gray-400 mb-1">월 수령액 (약)</p>
+              <p className="text-lg text-white font-semibold">{formatNumber(result.dailyPayment * 30)}원</p>
+            </div>
+            <div className="p-3 rounded-lg bg-[#0d1424]">
+              <p className="text-xs text-gray-400 mb-1">1일 지급액</p>
               <p className="text-lg text-white">{formatNumber(result.dailyPayment)}원</p>
             </div>
           </div>

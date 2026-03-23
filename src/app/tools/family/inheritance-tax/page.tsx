@@ -174,6 +174,18 @@ export default function InheritanceTaxPage() {
             </div>
           </div>
 
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
+              <p className="text-xs text-gray-400 mb-1">실효세율</p>
+              <p className="text-lg text-white">{parseInput(grossEstate) > 0 ? ((result.tax / parseInput(grossEstate)) * 100).toFixed(2) : '0'}%</p>
+              <p className="text-xs text-gray-500">총 재산 대비</p>
+            </div>
+            <div className="p-3 rounded-lg bg-[#1a1025]" style={{ borderLeft: `3px solid ${category.color}` }}>
+              <p className="text-xs text-gray-400 mb-1">세후 상속재산</p>
+              <p className="text-lg font-bold" style={{ color: category.color }}>{formatNumber(Math.max(0, parseInput(grossEstate) - parseInput(debts) - result.tax))}원</p>
+            </div>
+          </div>
+
           <div className="mb-4">
             <p className="text-sm text-gray-400 mb-2">계산식</p>
             <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
