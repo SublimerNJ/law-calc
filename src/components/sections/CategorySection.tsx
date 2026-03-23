@@ -57,10 +57,10 @@ export default function CategorySection({ category, children, toolCount }: Categ
           {category.icon}
         </div>
         <div className="flex-1 min-w-0">
-          <h2 className="text-lg font-semibold text-white">{category.name}</h2>
-          <p className="text-xs text-gray-500">{category.description}</p>
+          <h2 className="text-lg font-semibold text-slate-900">{category.name}</h2>
+          <p className="text-xs text-slate-500">{category.description}</p>
         </div>
-        <span className="text-xs text-gray-600 font-mono whitespace-nowrap">
+        <span className="text-xs text-slate-500 font-mono whitespace-nowrap">
           {toolCount} tools
         </span>
       </div>
