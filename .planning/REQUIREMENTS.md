@@ -119,6 +119,14 @@
 - [x] **MISC-03**: 법률구조 대상 확인기
 - [x] **MISC-04**: 내용증명 작성 도우미
 
+## v1.2 Requirements (UI/UX 개편)
+
+### Design & UX 개편
+- [ ] **REVAMP-01**: 라이트 테마 전면 적용 (기존 네이비/골드에서 신뢰감 있는 밝은 톤으로 변경)
+- [ ] **REVAMP-02**: 패럴랙스 스크롤링 원칙 적용 (Performance First, transform/opacity만 애니메이션)
+- [ ] **REVAMP-03**: AI 생성 느낌 탈피를 위한 전문적인 법률 도구 UI 디자인 개편
+- [ ] **REVAMP-04**: 반응형 패럴랙스 (모바일/reduced-motion 환경에서는 효과 비활성화)
+
 ## v2 Requirements
 
 - **AD-01**: 광고 배너 통합 (AdSense)
@@ -139,23 +147,26 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01~06 | Phase 1 | Pending |
-| DESIGN-01~05 | Phase 1 | Pending |
-| COURT-01~09 | Phase 2 | Pending |
-| FAMILY-01~08 | Phase 3 | Pending |
-| LABOR-01~14 | Phase 4 | Pending |
-| TAX-01~12 | Phase 5 | Pending |
-| REALTY-01~07 | Phase 6 | Pending |
-| TRAFFIC-01~06 | Phase 7 | Pending |
-| DEBT-01~04 | Phase 8 | Pending |
-| DAMAGES-01~06 | Phase 9 | Pending |
-| MISC-01~04 | Phase 10 | Pending |
+| INFRA-01~06 | Phase 1 | Complete |
+| DESIGN-01~05 | Phase 1 | Complete |
+| COURT-01~09 | Phase 2 | Complete |
+| FAMILY-01~08 | Phase 3 | Complete |
+| LABOR-01~14 | Phase 4 | Complete |
+| TAX-01~12 | Phase 5 | Complete |
+| REALTY-01~07 | Phase 6 | Complete |
+| TRAFFIC-01~06 | Phase 7 | Complete |
+| DEBT-01~04 | Phase 8 | Complete |
+| DAMAGES-01~06 | Phase 9 | Complete |
+| MISC-01~04 | Phase 10 | Complete |
+| REVAMP-01, REVAMP-03 | Phase 11 | Pending |
+| REVAMP-02, REVAMP-04 | Phase 12 | Pending |
 
 **Coverage:**
 - v1 requirements: 81 total
-- Mapped to phases: 81
+- v1.2 requirements: 4 total
+- Mapped to phases: 85
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-23*
-*Last updated: 2026-03-23 after initial definition*
+*Last updated: 2026-03-23 after v1.2 roadmap creation*

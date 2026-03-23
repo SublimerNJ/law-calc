@@ -1,85 +1,27 @@
----
-gsd_state_version: 1.0
-milestone: v1.2
-milestone_name: UI/UX 개편 및 라이트 테마 적용
-status: active
-last_updated: "2026-03-23"
-progress:
-  total_phases: 0
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
----
-
 # Project State
 
 ## Project Reference
-
-See: .planning/PROJECT.md (updated 2026-03-23)
-
-**Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산
-**Current focus:** v1.2 — UI/UX 개편 및 라이트 테마 적용
+- **Core Value**: 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구 제공
+- **Current Focus**: Milestone v1.2 - 라이트 테마 전면 적용 및 패럴랙스 UI/UX 개편
 
 ## Current Position
+- **Phase**: 11 (라이트 테마 전환 및 디자인 시스템 개편)
+- **Plan**: None yet
+- **Status**: Not started
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-03-23 — Milestone v1.2 started
+## Progress
+- [ ] Phase 11: 라이트 테마 전환 및 디자인 시스템 개편
+- [ ] Phase 12: 패럴랙스 UI 적용 및 고도화
 
-## Decisions
+## Accumulated Context
+- **Decisions**:
+  - v1.2 에서는 기존 다크/AI 느낌의 테마를 벗어나 전문성을 강조하는 라이트 테마를 기본으로 사용.
+  - 패럴랙스 효과는 성능(Performance First)과 접근성(reduced-motion)을 고려하여 transform/opacity만 사용하고 모바일에서는 비활성화.
+- **Todos**:
+  - Phase 11 계획 수립 (Plan Phase)
+- **Blockers**:
+  - None
 
-- Route pattern `/tools/{category}/{id}` for all 70 calculators
-- Navy #0a0f1c background with gold #c9a84c accent for legal trust feel
-- Per-category color accents in Category interface
-- Gold #c9a84c used consistently in parallax hero (not reference #d4af37)
-- IntersectionObserver one-shot pattern for scroll animations
-- [Phase 01]: Gold LT logo with category dropdown nav pattern
-- [Phase 01]: Light theme via .light CSS class overrides
-- [Phase 01]: CategorySection wrapper pattern for scroll-animated category grids
-- [Phase 01]: CalculatorLayout shell pattern: breadcrumbs + header + 2-col + sidebar for all calculators
-- [Phase 02]: Attorney fee 8-tier bracket with 30M cap; stamp fee 100won ceiling rounding
-- [Phase 02]: Payment order uses totalParties (creditor+debtors) for service fee
-- [Phase 02]: Reused stamp fee formula across civil-mediation, family-court, e-court calculators
-- [Phase 03]: Gift tax prior-gift credit subtracts tax on prior gifts from combined tax
-- [Phase 03]: Alimony uses midpoint of adjusted range as estimate
-- [Phase 03]: Child support uses simplified 2026 7-bracket income table
-- [Phase 03]: 2026 inheritance tax 5-bracket progressive rates with spouse/lump-sum deductions
-- [Phase 04]: Severance pay uses actual calendar days for 3-month period
-- [Phase 04]: Annual leave pay supports 40h (209h) and 44h (226h) weekly schedules
-- [Phase 04]: 2026 minimum wage 10,030won constant; holiday overtime 8h split at 1.5x/2.0x
-- [Phase 04]: Industrial accident tab UI for 3 benefit types; disability pension 1-7 grades only
-- [Phase 04]: 2026 parental leave multi-tier caps with single-parent override
-- [Phase 04]: Average wage uses calendar days (역일수) per 근로기준법 제2조
-- [Phase 04]: Shutdown allowance shows both avg70% and ordinary wage side-by-side
-- [Phase 05]: Registration tax minimum 6,000 won floor per local tax law
-- [Phase 05]: VAT dual mode: supply-based vs total-price-based calculation
-- [Phase 05]: KOSPI agriculture tax 0.03% separate from securities tax 0.03%
-- [Phase 05]: Year-end tax simplified card deduction; four insurances 150-under employer rates; rent credit checkbox eligibility UX
-- [Phase 05]: 2026 acquisition tax linear interpolation for 6-9억 single-home bracket
-- [Phase 05]: Comprehensive property tax 7-bracket progressive rates with senior deduction
-- [Phase 05]: 2026 income tax 8-bracket progressive rates (6-45%) reused across all 3 tax calculators
-- [Phase 05]: Capital gains general long-term holding rates (6-30%) separate from 1-house rates (12-40%)
-- [Phase 08-debt-calculators]: Late payment calculator shows both 5% and 12% rates simultaneously with toggle emphasis
-- [Phase 06]: LTV regions: speculative 40%, regulated 50%, general 70%; DTI regions: speculative 40%, regulated 50%, general 60%
-- [Phase 08]: Interest Rate Cap Act 20% ceiling as hard cap for loan interest
-- [Phase 09-damages-calculators]: Used midpoint of case-law ranges for defamation base with +-30% display range
-- [Phase 06]: Brokerage fee uses converted deposit (보증금+월세x100) for wolse rate determination
-- [Phase 07]: Disability solatium grades 1-14 with fixed amounts per 2026 standards
-- [Phase 07]: 8 predefined accident types with 5 modifier checkboxes for fault ratio
-- [Phase 07]: 4-tier BAC penalty brackets with prior record and accident aggravation
-- [Phase 06]: Select dropdowns with pre-scored options for subscription score calculator
-- [Phase 06]: DSR boundary uses <= for 40%/50% threshold checks
-- [Phase 09]: Used monthly Hoffman coefficient for lost income calculation
-- [Phase 07]: Speeding fine tiered brackets per 도로교통법 시행령 별표 8
-- [Phase 07]: Bail calculator uses midpoint + multiplicative risk factors with 500M cap
-- [Phase 10-misc-tools]: Dynamic sitemap from TOOLS array with env-based base URL
-
-## Session Log
-
-| Date | Phase | Action | Outcome |
-|------|-------|--------|---------|
-| 2026-03-23 | — | Project initialized | PROJECT.md, REQUIREMENTS.md, ROADMAP.md created |
-| 2026-03-23 | 01 | Plan 01-01 executed | Next.js scaffold + 70-tool data structure |
-| 2026-03-23 | 01 | Plan 01-03 executed | Parallax hero + scroll-animated category sections |
-| 2026-03-23 | 01 | Plan 01-04 executed | Main page assembly + CalculatorLayout + 70 static tool pages |
+## Session Continuity
+- [x] v1.2 로드맵 생성 완료
+- [ ] Phase 11 계획 시작
