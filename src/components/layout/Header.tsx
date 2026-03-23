@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { CATEGORIES } from '@/lib/tools-data';
+import Logo from '@/components/ui/Logo';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,17 +14,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 transition-transform hover:scale-105"
-          >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#1e3a8a] to-[#3b82f6] flex items-center justify-center shadow-[0_0_15px_rgba(30,58,138,0.3)]">
-              <span className="text-white text-sm font-bold">LT</span>
-            </div>
-            <span className="text-2xl font-sans text-[#1e3a8a] font-bold tracking-wide">
-              법률 계산기
-            </span>
-          </Link>
+          <Logo size="md" />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
