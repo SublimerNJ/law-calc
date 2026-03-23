@@ -217,7 +217,20 @@ export default function LostIncomePage() {
 총액 × (1 - 과실비율) = 과실상계 후 일실수입`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 대법원 1989.3.28 선고 88다카21219 (호프만식 계산법). 본 계산은 참고용이며 실제 소송에서는 법원 판단에 따라 달라질 수 있습니다.
+              법적 근거: 대법원 1989.3.28 선고 88다카21219
+            </p>
+          </div>
+
+          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm font-semibold text-gray-400 mb-2">호프만식 계산이란?</p>
+            <p className="text-xs text-gray-400 leading-relaxed">
+              미래에 받을 소득을 <strong className="text-gray-300">현재 가치</strong>로 할인하는 방법입니다.
+              예를 들어, 10년 후 받을 100만원은 현재 약 60만원의 가치입니다 (연 5% 할인율 적용).
+              이 때문에 <strong className="text-gray-300">단순히 월급 × 개월수로 계산하는 것보다 금액이 낮습니다</strong>.
+              한국 법원은 호프만식(단리 할인)을 표준으로 사용합니다.
+            </p>
+            <p className="text-xs text-gray-500 mt-2">
+              소득 증빙: 근로소득원천징수영수증, 사업소득 신고서, 국세청 소득금액증명원 등
             </p>
           </div>
         </div>

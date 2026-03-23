@@ -134,6 +134,18 @@ export default function PublicDefenderPage() {
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-xs text-gray-500">법적 근거: 형사소송법 제33조, 국선변호인 선정 등에 관한 예규</p>
           </div>
+
+          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm font-semibold text-gray-300 mb-3">국선변호사 신청 방법</p>
+            <ul className="text-xs text-gray-400 space-y-2">
+              <li><strong className="text-gray-300">경찰 수사 단계:</strong> 경찰서에서 국선변호인 선정 신청서 작성</li>
+              <li><strong className="text-gray-300">검찰 단계:</strong> 검찰청 민원실에서 신청</li>
+              <li><strong className="text-gray-300">재판 단계:</strong> 법원 접수창구에서 국선변호인 선정 신청</li>
+              <li><strong className="text-gray-300">필요 서류:</strong> 신분증, 소득증빙(건강보험료 납부확인서 등), 재산증빙</li>
+              <li><strong className="text-gray-300">처리 기간:</strong> 통상 3~7일 내 선정 통지</li>
+            </ul>
+            <p className="text-xs text-gray-500 mt-3">문의: 대한법률구조공단 (국번 없이 132)</p>
+          </div>
         </div>
       )}
     </CalculatorLayout>

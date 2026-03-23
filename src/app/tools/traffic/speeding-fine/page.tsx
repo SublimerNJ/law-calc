@@ -257,8 +257,33 @@ export default function SpeedingFinePage() {
 × 보호구역 배율 (어린이·노인구역: ×2)`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 도로교통법 시행령 별표 8 (2026년 기준). 실제 처분은 경찰 재량에 따라 달라질 수 있습니다.
+              법적 근거: 도로교통법 시행령 별표 8 (2026년 기준)
             </p>
+          </div>
+
+          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <p className="text-sm font-semibold text-gray-400 mb-2">벌점 누적 기준</p>
+            <table className="w-full text-xs">
+              <tbody>
+                <tr className="border-b border-[#1e2d4a]/50">
+                  <td className="py-2 text-gray-300">40점 이상</td>
+                  <td className="py-2 text-right text-yellow-400">면허정지 (1일/1점)</td>
+                </tr>
+                <tr className="border-b border-[#1e2d4a]/50">
+                  <td className="py-2 text-gray-300">1년간 121점 이상</td>
+                  <td className="py-2 text-right text-red-400">면허취소</td>
+                </tr>
+                <tr className="border-b border-[#1e2d4a]/50">
+                  <td className="py-2 text-gray-300">2년간 201점 이상</td>
+                  <td className="py-2 text-right text-red-400">면허취소</td>
+                </tr>
+                <tr>
+                  <td className="py-2 text-gray-300">3년간 271점 이상</td>
+                  <td className="py-2 text-right text-red-400">면허취소</td>
+                </tr>
+              </tbody>
+            </table>
+            <p className="text-xs text-gray-500 mt-2">벌점은 처분일로부터 기산, 무위반 기간 경과 시 소멸</p>
           </div>
         </div>
       )}

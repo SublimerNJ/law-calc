@@ -205,10 +205,33 @@ export default function UnfairDismissalPage() {
             <p className="text-xs text-gray-400 leading-relaxed">
               <strong className="text-gray-300">법적 근거:</strong> 근로기준법 제30조(구제명령 등), 제33조(이행강제금)
             </p>
-            <p className="text-xs text-gray-500 mt-2">
-              * 실제 보상금액은 노동위원회 판정에 따라 달라질 수 있습니다.
-            </p>
           </div>
+        </div>
+      )}
+
+      {result !== null && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">부당해고 구제 신청 방법</h2>
+          <div className="space-y-3">
+            {[
+              { step: '1', title: '구제신청서 작성', desc: '해고일로부터 3개월 이내에 지방노동위원회에 신청 (기한 엄수)' },
+              { step: '2', title: '필요 서류', desc: '근로계약서, 급여명세서, 해고통보서, 재직증명서 등' },
+              { step: '3', title: '심판 진행', desc: '신청 후 60일 이내 판정 (조사→심문→판정)' },
+              { step: '4', title: '판정 결과', desc: '복직명령 또는 금전보상명령 (사용자 불이행 시 이행강제금)' },
+              { step: '5', title: '불복 시', desc: '중앙노동위원회 재심 → 행정소송 가능' },
+            ].map(item => (
+              <div key={item.step} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-4">문의: 고용노동부 (국번 없이 1350) | 노동위원회 (www.nlrc.go.kr)</p>
         </div>
       )}
     </CalculatorLayout>
