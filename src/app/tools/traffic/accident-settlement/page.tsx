@@ -20,6 +20,7 @@ function formatNumber(n: number): string {
 
 interface CalculationResult {
   medicalCost: number;
+  lostWages: number;
   hospitalizationSolatium: number;
   outpatientSolatium: number;
   disabilitySolatium: number;
@@ -35,6 +36,7 @@ export default function AccidentSettlementPage() {
   const [hospitalizationDays, setHospitalizationDays] = useState('');
   const [outpatientDays, setOutpatientDays] = useState('');
   const [disabilityGrade, setDisabilityGrade] = useState(0);
+  const [lostWages, setLostWages] = useState('');
   const [faultPercent, setFaultPercent] = useState('0');
   const [result, setResult] = useState<CalculationResult | null>(null);
 
@@ -44,16 +46,18 @@ export default function AccidentSettlementPage() {
     const outDays = parseInt(outpatientDays, 10) || 0;
     const fault = Math.min(100, Math.max(0, parseInt(faultPercent, 10) || 0));
 
+    const lost = parseInt(lostWages.replace(/[^0-9]/g, ''), 10) || 0;
     const hospitalizationSolatium = 85_000 * hospDays;
     const outpatientSolatium = 45_000 * outDays;
     const disabilitySolatium = disabilityGrade > 0 ? (DISABILITY_SOLATIUM[disabilityGrade] || 0) : 0;
     const totalSolatium = hospitalizationSolatium + outpatientSolatium + disabilitySolatium;
-    const subtotal = medical + totalSolatium;
+    const subtotal = medical + lost + totalSolatium;
     const faultDeduction = Math.floor(subtotal * (fault / 100));
     const finalAmount = subtotal - faultDeduction;
 
     setResult({
       medicalCost: medical,
+      lostWages: lost,
       hospitalizationSolatium,
       outpatientSolatium,
       disabilitySolatium,
@@ -84,6 +88,19 @@ export default function AccidentSettlementPage() {
             placeholder="예: 5,000,000"
             className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
           />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-sm text-gray-400 mb-2">일실수입 / 휴업손해 (원, 선택)</label>
+          <input
+            type="text"
+            inputMode="numeric"
+            value={lostWages ? parseInt(lostWages).toLocaleString('ko-KR') : ''}
+            onChange={handleNumberInput(setLostWages)}
+            placeholder="사고로 못 번 소득 (없으면 비워두세요)"
+            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+          />
+          <p className="text-xs text-gray-500 mt-1">월급 ÷ 30 × 치료일수로 계산. 자영업자는 매출 감소분.</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
@@ -164,6 +181,12 @@ export default function AccidentSettlementPage() {
               <span className="text-sm text-gray-400">치료비</span>
               <span className="text-white">{formatNumber(result.medicalCost)}원</span>
             </div>
+            {result.lostWages > 0 && (
+              <div className="flex justify-between">
+                <span className="text-sm text-gray-400">일실수입 (휴업손해)</span>
+                <span className="text-white">{formatNumber(result.lostWages)}원</span>
+              </div>
+            )}
             <div className="flex justify-between">
               <span className="text-sm text-gray-400">입원 위자료 (85,000원/일)</span>
               <span className="text-white">{formatNumber(result.hospitalizationSolatium)}원</span>

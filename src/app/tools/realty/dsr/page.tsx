@@ -151,6 +151,16 @@ export default function DsrPage() {
             </div>
           </div>
 
+          <div className="mb-4 p-4 rounded-lg bg-[#0d1424]" style={{ borderLeft: `3px solid ${category.color}` }}>
+            <p className="text-xs text-gray-400 mb-1">추가 대출 가능 월 상환액 (은행권 40% 기준)</p>
+            <p className="text-lg font-bold" style={{ color: category.color }}>
+              {formatNumber(Math.max(0, Math.floor(result.annualIncome * 0.4 / 12 - result.annualRepayment / 12)))}원/월
+            </p>
+            <p className="text-xs text-gray-500 mt-1">
+              연소득의 40%까지 상환 가능 → 현재 상환액 차감 = 추가 가능분
+            </p>
+          </div>
+
           <div className="mb-4">
             <p className="text-sm text-gray-400 mb-2">계산식</p>
             <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">

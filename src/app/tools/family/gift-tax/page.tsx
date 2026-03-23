@@ -206,6 +206,21 @@ export default function GiftTaxPage() {
             </div>
           </div>
 
+          <div className="grid grid-cols-2 gap-3 mb-4 mt-4">
+            <div className="p-3 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
+              <p className="text-xs text-gray-400 mb-1">실수령액 (증여액 - 세금)</p>
+              <p className="text-lg font-bold" style={{ color: category.color }}>
+                {formatNumber(result.giftAmount - result.finalTax)}원
+              </p>
+            </div>
+            <div className="p-3 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
+              <p className="text-xs text-gray-400 mb-1">실효세율</p>
+              <p className="text-lg text-white">
+                {result.giftAmount > 0 ? ((result.finalTax / result.giftAmount) * 100).toFixed(2) : '0'}%
+              </p>
+            </div>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
             <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
             <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">

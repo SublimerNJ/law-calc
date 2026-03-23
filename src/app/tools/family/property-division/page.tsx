@@ -126,7 +126,15 @@ export default function PropertyDivisionPage() {
             onChange={e => setContribution(e.target.value)}
             className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
           />
-          <p className="text-xs text-gray-500 mt-1">범위: 20% ~ 80% (기본값: 50%)</p>
+          <div className="mt-2 p-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a]">
+            <p className="text-xs text-gray-400 mb-1">기여도 참고 (판례 기준)</p>
+            <ul className="text-xs text-gray-500 space-y-0.5">
+              <li>맞벌이 부부: 보통 <strong className="text-gray-300">50%</strong></li>
+              <li>외벌이 (가사전담 배우자): 보통 <strong className="text-gray-300">30~40%</strong></li>
+              <li>고소득 전문직 배우자: <strong className="text-gray-300">40~50%</strong></li>
+              <li>혼인기간 20년+: 기여도 상향 경향</li>
+            </ul>
+          </div>
         </div>
 
         <div className="mb-6">

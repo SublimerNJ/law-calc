@@ -261,10 +261,17 @@ export default function AcquisitionTaxPage() {
             </div>
           </div>
 
-          <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">실효 부담률</p>
-            <p className="text-lg text-white">{(result.total / result.acquisitionPrice * 100).toFixed(2)}%</p>
-            <p className="text-xs text-gray-500 mt-1">취득가액 대비 총 세금 비율 (취득세+농특세+교육세)</p>
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg bg-[#0d1424]">
+              <p className="text-xs text-gray-400 mb-1">실효 부담률</p>
+              <p className="text-lg text-white">{(result.total / result.acquisitionPrice * 100).toFixed(2)}%</p>
+            </div>
+            <div className="p-3 rounded-lg bg-[#0d1424]" style={{ borderLeft: `3px solid ${category.color}` }}>
+              <p className="text-xs text-gray-400 mb-1">총 매입비용 (취득가 + 세금)</p>
+              <p className="text-lg font-bold" style={{ color: category.color }}>
+                {formatNumber(result.acquisitionPrice + result.total)}원
+              </p>
+            </div>
           </div>
 
           <div className="mb-4">
