@@ -10,13 +10,36 @@ interface ParallaxLayerProps {
 
 export default function ParallaxLayer({ speed, className = '', children }: ParallaxLayerProps) {
   const [offset, setOffset] = useState(0);
-  const prefersReducedMotion = useRef(false);
+  const [isActive, setIsActive] = useState(false);
   const rafId = useRef<number>(0);
 
   useEffect(() => {
-    prefersReducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Check initial preferences
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion.current) return;
+    const checkActive = () => {
+      const isMobile = window.innerWidth < 768;
+      const shouldBeActive = !prefersReducedMotion && !isMobile;
+      
+      setIsActive(shouldBeActive);
+      if (!shouldBeActive) {
+        setOffset(0);
+      }
+    };
+
+    // Initial check
+    checkActive();
+
+    // Listen to resize
+    window.addEventListener('resize', checkActive, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', checkActive);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isActive) return;
 
     const handleScroll = () => {
       if (rafId.current) cancelAnimationFrame(rafId.current);
@@ -26,18 +49,23 @@ export default function ParallaxLayer({ speed, className = '', children }: Paral
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial offset in case scroll is not at top when active
+    handleScroll();
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, []);
+  }, [isActive]);
 
-  const transform = prefersReducedMotion.current ? undefined : `translateY(${offset * speed}px)`;
+  const transform = isActive ? `translate3d(0, ${offset * speed}px, 0)` : undefined;
+  const willChange = isActive ? 'transform' : undefined;
 
   return (
     <div
       className={`parallax-layer ${className}`}
-      style={{ transform, willChange: prefersReducedMotion.current ? undefined : 'transform' }}
+      style={{ transform, willChange }}
     >
       {children}
     </div>
