@@ -140,6 +140,36 @@ export default function DepositReturnPage() {
           </div>
         </div>
       )}
+
+      {result !== null && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">보증금 미반환 시 대응 절차</h2>
+          <div className="space-y-3">
+            {[
+              { step: '1', title: '내용증명 발송', desc: '반환 요구 내용증명 우편 발송 (우체국)' },
+              { step: '2', title: '임차권등기명령', desc: '법원에 신청, 이사 후에도 대항력 유지 (비용 약 3~5만원)' },
+              { step: '3', title: '지급명령 신청', desc: '법원 독촉절차, 인지대 소송의 1/10 (2주 내 이의 없으면 확정)' },
+              { step: '4', title: '민사소송', desc: '지급명령 이의 시 소송 전환, 보증금 + 지연이자 청구' },
+              { step: '5', title: '강제집행', desc: '판결 확정 후 부동산 경매 또는 채권 압류' },
+            ].map(item => (
+              <div key={item.step} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 p-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a]">
+            <p className="text-xs text-gray-400">
+              💡 <strong className="text-gray-300">전세보증금반환보증보험</strong>(HUG/SGI)에 가입한 경우, 보증기관에 직접 보증금을 청구할 수 있습니다.
+            </p>
+          </div>
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

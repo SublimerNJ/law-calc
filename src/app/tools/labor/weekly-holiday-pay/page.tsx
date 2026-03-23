@@ -129,9 +129,21 @@ export default function WeeklyHolidayPayPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">주휴시간 (산정기준)</p>
+            <p className="text-sm text-gray-400 mb-1">주휴시간</p>
             <p className="text-lg text-white">{result.weeklyHolidayHours.toFixed(1)}시간</p>
           </div>
+
+          {result.eligible && (
+            <div className="mb-4 p-4 rounded-lg bg-[#0d1424]" style={{ borderLeft: `3px solid ${category.color}` }}>
+              <p className="text-xs text-gray-400 mb-1">월 예상 총급여 (기본급 + 주휴수당)</p>
+              <p className="text-lg font-bold" style={{ color: category.color }}>
+                {formatNumber(Math.floor((parseFloat(weeklyHours) * parseInt(hourlyWage) + result.amount) * 4.33))}원/월
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                주 {weeklyHours}시간 × {formatNumber(parseInt(hourlyWage))}원 + 주휴 {formatNumber(result.amount)}원 = 주 {formatNumber(parseFloat(weeklyHours) * parseInt(hourlyWage) + result.amount)}원 × 4.33주
+              </p>
+            </div>
+          )}
 
           {!result.eligible && (
             <div className="mb-4 p-3 bg-[#0d1424] rounded-lg">

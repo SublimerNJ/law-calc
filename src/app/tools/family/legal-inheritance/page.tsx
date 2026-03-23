@@ -199,7 +199,7 @@ export default function LegalInheritancePage() {
             inputMode="numeric"
             value={estate ? parseInt(estate).toLocaleString('ko-KR') : ''}
             onChange={handleEstateChange}
-            placeholder="금액 입력 시 상속금액도 표시됩니다"
+            placeholder="예: 1,000,000,000 (10억원)"
             className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
           />
         </div>

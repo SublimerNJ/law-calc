@@ -217,6 +217,19 @@ export default function MinimumWageCheckPage() {
               법적 근거: 최저임금법 제6조, 2026년 최저임금 고시 (10,030원/시간)
             </p>
           </div>
+
+          {result.isViolation && (
+            <div className="mt-4 p-4 rounded-lg bg-red-500/10 border border-red-500/30">
+              <p className="text-sm font-semibold text-red-400 mb-2">최저임금 위반 시 대응 방법</p>
+              <ul className="text-xs text-gray-300 space-y-2">
+                <li><strong className="text-gray-200">1. 사업주에게 시정 요구</strong> — 미지급 차액 청구 (최저임금법 제6조)</li>
+                <li><strong className="text-gray-200">2. 고용노동부 신고</strong> — 관할 지방고용노동청 (국번 없이 1350)</li>
+                <li><strong className="text-gray-200">3. 진정서 제출</strong> — 고용노동부 민원마당 (minwon.moel.go.kr)</li>
+                <li><strong className="text-gray-200">4. 체불임금 소송</strong> — 3년 이내 미지급 임금 소급 청구 가능</li>
+              </ul>
+              <p className="text-xs text-gray-500 mt-2">최저임금 위반 사업주: 3년 이하 징역 또는 2,000만원 이하 벌금 (최저임금법 제28조)</p>
+            </div>
+          )}
         </div>
       )}
     </CalculatorLayout>
