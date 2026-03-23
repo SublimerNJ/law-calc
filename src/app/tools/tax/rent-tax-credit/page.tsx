@@ -182,6 +182,31 @@ export default function RentTaxCreditPage() {
             </div>
           </div>
         )}
+
+        {result && (
+          <div className="premium-card p-6">
+            <h2 className="text-lg font-semibold text-white mb-4">신청 시 필요 서류</h2>
+            <div className="space-y-3">
+              {[
+                { step: '1', title: '임대차계약서 사본', desc: '임대인과 체결한 계약서 사본' },
+                { step: '2', title: '월세 납입증명', desc: '계좌이체 내역 또는 현금영수증' },
+                { step: '3', title: '주민등록등본', desc: '전입신고 확인용' },
+                { step: '4', title: '신청시기', desc: '연말정산 시 회사에 제출 또는 5월 종합소득세 신고 시' },
+              ].map(item => (
+                <div key={item.step} className="flex gap-3 items-start">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                    {item.step}
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                    <p className="text-xs text-gray-500">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-4">국세청 홈택스 (www.hometax.go.kr) | 문의: 국세청 (126)</p>
+          </div>
+        )}
       </div>
     </CalculatorLayout>
   );

@@ -279,6 +279,31 @@ export default function ForcedHeirshipPage() {
           </div>
         </div>
       )}
+
+      {result !== null && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">유류분 반환 청구 절차</h2>
+          <div className="space-y-3">
+            {[
+              { step: '1', title: '내용증명 발송', desc: '다른 상속인에게 내용증명으로 반환 요구' },
+              { step: '2', title: '소송 제기', desc: '합의 불성립 시 가정법원에 유류분반환청구 소송' },
+              { step: '3', title: '시효', desc: '상속 개시와 반환 청구 대상을 안 날부터 1년, 상속 개시일로부터 10년' },
+              { step: '4', title: '변호사 선임 권장', desc: '유류분 산정이 복잡하므로 전문가 조력 권장' },
+            ].map(item => (
+              <div key={item.step} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-4">법적 근거: 민법 제1112조~제1118조 | 대한법률구조공단 (132)</p>
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

@@ -162,6 +162,31 @@ export default function LegalAidPage() {
           </div>
         </div>
       )}
+
+      {result && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">법률구조 신청 방법</h2>
+          <div className="space-y-3">
+            {[
+              { step: '1', title: '상담 신청', desc: '대한법률구조공단 방문 또는 전화 상담 (132)' },
+              { step: '2', title: '필요서류', desc: '신분증, 주민등록등본, 건강보험료 납부확인서, 재산세 과세증명' },
+              { step: '3', title: '심사기간', desc: '약 1~2주' },
+              { step: '4', title: '승인 시', desc: '소송비용 전액 또는 일부 지원' },
+            ].map(item => (
+              <div key={item.step} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-4">대한법률구조공단 (www.klac.or.kr) | 전화: 132</p>
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

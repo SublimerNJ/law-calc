@@ -231,6 +231,31 @@ export default function AlimonyPage() {
           </div>
         </>
       )}
+
+      {result !== null && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">위자료 청구 방법</h2>
+          <div className="space-y-3">
+            {[
+              { step: '1', title: '협의이혼 시', desc: '이혼숙려기간 중 위자료 합의 → 양육비/위자료 합의서 작성' },
+              { step: '2', title: '재판이혼 시', desc: '가정법원에 이혼소송 + 위자료 청구 병합' },
+              { step: '3', title: '필요서류', desc: '혼인관계증명서, 유책행위 증거 (사진/메시지/녹음 등)' },
+              { step: '4', title: '시효', desc: '이혼 확정일로부터 3년 이내' },
+            ].map(item => (
+              <div key={item.step} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-4">문의: 대법원 전자가족관계등록시스템 (www.efamily.scourt.go.kr) | 가정법원</p>
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

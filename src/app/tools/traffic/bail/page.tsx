@@ -269,6 +269,31 @@ export default function BailPage() {
           </div>
         </div>
       )}
+
+      {result !== null && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">보석 신청 안내</h2>
+          <div className="space-y-3">
+            {[
+              { step: '1', title: '신청', desc: '변호인 또는 본인이 법원에 보석허가청구서 제출' },
+              { step: '2', title: '법원 고려 요소', desc: '도주 위험, 증거 인멸 우려, 피해자 위해 가능성' },
+              { step: '3', title: '보석 거부 가능', desc: '중범죄, 도주 위험 높은 경우 법원이 보석을 거부할 수 있음' },
+              { step: '4', title: '보석 허가 시', desc: '조건부 석방 (출국금지, 주거제한 등)' },
+            ].map(item => (
+              <div key={item.step} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-4">법적 근거: 형사소송법 제94조, 제99조 | 보석 관련 문의는 담당 변호인과 상담하세요</p>
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

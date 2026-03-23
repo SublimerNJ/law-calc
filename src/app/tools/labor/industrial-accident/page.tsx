@@ -313,6 +313,31 @@ export default function IndustrialAccidentPage() {
           </div>
         </div>
       )}
+
+      {result !== null && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">산재보험 신청 방법</h2>
+          <div className="space-y-3">
+            {[
+              { step: '1', title: '신청 방법', desc: '사업장 소재지 근로복지공단 지사 방문 또는 온라인 신청' },
+              { step: '2', title: '필요서류', desc: '요양급여신청서, 진단서, 근로계약서' },
+              { step: '3', title: '처리기간', desc: '접수 후 14일 이내 (복잡 사안 30일)' },
+              { step: '4', title: '문의', desc: '근로복지공단 (1588-0075)' },
+            ].map(item => (
+              <div key={item.step} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-4">온라인 신청: 근로복지공단 (www.comwel.or.kr)</p>
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

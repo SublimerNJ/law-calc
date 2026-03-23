@@ -220,6 +220,31 @@ export default function MedicalMalpracticePage() {
           </div>
         </div>
       )}
+
+      {result !== null && (
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">의료사고 분쟁 해결 절차</h2>
+          <div className="space-y-3">
+            {[
+              { step: '1', title: '의료기관 이의제기', desc: '진료기록 열람 청구 후 해당 의료기관에 직접 이의제기' },
+              { step: '2', title: '조정 신청', desc: '한국의료분쟁조정중재원 조정 신청 (1670-2545)' },
+              { step: '3', title: '민사소송', desc: '조정 불성립 시 민사소송 (의료과실 입증 필요)' },
+              { step: '4', title: '필요서류', desc: '진료기록사본, 진단서, 의료비 영수증' },
+            ].map(item => (
+              <div key={item.step} className="flex gap-3 items-start">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-4">한국의료분쟁조정중재원 (www.k-medi.or.kr) | 1670-2545</p>
+        </div>
+      )}
     </CalculatorLayout>
   );
 }
