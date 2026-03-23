@@ -150,6 +150,28 @@ export default function StatuteOfLimitationsPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">시효 중단 사유</h2>
+        <ol className="space-y-3">
+          {[
+            { color: '#3b82f6', text: '소송 제기 (가장 확실)' },
+            { color: '#f59e0b', text: '내용증명 발송 (6개월 내 소송 필요)' },
+            { color: '#10b981', text: '채무자의 채무 승인 (일부 변제 포함)' },
+            { color: '#8b5cf6', text: '시효 완성 후에도 채무자가 인정하면 유효' },
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: item.color }}
+              >
+                {i + 1}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

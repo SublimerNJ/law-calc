@@ -124,6 +124,28 @@ export default function DismissalNoticePage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">해고예고수당 미지급 시</h2>
+        <ol className="space-y-3">
+          {[
+            { color: '#f59e0b', text: '사업주에게 서면 청구' },
+            { color: '#ef4444', text: '지방고용노동청 신고 (1350)' },
+            { color: '#10b981', text: '3년 이내 미지급 임금 청구 가능' },
+            { color: '#8b5cf6', text: '근로기준법 제26조 위반 시 2년 이하 징역 또는 2,000만원 이하 벌금' },
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: item.color }}
+              >
+                {i + 1}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

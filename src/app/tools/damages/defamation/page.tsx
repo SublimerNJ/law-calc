@@ -172,6 +172,28 @@ export default function DefamationPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">명예훼손 소송 절차</h2>
+        <ol className="space-y-3">
+          {[
+            { color: '#f97316', text: '증거 확보 (캡처, 녹음, 목격자 등)' },
+            { color: '#f59e0b', text: '내용증명으로 삭제 및 손해배상 요구' },
+            { color: '#ef4444', text: '합의 불성립 시 민사소송 + 형사고소 병행 가능' },
+            { color: '#3b82f6', text: '온라인: 방송통신심의위원회 삭제 요청' },
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: item.color }}
+              >
+                {i + 1}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

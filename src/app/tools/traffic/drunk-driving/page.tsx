@@ -268,6 +268,28 @@ export default function DrunkDrivingPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">음주운전 후 대응</h2>
+        <ol className="space-y-3">
+          {[
+            { color: '#ef4444', text: '즉시 음주측정 거부 금지 (거부 시 가중처벌)' },
+            { color: '#f59e0b', text: '변호사 선임 권장 (형사사건)' },
+            { color: '#3b82f6', text: '면허정지/취소 시 행정심판 가능' },
+            { color: '#10b981', text: '보험사 면책 여부 확인' },
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: item.color }}
+              >
+                {i + 1}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

@@ -157,6 +157,27 @@ export default function AnnualLeavePayPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">연차수당 미지급 시</h2>
+        <ol className="space-y-3">
+          {[
+            { color: '#f59e0b', text: '사업주에게 서면 청구' },
+            { color: '#ef4444', text: '고용노동부 신고 (1350)' },
+            { color: '#10b981', text: '3년 이내 소급 청구 가능' },
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: item.color }}
+              >
+                {i + 1}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

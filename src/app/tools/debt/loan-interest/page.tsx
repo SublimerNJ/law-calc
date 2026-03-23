@@ -147,6 +147,27 @@ export default function LoanInterestPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">이자 과다 청구 시</h2>
+        <ol className="space-y-3">
+          {[
+            { color: '#06b6d4', text: '이자제한법 초과분은 무효 (연 20% 상한)' },
+            { color: '#3b82f6', text: '초과 지급한 이자는 원금에 충당' },
+            { color: '#ef4444', text: '대부업법 위반 시 금융감독원 신고' },
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: item.color }}
+              >
+                {i + 1}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }
