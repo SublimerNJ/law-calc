@@ -264,6 +264,28 @@ export default function ProductLiabilityPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6">
+        <h2 className="text-lg font-semibold text-white mb-4">제조물 책임 소송 안내</h2>
+        <ol className="space-y-3">
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>1</span>
+            <span className="text-sm text-gray-300">결함 증거 확보 (사진, 제품 보관)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>2</span>
+            <span className="text-sm text-gray-300">소비자원 피해구제 신청 (1372)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>3</span>
+            <span className="text-sm text-gray-300">민사소송 시 제조사가 무과실 입증 책임</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>4</span>
+            <span className="text-sm text-gray-300">징벌적 손해배상 최대 3배</span>
+          </li>
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

@@ -216,6 +216,28 @@ ${result.overtimePay > 0 ? `\n연장근로 = ${formatNumber(result.hourlyWage)} 
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6">
+        <h2 className="text-lg font-semibold text-white mb-4">수당 미지급 시</h2>
+        <ol className="space-y-3">
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f59e0b' }}>1</span>
+            <span className="text-sm text-gray-300">사업주에게 서면 청구</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f59e0b' }}>2</span>
+            <span className="text-sm text-gray-300">고용노동부 신고 (1350)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f59e0b' }}>3</span>
+            <span className="text-sm text-gray-300">3년 이내 미지급 수당 소급 가능</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f59e0b' }}>4</span>
+            <span className="text-sm text-gray-300">근로기준법 위반 시 형사처벌 가능</span>
+          </li>
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

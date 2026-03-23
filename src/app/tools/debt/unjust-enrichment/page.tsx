@@ -180,6 +180,28 @@ export default function UnjustEnrichmentPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6">
+        <h2 className="text-lg font-semibold text-white mb-4">부당이득 반환 청구</h2>
+        <ol className="space-y-3">
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#06b6d4' }}>1</span>
+            <span className="text-sm text-gray-300">내용증명으로 반환 요구</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#06b6d4' }}>2</span>
+            <span className="text-sm text-gray-300">지급명령 신청 (간편, 인지대 1/10)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#06b6d4' }}>3</span>
+            <span className="text-sm text-gray-300">이의 시 소송 전환</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#06b6d4' }}>4</span>
+            <span className="text-sm text-gray-300">시효: 부당이득 안 날부터 10년</span>
+          </li>
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

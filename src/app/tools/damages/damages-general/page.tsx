@@ -169,6 +169,28 @@ export default function DamagesGeneralPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6">
+        <h2 className="text-lg font-semibold text-white mb-4">손해배상 청구 절차</h2>
+        <ol className="space-y-3">
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>1</span>
+            <span className="text-sm text-gray-300">내용증명으로 배상 요구</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>2</span>
+            <span className="text-sm text-gray-300">합의 불성립 시 민사소송 제기</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>3</span>
+            <span className="text-sm text-gray-300">소멸시효: 불법행위 안 날부터 3년</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>4</span>
+            <span className="text-sm text-gray-300">소송비용: 인지대 + 변호사 비용 별도</span>
+          </li>
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

@@ -162,6 +162,28 @@ export default function LtvPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6">
+        <h2 className="text-lg font-semibold text-white mb-4">대출 한도 높이는 방법</h2>
+        <ol className="space-y-3">
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>1</span>
+            <span className="text-sm text-gray-300">일반지역 주택 선택 (LTV 70%)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>2</span>
+            <span className="text-sm text-gray-300">생애최초 주택구입 우대</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>3</span>
+            <span className="text-sm text-gray-300">서민·실수요자 요건 충족 시 우대 LTV</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>4</span>
+            <span className="text-sm text-gray-300">은행별 LTV 차이 비교</span>
+          </li>
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

@@ -183,6 +183,28 @@ ${formatDateKR(sendDate)}
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6">
+        <h2 className="text-lg font-semibold text-white mb-4">내용증명 발송 방법</h2>
+        <ol className="space-y-3">
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#3b82f6' }}>1</span>
+            <span className="text-sm text-gray-300">같은 내용 3부 작성 (발신인·수신인·우체국 보관)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#3b82f6' }}>2</span>
+            <span className="text-sm text-gray-300">가까운 우체국 방문, 내용증명 접수</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#3b82f6' }}>3</span>
+            <span className="text-sm text-gray-300">비용: 기본요금 + 등기료 약 7,000~10,000원</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#3b82f6' }}>4</span>
+            <span className="text-sm text-gray-300">온라인: 인터넷 우체국에서도 발송 가능</span>
+          </li>
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

@@ -264,6 +264,28 @@ export default function ChildSupportPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6">
+        <h2 className="text-lg font-semibold text-white mb-4">양육비 청구 방법</h2>
+        <ol className="space-y-3">
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#ec4899' }}>1</span>
+            <span className="text-sm text-gray-300">협의: 양육비 이행확인서 작성 (공증)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#ec4899' }}>2</span>
+            <span className="text-sm text-gray-300">비협조 시: 가정법원 양육비 심판 청구</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#ec4899' }}>3</span>
+            <span className="text-sm text-gray-300">미지급 시: 양육비이행관리원 (1644-6621)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#ec4899' }}>4</span>
+            <span className="text-sm text-gray-300">강제집행: 급여 압류, 출국금지 가능</span>
+          </li>
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }

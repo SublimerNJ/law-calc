@@ -184,6 +184,28 @@ export default function SubscriptionScorePage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6">
+        <h2 className="text-lg font-semibold text-white mb-4">청약 가점 높이는 방법</h2>
+        <ol className="space-y-3">
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>1</span>
+            <span className="text-sm text-gray-300">청약통장 장기 유지 (최대 17점, 15년+)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>2</span>
+            <span className="text-sm text-gray-300">부양가족 등록 확인</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>3</span>
+            <span className="text-sm text-gray-300">무주택 기간 확인 (세대주 기준)</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>4</span>
+            <span className="text-sm text-gray-300">청약홈 (applyhome.co.kr)에서 예비당첨 확인</span>
+          </li>
+        </ol>
+      </div>
     </CalculatorLayout>
   );
 }
