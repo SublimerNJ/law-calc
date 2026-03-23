@@ -113,17 +113,17 @@ export default function PropertyTaxPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">시가표준액 (공시가격, 원)</label>
+          <label className="block text-sm text-slate-600 mb-2">시가표준액 (공시가격, 원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={standardValue ? parseInt(standardValue).toLocaleString('ko-KR') : ''}
             onChange={handleValueChange}
             placeholder="예: 300,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
           />
           {standardValue && (
             <p className="text-xs text-gray-500 mt-1">
@@ -133,7 +133,7 @@ export default function PropertyTaxPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">재산 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">재산 유형</label>
           <div className="grid grid-cols-2 gap-2">
             {propertyTypes.map(opt => (
               <button
@@ -141,8 +141,8 @@ export default function PropertyTaxPage() {
                 onClick={() => setPropertyType(opt.value)}
                 className={`px-3 py-2 rounded-lg text-sm border transition-colors ${
                   propertyType === opt.value
-                    ? 'border-[#10b981] bg-[#10b981]/10 text-white'
-                    : 'border-[#1e2d4a] text-gray-400 hover:border-gray-500'
+                    ? 'border-[#10b981] bg-[#10b981]/10 text-slate-900'
+                    : 'border-slate-200 text-slate-600 hover:border-gray-500'
                 }`}
               >
                 {opt.label}
@@ -159,7 +159,7 @@ export default function PropertyTaxPage() {
               onChange={e => setIsUrbanArea(e.target.checked)}
               className="accent-[#10b981]"
             />
-            <span className="text-sm text-gray-300">도시지역 (도시지역분 0.14% 적용)</span>
+            <span className="text-sm text-slate-600">도시지역 (도시지역분 0.14% 적용)</span>
           </label>
         </div>
 
@@ -174,38 +174,38 @@ export default function PropertyTaxPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-3 mb-4">
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">시가표준액</span>
-              <span className="text-white">{formatNumber(result.standardValue)}원</span>
+              <span className="text-sm text-slate-600">시가표준액</span>
+              <span className="text-slate-900">{formatNumber(result.standardValue)}원</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">공정시장가액비율</span>
-              <span className="text-white">{(result.fairMarketRatio * 100).toFixed(0)}%</span>
+              <span className="text-sm text-slate-600">공정시장가액비율</span>
+              <span className="text-slate-900">{(result.fairMarketRatio * 100).toFixed(0)}%</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">과세표준</span>
-              <span className="text-white">{formatNumber(result.taxBase)}원</span>
+              <span className="text-sm text-slate-600">과세표준</span>
+              <span className="text-slate-900">{formatNumber(result.taxBase)}원</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">재산세</span>
-              <span className="text-white">{formatNumber(result.propertyTax)}원</span>
+              <span className="text-sm text-slate-600">재산세</span>
+              <span className="text-slate-900">{formatNumber(result.propertyTax)}원</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">도시지역분</span>
-              <span className="text-white">{formatNumber(result.urbanAreaTax)}원</span>
+              <span className="text-sm text-slate-600">도시지역분</span>
+              <span className="text-slate-900">{formatNumber(result.urbanAreaTax)}원</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">지방교육세 (20%)</span>
-              <span className="text-white">{formatNumber(result.localEducationTax)}원</span>
+              <span className="text-sm text-slate-600">지방교육세 (20%)</span>
+              <span className="text-slate-900">{formatNumber(result.localEducationTax)}원</span>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-[#1e2d4a] mb-4">
+          <div className="pt-4 border-t border-slate-200 mb-4">
             <div className="flex justify-between">
-              <span className="text-base font-semibold text-white">합계 세액</span>
+              <span className="text-base font-semibold text-slate-900">합계 세액</span>
               <span className="text-xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.total)}원
               </span>
@@ -213,8 +213,8 @@ export default function PropertyTaxPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`공시가격 × 공정시장가액비율 × 세율 = 재산세
 
 과세표준 = ${formatNumber(result.standardValue)}원 × ${(result.fairMarketRatio * 100).toFixed(0)}% = ${formatNumber(result.taxBase)}원
@@ -224,7 +224,7 @@ export default function PropertyTaxPage() {
             </pre>
           </div>
 
-          <div className="pt-4 border-t border-[#1e2d4a]">
+          <div className="pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 지방세법 제110조(과세표준), 제111조(세율)
             </p>

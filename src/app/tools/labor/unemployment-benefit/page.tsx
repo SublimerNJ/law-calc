@@ -80,26 +80,26 @@ export default function UnemploymentBenefitPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">퇴직 전 3개월 평균 월임금 (세전, 원)</label>
+          <label className="block text-sm text-slate-600 mb-2">퇴직 전 3개월 평균 월임금 (세전, 원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={e => setMonthlyWage(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 3,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">피보험기간 (고용보험 가입기간)</label>
+          <label className="block text-sm text-slate-600 mb-2">피보험기간 (고용보험 가입기간)</label>
           <select
             value={period}
             onChange={e => setPeriod(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {PERIOD_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -108,7 +108,7 @@ export default function UnemploymentBenefitPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">연령/장애 구분</label>
+          <label className="block text-sm text-slate-600 mb-2">연령/장애 구분</label>
           <div className="flex gap-4">
             {AGE_OPTIONS.map(opt => (
               <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
@@ -119,18 +119,18 @@ export default function UnemploymentBenefitPage() {
                   onChange={() => setAgeGroup(opt.value)}
                   className="accent-[#f59e0b]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">1일 소정근로시간</label>
+          <label className="block text-sm text-slate-600 mb-2">1일 소정근로시간</label>
           <select
             value={dailyHours}
             onChange={e => setDailyHours(Number(e.target.value))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {HOURS_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -149,39 +149,39 @@ export default function UnemploymentBenefitPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">총 실업급여 예상액</p>
+            <p className="text-sm text-slate-600 mb-1">총 실업급여 예상액</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.total)}원
             </p>
           </div>
 
           <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="p-3 rounded-lg bg-[#0d1424]">
-              <p className="text-xs text-gray-400 mb-1">수령 기간</p>
-              <p className="text-lg text-white font-semibold">{Math.floor(result.days / 30)}개월</p>
+            <div className="p-3 rounded-lg bg-white">
+              <p className="text-xs text-slate-600 mb-1">수령 기간</p>
+              <p className="text-lg text-slate-900 font-semibold">{Math.floor(result.days / 30)}개월</p>
               <p className="text-xs text-gray-500">({result.days}일)</p>
             </div>
-            <div className="p-3 rounded-lg bg-[#0d1424]">
-              <p className="text-xs text-gray-400 mb-1">월 수령액 (약)</p>
-              <p className="text-lg text-white font-semibold">{formatNumber(result.dailyPayment * 30)}원</p>
+            <div className="p-3 rounded-lg bg-white">
+              <p className="text-xs text-slate-600 mb-1">월 수령액 (약)</p>
+              <p className="text-lg text-slate-900 font-semibold">{formatNumber(result.dailyPayment * 30)}원</p>
             </div>
-            <div className="p-3 rounded-lg bg-[#0d1424]">
-              <p className="text-xs text-gray-400 mb-1">1일 지급액</p>
-              <p className="text-lg text-white">{formatNumber(result.dailyPayment)}원</p>
+            <div className="p-3 rounded-lg bg-white">
+              <p className="text-xs text-slate-600 mb-1">1일 지급액</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.dailyPayment)}원</p>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">기초일액 (평균임금 60%)</p>
-              <p className="text-lg text-white">{formatNumber(result.dailyBase)}원</p>
+              <p className="text-sm text-slate-600 mb-1">기초일액 (평균임금 60%)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.dailyBase)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">적용 여부</p>
-              <p className="text-sm text-white">
+              <p className="text-sm text-slate-600 mb-1">적용 여부</p>
+              <p className="text-sm text-slate-900">
                 {result.upperApplied && (
                   <span className="text-yellow-400">상한 적용 ({formatNumber(DAILY_UPPER)}원/일)</span>
                 )}
@@ -196,13 +196,13 @@ export default function UnemploymentBenefitPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">월 환산 금액 (약)</p>
-            <p className="text-lg text-white">{formatNumber(result.dailyPayment * 30)}원/월</p>
+            <p className="text-sm text-slate-600 mb-1">월 환산 금액 (약)</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.dailyPayment * 30)}원/월</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
 {`기초일액 = (월급 × 12) ÷ 365 × 60%
   = (${monthlyWage ? formatNumber(parseInt(monthlyWage)) : '0'} × 12) ÷ 365 × 0.6
   = ${formatNumber(result.dailyBase)}원/일
@@ -215,11 +215,11 @@ export default function UnemploymentBenefitPage() {
 
           {/* 소정급여일수 기준표 */}
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-3">소정급여일수 기준표</p>
+            <p className="text-sm text-slate-600 mb-3">소정급여일수 기준표</p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-[#1e2d4a]">
+                  <tr className="border-b border-slate-200">
                     <th className="py-2 text-left text-gray-500">피보험기간</th>
                     <th className="py-2 text-right text-gray-500">50세 미만</th>
                     <th className="py-2 text-right text-gray-500">50세 이상</th>
@@ -229,8 +229,8 @@ export default function UnemploymentBenefitPage() {
                   {PERIOD_OPTIONS.map(p => {
                     const isActive = p.value === period;
                     return (
-                      <tr key={p.value} className={`border-b border-[#1e2d4a]/50 ${isActive ? 'bg-[#f59e0b]/10' : ''}`}>
-                        <td className="py-2 text-gray-300">{p.label}</td>
+                      <tr key={p.value} className={`border-b border-slate-200/50 ${isActive ? 'bg-blue-600/10' : ''}`}>
+                        <td className="py-2 text-slate-600">{p.label}</td>
                         <td className="py-2 text-right" style={{ color: isActive && ageGroup === 'under50' ? category.color : '#9ca3af' }}>
                           {BENEFIT_DAYS.under50[p.value]}일
                         </td>
@@ -245,7 +245,7 @@ export default function UnemploymentBenefitPage() {
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 고용보험법 제46조, 제50조 | 2026년 기준 상한 {formatNumber(DAILY_UPPER)}원/일, 하한 최저임금 80%
             </p>

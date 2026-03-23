@@ -71,10 +71,10 @@ export default function MinimumWageCheckPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         {/* Tab toggle */}
-        <div className="flex mb-6 bg-[#0d1424] rounded-lg p-1">
+        <div className="flex mb-6 bg-white rounded-lg p-1">
           <button
             onClick={() => { setMode('monthly'); setResult(null); }}
             className="flex-1 py-2 rounded-md text-sm font-semibold transition-colors"
@@ -100,14 +100,14 @@ export default function MinimumWageCheckPage() {
         {mode === 'monthly' ? (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-gray-400 mb-2">월 수령액 (원)</label>
+              <label className="block text-sm text-slate-600 mb-2">월 수령액 (원)</label>
               <input
                 type="text"
                 inputMode="numeric"
                 value={monthlySalary ? parseInt(monthlySalary).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setMonthlySalary)}
                 placeholder="예: 2,000,000"
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
               <p className="text-xs text-gray-500 mt-1">
                 최저임금 산입 임금 기준 (기본급+고정수당, 식대/교통비 월 20만원 초과분 제외)
@@ -115,7 +115,7 @@ export default function MinimumWageCheckPage() {
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm text-gray-400 mb-2">1주 소정근로시간</label>
+              <label className="block text-sm text-slate-600 mb-2">1주 소정근로시간</label>
               <div className="flex gap-4">
                 {[
                   { value: 40, label: '40시간제 (월 209시간)' },
@@ -129,7 +129,7 @@ export default function MinimumWageCheckPage() {
                       onChange={() => setWeeklyHours(opt.value)}
                       className="accent-[#f59e0b]"
                     />
-                    <span className="text-sm text-gray-300">{opt.label}</span>
+                    <span className="text-sm text-slate-600">{opt.label}</span>
                   </label>
                 ))}
               </div>
@@ -137,14 +137,14 @@ export default function MinimumWageCheckPage() {
           </>
         ) : (
           <div className="mb-6">
-            <label className="block text-sm text-gray-400 mb-2">실제 시급 (원)</label>
+            <label className="block text-sm text-slate-600 mb-2">실제 시급 (원)</label>
             <input
               type="text"
               inputMode="numeric"
               value={hourlyWage ? parseInt(hourlyWage).toLocaleString('ko-KR') : ''}
               onChange={handleNumberChange(setHourlyWage)}
               placeholder="예: 9,860"
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         )}
@@ -160,7 +160,7 @@ export default function MinimumWageCheckPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
             <span
@@ -176,39 +176,39 @@ export default function MinimumWageCheckPage() {
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">실제 시급</p>
+              <p className="text-sm text-slate-600 mb-1">실제 시급</p>
               <p className="text-2xl font-bold" style={{ color: result.isViolation ? '#ef4444' : category.color }}>
                 {formatNumber(result.actualHourly)}원
               </p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">2026년 최저임금</p>
-              <p className="text-2xl font-bold text-white">
+              <p className="text-sm text-slate-600 mb-1">2026년 최저임금</p>
+              <p className="text-2xl font-bold text-slate-900">
                 {formatNumber(MINIMUM_WAGE_2026)}원
               </p>
             </div>
           </div>
 
           {result.isViolation && (
-            <div className="space-y-3 mb-4 p-4 bg-[#0d1424] rounded-lg">
+            <div className="space-y-3 mb-4 p-4 bg-white rounded-lg">
               <div>
-                <p className="text-sm text-gray-400 mb-1">차액 시급</p>
+                <p className="text-sm text-slate-600 mb-1">차액 시급</p>
                 <p className="text-lg font-semibold text-red-400">{formatNumber(result.hourlyDiff)}원</p>
               </div>
               <div>
-                <p className="text-sm text-gray-400 mb-1">월 미지급 금액</p>
+                <p className="text-sm text-slate-600 mb-1">월 미지급 금액</p>
                 <p className="text-lg font-semibold text-red-400">{formatNumber(result.monthlyShortage)}원</p>
               </div>
               <div>
-                <p className="text-sm text-gray-400 mb-1">연간 미지급 금액</p>
+                <p className="text-sm text-slate-600 mb-1">연간 미지급 금액</p>
                 <p className="text-lg font-semibold text-red-400">{formatNumber(result.annualShortage)}원</p>
               </div>
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
-            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
 {mode === 'monthly'
   ? `월급: ${monthlySalary ? parseInt(monthlySalary).toLocaleString('ko-KR') : 0}원\n÷ 기준시간 ${result.monthlyBaseHours}시간\n= 실제 시급: ${formatNumber(result.actualHourly)}원\nvs 최저임금: ${formatNumber(MINIMUM_WAGE_2026)}원`
   : `실제 시급: ${formatNumber(result.actualHourly)}원\nvs 최저임금: ${formatNumber(MINIMUM_WAGE_2026)}원\n차액: ${formatNumber(result.hourlyDiff)}원`}
@@ -221,11 +221,11 @@ export default function MinimumWageCheckPage() {
           {result.isViolation && (
             <div className="mt-4 p-4 rounded-lg bg-red-500/10 border border-red-500/30">
               <p className="text-sm font-semibold text-red-400 mb-2">최저임금 위반 시 대응 방법</p>
-              <ul className="text-xs text-gray-300 space-y-2">
-                <li><strong className="text-gray-200">1. 사업주에게 시정 요구</strong> — 미지급 차액 청구 (최저임금법 제6조)</li>
-                <li><strong className="text-gray-200">2. 고용노동부 신고</strong> — 관할 지방고용노동청 (국번 없이 1350)</li>
-                <li><strong className="text-gray-200">3. 진정서 제출</strong> — 고용노동부 민원마당 (minwon.moel.go.kr)</li>
-                <li><strong className="text-gray-200">4. 체불임금 소송</strong> — 3년 이내 미지급 임금 소급 청구 가능</li>
+              <ul className="text-xs text-slate-600 space-y-2">
+                <li><strong className="text-slate-700">1. 사업주에게 시정 요구</strong> — 미지급 차액 청구 (최저임금법 제6조)</li>
+                <li><strong className="text-slate-700">2. 고용노동부 신고</strong> — 관할 지방고용노동청 (국번 없이 1350)</li>
+                <li><strong className="text-slate-700">3. 진정서 제출</strong> — 고용노동부 민원마당 (minwon.moel.go.kr)</li>
+                <li><strong className="text-slate-700">4. 체불임금 소송</strong> — 3년 이내 미지급 임금 소급 청구 가능</li>
               </ul>
               <p className="text-xs text-gray-500 mt-2">최저임금 위반 사업주: 3년 이하 징역 또는 2,000만원 이하 벌금 (최저임금법 제28조)</p>
             </div>

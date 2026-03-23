@@ -78,14 +78,14 @@ export default function SubscriptionScorePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">청약가점 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">청약가점 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">무주택기간 (최대 32점)</label>
+          <label className="block text-sm text-slate-600 mb-2">무주택기간 (최대 32점)</label>
           <select
             value={homelessIdx}
             onChange={e => setHomelessIdx(Number(e.target.value))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           >
             {homelessOptions.map((opt, i) => (
               <option key={i} value={i}>{opt.label} ({opt.score}점)</option>
@@ -94,11 +94,11 @@ export default function SubscriptionScorePage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">부양가족수 (최대 35점)</label>
+          <label className="block text-sm text-slate-600 mb-2">부양가족수 (최대 35점)</label>
           <select
             value={dependentIdx}
             onChange={e => setDependentIdx(Number(e.target.value))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           >
             {dependentOptions.map((opt, i) => (
               <option key={i} value={i}>{opt.label} ({opt.score}점)</option>
@@ -107,11 +107,11 @@ export default function SubscriptionScorePage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">청약통장 가입기간 (최대 17점)</label>
+          <label className="block text-sm text-slate-600 mb-2">청약통장 가입기간 (최대 17점)</label>
           <select
             value={savingsIdx}
             onChange={e => setSavingsIdx(Number(e.target.value))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           >
             {savingsOptions.map((opt, i) => (
               <option key={i} value={i}>{opt.label} ({opt.score}점)</option>
@@ -130,10 +130,10 @@ export default function SubscriptionScorePage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-6">
-            <p className="text-sm text-gray-400 mb-1">총 청약가점</p>
+            <p className="text-sm text-slate-600 mb-1">총 청약가점</p>
             <p className="text-3xl font-bold" style={{ color: category.color }}>
               {result.total}점 <span className="text-base font-normal text-gray-500">/ 84점</span>
             </p>
@@ -142,30 +142,30 @@ export default function SubscriptionScorePage() {
           <div className="space-y-1 mb-4">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-gray-500 border-b border-[#1e2d4a]">
+                <tr className="text-gray-500 border-b border-slate-200">
                   <th className="text-left py-2 font-medium">항목</th>
                   <th className="text-right py-2 font-medium">배점</th>
                   <th className="text-right py-2 font-medium">점수</th>
                 </tr>
               </thead>
-              <tbody className="text-gray-300">
-                <tr className="border-b border-[#1e2d4a]">
+              <tbody className="text-slate-600">
+                <tr className="border-b border-slate-200">
                   <td className="py-2">무주택기간</td>
                   <td className="text-right py-2">32점</td>
-                  <td className="text-right py-2 font-semibold text-white">{result.homeless}점</td>
+                  <td className="text-right py-2 font-semibold text-slate-900">{result.homeless}점</td>
                 </tr>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <td className="py-2">부양가족수</td>
                   <td className="text-right py-2">35점</td>
-                  <td className="text-right py-2 font-semibold text-white">{result.dependent}점</td>
+                  <td className="text-right py-2 font-semibold text-slate-900">{result.dependent}점</td>
                 </tr>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <td className="py-2">청약통장 가입기간</td>
                   <td className="text-right py-2">17점</td>
-                  <td className="text-right py-2 font-semibold text-white">{result.savings}점</td>
+                  <td className="text-right py-2 font-semibold text-slate-900">{result.savings}점</td>
                 </tr>
                 <tr>
-                  <td className="py-2 font-semibold text-white">합계</td>
+                  <td className="py-2 font-semibold text-slate-900">합계</td>
                   <td className="text-right py-2">84점</td>
                   <td className="text-right py-2 font-bold" style={{ color: category.color }}>{result.total}점</td>
                 </tr>
@@ -173,11 +173,11 @@ export default function SubscriptionScorePage() {
             </table>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">무주택기간 + 부양가족 + 청약통장 = 총점</p>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
+          <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 주택공급에 관한 규칙 별표1 (청약가점제 점수산정 기준표)
             </p>
@@ -186,23 +186,23 @@ export default function SubscriptionScorePage() {
       )}
 
       <div className="premium-card p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">청약 가점 높이는 방법</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">청약 가점 높이는 방법</h2>
         <ol className="space-y-3">
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>1</span>
-            <span className="text-sm text-gray-300">청약통장 장기 유지 (최대 17점, 15년+)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#8b5cf6' }}>1</span>
+            <span className="text-sm text-slate-600">청약통장 장기 유지 (최대 17점, 15년+)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>2</span>
-            <span className="text-sm text-gray-300">부양가족 등록 확인</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#8b5cf6' }}>2</span>
+            <span className="text-sm text-slate-600">부양가족 등록 확인</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>3</span>
-            <span className="text-sm text-gray-300">무주택 기간 확인 (세대주 기준)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#8b5cf6' }}>3</span>
+            <span className="text-sm text-slate-600">무주택 기간 확인 (세대주 기준)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>4</span>
-            <span className="text-sm text-gray-300">청약홈 (applyhome.co.kr)에서 예비당첨 확인</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#8b5cf6' }}>4</span>
+            <span className="text-sm text-slate-600">청약홈 (applyhome.co.kr)에서 예비당첨 확인</span>
           </li>
         </ol>
       </div>

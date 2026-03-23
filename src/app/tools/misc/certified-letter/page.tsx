@@ -70,86 +70,86 @@ ${formatDateKR(sendDate)}
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-gray-400 mb-1">발신인 이름</label>
+              <label className="block text-sm text-slate-600 mb-1">발신인 이름</label>
               <input
                 type="text"
                 value={senderName}
                 onChange={e => setSenderName(e.target.value)}
                 placeholder="홍길동"
-                className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-1">발신인 주소</label>
+              <label className="block text-sm text-slate-600 mb-1">발신인 주소</label>
               <input
                 type="text"
                 value={senderAddress}
                 onChange={e => setSenderAddress(e.target.value)}
                 placeholder="서울특별시 강남구..."
-                className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-gray-400 mb-1">수신인 이름</label>
+              <label className="block text-sm text-slate-600 mb-1">수신인 이름</label>
               <input
                 type="text"
                 value={receiverName}
                 onChange={e => setReceiverName(e.target.value)}
                 placeholder="김철수"
-                className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-1">수신인 주소</label>
+              <label className="block text-sm text-slate-600 mb-1">수신인 주소</label>
               <input
                 type="text"
                 value={receiverAddress}
                 onChange={e => setReceiverAddress(e.target.value)}
                 placeholder="서울특별시 서초구..."
-                className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">제목</label>
+            <label className="block text-sm text-slate-600 mb-1">제목</label>
             <input
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="채무 이행 촉구 내용증명"
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">본문</label>
+            <label className="block text-sm text-slate-600 mb-1">본문</label>
             <textarea
               value={body}
               onChange={e => setBody(e.target.value)}
               rows={6}
               placeholder="내용증명 본문을 입력하세요..."
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none resize-y"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none resize-y"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">발신일</label>
+            <label className="block text-sm text-slate-600 mb-1">발신일</label>
             <input
               type="date"
               value={sendDate}
               onChange={e => setSendDate(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         </div>
 
         <button
           onClick={handlePreview}
-          className="w-full mt-6 py-3 rounded-lg font-semibold text-white"
+          className="w-full mt-6 py-3 rounded-lg font-semibold text-slate-900"
           style={{ backgroundColor: category.color }}
         >
           미리보기
@@ -159,16 +159,16 @@ ${formatDateKR(sendDate)}
       {preview && (
         <div className="premium-card p-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-white">내용증명 미리보기</h3>
+            <h3 className="text-lg font-semibold text-slate-900">내용증명 미리보기</h3>
             <button
               onClick={handleCopy}
-              className="px-4 py-2 rounded-lg text-sm font-medium bg-[#1e2d4a] text-white hover:bg-[#2a3d5a] transition-colors"
+              className="px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-900 hover:bg-[#2a3d5a] transition-colors"
             >
               {copied ? '복사됨!' : '복사'}
             </button>
           </div>
 
-          <div className="p-6 rounded-lg bg-white text-black font-mono text-sm whitespace-pre-wrap leading-relaxed">
+          <div className="p-6 rounded-lg bg-white text-white font-mono text-sm whitespace-pre-wrap leading-relaxed">
             {generateText()}
           </div>
 
@@ -178,30 +178,30 @@ ${formatDateKR(sendDate)}
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">법적 근거: 우편법 시행규칙 제25조 (내용증명 우편)</p>
           </div>
         </div>
       )}
 
       <div className="premium-card p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">내용증명 발송 방법</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">내용증명 발송 방법</h2>
         <ol className="space-y-3">
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#3b82f6' }}>1</span>
-            <span className="text-sm text-gray-300">같은 내용 3부 작성 (발신인·수신인·우체국 보관)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#3b82f6' }}>1</span>
+            <span className="text-sm text-slate-600">같은 내용 3부 작성 (발신인·수신인·우체국 보관)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#3b82f6' }}>2</span>
-            <span className="text-sm text-gray-300">가까운 우체국 방문, 내용증명 접수</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#3b82f6' }}>2</span>
+            <span className="text-sm text-slate-600">가까운 우체국 방문, 내용증명 접수</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#3b82f6' }}>3</span>
-            <span className="text-sm text-gray-300">비용: 기본요금 + 등기료 약 7,000~10,000원</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#3b82f6' }}>3</span>
+            <span className="text-sm text-slate-600">비용: 기본요금 + 등기료 약 7,000~10,000원</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#3b82f6' }}>4</span>
-            <span className="text-sm text-gray-300">온라인: 인터넷 우체국에서도 발송 가능</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#3b82f6' }}>4</span>
+            <span className="text-sm text-slate-600">온라인: 인터넷 우체국에서도 발송 가능</span>
           </li>
         </ol>
       </div>

@@ -85,14 +85,14 @@ export default function ProductLiabilityPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">결함 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">결함 유형</label>
           <select
             value={defectType}
             onChange={(e) => setDefectType(e.target.value as DefectType)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
             {(Object.keys(DEFECT_LABELS) as DefectType[]).map(k => (
               <option key={k} value={k}>{DEFECT_LABELS[k]}</option>
@@ -101,50 +101,50 @@ export default function ProductLiabilityPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">제조사 과실 인정 비율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">제조사 과실 인정 비율 (%)</label>
           <input
             type="text"
             inputMode="numeric"
             value={faultRate}
             onChange={(e) => setFaultRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 80"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">재산 피해액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">재산 피해액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={formatInput(propertyLoss)}
             onChange={handleNumberChange(setPropertyLoss)}
             placeholder="예: 10,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">치료비 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">치료비 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={formatInput(medicalCost)}
             onChange={handleNumberChange(setMedicalCost)}
             placeholder="예: 5,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">일실수입 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">일실수입 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={formatInput(lostIncome)}
             onChange={handleNumberChange(setLostIncome)}
             placeholder="예: 3,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
@@ -156,12 +156,12 @@ export default function ProductLiabilityPage() {
               onChange={(e) => setRequestConsolation(e.target.checked)}
               className="accent-[#f97316]"
             />
-            <span className="text-sm text-gray-300">위자료 청구</span>
+            <span className="text-sm text-slate-600">위자료 청구</span>
           </label>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">피해자 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">피해자 유형</label>
           <div className="flex gap-4">
             {([['individual', '개인 (소비자)'], ['business', '사업자']] as const).map(([val, label]) => (
               <label key={val} className="flex items-center gap-2 cursor-pointer">
@@ -172,18 +172,18 @@ export default function ProductLiabilityPage() {
                   onChange={() => setVictimType(val)}
                   className="accent-[#f97316]"
                 />
-                <span className="text-sm text-gray-300">{label}</span>
+                <span className="text-sm text-slate-600">{label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">피해 규모</label>
+          <label className="block text-sm text-slate-600 mb-2">피해 규모</label>
           <select
             value={damageScale}
             onChange={(e) => setDamageScale(e.target.value as DamageScale)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
             {(Object.keys(SCALE_LABELS) as DamageScale[]).map(k => (
               <option key={k} value={k}>{SCALE_LABELS[k]}</option>
@@ -191,7 +191,7 @@ export default function ProductLiabilityPage() {
           </select>
         </div>
 
-        <div className="mb-6 p-4 bg-[#0d1424] border border-[#1e2d4a] rounded-lg">
+        <div className="mb-6 p-4 bg-white border border-slate-200 rounded-lg">
           <label className="flex items-center gap-2 cursor-pointer">
             <input
               type="checkbox"
@@ -199,7 +199,7 @@ export default function ProductLiabilityPage() {
               onChange={(e) => setApplyPunitive(e.target.checked)}
               className="accent-[#f97316]"
             />
-            <span className="text-sm text-gray-300">징벌적 손해배상 적용 (최대 3배)</span>
+            <span className="text-sm text-slate-600">징벌적 손해배상 적용 (최대 3배)</span>
           </label>
           <p className="text-xs text-gray-500 mt-2">
             참고: 제조물 책임법 제3조의2 - 제조사가 결함을 알면서도 필요한 조치를 취하지 않은 경우에 한하여 법원 재량으로 손해액의 3배 이내 가능
@@ -217,43 +217,43 @@ export default function ProductLiabilityPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">결함 유형</p>
-            <p className="text-lg text-white">{DEFECT_LABELS[defectType]}</p>
+            <p className="text-sm text-slate-600 mb-1">결함 유형</p>
+            <p className="text-lg text-slate-900">{DEFECT_LABELS[defectType]}</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">재산상 배상액</p>
-            <p className="text-lg text-white">{formatNumber(result.propertyDamage)}원</p>
+            <p className="text-sm text-slate-600 mb-1">재산상 배상액</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.propertyDamage)}원</p>
           </div>
 
           {result.consolation > 0 && (
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">위자료</p>
-              <p className="text-lg text-white">{formatNumber(result.consolation)}원</p>
+              <p className="text-sm text-slate-600 mb-1">위자료</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.consolation)}원</p>
             </div>
           )}
 
           {applyPunitive && (
             <div className="mb-4 p-3 bg-[#1a0d00] border border-[#f97316]/30 rounded-lg">
-              <p className="text-sm text-gray-400 mb-1">징벌적 배상 가능 금액 (참고, 법원 재량)</p>
-              <p className="text-lg text-white">{formatNumber(result.punitiveDamage)}원</p>
+              <p className="text-sm text-slate-600 mb-1">징벌적 배상 가능 금액 (참고, 법원 재량)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.punitiveDamage)}원</p>
               <p className="text-xs text-gray-500">재산상 배상액의 3배</p>
             </div>
           )}
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">예상 총 배상액</p>
+            <p className="text-sm text-slate-600 mb-1">예상 총 배상액</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.totalDamage)}원
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`손해액 × 과실비율 = 재산상 배상액
 위자료기준 × 과실비율 = 위자료 (개인 피해자)
 재산상 배상액 × 3 = 징벌적 배상 최대액 (법원 재량)`}
@@ -266,23 +266,23 @@ export default function ProductLiabilityPage() {
       )}
 
       <div className="premium-card p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">제조물 책임 소송 안내</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">제조물 책임 소송 안내</h2>
         <ol className="space-y-3">
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>1</span>
-            <span className="text-sm text-gray-300">결함 증거 확보 (사진, 제품 보관)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>1</span>
+            <span className="text-sm text-slate-600">결함 증거 확보 (사진, 제품 보관)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>2</span>
-            <span className="text-sm text-gray-300">소비자원 피해구제 신청 (1372)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>2</span>
+            <span className="text-sm text-slate-600">소비자원 피해구제 신청 (1372)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>3</span>
-            <span className="text-sm text-gray-300">민사소송 시 제조사가 무과실 입증 책임</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>3</span>
+            <span className="text-sm text-slate-600">민사소송 시 제조사가 무과실 입증 책임</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>4</span>
-            <span className="text-sm text-gray-300">징벌적 손해배상 최대 3배</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>4</span>
+            <span className="text-sm text-slate-600">징벌적 손해배상 최대 3배</span>
           </li>
         </ol>
       </div>

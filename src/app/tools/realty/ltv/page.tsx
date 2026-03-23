@@ -52,17 +52,17 @@ export default function LtvPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">주택 가격 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">주택 가격 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={housePrice ? parseInt(housePrice).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setHousePrice)}
             placeholder="예: 500,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
           {housePrice && (
             <p className="text-xs text-gray-500 mt-1">
@@ -72,14 +72,14 @@ export default function LtvPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">대출 희망 금액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">대출 희망 금액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={loanAmount ? parseInt(loanAmount).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setLoanAmount)}
             placeholder="예: 200,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
           {loanAmount && (
             <p className="text-xs text-gray-500 mt-1">
@@ -89,11 +89,11 @@ export default function LtvPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">지역 구분</label>
+          <label className="block text-sm text-slate-600 mb-2">지역 구분</label>
           <select
             value={region}
             onChange={e => setRegion(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           >
             {REGIONS.map(r => (
               <option key={r.value} value={r.value}>{r.label} (LTV {r.limit}%)</option>
@@ -112,27 +112,27 @@ export default function LtvPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">현재 LTV</p>
+            <p className="text-sm text-slate-600 mb-1">현재 LTV</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {result.ltv.toFixed(1)}%
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">규제 기준 LTV</p>
-            <p className="text-lg text-white">{result.regulationLimit}%</p>
+            <p className="text-sm text-slate-600 mb-1">규제 기준 LTV</p>
+            <p className="text-lg text-slate-900">{result.regulationLimit}%</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">규제 기준 내 최대 대출 가능액</p>
-            <p className="text-lg text-white">{formatNumber(result.maxLoan)}원</p>
+            <p className="text-sm text-slate-600 mb-1">규제 기준 내 최대 대출 가능액</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.maxLoan)}원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">적합 여부</p>
+            <p className="text-sm text-slate-600 mb-1">적합 여부</p>
             {result.isOver ? (
               <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-red-500/20 text-red-400">
                 초과 - 규제 기준을 초과합니다
@@ -145,8 +145,8 @@ export default function LtvPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`주택가격 × LTV비율 = 최대 대출가능액
 
 현재 LTV = 대출금액 ÷ 주택가격 × 100
@@ -155,7 +155,7 @@ export default function LtvPage() {
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 금융위원회 LTV 규제 (2022.8 이후 기준). 무주택 실수요자 예외 및 서민 특례는 별도 조건 적용.
             </p>
@@ -164,23 +164,23 @@ export default function LtvPage() {
       )}
 
       <div className="premium-card p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">대출 한도 높이는 방법</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">대출 한도 높이는 방법</h2>
         <ol className="space-y-3">
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>1</span>
-            <span className="text-sm text-gray-300">일반지역 주택 선택 (LTV 70%)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#8b5cf6' }}>1</span>
+            <span className="text-sm text-slate-600">일반지역 주택 선택 (LTV 70%)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>2</span>
-            <span className="text-sm text-gray-300">생애최초 주택구입 우대</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#8b5cf6' }}>2</span>
+            <span className="text-sm text-slate-600">생애최초 주택구입 우대</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>3</span>
-            <span className="text-sm text-gray-300">서민·실수요자 요건 충족 시 우대 LTV</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#8b5cf6' }}>3</span>
+            <span className="text-sm text-slate-600">서민·실수요자 요건 충족 시 우대 LTV</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#8b5cf6' }}>4</span>
-            <span className="text-sm text-gray-300">은행별 LTV 차이 비교</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#8b5cf6' }}>4</span>
+            <span className="text-sm text-slate-600">은행별 LTV 차이 비교</span>
           </li>
         </ol>
       </div>

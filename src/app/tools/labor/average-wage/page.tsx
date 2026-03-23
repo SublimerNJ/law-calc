@@ -78,23 +78,23 @@ export default function AverageWagePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">산정 기준일 (퇴직일, 재해일 등)</label>
+          <label className="block text-sm text-slate-600 mb-2">산정 기준일 (퇴직일, 재해일 등)</label>
           <input
             type="date"
             value={baseDate}
             onChange={e => setBaseDate(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-3">직전 3개월 임금 내역</label>
+          <label className="block text-sm text-slate-600 mb-3">직전 3개월 임금 내역</label>
           <div className="space-y-4">
             {months.map((m, idx) => (
-              <div key={idx} className="bg-[#0d1424] rounded-lg p-4 border border-[#1e2d4a]">
+              <div key={idx} className="bg-white rounded-lg p-4 border border-slate-200">
                 <p className="text-xs text-gray-500 mb-2">{idx + 1}번째 월</p>
                 <div className="grid grid-cols-2 gap-3 mb-3">
                   <div>
@@ -103,7 +103,7 @@ export default function AverageWagePage() {
                       type="date"
                       value={m.startDate}
                       onChange={e => updateMonth(idx, 'startDate', e.target.value)}
-                      className="w-full bg-[#0a0f1c] border border-[#1e2d4a] rounded px-3 py-2 text-sm text-white focus:border-[#f59e0b] focus:outline-none"
+                      className="w-full bg-[#0a0f1c] border border-slate-200 rounded px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -112,7 +112,7 @@ export default function AverageWagePage() {
                       type="date"
                       value={m.endDate}
                       onChange={e => updateMonth(idx, 'endDate', e.target.value)}
-                      className="w-full bg-[#0a0f1c] border border-[#1e2d4a] rounded px-3 py-2 text-sm text-white focus:border-[#f59e0b] focus:outline-none"
+                      className="w-full bg-[#0a0f1c] border border-slate-200 rounded px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -125,7 +125,7 @@ export default function AverageWagePage() {
                       value={m.basePay ? parseNum(m.basePay).toLocaleString('ko-KR') : ''}
                       onChange={e => updateMonth(idx, 'basePay', e.target.value.replace(/[^0-9]/g, ''))}
                       placeholder="3,000,000"
-                      className="w-full bg-[#0a0f1c] border border-[#1e2d4a] rounded px-3 py-2 text-sm text-white focus:border-[#f59e0b] focus:outline-none"
+                      className="w-full bg-[#0a0f1c] border border-slate-200 rounded px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -136,7 +136,7 @@ export default function AverageWagePage() {
                       value={m.allowances ? parseNum(m.allowances).toLocaleString('ko-KR') : ''}
                       onChange={e => updateMonth(idx, 'allowances', e.target.value.replace(/[^0-9]/g, ''))}
                       placeholder="0"
-                      className="w-full bg-[#0a0f1c] border border-[#1e2d4a] rounded px-3 py-2 text-sm text-white focus:border-[#f59e0b] focus:outline-none"
+                      className="w-full bg-[#0a0f1c] border border-slate-200 rounded px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -149,23 +149,23 @@ export default function AverageWagePage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">정기상여금 (선택)</label>
+          <label className="block text-sm text-slate-600 mb-2">정기상여금 (선택)</label>
           <input
             type="text"
             inputMode="numeric"
             value={bonusAmount ? parseNum(bonusAmount).toLocaleString('ko-KR') : ''}
             onChange={e => setBonusAmount(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="해당 기간 지급된 정기상여금"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">상여금 지급주기</label>
+          <label className="block text-sm text-slate-600 mb-2">상여금 지급주기</label>
           <select
             value={bonusCycle}
             onChange={e => setBonusCycle(Number(e.target.value))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             <option value={1}>1개월</option>
             <option value={2}>2개월</option>
@@ -186,10 +186,10 @@ export default function AverageWagePage() {
 
       {calculated && dailyAvgWage > 0 && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">1일 평균임금</p>
+            <p className="text-sm text-slate-600 mb-1">1일 평균임금</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(Math.floor(dailyAvgWage))}원
             </p>
@@ -197,26 +197,26 @@ export default function AverageWagePage() {
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">3개월 임금총액</p>
-              <p className="text-lg text-white">{formatNumber(grandTotal)}원</p>
+              <p className="text-sm text-slate-600 mb-1">3개월 임금총액</p>
+              <p className="text-lg text-slate-900">{formatNumber(grandTotal)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">3개월 총 역일수</p>
-              <p className="text-lg text-white">{totalDays}일</p>
+              <p className="text-sm text-slate-600 mb-1">3개월 총 역일수</p>
+              <p className="text-lg text-slate-900">{totalDays}일</p>
             </div>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">산정 기간</p>
-            <p className="text-lg text-white">
+            <p className="text-sm text-slate-600 mb-1">산정 기간</p>
+            <p className="text-lg text-slate-900">
               {periodStart.replace(/-/g, '.')} ~ {periodEnd.replace(/-/g, '.')}
             </p>
           </div>
 
           {bonusInclusion > 0 && (
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">상여금 산입액</p>
-              <p className="text-lg text-white">
+              <p className="text-sm text-slate-600 mb-1">상여금 산입액</p>
+              <p className="text-lg text-slate-900">
                 {formatNumber(Math.floor(bonusInclusion))}원
                 <span className="text-xs text-gray-500 ml-2">
                   ({formatNumber(parseNum(bonusAmount))}원 x 3/{bonusCycle})
@@ -225,9 +225,9 @@ export default function AverageWagePage() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`3개월 총임금 ÷ 3개월 역일수 = 1일 평균임금`}
             </pre>
             <p className="text-xs text-gray-500">
@@ -241,7 +241,7 @@ export default function AverageWagePage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">평균임금이 사용되는 곳</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">평균임금이 사용되는 곳</h2>
         <ul className="space-y-3">
           {[
             { num: '1', text: '퇴직금 산정 (30일분 × 근속연수)' },
@@ -251,16 +251,16 @@ export default function AverageWagePage() {
           ].map(item => (
             <li key={item.num} className="flex items-start gap-3">
               <span
-                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: category.color }}
               >
                 {item.num}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-xs text-gray-500 border-t border-[#1e2d4a] pt-3">
+        <p className="mt-4 text-xs text-gray-500 border-t border-slate-200 pt-3">
           통상임금보다 낮으면 통상임금 적용
         </p>
       </div>

@@ -51,10 +51,10 @@ export default function UnjustEnrichmentPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">부당이득 금액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">부당이득 금액 (원)</label>
           <p className="text-xs text-gray-500 mb-1">상대방이 부당하게 취득한 금액 (예: 초과 지급액, 착오 송금액)</p>
           <input
             type="text"
@@ -62,7 +62,7 @@ export default function UnjustEnrichmentPage() {
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -72,27 +72,27 @@ export default function UnjustEnrichmentPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">부당이득 취득일</label>
+          <label className="block text-sm text-slate-600 mb-2">부당이득 취득일</label>
           <input
             type="date"
             value={acquiredDate}
             onChange={e => setAcquiredDate(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">반환 기준일</label>
+          <label className="block text-sm text-slate-600 mb-2">반환 기준일</label>
           <input
             type="date"
             value={returnDate}
             onChange={e => setReturnDate(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">수익자 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">수익자 유형</label>
           <div className="flex gap-4">
             {[
               { value: 'good' as const, label: '선의(善意) 수익자' },
@@ -106,7 +106,7 @@ export default function UnjustEnrichmentPage() {
                   onChange={() => setBeneficiaryType(opt.value)}
                   className="accent-[#06b6d4]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -127,22 +127,22 @@ export default function UnjustEnrichmentPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">부당이득 원금</p>
-            <p className="text-lg text-white">{formatNumber(result.principal)}원</p>
+            <p className="text-sm text-slate-600 mb-1">부당이득 원금</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.principal)}원</p>
           </div>
 
           {beneficiaryType === 'bad' && (
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">법정이자 (연 5%)</p>
-              <p className="text-lg text-white">{formatNumber(result.interest)}원</p>
+              <p className="text-sm text-slate-600 mb-1">법정이자 (연 5%)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.interest)}원</p>
             </div>
           )}
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">반환 합계</p>
+            <p className="text-sm text-slate-600 mb-1">반환 합계</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(beneficiaryType === 'bad' ? result.total : result.principal)}원
             </p>
@@ -152,8 +152,8 @@ export default function UnjustEnrichmentPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">기간</p>
-            <p className="text-lg text-white">{formatNumber(result.days)}일</p>
+            <p className="text-sm text-slate-600 mb-1">기간</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.days)}일</p>
           </div>
 
           <div className="mb-4 p-3 rounded-lg" style={{ backgroundColor: beneficiaryType === 'good' ? '#06b6d41a' : '#ef44441a' }}>
@@ -168,12 +168,12 @@ export default function UnjustEnrichmentPage() {
             )}
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">원금 × 5% × 일수/365 = 이자</p>
             <p className="text-xs text-gray-500 font-mono mt-1">원금 + 이자 = 합계</p>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
+          <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제741조(부당이득의 내용), 제748조(수익자의 반환범위)
             </p>
@@ -182,23 +182,23 @@ export default function UnjustEnrichmentPage() {
       )}
 
       <div className="premium-card p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">부당이득 반환 청구</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">부당이득 반환 청구</h2>
         <ol className="space-y-3">
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#06b6d4' }}>1</span>
-            <span className="text-sm text-gray-300">내용증명으로 반환 요구</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#06b6d4' }}>1</span>
+            <span className="text-sm text-slate-600">내용증명으로 반환 요구</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#06b6d4' }}>2</span>
-            <span className="text-sm text-gray-300">지급명령 신청 (간편, 인지대 1/10)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#06b6d4' }}>2</span>
+            <span className="text-sm text-slate-600">지급명령 신청 (간편, 인지대 1/10)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#06b6d4' }}>3</span>
-            <span className="text-sm text-gray-300">이의 시 소송 전환</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#06b6d4' }}>3</span>
+            <span className="text-sm text-slate-600">이의 시 소송 전환</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#06b6d4' }}>4</span>
-            <span className="text-sm text-gray-300">시효: 부당이득 안 날부터 10년</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#06b6d4' }}>4</span>
+            <span className="text-sm text-slate-600">시효: 부당이득 안 날부터 10년</span>
           </li>
         </ol>
       </div>

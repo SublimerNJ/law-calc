@@ -42,20 +42,20 @@ export default function SmallClaimsPage() {
       <div className="space-y-6">
         {/* Input */}
         <div className="premium-card p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-white">소액사건 재판비용 계산</h2>
+          <h2 className="text-lg font-semibold text-slate-900">소액사건 재판비용 계산</h2>
           <p className="text-xs text-gray-500">
             소액사건심판법 기준 (소가 3,000만원 이하)
           </p>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">청구금액 (원)</label>
+            <label className="block text-sm text-slate-600 mb-1">청구금액 (원)</label>
             <input
               type="text"
               inputMode="numeric"
               value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
               onChange={(e) => setAmount(e.target.value.replace(/[^0-9]/g, ''))}
               placeholder="예: 10,000,000"
-              className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-white focus:outline-none focus:border-[var(--color-brand-primary)]"
+              className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-slate-900 focus:outline-none focus:border-[var(--color-brand-primary)]"
             />
             {isOverLimit && (
               <p className="text-xs text-red-400 mt-1">
@@ -65,33 +65,33 @@ export default function SmallClaimsPage() {
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">당사자 수</label>
+            <label className="block text-sm text-slate-600 mb-1">당사자 수</label>
             <input
               type="number"
               min={2}
               value={parties}
               onChange={(e) => setParties(Math.max(2, Number(e.target.value)))}
-              className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-white focus:outline-none focus:border-[var(--color-brand-primary)]"
+              className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-slate-900 focus:outline-none focus:border-[var(--color-brand-primary)]"
             />
           </div>
         </div>
 
         {/* Results */}
         <div className="premium-card p-6 space-y-4">
-          <h2 className="text-lg font-semibold text-white">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900">계산 결과</h2>
 
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">인지대</span>
-              <span className="text-white">{formatNumber(stampFee)}원</span>
+              <span className="text-slate-600">인지대</span>
+              <span className="text-slate-900">{formatNumber(stampFee)}원</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">송달료 ({parties}명 x 10회 x {formatNumber(UNIT_COST)}원)</span>
-              <span className="text-white">{formatNumber(serviceFee)}원</span>
+              <span className="text-slate-600">송달료 ({parties}명 x 10회 x {formatNumber(UNIT_COST)}원)</span>
+              <span className="text-slate-900">{formatNumber(serviceFee)}원</span>
             </div>
             <hr className="border-[var(--color-border-subtle)]" />
             <div className="flex justify-between">
-              <span className="text-white font-semibold">합계</span>
+              <span className="text-slate-900 font-semibold">합계</span>
               <span className="text-xl font-bold text-[var(--color-brand-primary)]">
                 {formatNumber(total)}원
               </span>
@@ -101,8 +101,8 @@ export default function SmallClaimsPage() {
 
         {/* Formula */}
         <div className="premium-card p-6 space-y-3">
-          <h3 className="text-sm font-semibold text-gray-400">계산식</h3>
-          <pre className="font-mono text-xs text-gray-300 bg-[var(--color-surface-200)] rounded-lg p-3 whitespace-pre-wrap">
+          <h3 className="text-sm font-semibold text-slate-600">계산식</h3>
+          <pre className="font-mono text-xs text-slate-600 bg-[var(--color-surface-200)] rounded-lg p-3 whitespace-pre-wrap">
 {`인지대: ${formatNumber(stampFee)}원
 + 송달료: ${formatNumber(serviceFee)}원
 = 합계: ${formatNumber(total)}원`}
@@ -111,7 +111,7 @@ export default function SmallClaimsPage() {
 
         {/* Info */}
         <div className="premium-card p-6 space-y-3">
-          <h3 className="text-sm font-semibold text-gray-400">소액사건 안내</h3>
+          <h3 className="text-sm font-semibold text-slate-600">소액사건 안내</h3>
           <p className="text-xs text-gray-500">
             소액사건심판법에 따른 간이 절차 비용입니다.
           </p>

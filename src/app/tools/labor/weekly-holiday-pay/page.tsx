@@ -46,34 +46,34 @@ export default function WeeklyHolidayPayPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">1주 소정근로시간 (1~52시간)</label>
+          <label className="block text-sm text-slate-600 mb-2">1주 소정근로시간 (1~52시간)</label>
           <input
             type="text"
             inputMode="numeric"
             value={weeklyHours}
             onChange={(e) => setWeeklyHours(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 40"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">시간당 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">시간당 통상임금 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={hourlyWage ? parseInt(hourlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setHourlyWage)}
             placeholder="예: 10,030"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">이번 주 개근 여부</label>
+          <label className="block text-sm text-slate-600 mb-2">이번 주 개근 여부</label>
           <div className="flex gap-4">
             {[
               { value: true, label: '개근' },
@@ -87,7 +87,7 @@ export default function WeeklyHolidayPayPage() {
                   onChange={() => setFullAttendance(opt.value)}
                   className="accent-[#f59e0b]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -104,7 +104,7 @@ export default function WeeklyHolidayPayPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
             <span
@@ -119,7 +119,7 @@ export default function WeeklyHolidayPayPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">주휴수당 금액</p>
+            <p className="text-sm text-slate-600 mb-1">주휴수당 금액</p>
             <p
               className="text-2xl font-bold"
               style={{ color: result.eligible ? category.color : '#6b7280' }}
@@ -129,13 +129,13 @@ export default function WeeklyHolidayPayPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">주휴시간</p>
-            <p className="text-lg text-white">{result.weeklyHolidayHours.toFixed(1)}시간</p>
+            <p className="text-sm text-slate-600 mb-1">주휴시간</p>
+            <p className="text-lg text-slate-900">{result.weeklyHolidayHours.toFixed(1)}시간</p>
           </div>
 
           {result.eligible && (
-            <div className="mb-4 p-4 rounded-lg bg-[#0d1424]" style={{ borderLeft: `3px solid ${category.color}` }}>
-              <p className="text-xs text-gray-400 mb-1">월 예상 총급여 (기본급 + 주휴수당)</p>
+            <div className="mb-4 p-4 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
+              <p className="text-xs text-slate-600 mb-1">월 예상 총급여 (기본급 + 주휴수당)</p>
               <p className="text-lg font-bold" style={{ color: category.color }}>
                 {formatNumber(Math.floor((parseFloat(weeklyHours) * parseInt(hourlyWage) + result.amount) * 4.33))}원/월
               </p>
@@ -146,8 +146,8 @@ export default function WeeklyHolidayPayPage() {
           )}
 
           {!result.eligible && (
-            <div className="mb-4 p-3 bg-[#0d1424] rounded-lg">
-              <p className="text-sm text-gray-400">
+            <div className="mb-4 p-3 bg-white rounded-lg">
+              <p className="text-sm text-slate-600">
                 {parseFloat(weeklyHours) < 15
                   ? '주 소정근로시간이 15시간 미만이면 주휴수당이 발생하지 않습니다.'
                   : '결근이 있는 경우 해당 주의 주휴수당이 발생하지 않습니다.'}
@@ -156,8 +156,8 @@ export default function WeeklyHolidayPayPage() {
           )}
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`주휴시간 = 주근로시간 ÷ 40 × 8
 수당 = 주휴시간 × 시간당 통상임금
 
@@ -166,7 +166,7 @@ export default function WeeklyHolidayPayPage() {
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 근로기준법 제55조(휴일), 시행령 제30조
             </p>

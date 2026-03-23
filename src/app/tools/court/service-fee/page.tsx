@@ -37,19 +37,19 @@ export default function ServiceFeePage() {
       <div className="space-y-6">
         {/* Input */}
         <div className="premium-card p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-white">송달료 계산</h2>
+          <h2 className="text-lg font-semibold text-slate-900">송달료 계산</h2>
           <p className="text-xs text-gray-500">
             민사소송규칙 제19조, 대법원 규칙 기준 (2026년 기준 4,500원/회)
           </p>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">당사자 수 (원고+피고 합산)</label>
+            <label className="block text-sm text-slate-600 mb-1">당사자 수 (원고+피고 합산)</label>
             <input
               type="number"
               min={2}
               value={parties}
               onChange={(e) => setParties(Math.max(2, Number(e.target.value)))}
-              className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-white focus:outline-none focus:border-[var(--color-brand-primary)]"
+              className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-slate-900 focus:outline-none focus:border-[var(--color-brand-primary)]"
             />
           </div>
 
@@ -61,20 +61,20 @@ export default function ServiceFeePage() {
               onChange={(e) => setManualMode(e.target.checked)}
               className="accent-[var(--color-brand-primary)]"
             />
-            <label htmlFor="manualMode" className="text-sm text-gray-400">
+            <label htmlFor="manualMode" className="text-sm text-slate-600">
               송달 회수 직접 입력
             </label>
           </div>
 
           {manualMode && (
             <div>
-              <label className="block text-sm text-gray-400 mb-1">송달 예정 회수</label>
+              <label className="block text-sm text-slate-600 mb-1">송달 예정 회수</label>
               <input
                 type="number"
                 min={1}
                 value={manualRounds}
                 onChange={(e) => setManualRounds(Math.max(1, Number(e.target.value)))}
-                className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-white focus:outline-none focus:border-[var(--color-brand-primary)]"
+                className="w-full rounded-lg bg-[var(--color-surface-200)] border border-[var(--color-border-default)] px-4 py-2.5 text-slate-900 focus:outline-none focus:border-[var(--color-brand-primary)]"
               />
               <p className="text-xs text-gray-600 mt-1">
                 민사 1심 기본 10회, 항소심 8회 권장
@@ -85,7 +85,7 @@ export default function ServiceFeePage() {
 
         {/* Results */}
         <div className="premium-card p-6 space-y-4">
-          <h2 className="text-lg font-semibold text-white">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900">계산 결과</h2>
 
           {results.map((r) => (
             <div
@@ -93,8 +93,8 @@ export default function ServiceFeePage() {
               className="rounded-lg bg-[var(--color-surface-200)] p-4 space-y-2"
             >
               <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">{r.label}</span>
-                <span className="text-xl font-bold text-white">
+                <span className="text-sm text-slate-600">{r.label}</span>
+                <span className="text-xl font-bold text-slate-900">
                   {formatNumber(r.fee)}원
                 </span>
               </div>
@@ -111,7 +111,7 @@ export default function ServiceFeePage() {
         {/* Guide */}
         {!manualMode && (
           <div className="premium-card p-6">
-            <h3 className="text-sm font-semibold text-gray-400 mb-3">심급별 기본 송달 회수 안내</h3>
+            <h3 className="text-sm font-semibold text-slate-600 mb-3">심급별 기본 송달 회수 안내</h3>
             <ul className="text-xs text-gray-500 space-y-1">
               <li>1심: 10회 (민사소송 기본)</li>
               <li>항소심: 8회</li>

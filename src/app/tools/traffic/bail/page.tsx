@@ -116,14 +116,14 @@ export default function BailPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">죄의 종류</label>
+          <label className="block text-sm text-slate-600 mb-2">죄의 종류</label>
           <select
             value={crimeId}
             onChange={e => setCrimeId(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           >
             {CRIME_TYPES.map(c => (
               <option key={c.id} value={c.id}>{c.name}</option>
@@ -132,14 +132,14 @@ export default function BailPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">피의자/피고인 재산 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">피의자/피고인 재산 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={assets ? parseInt(assets).toLocaleString('ko-KR') : ''}
             onChange={handleAssetsChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           />
           {assets && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(assets).toLocaleString('ko-KR')}원</p>
@@ -147,7 +147,7 @@ export default function BailPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">전과 여부</label>
+          <label className="block text-sm text-slate-600 mb-2">전과 여부</label>
           <div className="flex gap-4 flex-wrap">
             {([
               { value: 'none' as const, label: '없음' },
@@ -162,14 +162,14 @@ export default function BailPage() {
                   onChange={() => setPriorRecord(opt.value)}
                   className="accent-[#ef4444]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">도주 위험성</label>
+          <label className="block text-sm text-slate-600 mb-2">도주 위험성</label>
           <div className="flex gap-4">
             {([
               { value: 'low' as const, label: '낮음' },
@@ -184,14 +184,14 @@ export default function BailPage() {
                   onChange={() => setFlightRisk(opt.value)}
                   className="accent-[#ef4444]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">증거인멸 위험</label>
+          <label className="block text-sm text-slate-600 mb-2">증거인멸 위험</label>
           <div className="flex gap-4">
             {([
               { value: 'low' as const, label: '낮음' },
@@ -206,7 +206,7 @@ export default function BailPage() {
                   onChange={() => setEvidenceRisk(opt.value)}
                   className="accent-[#ef4444]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -223,29 +223,29 @@ export default function BailPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">예상 보석금 범위</p>
+              <p className="text-sm text-slate-600 mb-1">예상 보석금 범위</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.rangeLow)}원 ~ {formatNumber(result.rangeHigh)}원
               </p>
             </div>
 
-            <div className="bg-[#0d1424] rounded-lg p-4 space-y-2">
-              <p className="text-sm text-gray-400 font-semibold mb-2">산정 근거</p>
+            <div className="bg-white rounded-lg p-4 space-y-2">
+              <p className="text-sm text-slate-600 font-semibold mb-2">산정 근거</p>
               <div className="grid grid-cols-2 gap-2 text-sm">
-                <span className="text-gray-400">기준 보석금 (죄종 중간값)</span>
-                <span className="text-white text-right">{formatNumber(result.baseBail)}원</span>
-                <span className="text-gray-400">재산 기준값</span>
-                <span className="text-white text-right">{formatNumber(result.assetBased)}원</span>
-                <span className="text-gray-400">전과 가중</span>
-                <span className="text-white text-right">x{result.priorMultiplier}</span>
-                <span className="text-gray-400">도주 위험 가중</span>
-                <span className="text-white text-right">x{result.flightMultiplier}</span>
-                <span className="text-gray-400">증거인멸 위험 가중</span>
-                <span className="text-white text-right">x{result.evidenceMultiplier}</span>
+                <span className="text-slate-600">기준 보석금 (죄종 중간값)</span>
+                <span className="text-slate-900 text-right">{formatNumber(result.baseBail)}원</span>
+                <span className="text-slate-600">재산 기준값</span>
+                <span className="text-slate-900 text-right">{formatNumber(result.assetBased)}원</span>
+                <span className="text-slate-600">전과 가중</span>
+                <span className="text-slate-900 text-right">x{result.priorMultiplier}</span>
+                <span className="text-slate-600">도주 위험 가중</span>
+                <span className="text-slate-900 text-right">x{result.flightMultiplier}</span>
+                <span className="text-slate-600">증거인멸 위험 가중</span>
+                <span className="text-slate-900 text-right">x{result.evidenceMultiplier}</span>
               </div>
             </div>
 
@@ -256,9 +256,9 @@ export default function BailPage() {
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`기본보석금(죄종 중간값) vs 재산기준값 → 높은 값 선택
 × 전과 가중배율 × 도주위험 배율 × 증거인멸 배율
 = 예상 보석금 (상한 5억원)`}
@@ -272,7 +272,7 @@ export default function BailPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">보석 신청 안내</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">보석 신청 안내</h2>
           <div className="space-y-3">
             {[
               { step: '1', title: '신청', desc: '변호인 또는 본인이 법원에 보석허가청구서 제출' },
@@ -285,7 +285,7 @@ export default function BailPage() {
                   {item.step}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-sm font-semibold text-slate-600">{item.title}</p>
                   <p className="text-xs text-gray-500">{item.desc}</p>
                 </div>
               </div>

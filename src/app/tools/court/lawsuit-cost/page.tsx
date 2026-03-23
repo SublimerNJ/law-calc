@@ -95,10 +95,10 @@ export default function LawsuitCostPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">소가 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">소가 (원)</label>
           <p className="text-xs text-gray-500 mb-1">소가 = 소송에서 청구하는 금액</p>
           <input
             type="text"
@@ -106,23 +106,23 @@ export default function LawsuitCostPage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 50,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">당사자 수 (원고 + 피고)</label>
+          <label className="block text-sm text-slate-600 mb-2">당사자 수 (원고 + 피고)</label>
           <input
             type="number"
             min={2}
             value={partyCount}
             onChange={e => setPartyCount(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">심급 선택</label>
+          <label className="block text-sm text-slate-600 mb-2">심급 선택</label>
           <div className="flex gap-4">
             {([
               { value: 1 as const, label: '1심' },
@@ -137,14 +137,14 @@ export default function LawsuitCostPage() {
                   onChange={() => setLevel(opt.value)}
                   className="accent-[#3b82f6]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">접수 방법</label>
+          <label className="block text-sm text-slate-600 mb-2">접수 방법</label>
           <div className="flex gap-4">
             {([
               { value: 'offline' as FilingMethod, label: '오프라인 (법원 창구)' },
@@ -158,7 +158,7 @@ export default function LawsuitCostPage() {
                   onChange={() => setFilingMethod(opt.value)}
                   className="accent-[#3b82f6]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -180,36 +180,36 @@ export default function LawsuitCostPage() {
         <>
           {/* 선택한 방법의 결과 */}
           <div className="premium-card p-6 mb-4">
-            <h2 className="text-lg font-semibold text-white mb-4">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">
               {filingMethod === 'ecourt' ? '전자소송' : '오프라인'} 소송비용 ({result.levelLabel})
             </h2>
 
             <table className="w-full mb-4">
               <tbody>
-                <tr className="border-b border-[#1e2d4a]">
-                  <td className="py-3 text-sm text-gray-400">인지대</td>
-                  <td className="py-3 text-right text-white font-medium">
+                <tr className="border-b border-slate-200">
+                  <td className="py-3 text-sm text-slate-600">인지대</td>
+                  <td className="py-3 text-right text-slate-900 font-medium">
                     {formatNumber(filingMethod === 'ecourt' ? result.ecourtStampFee : result.offlineStampFee)}원
                   </td>
                 </tr>
                 {filingMethod === 'ecourt' && result.ecourtDiscount > 0 && (
-                  <tr className="border-b border-[#1e2d4a]">
+                  <tr className="border-b border-slate-200">
                     <td className="py-3 text-sm text-green-400">전자소송 할인 (-10%)</td>
                     <td className="py-3 text-right text-green-400 font-medium">
                       -{formatNumber(result.ecourtDiscount)}원
                     </td>
                   </tr>
                 )}
-                <tr className="border-b border-[#1e2d4a]">
-                  <td className="py-3 text-sm text-gray-400">
+                <tr className="border-b border-slate-200">
+                  <td className="py-3 text-sm text-slate-600">
                     송달료 ({result.parties}명 × {result.serviceRounds}회 × {formatNumber(SERVICE_FEE_UNIT)}원)
                   </td>
-                  <td className="py-3 text-right text-white font-medium">
+                  <td className="py-3 text-right text-slate-900 font-medium">
                     {formatNumber(filingMethod === 'ecourt' ? result.ecourtServiceFee : result.offlineServiceFee)}원
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-3 text-sm font-semibold text-white">합계</td>
+                  <td className="py-3 text-sm font-semibold text-slate-900">합계</td>
                   <td className="py-3 text-right text-2xl font-bold" style={{ color: category.color }}>
                     {formatNumber(filingMethod === 'ecourt' ? result.ecourtTotal : result.offlineTotal)}원
                   </td>
@@ -220,37 +220,37 @@ export default function LawsuitCostPage() {
 
           {/* 비교표 */}
           <div className="premium-card p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">오프라인 vs 전자소송 비교</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">오프라인 vs 전자소송 비교</h2>
 
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <th className="text-left text-xs text-gray-500 py-2">항목</th>
                   <th className="text-right text-xs text-gray-500 py-2">오프라인</th>
                   <th className="text-right text-xs text-gray-500 py-2">전자소송</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-[#1e2d4a]/50">
-                  <td className="py-2.5 text-gray-300">인지대</td>
-                  <td className={`py-2.5 text-right ${filingMethod === 'offline' ? 'font-semibold' : 'text-gray-400'}`}>
+                <tr className="border-b border-slate-200/50">
+                  <td className="py-2.5 text-slate-600">인지대</td>
+                  <td className={`py-2.5 text-right ${filingMethod === 'offline' ? 'font-semibold' : 'text-slate-600'}`}>
                     {formatNumber(result.offlineStampFee)}원
                   </td>
-                  <td className={`py-2.5 text-right ${filingMethod === 'ecourt' ? 'font-semibold' : 'text-gray-400'}`}>
+                  <td className={`py-2.5 text-right ${filingMethod === 'ecourt' ? 'font-semibold' : 'text-slate-600'}`}>
                     {formatNumber(result.ecourtStampFee)}원
                   </td>
                 </tr>
-                <tr className="border-b border-[#1e2d4a]/50">
-                  <td className="py-2.5 text-gray-300">송달료</td>
-                  <td className={`py-2.5 text-right ${filingMethod === 'offline' ? 'font-semibold' : 'text-gray-400'}`}>
+                <tr className="border-b border-slate-200/50">
+                  <td className="py-2.5 text-slate-600">송달료</td>
+                  <td className={`py-2.5 text-right ${filingMethod === 'offline' ? 'font-semibold' : 'text-slate-600'}`}>
                     {formatNumber(result.offlineServiceFee)}원
                   </td>
-                  <td className={`py-2.5 text-right ${filingMethod === 'ecourt' ? 'font-semibold' : 'text-gray-400'}`}>
+                  <td className={`py-2.5 text-right ${filingMethod === 'ecourt' ? 'font-semibold' : 'text-slate-600'}`}>
                     {formatNumber(result.ecourtServiceFee)}원
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 font-semibold text-white">합계</td>
+                  <td className="py-2.5 font-semibold text-slate-900">합계</td>
                   <td className="py-2.5 text-right font-semibold" style={{ color: filingMethod === 'offline' ? category.color : '#9ca3af' }}>
                     {formatNumber(result.offlineTotal)}원
                   </td>
@@ -269,7 +269,7 @@ export default function LawsuitCostPage() {
               </div>
             )}
 
-            <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <div className="mt-4 pt-4 border-t border-slate-200">
               <p className="text-xs text-gray-500">
                 인지대: 민사소송등인지법 별표 기준 | 전자소송 할인: 민사소송 등에서의 전자문서 이용 등에 관한 법률
               </p>

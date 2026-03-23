@@ -134,17 +134,17 @@ export default function AcquisitionTaxPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">취득가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">취득가액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={price ? parseInt(price).toLocaleString('ko-KR') : ''}
             onChange={handlePriceChange}
             placeholder="예: 500,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
           />
           {price && (
             <p className="text-xs text-gray-500 mt-1">
@@ -154,7 +154,7 @@ export default function AcquisitionTaxPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">부동산 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">부동산 유형</label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {propertyTypes.map(opt => (
               <button
@@ -162,8 +162,8 @@ export default function AcquisitionTaxPage() {
                 onClick={() => setPropertyType(opt.value)}
                 className={`px-3 py-2 rounded-lg text-sm border transition-colors ${
                   propertyType === opt.value
-                    ? 'border-[#10b981] bg-[#10b981]/10 text-white'
-                    : 'border-[#1e2d4a] text-gray-400 hover:border-gray-500'
+                    ? 'border-[#10b981] bg-[#10b981]/10 text-slate-900'
+                    : 'border-slate-200 text-slate-600 hover:border-gray-500'
                 }`}
               >
                 {opt.label}
@@ -175,7 +175,7 @@ export default function AcquisitionTaxPage() {
         {propertyType === 'house' && (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-gray-400 mb-2">주택 보유 수</label>
+              <label className="block text-sm text-slate-600 mb-2">주택 보유 수</label>
               <div className="flex gap-2">
                 {houseCounts.map(opt => (
                   <button
@@ -183,8 +183,8 @@ export default function AcquisitionTaxPage() {
                     onClick={() => setHouseCount(opt.value)}
                     className={`px-4 py-2 rounded-lg text-sm border transition-colors ${
                       houseCount === opt.value
-                        ? 'border-[#10b981] bg-[#10b981]/10 text-white'
-                        : 'border-[#1e2d4a] text-gray-400 hover:border-gray-500'
+                        ? 'border-[#10b981] bg-[#10b981]/10 text-slate-900'
+                        : 'border-slate-200 text-slate-600 hover:border-gray-500'
                     }`}
                   >
                     {opt.label}
@@ -201,7 +201,7 @@ export default function AcquisitionTaxPage() {
                   onChange={e => setAreaOver85(e.target.checked)}
                   className="accent-[#10b981]"
                 />
-                <span className="text-sm text-gray-300">85m2 초과</span>
+                <span className="text-sm text-slate-600">85m2 초과</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
@@ -210,7 +210,7 @@ export default function AcquisitionTaxPage() {
                   onChange={e => setAdjustedArea(e.target.checked)}
                   className="accent-[#10b981]"
                 />
-                <span className="text-sm text-gray-300">조정대상지역</span>
+                <span className="text-sm text-slate-600">조정대상지역</span>
               </label>
             </div>
           </>
@@ -227,34 +227,34 @@ export default function AcquisitionTaxPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-3 mb-4">
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">취득가액</span>
-              <span className="text-white">{formatNumber(result.acquisitionPrice)}원</span>
+              <span className="text-sm text-slate-600">취득가액</span>
+              <span className="text-slate-900">{formatNumber(result.acquisitionPrice)}원</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">적용 세율</span>
-              <span className="text-white">{(result.taxRate * 100).toFixed(1)}%</span>
+              <span className="text-sm text-slate-600">적용 세율</span>
+              <span className="text-slate-900">{(result.taxRate * 100).toFixed(1)}%</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">취득세</span>
-              <span className="text-white">{formatNumber(result.acquisitionTax)}원</span>
+              <span className="text-sm text-slate-600">취득세</span>
+              <span className="text-slate-900">{formatNumber(result.acquisitionTax)}원</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">농어촌특별세</span>
-              <span className="text-white">{formatNumber(result.ruralSpecialTax)}원</span>
+              <span className="text-sm text-slate-600">농어촌특별세</span>
+              <span className="text-slate-900">{formatNumber(result.ruralSpecialTax)}원</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">지방교육세</span>
-              <span className="text-white">{formatNumber(result.localEducationTax)}원</span>
+              <span className="text-sm text-slate-600">지방교육세</span>
+              <span className="text-slate-900">{formatNumber(result.localEducationTax)}원</span>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-[#1e2d4a] mb-4">
+          <div className="pt-4 border-t border-slate-200 mb-4">
             <div className="flex justify-between">
-              <span className="text-base font-semibold text-white">합계 세액</span>
+              <span className="text-base font-semibold text-slate-900">합계 세액</span>
               <span className="text-xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.total)}원
               </span>
@@ -262,12 +262,12 @@ export default function AcquisitionTaxPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg bg-[#0d1424]">
-              <p className="text-xs text-gray-400 mb-1">실효 부담률</p>
-              <p className="text-lg text-white">{(result.total / result.acquisitionPrice * 100).toFixed(2)}%</p>
+            <div className="p-3 rounded-lg bg-white">
+              <p className="text-xs text-slate-600 mb-1">실효 부담률</p>
+              <p className="text-lg text-slate-900">{(result.total / result.acquisitionPrice * 100).toFixed(2)}%</p>
             </div>
-            <div className="p-3 rounded-lg bg-[#0d1424]" style={{ borderLeft: `3px solid ${category.color}` }}>
-              <p className="text-xs text-gray-400 mb-1">총 매입비용 (취득가 + 세금)</p>
+            <div className="p-3 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
+              <p className="text-xs text-slate-600 mb-1">총 매입비용 (취득가 + 세금)</p>
               <p className="text-lg font-bold" style={{ color: category.color }}>
                 {formatNumber(result.acquisitionPrice + result.total)}원
               </p>
@@ -275,8 +275,8 @@ export default function AcquisitionTaxPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
 {`취득세 = ${formatNumber(result.acquisitionPrice)} × ${(result.taxRate * 100).toFixed(1)}% = ${formatNumber(result.acquisitionTax)}원
 농특세 = ${result.ruralSpecialTax > 0 ? `${formatNumber(result.acquisitionTax)} × 10% = ${formatNumber(result.ruralSpecialTax)}원` : '면제 (85m² 이하 주택)'}
 교육세 = ${formatNumber(result.acquisitionTax)} × 20% = ${formatNumber(result.localEducationTax)}원
@@ -284,7 +284,7 @@ export default function AcquisitionTaxPage() {
             </pre>
           </div>
 
-          <div className="pt-4 border-t border-[#1e2d4a]">
+          <div className="pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 지방세법 제11조, 농어촌특별세법 제5조, 지방교육세법 제5조
             </p>

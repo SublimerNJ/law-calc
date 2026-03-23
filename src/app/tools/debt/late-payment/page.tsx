@@ -61,17 +61,17 @@ export default function LatePaymentPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">원금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">원금 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -81,22 +81,22 @@ export default function LatePaymentPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">지연 시작일</label>
+          <label className="block text-sm text-slate-600 mb-2">지연 시작일</label>
           <input
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">지연 종료일</label>
+          <label className="block text-sm text-slate-600 mb-2">지연 종료일</label>
           <input
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
         </div>
 
@@ -108,7 +108,7 @@ export default function LatePaymentPage() {
               onChange={(e) => setIsLawsuit(e.target.checked)}
               className="w-4 h-4 accent-[#06b6d4]"
             />
-            <span className="text-sm text-gray-300">소송 제기 여부 (소송촉진법 이율 강조)</span>
+            <span className="text-sm text-slate-600">소송 제기 여부 (소송촉진법 이율 강조)</span>
           </label>
         </div>
 
@@ -129,18 +129,18 @@ export default function LatePaymentPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="grid grid-cols-1 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">민사 법정이자 (연 5%)</p>
-              <p className={`text-2xl font-bold ${isLawsuit ? 'text-gray-400' : ''}`} style={!isLawsuit ? { color: category.color } : undefined}>
+              <p className="text-sm text-slate-600 mb-1">민사 법정이자 (연 5%)</p>
+              <p className={`text-2xl font-bold ${isLawsuit ? 'text-slate-600' : ''}`} style={!isLawsuit ? { color: category.color } : undefined}>
                 {formatNumber(result.civilInterest)}원
               </p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">소송촉진법 지연이자 (연 12%)</p>
-              <p className={`text-2xl font-bold ${!isLawsuit ? 'text-gray-400' : ''}`} style={isLawsuit ? { color: category.color } : undefined}>
+              <p className="text-sm text-slate-600 mb-1">소송촉진법 지연이자 (연 12%)</p>
+              <p className={`text-2xl font-bold ${!isLawsuit ? 'text-slate-600' : ''}`} style={isLawsuit ? { color: category.color } : undefined}>
                 {formatNumber(result.lawsuitInterest)}원
               </p>
             </div>
@@ -148,18 +148,18 @@ export default function LatePaymentPage() {
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">원금</p>
-              <p className="text-lg text-white">{formatNumber(result.principal)}원</p>
+              <p className="text-sm text-slate-600 mb-1">원금</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.principal)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">지연일수</p>
-              <p className="text-lg text-white">{formatNumber(result.days)}일</p>
+              <p className="text-sm text-slate-600 mb-1">지연일수</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.days)}일</p>
             </div>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`원금 × 지연이율 × 일수 ÷ 365 = 지연손해금
 
 민사 법정이자 (연 5%)
@@ -170,7 +170,7 @@ export default function LatePaymentPage() {
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제397조(이행지체), 소송촉진 등에 관한 특례법 제3조(연 12%)
             </p>
@@ -179,7 +179,7 @@ export default function LatePaymentPage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">지연손해금 청구 방법</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">지연손해금 청구 방법</h2>
         <ol className="space-y-3">
           {[
             { color: '#06b6d4', text: '내용증명으로 지급 최고' },
@@ -189,12 +189,12 @@ export default function LatePaymentPage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

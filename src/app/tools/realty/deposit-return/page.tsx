@@ -45,17 +45,17 @@ export default function DepositReturnPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">보증금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">보증금 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={deposit ? parseInt(deposit).toLocaleString('ko-KR') : ''}
             onChange={handleDepositChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
           {deposit && (
             <p className="text-xs text-gray-500 mt-1">
@@ -65,26 +65,26 @@ export default function DepositReturnPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">반환 지연일수 (일)</label>
+          <label className="block text-sm text-slate-600 mb-2">반환 지연일수 (일)</label>
           <input
             type="number"
             value={days}
             onChange={e => setDays(e.target.value)}
             placeholder="예: 30"
             min="1"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">연체이자율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">연체이자율 (%)</label>
           <input
             type="number"
             value={rate}
             onChange={e => setRate(e.target.value)}
             step="0.1"
             min="0"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">주택임대차보호법상 법정이자율: 연 5%</p>
         </div>
@@ -100,28 +100,28 @@ export default function DepositReturnPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">보증금 원금</p>
-            <p className="text-lg text-white">{formatNumber(result.deposit)}원</p>
+            <p className="text-sm text-slate-600 mb-1">보증금 원금</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.deposit)}원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">지연이자</p>
-            <p className="text-lg text-white">{formatNumber(result.interest)}원</p>
+            <p className="text-sm text-slate-600 mb-1">지연이자</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.interest)}원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">합계 반환액</p>
+            <p className="text-sm text-slate-600 mb-1">합계 반환액</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.total)}원
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`보증금 반환 계산 (지연이자 포함)
 
 지연이자 = 보증금 × 연체이자율(%) ÷ 100 × 지연일수 ÷ 365
@@ -133,7 +133,7 @@ export default function DepositReturnPage() {
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 주택임대차보호법 제3조의2, 민법 제387조
             </p>
@@ -143,7 +143,7 @@ export default function DepositReturnPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">보증금 미반환 시 대응 절차</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">보증금 미반환 시 대응 절차</h2>
           <div className="space-y-3">
             {[
               { step: '1', title: '내용증명 발송', desc: '반환 요구 내용증명 우편 발송 (우체국)' },
@@ -157,15 +157,15 @@ export default function DepositReturnPage() {
                   {item.step}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-sm font-semibold text-slate-600">{item.title}</p>
                   <p className="text-xs text-gray-500">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-4 p-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a]">
-            <p className="text-xs text-gray-400">
-              💡 <strong className="text-gray-300">전세보증금반환보증보험</strong>(HUG/SGI)에 가입한 경우, 보증기관에 직접 보증금을 청구할 수 있습니다.
+          <div className="mt-4 p-3 rounded-lg bg-white border border-slate-200">
+            <p className="text-xs text-slate-600">
+              💡 <strong className="text-slate-600">전세보증금반환보증보험</strong>(HUG/SGI)에 가입한 경우, 보증기관에 직접 보증금을 청구할 수 있습니다.
             </p>
           </div>
         </div>

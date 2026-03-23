@@ -119,14 +119,14 @@ export default function SpeedingFinePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">제한속도 (km/h)</label>
+          <label className="block text-sm text-slate-600 mb-2">제한속도 (km/h)</label>
           <select
             value={speedLimit}
             onChange={e => setSpeedLimit(Number(e.target.value))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           >
             {SPEED_LIMITS.map(s => (
               <option key={s} value={s}>{s} km/h</option>
@@ -135,19 +135,19 @@ export default function SpeedingFinePage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">실제 주행속도 (km/h)</label>
+          <label className="block text-sm text-slate-600 mb-2">실제 주행속도 (km/h)</label>
           <input
             type="text"
             inputMode="numeric"
             value={actualSpeed}
             onChange={e => setActualSpeed(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 90"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">차량 종류</label>
+          <label className="block text-sm text-slate-600 mb-2">차량 종류</label>
           <div className="flex gap-4">
             {([
               { value: 'passenger' as const, label: '승용차' },
@@ -162,14 +162,14 @@ export default function SpeedingFinePage() {
                   onChange={() => setVehicle(opt.value)}
                   className="accent-[#ef4444]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">구역</label>
+          <label className="block text-sm text-slate-600 mb-2">구역</label>
           <div className="flex gap-4 flex-wrap">
             {([
               { value: 'normal' as const, label: '일반도로' },
@@ -184,7 +184,7 @@ export default function SpeedingFinePage() {
                   onChange={() => setZone(opt.value)}
                   className="accent-[#ef4444]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -201,18 +201,18 @@ export default function SpeedingFinePage() {
 
       {result === 'no-violation' && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-2">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-2">계산 결과</h2>
           <p className="text-green-400 text-lg font-semibold">위반 없음 - 제한속도 이하입니다.</p>
         </div>
       )}
 
       {result !== null && result !== 'no-violation' && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">초과속도</p>
+              <p className="text-sm text-slate-600 mb-1">초과속도</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {result.excessSpeed} km/h 초과
               </p>
@@ -220,23 +220,23 @@ export default function SpeedingFinePage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-gray-400 mb-1">범칙금 (현장단속)</p>
-                <p className="text-lg font-bold text-white">{formatNumber(result.fine)}원</p>
+                <p className="text-sm text-slate-600 mb-1">범칙금 (현장단속)</p>
+                <p className="text-lg font-bold text-slate-900">{formatNumber(result.fine)}원</p>
               </div>
               <div>
-                <p className="text-sm text-gray-400 mb-1">과태료 (무인단속)</p>
-                <p className="text-lg font-bold text-white">{formatNumber(result.automatedFine)}원</p>
+                <p className="text-sm text-slate-600 mb-1">과태료 (무인단속)</p>
+                <p className="text-lg font-bold text-slate-900">{formatNumber(result.automatedFine)}원</p>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-gray-400 mb-1">벌점</p>
-                <p className="text-lg font-bold text-white">{result.demeritPoints}점</p>
+                <p className="text-sm text-slate-600 mb-1">벌점</p>
+                <p className="text-lg font-bold text-slate-900">{result.demeritPoints}점</p>
               </div>
               <div>
-                <p className="text-sm text-gray-400 mb-1">면허 영향</p>
-                <p className="text-lg font-bold text-white">{result.licenseStatus}</p>
+                <p className="text-sm text-slate-600 mb-1">면허 영향</p>
+                <p className="text-lg font-bold text-slate-900">{result.licenseStatus}</p>
               </div>
             </div>
 
@@ -249,9 +249,9 @@ export default function SpeedingFinePage() {
             )}
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`초과속도 구간별 기본 범칙금/과태료
 × 차량유형 배율 (버스·화물: ×1.2)
 × 보호구역 배율 (어린이·노인구역: ×2)`}
@@ -261,24 +261,24 @@ export default function SpeedingFinePage() {
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm font-semibold text-gray-400 mb-2">벌점 누적 기준</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-sm font-semibold text-slate-600 mb-2">벌점 누적 기준</p>
             <table className="w-full text-xs">
               <tbody>
-                <tr className="border-b border-[#1e2d4a]/50">
-                  <td className="py-2 text-gray-300">40점 이상</td>
+                <tr className="border-b border-slate-200/50">
+                  <td className="py-2 text-slate-600">40점 이상</td>
                   <td className="py-2 text-right text-yellow-400">면허정지 (1일/1점)</td>
                 </tr>
-                <tr className="border-b border-[#1e2d4a]/50">
-                  <td className="py-2 text-gray-300">1년간 121점 이상</td>
+                <tr className="border-b border-slate-200/50">
+                  <td className="py-2 text-slate-600">1년간 121점 이상</td>
                   <td className="py-2 text-right text-red-400">면허취소</td>
                 </tr>
-                <tr className="border-b border-[#1e2d4a]/50">
-                  <td className="py-2 text-gray-300">2년간 201점 이상</td>
+                <tr className="border-b border-slate-200/50">
+                  <td className="py-2 text-slate-600">2년간 201점 이상</td>
                   <td className="py-2 text-right text-red-400">면허취소</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-gray-300">3년간 271점 이상</td>
+                  <td className="py-2 text-slate-600">3년간 271점 이상</td>
                   <td className="py-2 text-right text-red-400">면허취소</td>
                 </tr>
               </tbody>

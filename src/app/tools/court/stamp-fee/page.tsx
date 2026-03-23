@@ -119,10 +119,10 @@ export default function StampFeePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">사건 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">사건 유형</label>
           <div className="flex gap-4">
             {([
               { value: 'property' as CaseType, label: '재산권 소송', desc: '금전·부동산 등 재산 관련' },
@@ -136,7 +136,7 @@ export default function StampFeePage() {
                   onChange={() => { setCaseType(opt.value); setResult(null); }}
                   className="accent-[#3b82f6]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -149,7 +149,7 @@ export default function StampFeePage() {
 
         {caseType === 'property' && (
           <div className="mb-4">
-            <label className="block text-sm text-gray-400 mb-2">소가 (원)</label>
+            <label className="block text-sm text-slate-600 mb-2">소가 (원)</label>
             <p className="text-xs text-gray-500 mb-1">소가 = 소송에서 청구하는 금액 (원금 기준)</p>
             <input
               type="text"
@@ -157,18 +157,18 @@ export default function StampFeePage() {
               value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
               onChange={e => setAmount(e.target.value.replace(/[^0-9]/g, ''))}
               placeholder="예: 50,000,000"
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         )}
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">심급</label>
+          <label className="block text-sm text-slate-600 mb-2">심급</label>
           <div className="flex gap-4">
             {([1, 2, 3] as CourtLevel[]).map(l => (
               <label key={l} className="flex items-center gap-2 cursor-pointer">
                 <input type="radio" name="level" checked={level === l} onChange={() => setLevel(l)} className="accent-[#3b82f6]" />
-                <span className="text-sm text-gray-300">
+                <span className="text-sm text-slate-600">
                   {LEVEL_LABELS[l]}{caseType === 'property' && l > 1 ? ` (×${LEVEL_MULTIPLIERS[l]})` : ''}
                 </span>
               </label>
@@ -177,7 +177,7 @@ export default function StampFeePage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">접수 방법</label>
+          <label className="block text-sm text-slate-600 mb-2">접수 방법</label>
           <div className="flex gap-4">
             {([
               { value: 'offline' as FilingMethod, label: '오프라인 (법원 창구)' },
@@ -185,7 +185,7 @@ export default function StampFeePage() {
             ]).map(opt => (
               <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
                 <input type="radio" name="filing" checked={filingMethod === opt.value} onChange={() => setFilingMethod(opt.value)} className="accent-[#3b82f6]" />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -199,10 +199,10 @@ export default function StampFeePage() {
       {result && (
         <>
           <div className="premium-card p-6 mb-4">
-            <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">{LEVEL_LABELS[level]} 인지대 ({filingMethod === 'ecourt' ? '전자소송' : '오프라인'})</p>
+              <p className="text-sm text-slate-600 mb-1">{LEVEL_LABELS[level]} 인지대 ({filingMethod === 'ecourt' ? '전자소송' : '오프라인'})</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(filingMethod === 'ecourt' ? result.ecourtFee : result.levelFee)}원
               </p>
@@ -217,8 +217,8 @@ export default function StampFeePage() {
             )}
 
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-2">계산식</p>
-              <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              <p className="text-sm text-slate-600 mb-2">계산식</p>
+              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
                 {result.formulaDetail}
                 {filingMethod === 'ecourt' ? `\n× 0.9 (전자소송 10% 할인) = ${formatNumber(result.ecourtFee)}` : ''}
               </pre>
@@ -226,19 +226,19 @@ export default function StampFeePage() {
 
             {result.bracketIdx >= 0 && (
               <div className="mb-2">
-                <p className="text-sm text-gray-400 mb-1">적용 구간</p>
-                <p className="text-sm text-gray-300">{BRACKETS[result.bracketIdx].label}</p>
+                <p className="text-sm text-slate-600 mb-1">적용 구간</p>
+                <p className="text-sm text-slate-600">{BRACKETS[result.bracketIdx].label}</p>
               </div>
             )}
           </div>
 
           {/* 전 심급 비교 */}
           <div className="premium-card p-6 mb-4">
-            <h2 className="text-lg font-semibold text-white mb-4">전 심급 인지대 비교</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">전 심급 인지대 비교</h2>
 
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <th className="py-2 text-left text-xs text-gray-500">심급</th>
                   {caseType === 'property' && <th className="py-2 text-left text-xs text-gray-500">배율</th>}
                   <th className="py-2 text-right text-xs text-gray-500">오프라인</th>
@@ -247,9 +247,9 @@ export default function StampFeePage() {
               </thead>
               <tbody>
                 {result.allLevels.map(row => (
-                  <tr key={row.level} className={`border-b border-[#1e2d4a]/50 ${row.level === level ? 'bg-[#3b82f6]/10' : ''}`}>
-                    <td className="py-3 text-gray-300">{row.label}</td>
-                    {caseType === 'property' && <td className="py-3 text-gray-400">×{LEVEL_MULTIPLIERS[row.level]}</td>}
+                  <tr key={row.level} className={`border-b border-slate-200/50 ${row.level === level ? 'bg-[#3b82f6]/10' : ''}`}>
+                    <td className="py-3 text-slate-600">{row.label}</td>
+                    {caseType === 'property' && <td className="py-3 text-slate-600">×{LEVEL_MULTIPLIERS[row.level]}</td>}
                     <td className="py-3 text-right" style={{ color: row.level === level && filingMethod === 'offline' ? category.color : '#e5e7eb' }}>
                       {formatNumber(row.offlineFee)}원
                     </td>
@@ -265,25 +265,25 @@ export default function StampFeePage() {
           {/* 인지대 기준표 (재산권만) */}
           {caseType === 'property' && (
             <div className="premium-card p-6">
-              <h2 className="text-lg font-semibold text-white mb-4">인지대 기준표 (1심 기준)</h2>
+              <h2 className="text-lg font-semibold text-slate-900 mb-4">인지대 기준표 (1심 기준)</h2>
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-[#1e2d4a]">
+                  <tr className="border-b border-slate-200">
                     <th className="py-2 text-left text-xs text-gray-500">소가 구간</th>
                     <th className="py-2 text-right text-xs text-gray-500">계산식</th>
                   </tr>
                 </thead>
                 <tbody>
                   {BRACKETS.map((b, i) => (
-                    <tr key={i} className={`border-b border-[#1e2d4a]/50 ${i === result.bracketIdx ? 'bg-[#3b82f6]/10' : ''}`}>
-                      <td className="py-2.5 text-gray-300">{b.label}</td>
+                    <tr key={i} className={`border-b border-slate-200/50 ${i === result.bracketIdx ? 'bg-[#3b82f6]/10' : ''}`}>
+                      <td className="py-2.5 text-slate-600">{b.label}</td>
                       <td className="py-2.5 text-right text-xs" style={{ color: i === result.bracketIdx ? category.color : '#9ca3af' }}>{b.formula}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
 
-              <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+              <div className="mt-4 pt-4 border-t border-slate-200">
                 <p className="text-xs text-gray-500">법적 근거: 민사소송등인지법 별표 | 100원 미만 올림 | 최소 1,000원</p>
                 <p className="text-xs text-gray-500 mt-1">전자소송 할인: 민사소송 등에서의 전자문서 이용 등에 관한 법률</p>
               </div>
@@ -292,15 +292,15 @@ export default function StampFeePage() {
 
           {caseType === 'non-property' && (
             <div className="premium-card p-6">
-              <h2 className="text-lg font-semibold text-white mb-4">비재산권 소송 인지대 안내</h2>
-              <p className="text-xs text-gray-400 mb-3">비재산권 소송은 소가에 관계없이 심급별 고정 인지대가 적용됩니다.</p>
+              <h2 className="text-lg font-semibold text-slate-900 mb-4">비재산권 소송 인지대 안내</h2>
+              <p className="text-xs text-slate-600 mb-3">비재산권 소송은 소가에 관계없이 심급별 고정 인지대가 적용됩니다.</p>
               <ul className="text-xs text-gray-500 space-y-1">
                 <li>1심: {formatNumber(NON_PROPERTY_FEES[1])}원</li>
                 <li>항소심: {formatNumber(NON_PROPERTY_FEES[2])}원</li>
                 <li>상고심: {formatNumber(NON_PROPERTY_FEES[3])}원</li>
               </ul>
               <p className="text-xs text-gray-500 mt-3">해당 사건: 이혼, 친권, 확인소송, 비금전적 청구 등</p>
-              <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+              <div className="mt-4 pt-4 border-t border-slate-200">
                 <p className="text-xs text-gray-500">법적 근거: 민사소송등인지법 제2조제4항</p>
               </div>
             </div>

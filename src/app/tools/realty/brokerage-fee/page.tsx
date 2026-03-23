@@ -118,10 +118,10 @@ export default function BrokerageFeePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">거래유형</label>
+          <label className="block text-sm text-slate-600 mb-2">거래유형</label>
           <div className="flex gap-4">
             {([
               { value: 'sale' as TransactionType, label: '매매/교환' },
@@ -135,7 +135,7 @@ export default function BrokerageFeePage() {
                   onChange={() => { setTxType(opt.value); setResult(null); }}
                   className="accent-[#8b5cf6]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -143,7 +143,7 @@ export default function BrokerageFeePage() {
 
         {txType === 'lease' && (
           <div className="mb-4">
-            <label className="block text-sm text-gray-400 mb-2">임대차 구분</label>
+            <label className="block text-sm text-slate-600 mb-2">임대차 구분</label>
             <div className="flex gap-4">
               {([
                 { value: 'jeonse' as LeaseType, label: '전세' },
@@ -157,7 +157,7 @@ export default function BrokerageFeePage() {
                     onChange={() => { setLeaseType(opt.value); setResult(null); }}
                     className="accent-[#8b5cf6]"
                   />
-                  <span className="text-sm text-gray-300">{opt.label}</span>
+                  <span className="text-sm text-slate-600">{opt.label}</span>
                 </label>
               ))}
             </div>
@@ -165,7 +165,7 @@ export default function BrokerageFeePage() {
         )}
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">
+          <label className="block text-sm text-slate-600 mb-2">
             {txType === 'sale' ? '거래금액 (원)' : '보증금 (원)'}
           </label>
           <input
@@ -174,20 +174,20 @@ export default function BrokerageFeePage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setAmount)}
             placeholder="예: 300,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
         </div>
 
         {txType === 'lease' && leaseType === 'wolse' && (
           <div className="mb-4">
-            <label className="block text-sm text-gray-400 mb-2">월세 (원)</label>
+            <label className="block text-sm text-slate-600 mb-2">월세 (원)</label>
             <input
               type="text"
               inputMode="numeric"
               value={monthlyRent ? parseInt(monthlyRent).toLocaleString('ko-KR') : ''}
               onChange={handleNumberChange(setMonthlyRent)}
               placeholder="예: 500,000"
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
             />
           </div>
         )}
@@ -203,40 +203,40 @@ export default function BrokerageFeePage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">
+            <p className="text-sm text-slate-600 mb-1">
               {txType === 'lease' && leaseType === 'wolse' ? '환산보증금' : '거래금액'}
             </p>
-            <p className="text-lg text-white">{formatNumber(result.transactionAmount)}원</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.transactionAmount)}원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">적용 요율</p>
-            <p className="text-lg text-white">{(result.rate * 100).toFixed(1)}%</p>
+            <p className="text-sm text-slate-600 mb-1">적용 요율</p>
+            <p className="text-lg text-slate-900">{(result.rate * 100).toFixed(1)}%</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">중개보수</p>
-            <p className="text-lg text-white">{formatNumber(result.fee)}원</p>
+            <p className="text-sm text-slate-600 mb-1">중개보수</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.fee)}원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">부가세 (10%)</p>
-            <p className="text-lg text-white">{formatNumber(result.vat)}원</p>
+            <p className="text-sm text-slate-600 mb-1">부가세 (10%)</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.vat)}원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">총 중개보수 (부가세 포함)</p>
+            <p className="text-sm text-slate-600 mb-1">총 중개보수 (부가세 포함)</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.total)}원
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {result.formula}
             </pre>
           </div>
@@ -249,10 +249,10 @@ export default function BrokerageFeePage() {
 
           {/* 요율 기준표 */}
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-3">{txType === 'sale' ? '매매' : '임대차'} 중개보수 요율표</p>
+            <p className="text-sm text-slate-600 mb-3">{txType === 'sale' ? '매매' : '임대차'} 중개보수 요율표</p>
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <th className="py-2 text-left text-gray-500">거래금액</th>
                   <th className="py-2 text-right text-gray-500">상한요율</th>
                   <th className="py-2 text-right text-gray-500">한도액</th>
@@ -262,8 +262,8 @@ export default function BrokerageFeePage() {
                 {(txType === 'sale' ? SALE_TABLE : LEASE_TABLE).map((row, i) => {
                   const isActive = result.transactionAmount < row.max && (i === 0 || result.transactionAmount >= (txType === 'sale' ? SALE_TABLE : LEASE_TABLE)[i-1]?.max || 0);
                   return (
-                    <tr key={i} className={`border-b border-[#1e2d4a]/50 ${isActive ? 'bg-[#8b5cf6]/10' : ''}`}>
-                      <td className="py-2 text-gray-300">{row.label}</td>
+                    <tr key={i} className={`border-b border-slate-200/50 ${isActive ? 'bg-[#8b5cf6]/10' : ''}`}>
+                      <td className="py-2 text-slate-600">{row.label}</td>
                       <td className="py-2 text-right" style={{ color: isActive ? category.color : '#9ca3af' }}>{row.rate}</td>
                       <td className="py-2 text-right" style={{ color: isActive ? category.color : '#9ca3af' }}>{row.cap}</td>
                     </tr>
@@ -273,7 +273,7 @@ export default function BrokerageFeePage() {
             </table>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 공인중개사법 시행규칙 별표1 | 월세 환산: 보증금 + (월세 × 100)
             </p>

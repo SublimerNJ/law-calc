@@ -76,64 +76,64 @@ export default function AccidentSettlementPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">치료비 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">치료비 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={medicalCost ? parseInt(medicalCost).toLocaleString('ko-KR') : ''}
             onChange={handleNumberInput(setMedicalCost)}
             placeholder="예: 5,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">일실수입 / 휴업손해 (원, 선택)</label>
+          <label className="block text-sm text-slate-600 mb-2">일실수입 / 휴업손해 (원, 선택)</label>
           <input
             type="text"
             inputMode="numeric"
             value={lostWages ? parseInt(lostWages).toLocaleString('ko-KR') : ''}
             onChange={handleNumberInput(setLostWages)}
             placeholder="사고로 못 번 소득 (없으면 비워두세요)"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">월급 ÷ 30 × 치료일수로 계산. 자영업자는 매출 감소분.</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-2">입원일수 (일)</label>
+            <label className="block text-sm text-slate-600 mb-2">입원일수 (일)</label>
             <input
               type="text"
               inputMode="numeric"
               value={hospitalizationDays}
               onChange={handleNumberInput(setHospitalizationDays)}
               placeholder="0"
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
             />
           </div>
           <div>
-            <label className="block text-sm text-gray-400 mb-2">통원일수 (일)</label>
+            <label className="block text-sm text-slate-600 mb-2">통원일수 (일)</label>
             <input
               type="text"
               inputMode="numeric"
               value={outpatientDays}
               onChange={handleNumberInput(setOutpatientDays)}
               placeholder="0"
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
             />
           </div>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">후유장해 등급</label>
+          <label className="block text-sm text-slate-600 mb-2">후유장해 등급</label>
           <select
             value={disabilityGrade}
             onChange={(e) => setDisabilityGrade(parseInt(e.target.value, 10))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           >
             <option value={0}>없음</option>
             {Array.from({ length: 14 }, (_, i) => i + 1).map(grade => (
@@ -145,7 +145,7 @@ export default function AccidentSettlementPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">
+          <label className="block text-sm text-slate-600 mb-2">
             피해자 과실비율: {faultPercent}%
           </label>
           <input
@@ -174,57 +174,57 @@ export default function AccidentSettlementPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-3 mb-4">
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">치료비</span>
-              <span className="text-white">{formatNumber(result.medicalCost)}원</span>
+              <span className="text-sm text-slate-600">치료비</span>
+              <span className="text-slate-900">{formatNumber(result.medicalCost)}원</span>
             </div>
             {result.lostWages > 0 && (
               <div className="flex justify-between">
-                <span className="text-sm text-gray-400">일실수입 (휴업손해)</span>
-                <span className="text-white">{formatNumber(result.lostWages)}원</span>
+                <span className="text-sm text-slate-600">일실수입 (휴업손해)</span>
+                <span className="text-slate-900">{formatNumber(result.lostWages)}원</span>
               </div>
             )}
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">입원 위자료 (85,000원/일)</span>
-              <span className="text-white">{formatNumber(result.hospitalizationSolatium)}원</span>
+              <span className="text-sm text-slate-600">입원 위자료 (85,000원/일)</span>
+              <span className="text-slate-900">{formatNumber(result.hospitalizationSolatium)}원</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">통원 위자료 (45,000원/일)</span>
-              <span className="text-white">{formatNumber(result.outpatientSolatium)}원</span>
+              <span className="text-sm text-slate-600">통원 위자료 (45,000원/일)</span>
+              <span className="text-slate-900">{formatNumber(result.outpatientSolatium)}원</span>
             </div>
             {result.disabilitySolatium > 0 && (
               <div className="flex justify-between">
-                <span className="text-sm text-gray-400">후유장해 위자료</span>
-                <span className="text-white">{formatNumber(result.disabilitySolatium)}원</span>
+                <span className="text-sm text-slate-600">후유장해 위자료</span>
+                <span className="text-slate-900">{formatNumber(result.disabilitySolatium)}원</span>
               </div>
             )}
-            <div className="flex justify-between border-t border-[#1e2d4a] pt-3">
-              <span className="text-sm text-gray-400">소계</span>
-              <span className="text-white font-semibold">{formatNumber(result.subtotal)}원</span>
+            <div className="flex justify-between border-t border-slate-200 pt-3">
+              <span className="text-sm text-slate-600">소계</span>
+              <span className="text-slate-900 font-semibold">{formatNumber(result.subtotal)}원</span>
             </div>
             {result.faultPercent > 0 && (
               <div className="flex justify-between">
-                <span className="text-sm text-gray-400">과실상계 (-{result.faultPercent}%)</span>
+                <span className="text-sm text-slate-600">과실상계 (-{result.faultPercent}%)</span>
                 <span className="text-red-400">-{formatNumber(result.faultDeduction)}원</span>
               </div>
             )}
           </div>
 
-          <div className="border-t border-[#1e2d4a] pt-4">
-            <p className="text-sm text-gray-400 mb-1">최종 합의금 (예상)</p>
+          <div className="border-t border-slate-200 pt-4">
+            <p className="text-sm text-slate-600 mb-1">최종 합의금 (예상)</p>
             <p className="text-3xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.finalAmount)}원
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">치료비 + 위자료 - 과실상계 = 합의금</p>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
+          <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 교통사고처리특례법, 손해배상 산정기준 (2026)
             </p>

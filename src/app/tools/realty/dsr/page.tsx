@@ -54,54 +54,54 @@ export default function DsrPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">DSR 계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">DSR 계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">연소득 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">연소득 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={displayValue(income)}
             onChange={handleNumberInput(setIncome)}
             placeholder="예: 60,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
           {income && <p className="text-xs text-gray-500 mt-1">{formatNumber(parseNum(income))}원</p>}
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">주택담보대출 월 상환액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">주택담보대출 월 상환액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={displayValue(mortgage)}
             onChange={handleNumberInput(setMortgage)}
             placeholder="없으면 0"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">신용대출 월 상환액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">신용대출 월 상환액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={displayValue(credit)}
             onChange={handleNumberInput(setCredit)}
             placeholder="없으면 0"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">기타 대출 월 상환액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">기타 대출 월 상환액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={displayValue(other)}
             onChange={handleNumberInput(setOther)}
             placeholder="없으면 0"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
         </div>
 
@@ -116,10 +116,10 @@ export default function DsrPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-6 text-center">
-            <p className="text-sm text-gray-400 mb-1">DSR (총부채원리금상환비율)</p>
+            <p className="text-sm text-slate-600 mb-1">DSR (총부채원리금상환비율)</p>
             <p className="text-4xl font-bold" style={{ color: category.color }}>
               {result.dsr}%
             </p>
@@ -127,13 +127,13 @@ export default function DsrPage() {
 
           <div className="flex gap-3 mb-6">
             <div className={`flex-1 rounded-lg p-3 text-center ${result.bankOk ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
-              <p className="text-xs text-gray-400 mb-1">은행권 (40%)</p>
+              <p className="text-xs text-slate-600 mb-1">은행권 (40%)</p>
               <p className={`text-sm font-semibold ${result.bankOk ? 'text-green-400' : 'text-red-400'}`}>
                 {result.bankOk ? '적합' : '초과'}
               </p>
             </div>
             <div className={`flex-1 rounded-lg p-3 text-center ${result.nonBankOk ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
-              <p className="text-xs text-gray-400 mb-1">비은행권 (50%)</p>
+              <p className="text-xs text-slate-600 mb-1">비은행권 (50%)</p>
               <p className={`text-sm font-semibold ${result.nonBankOk ? 'text-green-400' : 'text-red-400'}`}>
                 {result.nonBankOk ? '적합' : '초과'}
               </p>
@@ -142,17 +142,17 @@ export default function DsrPage() {
 
           <div className="space-y-3 mb-4">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">연소득</span>
-              <span className="text-white">{formatNumber(result.annualIncome)}원</span>
+              <span className="text-slate-600">연소득</span>
+              <span className="text-slate-900">{formatNumber(result.annualIncome)}원</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">연간 원리금 상환액</span>
-              <span className="text-white">{formatNumber(result.annualRepayment)}원</span>
+              <span className="text-slate-600">연간 원리금 상환액</span>
+              <span className="text-slate-900">{formatNumber(result.annualRepayment)}원</span>
             </div>
           </div>
 
-          <div className="mb-4 p-4 rounded-lg bg-[#0d1424]" style={{ borderLeft: `3px solid ${category.color}` }}>
-            <p className="text-xs text-gray-400 mb-1">추가 대출 가능 월 상환액 (은행권 40% 기준)</p>
+          <div className="mb-4 p-4 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
+            <p className="text-xs text-slate-600 mb-1">추가 대출 가능 월 상환액 (은행권 40% 기준)</p>
             <p className="text-lg font-bold" style={{ color: category.color }}>
               {formatNumber(Math.max(0, Math.floor(result.annualIncome * 0.4 / 12 - result.annualRepayment / 12)))}원/월
             </p>
@@ -162,8 +162,8 @@ export default function DsrPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`연간 원리금 상환액  ${formatNumber(result.annualRepayment)}원
 ÷ 연소득           ${formatNumber(result.annualIncome)}원
 × 100
@@ -175,7 +175,7 @@ DSR                ${result.dsr}%
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 금융위원회 DSR 규제 (2026년 현행 기준)
             </p>

@@ -97,16 +97,16 @@ export default function AlimonyPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4 p-3 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
-          <p className="text-xs text-gray-400">
-            💡 위자료는 법원이 개별 사안을 종합적으로 판단합니다. 이 계산기는 <strong className="text-gray-300">판례 기반 예상 범위</strong>를 제공하며, 실제 법원 결정과 차이가 있을 수 있습니다.
+          <p className="text-xs text-slate-600">
+            💡 위자료는 법원이 개별 사안을 종합적으로 판단합니다. 이 계산기는 <strong className="text-slate-600">판례 기반 예상 범위</strong>를 제공하며, 실제 법원 결정과 차이가 있을 수 있습니다.
           </p>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">혼인기간 (년)</label>
+          <label className="block text-sm text-slate-600 mb-2">혼인기간 (년)</label>
           <input
             type="number"
             inputMode="numeric"
@@ -114,17 +114,17 @@ export default function AlimonyPage() {
             value={years}
             onChange={e => setYears(e.target.value)}
             placeholder="예: 10"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">주요 유책사유</label>
+          <label className="block text-sm text-slate-600 mb-2">주요 유책사유</label>
           <div className="flex flex-col gap-2">
             {(Object.entries(FAULT_LABELS) as [FaultType, string][]).map(([key, label]) => (
               <label key={key} className="flex items-center gap-2 cursor-pointer">
                 <input type="radio" name="fault" checked={fault === key} onChange={() => setFault(key)} className="accent-[#ec4899]" />
-                <span className="text-sm text-gray-300">{label}</span>
+                <span className="text-sm text-slate-600">{label}</span>
                 <span className="text-xs text-gray-500">(×{FAULT_MULTIPLIERS[key]})</span>
               </label>
             ))}
@@ -132,12 +132,12 @@ export default function AlimonyPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">상대방 재산 규모</label>
+          <label className="block text-sm text-slate-600 mb-2">상대방 재산 규모</label>
           <div className="flex flex-col gap-2">
             {(Object.entries(ASSET_LABELS) as [AssetLevel, string][]).map(([key, label]) => (
               <label key={key} className="flex items-center gap-2 cursor-pointer">
                 <input type="radio" name="asset" checked={asset === key} onChange={() => setAsset(key)} className="accent-[#ec4899]" />
-                <span className="text-sm text-gray-300">{label}</span>
+                <span className="text-sm text-slate-600">{label}</span>
               </label>
             ))}
           </div>
@@ -146,7 +146,7 @@ export default function AlimonyPage() {
         <div className="mb-6">
           <label className="flex items-center gap-2 cursor-pointer">
             <input type="checkbox" checked={hasChildren} onChange={e => setHasChildren(e.target.checked)} className="accent-[#ec4899] w-4 h-4" />
-            <span className="text-sm text-gray-300">미성년 자녀 있음</span>
+            <span className="text-sm text-slate-600">미성년 자녀 있음</span>
             <span className="text-xs text-gray-500">(있으면 ×1.1)</span>
           </label>
         </div>
@@ -159,26 +159,26 @@ export default function AlimonyPage() {
       {result !== null && (
         <>
           <div className="premium-card p-6 mb-4">
-            <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">예상 위자료</p>
+              <p className="text-sm text-slate-600 mb-1">예상 위자료</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.estimate)}원
               </p>
             </div>
 
             <div className="mb-4 p-4 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
-              <p className="text-sm text-gray-400 mb-1">예상 범위</p>
-              <p className="text-lg text-white">
+              <p className="text-sm text-slate-600 mb-1">예상 범위</p>
+              <p className="text-lg text-slate-900">
                 {formatNumber(result.minRange)}원 ~ {formatNumber(result.maxRange)}원
               </p>
             </div>
 
             {/* 산출 근거 */}
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-2">산출 근거</p>
-              <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              <p className="text-sm text-slate-600 mb-2">산출 근거</p>
+              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
 {`기본 범위 (혼인 ${years}년, ${BASE_RANGES[result.baseRangeIdx].label}):
   ${formatWon(result.baseMin)} ~ ${formatWon(result.baseMax)}
 
@@ -195,11 +195,11 @@ export default function AlimonyPage() {
 
           {/* 혼인기간별 기본 범위표 */}
           <div className="premium-card p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">혼인기간별 위자료 기본 범위 (판례 기준)</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">혼인기간별 위자료 기본 범위 (판례 기준)</h2>
 
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <th className="py-2 text-left text-xs text-gray-500">혼인기간</th>
                   <th className="py-2 text-right text-xs text-gray-500">최소</th>
                   <th className="py-2 text-right text-xs text-gray-500">최대</th>
@@ -207,8 +207,8 @@ export default function AlimonyPage() {
               </thead>
               <tbody>
                 {BASE_RANGES.map((r, i) => (
-                  <tr key={i} className={`border-b border-[#1e2d4a]/50 ${i === result.baseRangeIdx ? 'bg-[#ec4899]/10' : ''}`}>
-                    <td className="py-2.5 text-gray-300">{r.label}</td>
+                  <tr key={i} className={`border-b border-slate-200/50 ${i === result.baseRangeIdx ? 'bg-[#ec4899]/10' : ''}`}>
+                    <td className="py-2.5 text-slate-600">{r.label}</td>
                     <td className="py-2.5 text-right" style={{ color: i === result.baseRangeIdx ? category.color : '#9ca3af' }}>
                       {formatWon(r.min)}원
                     </td>
@@ -220,7 +220,7 @@ export default function AlimonyPage() {
               </tbody>
             </table>
 
-            <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <div className="mt-4 pt-4 border-t border-slate-200">
               <p className="text-xs text-gray-500">
                 법적 근거: 민법 제843조, 제806조 (손해배상). 기본 범위는 판례 분석 기반 참고 수치입니다.
               </p>
@@ -234,7 +234,7 @@ export default function AlimonyPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">위자료 청구 방법</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">위자료 청구 방법</h2>
           <div className="space-y-3">
             {[
               { step: '1', title: '협의이혼 시', desc: '이혼숙려기간 중 위자료 합의 → 양육비/위자료 합의서 작성' },
@@ -247,7 +247,7 @@ export default function AlimonyPage() {
                   {item.step}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-sm font-semibold text-slate-600">{item.title}</p>
                   <p className="text-xs text-gray-500">{item.desc}</p>
                 </div>
               </div>

@@ -101,10 +101,10 @@ export default function DrunkDrivingPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">혈중알코올농도 BAC (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">혈중알코올농도 BAC (%)</label>
           <input
             type="number"
             step="0.001"
@@ -113,13 +113,13 @@ export default function DrunkDrivingPage() {
             value={bac}
             onChange={(e) => setBac(e.target.value)}
             placeholder="예: 0.050"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">0.001 ~ 0.400 범위로 입력하세요</p>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">측정 방법</label>
+          <label className="block text-sm text-slate-600 mb-2">측정 방법</label>
           <div className="flex gap-4">
             {[
               { value: 'breath' as MeasurementMethod, label: '호흡측정' },
@@ -133,14 +133,14 @@ export default function DrunkDrivingPage() {
                   onChange={() => setMethod(opt.value)}
                   className="accent-[#ef4444]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">사고 여부</label>
+          <label className="block text-sm text-slate-600 mb-2">사고 여부</label>
           <div className="space-y-2">
             <label className="flex items-center gap-3 cursor-pointer">
               <input
@@ -149,7 +149,7 @@ export default function DrunkDrivingPage() {
                 onChange={(e) => setHasInjury(e.target.checked)}
                 className="accent-[#ef4444] w-4 h-4"
               />
-              <span className="text-sm text-gray-300">인사사고 발생</span>
+              <span className="text-sm text-slate-600">인사사고 발생</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer">
               <input
@@ -158,13 +158,13 @@ export default function DrunkDrivingPage() {
                 onChange={(e) => setHasPropertyDamage(e.target.checked)}
                 className="accent-[#ef4444] w-4 h-4"
               />
-              <span className="text-sm text-gray-300">재물손괴</span>
+              <span className="text-sm text-slate-600">재물손괴</span>
             </label>
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">음주운전 전력</label>
+          <label className="block text-sm text-slate-600 mb-2">음주운전 전력</label>
           <div className="flex gap-4 flex-wrap">
             {[
               { value: 'none' as PriorRecord, label: '없음' },
@@ -179,7 +179,7 @@ export default function DrunkDrivingPage() {
                   onChange={() => setPriorRecord(opt.value)}
                   className="accent-[#ef4444]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -196,26 +196,26 @@ export default function DrunkDrivingPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">처벌 기준 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">처벌 기준 결과</h2>
 
           <div className="mb-4">
             <span
-              className="inline-block px-4 py-2 rounded-full text-white font-bold text-sm"
+              className="inline-block px-4 py-2 rounded-full text-slate-900 font-bold text-sm"
               style={{ backgroundColor: result.levelColor }}
             >
               {result.level}
             </span>
-            <p className="text-sm text-gray-400 mt-2">혈중알코올농도: {result.bac.toFixed(3)}%</p>
+            <p className="text-sm text-slate-600 mt-2">혈중알코올농도: {result.bac.toFixed(3)}%</p>
           </div>
 
           <div className="space-y-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">행정처분</p>
-              <p className="text-white">{result.adminPenalty}</p>
+              <p className="text-sm text-slate-600 mb-1">행정처분</p>
+              <p className="text-slate-900">{result.adminPenalty}</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">형사처벌</p>
-              <p className="text-white">{result.criminalPenalty}</p>
+              <p className="text-sm text-slate-600 mb-1">형사처벌</p>
+              <p className="text-slate-900">{result.criminalPenalty}</p>
             </div>
           </div>
 
@@ -234,11 +234,11 @@ export default function DrunkDrivingPage() {
           )}
 
           {/* BAC 기준표 */}
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm text-gray-400 mb-3">혈중알코올농도 처벌 기준표</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-sm text-slate-600 mb-3">혈중알코올농도 처벌 기준표</p>
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <th className="py-2 text-left text-gray-500">BAC</th>
                   <th className="py-2 text-left text-gray-500">행정처분</th>
                   <th className="py-2 text-left text-gray-500">형사처벌</th>
@@ -251,17 +251,17 @@ export default function DrunkDrivingPage() {
                   { range: '0.08~0.2%', admin: '면허취소', criminal: '1~2년 징역 / 500~1000만 벌금', active: result.bac >= 0.08 && result.bac < 0.2 },
                   { range: '0.2% 이상', admin: '면허취소 (가중)', criminal: '2~5년 징역 / 1000~2000만 벌금', active: result.bac >= 0.2 },
                 ].map((row, i) => (
-                  <tr key={i} className={`border-b border-[#1e2d4a]/50 ${row.active ? 'bg-red-500/10' : ''}`}>
+                  <tr key={i} className={`border-b border-slate-200/50 ${row.active ? 'bg-red-500/10' : ''}`}>
                     <td className="py-2" style={{ color: row.active ? '#ef4444' : '#9ca3af' }}>{row.range}</td>
-                    <td className="py-2 text-gray-300">{row.admin}</td>
-                    <td className="py-2 text-gray-300">{row.criminal}</td>
+                    <td className="py-2 text-slate-600">{row.admin}</td>
+                    <td className="py-2 text-slate-600">{row.criminal}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 도로교통법 제44조, 제148조의2 (2026년 기준)
             </p>
@@ -270,7 +270,7 @@ export default function DrunkDrivingPage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">음주운전 후 대응</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">음주운전 후 대응</h2>
         <ol className="space-y-3">
           {[
             { color: '#ef4444', text: '즉시 음주측정 거부 금지 (거부 시 가중처벌)' },
@@ -280,12 +280,12 @@ export default function DrunkDrivingPage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

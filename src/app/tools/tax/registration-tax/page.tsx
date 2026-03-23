@@ -115,14 +115,14 @@ export default function RegistrationTaxPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">등록 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">등록 유형</label>
           <select
             value={regType}
             onChange={e => { setRegType(e.target.value as RegistrationType); setResult(null); }}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
           >
             {REGISTRATION_TYPES.map(t => (
               <option key={t.value} value={t.value}>{t.label} ({t.rateLabel})</option>
@@ -132,7 +132,7 @@ export default function RegistrationTaxPage() {
 
         {isLicense ? (
           <div className="mb-6">
-            <label className="block text-sm text-gray-400 mb-2">면허 종류</label>
+            <label className="block text-sm text-slate-600 mb-2">면허 종류</label>
             <div className="space-y-2">
               {LICENSE_FEES.map(l => (
                 <label key={l.grade} className="flex items-center gap-3 cursor-pointer">
@@ -143,7 +143,7 @@ export default function RegistrationTaxPage() {
                     onChange={() => setLicenseGrade(l.grade)}
                     className="accent-[#10b981]"
                   />
-                  <span className="text-white">{l.label}</span>
+                  <span className="text-slate-900">{l.label}</span>
                   <span className="text-gray-500 text-sm">({formatNumber(l.fee)}원)</span>
                 </label>
               ))}
@@ -151,14 +151,14 @@ export default function RegistrationTaxPage() {
           </div>
         ) : (
           <div className="mb-6">
-            <label className="block text-sm text-gray-400 mb-2">{currentType.amountLabel}</label>
+            <label className="block text-sm text-slate-600 mb-2">{currentType.amountLabel}</label>
             <input
               type="text"
               inputMode="numeric"
               value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
               onChange={handleAmountChange}
               placeholder="예: 300,000,000"
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#10b981] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
             />
             {amount && (
               <p className="text-xs text-gray-500 mt-1">{parseInt(amount).toLocaleString('ko-KR')}원</p>
@@ -177,21 +177,21 @@ export default function RegistrationTaxPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">등록 유형</p>
-              <p className="text-lg text-white">{result.regType}</p>
+              <p className="text-sm text-slate-600 mb-1">등록 유형</p>
+              <p className="text-lg text-slate-900">{result.regType}</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">적용 세율</p>
-              <p className="text-lg text-white">{result.rateDisplay}</p>
+              <p className="text-sm text-slate-600 mb-1">적용 세율</p>
+              <p className="text-lg text-slate-900">{result.rateDisplay}</p>
             </div>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">등록면허세</p>
+            <p className="text-sm text-slate-600 mb-1">등록면허세</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.registrationTax)}원
             </p>
@@ -199,12 +199,12 @@ export default function RegistrationTaxPage() {
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">지방교육세 (20%)</p>
-              <p className="text-lg text-white">{formatNumber(result.educationTax)}원</p>
+              <p className="text-sm text-slate-600 mb-1">지방교육세 (20%)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.educationTax)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">합계</p>
-              <p className="text-lg font-bold text-white">{formatNumber(result.total)}원</p>
+              <p className="text-sm text-slate-600 mb-1">합계</p>
+              <p className="text-lg font-bold text-slate-900">{formatNumber(result.total)}원</p>
             </div>
           </div>
 
@@ -214,9 +214,9 @@ export default function RegistrationTaxPage() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`과세표준 × 세율 = 등록면허세
 등록면허세 × 20% = 지방교육세
 합계 = 등록면허세 + 지방교육세 (최소 6,000원)`}

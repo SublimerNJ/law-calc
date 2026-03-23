@@ -68,26 +68,26 @@ export default function ParentalLeavePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">월 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={wage ? parseInt(wage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 3,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">육아휴직 기간 (개월)</label>
+          <label className="block text-sm text-slate-600 mb-2">육아휴직 기간 (개월)</label>
           <select
             value={months}
             onChange={e => setMonths(Number(e.target.value))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
               <option key={m} value={m}>{m}개월</option>
@@ -96,7 +96,7 @@ export default function ParentalLeavePage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">유형 선택</label>
+          <label className="block text-sm text-slate-600 mb-2">유형 선택</label>
           <div className="flex gap-4">
             {[
               { value: 'normal' as const, label: '일반' },
@@ -110,7 +110,7 @@ export default function ParentalLeavePage() {
                   onChange={() => setType(opt.value)}
                   className="accent-[#f59e0b]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -127,10 +127,10 @@ export default function ParentalLeavePage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">총 예상 급여 합계</p>
+            <p className="text-sm text-slate-600 mb-1">총 예상 급여 합계</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.total)}원
             </p>
@@ -138,22 +138,22 @@ export default function ParentalLeavePage() {
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">즉시지급분 (75%)</p>
-              <p className="text-lg text-white">{formatNumber(result.totalImmediate)}원</p>
+              <p className="text-sm text-slate-600 mb-1">즉시지급분 (75%)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.totalImmediate)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">사후지급분 (25%)</p>
-              <p className="text-lg text-white">{formatNumber(result.totalDeferred)}원</p>
+              <p className="text-sm text-slate-600 mb-1">사후지급분 (25%)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.totalDeferred)}원</p>
               <p className="text-xs text-gray-500">복직 후 6개월 계속근무 시 일시 지급</p>
             </div>
           </div>
 
           <div className="mt-4">
-            <h3 className="text-sm font-semibold text-gray-300 mb-2">월별 상세</h3>
+            <h3 className="text-sm font-semibold text-slate-600 mb-2">월별 상세</h3>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-gray-500 border-b border-[#1e2d4a]">
+                  <tr className="text-gray-500 border-b border-slate-200">
                     <th className="py-2 text-left">월</th>
                     <th className="py-2 text-right">급여율</th>
                     <th className="py-2 text-right">월 급여액</th>
@@ -161,10 +161,10 @@ export default function ParentalLeavePage() {
                 </thead>
                 <tbody>
                   {result.monthly.map(row => (
-                    <tr key={row.month} className="border-b border-[#1e2d4a]/50">
-                      <td className="py-2 text-gray-300">{row.month}개월차</td>
-                      <td className="py-2 text-right text-gray-400">{(row.rate * 100).toFixed(0)}%</td>
-                      <td className="py-2 text-right text-white">{formatNumber(row.amount)}원</td>
+                    <tr key={row.month} className="border-b border-slate-200/50">
+                      <td className="py-2 text-slate-600">{row.month}개월차</td>
+                      <td className="py-2 text-right text-slate-600">{(row.rate * 100).toFixed(0)}%</td>
+                      <td className="py-2 text-right text-slate-900">{formatNumber(row.amount)}원</td>
                     </tr>
                   ))}
                 </tbody>
@@ -172,9 +172,9 @@ export default function ParentalLeavePage() {
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`1~3개월: 월급 × 80% (상한 200만원, 하한 70만원)
 4개월~: 월급 × 50% (상한 120만원, 하한 70만원)
 월 급여액 합계의 25%는 복직 후 사후지급`}
@@ -187,7 +187,7 @@ export default function ParentalLeavePage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">육아휴직 신청 방법</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">육아휴직 신청 방법</h2>
         <ol className="space-y-3">
           {[
             { color: '#f59e0b', text: '사업주에게 30일 전 서면 신청' },
@@ -197,12 +197,12 @@ export default function ParentalLeavePage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

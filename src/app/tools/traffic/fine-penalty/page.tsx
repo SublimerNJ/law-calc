@@ -117,14 +117,14 @@ export default function FinePenaltyPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">위반 항목</label>
+          <label className="block text-sm text-slate-600 mb-2">위반 항목</label>
           <select
             value={violationId}
             onChange={e => setViolationId(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           >
             {groups.map(group => (
               <optgroup key={group} label={group}>
@@ -137,7 +137,7 @@ export default function FinePenaltyPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">단속 방법</label>
+          <label className="block text-sm text-slate-600 mb-2">단속 방법</label>
           <div className="flex gap-4 flex-wrap">
             {([
               { value: 'police' as const, label: '경찰 현장단속' },
@@ -152,21 +152,21 @@ export default function FinePenaltyPage() {
                   onChange={() => setEnforcement(opt.value)}
                   className="accent-[#ef4444]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">미납 기간 (개월, 0이면 기한 내)</label>
+          <label className="block text-sm text-slate-600 mb-2">미납 기간 (개월, 0이면 기한 내)</label>
           <input
             type="text"
             inputMode="numeric"
             value={unpaidMonths}
             onChange={e => setUnpaidMonths(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="0"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           />
         </div>
 
@@ -181,12 +181,12 @@ export default function FinePenaltyPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">위반 항목</p>
-              <p className="text-lg font-bold text-white">{result.violation.name}</p>
+              <p className="text-sm text-slate-600 mb-1">위반 항목</p>
+              <p className="text-lg font-bold text-slate-900">{result.violation.name}</p>
             </div>
 
             {result.violation.note && (
@@ -197,14 +197,14 @@ export default function FinePenaltyPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-gray-400 mb-1">범칙금 (현장단속)</p>
-                <p className="text-lg text-white">
+                <p className="text-sm text-slate-600 mb-1">범칙금 (현장단속)</p>
+                <p className="text-lg text-slate-900">
                   {result.baseFine !== null ? `${formatNumber(result.baseFine)}원` : '해당 없음'}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-400 mb-1">과태료 (무인/자진)</p>
-                <p className="text-lg text-white">
+                <p className="text-sm text-slate-600 mb-1">과태료 (무인/자진)</p>
+                <p className="text-lg text-slate-900">
                   {result.basePenalty !== null ? `${formatNumber(result.basePenalty)}원` : '해당 없음'}
                 </p>
               </div>
@@ -212,28 +212,28 @@ export default function FinePenaltyPage() {
 
             {result.discount > 0 && (
               <div>
-                <p className="text-sm text-gray-400 mb-1">자진신고 감경 (20%)</p>
+                <p className="text-sm text-slate-600 mb-1">자진신고 감경 (20%)</p>
                 <p className="text-lg text-green-400">-{formatNumber(result.discount)}원</p>
               </div>
             )}
 
             {result.surcharge > 0 && (
               <div>
-                <p className="text-sm text-gray-400 mb-1">가산금 (월 3% x {result.unpaidMonths}개월)</p>
+                <p className="text-sm text-slate-600 mb-1">가산금 (월 3% x {result.unpaidMonths}개월)</p>
                 <p className="text-lg text-red-400">+{formatNumber(result.surcharge)}원</p>
               </div>
             )}
 
-            <div className="pt-3 border-t border-[#1e2d4a]">
-              <p className="text-sm text-gray-400 mb-1">최종 납부 금액</p>
+            <div className="pt-3 border-t border-slate-200">
+              <p className="text-sm text-slate-600 mb-1">최종 납부 금액</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.finalAmount)}원
               </p>
             </div>
 
-            <div className="bg-[#0d1424] rounded-lg p-4">
-              <p className="text-sm text-gray-400 mb-2 font-semibold">납부 방법 안내</p>
-              <ul className="text-sm text-gray-300 space-y-1">
+            <div className="bg-white rounded-lg p-4">
+              <p className="text-sm text-slate-600 mb-2 font-semibold">납부 방법 안내</p>
+              <ul className="text-sm text-slate-600 space-y-1">
                 <li>- 이파인 (efine.go.kr) 온라인 납부</li>
                 <li>- 가상계좌 이체</li>
                 <li>- 가까운 은행/우체국 방문 납부</li>
@@ -242,11 +242,11 @@ export default function FinePenaltyPage() {
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">벌금/과태료 구간 적용 → 자진신고 20% 감경 → 미납 월 3% 가산</p>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
+          <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 도로교통법, 질서위반행위규제법. 실제 금액은 위반 상황에 따라 달라질 수 있습니다.
             </p>
@@ -255,7 +255,7 @@ export default function FinePenaltyPage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">벌금/과태료 미납 시 불이익</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">벌금/과태료 미납 시 불이익</h2>
         <ul className="space-y-3">
           {[
             { num: '1', text: '납부기한 후 3% 가산금 매월 부과' },
@@ -265,12 +265,12 @@ export default function FinePenaltyPage() {
           ].map(item => (
             <li key={item.num} className="flex items-start gap-3">
               <span
-                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: category.color }}
               >
                 {item.num}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ul>

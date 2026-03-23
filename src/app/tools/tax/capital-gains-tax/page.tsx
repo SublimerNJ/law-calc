@@ -179,7 +179,7 @@ export default function CapitalGainsTaxPage() {
     inputMode: 'numeric' as const,
     value: value ? parseInt(value).toLocaleString('ko-KR') : '',
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => setter(e.target.value.replace(/[^0-9]/g, '')),
-    className: 'w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none',
+    className: 'w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none',
   });
 
   const assetOptions: { value: AssetType; label: string }[] = [
@@ -192,41 +192,41 @@ export default function CapitalGainsTaxPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">취득가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">취득가액 (원)</label>
           <input {...numInput(acquisitionPrice, setAcquisitionPrice)} placeholder="예: 300,000,000" />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">양도가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">양도가액 (원)</label>
           <input {...numInput(transferPrice, setTransferPrice)} placeholder="예: 500,000,000" />
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-2">취득일</label>
+            <label className="block text-sm text-slate-600 mb-2">취득일</label>
             <input
               type="date"
               value={acquisitionDate}
               onChange={e => setAcquisitionDate(e.target.value)}
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
           <div>
-            <label className="block text-sm text-gray-400 mb-2">양도일</label>
+            <label className="block text-sm text-slate-600 mb-2">양도일</label>
             <input
               type="date"
               value={transferDate}
               onChange={e => setTransferDate(e.target.value)}
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">자산 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">자산 유형</label>
           <div className="flex flex-wrap gap-3">
             {assetOptions.map(opt => (
               <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
@@ -237,7 +237,7 @@ export default function CapitalGainsTaxPage() {
                   onChange={() => setAssetType(opt.value)}
                   className="accent-[#10b981]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -253,12 +253,12 @@ export default function CapitalGainsTaxPage() {
                   onChange={e => setIsSingleHouse(e.target.checked)}
                   className="accent-[#10b981] w-4 h-4"
                 />
-                <span className="text-sm text-gray-300">1세대 1주택 해당</span>
+                <span className="text-sm text-slate-600">1세대 1주택 해당</span>
               </label>
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm text-gray-400 mb-2">보유 주택 수</label>
+              <label className="block text-sm text-slate-600 mb-2">보유 주택 수</label>
               <div className="flex gap-4">
                 {([['1', '1주택'], ['2', '2주택'], ['3+', '3주택 이상']] as const).map(([val, label]) => (
                   <label key={val} className="flex items-center gap-2 cursor-pointer">
@@ -269,7 +269,7 @@ export default function CapitalGainsTaxPage() {
                       onChange={() => setHouseCount(val)}
                       className="accent-[#10b981]"
                     />
-                    <span className="text-sm text-gray-300">{label}</span>
+                    <span className="text-sm text-slate-600">{label}</span>
                   </label>
                 ))}
               </div>
@@ -288,7 +288,7 @@ export default function CapitalGainsTaxPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.exemptionNote && (
             <div className="mb-4 p-3 rounded-lg bg-[#10b981]/10 border border-[#10b981]/30">
@@ -297,7 +297,7 @@ export default function CapitalGainsTaxPage() {
           )}
 
           {result.surchargeNote && (
-            <div className="mb-4 p-3 rounded-lg bg-[#f59e0b]/10 border border-[#f59e0b]/30">
+            <div className="mb-4 p-3 rounded-lg bg-blue-600/10 border border-[#f59e0b]/30">
               <p className="text-sm text-[#f59e0b]">{result.surchargeNote}</p>
             </div>
           )}
@@ -316,31 +316,31 @@ export default function CapitalGainsTaxPage() {
             ].map((row, i, arr) => (
               <div
                 key={row.label}
-                className={`flex justify-between items-center ${i === arr.length - 1 ? 'pt-3 border-t border-[#1e2d4a]' : ''}`}
+                className={`flex justify-between items-center ${i === arr.length - 1 ? 'pt-3 border-t border-slate-200' : ''}`}
               >
-                <span className="text-sm text-gray-400">{row.label}</span>
+                <span className="text-sm text-slate-600">{row.label}</span>
                 {row.value !== null ? (
                   <span
-                    className={`font-semibold ${i === arr.length - 1 ? 'text-xl' : 'text-base text-white'}`}
+                    className={`font-semibold ${i === arr.length - 1 ? 'text-xl' : 'text-base text-slate-900'}`}
                     style={i === arr.length - 1 ? { color: category.color } : undefined}
                   >
                     {formatNumber(row.value)}원
                   </span>
                 ) : (
-                  <span className="text-sm text-gray-400" />
+                  <span className="text-sm text-slate-600" />
                 )}
               </div>
             ))}
           </div>
 
           {result.gain > 0 && (
-            <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-[#1e2d4a]">
+            <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-200">
               <div>
-                <p className="text-sm text-gray-400 mb-1">실효세율 (양도차익 대비)</p>
-                <p className="text-lg text-white">{(result.totalTax / result.gain * 100).toFixed(2)}%</p>
+                <p className="text-sm text-slate-600 mb-1">실효세율 (양도차익 대비)</p>
+                <p className="text-lg text-slate-900">{(result.totalTax / result.gain * 100).toFixed(2)}%</p>
               </div>
               <div>
-                <p className="text-sm text-gray-400 mb-1">실수령액 (양도가 - 취득가 - 세금)</p>
+                <p className="text-sm text-slate-600 mb-1">실수령액 (양도가 - 취득가 - 세금)</p>
                 <p className="text-lg font-semibold" style={{ color: category.color }}>
                   {formatNumber(result.gain - result.totalTax)}원
                 </p>
@@ -348,7 +348,7 @@ export default function CapitalGainsTaxPage() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 소득세법 제94~118조, 조세특례제한법 1세대1주택 비과세
             </p>

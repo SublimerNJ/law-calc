@@ -82,17 +82,17 @@ export default function InheritanceTaxPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">총 상속재산가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">총 상속재산가액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={displayValue(grossEstate)}
             onChange={handleNumberInput(setGrossEstate)}
             placeholder="예: 1,000,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
           />
           {grossEstate && <p className="text-xs text-gray-500 mt-1">{displayValue(grossEstate)}원</p>}
         </div>
@@ -105,31 +105,31 @@ export default function InheritanceTaxPage() {
               onChange={e => setHasSpouse(e.target.checked)}
               className="accent-[#ec4899] w-4 h-4"
             />
-            <span className="text-sm text-gray-300">배우자 생존</span>
+            <span className="text-sm text-slate-600">배우자 생존</span>
           </label>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">장례비 (원, 최대 공제 1,500만원)</label>
+          <label className="block text-sm text-slate-600 mb-2">장례비 (원, 최대 공제 1,500만원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={displayValue(funeralExpenses)}
             onChange={handleNumberInput(setFuneralExpenses)}
             placeholder="선택 입력"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">채무/공과금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">채무/공과금 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={displayValue(debts)}
             onChange={handleNumberInput(setDebts)}
             placeholder="선택 입력"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
           />
         </div>
 
@@ -144,30 +144,30 @@ export default function InheritanceTaxPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">과세가액</p>
-              <p className="text-lg text-white">{formatNumber(result.taxableBase)}원</p>
+              <p className="text-sm text-slate-600 mb-1">과세가액</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.taxableBase)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">공제 합계</p>
-              <p className="text-lg text-white">{formatNumber(result.totalDeduction)}원</p>
+              <p className="text-sm text-slate-600 mb-1">공제 합계</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.totalDeduction)}원</p>
               <p className="text-xs text-gray-500 mt-1">
                 일괄공제 5억원{hasSpouse ? ` + 배우자공제 ${formatNumber(Math.max(500_000_000, Math.min(parseInput(grossEstate) * 0.5, 3_000_000_000)))}원` : ''} 적용
               </p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">과세표준</p>
-              <p className="text-lg text-white">{formatNumber(result.taxableAmount)}원</p>
+              <p className="text-sm text-slate-600 mb-1">과세표준</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.taxableAmount)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">적용세율</p>
-              <p className="text-lg text-white">{result.rate}</p>
+              <p className="text-sm text-slate-600 mb-1">적용세율</p>
+              <p className="text-lg text-slate-900">{result.rate}</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">산출세액</p>
+              <p className="text-sm text-slate-600 mb-1">산출세액</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.tax)}원
               </p>
@@ -176,19 +176,19 @@ export default function InheritanceTaxPage() {
 
           <div className="grid grid-cols-2 gap-3 mb-4">
             <div className="p-3 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
-              <p className="text-xs text-gray-400 mb-1">실효세율</p>
-              <p className="text-lg text-white">{parseInput(grossEstate) > 0 ? ((result.tax / parseInput(grossEstate)) * 100).toFixed(2) : '0'}%</p>
+              <p className="text-xs text-slate-600 mb-1">실효세율</p>
+              <p className="text-lg text-slate-900">{parseInput(grossEstate) > 0 ? ((result.tax / parseInput(grossEstate)) * 100).toFixed(2) : '0'}%</p>
               <p className="text-xs text-gray-500">총 재산 대비</p>
             </div>
             <div className="p-3 rounded-lg bg-[#1a1025]" style={{ borderLeft: `3px solid ${category.color}` }}>
-              <p className="text-xs text-gray-400 mb-1">세후 상속재산</p>
+              <p className="text-xs text-slate-600 mb-1">세후 상속재산</p>
               <p className="text-lg font-bold" style={{ color: category.color }}>{formatNumber(Math.max(0, parseInput(grossEstate) - parseInput(debts) - result.tax))}원</p>
             </div>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`총 상속재산가액     ${formatNumber(parseInput(grossEstate))}원
 (-) 채무/장례비    ${formatNumber(parseInput(debts) + Math.min(parseInput(funeralExpenses), 15_000_000))}원
 = 과세가액         ${formatNumber(result.taxableBase)}원
@@ -202,14 +202,14 @@ export default function InheritanceTaxPage() {
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 상속세 및 증여세법 제25조~제27조
             </p>
           </div>
 
           <div className="mt-3 p-3 bg-[#1a1025] border border-[#2a1a3a] rounded-lg">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-slate-600">
               본 계산기는 참고용입니다. 실제 신고 시 세무사 상담을 권장합니다.
             </p>
           </div>

@@ -89,11 +89,11 @@ export default function StatuteOfLimitationsPage() {
       <div className="premium-card p-6 mb-4">
         <div className="space-y-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-1">청구권 유형</label>
+            <label className="block text-sm text-slate-600 mb-1">청구권 유형</label>
             <select
               value={claimTypeIdx}
               onChange={e => setClaimTypeIdx(Number(e.target.value))}
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
             >
               {CLAIM_TYPES.map((ct, i) => (
                 <option key={i} value={i}>{ct.label} ({ct.years}년)</option>
@@ -102,19 +102,19 @@ export default function StatuteOfLimitationsPage() {
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">기산일 (권리 발생일 또는 피해 인지일)</label>
+            <label className="block text-sm text-slate-600 mb-1">기산일 (권리 발생일 또는 피해 인지일)</label>
             <input
               type="date"
               value={startDate}
               onChange={e => setStartDate(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         </div>
 
         <button
           onClick={calculate}
-          className="w-full mt-6 py-3 rounded-lg font-semibold text-white"
+          className="w-full mt-6 py-3 rounded-lg font-semibold text-slate-900"
           style={{ backgroundColor: category.color }}
         >
           계산하기
@@ -123,36 +123,36 @@ export default function StatuteOfLimitationsPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h3 className="text-lg font-semibold text-white mb-4">계산 결과</h3>
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h3>
           <div className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-gray-400">소멸시효 기간</span>
-              <span className="text-white font-semibold">{result.period}</span>
+              <span className="text-slate-600">소멸시효 기간</span>
+              <span className="text-slate-900 font-semibold">{result.period}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-400">만료일</span>
-              <span className="text-white font-semibold">{formatDate(result.expiryDate)}</span>
+              <span className="text-slate-600">만료일</span>
+              <span className="text-slate-900 font-semibold">{formatDate(result.expiryDate)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-400">남은 기간</span>
+              <span className="text-slate-600">남은 기간</span>
               <span className={`font-semibold ${result.expired ? 'text-red-400' : 'text-green-400'}`}>
                 {result.remaining}
               </span>
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">기산일 + 시효기간 = 만료일</p>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
+          <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">법적 근거: {result.legalBasis}, 민법 제162조~제164조, 상법 제64조</p>
           </div>
         </div>
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">시효 중단 사유</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">시효 중단 사유</h2>
         <ol className="space-y-3">
           {[
             { color: '#3b82f6', text: '소송 제기 (가장 확실)' },
@@ -162,12 +162,12 @@ export default function StatuteOfLimitationsPage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

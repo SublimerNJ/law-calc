@@ -40,17 +40,17 @@ export default function DismissalNoticePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">월 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 3,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {monthlyWage && (
             <p className="text-xs text-gray-500 mt-1">
@@ -60,7 +60,7 @@ export default function DismissalNoticePage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">해고예고일수 (0~29일)</label>
+          <label className="block text-sm text-slate-600 mb-2">해고예고일수 (0~29일)</label>
           <input
             type="number"
             min="0"
@@ -68,7 +68,7 @@ export default function DismissalNoticePage() {
             value={noticeDays}
             onChange={e => setNoticeDays(e.target.value)}
             placeholder="0 = 즉시해고"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f59e0b] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">실제 받은 예고 기간. 0 = 예고 없이 즉시해고 (30일분 수당 전액 지급)</p>
         </div>
@@ -84,10 +84,10 @@ export default function DismissalNoticePage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">해고예고수당</p>
+            <p className="text-sm text-slate-600 mb-1">해고예고수당</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.allowance)}원
             </p>
@@ -95,24 +95,24 @@ export default function DismissalNoticePage() {
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">미지급 예고일수</p>
-              <p className="text-lg text-white">{result.unpaidDays}일</p>
+              <p className="text-sm text-slate-600 mb-1">미지급 예고일수</p>
+              <p className="text-lg text-slate-900">{result.unpaidDays}일</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">1일 통상임금</p>
-              <p className="text-lg text-white">{formatNumber(result.dailyWage)}원</p>
+              <p className="text-sm text-slate-600 mb-1">1일 통상임금</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.dailyWage)}원</p>
             </div>
           </div>
 
-          <div className="mb-4 p-4 rounded-lg bg-[#f59e0b]/10 border border-[#f59e0b]/30">
-            <p className="text-sm text-gray-300">
+          <div className="mb-4 p-4 rounded-lg bg-blue-600/10 border border-[#f59e0b]/30">
+            <p className="text-sm text-slate-600">
               <span className="font-semibold text-[#f59e0b]">참고:</span> 계속근로기간이 3개월 미만인 근로자, 천재지변 등 부득이한 사유로 사업을 계속하는 것이 불가능한 경우에는 해고예고 의무가 면제됩니다.
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
-            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
 {`통상임금: ${monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : 0}원
 ÷ 30 = 1일 통상임금: ${formatNumber(result.dailyWage)}원
 × (30 - ${noticeDays}일) = 미지급 ${result.unpaidDays}일
@@ -126,7 +126,7 @@ export default function DismissalNoticePage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">해고예고수당 미지급 시</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">해고예고수당 미지급 시</h2>
         <ol className="space-y-3">
           {[
             { color: '#f59e0b', text: '사업주에게 서면 청구' },
@@ -136,12 +136,12 @@ export default function DismissalNoticePage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

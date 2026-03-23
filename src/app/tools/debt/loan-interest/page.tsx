@@ -42,17 +42,17 @@ export default function LoanInterestPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">대여 원금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">대여 원금 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -62,7 +62,7 @@ export default function LoanInterestPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">약정 이율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">약정 이율 (%)</label>
           <input
             type="number"
             min="0"
@@ -71,19 +71,19 @@ export default function LoanInterestPage() {
             value={rate}
             onChange={e => setRate(e.target.value)}
             placeholder="예: 15"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">대여 기간 (일)</label>
+          <label className="block text-sm text-slate-600 mb-2">대여 기간 (일)</label>
           <input
             type="number"
             min="1"
             value={days}
             onChange={e => setDays(e.target.value)}
             placeholder="예: 365"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
         </div>
 
@@ -98,7 +98,7 @@ export default function LoanInterestPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.isExceeded && (
             <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30">
@@ -109,11 +109,11 @@ export default function LoanInterestPage() {
           )}
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">적용 이율</p>
-            <p className="text-lg text-white">
+            <p className="text-sm text-slate-600 mb-1">적용 이율</p>
+            <p className="text-lg text-slate-900">
               {result.effectiveRate}%
               {result.isExceeded && (
-                <span className="text-sm text-gray-400 ml-2">
+                <span className="text-sm text-slate-600 ml-2">
                   (약정 {parseFloat(rate)}% → 제한 20%)
                 </span>
               )}
@@ -121,7 +121,7 @@ export default function LoanInterestPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">이자액</p>
+            <p className="text-sm text-slate-600 mb-1">이자액</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.interest)}원
             </p>
@@ -129,18 +129,18 @@ export default function LoanInterestPage() {
 
           {result.isExceeded && (
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">이자제한법 위반 초과이자</p>
+              <p className="text-sm text-slate-600 mb-1">이자제한법 위반 초과이자</p>
               <p className="text-lg font-semibold" style={{ color: '#ef4444' }}>
                 {formatNumber(result.excessInterest)}원 (무효)
               </p>
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">원금 × 이자율 × 기간/365 = 이자</p>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
+          <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 이자제한법 제2조 (2026년 현행 최고이자율 연 20%)
             </p>
@@ -149,7 +149,7 @@ export default function LoanInterestPage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">이자 과다 청구 시</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">이자 과다 청구 시</h2>
         <ol className="space-y-3">
           {[
             { color: '#06b6d4', text: '이자제한법 초과분은 무효 (연 20% 상한)' },
@@ -158,12 +158,12 @@ export default function LoanInterestPage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

@@ -57,17 +57,17 @@ export default function DtiPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">연소득 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">연소득 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={annualIncome ? parseInt(annualIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setAnnualIncome)}
             placeholder="예: 60,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
           {annualIncome && (
             <p className="text-xs text-gray-500 mt-1">
@@ -77,14 +77,14 @@ export default function DtiPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">주택담보대출 월 원리금 상환액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">주택담보대출 월 원리금 상환액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={monthlyMortgage ? parseInt(monthlyMortgage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyMortgage)}
             placeholder="예: 1,500,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
           {monthlyMortgage && (
             <p className="text-xs text-gray-500 mt-1">
@@ -94,14 +94,14 @@ export default function DtiPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">기타 대출 월 이자 상환액 (원, 없으면 0)</label>
+          <label className="block text-sm text-slate-600 mb-2">기타 대출 월 이자 상환액 (원, 없으면 0)</label>
           <input
             type="text"
             inputMode="numeric"
             value={monthlyOtherInterest ? parseInt(monthlyOtherInterest).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyOtherInterest)}
             placeholder="예: 200,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
           {monthlyOtherInterest && parseInt(monthlyOtherInterest) > 0 && (
             <p className="text-xs text-gray-500 mt-1">
@@ -111,11 +111,11 @@ export default function DtiPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">지역 구분</label>
+          <label className="block text-sm text-slate-600 mb-2">지역 구분</label>
           <select
             value={region}
             onChange={e => setRegion(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           >
             {REGIONS.map(r => (
               <option key={r.value} value={r.value}>{r.label} (DTI {r.limit}%)</option>
@@ -134,33 +134,33 @@ export default function DtiPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">현재 DTI</p>
+            <p className="text-sm text-slate-600 mb-1">현재 DTI</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {result.dti.toFixed(1)}%
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">규제 기준 DTI</p>
-            <p className="text-lg text-white">{result.regulationLimit}%</p>
+            <p className="text-sm text-slate-600 mb-1">규제 기준 DTI</p>
+            <p className="text-lg text-slate-900">{result.regulationLimit}%</p>
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">연간 주담대 원리금</p>
-              <p className="text-white">{formatNumber(result.annualMortgage)}원</p>
+              <p className="text-sm text-slate-600 mb-1">연간 주담대 원리금</p>
+              <p className="text-slate-900">{formatNumber(result.annualMortgage)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">연간 기타 이자</p>
-              <p className="text-white">{formatNumber(result.annualOtherInterest)}원</p>
+              <p className="text-sm text-slate-600 mb-1">연간 기타 이자</p>
+              <p className="text-slate-900">{formatNumber(result.annualOtherInterest)}원</p>
             </div>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">적합 여부</p>
+            <p className="text-sm text-slate-600 mb-1">적합 여부</p>
             {result.isOver ? (
               <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-red-500/20 text-red-400">
                 초과 - 규제 기준을 초과합니다
@@ -173,8 +173,8 @@ export default function DtiPage() {
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`연간 원리금 ÷ 연소득 = DTI%
 
 DTI = (주담대 연간 원리금 + 기타대출 연간 이자) ÷ 연소득 × 100
@@ -183,7 +183,7 @@ DTI = (주담대 연간 원리금 + 기타대출 연간 이자) ÷ 연소득 × 
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500 mb-2">
               법적 근거: 금융위원회 DTI 규제 (금융감독원 여신심사 가이드라인)
             </p>

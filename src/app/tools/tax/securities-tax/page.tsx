@@ -63,14 +63,14 @@ export default function SecuritiesTaxPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">거래 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">거래 유형</label>
           <select
             value={marketType}
             onChange={e => { setMarketType(e.target.value as MarketType); setResult(null); }}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
           >
             {MARKETS.map(m => (
               <option key={m.value} value={m.value}>
@@ -81,14 +81,14 @@ export default function SecuritiesTaxPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">양도(매도)가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">양도(매도)가액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
           />
           {amount && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(amount).toLocaleString('ko-KR')}원</p>
@@ -106,36 +106,36 @@ export default function SecuritiesTaxPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">양도가액</p>
-              <p className="text-lg text-white">{formatNumber(result.transferAmount)}원</p>
+              <p className="text-sm text-slate-600 mb-1">양도가액</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.transferAmount)}원</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">거래 유형</p>
-              <p className="text-lg text-white">{result.marketLabel}</p>
+              <p className="text-sm text-slate-600 mb-1">거래 유형</p>
+              <p className="text-lg text-slate-900">{result.marketLabel}</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">적용 세율</p>
-              <p className="text-lg text-white">{(result.rate * 100).toFixed(2)}%</p>
+              <p className="text-sm text-slate-600 mb-1">적용 세율</p>
+              <p className="text-lg text-slate-900">{(result.rate * 100).toFixed(2)}%</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">증권거래세</p>
-              <p className="text-lg text-white">{formatNumber(result.securitiesTax)}원</p>
+              <p className="text-sm text-slate-600 mb-1">증권거래세</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.securitiesTax)}원</p>
             </div>
           </div>
 
           {result.hasAgriTax && (
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">농어촌특별세 (0.03%)</p>
-              <p className="text-lg text-white">{formatNumber(result.agriTax)}원</p>
+              <p className="text-sm text-slate-600 mb-1">농어촌특별세 (0.03%)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.agriTax)}원</p>
             </div>
           )}
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">합계 세액</p>
+            <p className="text-sm text-slate-600 mb-1">합계 세액</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.total)}원
             </p>
@@ -147,9 +147,9 @@ export default function SecuritiesTaxPage() {
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`양도금액 × 세율 = 증권거래세
 (코스피: 양도금액 × 0.03% 농어촌특별세 별도)`}
             </pre>

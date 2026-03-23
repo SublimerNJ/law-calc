@@ -126,17 +126,17 @@ export default function IncomeTaxPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">연간 총급여액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">연간 총급여액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={salary ? parseInt(salary).toLocaleString('ko-KR') : ''}
             onChange={handleSalaryChange}
             placeholder="예: 50,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {salary && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(salary).toLocaleString('ko-KR')}원</p>
@@ -144,24 +144,24 @@ export default function IncomeTaxPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">부양가족 수 (본인 포함)</label>
+          <label className="block text-sm text-slate-600 mb-2">부양가족 수 (본인 포함)</label>
           <input
             type="number"
             min="1"
             value={dependents}
             onChange={e => setDependents(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">20세 이하 자녀 수</label>
+          <label className="block text-sm text-slate-600 mb-2">20세 이하 자녀 수</label>
           <input
             type="number"
             min="0"
             value={children}
             onChange={e => setChildren(e.target.value)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -176,17 +176,17 @@ export default function IncomeTaxPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-3">
             {rows.map((row, i) => (
               <div
                 key={row.label}
-                className={`flex justify-between items-center ${i === rows.length - 1 ? 'pt-3 border-t border-[#1e2d4a]' : ''}`}
+                className={`flex justify-between items-center ${i === rows.length - 1 ? 'pt-3 border-t border-slate-200' : ''}`}
               >
-                <span className="text-sm text-gray-400">{row.label}</span>
+                <span className="text-sm text-slate-600">{row.label}</span>
                 <span
-                  className={`font-semibold ${i === rows.length - 1 ? 'text-xl' : 'text-base text-white'}`}
+                  className={`font-semibold ${i === rows.length - 1 ? 'text-xl' : 'text-base text-slate-900'}`}
                   style={i === rows.length - 1 ? { color: category.color } : undefined}
                 >
                   {formatNumber(row.value)}원
@@ -195,14 +195,14 @@ export default function IncomeTaxPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-4 mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="grid grid-cols-2 gap-4 mb-4 mt-4 pt-4 border-t border-slate-200">
             <div>
-              <p className="text-sm text-gray-400 mb-1">월 환산 세금</p>
-              <p className="text-lg text-white">{formatNumber(Math.floor(result.totalTax / 12))}원/월</p>
+              <p className="text-sm text-slate-600 mb-1">월 환산 세금</p>
+              <p className="text-lg text-slate-900">{formatNumber(Math.floor(result.totalTax / 12))}원/월</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 mb-1">실효세율</p>
-              <p className="text-lg text-white">
+              <p className="text-sm text-slate-600 mb-1">실효세율</p>
+              <p className="text-lg text-slate-900">
                 {salary ? ((result.totalTax / parseInt(salary)) * 100).toFixed(2) : '0'}%
               </p>
             </div>
@@ -210,10 +210,10 @@ export default function IncomeTaxPage() {
 
           {/* 세율 구간표 */}
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-3">2026년 소득세 세율표</p>
+            <p className="text-sm text-slate-600 mb-3">2026년 소득세 세율표</p>
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <th className="py-2 text-left text-gray-500">과세표준</th>
                   <th className="py-2 text-right text-gray-500">세율</th>
                 </tr>
@@ -231,8 +231,8 @@ export default function IncomeTaxPage() {
                 ].map((b, i) => {
                   const isActive = result.taxBase > 0 && (i === 0 ? result.taxBase <= b.max : result.taxBase <= b.max && (i === 0 || result.taxBase > [14_000_000, 50_000_000, 88_000_000, 150_000_000, 300_000_000, 500_000_000, 1_000_000_000][i-1]));
                   return (
-                    <tr key={i} className={`border-b border-[#1e2d4a]/50 ${isActive ? 'bg-[#3b82f6]/10' : ''}`}>
-                      <td className="py-2 text-gray-300">{b.label}</td>
+                    <tr key={i} className={`border-b border-slate-200/50 ${isActive ? 'bg-[#3b82f6]/10' : ''}`}>
+                      <td className="py-2 text-slate-600">{b.label}</td>
                       <td className="py-2 text-right" style={{ color: isActive ? category.color : '#9ca3af' }}>{b.rate}</td>
                     </tr>
                   );
@@ -241,7 +241,7 @@ export default function IncomeTaxPage() {
             </table>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 소득세법 제47조(근로소득공제), 제55조(세율), 제59조(세액공제)
             </p>

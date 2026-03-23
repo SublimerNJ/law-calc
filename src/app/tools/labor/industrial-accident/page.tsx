@@ -88,13 +88,13 @@ export default function IndustrialAccidentPage() {
 
   const tabClass = (active: boolean) =>
     `flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-      active ? 'bg-[#f59e0b] text-black' : 'bg-[#1e2d4a] text-gray-400 hover:text-white'
+      active ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
     }`;
 
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">급여 유형 선택</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">급여 유형 선택</h2>
 
         <div className="flex gap-2 mb-6">
           <button onClick={() => { setBenefitType('absence'); setResult(null); }} className={tabClass(benefitType === 'absence')}>
@@ -111,23 +111,23 @@ export default function IndustrialAccidentPage() {
         {benefitType === 'absence' && (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-gray-400 mb-2">평균임금 (원/일)</label>
+              <label className="block text-sm text-slate-600 mb-2">평균임금 (원/일)</label>
               <input
                 type="text" inputMode="numeric"
                 value={dailyWage ? parseInt(dailyWage).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDailyWage)}
                 placeholder="예: 100,000"
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
             <div className="mb-6">
-              <label className="block text-sm text-gray-400 mb-2">요양일수 (일)</label>
+              <label className="block text-sm text-slate-600 mb-2">요양일수 (일)</label>
               <input
                 type="text" inputMode="numeric"
                 value={absenceDays}
                 onChange={handleNumberChange(setAbsenceDays)}
                 placeholder="예: 30"
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
           </>
@@ -136,21 +136,21 @@ export default function IndustrialAccidentPage() {
         {benefitType === 'disability' && (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-gray-400 mb-2">평균임금 (원/일)</label>
+              <label className="block text-sm text-slate-600 mb-2">평균임금 (원/일)</label>
               <input
                 type="text" inputMode="numeric"
                 value={disabilityDailyWage ? parseInt(disabilityDailyWage).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDisabilityDailyWage)}
                 placeholder="예: 100,000"
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
             <div className="mb-4">
-              <label className="block text-sm text-gray-400 mb-2">장해등급</label>
+              <label className="block text-sm text-slate-600 mb-2">장해등급</label>
               <select
                 value={disabilityGrade}
                 onChange={e => setDisabilityGrade(parseInt(e.target.value))}
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               >
                 {Array.from({ length: 14 }, (_, i) => i + 1).map(g => (
                   <option key={g} value={g}>{g}급 ({DISABILITY_LUMP_DAYS[g]}일)</option>
@@ -158,7 +158,7 @@ export default function IndustrialAccidentPage() {
               </select>
             </div>
             <div className="mb-6">
-              <label className="block text-sm text-gray-400 mb-2">지급방식</label>
+              <label className="block text-sm text-slate-600 mb-2">지급방식</label>
               <div className="flex gap-2">
                 <button onClick={() => setPaymentType('lump')} className={tabClass(paymentType === 'lump')}>일시금</button>
                 <button
@@ -175,20 +175,20 @@ export default function IndustrialAccidentPage() {
         {benefitType === 'nursing' && (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-gray-400 mb-2">간병유형</label>
+              <label className="block text-sm text-slate-600 mb-2">간병유형</label>
               <div className="flex gap-2">
                 <button onClick={() => setNursingType('fullTime')} className={tabClass(nursingType === 'fullTime')}>상시간병</button>
                 <button onClick={() => setNursingType('partTime')} className={tabClass(nursingType === 'partTime')}>수시간병</button>
               </div>
             </div>
             <div className="mb-6">
-              <label className="block text-sm text-gray-400 mb-2">간병일수 (일)</label>
+              <label className="block text-sm text-slate-600 mb-2">간병일수 (일)</label>
               <input
                 type="text" inputMode="numeric"
                 value={nursingDays}
                 onChange={handleNumberChange(setNursingDays)}
                 placeholder="예: 30"
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
           </>
@@ -196,7 +196,7 @@ export default function IndustrialAccidentPage() {
 
         <button
           onClick={handleCalculate}
-          className="w-full bg-[#f59e0b] hover:bg-[#d97706] text-black font-semibold py-3 rounded-lg transition-colors"
+          className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
         >
           계산하기
         </button>
@@ -204,22 +204,22 @@ export default function IndustrialAccidentPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.type === 'absence' && (
             <>
-              <div className="bg-[#0d1424] rounded-xl p-5 mb-4 text-center">
-                <p className="text-sm text-gray-400 mb-1">총 휴업급여</p>
+              <div className="bg-white rounded-xl p-5 mb-4 text-center">
+                <p className="text-sm text-slate-600 mb-1">총 휴업급여</p>
                 <p className="text-3xl font-bold text-[#f59e0b]">{formatNumber(result.total)}원</p>
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">1일 휴업급여 (평균임금 70%)</span>
-                  <span className="text-white">{formatNumber(result.dailyBenefit)}원</span>
+                  <span className="text-slate-600">1일 휴업급여 (평균임금 70%)</span>
+                  <span className="text-slate-900">{formatNumber(result.dailyBenefit)}원</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">요양일수</span>
-                  <span className="text-white">{formatNumber(result.totalDays)}일</span>
+                  <span className="text-slate-600">요양일수</span>
+                  <span className="text-slate-900">{formatNumber(result.totalDays)}일</span>
                 </div>
                 {result.minApplied && (
                   <p className="text-xs text-yellow-500">* 최저보상기준(최저임금 80%) 적용</p>
@@ -230,8 +230,8 @@ export default function IndustrialAccidentPage() {
 
           {result.type === 'disability' && (
             <>
-              <div className="bg-[#0d1424] rounded-xl p-5 mb-4 text-center">
-                <p className="text-sm text-gray-400 mb-1">
+              <div className="bg-white rounded-xl p-5 mb-4 text-center">
+                <p className="text-sm text-slate-600 mb-1">
                   {result.paymentType === 'lump' ? '장해급여 일시금' : '장해급여 연금 (연간)'}
                 </p>
                 <p className="text-3xl font-bold text-[#f59e0b]">
@@ -240,21 +240,21 @@ export default function IndustrialAccidentPage() {
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">장해등급</span>
-                  <span className="text-white">{result.grade}급</span>
+                  <span className="text-slate-600">장해등급</span>
+                  <span className="text-slate-900">{result.grade}급</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">평균임금</span>
-                  <span className="text-white">{formatNumber(result.dailyWage)}원/일</span>
+                  <span className="text-slate-600">평균임금</span>
+                  <span className="text-slate-900">{formatNumber(result.dailyWage)}원/일</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">{result.paymentType === 'lump' ? '일시금 일수' : '연금 일수'}</span>
-                  <span className="text-white">{result.days}일</span>
+                  <span className="text-slate-600">{result.paymentType === 'lump' ? '일시금 일수' : '연금 일수'}</span>
+                  <span className="text-slate-900">{result.days}일</span>
                 </div>
                 {result.monthlyPension && (
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">월 연금액</span>
-                    <span className="text-white">{formatNumber(result.monthlyPension)}원/월</span>
+                    <span className="text-slate-600">월 연금액</span>
+                    <span className="text-slate-900">{formatNumber(result.monthlyPension)}원/월</span>
                   </div>
                 )}
               </div>
@@ -263,49 +263,49 @@ export default function IndustrialAccidentPage() {
 
           {result.type === 'nursing' && (
             <>
-              <div className="bg-[#0d1424] rounded-xl p-5 mb-4 text-center">
-                <p className="text-sm text-gray-400 mb-1">총 간병급여</p>
+              <div className="bg-white rounded-xl p-5 mb-4 text-center">
+                <p className="text-sm text-slate-600 mb-1">총 간병급여</p>
                 <p className="text-3xl font-bold text-[#f59e0b]">{formatNumber(result.total)}원</p>
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">간병유형</span>
-                  <span className="text-white">{result.nursingType === 'fullTime' ? '상시간병' : '수시간병'}</span>
+                  <span className="text-slate-600">간병유형</span>
+                  <span className="text-slate-900">{result.nursingType === 'fullTime' ? '상시간병' : '수시간병'}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">1일 간병급여</span>
-                  <span className="text-white">{formatNumber(result.dailyAmount)}원</span>
+                  <span className="text-slate-600">1일 간병급여</span>
+                  <span className="text-slate-900">{formatNumber(result.dailyAmount)}원</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">간병일수</span>
-                  <span className="text-white">{formatNumber(result.totalDays)}일</span>
+                  <span className="text-slate-600">간병일수</span>
+                  <span className="text-slate-900">{formatNumber(result.totalDays)}일</span>
                 </div>
               </div>
             </>
           )}
 
-          <div className="mt-6 p-4 bg-[#1e2d4a]/50 rounded-lg">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
+          <div className="mt-6 p-4 bg-slate-100/50 rounded-lg">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             {result.type === 'absence' && (
-              <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`평균임금 × 70% = 1일 휴업급여
 (최저임금 80% 미만 시 최저임금 80% 적용)
 1일 휴업급여 × 요양일수 = 총 휴업급여`}
               </pre>
             )}
             {result.type === 'disability' && (
-              <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`평균임금 × 등급별 일수 = 장해급여 일시금
 (연금: 평균임금 × 연금일수 ÷ 12 = 월 연금액)`}
               </pre>
             )}
             {result.type === 'nursing' && (
-              <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`정액 간병급여(상시: 41,170원 / 수시: 27,450원) × 간병일수`}
               </pre>
             )}
-            <p className="text-xs text-gray-400 leading-relaxed">
-              <strong className="text-gray-300">법적 근거:</strong> 산업재해보상보험법 제52조(휴업급여), 제57조(장해급여), 제61조(간병급여)
+            <p className="text-xs text-slate-600 leading-relaxed">
+              <strong className="text-slate-600">법적 근거:</strong> 산업재해보상보험법 제52조(휴업급여), 제57조(장해급여), 제61조(간병급여)
             </p>
             <p className="text-xs text-gray-500 mt-2">
               * 실제 급여액은 근로복지공단 심사에 따라 달라질 수 있습니다.
@@ -316,7 +316,7 @@ export default function IndustrialAccidentPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">산재보험 신청 방법</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">산재보험 신청 방법</h2>
           <div className="space-y-3">
             {[
               { step: '1', title: '신청 방법', desc: '사업장 소재지 근로복지공단 지사 방문 또는 온라인 신청' },
@@ -329,7 +329,7 @@ export default function IndustrialAccidentPage() {
                   {item.step}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-sm font-semibold text-slate-600">{item.title}</p>
                   <p className="text-xs text-gray-500">{item.desc}</p>
                 </div>
               </div>

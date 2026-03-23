@@ -204,15 +204,15 @@ export default function YearEndTaxPage() {
     });
   };
 
-  const inputClass = 'w-full px-3 py-2.5 bg-surface-50 border border-border-default rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-brand-primary text-sm';
-  const labelClass = 'block text-sm text-gray-400 mb-1';
+  const inputClass = 'w-full px-3 py-2.5 bg-surface-50 border border-border-default rounded-lg text-slate-900 placeholder-gray-600 focus:outline-none focus:border-brand-primary text-sm';
+  const labelClass = 'block text-sm text-slate-600 mb-1';
 
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="space-y-4">
         {/* 소득 */}
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">1. 소득 정보</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">1. 소득 정보</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className={labelClass}>총급여액 (원)</label>
@@ -227,7 +227,7 @@ export default function YearEndTaxPage() {
 
         {/* 소득공제 */}
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">2. 소득공제 항목</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">2. 소득공제 항목</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className={labelClass}>부양가족 수 (본인 포함)</label>
@@ -254,7 +254,7 @@ export default function YearEndTaxPage() {
 
         {/* 세액공제 */}
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">3. 세액공제 항목</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">3. 세액공제 항목</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className={labelClass}>의료비 지출액 (원)</label>
@@ -281,7 +281,7 @@ export default function YearEndTaxPage() {
 
         <button
           onClick={handleCalculate}
-          className="w-full py-3 rounded-xl font-semibold text-white transition-all"
+          className="w-full py-3 rounded-xl font-semibold text-slate-900 transition-all"
           style={{ backgroundColor: category.color }}
         >
           연말정산 계산하기
@@ -289,81 +289,81 @@ export default function YearEndTaxPage() {
 
         {result && (
           <div className="premium-card p-6 space-y-4">
-            <h2 className="text-lg font-semibold text-white">계산 결과</h2>
+            <h2 className="text-lg font-semibold text-slate-900">계산 결과</h2>
 
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>총급여액</span>
-                <span className="text-white">{formatNumber(result.grossPay)}원</span>
+                <span className="text-slate-900">{formatNumber(result.grossPay)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 근로소득공제</span>
-                <span className="text-white">{formatNumber(result.earnedDeduction)}원</span>
+                <span className="text-slate-900">{formatNumber(result.earnedDeduction)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>근로소득금액</span>
-                <span className="text-white">{formatNumber(result.earnedIncome)}원</span>
+                <span className="text-slate-900">{formatNumber(result.earnedIncome)}원</span>
               </div>
               <hr className="border-white/10" />
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 기본공제</span>
-                <span className="text-white">{formatNumber(result.basicDeduction)}원</span>
+                <span className="text-slate-900">{formatNumber(result.basicDeduction)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 신용카드 소득공제</span>
-                <span className="text-white">{formatNumber(result.cardDeduction)}원</span>
+                <span className="text-slate-900">{formatNumber(result.cardDeduction)}원</span>
               </div>
-              <div className="flex justify-between font-semibold text-gray-300">
+              <div className="flex justify-between font-semibold text-slate-600">
                 <span>과세표준</span>
-                <span className="text-white">{formatNumber(result.taxableIncome)}원</span>
+                <span className="text-slate-900">{formatNumber(result.taxableIncome)}원</span>
               </div>
               <hr className="border-white/10" />
-              <div className="flex justify-between font-semibold text-gray-300">
+              <div className="flex justify-between font-semibold text-slate-600">
                 <span>산출세액</span>
-                <span className="text-white">{formatNumber(result.computedTax)}원</span>
+                <span className="text-slate-900">{formatNumber(result.computedTax)}원</span>
               </div>
               <hr className="border-white/10" />
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 근로소득세액공제</span>
-                <span className="text-white">{formatNumber(result.earnedCredit)}원</span>
+                <span className="text-slate-900">{formatNumber(result.earnedCredit)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 자녀세액공제</span>
-                <span className="text-white">{formatNumber(result.childCredit)}원</span>
+                <span className="text-slate-900">{formatNumber(result.childCredit)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 의료비세액공제</span>
-                <span className="text-white">{formatNumber(result.medicalCredit)}원</span>
+                <span className="text-slate-900">{formatNumber(result.medicalCredit)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 교육비세액공제</span>
-                <span className="text-white">{formatNumber(result.educationCredit)}원</span>
+                <span className="text-slate-900">{formatNumber(result.educationCredit)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 기부금세액공제</span>
-                <span className="text-white">{formatNumber(result.donationCredit)}원</span>
+                <span className="text-slate-900">{formatNumber(result.donationCredit)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>(-) 월세세액공제</span>
-                <span className="text-white">{formatNumber(result.rentCredit)}원</span>
+                <span className="text-slate-900">{formatNumber(result.rentCredit)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>세액공제 합계</span>
-                <span className="text-white">{formatNumber(result.totalCredit)}원</span>
+                <span className="text-slate-900">{formatNumber(result.totalCredit)}원</span>
               </div>
               <hr className="border-white/10" />
-              <div className="flex justify-between font-semibold text-gray-300">
+              <div className="flex justify-between font-semibold text-slate-600">
                 <span>결정세액</span>
-                <span className="text-white">{formatNumber(result.finalTax)}원</span>
+                <span className="text-slate-900">{formatNumber(result.finalTax)}원</span>
               </div>
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between text-slate-600">
                 <span>기납부세액 (원천징수)</span>
-                <span className="text-white">{formatNumber(result.withheld)}원</span>
+                <span className="text-slate-900">{formatNumber(result.withheld)}원</span>
               </div>
             </div>
 
             <div className={`p-4 rounded-xl text-center ${result.refund >= 0 ? 'bg-emerald-500/10 border border-emerald-500/30' : 'bg-red-500/10 border border-red-500/30'}`}>
-              <p className="text-sm text-gray-400 mb-1">
+              <p className="text-sm text-slate-600 mb-1">
                 {result.refund >= 0 ? '예상 환급액' : '추가 납부액'}
               </p>
               <p className={`text-3xl font-bold ${result.refund >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
@@ -372,8 +372,8 @@ export default function YearEndTaxPage() {
             </div>
 
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-2">계산식</p>
-              <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              <p className="text-sm text-slate-600 mb-2">계산식</p>
+              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
                 {`총급여액            ${formatNumber(result.grossPay)}원
 (-) 근로소득공제    ${formatNumber(result.earnedDeduction)}원
 = 근로소득금액      ${formatNumber(result.earnedIncome)}원
@@ -397,14 +397,14 @@ export default function YearEndTaxPage() {
             </div>
 
             <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
-              <p className="font-semibold text-gray-400 mb-1">법적 근거</p>
+              <p className="font-semibold text-slate-600 mb-1">법적 근거</p>
               <p>소득세법 제137조~제140조 (연말정산). 2026년 기준 세율 및 공제율 적용. 실제 연말정산 결과와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
             </div>
           </div>
         )}
 
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">환급 극대화 팁</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">환급 극대화 팁</h2>
           <ul className="space-y-3">
             {[
               { num: '1', text: '신용카드/체크카드 사용비율 최적화 (체크카드 공제율 30% > 신용 15%)' },
@@ -414,12 +414,12 @@ export default function YearEndTaxPage() {
             ].map(item => (
               <li key={item.num} className="flex items-start gap-3">
                 <span
-                  className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                  className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                   style={{ backgroundColor: category.color }}
                 >
                   {item.num}
                 </span>
-                <span className="text-sm text-gray-300">{item.text}</span>
+                <span className="text-sm text-slate-600">{item.text}</span>
               </li>
             ))}
           </ul>

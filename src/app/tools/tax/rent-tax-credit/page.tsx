@@ -76,20 +76,20 @@ export default function RentTaxCreditPage() {
     setResult({ eligible, items, rate, annualRent, cappedRent, credit });
   };
 
-  const inputClass = 'w-full px-3 py-2.5 bg-surface-50 border border-border-default rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-brand-primary text-sm';
+  const inputClass = 'w-full px-3 py-2.5 bg-surface-50 border border-border-default rounded-lg text-slate-900 placeholder-gray-600 focus:outline-none focus:border-brand-primary text-sm';
 
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="space-y-4">
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">기본 정보 입력</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">기본 정보 입력</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-gray-400 mb-1">연간 총급여 (원)</label>
+              <label className="block text-sm text-slate-600 mb-1">연간 총급여 (원)</label>
               <input type="text" className={inputClass} placeholder="예: 45,000,000" value={annualGross} onChange={e => setAnnualGross(e.target.value)} />
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-1">월세 월 납부액 (원)</label>
+              <label className="block text-sm text-slate-600 mb-1">월세 월 납부액 (원)</label>
               <input type="text" className={inputClass} placeholder="예: 500,000" value={monthlyRent} onChange={e => setMonthlyRent(e.target.value)} />
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function RentTaxCreditPage() {
                 onChange={e => setIsHomeless(e.target.checked)}
                 className="w-4 h-4 rounded border-gray-600 text-emerald-500 focus:ring-emerald-500 bg-surface-50"
               />
-              <span className="text-sm text-gray-300">무주택 세대주입니다</span>
+              <span className="text-sm text-slate-600">무주택 세대주입니다</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer">
               <input
@@ -111,14 +111,14 @@ export default function RentTaxCreditPage() {
                 onChange={e => setExceedsMarketValue(e.target.checked)}
                 className="w-4 h-4 rounded border-gray-600 text-red-500 focus:ring-red-500 bg-surface-50"
               />
-              <span className="text-sm text-gray-300">주택 기준시가 4억원 초과</span>
+              <span className="text-sm text-slate-600">주택 기준시가 4억원 초과</span>
             </label>
           </div>
         </div>
 
         <button
           onClick={handleCalculate}
-          className="w-full py-3 rounded-xl font-semibold text-white transition-all"
+          className="w-full py-3 rounded-xl font-semibold text-slate-900 transition-all"
           style={{ backgroundColor: category.color }}
         >
           월세 세액공제 계산하기
@@ -126,7 +126,7 @@ export default function RentTaxCreditPage() {
 
         {result && (
           <div className="premium-card p-6 space-y-4">
-            <h2 className="text-lg font-semibold text-white">공제 요건 확인</h2>
+            <h2 className="text-lg font-semibold text-slate-900">공제 요건 확인</h2>
 
             <div className="space-y-2">
               {result.items.map((item, i) => (
@@ -146,22 +146,22 @@ export default function RentTaxCreditPage() {
               <>
                 <hr className="border-white/10" />
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between text-gray-400">
+                  <div className="flex justify-between text-slate-600">
                     <span>적용 공제율</span>
-                    <span className="text-white">{(result.rate * 100).toFixed(0)}%</span>
+                    <span className="text-slate-900">{(result.rate * 100).toFixed(0)}%</span>
                   </div>
-                  <div className="flex justify-between text-gray-400">
+                  <div className="flex justify-between text-slate-600">
                     <span>연간 월세액</span>
-                    <span className="text-white">{formatNumber(result.annualRent)}원</span>
+                    <span className="text-slate-900">{formatNumber(result.annualRent)}원</span>
                   </div>
-                  <div className="flex justify-between text-gray-400">
+                  <div className="flex justify-between text-slate-600">
                     <span>공제 대상 금액 (한도 1,000만원)</span>
-                    <span className="text-white">{formatNumber(result.cappedRent)}원</span>
+                    <span className="text-slate-900">{formatNumber(result.cappedRent)}원</span>
                   </div>
                 </div>
 
                 <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center">
-                  <p className="text-sm text-gray-400 mb-1">예상 세액공제액</p>
+                  <p className="text-sm text-slate-600 mb-1">예상 세액공제액</p>
                   <p className="text-3xl font-bold text-emerald-400">{formatNumber(result.credit)}원</p>
                 </div>
               </>
@@ -172,12 +172,12 @@ export default function RentTaxCreditPage() {
             )}
 
             <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
-              <p className="font-semibold text-gray-400 mb-1">계산식</p>
-              <pre className="font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+              <p className="font-semibold text-slate-600 mb-1">계산식</p>
+              <pre className="font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`min(월세 × 12, 1,000만원) × 공제율 = 세액공제액
 (총급여 5,500만원 이하: 20%, 초과: 17%)`}
               </pre>
-              <p className="font-semibold text-gray-400 mb-1">법적 근거</p>
+              <p className="font-semibold text-slate-600 mb-1">법적 근거</p>
               <p>소득세법 제95조의2 (월세액 세액공제). 2026년 기준. 실제 공제 결과와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function RentTaxCreditPage() {
 
         {result && (
           <div className="premium-card p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">신청 시 필요 서류</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">신청 시 필요 서류</h2>
             <div className="space-y-3">
               {[
                 { step: '1', title: '임대차계약서 사본', desc: '임대인과 체결한 계약서 사본' },
@@ -198,7 +198,7 @@ export default function RentTaxCreditPage() {
                     {item.step}
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                    <p className="text-sm font-semibold text-slate-600">{item.title}</p>
                     <p className="text-xs text-gray-500">{item.desc}</p>
                   </div>
                 </div>

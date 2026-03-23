@@ -78,11 +78,11 @@ export default function LegalAidPage() {
       <div className="premium-card p-6 mb-4">
         <div className="space-y-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-1">가구원 수</label>
+            <label className="block text-sm text-slate-600 mb-1">가구원 수</label>
             <select
               value={householdSize}
               onChange={e => setHouseholdSize(Number(e.target.value))}
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
             >
               {[1, 2, 3, 4, 5, 6].map(n => (
                 <option key={n} value={n}>{n}{n === 6 ? '인 이상' : '인'}</option>
@@ -91,33 +91,33 @@ export default function LegalAidPage() {
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">월 소득 (원)</label>
+            <label className="block text-sm text-slate-600 mb-1">월 소득 (원)</label>
             <input
               type="text"
               value={monthlyIncome}
               onChange={e => setMonthlyIncome(formatNumber(e.target.value))}
               placeholder="0"
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">재산 총액 (원)</label>
+            <label className="block text-sm text-slate-600 mb-1">재산 총액 (원)</label>
             <input
               type="text"
               value={totalAssets}
               onChange={e => setTotalAssets(formatNumber(e.target.value))}
               placeholder="0"
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">지원 유형</label>
+            <label className="block text-sm text-slate-600 mb-1">지원 유형</label>
             <select
               value={supportType}
               onChange={e => setSupportType(e.target.value as SupportType)}
-              className="w-full px-4 py-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a] text-white focus:border-[#3b82f6] focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
             >
               <option value="litigation">소송대리 (무료법률구조)</option>
               <option value="consultation">법률상담</option>
@@ -128,7 +128,7 @@ export default function LegalAidPage() {
 
         <button
           onClick={calculate}
-          className="w-full mt-6 py-3 rounded-lg font-semibold text-white"
+          className="w-full mt-6 py-3 rounded-lg font-semibold text-slate-900"
           style={{ backgroundColor: category.color }}
         >
           확인하기
@@ -137,13 +137,13 @@ export default function LegalAidPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h3 className="text-lg font-semibold text-white mb-4">판정 결과</h3>
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">판정 결과</h3>
           <div className={`p-4 rounded-lg mb-4 ${result.eligible ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
             <p className={`text-lg font-bold ${result.eligible ? 'text-green-400' : 'text-red-400'}`}>
               {result.eligible ? '지원 가능' : '지원 불가'}
             </p>
           </div>
-          <p className="text-sm text-gray-300 mb-3">{result.reason}</p>
+          <p className="text-sm text-slate-600 mb-3">{result.reason}</p>
 
           {result.eligible && (
             <div className="p-3 rounded-lg bg-blue-900/20 border border-blue-800">
@@ -153,11 +153,11 @@ export default function LegalAidPage() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">월소득 vs 기준중위소득 125% 비교</p>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
+          <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">법적 근거: 법률구조법 제7조, 법률구조법 시행령</p>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function LegalAidPage() {
 
       {result && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">법률구조 신청 방법</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">법률구조 신청 방법</h2>
           <div className="space-y-3">
             {[
               { step: '1', title: '상담 신청', desc: '대한법률구조공단 방문 또는 전화 상담 (132)' },
@@ -178,7 +178,7 @@ export default function LegalAidPage() {
                   {item.step}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-sm font-semibold text-slate-600">{item.title}</p>
                   <p className="text-xs text-gray-500">{item.desc}</p>
                 </div>
               </div>

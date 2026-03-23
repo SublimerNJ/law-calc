@@ -63,17 +63,17 @@ export default function CivilMediationPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">조정 신청 금액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">조정 신청 금액 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 50,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {amount && (
             <p className="text-xs text-gray-500 mt-1">
@@ -83,13 +83,13 @@ export default function CivilMediationPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">당사자 수</label>
+          <label className="block text-sm text-slate-600 mb-2">당사자 수</label>
           <input
             type="number"
             min={2}
             value={parties}
             onChange={e => setParties(Math.max(2, parseInt(e.target.value) || 2))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -104,30 +104,30 @@ export default function CivilMediationPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">조정신청 인지대 (소송의 1/5)</p>
+              <p className="text-sm text-slate-600 mb-1">조정신청 인지대 (소송의 1/5)</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.mediationStampFee)}원
               </p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-400 mb-1">송달료 ({parties}명 x 5회 x 4,500원)</p>
-              <p className="text-lg text-white">{formatNumber(result.serviceFee)}원</p>
+              <p className="text-sm text-slate-600 mb-1">송달료 ({parties}명 x 5회 x 4,500원)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.serviceFee)}원</p>
             </div>
 
-            <div className="pt-4 border-t border-[#1e2d4a]">
-              <p className="text-sm text-gray-400 mb-1">합계</p>
+            <div className="pt-4 border-t border-slate-200">
+              <p className="text-sm text-slate-600 mb-1">합계</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.total)}원
               </p>
             </div>
 
-            <div className="pt-4 border-t border-[#1e2d4a]">
-              <p className="text-sm text-gray-400 mb-1">소송 대비 절약액</p>
+            <div className="pt-4 border-t border-slate-200">
+              <p className="text-sm text-slate-600 mb-1">소송 대비 절약액</p>
               <p className="text-lg font-semibold text-green-400">
                 -{formatNumber(result.savings)}원
               </p>
@@ -137,9 +137,9 @@ export default function CivilMediationPage() {
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
-            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+          <div className="mt-6 pt-4 border-t border-slate-200">
+            <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
 {`소송인지대: ${formatNumber(result.lawsuitStampFee)}원
 × 1/5 = 조정인지대: ${formatNumber(result.mediationStampFee)}원
 + 송달료: ${formatNumber(result.serviceFee)}원

@@ -75,15 +75,15 @@ export default function FourInsurancesPage() {
     setResult({ rows, totalEmployee, totalEmployer });
   };
 
-  const inputClass = 'w-full px-3 py-2.5 bg-surface-50 border border-border-default rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-brand-primary text-sm';
+  const inputClass = 'w-full px-3 py-2.5 bg-surface-50 border border-border-default rounded-lg text-slate-900 placeholder-gray-600 focus:outline-none focus:border-brand-primary text-sm';
 
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="space-y-4">
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">급여 정보 입력</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">급여 정보 입력</h2>
           <div>
-            <label className="block text-sm text-gray-400 mb-1">월 급여 (원)</label>
+            <label className="block text-sm text-slate-600 mb-1">월 급여 (원)</label>
             <input type="text" className={inputClass} placeholder="예: 3,000,000" value={salary} onChange={e => setSalary(e.target.value)} />
           </div>
           <p className="mt-2 text-xs text-gray-600">* 150인 미만 일반사업장 기준. 산재보험료율은 제조업 평균(1.47%)이며 업종별로 상이합니다.</p>
@@ -91,7 +91,7 @@ export default function FourInsurancesPage() {
 
         <button
           onClick={handleCalculate}
-          className="w-full py-3 rounded-xl font-semibold text-white transition-all"
+          className="w-full py-3 rounded-xl font-semibold text-slate-900 transition-all"
           style={{ backgroundColor: category.color }}
         >
           4대보험료 계산하기
@@ -99,30 +99,30 @@ export default function FourInsurancesPage() {
 
         {result && (
           <div className="premium-card p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-white/10">
-                    <th className="text-left py-2 text-gray-400 font-medium">항목</th>
-                    <th className="text-right py-2 text-gray-400 font-medium text-xs">요율</th>
-                    <th className="text-right py-2 text-gray-400 font-medium">근로자</th>
-                    <th className="text-right py-2 text-gray-400 font-medium">사용자</th>
+                    <th className="text-left py-2 text-slate-600 font-medium">항목</th>
+                    <th className="text-right py-2 text-slate-600 font-medium text-xs">요율</th>
+                    <th className="text-right py-2 text-slate-600 font-medium">근로자</th>
+                    <th className="text-right py-2 text-slate-600 font-medium">사용자</th>
                   </tr>
                 </thead>
                 <tbody>
                   {result.rows.map(row => (
                     <tr key={row.name} className="border-b border-white/5">
-                      <td className="py-2.5 text-gray-300">{row.name}</td>
+                      <td className="py-2.5 text-slate-600">{row.name}</td>
                       <td className="py-2.5 text-right text-xs text-gray-500">{row.employeeRate}</td>
-                      <td className="py-2.5 text-right text-white">{formatNumber(row.employee)}원</td>
-                      <td className="py-2.5 text-right text-white">{formatNumber(row.employer)}원</td>
+                      <td className="py-2.5 text-right text-slate-900">{formatNumber(row.employee)}원</td>
+                      <td className="py-2.5 text-right text-slate-900">{formatNumber(row.employer)}원</td>
                     </tr>
                   ))}
                 </tbody>
                 <tfoot>
                   <tr className="border-t-2 border-white/20">
-                    <td className="py-3 font-bold text-white">합계</td>
+                    <td className="py-3 font-bold text-slate-900">합계</td>
                     <td className="py-3"></td>
                     <td className="py-3 text-right font-bold" style={{ color: category.color }}>{formatNumber(result.totalEmployee)}원</td>
                     <td className="py-3 text-right font-bold" style={{ color: category.color }}>{formatNumber(result.totalEmployer)}원</td>
@@ -134,7 +134,7 @@ export default function FourInsurancesPage() {
             <div className="mt-4 grid grid-cols-3 gap-3">
               <div className="p-3 rounded-lg bg-surface-50 text-center">
                 <p className="text-xs text-gray-500 mb-1">4대보험 공제액</p>
-                <p className="text-lg font-bold text-white">{formatNumber(result.totalEmployee)}원</p>
+                <p className="text-lg font-bold text-slate-900">{formatNumber(result.totalEmployee)}원</p>
               </div>
               <div className="p-3 rounded-lg bg-surface-50 text-center">
                 <p className="text-xs text-gray-500 mb-1">예상 실수령액</p>
@@ -143,7 +143,7 @@ export default function FourInsurancesPage() {
               </div>
               <div className="p-3 rounded-lg bg-surface-50 text-center">
                 <p className="text-xs text-gray-500 mb-1">사업주 총비용</p>
-                <p className="text-lg font-bold text-white">{formatNumber(parseAmount(salary) + result.totalEmployer)}원</p>
+                <p className="text-lg font-bold text-slate-900">{formatNumber(parseAmount(salary) + result.totalEmployer)}원</p>
               </div>
             </div>
 
@@ -152,7 +152,7 @@ export default function FourInsurancesPage() {
             </div>
 
             <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
-              <p className="font-semibold text-gray-400 mb-1">법적 근거</p>
+              <p className="font-semibold text-slate-600 mb-1">법적 근거</p>
               <p>국민연금법, 국민건강보험법, 고용보험법, 산업재해보상보험법 (2026년 요율). 국민연금 상한 월 617만원. 실제 보험료와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
             </div>
           </div>

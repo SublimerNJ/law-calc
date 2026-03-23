@@ -97,17 +97,17 @@ export default function ECourtPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">소가 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">소가 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 50,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {amount && (
             <p className="text-xs text-gray-500 mt-1">
@@ -117,11 +117,11 @@ export default function ECourtPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">소송 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">소송 유형</label>
           <select
             value={caseType}
             onChange={e => setCaseType(e.target.value as CaseType)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             <option value="civil">일반 민사</option>
             <option value="payment-order">지급명령 (인지대 1/10)</option>
@@ -130,7 +130,7 @@ export default function ECourtPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">심급 선택</label>
+          <label className="block text-sm text-slate-600 mb-2">심급 선택</label>
           <div className="flex gap-4">
             {([
               { value: 1 as CourtLevel, label: '1심' },
@@ -145,20 +145,20 @@ export default function ECourtPage() {
                   onChange={() => setLevel(opt.value)}
                   className="accent-[#3b82f6]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">당사자 수</label>
+          <label className="block text-sm text-slate-600 mb-2">당사자 수</label>
           <input
             type="number"
             min={2}
             value={parties}
             onChange={e => setParties(Math.max(2, parseInt(e.target.value) || 2))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -173,51 +173,51 @@ export default function ECourtPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">일반 소송 인지대</p>
-              <p className="text-lg text-white">{formatNumber(result.regularStampFee)}원</p>
+              <p className="text-sm text-slate-600 mb-1">일반 소송 인지대</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.regularStampFee)}원</p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-400 mb-1">전자소송 할인 (-10%)</p>
+              <p className="text-sm text-slate-600 mb-1">전자소송 할인 (-10%)</p>
               <p className="text-lg font-semibold text-green-400">
                 -{formatNumber(result.discount)}원
               </p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-400 mb-1">전자소송 인지대</p>
+              <p className="text-sm text-slate-600 mb-1">전자소송 인지대</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.eCourtStampFee)}원
               </p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-400 mb-1">송달료 ({parties}명 x 10회 x 4,500원)</p>
-              <p className="text-lg text-white">{formatNumber(result.serviceFee)}원</p>
+              <p className="text-sm text-slate-600 mb-1">송달료 ({parties}명 x 10회 x 4,500원)</p>
+              <p className="text-lg text-slate-900">{formatNumber(result.serviceFee)}원</p>
             </div>
 
-            <div className="pt-4 border-t border-[#1e2d4a]">
-              <p className="text-sm text-gray-400 mb-1">합계</p>
+            <div className="pt-4 border-t border-slate-200">
+              <p className="text-sm text-slate-600 mb-1">합계</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.total)}원
               </p>
             </div>
 
-            <div className="pt-4 border-t border-[#1e2d4a]">
-              <p className="text-sm text-gray-400 mb-1">전자소송 절약액</p>
+            <div className="pt-4 border-t border-slate-200">
+              <p className="text-sm text-slate-600 mb-1">전자소송 절약액</p>
               <p className="text-lg font-semibold text-green-400">
                 -{formatNumber(result.savings)}원
               </p>
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm font-semibold text-gray-400 mb-2">계산식</p>
-            <pre className="font-mono text-xs text-gray-300 bg-[#0d1424] rounded-lg p-3 whitespace-pre-wrap">
+          <div className="mt-6 pt-4 border-t border-slate-200">
+            <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
+            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
 {`일반인지대: ${formatNumber(result.regularStampFee)}원
 × 0.9 = 전자소송인지대: ${formatNumber(result.eCourtStampFee)}원
 (할인액: -${formatNumber(result.discount)}원)`}

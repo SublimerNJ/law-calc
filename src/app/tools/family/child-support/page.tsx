@@ -117,14 +117,14 @@ export default function ChildSupportPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">자녀 수</label>
+          <label className="block text-sm text-slate-600 mb-2">자녀 수</label>
           <select
             value={childCount}
             onChange={e => setChildCount(e.target.value as ChildCount)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {(Object.entries(CHILD_COUNT_LABELS) as [ChildCount, string][]).map(([key, label]) => (
               <option key={key} value={key}>{label}</option>
@@ -133,7 +133,7 @@ export default function ChildSupportPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">양육자 월 소득 (만원)</label>
+          <label className="block text-sm text-slate-600 mb-2">양육자 월 소득 (만원)</label>
           <input
             type="number"
             inputMode="numeric"
@@ -141,12 +141,12 @@ export default function ChildSupportPage() {
             value={custodialIncome}
             onChange={e => setCustodialIncome(e.target.value)}
             placeholder="예: 300"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">비양육자 월 소득 (만원)</label>
+          <label className="block text-sm text-slate-600 mb-2">비양육자 월 소득 (만원)</label>
           <input
             type="number"
             inputMode="numeric"
@@ -154,12 +154,12 @@ export default function ChildSupportPage() {
             value={noncustodialIncome}
             onChange={e => setNoncustodialIncome(e.target.value)}
             placeholder="예: 500"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">자녀 나이대</label>
+          <label className="block text-sm text-slate-600 mb-2">자녀 나이대</label>
           <div className="flex flex-col gap-2">
             {(Object.entries(AGE_LABELS) as [AgeGroup, string][]).map(([key, label]) => (
               <label key={key} className="flex items-center gap-2 cursor-pointer">
@@ -170,7 +170,7 @@ export default function ChildSupportPage() {
                   onChange={() => setAgeGroup(key)}
                   className="accent-[#ec4899]"
                 />
-                <span className="text-sm text-gray-300">{label}</span>
+                <span className="text-sm text-slate-600">{label}</span>
               </label>
             ))}
           </div>
@@ -187,42 +187,42 @@ export default function ChildSupportPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">월 양육비</p>
+            <p className="text-sm text-slate-600 mb-1">월 양육비</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.monthlyTotal)}원
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">비양육자 부담분</p>
-            <p className="text-lg text-white">
+            <p className="text-sm text-slate-600 mb-1">비양육자 부담분</p>
+            <p className="text-lg text-slate-900">
               {formatNumber(result.noncustodialPayment)}원 ({(result.noncustodialShare * 100).toFixed(1)}%)
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">양육자 부담분</p>
-            <p className="text-lg text-white">
+            <p className="text-sm text-slate-600 mb-1">양육자 부담분</p>
+            <p className="text-lg text-slate-900">
               {formatNumber(result.custodialPayment)}원 ({((1 - result.noncustodialShare) * 100).toFixed(1)}%)
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">합산 소득</p>
-            <p className="text-lg text-white">{formatNumber(result.combinedIncome)}만원</p>
+            <p className="text-sm text-slate-600 mb-1">합산 소득</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.combinedIncome)}만원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">연간 양육비</p>
-            <p className="text-lg text-white">{formatNumber(result.monthlyTotal * 12)}원</p>
+            <p className="text-sm text-slate-600 mb-1">연간 양육비</p>
+            <p className="text-lg text-slate-900">{formatNumber(result.monthlyTotal * 12)}원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">산출 근거</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">산출 근거</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
 {`합산소득: ${formatNumber(result.combinedIncome)}만원 → 1인당 기준: ${formatNumber(result.basePerChild)}원
 자녀수 배율: ×${result.multiChildFactor}
 나이 배율: ×${result.ageFactor}
@@ -232,19 +232,19 @@ export default function ChildSupportPage() {
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm text-gray-400 mb-3">양육비 산정 기준표 (합산소득별 1인당)</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-sm text-slate-600 mb-3">양육비 산정 기준표 (합산소득별 1인당)</p>
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e2d4a]">
+                <tr className="border-b border-slate-200">
                   <th className="py-2 text-left text-xs text-gray-500">합산 월소득</th>
                   <th className="py-2 text-right text-xs text-gray-500">자녀 1인 기준</th>
                 </tr>
               </thead>
               <tbody>
                 {INCOME_TABLE.map((row, i) => (
-                  <tr key={i} className={`border-b border-[#1e2d4a]/50 ${i === result.incomeTableIdx ? 'bg-[#ec4899]/10' : ''}`}>
-                    <td className="py-2 text-gray-300">{row.label}</td>
+                  <tr key={i} className={`border-b border-slate-200/50 ${i === result.incomeTableIdx ? 'bg-[#ec4899]/10' : ''}`}>
+                    <td className="py-2 text-slate-600">{row.label}</td>
                     <td className="py-2 text-right" style={{ color: i === result.incomeTableIdx ? category.color : '#9ca3af' }}>
                       {formatNumber(row.amount)}원
                     </td>
@@ -254,7 +254,7 @@ export default function ChildSupportPage() {
             </table>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제833조, 서울가정법원 양육비산정기준표(2026)
             </p>
@@ -266,23 +266,23 @@ export default function ChildSupportPage() {
       )}
 
       <div className="premium-card p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">양육비 청구 방법</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">양육비 청구 방법</h2>
         <ol className="space-y-3">
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#ec4899' }}>1</span>
-            <span className="text-sm text-gray-300">협의: 양육비 이행확인서 작성 (공증)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#ec4899' }}>1</span>
+            <span className="text-sm text-slate-600">협의: 양육비 이행확인서 작성 (공증)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#ec4899' }}>2</span>
-            <span className="text-sm text-gray-300">비협조 시: 가정법원 양육비 심판 청구</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#ec4899' }}>2</span>
+            <span className="text-sm text-slate-600">비협조 시: 가정법원 양육비 심판 청구</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#ec4899' }}>3</span>
-            <span className="text-sm text-gray-300">미지급 시: 양육비이행관리원 (1644-6621)</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#ec4899' }}>3</span>
+            <span className="text-sm text-slate-600">미지급 시: 양육비이행관리원 (1644-6621)</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#ec4899' }}>4</span>
-            <span className="text-sm text-gray-300">강제집행: 급여 압류, 출국금지 가능</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#ec4899' }}>4</span>
+            <span className="text-sm text-slate-600">강제집행: 급여 압류, 출국금지 가능</span>
           </li>
         </ol>
       </div>

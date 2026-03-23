@@ -50,17 +50,17 @@ export default function LegalInterestPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">원금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">원금 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -70,7 +70,7 @@ export default function LegalInterestPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">연이율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">연이율 (%)</label>
           <div className="flex gap-2 mb-2">
             {([
               { key: 'civil' as Preset, label: '민사 5%' },
@@ -99,19 +99,19 @@ export default function LegalInterestPage() {
             value={ratePercent}
             onChange={(e) => { setRatePercent(e.target.value); setPreset('custom'); }}
             disabled={preset !== 'custom'}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none disabled:opacity-50"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none disabled:opacity-50"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">기간 (일)</label>
+          <label className="block text-sm text-slate-600 mb-2">기간 (일)</label>
           <input
             type="number"
             min="1"
             value={days}
             onChange={(e) => setDays(e.target.value)}
             placeholder="예: 365"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
           />
         </div>
 
@@ -126,23 +126,23 @@ export default function LegalInterestPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">이자액</p>
+            <p className="text-sm text-slate-600 mb-1">이자액</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.interest)}원
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">원금 + 이자 합계</p>
-            <p className="text-lg text-white font-semibold">{formatNumber(result.principal + result.interest)}원</p>
+            <p className="text-sm text-slate-600 mb-1">원금 + 이자 합계</p>
+            <p className="text-lg text-slate-900 font-semibold">{formatNumber(result.principal + result.interest)}원</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
 {`이자 = 원금 × 연이율 × (일수 ÷ 365)
   = ${formatNumber(result.principal)} × ${result.rate}% × (${formatNumber(result.days)} ÷ 365)
   = ${formatNumber(result.interest)}원`}
@@ -151,20 +151,20 @@ export default function LegalInterestPage() {
 
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div>
-              <p className="text-xs text-gray-400 mb-1">원금</p>
-              <p className="text-sm text-white">{formatNumber(result.principal)}원</p>
+              <p className="text-xs text-slate-600 mb-1">원금</p>
+              <p className="text-sm text-slate-900">{formatNumber(result.principal)}원</p>
             </div>
             <div>
-              <p className="text-xs text-gray-400 mb-1">적용 이율</p>
-              <p className="text-sm text-white">연 {result.rate}%</p>
+              <p className="text-xs text-slate-600 mb-1">적용 이율</p>
+              <p className="text-sm text-slate-900">연 {result.rate}%</p>
             </div>
             <div>
-              <p className="text-xs text-gray-400 mb-1">기간</p>
-              <p className="text-sm text-white">{formatNumber(result.days)}일</p>
+              <p className="text-xs text-slate-600 mb-1">기간</p>
+              <p className="text-sm text-slate-900">{formatNumber(result.days)}일</p>
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제379조 (법정이율 연 5%), 상법 제54조 (상사법정이율 연 6%)
             </p>

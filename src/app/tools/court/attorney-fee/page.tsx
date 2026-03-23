@@ -88,16 +88,16 @@ export default function AttorneyFeePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
-        <div className="mb-4 p-3 rounded-lg bg-[#0d1424] border border-[#1e2d4a]">
-          <p className="text-xs text-gray-400">
-            💡 소송에서 이겨서 상대방에게 <strong className="text-gray-300">소송비용으로 청구할 수 있는 변호사 보수의 상한</strong>을 계산합니다. 실제 변호사 선임비용과 다릅니다.
+        <div className="mb-4 p-3 rounded-lg bg-white border border-slate-200">
+          <p className="text-xs text-slate-600">
+            💡 소송에서 이겨서 상대방에게 <strong className="text-slate-600">소송비용으로 청구할 수 있는 변호사 보수의 상한</strong>을 계산합니다. 실제 변호사 선임비용과 다릅니다.
           </p>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">소가 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">소가 (원)</label>
           <p className="text-xs text-gray-500 mb-1">소가 = 소송에서 청구하는 금액</p>
           <input
             type="text"
@@ -105,25 +105,25 @@ export default function AttorneyFeePage() {
             value={displayValue(amount)}
             onChange={handleNumberChange(setAmount)}
             placeholder="예: 50,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">실제 지급한 변호사 보수 (원, 선택)</label>
+          <label className="block text-sm text-slate-600 mb-2">실제 지급한 변호사 보수 (원, 선택)</label>
           <input
             type="text"
             inputMode="numeric"
             value={displayValue(actualFeeInput)}
             onChange={handleNumberChange(setActualFeeInput)}
             placeholder="입력하면 실제 돌려받을 금액도 표시됩니다"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#3b82f6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">비워두면 산입 한도만 표시됩니다</p>
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">심급 선택</label>
+          <label className="block text-sm text-slate-600 mb-2">심급 선택</label>
           <div className="flex gap-4">
             {[
               { value: 1, label: '1심' },
@@ -138,7 +138,7 @@ export default function AttorneyFeePage() {
                   onChange={() => setLevel(opt.value)}
                   className="accent-[#3b82f6]"
                 />
-                <span className="text-sm text-gray-300">{opt.label}</span>
+                <span className="text-sm text-slate-600">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -156,10 +156,10 @@ export default function AttorneyFeePage() {
       {result !== null && (
         <>
           <div className="premium-card p-6 mb-4">
-            <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">소송비용 산입 한도</p>
+              <p className="text-sm text-slate-600 mb-1">소송비용 산입 한도</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.limit)}원
               </p>
@@ -171,12 +171,12 @@ export default function AttorneyFeePage() {
             {result.actualFee !== null && (
               <>
                 <div className="mb-4">
-                  <p className="text-sm text-gray-400 mb-1">실제 변호사 보수</p>
-                  <p className="text-lg text-white">{formatNumber(result.actualFee)}원</p>
+                  <p className="text-sm text-slate-600 mb-1">실제 변호사 보수</p>
+                  <p className="text-lg text-slate-900">{formatNumber(result.actualFee)}원</p>
                 </div>
 
                 <div className="mb-4 p-4 rounded-lg" style={{ backgroundColor: `${category.color}15`, borderLeft: `3px solid ${category.color}` }}>
-                  <p className="text-sm text-gray-400 mb-1">실제 돌려받을 수 있는 금액</p>
+                  <p className="text-sm text-slate-600 mb-1">실제 돌려받을 수 있는 금액</p>
                   <p className="text-2xl font-bold" style={{ color: category.color }}>
                     {formatNumber(result.recoverable)}원
                   </p>
@@ -190,14 +190,14 @@ export default function AttorneyFeePage() {
             )}
 
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-2">적용 구간</p>
-              <p className="text-sm text-gray-300">{BRACKETS[result.bracketIndex].label}</p>
+              <p className="text-sm text-slate-600 mb-2">적용 구간</p>
+              <p className="text-sm text-slate-600">{BRACKETS[result.bracketIndex].label}</p>
               <p className="text-xs text-gray-500 mt-1">{BRACKETS[result.bracketIndex].note}</p>
             </div>
 
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-2">계산식</p>
-              <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+              <p className="text-sm text-slate-600 mb-2">계산식</p>
+              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
                 {result.formula}
               </pre>
             </div>
@@ -205,12 +205,12 @@ export default function AttorneyFeePage() {
 
           {/* 전 구간 기준표 */}
           <div className="premium-card p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">변호사보수 소송비용 산입 기준표</h2>
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">변호사보수 소송비용 산입 기준표</h2>
 
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-[#1e2d4a]">
+                  <tr className="border-b border-slate-200">
                     <th className="text-left text-xs text-gray-500 py-2 pr-4">소가 구간</th>
                     <th className="text-right text-xs text-gray-500 py-2">산입 기준</th>
                   </tr>
@@ -219,9 +219,9 @@ export default function AttorneyFeePage() {
                   {BRACKETS.map((b, i) => (
                     <tr
                       key={i}
-                      className={`border-b border-[#1e2d4a]/50 ${i === result.bracketIndex ? 'bg-[#3b82f6]/10' : ''}`}
+                      className={`border-b border-slate-200/50 ${i === result.bracketIndex ? 'bg-[#3b82f6]/10' : ''}`}
                     >
-                      <td className="text-gray-300 py-2.5 pr-4">{b.label}</td>
+                      <td className="text-slate-600 py-2.5 pr-4">{b.label}</td>
                       <td
                         className="text-right text-xs py-2.5"
                         style={{ color: i === result.bracketIndex ? category.color : '#9ca3af' }}
@@ -234,7 +234,7 @@ export default function AttorneyFeePage() {
               </table>
             </div>
 
-            <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+            <div className="mt-4 pt-4 border-t border-slate-200">
               <p className="text-xs text-gray-500">
                 법적 근거: 민사소송법 제109조, 변호사보수의 소송비용 산입에 관한 규칙 (대법원 예규)
               </p>

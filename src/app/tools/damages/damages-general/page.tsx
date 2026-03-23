@@ -51,17 +51,17 @@ export default function DamagesGeneralPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">재산상 손해액 (치료비 + 일실이익 + 기타, 원)</label>
+          <label className="block text-sm text-slate-600 mb-2">재산상 손해액 (치료비 + 일실이익 + 기타, 원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={propertyDamage ? parseInt(propertyDamage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setPropertyDamage)}
             placeholder="예: 10,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
           {propertyDamage && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(propertyDamage).toLocaleString('ko-KR')}원</p>
@@ -69,7 +69,7 @@ export default function DamagesGeneralPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">피해자 과실비율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">피해자 과실비율 (%)</label>
           <input
             type="number"
             min="0"
@@ -77,7 +77,7 @@ export default function DamagesGeneralPage() {
             value={faultRatio}
             onChange={(e) => setFaultRatio(e.target.value)}
             placeholder="0 ~ 100"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
@@ -89,17 +89,17 @@ export default function DamagesGeneralPage() {
               onChange={(e) => setIncludeConsolation(e.target.checked)}
               className="accent-[#f97316]"
             />
-            <span className="text-sm text-gray-300">위자료 청구 포함</span>
+            <span className="text-sm text-slate-600">위자료 청구 포함</span>
           </label>
         </div>
 
         {includeConsolation && (
           <div className="mb-4 ml-6">
-            <label className="block text-sm text-gray-400 mb-2">위자료 기준액</label>
+            <label className="block text-sm text-slate-600 mb-2">위자료 기준액</label>
             <select
               value={consolationType}
               onChange={(e) => setConsolationType(e.target.value as 'death' | 'severe' | 'custom')}
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none mb-2"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none mb-2"
             >
               <option value="death">사망 (1억원)</option>
               <option value="severe">중상해 (3,000만원)</option>
@@ -112,7 +112,7 @@ export default function DamagesGeneralPage() {
                 value={customConsolation ? parseInt(customConsolation).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setCustomConsolation)}
                 placeholder="위자료 기준액 입력"
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
               />
             )}
           </div>
@@ -129,10 +129,10 @@ export default function DamagesGeneralPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">재산상 손해 (과실상계 후)</p>
+            <p className="text-sm text-slate-600 mb-1">재산상 손해 (과실상계 후)</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.adjustedProperty)}원
             </p>
@@ -140,29 +140,29 @@ export default function DamagesGeneralPage() {
 
           {includeConsolation && (
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">위자료 (과실상계 후)</p>
+              <p className="text-sm text-slate-600 mb-1">위자료 (과실상계 후)</p>
               <p className="text-xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.consolation)}원
               </p>
             </div>
           )}
 
-          <div className="mb-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm text-gray-400 mb-1">총 배상액</p>
+          <div className="mb-4 pt-4 border-t border-slate-200">
+            <p className="text-sm text-slate-600 mb-1">총 배상액</p>
             <p className="text-3xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.total)}원
             </p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-2">계산식</p>
-            <pre className="text-xs text-gray-300 bg-[#0d1424] p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <p className="text-sm text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
 {`재산손해 = ${formatNumber(parseInt(propertyDamage) || 0)} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.adjustedProperty)}원${includeConsolation ? `\n위자료 = ${formatNumber(getConsolationBase())} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.consolation)}원` : ''}
 총 배상액 = ${formatNumber(result.adjustedProperty)}${includeConsolation ? ` + ${formatNumber(result.consolation)}` : ''} = ${formatNumber(result.total)}원`}
             </pre>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제750조(불법행위), 제763조(과실상계)
             </p>
@@ -171,23 +171,23 @@ export default function DamagesGeneralPage() {
       )}
 
       <div className="premium-card p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">손해배상 청구 절차</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">손해배상 청구 절차</h2>
         <ol className="space-y-3">
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>1</span>
-            <span className="text-sm text-gray-300">내용증명으로 배상 요구</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>1</span>
+            <span className="text-sm text-slate-600">내용증명으로 배상 요구</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>2</span>
-            <span className="text-sm text-gray-300">합의 불성립 시 민사소송 제기</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>2</span>
+            <span className="text-sm text-slate-600">합의 불성립 시 민사소송 제기</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>3</span>
-            <span className="text-sm text-gray-300">소멸시효: 불법행위 안 날부터 3년</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>3</span>
+            <span className="text-sm text-slate-600">소멸시효: 불법행위 안 날부터 3년</span>
           </li>
           <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: '#f97316' }}>4</span>
-            <span className="text-sm text-gray-300">소송비용: 인지대 + 변호사 비용 별도</span>
+            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>4</span>
+            <span className="text-sm text-slate-600">소송비용: 인지대 + 변호사 비용 별도</span>
           </li>
         </ol>
       </div>

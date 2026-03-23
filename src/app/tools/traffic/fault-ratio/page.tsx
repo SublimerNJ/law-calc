@@ -87,14 +87,14 @@ export default function FaultRatioPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">사고 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">사고 유형</label>
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(parseInt(e.target.value, 10))}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           >
             {ACCIDENT_TYPES.map(type => (
               <option key={type.id} value={type.id}>
@@ -105,7 +105,7 @@ export default function FaultRatioPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-3">수정 요소</label>
+          <label className="block text-sm text-slate-600 mb-3">수정 요소</label>
           <div className="space-y-2">
             {MODIFIERS.map(mod => (
               <label key={mod.id} className="flex items-center gap-3 cursor-pointer">
@@ -115,7 +115,7 @@ export default function FaultRatioPage() {
                   onChange={() => toggleModifier(mod.id)}
                   className="accent-[#ef4444] w-4 h-4"
                 />
-                <span className="text-sm text-gray-300">
+                <span className="text-sm text-slate-600">
                   {mod.label}
                   <span className={`ml-2 text-xs ${mod.delta > 0 ? 'text-green-400' : 'text-red-400'}`}>
                     (가해 과실 {mod.delta > 0 ? '+' : ''}{mod.delta}%)
@@ -137,15 +137,15 @@ export default function FaultRatioPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">과실비율 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">과실비율 결과</h2>
 
           <div className="mb-6">
-            <p className="text-sm text-gray-400 mb-2">사고 유형: {result.accidentType.label}</p>
+            <p className="text-sm text-slate-600 mb-2">사고 유형: {result.accidentType.label}</p>
 
             {/* Bar visualization */}
             <div className="flex rounded-lg overflow-hidden h-12 mb-4">
               <div
-                className="flex items-center justify-center text-white font-bold text-sm transition-all"
+                className="flex items-center justify-center text-slate-900 font-bold text-sm transition-all"
                 style={{
                   width: `${result.adjustedOffender}%`,
                   backgroundColor: '#ef4444',
@@ -155,7 +155,7 @@ export default function FaultRatioPage() {
                 {result.adjustedOffender > 5 ? `${result.adjustedOffender}%` : ''}
               </div>
               <div
-                className="flex items-center justify-center text-white font-bold text-sm transition-all"
+                className="flex items-center justify-center text-slate-900 font-bold text-sm transition-all"
                 style={{
                   width: `${result.adjustedVictim}%`,
                   backgroundColor: '#3b82f6',
@@ -173,32 +173,32 @@ export default function FaultRatioPage() {
 
           <div className="space-y-3 mb-4">
             <div className="flex justify-between">
-              <span className="text-sm text-gray-400">기본 과실 (가해/피해)</span>
-              <span className="text-white">{result.baseOffender}% / {result.baseVictim}%</span>
+              <span className="text-sm text-slate-600">기본 과실 (가해/피해)</span>
+              <span className="text-slate-900">{result.baseOffender}% / {result.baseVictim}%</span>
             </div>
             {result.appliedModifiers.length > 0 && (
               <div>
-                <p className="text-sm text-gray-400 mb-1">적용된 수정 요소:</p>
+                <p className="text-sm text-slate-600 mb-1">적용된 수정 요소:</p>
                 {result.appliedModifiers.map(m => (
-                  <p key={m.id} className="text-sm text-gray-300 ml-2">
+                  <p key={m.id} className="text-sm text-slate-600 ml-2">
                     - {m.label} ({m.delta > 0 ? '+' : ''}{m.delta}%)
                   </p>
                 ))}
               </div>
             )}
-            <div className="flex justify-between border-t border-[#1e2d4a] pt-3">
-              <span className="text-sm text-gray-400">최종 과실비율 (가해/피해)</span>
+            <div className="flex justify-between border-t border-slate-200 pt-3">
+              <span className="text-sm text-slate-600">최종 과실비율 (가해/피해)</span>
               <span className="font-bold" style={{ color: category.color }}>
                 {result.adjustedOffender}% / {result.adjustedVictim}%
               </span>
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-2">계산식</p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">기본과실 + 수정요소 = 최종 과실비율</p>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#1e2d4a]">
+          <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 교통사고 과실비율 인정기준 (금융감독원/법원)
             </p>
@@ -210,7 +210,7 @@ export default function FaultRatioPage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">과실비율 분쟁 시</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">과실비율 분쟁 시</h2>
         <ol className="space-y-3">
           {[
             { color: '#f59e0b', text: '보험사 사고접수 후 과실 협의' },
@@ -220,12 +220,12 @@ export default function FaultRatioPage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

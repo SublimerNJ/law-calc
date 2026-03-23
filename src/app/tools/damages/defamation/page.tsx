@@ -66,14 +66,14 @@ export default function DefamationPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">훼손 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">훼손 유형</label>
           <select
             value={defamationType}
             onChange={(e) => setDefamationType(e.target.value as DefamationType)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
             <option value="fact">사실 적시</option>
             <option value="false-fact">허위 사실 적시</option>
@@ -82,11 +82,11 @@ export default function DefamationPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">매체</label>
+          <label className="block text-sm text-slate-600 mb-2">매체</label>
           <select
             value={mediaType}
             onChange={(e) => setMediaType(e.target.value as MediaType)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
             <option value="online">온라인/SNS</option>
             <option value="broadcast">방송</option>
@@ -96,11 +96,11 @@ export default function DefamationPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">피해자 유형</label>
+          <label className="block text-sm text-slate-600 mb-2">피해자 유형</label>
           <select
             value={victimType}
             onChange={(e) => setVictimType(e.target.value as VictimType)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
             <option value="private">일반인</option>
             <option value="public">공인 (공직자/연예인 등)</option>
@@ -108,23 +108,23 @@ export default function DefamationPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">유포 기간 (개월)</label>
+          <label className="block text-sm text-slate-600 mb-2">유포 기간 (개월)</label>
           <input
             type="number"
             min="0"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
             placeholder="예: 3"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">정신적 고통 정도</label>
+          <label className="block text-sm text-slate-600 mb-2">정신적 고통 정도</label>
           <select
             value={severity}
             onChange={(e) => setSeverity(e.target.value as SeverityType)}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
             <option value="mild">경미</option>
             <option value="moderate">보통</option>
@@ -143,27 +143,27 @@ export default function DefamationPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">예상 위자료 (중간값)</p>
+            <p className="text-sm text-slate-600 mb-1">예상 위자료 (중간값)</p>
             <p className="text-3xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.mid)}원
             </p>
           </div>
 
-          <div className="mb-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm text-gray-400 mb-1">예상 범위</p>
-            <p className="text-lg text-white">
+          <div className="mb-4 pt-4 border-t border-slate-200">
+            <p className="text-sm text-slate-600 mb-1">예상 범위</p>
+            <p className="text-lg text-slate-900">
               <span style={{ color: category.color }}>{formatNumber(result.min)}원</span>
               <span className="text-gray-500 mx-2">~</span>
               <span style={{ color: category.color }}>{formatNumber(result.max)}원</span>
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`기본위자료 × 매체배율 × 피해자배율 × 심각도배율 × 기간배율 = 위자료`}
             </pre>
             <p className="text-xs text-gray-500">
@@ -174,7 +174,7 @@ export default function DefamationPage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">명예훼손 소송 절차</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">명예훼손 소송 절차</h2>
         <ol className="space-y-3">
           {[
             { color: '#f97316', text: '증거 확보 (캡처, 녹음, 목격자 등)' },
@@ -184,12 +184,12 @@ export default function DefamationPage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

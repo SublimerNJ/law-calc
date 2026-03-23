@@ -74,10 +74,10 @@ export default function DisabilityCompensationPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">장해등급 (1급~14급)</label>
+          <label className="block text-sm text-slate-600 mb-2">장해등급 (1급~14급)</label>
           <select
             value={selectedGrade}
             onChange={(e) => {
@@ -86,7 +86,7 @@ export default function DisabilityCompensationPage() {
               const info = DISABILITY_GRADES.find(gi => gi.grade === g)!;
               if (!info.pensionDays) setPaymentType('lump');
             }}
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
             {DISABILITY_GRADES.map(g => (
               <option key={g.grade} value={g.grade}>
@@ -99,14 +99,14 @@ export default function DisabilityCompensationPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">평균임금 (일액, 원)</label>
+          <label className="block text-sm text-slate-600 mb-2">평균임금 (일액, 원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={dailyWage ? parseInt(dailyWage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 100,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
           {dailyWage && (
             <p className="text-xs text-gray-500 mt-1">
@@ -116,7 +116,7 @@ export default function DisabilityCompensationPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-gray-400 mb-2">지급 방식</label>
+          <label className="block text-sm text-slate-600 mb-2">지급 방식</label>
           <div className="flex gap-4">
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -126,7 +126,7 @@ export default function DisabilityCompensationPage() {
                 onChange={() => setPaymentType('lump')}
                 className="accent-[#f97316]"
               />
-              <span className="text-sm text-gray-300">일시금</span>
+              <span className="text-sm text-slate-600">일시금</span>
             </label>
             <label className={`flex items-center gap-2 ${hasPensionOption ? 'cursor-pointer' : 'opacity-40 cursor-not-allowed'}`}>
               <input
@@ -137,7 +137,7 @@ export default function DisabilityCompensationPage() {
                 disabled={!hasPensionOption}
                 className="accent-[#f97316]"
               />
-              <span className="text-sm text-gray-300">연금 {!hasPensionOption && '(1~7급만 해당)'}</span>
+              <span className="text-sm text-slate-600">연금 {!hasPensionOption && '(1~7급만 해당)'}</span>
             </label>
           </div>
         </div>
@@ -153,16 +153,16 @@ export default function DisabilityCompensationPage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">장해등급</p>
-            <p className="text-lg text-white">{result.grade.grade}급</p>
+            <p className="text-sm text-slate-600 mb-1">장해등급</p>
+            <p className="text-lg text-slate-900">{result.grade.grade}급</p>
             <p className="text-xs text-gray-500">{result.grade.description}</p>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">장해보상 일시금</p>
+            <p className="text-sm text-slate-600 mb-1">장해보상 일시금</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.lumpSum)}원
             </p>
@@ -171,16 +171,16 @@ export default function DisabilityCompensationPage() {
 
           {result.annualPension !== null && result.monthlyPension !== null && (
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">연금 선택 시</p>
-              <p className="text-lg text-white">연액: {formatNumber(result.annualPension)}원</p>
-              <p className="text-lg text-white">월액: {formatNumber(result.monthlyPension)}원</p>
+              <p className="text-sm text-slate-600 mb-1">연금 선택 시</p>
+              <p className="text-lg text-slate-900">연액: {formatNumber(result.annualPension)}원</p>
+              <p className="text-lg text-slate-900">월액: {formatNumber(result.monthlyPension)}원</p>
               <p className="text-xs text-gray-500">연금 지급일수: {result.grade.pensionDays}일/년</p>
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`1일 평균임금 × 등급별 지급일수 = 장해보상 일시금
 (연금: 1일 평균임금 × 연금일수 ÷ 12 = 월 연금액)`}
             </pre>
@@ -192,7 +192,7 @@ export default function DisabilityCompensationPage() {
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-white mb-4">장해등급 판정 절차</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">장해등급 판정 절차</h2>
         <ol className="space-y-3">
           {[
             { color: '#f97316', text: '치료 종결 후 의사 진단서 발급' },
@@ -202,12 +202,12 @@ export default function DisabilityCompensationPage() {
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                 style={{ backgroundColor: item.color }}
               >
                 {i + 1}
               </span>
-              <span className="text-sm text-gray-300">{item.text}</span>
+              <span className="text-sm text-slate-600">{item.text}</span>
             </li>
           ))}
         </ol>

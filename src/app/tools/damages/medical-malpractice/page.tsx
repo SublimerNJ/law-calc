@@ -68,46 +68,46 @@ export default function MedicalMalpracticePage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">기지출 치료비 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">기지출 치료비 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={treatmentCost ? parseInt(treatmentCost).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setTreatmentCost)}
             placeholder="예: 5,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">향후 치료비 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">향후 치료비 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={futureTreatmentCost ? parseInt(futureTreatmentCost).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setFutureTreatmentCost)}
             placeholder="예: 3,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">일실수입 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">일실수입 (원)</label>
           <input
             type="text"
             inputMode="numeric"
             value={lostIncome ? parseInt(lostIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setLostIncome)}
             placeholder="예: 10,000,000"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">의사 과실비율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">의사 과실비율 (%)</label>
           <input
             type="number"
             min="0"
@@ -115,7 +115,7 @@ export default function MedicalMalpracticePage() {
             value={doctorFault}
             onChange={(e) => setDoctorFault(e.target.value)}
             placeholder="0 ~ 100"
-            className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           />
         </div>
 
@@ -127,14 +127,14 @@ export default function MedicalMalpracticePage() {
               onChange={(e) => setHasDisability(e.target.checked)}
               className="accent-[#f97316]"
             />
-            <span className="text-sm text-gray-300">후유장해 있음</span>
+            <span className="text-sm text-slate-600">후유장해 있음</span>
           </label>
         </div>
 
         {hasDisability && (
           <div className="mb-4 ml-6 space-y-3">
             <div>
-              <label className="block text-sm text-gray-400 mb-2">후유장해율 (%)</label>
+              <label className="block text-sm text-slate-600 mb-2">후유장해율 (%)</label>
               <input
                 type="number"
                 min="0"
@@ -142,15 +142,15 @@ export default function MedicalMalpracticePage() {
                 value={disabilityRate}
                 onChange={(e) => setDisabilityRate(e.target.value)}
                 placeholder="0 ~ 100"
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-2">위자료 기준액</label>
+              <label className="block text-sm text-slate-600 mb-2">위자료 기준액</label>
               <select
                 value={consolationPreset}
                 onChange={(e) => setConsolationPreset(e.target.value as ConsolationPreset)}
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
               >
                 <option value="death">사망 (1억원)</option>
                 <option value="severe">중상해 (3,000만원)</option>
@@ -165,7 +165,7 @@ export default function MedicalMalpracticePage() {
                 value={customConsolation ? parseInt(customConsolation).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setCustomConsolation)}
                 placeholder="위자료 기준액 입력"
-                className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#f97316] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
               />
             )}
           </div>
@@ -182,10 +182,10 @@ export default function MedicalMalpracticePage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">계산 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="mb-4">
-            <p className="text-sm text-gray-400 mb-1">재산상 손해 배상액</p>
+            <p className="text-sm text-slate-600 mb-1">재산상 손해 배상액</p>
             <p className="text-2xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.propertyDamage)}원
             </p>
@@ -193,23 +193,23 @@ export default function MedicalMalpracticePage() {
 
           {hasDisability && (
             <div className="mb-4">
-              <p className="text-sm text-gray-400 mb-1">후유장해 위자료</p>
+              <p className="text-sm text-slate-600 mb-1">후유장해 위자료</p>
               <p className="text-xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.consolation)}원
               </p>
             </div>
           )}
 
-          <div className="mb-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-sm text-gray-400 mb-1">총 배상액</p>
+          <div className="mb-4 pt-4 border-t border-slate-200">
+            <p className="text-sm text-slate-600 mb-1">총 배상액</p>
             <p className="text-3xl font-bold" style={{ color: category.color }}>
               {formatNumber(result.total)}원
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
-            <p className="text-xs font-semibold text-gray-400 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-gray-300 bg-[#0d1424] rounded p-2 mb-3 whitespace-pre-wrap">
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`(치료비 + 향후치료비 + 일실수입) × 과실비율 = 재산상 손해
 위자료기준 × 후유장해율 × 과실비율 = 후유장해 위자료
 합계 = 재산상 손해 + 위자료`}
@@ -223,7 +223,7 @@ export default function MedicalMalpracticePage() {
 
       {result !== null && (
         <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">의료사고 분쟁 해결 절차</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">의료사고 분쟁 해결 절차</h2>
           <div className="space-y-3">
             {[
               { step: '1', title: '의료기관 이의제기', desc: '진료기록 열람 청구 후 해당 의료기관에 직접 이의제기' },
@@ -236,7 +236,7 @@ export default function MedicalMalpracticePage() {
                   {item.step}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-300">{item.title}</p>
+                  <p className="text-sm font-semibold text-slate-600">{item.title}</p>
                   <p className="text-xs text-gray-500">{item.desc}</p>
                 </div>
               </div>

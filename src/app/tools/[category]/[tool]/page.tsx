@@ -54,7 +54,7 @@ export default async function ToolPage({ params }: PageProps) {
     <CalculatorLayout tool={tool} category={categoryData}>
       <div className="premium-card p-8 text-center">
         <div className="text-4xl mb-4">{tool.icon}</div>
-        <p className="text-gray-400 text-sm">
+        <p className="text-slate-600 text-sm">
           이 계산기는 준비 중입니다
         </p>
         <p className="text-gray-600 text-xs mt-2">

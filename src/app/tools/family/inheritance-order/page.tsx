@@ -184,7 +184,7 @@ export default function InheritanceOrderPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-white mb-4">가족 구성 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">가족 구성 입력</h2>
 
         <div className="mb-4">
           <label className="flex items-center gap-2 cursor-pointer">
@@ -194,24 +194,24 @@ export default function InheritanceOrderPage() {
               onChange={e => setHasSpouse(e.target.checked)}
               className="accent-[#ec4899]"
             />
-            <span className="text-sm text-gray-300">배우자 생존</span>
+            <span className="text-sm text-slate-600">배우자 생존</span>
           </label>
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-2">자녀 수</label>
+            <label className="block text-sm text-slate-600 mb-2">자녀 수</label>
             <input
               type="number"
               min={0}
               max={10}
               value={numChildren}
               onChange={e => setNumChildren(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
             />
           </div>
           <div>
-            <label className="block text-sm text-gray-400 mb-2">
+            <label className="block text-sm text-slate-600 mb-2">
               손자녀 수 <span className="text-xs text-gray-600">(대습상속)</span>
             </label>
             <input
@@ -220,32 +220,32 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numGrandchildren}
               onChange={e => setNumGrandchildren(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-2">부모 생존 수</label>
+            <label className="block text-sm text-slate-600 mb-2">부모 생존 수</label>
             <input
               type="number"
               min={0}
               max={2}
               value={numParents}
               onChange={e => setNumParents(Math.max(0, Math.min(2, parseInt(e.target.value) || 0)))}
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
             />
           </div>
           <div>
-            <label className="block text-sm text-gray-400 mb-2">형제자매 수</label>
+            <label className="block text-sm text-slate-600 mb-2">형제자매 수</label>
             <input
               type="number"
               min={0}
               max={10}
               value={numSiblings}
               onChange={e => setNumSiblings(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-[#0d1424] border border-[#1e2d4a] rounded-lg px-4 py-3 text-white focus:border-[#ec4899] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
             />
           </div>
         </div>
@@ -258,7 +258,7 @@ export default function InheritanceOrderPage() {
               onChange={e => setHasExtended(e.target.checked)}
               className="accent-[#ec4899]"
             />
-            <span className="text-sm text-gray-300">4촌 이내 방계혈족 존재</span>
+            <span className="text-sm text-slate-600">4촌 이내 방계혈족 존재</span>
           </label>
         </div>
 
@@ -273,7 +273,7 @@ export default function InheritanceOrderPage() {
 
       {results !== null && (
         <div className="premium-card p-6 mb-4">
-          <h2 className="text-lg font-semibold text-white mb-4">상속순위 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">상속순위 결과</h2>
 
           <div className="space-y-3">
             {results.map((heir, i) => (
@@ -298,11 +298,11 @@ export default function InheritanceOrderPage() {
                         {heir.rank}순위
                       </span>
                     )}
-                    <span className={`text-sm font-semibold ${heir.isInheriting ? 'text-white' : 'text-gray-500'}`}>
+                    <span className={`text-sm font-semibold ${heir.isInheriting ? 'text-slate-900' : 'text-gray-500'}`}>
                       {heir.label}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-400">{heir.reason}</p>
+                  <p className="text-xs text-slate-600">{heir.reason}</p>
                 </div>
                 <div className="text-right">
                   <span
@@ -319,7 +319,7 @@ export default function InheritanceOrderPage() {
             ))}
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#1e2d4a]">
+          <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제1000조, 제1003조, 제1010조 (대습상속)
             </p>
@@ -335,14 +335,14 @@ export default function InheritanceOrderPage() {
 
       {/* Static reference section */}
       <div className="premium-card p-6">
-        <h3 className="text-sm font-semibold text-white mb-3">상속순위 안내</h3>
-        <div className="space-y-2 text-xs text-gray-400">
-          <p><strong className="text-gray-300">1순위:</strong> 직계비속 (자녀, 손자녀) - 배우자와 공동상속 (배우자 1.5배 가산)</p>
-          <p><strong className="text-gray-300">2순위:</strong> 직계존속 (부모, 조부모) - 배우자와 공동상속 (배우자 1.5배 가산)</p>
-          <p><strong className="text-gray-300">3순위:</strong> 형제자매</p>
-          <p><strong className="text-gray-300">4순위:</strong> 4촌 이내 방계혈족</p>
-          <p className="pt-2 border-t border-[#1e2d4a]">
-            <strong className="text-gray-300">대습상속이란?</strong> 상속인이 될 직계비속이 상속 개시 전에 사망한 경우,
+        <h3 className="text-sm font-semibold text-slate-900 mb-3">상속순위 안내</h3>
+        <div className="space-y-2 text-xs text-slate-600">
+          <p><strong className="text-slate-600">1순위:</strong> 직계비속 (자녀, 손자녀) - 배우자와 공동상속 (배우자 1.5배 가산)</p>
+          <p><strong className="text-slate-600">2순위:</strong> 직계존속 (부모, 조부모) - 배우자와 공동상속 (배우자 1.5배 가산)</p>
+          <p><strong className="text-slate-600">3순위:</strong> 형제자매</p>
+          <p><strong className="text-slate-600">4순위:</strong> 4촌 이내 방계혈족</p>
+          <p className="pt-2 border-t border-slate-200">
+            <strong className="text-slate-600">대습상속이란?</strong> 상속인이 될 직계비속이 상속 개시 전에 사망한 경우,
             그 직계비속(손자녀 등)이 사망한 상속인의 순위를 대신하여 상속받는 제도입니다 (민법 제1001조).
           </p>
         </div>
