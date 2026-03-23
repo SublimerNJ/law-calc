@@ -253,6 +253,28 @@ export default function FinePenaltyPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">벌금/과태료 미납 시 불이익</h2>
+        <ul className="space-y-3">
+          {[
+            { num: '1', text: '납부기한 후 3% 가산금 매월 부과' },
+            { num: '2', text: '체납 60일 초과 시 번호판 영치' },
+            { num: '3', text: '300만원 초과 체납 시 신용불량 등록' },
+            { num: '4', text: '자진납부 시 20% 감경 혜택' },
+          ].map(item => (
+            <li key={item.num} className="flex items-start gap-3">
+              <span
+                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: category.color }}
+              >
+                {item.num}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </CalculatorLayout>
   );
 }

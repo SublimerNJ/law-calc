@@ -402,6 +402,28 @@ export default function YearEndTaxPage() {
             </div>
           </div>
         )}
+
+        <div className="premium-card p-6">
+          <h2 className="text-lg font-semibold text-white mb-4">환급 극대화 팁</h2>
+          <ul className="space-y-3">
+            {[
+              { num: '1', text: '신용카드/체크카드 사용비율 최적화 (체크카드 공제율 30% > 신용 15%)' },
+              { num: '2', text: '의료비/교육비 영수증 빠짐없이 수집' },
+              { num: '3', text: '월세 세액공제 놓치지 않기' },
+              { num: '4', text: 'IRP/연금저축 세액공제 활용 (최대 900만원 한도)' },
+            ].map(item => (
+              <li key={item.num} className="flex items-start gap-3">
+                <span
+                  className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                  style={{ backgroundColor: category.color }}
+                >
+                  {item.num}
+                </span>
+                <span className="text-sm text-gray-300">{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </CalculatorLayout>
   );

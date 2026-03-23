@@ -239,6 +239,31 @@ export default function AverageWagePage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">평균임금이 사용되는 곳</h2>
+        <ul className="space-y-3">
+          {[
+            { num: '1', text: '퇴직금 산정 (30일분 × 근속연수)' },
+            { num: '2', text: '산재보상 (휴업급여, 장해급여)' },
+            { num: '3', text: '해고예고수당' },
+            { num: '4', text: '연차수당' },
+          ].map(item => (
+            <li key={item.num} className="flex items-start gap-3">
+              <span
+                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: category.color }}
+              >
+                {item.num}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-xs text-gray-500 border-t border-[#1e2d4a] pt-3">
+          통상임금보다 낮으면 통상임금 적용
+        </p>
+      </div>
     </CalculatorLayout>
   );
 }

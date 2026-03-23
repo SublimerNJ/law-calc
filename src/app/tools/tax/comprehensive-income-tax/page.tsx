@@ -263,6 +263,28 @@ export default function ComprehensiveIncomeTaxPage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">절세 방법</h2>
+        <ul className="space-y-3">
+          {[
+            { num: '1', text: '필요경비 증빙 철저히 (사업소득)' },
+            { num: '2', text: '기장의무 이행 시 세액공제 20%' },
+            { num: '3', text: '성실신고확인 대상자 의료비/교육비 공제 가능' },
+            { num: '4', text: '5월 신고 기한 엄수 (가산세 방지)' },
+          ].map(item => (
+            <li key={item.num} className="flex items-start gap-3">
+              <span
+                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: category.color }}
+              >
+                {item.num}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </CalculatorLayout>
   );
 }

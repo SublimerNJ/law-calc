@@ -192,6 +192,28 @@ export default function ShutdownAllowancePage() {
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-white mb-4">휴업수당 청구 방법</h2>
+        <ul className="space-y-3">
+          {[
+            { num: '1', text: '사업주에게 서면 청구' },
+            { num: '2', text: '미지급 시 고용노동부 신고 (1350)' },
+            { num: '3', text: '노동위원회 승인 시 감액 가능 (60~70%)' },
+            { num: '4', text: '3년 이내 미지급분 소급 청구' },
+          ].map(item => (
+            <li key={item.num} className="flex items-start gap-3">
+              <span
+                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: category.color }}
+              >
+                {item.num}
+              </span>
+              <span className="text-sm text-gray-300">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </CalculatorLayout>
   );
 }
