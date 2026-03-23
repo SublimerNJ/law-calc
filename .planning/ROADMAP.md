@@ -2,7 +2,7 @@
 
 ## Phases
 
-- [ ] **Phase 11: 라이트 테마 전환 및 디자인 시스템 개편** - 전문적인 법률 도구의 신뢰감을 주는 밝은 톤의 라이트 테마 전면 적용
+- [x] **Phase 11: 라이트 테마 전환 및 디자인 시스템 개편** - 전문적인 법률 도구의 신뢰감을 주는 밝은 톤의 라이트 테마 전면 적용 (completed 2026-03-23)
 - [ ] **Phase 12: 패럴랙스 UI 적용 및 고도화** - 성능 최적화된 패럴랙스 효과 적용 및 반응형(모바일/접근성) 대응
 
 ## Phase Details
@@ -18,7 +18,7 @@
 **Plans**: 3 plans
 - [x] 11-01-PLAN.md — Foundation & Theme Configuration (다크 모드 제거 및 라이트 테마 전역 설정)
 - [x] 11-02-PLAN.md — Core Components & Sections Light Theme Update (공통 UI 및 레이아웃 업데이트)
-- [ ] 11-03-PLAN.md — Calculators UI Migration (70개 계산기 페이지 일괄 변환 및 검증)
+- [x] 11-03-PLAN.md — Calculators UI Migration (70개 계산기 페이지 일괄 변환 및 검증)
 
 ### Phase 12: 패럴랙스 UI 적용 및 고도화
 **Goal**: 성능 최적화된 패럴랙스 효과를 적용하여 사용자 경험을 고도화하고 다양한 기기 환경에 대응한다.
@@ -28,11 +28,13 @@
   1. 스크롤 기반 섹션에 transform과 opacity 속성만을 활용한 60fps 최적화 패럴랙스 애니메이션이 적용된다.
   2. 모바일 디바이스 화면(viewport 기준)에서는 무거운 패럴랙스 애니메이션이 자동으로 비활성화된다.
   3. 사용자의 OS 설정에서 '움직임 줄이기(prefers-reduced-motion)'가 활성화되어 있을 때 모든 패럴랙스 효과가 생략된다.
-**Plans**: TBD
+**Plans**: 2 plans
+- [ ] 12-01-PLAN.md — Foundation & Category Animations
+- [ ] 12-02-PLAN.md — Hero Section Parallax Implementation
 
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 11. 라이트 테마 전환 | 2/3 | In Progress|  |
+| 11. 라이트 테마 전환 | 3/3 | Complete   | 2026-03-23 |
 | 12. 패럴랙스 UI 적용 | 0/0 | Not started | - |
