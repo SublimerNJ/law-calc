@@ -330,9 +330,9 @@ Plans:
   5. 5개 계산기 간 퍼센트(%) 결과 표시 방식, 금액 천 단위 콤마, 필수 입력 강조 방식이 통일된다
 **Plans**: 3 plans
 Plans:
-- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
-- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
-- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
+- [ ] 29-01-PLAN.md — vat + securities-tax 감사 및 수정
+- [ ] 29-02-PLAN.md — year-end-tax + four-insurances + rent-tax-credit 감사 및 수정
+- [ ] 29-03-PLAN.md — 5개 계산기 일관성 통일
 
 ### Phase 30: 부동산 UX·논리 감사
 **Goal**: 부동산 7개 계산기에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
