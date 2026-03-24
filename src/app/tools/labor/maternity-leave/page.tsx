@@ -11,7 +11,7 @@ function formatNumber(n: number): string {
   return n.toLocaleString('ko-KR');
 }
 
-const MATERNITY_UPPER = 2_035_640; // 2026 monthly cap
+const MATERNITY_UPPER = 2_100_000; // 고용보험법 시행령 제101조 고시 기준 월 210만원
 const MIN_WAGE_MONTHLY = 2_096_270; // 10,030 x 209
 
 type BirthType = 'single' | 'multiple';
@@ -179,7 +179,7 @@ export default function MaternityLeavePage() {
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`[고용보험 지급] min(1일 통상임금, 상한액) × 고용보험 지급일수
 [사업주 부담] 1일 통상임금 × 사업주 부담일수
-(대기업: 첫 60일 사업주 부담, 나머지 고용보험 지급)`}
+(대기업: 단태아 첫 60일·다태아 첫 75일 사업주 부담, 나머지 고용보험 지급)`}
             </pre>
             <p className="text-xs text-slate-600 leading-relaxed">
               <strong className="text-slate-600">법적 근거:</strong> 근로기준법 제74조(출산전후휴가), 고용보험법 제76조
