@@ -7,6 +7,11 @@ import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 const tool = TOOLS.find(t => t.id === 'family-court')!;
 const category = CATEGORIES.find(c => c.id === 'court')!;
 
+// 2026년 기준 송달료 단가
+const SERVICE_FEE_UNIT = 5_500;
+// 가사사건 송달료 예납 회수: 당사자 1인당 10회분 (가사소송규칙 제7조)
+const SERVICE_ROUNDS = 10;
+
 type CaseType = 'divorce' | 'consolation' | 'custody' | 'support' | 'inheritance';
 
 interface CaseOption {
@@ -15,16 +20,59 @@ interface CaseOption {
   fixedFee: number | null;
   needsAmount: boolean;
   description: string;
+  legalBasis: string;
 }
 
+// 가사소송법 제37조 및 가사소송규칙 별표 기준 인지액
+// 가사소송 가류(나류): 민사소송 인지액 그대로 (가사소송법 제37조 제1항)
+// 가사소송 나류: 20,000원 정액 (가사소송규칙 제5조 별표)
+// 가사비송 라류: 5,000원 정액 (가사소송규칙 제5조 별표)
+// 가사비송 마류: 5,000원 정액 (가사소송규칙 제5조 별표)
 const CASE_OPTIONS: CaseOption[] = [
-  { value: 'divorce', label: '이혼 (나류)', fixedFee: 20_000, needsAmount: false, description: '가사소송 나류 — 이혼, 혼인취소, 친생자관계 확인, 입양취소/파양' },
-  { value: 'consolation', label: '위자료/재산분할 (가류)', fixedFee: null, needsAmount: true, description: '가사소송 가류 — 재산관계 소송, 일반 민사소송 인지액 산정식 적용' },
-  { value: 'custody', label: '양육비/친권 (라류)', fixedFee: 5_000, needsAmount: false, description: '가사비송 라류 — 친권/양육권 지정, 양육비 심판' },
-  { value: 'support', label: '부양료 심판 (마류)', fixedFee: 5_000, needsAmount: false, description: '가사비송 마류 — 부양료 심판, 성년후견 등' },
-  { value: 'inheritance', label: '상속재산 분할', fixedFee: null, needsAmount: true, description: '상속재산 분할 심판 — 청구금액 기준 일반 계산식 적용' },
+  {
+    value: 'divorce',
+    label: '이혼 (나류)',
+    fixedFee: 20_000,
+    needsAmount: false,
+    description: '가사소송 나류 — 이혼, 혼인취소, 친생자관계 확인, 입양취소/파양',
+    legalBasis: '가사소송규칙 제5조 별표 나류: 20,000원 정액',
+  },
+  {
+    value: 'consolation',
+    label: '위자료/재산분할 (가류)',
+    fixedFee: null,
+    needsAmount: true,
+    description: '가사소송 가류 — 재산관계 소송, 민사소송 인지액 산정식 적용',
+    legalBasis: '가사소송법 제37조 제1항: 민사소송 인지액 그대로 적용',
+  },
+  {
+    value: 'custody',
+    label: '양육비/친권 (라류)',
+    fixedFee: 5_000,
+    needsAmount: false,
+    description: '가사비송 라류 — 친권/양육권 지정, 양육비 심판',
+    legalBasis: '가사소송규칙 제5조 별표 라류: 5,000원 정액',
+  },
+  {
+    value: 'support',
+    label: '부양료 심판 (마류)',
+    fixedFee: 5_000,
+    needsAmount: false,
+    description: '가사비송 마류 — 부양료 심판, 성년후견 등',
+    legalBasis: '가사소송규칙 제5조 별표 마류: 5,000원 정액',
+  },
+  {
+    value: 'inheritance',
+    label: '상속재산 분할',
+    fixedFee: null,
+    needsAmount: true,
+    description: '상속재산 분할 심판 — 청구금액 기준 민사소송 인지액 준용',
+    legalBasis: '가사소송법 제37조 준용: 민사소송 인지액 산정식 적용',
+  },
 ];
 
+// 민사소송 인지대 계산 (민사소송등인지법 별표 1)
+// 100원 미만 버림: 민사소송등인지법 제2조 제3항
 function calculateStampFee(amount: number): number {
   let fee: number;
   if (amount <= 10_000_000) {
@@ -37,7 +85,8 @@ function calculateStampFee(amount: number): number {
   } else {
     fee = amount * 0.0035 + 555_000;
   }
-  return Math.ceil(fee / 100) * 100;
+  // 민사소송등인지법 제2조 제3항: 100원 미만 버림
+  return Math.floor(fee / 100) * 100;
 }
 
 function formatNumber(n: number): string {
@@ -50,6 +99,7 @@ interface Result {
   total: number;
   caseLabel: string;
   caseDescription: string;
+  legalBasis: string;
 }
 
 export default function FamilyCourtPage() {
@@ -71,7 +121,7 @@ export default function FamilyCourtPage() {
       stampFee = calculateStampFee(val);
     }
 
-    const serviceFee = parties * 5 * 4_500;
+    const serviceFee = parties * SERVICE_ROUNDS * SERVICE_FEE_UNIT;
     const total = stampFee + serviceFee;
 
     setResult({
@@ -80,6 +130,7 @@ export default function FamilyCourtPage() {
       total,
       caseLabel: selectedCase.label,
       caseDescription: selectedCase.description,
+      legalBasis: selectedCase.legalBasis,
     });
   };
 
@@ -164,7 +215,7 @@ export default function FamilyCourtPage() {
             </div>
 
             <div>
-              <p className="text-sm text-slate-600 mb-1">송달료 ({parties}명 x 5회 x 4,500원)</p>
+              <p className="text-sm text-slate-600 mb-1">송달료 ({parties}명 × {SERVICE_ROUNDS}회 × {formatNumber(SERVICE_FEE_UNIT)}원)</p>
               <p className="text-lg text-slate-900">{formatNumber(result.serviceFee)}원</p>
             </div>
 
@@ -181,17 +232,20 @@ export default function FamilyCourtPage() {
             <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
 {`사건유형: ${result.caseLabel}
 인지대: ${formatNumber(result.stampFee)}원
-+ 송달료: ${formatNumber(result.serviceFee)}원
++ 송달료: ${formatNumber(result.serviceFee)}원 (${parties}명 × ${SERVICE_ROUNDS}회 × ${formatNumber(SERVICE_FEE_UNIT)}원)
 = 합계: ${formatNumber(result.total)}원`}
             </pre>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 space-y-1">
             <p className="text-xs text-gray-500">
-              법적 근거: 가사소송법, 가사소송규칙 별표
+              법적 근거: {result.legalBasis}
+            </p>
+            <p className="text-xs text-gray-500">
+              {result.caseDescription}
             </p>
             <p className="text-xs text-gray-500 mt-1">
-              {result.caseDescription}
+              송달료: 2026년 기준 1회 {formatNumber(SERVICE_FEE_UNIT)}원 | 가사사건 {SERVICE_ROUNDS}회분 예납 (가사소송규칙 제7조)
             </p>
           </div>
         </div>
