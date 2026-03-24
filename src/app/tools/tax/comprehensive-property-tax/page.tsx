@@ -100,11 +100,25 @@ export default function ComprehensivePropertyTaxPage() {
   const [singleHousehold, setSingleHousehold] = useState(false);
   const [age, setAge] = useState('');
   const [result, setResult] = useState<CompTaxResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
     const val = parseInt(assessedValue.replace(/,/g, ''), 10);
-    if (!val || val <= 0) return;
+    if (!val || val <= 0) {
+      setError('주택 공시가격을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (val > 10_000_000_000) {
+      setWarning('공시가격이 100억원을 초과합니다. 입력값을 확인해주세요.');
+    }
     const ageVal = parseInt(age, 10) || 0;
+    if (singleHousehold && ageVal > 120) {
+      setWarning('연령이 120세를 초과합니다. 확인해주세요.');
+    }
     setResult(calculateComprehensivePropertyTax(val, houseCount, singleHousehold, ageVal));
   };
 
@@ -118,7 +132,7 @@ export default function ComprehensivePropertyTaxPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">주택 공시가격 합산 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">주택 공시가격 합산 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -189,6 +203,8 @@ export default function ComprehensivePropertyTaxPage() {
           </p>
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"

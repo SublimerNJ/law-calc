@@ -84,11 +84,15 @@ export default function RegistrationTaxPage() {
     total: number;
     metroNote?: string;
   } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const isLicense = regType === 'license';
   const currentType = REGISTRATION_TYPES.find(t => t.value === regType)!;
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
     let registrationTax: number;
     let rateDisplay: string;
     let metroNote: string | undefined;
@@ -100,7 +104,14 @@ export default function RegistrationTaxPage() {
       rateDisplay = `${licenseInfo.label} 정액 (${regionLabel})`;
     } else {
       const raw = parseInt(amount.replace(/[^0-9]/g, ''), 10);
-      if (!raw || raw <= 0) return;
+      if (!raw || raw <= 0) {
+        setError('금액을 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (raw > 10_000_000_000) {
+        setWarning('입력 금액이 100억원을 초과합니다. 확인해주세요.');
+      }
       const rate = RATE_MAP[regType as Exclude<RegistrationType, 'license'>];
       registrationTax = Math.floor(raw * rate);
       rateDisplay = `${(rate * 100).toFixed(2)}%`;
@@ -142,7 +153,7 @@ export default function RegistrationTaxPage() {
           <label className="block text-sm text-slate-600 mb-2">등록 유형</label>
           <select
             value={regType}
-            onChange={e => { setRegType(e.target.value as RegistrationType); setResult(null); }}
+            onChange={e => { setRegType(e.target.value as RegistrationType); setResult(null); setError(null); setWarning(null); }}
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
           >
             {REGISTRATION_TYPES.map(t => (
@@ -186,7 +197,7 @@ export default function RegistrationTaxPage() {
           </div>
         ) : (
           <div className="mb-6">
-            <label className="block text-sm text-slate-600 mb-2">{currentType.amountLabel}</label>
+            <label className="block text-sm text-slate-600 mb-2">{currentType.amountLabel} *</label>
             <input
               type="text"
               inputMode="numeric"
@@ -201,6 +212,8 @@ export default function RegistrationTaxPage() {
           </div>
         )}
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
