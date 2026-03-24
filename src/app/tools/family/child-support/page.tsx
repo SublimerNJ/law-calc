@@ -110,11 +110,47 @@ export default function ChildSupportPage() {
   const [noncustodialIncome, setNoncustodialIncome] = useState('');
   const [ageGroup, setAgeGroup] = useState<AgeGroup>('elementary');
   const [result, setResult] = useState<ChildSupportResult | null>(null);
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
+
+  const handleNumberInput = (setter: (v: string) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setter(e.target.value.replace(/[^0-9]/g, ''));
+    };
 
   const handleCalculate = () => {
-    const ci = parseInt(custodialIncome, 10);
-    const ni = parseInt(noncustodialIncome, 10);
-    if (isNaN(ci) || isNaN(ni) || ci < 0 || ni < 0) return;
+    setError('');
+    setWarning('');
+
+    // INPUT-02: 소득 필드 빈값 체크
+    if (custodialIncome === '' && noncustodialIncome === '') {
+      setError('소득 정보를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    const ci = custodialIncome === '' ? 0 : parseInt(custodialIncome, 10);
+    const ni = noncustodialIncome === '' ? 0 : parseInt(noncustodialIncome, 10);
+
+    if (isNaN(ci) || isNaN(ni) || ci < 0 || ni < 0) {
+      setError('소득 값이 올바르지 않습니다.');
+      setResult(null);
+      return;
+    }
+
+    // INPUT-01: 두 소득 모두 0이면 에러
+    if (ci === 0 && ni === 0) {
+      setError('소득 정보를 입력해주세요. 양육자 또는 비양육자 소득 중 하나 이상이 필요합니다.');
+      setResult(null);
+      return;
+    }
+
+    // INPUT-03: 합산 소득 3,000만원 초과 경고
+    const combinedIncome = ci + ni;
+    if (combinedIncome > 30_000) {
+      setWarning('소득 합산이 3,000만원을 초과합니다. 입력 단위(만원)를 확인해주세요.');
+    }
+
     setResult(calculateChildSupport(childCount, ci, ni, ageGroup));
   };
 
@@ -123,8 +159,9 @@ export default function ChildSupportPage() {
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
+        {/* FLOW-03: 자녀 수 필수 표시 */}
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">자녀 수</label>
+          <label className="block text-sm text-slate-600 mb-2">자녀 수 <span className="text-red-500">*</span></label>
           <select
             value={childCount}
             onChange={e => setChildCount(e.target.value as ChildCount)}
@@ -136,34 +173,34 @@ export default function ChildSupportPage() {
           </select>
         </div>
 
+        {/* FLOW-03: 소득 필수 표시 + INPUT-04: 숫자만 허용 */}
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">양육자 월 소득 (만원)</label>
+          <label className="block text-sm text-slate-600 mb-2">양육자 월 소득 (만원) <span className="text-red-500">*</span></label>
           <input
-            type="number"
+            type="text"
             inputMode="numeric"
-            min="0"
             value={custodialIncome}
-            onChange={e => setCustodialIncome(e.target.value)}
+            onChange={handleNumberInput(setCustodialIncome)}
             placeholder="예: 300"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">비양육자 월 소득 (만원)</label>
+          <label className="block text-sm text-slate-600 mb-2">비양육자 월 소득 (만원) <span className="text-red-500">*</span></label>
           <input
-            type="number"
+            type="text"
             inputMode="numeric"
-            min="0"
             value={noncustodialIncome}
-            onChange={e => setNoncustodialIncome(e.target.value)}
+            onChange={handleNumberInput(setNoncustodialIncome)}
             placeholder="예: 500"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
+        {/* FLOW-03: 자녀 나이대 필수 표시 */}
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">자녀 나이대</label>
+          <label className="block text-sm text-slate-600 mb-2">자녀 나이대 <span className="text-red-500">*</span></label>
           <div className="flex flex-col gap-2">
             {(Object.entries(AGE_LABELS) as [AgeGroup, string][]).map(([key, label]) => (
               <label key={key} className="flex items-center gap-2 cursor-pointer">
@@ -180,6 +217,10 @@ export default function ChildSupportPage() {
           </div>
         </div>
 
+        {/* 에러/경고 표시 (버튼 위) */}
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -195,9 +236,13 @@ export default function ChildSupportPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">월 양육비</p>
-            <p className="text-2xl font-bold" style={{ color: category.color }}>
-              {formatNumber(result.monthlyTotal)}원
-            </p>
+            {result.monthlyTotal === 0 ? (
+              <p className="text-sm text-slate-500">양육비가 산정되지 않았습니다.</p>
+            ) : (
+              <p className="text-2xl font-bold" style={{ color: category.color }}>
+                {formatNumber(result.monthlyTotal)}원
+              </p>
+            )}
           </div>
 
           <div className="mb-4">
