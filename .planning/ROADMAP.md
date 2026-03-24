@@ -153,7 +153,9 @@ Plans:
   2. loan-interest 계산기의 최고이자율 상한이 이자제한법 제2조 현행 기준(연 20%)과 일치한다
   3. unjust-enrichment 계산기의 부당이득 반환 이자 산정 기준이 민법 제741조~제749조 원문과 일치한다
   4. 발견된 모든 오류가 코드에서 수정되고 수정 내용이 검증된다
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 19-01-PLAN.md — late-payment, loan-interest, unjust-enrichment 법률 감사 (DEBT-01~03)
 
 ### Phase 20: 손해배상 계산기 법률 감사
 **Goal**: 4개 손해배상 계산기가 민법·의료법·판례 기준으로 정확하게 작동한다
@@ -164,7 +166,9 @@ Plans:
   2. defamation 계산기의 명예훼손 위자료 산정 기준이 대법원 판례 인정 기준 범위와 일치한다
   3. medical-malpractice 계산기의 의료사고 손해배상 산정이 의료법 및 관련 판례 기준과 일치한다
   4. lost-income 계산기의 일실수입 산정 공식(호프만식·라이프니츠식)이 대법원 판례 기준과 일치한다
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 19-01-PLAN.md — late-payment, loan-interest, unjust-enrichment 법률 감사 (DEBT-01~03)
 
 ### Phase 21: 기타 법률도구 법률 감사
 **Goal**: 4개 기타 법률도구가 우편법·법률구조법·형사소송법·민법 현행 기준으로 정확하게 작동한다
@@ -175,7 +179,9 @@ Plans:
   2. legal-aid 도구의 법률구조 자격 소득 기준이 법률구조법 및 대한법률구조공단 현행 기준과 일치한다
   3. public-defender 도구의 국선변호인 선정 기준이 형사소송법 제33조 원문과 일치한다
   4. statute-of-limitations 계산기의 소멸시효 기간 및 기산점이 민법 제162조~제184조 및 상법 원문과 일치한다
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 19-01-PLAN.md — late-payment, loan-interest, unjust-enrichment 법률 감사 (DEBT-01~03)
 
 ## Progress
 
@@ -199,6 +205,6 @@ Plans:
 | 16. 세금 법률 감사 | v1.3 | 4/4 | Complete   | 2026-03-24 |
 | 17. 부동산 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
 | 18. 교통/형사 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
-| 19. 채권/이자 법률 감사 | v1.3 | 0/? | Not started | - |
+| 19. 채권/이자 법률 감사 | v1.3 | 0/1 | Planning | - |
 | 20. 손해배상 법률 감사 | v1.3 | 0/? | Not started | - |
 | 21. 기타 법률도구 법률 감사 | v1.3 | 0/? | Not started | - |
