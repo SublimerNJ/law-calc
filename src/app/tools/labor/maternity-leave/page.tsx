@@ -11,8 +11,8 @@ function formatNumber(n: number): string {
   return n.toLocaleString('ko-KR');
 }
 
-const MATERNITY_UPPER = 2_100_000; // 고용보험법 시행령 제101조 고시 기준 월 210만원
-const MIN_WAGE_MONTHLY = 2_096_270; // 10,030 x 209
+const MATERNITY_UPPER = 2_200_000; // 고용보험법 시행령 제101조 고시 기준 월 220만원 (2026.1.1 인상)
+const MIN_WAGE_MONTHLY = 2_156_880; // 10,320 x 209 (2026년 최저임금 기준)
 
 type BirthType = 'single' | 'multiple';
 type CompanySize = 'sme' | 'large';
