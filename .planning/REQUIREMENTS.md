@@ -85,8 +85,8 @@
 
 ### 기타 (MISC)
 
-- [ ] **MISC-01**: 내용증명 작성 도구 (certified-letter) — 우편법·민사소송법 기준 검증 및 오류 수정
-- [ ] **MISC-02**: 법률구조 자격 확인 (legal-aid) — 법률구조법 기준 검증 및 오류 수정
+- [x] **MISC-01**: 내용증명 작성 도구 (certified-letter) — 우편법·민사소송법 기준 검증 및 오류 수정
+- [x] **MISC-02**: 법률구조 자격 확인 (legal-aid) — 법률구조법 기준 검증 및 오류 수정
 - [ ] **MISC-03**: 국선변호인 선정 기준 확인 (public-defender) — 형사소송법 국선변호인 기준 검증 및 오류 수정
 - [ ] **MISC-04**: 소멸시효 계산기 (statute-of-limitations) — 민법·상법 소멸시효 기준 검증 및 오류 수정
 
@@ -154,8 +154,8 @@
 | DAMAGES-02 | Phase 20 | Complete |
 | DAMAGES-03 | Phase 20 | Complete |
 | DAMAGES-04 | Phase 20 | Complete |
-| MISC-01 | Phase 21 | Pending |
-| MISC-02 | Phase 21 | Pending |
+| MISC-01 | Phase 21 | Complete |
+| MISC-02 | Phase 21 | Complete |
 | MISC-03 | Phase 21 | Pending |
 | MISC-04 | Phase 21 | Pending |
 
