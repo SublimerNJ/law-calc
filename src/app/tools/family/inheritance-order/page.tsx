@@ -174,8 +174,24 @@ export default function InheritanceOrderPage() {
   const [numSiblings, setNumSiblings] = useState(0);
   const [hasExtended, setHasExtended] = useState(false);
   const [results, setResults] = useState<HeirGroup[] | null>(null);
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
 
   const handleDetermine = () => {
+    setError('');
+    setWarning('');
+
+    if (numChildren < 0 || numGrandchildren < 0 || numParents < 0 || numSiblings < 0) {
+      setError('상속인 수는 0 이상이어야 합니다.');
+      setResults(null);
+      return;
+    }
+
+    const totalHeirs = numChildren + numGrandchildren + numParents + numSiblings;
+    if (totalHeirs > 20) {
+      setWarning('상속인이 20명을 초과합니다. 입력값을 확인해주세요.');
+    }
+
     setResults(
       determineOrder(hasSpouse, numChildren, numGrandchildren, numParents, numSiblings, hasExtended)
     );
@@ -194,13 +210,13 @@ export default function InheritanceOrderPage() {
               onChange={e => setHasSpouse(e.target.checked)}
               className="accent-[#ec4899]"
             />
-            <span className="text-sm text-slate-600">배우자 생존</span>
+            <span className="text-sm text-slate-600">배우자 생존 <span className="text-xs text-slate-400">(선택)</span></span>
           </label>
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-slate-600 mb-2">자녀 수</label>
+            <label className="block text-sm text-slate-600 mb-2">자녀 수 <span className="text-xs text-slate-400">(선택, 기본 0)</span></label>
             <input
               type="number"
               min={0}
@@ -212,7 +228,7 @@ export default function InheritanceOrderPage() {
           </div>
           <div>
             <label className="block text-sm text-slate-600 mb-2">
-              손자녀 수 <span className="text-xs text-gray-600">(대습상속)</span>
+              손자녀 수 <span className="text-xs text-gray-600">(대습상속)</span> <span className="text-xs text-slate-400">(선택, 기본 0)</span>
             </label>
             <input
               type="number"
@@ -227,7 +243,7 @@ export default function InheritanceOrderPage() {
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-slate-600 mb-2">부모 생존 수</label>
+            <label className="block text-sm text-slate-600 mb-2">부모 생존 수 <span className="text-xs text-slate-400">(선택, 기본 0)</span></label>
             <input
               type="number"
               min={0}
@@ -238,7 +254,7 @@ export default function InheritanceOrderPage() {
             />
           </div>
           <div>
-            <label className="block text-sm text-slate-600 mb-2">형제자매 수</label>
+            <label className="block text-sm text-slate-600 mb-2">형제자매 수 <span className="text-xs text-slate-400">(선택, 기본 0)</span></label>
             <input
               type="number"
               min={0}
@@ -258,9 +274,21 @@ export default function InheritanceOrderPage() {
               onChange={e => setHasExtended(e.target.checked)}
               className="accent-[#ec4899]"
             />
-            <span className="text-sm text-slate-600">4촌 이내 방계혈족 존재</span>
+            <span className="text-sm text-slate-600">4촌 이내 방계혈족 존재 <span className="text-xs text-slate-400">(선택)</span></span>
           </label>
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
+
+        {warning && (
+          <div className="mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+            <p className="text-sm text-orange-500">{warning}</p>
+          </div>
+        )}
 
         <button
           onClick={handleDetermine}
@@ -279,11 +307,11 @@ export default function InheritanceOrderPage() {
             {results.map((heir, i) => (
               <div
                 key={i}
-                className="flex items-start gap-3 p-3 rounded-lg"
-                style={{
+                className={`flex items-start gap-3 p-3 rounded-lg${!heir.isInheriting && heir.label === '상속인 없음' ? ' border border-orange-200 bg-orange-50' : ''}`}
+                style={heir.label !== '상속인 없음' ? {
                   backgroundColor: heir.isInheriting ? `${category.color}15` : 'rgba(107,114,128,0.1)',
                   borderLeft: `3px solid ${heir.isInheriting ? category.color : '#4b5563'}`,
-                }}
+                } : undefined}
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
@@ -298,23 +326,25 @@ export default function InheritanceOrderPage() {
                         {heir.rank}순위
                       </span>
                     )}
-                    <span className={`text-sm font-semibold ${heir.isInheriting ? 'text-slate-900' : 'text-gray-500'}`}>
+                    <span className={`text-sm font-semibold ${heir.isInheriting ? 'text-slate-900' : heir.label === '상속인 없음' ? 'text-orange-600' : 'text-gray-500'}`}>
                       {heir.label}
                     </span>
                   </div>
                   <p className="text-xs text-slate-600">{heir.reason}</p>
                 </div>
-                <div className="text-right">
-                  <span
-                    className="text-sm font-semibold"
-                    style={{ color: heir.isInheriting ? category.color : '#6b7280' }}
-                  >
-                    {heir.share}
-                  </span>
-                  <p className="text-xs mt-0.5" style={{ color: heir.isInheriting ? '#34d399' : '#ef4444' }}>
-                    {heir.isInheriting ? '상속' : '제외'}
-                  </p>
-                </div>
+                {heir.label !== '상속인 없음' && (
+                  <div className="text-right">
+                    <span
+                      className="text-sm font-semibold"
+                      style={{ color: heir.isInheriting ? category.color : '#6b7280' }}
+                    >
+                      {heir.share}
+                    </span>
+                    <p className="text-xs mt-0.5" style={{ color: heir.isInheriting ? '#34d399' : '#ef4444' }}>
+                      {heir.isInheriting ? '상속' : '제외'}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
