@@ -139,7 +139,7 @@ export default function ComprehensivePropertyTaxPage() {
             value={assessedValue ? parseInt(assessedValue).toLocaleString('ko-KR') : ''}
             onChange={handleValueChange}
             placeholder="예: 1,500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {assessedValue && (
             <p className="text-xs text-gray-500 mt-1">
@@ -191,7 +191,7 @@ export default function ComprehensivePropertyTaxPage() {
               value={age}
               onChange={e => setAge(e.target.value.replace(/[^0-9]/g, ''))}
               placeholder="예: 65"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         )}

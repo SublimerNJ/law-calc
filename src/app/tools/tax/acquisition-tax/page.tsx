@@ -156,7 +156,7 @@ export default function AcquisitionTaxPage() {
             value={price ? parseInt(price).toLocaleString('ko-KR') : ''}
             onChange={handlePriceChange}
             placeholder="예: 500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {price && (
             <p className="text-xs text-gray-500 mt-1">
