@@ -11,7 +11,7 @@ type CourtLevel = 1 | 2 | 3;
 type CaseType = 'civil' | 'payment-order' | 'mediation';
 
 // 민사소송등인지법 별표: 소가 구간 경계값은 미만(<) 기준
-// 100원 미만 버림(Math.floor) — 인지법 제2조의2
+// 100원 미만 버림(Math.floor) — 인지법 제2조 제2항
 function calculateStampFee(amount: number): number {
   let fee: number;
   if (amount < 10_000_000) {
@@ -65,10 +65,10 @@ export default function ECourtPage() {
     // 심급 배율: 항소심 1.5배, 상고심 2배 (민사소송등인지법 제3조)
     const levelMultiplier = level === 2 ? 1.5 : level === 3 ? 2 : 1;
 
-    // 소송유형 배율: 지급명령 1/10, 민사조정 1/5 (민사소송등인지법 제9조, 제10조)
+    // 소송유형 배율: 지급명령 1/10 (인지법 제7조 제2항), 민사조정 1/10 (민사조정규칙 제3조)
     let caseMultiplier = 1;
     if (caseType === 'payment-order') caseMultiplier = 0.1;
-    else if (caseType === 'mediation') caseMultiplier = 0.2;
+    else if (caseType === 'mediation') caseMultiplier = 0.1;
 
     // 일반 소송 인지대: 기본인지대 × 심급배율 × 유형배율, 100원 미만 버림
     let regularStampFee = Math.floor((baseStampFee * levelMultiplier * caseMultiplier) / 100) * 100;
@@ -77,7 +77,7 @@ export default function ECourtPage() {
     // 전자소송 인지대: 10% 감액 후 100원 미만 버림
     // 근거: 민사소송 등에서의 전자문서 이용 등에 관한 법률 제10조의2 (인지액의 10/100 감액)
     let eCourtStampFee = Math.floor((regularStampFee * 0.9) / 100) * 100;
-    if (eCourtStampFee < 1_000) eCourtStampFee = 1_000;
+    if (eCourtStampFee < 900) eCourtStampFee = 900;
 
     const discount = regularStampFee - eCourtStampFee;
 
@@ -142,7 +142,7 @@ export default function ECourtPage() {
           >
             <option value="civil">일반 민사</option>
             <option value="payment-order">지급명령 (인지대 1/10)</option>
-            <option value="mediation">민사조정 (인지대 1/5)</option>
+            <option value="mediation">민사조정 (인지대 1/10)</option>
           </select>
         </div>
 
