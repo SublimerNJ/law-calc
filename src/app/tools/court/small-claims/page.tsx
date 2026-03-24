@@ -87,7 +87,7 @@ export default function SmallClaimsPage() {
     const offlineTotal = offlineStampFee + offlineServiceFee;
 
     // 전자소송: 인지대 10% 할인 + 피고 수만 산정
-    let ecourtStampFee = Math.ceil((baseStampFee * 0.9) / 100) * 100;
+    let ecourtStampFee = Math.floor((baseStampFee * 0.9) / 100) * 100;
     if (ecourtStampFee < 1_000) ecourtStampFee = 1_000;
     const ecourtDiscount = offlineStampFee - ecourtStampFee;
     const ecourtServiceFee = defendants * SMALL_CLAIMS_SERVICE_ROUNDS * SERVICE_FEE_UNIT;
