@@ -67,8 +67,8 @@
 
 - [x] **TRAFFIC-01**: 교통사고 합의금 계산기 (accident-settlement) — 과실비율 인정기준 및 합의금 산정 기준 검증 및 오류 수정
 - [x] **TRAFFIC-02**: 음주운전 처벌 계산기 (drunk-driving) — 도로교통법 BAC 기준 및 처벌 기준 검증 및 오류 수정
-- [ ] **TRAFFIC-03**: 벌금/과태료 계산기 (fine-penalty) — 도로교통법 범칙금·과태료 기준 검증 및 오류 수정
-- [ ] **TRAFFIC-04**: 형사 보석금 계산기 (bail) — 형사소송법 보석 기준 검증 및 오류 수정
+- [x] **TRAFFIC-03**: 벌금/과태료 계산기 (fine-penalty) — 도로교통법 범칙금·과태료 기준 검증 및 오류 수정
+- [x] **TRAFFIC-04**: 형사 보석금 계산기 (bail) — 형사소송법 보석 기준 검증 및 오류 수정
 
 ### 채권/이자 (DEBT)
 
@@ -145,8 +145,8 @@
 | REALTY-07 | Phase 17 | Complete |
 | TRAFFIC-01 | Phase 18 | Complete |
 | TRAFFIC-02 | Phase 18 | Complete |
-| TRAFFIC-03 | Phase 18 | Pending |
-| TRAFFIC-04 | Phase 18 | Pending |
+| TRAFFIC-03 | Phase 18 | Complete |
+| TRAFFIC-04 | Phase 18 | Complete |
 | DEBT-01 | Phase 19 | Pending |
 | DEBT-02 | Phase 19 | Pending |
 | DEBT-03 | Phase 19 | Pending |
