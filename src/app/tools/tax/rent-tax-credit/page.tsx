@@ -67,7 +67,8 @@ export default function RentTaxCreditPage() {
     let credit = 0;
 
     if (eligible) {
-      rate = gross <= 55_000_000 ? 0.2 : 0.17;
+      // 조세특례제한법 제95조의2: 총급여 5,500만원 이하 17%, 5,500만원 초과~8,000만원 이하 15%
+      rate = gross <= 55_000_000 ? 0.17 : 0.15;
       annualRent = rent * 12;
       cappedRent = Math.min(annualRent, 10_000_000);
       credit = Math.floor(cappedRent * rate);
@@ -175,10 +176,10 @@ export default function RentTaxCreditPage() {
               <p className="font-semibold text-slate-600 mb-1">계산식</p>
               <pre className="font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`min(월세 × 12, 1,000만원) × 공제율 = 세액공제액
-(총급여 5,500만원 이하: 20%, 초과: 17%)`}
+(총급여 5,500만원 이하: 17%, 5,500만원 초과~8,000만원 이하: 15%)`}
               </pre>
               <p className="font-semibold text-slate-600 mb-1">법적 근거</p>
-              <p>소득세법 제95조의2 (월세액 세액공제). 2026년 기준. 실제 공제 결과와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
+              <p>조세특례제한법 제95조의2 (월세액에 대한 세액공제). 2026년 기준. 실제 공제 결과와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
             </div>
           </div>
         )}
