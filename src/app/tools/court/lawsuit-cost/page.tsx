@@ -11,6 +11,8 @@ type FilingMethod = 'offline' | 'ecourt';
 
 const SERVICE_FEE_UNIT = 5_500;
 const SERVICE_ROUNDS = { 1: 15, 2: 12, 3: 8 } as const;
+const SMALL_CLAIMS_LIMIT = 30_000_000;
+const SMALL_CLAIMS_ROUNDS = 10;
 
 function calculateStampFee(amount: number): number {
   let fee: number;
@@ -44,6 +46,7 @@ interface CalcResult {
   defendants: number;
   savings: number;
   levelLabel: string;
+  isSmallClaims: boolean;
 }
 
 export default function LawsuitCostPage() {
@@ -75,12 +78,13 @@ export default function LawsuitCostPage() {
     }
 
     const totalParties = plaintiffs + defendants;
+    const isSmallClaims = val <= SMALL_CLAIMS_LIMIT && level === 1;
 
     let baseStampFee = calculateStampFee(val);
     if (level === 2) baseStampFee = Math.floor((baseStampFee * 1.5) / 100) * 100;
     else if (level === 3) baseStampFee = Math.floor((baseStampFee * 2) / 100) * 100;
 
-    const serviceRounds = SERVICE_ROUNDS[level];
+    const serviceRounds = isSmallClaims ? SMALL_CLAIMS_ROUNDS : SERVICE_ROUNDS[level];
 
     // 오프라인: 전체 당사자 수 × 회분
     const offlineStampFee = baseStampFee;
@@ -100,7 +104,7 @@ export default function LawsuitCostPage() {
     setResult({
       offlineStampFee, offlineServiceFee, offlineTotal,
       ecourtStampFee, ecourtDiscount, ecourtServiceFee, ecourtTotal,
-      serviceRounds, plaintiffs, defendants, savings, levelLabel,
+      serviceRounds, plaintiffs, defendants, savings, levelLabel, isSmallClaims,
     });
   };
 
@@ -212,6 +216,12 @@ export default function LawsuitCostPage() {
 
       {result && (
         <>
+          {result.isSmallClaims && (
+            <div className="premium-card p-4 mb-4 bg-blue-50 border border-blue-200">
+              <p className="text-sm font-semibold text-blue-800">소액사건 자동 적용</p>
+              <p className="text-xs text-blue-600 mt-1">소가 3,000만원 이하 → 소액사건심판법 적용, 송달료 {SMALL_CLAIMS_ROUNDS}회 기준 산정</p>
+            </div>
+          )}
           <div className="premium-card p-6 mb-4">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">
               {filingMethod === 'ecourt' ? '전자소송' : '오프라인'} 소송비용 ({result.levelLabel})
@@ -314,7 +324,7 @@ export default function LawsuitCostPage() {
                 인지대: 민사소송등인지법 별표 기준 | 전자소송 할인: 민사소송 등에서의 전자문서 이용 등에 관한 법률
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                송달료: 2026년 기준 1회 {formatNumber(SERVICE_FEE_UNIT)}원 | 심급별 회수: 1심 15회, 항소심 12회, 상고심 8회
+                송달료: 2026년 기준 1회 {formatNumber(SERVICE_FEE_UNIT)}원 | 심급별 회수: 1심 15회(소액 10회), 항소심 12회, 상고심 8회
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 전자소송 송달료: 피고(상대방) 수만 산정 | 오프라인: 전체 당사자 수 산정

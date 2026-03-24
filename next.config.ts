@@ -23,6 +23,9 @@ const nextConfig: NextConfig = {
       // damages: disability-compensation → industrial-accident(labor), product-liability → damages-general
       { source: "/tools/damages/disability-compensation", destination: "/tools/labor/industrial-accident", permanent: true },
       { source: "/tools/damages/product-liability", destination: "/tools/damages/damages-general", permanent: true },
+      // court: small-claims, e-court → lawsuit-cost (v1.4 통합)
+      { source: "/tools/court/small-claims", destination: "/tools/court/lawsuit-cost", permanent: true },
+      { source: "/tools/court/e-court", destination: "/tools/court/lawsuit-cost", permanent: true },
     ];
   },
 };

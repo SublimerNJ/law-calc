@@ -28,14 +28,12 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const TOOLS: Tool[] = [
-  // ⚖️ 소송/법원 (7) — stamp-fee, service-fee → lawsuit-cost로 통합
+  // ⚖️ 소송/법원 (5) — stamp-fee, service-fee, small-claims, e-court → lawsuit-cost로 통합
   { id: "attorney-fee", name: "변호사보수 소송비용산입 계산기", description: "변호사보수의 소송비용 산입액을 계산합니다", icon: "\uD83D\uDC68\u200D\u2696\uFE0F", category: "court", route: "/tools/court/attorney-fee" },
-  { id: "lawsuit-cost", name: "소송비용 계산기", description: "인지대와 송달료를 포함한 소송비용을 계산합니다", icon: "\uD83D\uDCB8", category: "court", route: "/tools/court/lawsuit-cost" },
-  { id: "small-claims", name: "소액사건 재판비용 계산기", description: "소액사건의 재판비용을 간편하게 계산합니다", icon: "\uD83D\uDCB1", category: "court", route: "/tools/court/small-claims" },
+  { id: "lawsuit-cost", name: "소송비용 계산기", description: "소액사건 포함 인지대·송달료·전자소송 할인을 계산합니다", icon: "\uD83D\uDCB8", category: "court", route: "/tools/court/lawsuit-cost" },
   { id: "payment-order", name: "지급명령 비용 계산기", description: "독촉절차(지급명령) 신청 비용을 계산합니다", icon: "\uD83D\uDCDD", category: "court", route: "/tools/court/payment-order" },
   { id: "civil-mediation", name: "민사조정 비용 계산기", description: "민사조정 신청에 필요한 비용을 계산합니다", icon: "\uD83E\uDD1D", category: "court", route: "/tools/court/civil-mediation" },
   { id: "family-court", name: "가사소송 비용 계산기", description: "가사소송 및 가사비송 비용을 계산합니다", icon: "\uD83C\uDFDB\uFE0F", category: "court", route: "/tools/court/family-court" },
-  { id: "e-court", name: "전자소송 비용 계산기", description: "전자소송 이용 시 비용 할인액을 계산합니다", icon: "\uD83D\uDCBB", category: "court", route: "/tools/court/e-court" },
 
   // 👨‍👩‍👧 가사/가족법 (6) — legal-inheritance→inheritance-order, gift-tax→inheritance-tax로 통합
   { id: "alimony", name: "위자료 계산기", description: "이혼 시 위자료 예상 금액을 계산합니다", icon: "\uD83D\uDC94", category: "family", route: "/tools/family/alimony" },
