@@ -28,6 +28,8 @@ export default function LtvPage() {
   const [housePrice, setHousePrice] = useState('');
   const [loanAmount, setLoanAmount] = useState('');
   const [region, setRegion] = useState('regulated');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     ltv: number;
     regulationLimit: number;
@@ -40,9 +42,28 @@ export default function LtvPage() {
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const price = parseInt(housePrice, 10);
     const loan = parseInt(loanAmount, 10);
-    if (!price || price <= 0 || !loan || loan <= 0) return;
+
+    if (!housePrice || !price || price <= 0) {
+      setError('주택 가격을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (!loanAmount || !loan || loan <= 0) {
+      setError('대출 희망 금액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (price > 5_000_000_000) {
+      setWarning('주택 가격이 50억원을 초과합니다. 입력값을 확인해주세요.');
+    } else if (loan > price) {
+      setWarning('대출 희망 금액이 주택 가격을 초과합니다. LTV가 100%를 넘을 수 있습니다.');
+    }
 
     const selectedRegion = REGIONS.find(r => r.value === region)!;
     const ltv = (loan / price) * 100;
@@ -62,7 +83,7 @@ export default function LtvPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">주택 가격 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">주택 가격 (원) <span className="text-red-500">*</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -79,7 +100,7 @@ export default function LtvPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">대출 희망 금액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">대출 희망 금액 (원) <span className="text-red-500">*</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -108,6 +129,8 @@ export default function LtvPage() {
           </select>
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -141,11 +164,11 @@ export default function LtvPage() {
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">적합 여부</p>
             {result.isOver ? (
-              <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-red-500/20 text-red-400">
+              <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700">
                 초과 - 규제 기준을 초과합니다
               </span>
             ) : (
-              <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-green-500/20 text-green-400">
+              <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700">
                 적합 - 규제 기준 이내입니다
               </span>
             )}

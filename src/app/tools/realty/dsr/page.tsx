@@ -21,6 +21,8 @@ export default function DsrPage() {
   const [mortgage, setMortgage] = useState('');
   const [credit, setCredit] = useState('');
   const [other, setOther] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     dsr: number;
     annualRepayment: number;
@@ -36,10 +38,26 @@ export default function DsrPage() {
   const displayValue = (raw: string) => raw ? parseInt(raw).toLocaleString('ko-KR') : '';
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const annualIncome = parseNum(income);
-    if (annualIncome <= 0) return;
+    if (!income || annualIncome <= 0) {
+      setError('연소득을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (annualIncome > 1_000_000_000) {
+      setWarning('연소득이 10억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const monthlyTotal = parseNum(mortgage) + parseNum(credit) + parseNum(other);
+    const monthlyIncome = annualIncome / 12;
+    if (!warning && monthlyTotal > monthlyIncome) {
+      setWarning('월 상환액 합계가 월 소득을 초과합니다. 입력값을 확인해주세요.');
+    }
+
     const annualRepayment = monthlyTotal * 12;
     const dsr = (annualRepayment / annualIncome) * 100;
 
@@ -58,7 +76,7 @@ export default function DsrPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">DSR 계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">연소득 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">연소득 (원) <span className="text-red-500">*</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -106,6 +124,8 @@ export default function DsrPage() {
           />
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -127,15 +147,15 @@ export default function DsrPage() {
           </div>
 
           <div className="flex gap-3 mb-6">
-            <div className={`flex-1 rounded-lg p-3 text-center ${result.bankOk ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
+            <div className={`flex-1 rounded-lg p-3 text-center ${result.bankOk ? 'bg-green-50 border border-green-300' : 'bg-red-50 border border-red-300'}`}>
               <p className="text-xs text-slate-600 mb-1">은행권 (40%)</p>
-              <p className={`text-sm font-semibold ${result.bankOk ? 'text-green-400' : 'text-red-400'}`}>
+              <p className={`text-sm font-semibold ${result.bankOk ? 'text-green-700' : 'text-red-600'}`}>
                 {result.bankOk ? '적합' : '초과'}
               </p>
             </div>
-            <div className={`flex-1 rounded-lg p-3 text-center ${result.nonBankOk ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
+            <div className={`flex-1 rounded-lg p-3 text-center ${result.nonBankOk ? 'bg-green-50 border border-green-300' : 'bg-red-50 border border-red-300'}`}>
               <p className="text-xs text-slate-600 mb-1">비은행권 (50%)</p>
-              <p className={`text-sm font-semibold ${result.nonBankOk ? 'text-green-400' : 'text-red-400'}`}>
+              <p className={`text-sm font-semibold ${result.nonBankOk ? 'text-green-700' : 'text-red-600'}`}>
                 {result.nonBankOk ? '적합' : '초과'}
               </p>
             </div>

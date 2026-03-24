@@ -24,6 +24,8 @@ export default function DtiPage() {
   const [monthlyMortgage, setMonthlyMortgage] = useState('');
   const [monthlyOtherInterest, setMonthlyOtherInterest] = useState('');
   const [region, setRegion] = useState('speculative');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     dti: number;
     regulationLimit: number;
@@ -37,11 +39,37 @@ export default function DtiPage() {
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const income = parseInt(annualIncome, 10);
-    const mortgage = parseInt(monthlyMortgage, 10);
-    if (!income || income <= 0 || !mortgage || mortgage < 0) return;
+    const mortgage = parseInt(monthlyMortgage, 10) || 0;
+
+    if (!annualIncome || !income || income <= 0) {
+      setError('연소득을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (!monthlyMortgage) {
+      setError('주택담보대출 월 원리금을 입력해주세요. (없으면 0을 입력해주세요.)');
+      setResult(null);
+      return;
+    }
+    if (mortgage < 0) {
+      setError('주택담보대출 월 원리금은 0 이상이어야 합니다.');
+      setResult(null);
+      return;
+    }
+
+    if (income > 1_000_000_000) {
+      setWarning('연소득이 10억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const otherInterest = parseInt(monthlyOtherInterest, 10) || 0;
+    if (!warning && (mortgage + otherInterest) * 12 > income) {
+      setWarning('연간 상환액이 연소득을 초과합니다. DTI가 100%를 넘을 수 있습니다.');
+    }
+
     const annualMortgage = mortgage * 12;
     const annualOther = otherInterest * 12;
     const dti = ((annualMortgage + annualOther) / income) * 100;
@@ -62,7 +90,7 @@ export default function DtiPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">연소득 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">연소득 (원) <span className="text-red-500">*</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -79,7 +107,7 @@ export default function DtiPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">주택담보대출 월 원리금 상환액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">주택담보대출 월 원리금 상환액 (원) <span className="text-red-500">*</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -125,6 +153,8 @@ export default function DtiPage() {
           </select>
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -164,11 +194,11 @@ export default function DtiPage() {
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">적합 여부</p>
             {result.isOver ? (
-              <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-red-500/20 text-red-400">
+              <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700">
                 초과 - 규제 기준을 초과합니다
               </span>
             ) : (
-              <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-green-500/20 text-green-400">
+              <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700">
                 적합 - 규제 기준 이내입니다
               </span>
             )}
