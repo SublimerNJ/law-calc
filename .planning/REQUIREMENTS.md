@@ -27,8 +27,8 @@
 
 ### 노동/근로 (LABOR)
 
-- [ ] **LABOR-01**: 퇴직금 계산기 (severance-pay) — 근로자퇴직급여보장법 기준 검증 및 오류 수정
-- [ ] **LABOR-02**: 해고예고수당 계산기 (dismissal-notice) — 근로기준법 제26조 기준 검증 및 오류 수정
+- [x] **LABOR-01**: 퇴직금 계산기 (severance-pay) — 근로자퇴직급여보장법 기준 검증 및 오류 수정
+- [x] **LABOR-02**: 해고예고수당 계산기 (dismissal-notice) — 근로기준법 제26조 기준 검증 및 오류 수정
 - [ ] **LABOR-03**: 연차수당 계산기 (annual-leave-pay) — 근로기준법 연차유급휴가 기준 검증 및 오류 수정
 - [ ] **LABOR-04**: 연장근로수당 계산기 (overtime-pay) — 근로기준법 통상임금·가산율 검증 및 오류 수정
 - [ ] **LABOR-05**: 주휴수당 계산기 (weekly-holiday-pay) — 근로기준법 주휴일 기준 검증 및 오류 수정
@@ -38,7 +38,7 @@
 - [ ] **LABOR-09**: 출산휴가급여 계산기 (maternity-leave) — 남녀고용평등법 기준 검증 및 오류 수정
 - [ ] **LABOR-10**: 육아휴직급여 계산기 (parental-leave) — 남녀고용평등법 기준 검증 및 오류 수정
 - [ ] **LABOR-11**: 실업급여 계산기 (unemployment-benefit) — 고용보험법 기준 검증 및 오류 수정
-- [ ] **LABOR-12**: 휴업수당 계산기 (shutdown-allowance) — 근로기준법 제46조 기준 검증 및 오류 수정
+- [x] **LABOR-12**: 휴업수당 계산기 (shutdown-allowance) — 근로기준법 제46조 기준 검증 및 오류 수정
 
 ### 세금 (TAX)
 
@@ -114,8 +114,8 @@
 | FAMILY-04 | Phase 14 | Complete |
 | FAMILY-05 | Phase 14 | Complete |
 | FAMILY-06 | Phase 14 | Complete |
-| LABOR-01 | Phase 15 | Pending |
-| LABOR-02 | Phase 15 | Pending |
+| LABOR-01 | Phase 15 | Complete |
+| LABOR-02 | Phase 15 | Complete |
 | LABOR-03 | Phase 15 | Pending |
 | LABOR-04 | Phase 15 | Pending |
 | LABOR-05 | Phase 15 | Pending |
@@ -125,7 +125,7 @@
 | LABOR-09 | Phase 15 | Pending |
 | LABOR-10 | Phase 15 | Pending |
 | LABOR-11 | Phase 15 | Pending |
-| LABOR-12 | Phase 15 | Pending |
+| LABOR-12 | Phase 15 | Complete |
 | TAX-01 | Phase 16 | Pending |
 | TAX-02 | Phase 16 | Pending |
 | TAX-03 | Phase 16 | Pending |
