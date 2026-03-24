@@ -21,9 +21,9 @@
 - [ ] **FAMILY-01**: 위자료 계산기 (alimony) — 판례 기반 산정 기준 검증 및 오류 수정
 - [ ] **FAMILY-02**: 양육비 계산기 (child-support) — 양육비 산정기준표 검증 및 오류 수정
 - [ ] **FAMILY-03**: 재산분할 계산기 (property-division) — 민법 기반 분할 기준 검증 및 오류 수정
-- [ ] **FAMILY-04**: 상속세·증여세 계산기 (inheritance-tax) — 상속세및증여세법 세율·공제 검증 및 오류 수정
-- [ ] **FAMILY-05**: 유류분 계산기 (forced-heirship) — 민법 유류분 비율 검증 및 오류 수정
-- [ ] **FAMILY-06**: 상속순위·법정상속분 판별기 (inheritance-order) — 민법 상속순위·상속분 검증 및 오류 수정
+- [x] **FAMILY-04**: 상속세·증여세 계산기 (inheritance-tax) — 상속세및증여세법 세율·공제 검증 및 오류 수정
+- [x] **FAMILY-05**: 유류분 계산기 (forced-heirship) — 민법 유류분 비율 검증 및 오류 수정
+- [x] **FAMILY-06**: 상속순위·법정상속분 판별기 (inheritance-order) — 민법 상속순위·상속분 검증 및 오류 수정
 
 ### 노동/근로 (LABOR)
 
@@ -111,9 +111,9 @@
 | FAMILY-01 | Phase 14 | Pending |
 | FAMILY-02 | Phase 14 | Pending |
 | FAMILY-03 | Phase 14 | Pending |
-| FAMILY-04 | Phase 14 | Pending |
-| FAMILY-05 | Phase 14 | Pending |
-| FAMILY-06 | Phase 14 | Pending |
+| FAMILY-04 | Phase 14 | Complete |
+| FAMILY-05 | Phase 14 | Complete |
+| FAMILY-06 | Phase 14 | Complete |
 | LABOR-01 | Phase 15 | Pending |
 | LABOR-02 | Phase 15 | Pending |
 | LABOR-03 | Phase 15 | Pending |

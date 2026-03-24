@@ -39,7 +39,7 @@
 ### 🚧 v1.3 전체 계산기 법률 정확성 감사 (Phases 13-21)
 
 - [x] **Phase 13: 소송/법원 계산기 법률 감사** — 6개 계산기 법령 원문 대조 검증 및 오류 수정 (completed 2026-03-24)
-- [ ] **Phase 14: 가사/가족법 계산기 법률 감사** — 6개 계산기 민법·가사소송법 기준 검증 및 오류 수정
+- [x] **Phase 14: 가사/가족법 계산기 법률 감사** — 6개 계산기 민법·가사소송법 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [ ] **Phase 15: 노동/근로 계산기 법률 감사** — 12개 계산기 근로기준법·노동법령 기준 검증 및 오류 수정
 - [ ] **Phase 16: 세금 계산기 법률 감사** — 10개 계산기 세법·지방세법 기준 검증 및 오류 수정
 - [ ] **Phase 17: 부동산 계산기 법률 감사** — 7개 계산기 주택임대차보호법·감독규정 기준 검증 및 오류 수정
@@ -75,10 +75,10 @@ Plans:
   3. property-division 계산기의 재산분할 비율이 민법 및 판례 기준과 일치한다
   4. inheritance-tax 계산기의 상속세·증여세 세율 및 공제 한도가 상속세및증여세법 원문과 일치한다
   5. forced-heirship 유류분 비율과 inheritance-order 상속순위·상속분이 민법 제1000조~제1118조 원문과 일치한다
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 Plans:
-- [ ] 14-01-PLAN.md — alimony, child-support, property-division 법률 감사
-- [ ] 14-02-PLAN.md — inheritance-tax, forced-heirship, inheritance-order 법률 감사
+- [x] 14-01-PLAN.md — alimony, child-support, property-division 법률 감사
+- [x] 14-02-PLAN.md — inheritance-tax, forced-heirship, inheritance-order 법률 감사
 
 ### Phase 15: 노동/근로 계산기 법률 감사
 **Goal**: 12개 노동/근로 계산기가 근로기준법·노동 관련 법령 기준으로 정확하게 작동한다
@@ -177,7 +177,7 @@ Plans:
 | 11. 라이트 테마 전환 | v1.2 | 3/3 | Complete | 2026-03-23 |
 | 12. 패럴랙스 UI 적용 | v1.2 | 2/2 | Complete | 2026-03-23 |
 | 13. 소송/법원 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
-| 14. 가사/가족법 법률 감사 | v1.3 | 0/2 | In progress | - |
+| 14. 가사/가족법 법률 감사 | v1.3 | 2/2 | Complete   | 2026-03-24 |
 | 15. 노동/근로 법률 감사 | v1.3 | 0/? | Not started | - |
 | 16. 세금 법률 감사 | v1.3 | 0/? | Not started | - |
 | 17. 부동산 법률 감사 | v1.3 | 0/? | Not started | - |
