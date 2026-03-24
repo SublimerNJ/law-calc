@@ -180,9 +180,10 @@ Plans:
   2. legal-aid 도구의 법률구조 자격 소득 기준이 법률구조법 및 대한법률구조공단 현행 기준과 일치한다
   3. public-defender 도구의 국선변호인 선정 기준이 형사소송법 제33조 원문과 일치한다
   4. statute-of-limitations 계산기의 소멸시효 기간 및 기산점이 민법 제162조~제184조 및 상법 원문과 일치한다
-**Plans:** 1 plan
+**Plans:** 2 plans
 Plans:
-- [ ] 21-01-PLAN.md — certified-letter, legal-aid, public-defender, statute-of-limitations 법률 감사 (MISC-01~04)
+- [ ] 21-01-PLAN.md — certified-letter, legal-aid 법률 감사 (MISC-01, MISC-02)
+- [ ] 21-02-PLAN.md — public-defender, statute-of-limitations 법률 감사 (MISC-03, MISC-04)
 
 ## Progress
 
@@ -208,4 +209,4 @@ Plans:
 | 18. 교통/형사 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
 | 19. 채권/이자 법률 감사 | v1.3 | 1/1 | Complete    | 2026-03-24 |
 | 20. 손해배상 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
-| 21. 기타 법률도구 법률 감사 | v1.3 | 0/? | Not started | - |
+| 21. 기타 법률도구 법률 감사 | v1.3 | 0/2 | Not started | - |
