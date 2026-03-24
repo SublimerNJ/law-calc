@@ -7,10 +7,11 @@ import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 const tool = TOOLS.find(t => t.id === 'dti')!;
 const category = CATEGORIES.find(c => c.id === 'realty')!;
 
+// 은행업감독규정 제26조의2(총부채상환비율) 및 금융위원회 「주택담보대출 LTV·DTI 규제 완화」(2022.8 시행) 기준
 const REGIONS = [
   { value: 'speculative', label: '투기지역/투기과열지구', limit: 40 },
   { value: 'regulated', label: '조정대상지역', limit: 50 },
-  { value: 'general', label: '기타 지역', limit: 60 },
+  { value: 'general', label: '기타 지역 (비규제)', limit: 60 },
 ];
 
 function formatNumber(n: number): string {
@@ -185,7 +186,7 @@ DTI = (주담대 연간 원리금 + 기타대출 연간 이자) ÷ 연소득 × 
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500 mb-2">
-              법적 근거: 금융위원회 DTI 규제 (금융감독원 여신심사 가이드라인)
+              법적 근거: 은행업감독규정 제26조의2(총부채상환비율), 금융위원회 「주택담보대출 LTV·DTI 규제 완화」 2022년 8월 시행
             </p>
             <p className="text-xs text-gray-500">
               DTI vs DSR 차이: DTI는 기타 대출의 이자만 포함하지만, DSR은 모든 대출의 원금+이자 상환액을 포함합니다. 2024년 이후 대부분 금융기관에서 DSR 규제를 적용하고 있으나, DTI는 여전히 보완적 심사 기준으로 활용됩니다.
