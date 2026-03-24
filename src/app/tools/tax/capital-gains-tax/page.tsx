@@ -29,14 +29,15 @@ function calcBasicTax(taxBase: number): number {
 /**
  * 장기보유특별공제율 (1세대1주택, 소득세법 제95조 제2항 별표2)
  * 보유기간 3년 이상: 4%/년 (최대 40%)
- * 거주기간 3년 이상: 4%/년 (최대 40%)
+ * 거주기간 2년 이상: 4%/년 (최대 40%)
  * 합산 최대 80%
  */
 function getLongTermRate(holdingYears: number, residenceYears: number): number {
   // 보유기간 공제율: 3년 이상부터 4%×보유년수, 최대 40% (3년→12%, 10년→40%)
   const holdingRate = holdingYears >= 3 ? Math.min(holdingYears * 0.04, 0.40) : 0;
-  // 거주기간 공제율: 3년 이상부터 4%×거주년수, 최대 40% (3년→12%, 10년→40%)
-  const residenceRate = residenceYears >= 3 ? Math.min(residenceYears * 0.04, 0.40) : 0;
+  // 거주기간 공제율: 2년 이상부터 4%×거주년수, 최대 40% (2년→8%, 10년→40%)
+  // 소득세법 제95조 제2항 별표: 거주기간은 2년 이상부터 적용
+  const residenceRate = residenceYears >= 2 ? Math.min(residenceYears * 0.04, 0.40) : 0;
   return Math.min(holdingRate + residenceRate, 0.80);
 }
 
