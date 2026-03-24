@@ -27,6 +27,8 @@ export default function CertifiedLetterPage() {
   const [sendDate, setSendDate] = useState(getTodayString());
   const [preview, setPreview] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const generateText = () => {
     return `[내용증명]
@@ -49,7 +51,30 @@ ${formatDateKR(sendDate)}
   };
 
   const handlePreview = () => {
-    if (!senderName || !receiverName || !title || !body) return;
+    setError(null);
+    setWarning(null);
+    // INPUT-02: 필수 필드 검증
+    if (!senderName) {
+      setError('발신인 이름을 입력해주세요.');
+      return;
+    }
+    if (!receiverName) {
+      setError('수신인 이름을 입력해주세요.');
+      return;
+    }
+    if (!title) {
+      setError('제목을 입력해주세요.');
+      return;
+    }
+    if (!body) {
+      setError('본문을 입력해주세요.');
+      return;
+    }
+    // EDGE-02: 미래 발신일 경고
+    const today = getTodayString();
+    if (sendDate > today) {
+      setWarning('발신일이 오늘 이후입니다. 내용증명은 실제 발송일에 맞게 작성하세요.');
+    }
     setPreview(true);
     setCopied(false);
   };
@@ -70,7 +95,7 @@ ${formatDateKR(sendDate)}
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-slate-600 mb-1">발신인 이름</label>
+              <label className="block text-sm text-slate-600 mb-1">발신인 이름 *</label>
               <input
                 type="text"
                 value={senderName}
@@ -93,7 +118,7 @@ ${formatDateKR(sendDate)}
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-slate-600 mb-1">수신인 이름</label>
+              <label className="block text-sm text-slate-600 mb-1">수신인 이름 *</label>
               <input
                 type="text"
                 value={receiverName}
@@ -115,7 +140,7 @@ ${formatDateKR(sendDate)}
           </div>
 
           <div>
-            <label className="block text-sm text-slate-600 mb-1">제목</label>
+            <label className="block text-sm text-slate-600 mb-1">제목 *</label>
             <input
               type="text"
               value={title}
@@ -126,7 +151,7 @@ ${formatDateKR(sendDate)}
           </div>
 
           <div>
-            <label className="block text-sm text-slate-600 mb-1">본문</label>
+            <label className="block text-sm text-slate-600 mb-1">본문 *</label>
             <textarea
               value={body}
               onChange={e => setBody(e.target.value)}
@@ -147,6 +172,8 @@ ${formatDateKR(sendDate)}
           </div>
         </div>
 
+        {error && <p className="text-red-500 text-sm mt-3 mb-0">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mt-3 mb-0">{warning}</p>}
         <button
           onClick={handlePreview}
           className="w-full mt-6 py-3 rounded-lg font-semibold text-slate-900"

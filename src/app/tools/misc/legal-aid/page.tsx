@@ -98,7 +98,7 @@ export default function LegalAidPage() {
           </div>
 
           <div>
-            <label className="block text-sm text-slate-600 mb-1">월 소득 (원)</label>
+            <label className="block text-sm text-slate-600 mb-1">월 소득 (원, 판정 기준)</label>
             <input
               type="text"
               value={monthlyIncome}
@@ -109,7 +109,7 @@ export default function LegalAidPage() {
           </div>
 
           <div>
-            <label className="block text-sm text-slate-600 mb-1">재산 총액 (원)</label>
+            <label className="block text-sm text-slate-600 mb-1">재산 총액 (원, 판정 기준)</label>
             <input
               type="text"
               value={totalAssets}
@@ -145,20 +145,20 @@ export default function LegalAidPage() {
       {result && (
         <div className="premium-card p-6">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">판정 결과</h3>
-          <div className={`p-4 rounded-lg mb-4 ${result.eligible ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
-            <p className={`text-lg font-bold ${result.eligible ? 'text-green-400' : 'text-red-400'}`}>
+          <div className={`p-4 rounded-lg mb-4 ${result.eligible ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+            <p className={`text-lg font-bold ${result.eligible ? 'text-green-700' : 'text-red-700'}`}>
               {result.eligible ? '지원 가능' : '지원 불가'}
             </p>
           </div>
           <p className="text-sm text-slate-600 mb-3">{result.reason}</p>
 
           {result.eligible && (
-            <div className="p-3 rounded-lg bg-blue-900/20 border border-blue-800">
-              <p className="text-sm text-blue-300">
+            <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-700">
                 신청 방법: 대한법률구조공단(132) 또는 가까운 지부 방문
               </p>
               {supportType === 'criminal' && (
-                <p className="text-xs text-yellow-300 mt-2">
+                <p className="text-xs text-orange-600 mt-2">
                   ※ 형사변호 지원은 사안에 따라 별도 심사 기준이 적용됩니다. 반드시 공단에 문의하세요.
                 </p>
               )}
