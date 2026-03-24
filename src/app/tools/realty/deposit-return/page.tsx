@@ -86,7 +86,7 @@ export default function DepositReturnPage() {
             min="0"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
-          <p className="text-xs text-gray-500 mt-1">주택임대차보호법상 법정이자율: 연 5%</p>
+          <p className="text-xs text-gray-500 mt-1">민법 제379조 법정이율: 연 5% (보증금 미반환 시)</p>
         </div>
 
         <button
@@ -135,7 +135,7 @@ export default function DepositReturnPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 주택임대차보호법 제3조의2, 민법 제387조
+              법적 근거: 주택임대차보호법 제3조(대항력), 제3조의2(우선변제권) | 지연이자: 민법 제379조(법정이율 연 5%)
             </p>
           </div>
         </div>
