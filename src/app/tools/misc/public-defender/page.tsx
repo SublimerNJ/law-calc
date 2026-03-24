@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
@@ -97,6 +98,10 @@ export default function PublicDefenderPage() {
 
   return (
     <CalculatorLayout tool={tool} category={category}>
+      <div className="flex rounded-lg overflow-hidden mb-4 border border-slate-200">
+        <div className="flex-1 py-3 text-center text-sm font-semibold bg-slate-900 text-white">국선변호인</div>
+        <Link href="/tools/misc/legal-aid" className="flex-1 py-3 text-center text-sm font-medium bg-white text-slate-500 hover:bg-slate-50 transition-colors">법률구조공단</Link>
+      </div>
       <div className="premium-card p-6 mb-4">
         <div className="space-y-4">
           <div>

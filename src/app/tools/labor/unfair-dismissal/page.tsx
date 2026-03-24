@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
@@ -234,6 +235,16 @@ export default function UnfairDismissalPage() {
           <p className="text-xs text-gray-500 mt-4">문의: 고용노동부 (국번 없이 1350) | 노동위원회 (www.nlrc.go.kr)</p>
         </div>
       )}
+
+      <div className="premium-card p-4 mt-4">
+        <p className="text-sm text-slate-600">
+          <strong className="text-slate-900">해고예고를 받지 못하셨나요?</strong> 해고예고수당(30일분 통상임금)은 부당해고 보상금과 별개입니다.
+          해고 30일 전 예고 없이 해고된 경우 해고예고수당도 청구할 수 있습니다.
+        </p>
+        <Link href="/tools/labor/dismissal-notice" className="mt-2 inline-block text-sm font-medium hover:underline" style={{ color: category.color }}>
+          → 해고예고수당 계산기로 이동
+        </Link>
+      </div>
     </CalculatorLayout>
   );
 }

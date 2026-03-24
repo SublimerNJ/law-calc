@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
@@ -152,6 +153,16 @@ export default function DismissalNoticePage() {
             </li>
           ))}
         </ol>
+      </div>
+
+      <div className="premium-card p-4 mt-4">
+        <p className="text-sm text-slate-600">
+          <strong className="text-slate-900">부당해고를 당하셨나요?</strong> 해고예고수당과 부당해고 보상금은 다릅니다.
+          부당해고 시 받을 수 있는 보상금은 별도 계산이 필요합니다.
+        </p>
+        <Link href="/tools/labor/unfair-dismissal" className="mt-2 inline-block text-sm font-medium hover:underline" style={{ color: category.color }}>
+          → 부당해고 보상금 계산기로 이동
+        </Link>
       </div>
     </CalculatorLayout>
   );

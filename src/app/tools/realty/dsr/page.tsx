@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
@@ -196,6 +197,18 @@ DSR                ${result.dsr}%
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-slate-900 mb-3">DSR vs DTI 차이</h2>
+        <div className="text-sm text-slate-600 space-y-2">
+          <p><strong className="text-slate-900">DSR</strong>: 모든 대출의 원금 + 이자 상환액 합계 ÷ 연소득</p>
+          <p><strong className="text-slate-900">DTI</strong>: 주담대 원리금 + 기타 대출 이자만 합계 ÷ 연소득</p>
+          <p className="text-xs text-gray-500 mt-2">DSR이 더 엄격한 기준입니다. 2024년부터 총대출 1억원 초과 시 DSR 규제가 우선 적용됩니다.</p>
+        </div>
+        <Link href="/tools/realty/dti" className="mt-3 inline-block text-sm font-medium hover:underline" style={{ color: category.color }}>
+          → DTI 계산기로 이동
+        </Link>
+      </div>
     </CalculatorLayout>
   );
 }
