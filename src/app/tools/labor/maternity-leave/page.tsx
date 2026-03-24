@@ -35,10 +35,23 @@ export default function MaternityLeavePage() {
   const [companySize, setCompanySize] = useState<CompanySize>('sme');
   const [monthlyWage, setMonthlyWage] = useState('');
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const wage = parseInt(monthlyWage.replace(/,/g, ''), 10);
-    if (!wage || wage <= 0) return;
+    if (!wage || wage <= 0) {
+      setError('월 통상임금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (wage > 100_000_000) {
+      setWarning('월 통상임금이 1억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const totalLeaveDays = birthType === 'single' ? 90 : 120;
 
@@ -110,7 +123,7 @@ export default function MaternityLeavePage() {
 
         {/* Monthly ordinary wage */}
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -121,6 +134,9 @@ export default function MaternityLeavePage() {
           />
           <p className="text-xs text-gray-500 mt-1">2026 고용보험 상한: 월 {formatNumber(MATERNITY_UPPER)}원 / 최저임금 기준: 월 {formatNumber(MIN_WAGE_MONTHLY)}원</p>
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
