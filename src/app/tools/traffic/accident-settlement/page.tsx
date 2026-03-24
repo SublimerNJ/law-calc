@@ -226,7 +226,7 @@ export default function AccidentSettlementPage() {
           </div>
           <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 교통사고처리특례법, 손해배상 산정기준 (2026)
+              법적 근거: 자동차손해배상 보장법 제3조(운행자 책임), 민법 제396조(과실상계), 민법 제750조(불법행위 손해배상)
             </p>
             <p className="text-xs text-gray-500 mt-1">
               위자료 기준액은 2026년 참고 기준이며, 실제 합의금은 상해 정도, 후유장해, 과실 등에 따라 크게 달라질 수 있습니다.
