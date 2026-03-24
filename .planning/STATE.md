@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: 전체 계산기 법률 정확성 감사
 status: Ready to execute
-last_updated: "2026-03-24T03:18:54.338Z"
+last_updated: "2026-03-24T03:19:51.418Z"
 progress:
   total_phases: 9
   completed_phases: 3
   total_plans: 13
-  completed_plans: 10
+  completed_plans: 12
 ---
 
 # Project State
@@ -23,7 +23,7 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 16 (tax-legal-audit) — EXECUTING
-Plan: 2 of 4
+Plan: 4 of 4
 
 ## Accumulated Context
 
@@ -42,13 +42,15 @@ Plan: 2 of 4
   - 출산휴가급여 상한액 2,035,640원→2,100,000원 수정 (고용보험법 시행령 제101조 고시)
   - 육아휴직급여 2024.1.1 개정 반영: 전 기간 80%/150만원 단일 요율, 사후지급금 제도 폐지
   - 실업급여 하한액 최저임금 2025 기준→2026 기준(10,320원) 수정
+  - 등록면허세 소유권이전: 유상 2.0%(지방세법 제28조), 무상 1.5% 별도 구분
+  - 종합부동산세 조문: 제8조(과세표준), 제9조(세율), 제10조(세액공제) 정확히 구분
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-24
-- **Stopped At**: Completed 15-04-PLAN.md (parallel agent)
+- **Stopped At**: Completed 16-02-PLAN.md
 - **완료**: attorney-fee(이전 세션), lawsuit-cost, small-claims, payment-order, civil-mediation, family-court(13-01), e-court(13-02)
 - **남은**: Phase 14~21
 - **발견된 공통 오류 패턴**: 인지액 올림→버림, 소가 경계값 이하→미만, 송달료 단가/회수 불일치, 심급별 배율 오류
