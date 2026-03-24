@@ -107,10 +107,21 @@ export default function AcquisitionTaxPage() {
   const [areaOver85, setAreaOver85] = useState(false);
   const [adjustedArea, setAdjustedArea] = useState(false);
   const [result, setResult] = useState<AcquisitionResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
     const val = parseInt(price.replace(/,/g, ''), 10);
-    if (!val || val <= 0) return;
+    if (!val || val <= 0) {
+      setError('취득가액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (val > 10_000_000_000) {
+      setWarning('취득가액이 100억원을 초과합니다. 입력값을 확인해주세요.');
+    }
     setResult(calculateAcquisitionTax(val, propertyType, houseCount, areaOver85, adjustedArea));
   };
 
@@ -138,7 +149,7 @@ export default function AcquisitionTaxPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">취득가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">취득가액 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -217,6 +228,8 @@ export default function AcquisitionTaxPage() {
           </>
         )}
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
