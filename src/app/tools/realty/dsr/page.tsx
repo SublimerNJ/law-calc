@@ -161,6 +161,15 @@ export default function DsrPage() {
             </p>
           </div>
 
+          <div className="mb-4 p-3 rounded-lg bg-amber-50 border border-amber-200">
+            <p className="text-xs font-semibold text-amber-700 mb-1">DSR 규제 적용 기준 안내</p>
+            <p className="text-xs text-amber-600">
+              • 총대출액 1억원 초과 차주에게 적용 (은행업감독규정 제26조의2)<br/>
+              • 스트레스 DSR 3단계(2024.9.1 시행): 주택담보대출에 가산금리 적용<br/>
+              • 실제 대출 가능 여부는 금융기관 개별 심사 기준에 따라 달라질 수 있음
+            </p>
+          </div>
+
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
             <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
@@ -176,8 +185,13 @@ DSR                ${result.dsr}%
           </div>
 
           <div className="mt-4 pt-4 border-t border-slate-200">
-            <p className="text-xs text-gray-500">
-              법적 근거: 금융위원회 DSR 규제 (2026년 현행 기준)
+            <p className="text-xs text-gray-500 mb-1">
+              법적 근거: 은행업감독규정 제26조의2(차주단위 DSR 관리기준), 금융위원회 고시
+            </p>
+            <p className="text-xs text-gray-400">
+              • 은행권 DSR 40%: 은행업감독규정 제26조의2 제1항 (총대출액 1억원 초과 차주)<br/>
+              • 비은행권 DSR 50%: 여신전문금융업감독규정 등 업권별 규정<br/>
+              • 스트레스 DSR: 2024.9.1 시행, 가산금리 적용 (금융위원회 고시 제2024-11호)
             </p>
           </div>
         </div>
