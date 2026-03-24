@@ -81,7 +81,7 @@ export default function SubscriptionScorePage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">청약가점 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">무주택기간 (최대 32점)</label>
+          <label className="block text-sm text-slate-600 mb-2">무주택기간 (최대 32점) <span className="text-red-500">*</span></label>
           <select
             value={homelessIdx}
             onChange={e => setHomelessIdx(Number(e.target.value))}
@@ -94,7 +94,7 @@ export default function SubscriptionScorePage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">부양가족수 (최대 35점)</label>
+          <label className="block text-sm text-slate-600 mb-2">부양가족수 (최대 35점) <span className="text-red-500">*</span></label>
           <select
             value={dependentIdx}
             onChange={e => setDependentIdx(Number(e.target.value))}
@@ -107,7 +107,7 @@ export default function SubscriptionScorePage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">청약통장 가입기간 (최대 17점)</label>
+          <label className="block text-sm text-slate-600 mb-2">청약통장 가입기간 (최대 17점) <span className="text-red-500">*</span></label>
           <select
             value={savingsIdx}
             onChange={e => setSavingsIdx(Number(e.target.value))}
