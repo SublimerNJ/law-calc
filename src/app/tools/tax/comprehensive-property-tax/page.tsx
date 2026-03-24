@@ -264,7 +264,7 @@ export default function ComprehensivePropertyTaxPage() {
 종합부동산세 × 20% = 농어촌특별세`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 종합부동산세법 제8조(세율), 제9조(세액공제)
+              법적 근거: 종합부동산세법 제8조(과세표준·공제), 제9조(세율), 제10조(세액공제)
             </p>
           </div>
         </div>
