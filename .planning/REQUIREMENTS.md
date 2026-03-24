@@ -50,7 +50,7 @@
 - [ ] **TAX-06**: 부가가치세 계산기 (vat) — 부가가치세법 기준 검증 및 오류 수정
 - [ ] **TAX-07**: 증권거래세 계산기 (securities-tax) — 증권거래세법 세율 검증 및 오류 수정
 - [ ] **TAX-08**: 연말정산 계산기 (year-end-tax) — 소득세법 공제항목·한도 검증 및 오류 수정
-- [ ] **TAX-09**: 4대보험료 계산기 (four-insurances) — 각 보험료율 검증 및 오류 수정
+- [x] **TAX-09**: 4대보험료 계산기 (four-insurances) — 각 보험료율 검증 및 오류 수정
 - [ ] **TAX-10**: 월세 세액공제 계산기 (rent-tax-credit) — 조세특례제한법 세액공제 기준 검증 및 오류 수정
 
 ### 부동산 (REALTY)
@@ -134,7 +134,7 @@
 | TAX-06 | Phase 16 | Pending |
 | TAX-07 | Phase 16 | Pending |
 | TAX-08 | Phase 16 | Pending |
-| TAX-09 | Phase 16 | Pending |
+| TAX-09 | Phase 16 | Complete |
 | TAX-10 | Phase 16 | Pending |
 | REALTY-01 | Phase 17 | Pending |
 | REALTY-02 | Phase 17 | Pending |
