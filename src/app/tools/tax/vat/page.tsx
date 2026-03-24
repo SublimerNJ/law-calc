@@ -212,7 +212,7 @@ export default function VatPage() {
                 </p>
                 <p className="text-2xl font-bold" style={{ color: result.isRefund ? '#3b82f6' : category.color }}>
                   {formatNumber(Math.abs(result.payableTax!))}원
-                  {result.isRefund && <span className="text-sm ml-2 text-blue-400">(환급)</span>}
+                  {result.isRefund && <span className="text-sm ml-2 text-blue-600">(환급)</span>}
                 </p>
               </div>
             </>

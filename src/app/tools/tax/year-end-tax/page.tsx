@@ -391,7 +391,7 @@ export default function YearEndTaxPage() {
               <p className="text-sm text-slate-600 mb-1">
                 {result.refund >= 0 ? '예상 환급액' : '추가 납부액'}
               </p>
-              <p className={`text-3xl font-bold ${result.refund >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+              <p className={`text-3xl font-bold ${result.refund >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
                 {result.refund >= 0 ? '+' : ''}{formatNumber(result.refund)}원
               </p>
             </div>

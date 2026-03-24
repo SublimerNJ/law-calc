@@ -181,12 +181,12 @@ export default function RentTaxCreditPage() {
 
                 <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center">
                   <p className="text-sm text-slate-600 mb-1">예상 세액공제액</p>
-                  <p className="text-3xl font-bold text-emerald-400">{formatNumber(result.credit)}원</p>
+                  <p className="text-3xl font-bold text-emerald-600">{formatNumber(result.credit)}원</p>
                 </div>
               </>
             ) : (
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-center">
-                <p className="text-sm text-red-300">공제 요건을 충족하지 않아 세액공제를 받을 수 없습니다.</p>
+                <p className="text-sm text-red-600">공제 요건을 충족하지 않아 세액공제를 받을 수 없습니다.</p>
               </div>
             )}
 
