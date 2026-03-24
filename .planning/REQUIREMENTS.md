@@ -102,13 +102,68 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (roadmap 생성 시 채워짐) | | |
+| COURT-01 | Phase 13 | Pending |
+| COURT-02 | Phase 13 | Pending |
+| COURT-03 | Phase 13 | Pending |
+| COURT-04 | Phase 13 | Pending |
+| COURT-05 | Phase 13 | Pending |
+| COURT-06 | Phase 13 | Pending |
+| FAMILY-01 | Phase 14 | Pending |
+| FAMILY-02 | Phase 14 | Pending |
+| FAMILY-03 | Phase 14 | Pending |
+| FAMILY-04 | Phase 14 | Pending |
+| FAMILY-05 | Phase 14 | Pending |
+| FAMILY-06 | Phase 14 | Pending |
+| LABOR-01 | Phase 15 | Pending |
+| LABOR-02 | Phase 15 | Pending |
+| LABOR-03 | Phase 15 | Pending |
+| LABOR-04 | Phase 15 | Pending |
+| LABOR-05 | Phase 15 | Pending |
+| LABOR-06 | Phase 15 | Pending |
+| LABOR-07 | Phase 15 | Pending |
+| LABOR-08 | Phase 15 | Pending |
+| LABOR-09 | Phase 15 | Pending |
+| LABOR-10 | Phase 15 | Pending |
+| LABOR-11 | Phase 15 | Pending |
+| LABOR-12 | Phase 15 | Pending |
+| TAX-01 | Phase 16 | Pending |
+| TAX-02 | Phase 16 | Pending |
+| TAX-03 | Phase 16 | Pending |
+| TAX-04 | Phase 16 | Pending |
+| TAX-05 | Phase 16 | Pending |
+| TAX-06 | Phase 16 | Pending |
+| TAX-07 | Phase 16 | Pending |
+| TAX-08 | Phase 16 | Pending |
+| TAX-09 | Phase 16 | Pending |
+| TAX-10 | Phase 16 | Pending |
+| REALTY-01 | Phase 17 | Pending |
+| REALTY-02 | Phase 17 | Pending |
+| REALTY-03 | Phase 17 | Pending |
+| REALTY-04 | Phase 17 | Pending |
+| REALTY-05 | Phase 17 | Pending |
+| REALTY-06 | Phase 17 | Pending |
+| REALTY-07 | Phase 17 | Pending |
+| TRAFFIC-01 | Phase 18 | Pending |
+| TRAFFIC-02 | Phase 18 | Pending |
+| TRAFFIC-03 | Phase 18 | Pending |
+| TRAFFIC-04 | Phase 18 | Pending |
+| DEBT-01 | Phase 19 | Pending |
+| DEBT-02 | Phase 19 | Pending |
+| DEBT-03 | Phase 19 | Pending |
+| DAMAGES-01 | Phase 20 | Pending |
+| DAMAGES-02 | Phase 20 | Pending |
+| DAMAGES-03 | Phase 20 | Pending |
+| DAMAGES-04 | Phase 20 | Pending |
+| MISC-01 | Phase 21 | Pending |
+| MISC-02 | Phase 21 | Pending |
+| MISC-03 | Phase 21 | Pending |
+| MISC-04 | Phase 21 | Pending |
 
 **Coverage:**
 - v1.3 requirements: 56 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 56 ⚠️
+- Mapped to phases: 56/56 ✓
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-24*
-*Last updated: 2026-03-24 after initial definition*
+*Last updated: 2026-03-24 — Traceability populated after roadmap creation*
