@@ -38,12 +38,16 @@ function estimateRetirementTax(severance: number, years: number): number {
   const taxBase = Math.max(0, severance - deduction);
   // 환산급여 = (과세표준 / 근속연수) × 12
   const converted = (taxBase / fullYears) * 12;
-  // 환산세액 계산 (기본세율 적용)
+  // 환산세액 계산 (소득세법 제55조 기본세율 8구간 적용)
   let tax: number;
   if (converted <= 14_000_000) tax = converted * 0.06;
   else if (converted <= 50_000_000) tax = 840_000 + (converted - 14_000_000) * 0.15;
   else if (converted <= 88_000_000) tax = 6_240_000 + (converted - 50_000_000) * 0.24;
-  else tax = 15_360_000 + (converted - 88_000_000) * 0.35;
+  else if (converted <= 150_000_000) tax = 15_360_000 + (converted - 88_000_000) * 0.35;
+  else if (converted <= 300_000_000) tax = 37_060_000 + (converted - 150_000_000) * 0.38;
+  else if (converted <= 500_000_000) tax = 94_060_000 + (converted - 300_000_000) * 0.40;
+  else if (converted <= 1_000_000_000) tax = 174_060_000 + (converted - 500_000_000) * 0.42;
+  else tax = 384_060_000 + (converted - 1_000_000_000) * 0.45;
   // 실제 세액 = (환산세액 / 12) × 근속연수
   const actualTax = Math.floor((tax / 12) * fullYears);
   return actualTax;
