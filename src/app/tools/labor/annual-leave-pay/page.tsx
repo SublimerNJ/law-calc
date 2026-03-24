@@ -62,6 +62,9 @@ export default function AnnualLeavePayPage() {
             placeholder="예: 5"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
+          <p className="text-xs text-gray-500 mt-1">
+            연차 일수 기준 (근로기준법 제60조): 1년 미만 월 개근 시 1일(최대 11일), 1년 이상 80% 출근 시 15일, 3년 이상 매 2년마다 1일 추가(최대 25일)
+          </p>
         </div>
 
         <div className="mb-4">
@@ -152,7 +155,7 @@ export default function AnnualLeavePayPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 근로기준법 제60조(연차 유급휴가), 제61조(연차휴가의 사용 촉진) - 사용자는 근로자의 미사용 연차휴가에 대하여 통상임금을 지급하여야 합니다.
+              법적 근거: 근로기준법 제60조(연차 유급휴가) - 사용자는 근로자의 미사용 연차휴가에 대하여 통상임금을 지급하여야 합니다. 단, 제61조(연차휴가의 사용 촉진)에 따라 사용자가 적법한 사용촉진 조치를 취한 경우에는 미사용 수당 지급 의무가 면제될 수 있습니다.
             </p>
           </div>
         </div>
