@@ -251,7 +251,7 @@ Plans:
 **Plans**: 3 plans
 Plans:
 - [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
-- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [x] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
 - [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 25: 가사/가족법 UX·논리 감사
@@ -409,7 +409,7 @@ Plans:
 | 21. 기타 법률도구 법률 감사 | v1.3 | 2/2 | Complete | 2026-03-24 |
 | 22. 삭제 파일 정리 + 계산기 통합 | v1.4 | 1/1 | Complete | 2026-03-25 |
 | 23. 경계선 UX 개선 + 검증 | v1.4 | 1/1 | Complete | 2026-03-25 |
-| 24. 소송/법원 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 24. 소송/법원 UX·논리 감사 | v1.5 | 1/3 | In Progress|  |
 | 25. 가사/가족법 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
