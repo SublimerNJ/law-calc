@@ -113,7 +113,7 @@ export default function AttorneyFeePage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">소가 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">소가 (원) <span className="text-red-500">(필수)</span></label>
           <p className="text-xs text-gray-500 mb-1">소가 = 소송에서 청구하는 금액</p>
           <input
             type="text"
