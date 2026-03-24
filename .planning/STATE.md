@@ -1,14 +1,14 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.3
-milestone_name: 전체 계산기 법률 정확성 감사
-status: v1.3 milestone complete
-last_updated: "2026-03-24T04:18:33.171Z"
+milestone: v1.4
+milestone_name: 중복 계산기 정리 및 코드 클린업
+status: defining requirements
+last_updated: "2026-03-24T12:00:00.000Z"
 progress:
-  total_phases: 9
-  completed_phases: 9
-  total_plans: 23
-  completed_plans: 23
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
 
 # Project State
@@ -18,12 +18,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구 제공
-**Current focus:** Phase 21 — misc-legal-audit
+**Current focus:** v1.4 중복 계산기 정리
 
 ## Current Position
 
-Phase: 21
-Plan: Not started
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-03-24 — Milestone v1.4 started
 
 ## Accumulated Context
 
