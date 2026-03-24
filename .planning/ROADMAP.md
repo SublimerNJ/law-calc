@@ -68,7 +68,7 @@
 - [x] **Phase 26: 노동/근로 Part 1 UX·논리 감사** — severance-pay, dismissal-notice, annual-leave-pay, overtime-pay, weekly-holiday-pay, minimum-wage-check (6개 계산기) (completed 2026-03-24)
 - [x] **Phase 27: 노동/근로 Part 2 UX·논리 감사** — unfair-dismissal, industrial-accident, maternity-leave, parental-leave, unemployment-benefit, shutdown-allowance (6개 계산기) (completed 2026-03-24)
 - [x] **Phase 28: 세금 Part 1 UX·논리 감사** — capital-gains-tax, comprehensive-income-tax, acquisition-tax, comprehensive-property-tax, registration-tax (5개 계산기) (completed 2026-03-24)
-- [ ] **Phase 29: 세금 Part 2 UX·논리 감사** — vat, securities-tax, year-end-tax, four-insurances, rent-tax-credit (5개 계산기)
+- [x] **Phase 29: 세금 Part 2 UX·논리 감사** — vat, securities-tax, year-end-tax, four-insurances, rent-tax-credit (5개 계산기) (completed 2026-03-24)
 - [ ] **Phase 30: 부동산 UX·논리 감사** — deposit-return, rent-conversion, brokerage-fee, subscription-score, dsr, ltv, dti (7개 계산기)
 - [ ] **Phase 31: 교통/형사 + 채권/이자 UX·논리 감사** — accident-settlement, drunk-driving, fine-penalty, bail, late-payment, loan-interest, unjust-enrichment (7개 계산기)
 - [ ] **Phase 32: 손해배상 + 기타 법률도구 UX·논리 감사** — damages-general, defamation, medical-malpractice, lost-income, certified-letter, legal-aid, public-defender, statute-of-limitations (8개 계산기)
@@ -332,7 +332,7 @@ Plans:
 Plans:
 - [x] 29-01-PLAN.md — vat + securities-tax 감사 및 수정
 - [x] 29-02-PLAN.md — year-end-tax + four-insurances + rent-tax-credit 감사 및 수정
-- [ ] 29-03-PLAN.md — 5개 계산기 일관성 통일
+- [x] 29-03-PLAN.md — 5개 계산기 일관성 통일
 
 ### Phase 30: 부동산 UX·논리 감사
 **Goal**: 부동산 7개 계산기에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -414,7 +414,7 @@ Plans:
 | 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 29. 세금 Part 2 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
+| 29. 세금 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete   | 2026-03-24 |
 | 30. 부동산 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 0/? | Not started | — |
