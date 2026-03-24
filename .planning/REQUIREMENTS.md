@@ -78,8 +78,8 @@
 
 ### 손해배상 (DAMAGES)
 
-- [ ] **DAMAGES-01**: 손해배상 계산기 (damages-general) — 민법 손해배상 산정 기준 검증 및 오류 수정
-- [ ] **DAMAGES-02**: 명예훼손 손해배상 계산기 (defamation) — 명예훼손 판례 기준 검증 및 오류 수정
+- [x] **DAMAGES-01**: 손해배상 계산기 (damages-general) — 민법 손해배상 산정 기준 검증 및 오류 수정
+- [x] **DAMAGES-02**: 명예훼손 손해배상 계산기 (defamation) — 명예훼손 판례 기준 검증 및 오류 수정
 - [ ] **DAMAGES-03**: 의료사고 손해배상 계산기 (medical-malpractice) — 의료법·판례 기준 검증 및 오류 수정
 - [ ] **DAMAGES-04**: 일실수입 계산기 (lost-income) — 일실수입 산정 판례 기준 검증 및 오류 수정
 
@@ -150,8 +150,8 @@
 | DEBT-01 | Phase 19 | Complete |
 | DEBT-02 | Phase 19 | Complete |
 | DEBT-03 | Phase 19 | Complete |
-| DAMAGES-01 | Phase 20 | Pending |
-| DAMAGES-02 | Phase 20 | Pending |
+| DAMAGES-01 | Phase 20 | Complete |
+| DAMAGES-02 | Phase 20 | Complete |
 | DAMAGES-03 | Phase 20 | Pending |
 | DAMAGES-04 | Phase 20 | Pending |
 | MISC-01 | Phase 21 | Pending |
