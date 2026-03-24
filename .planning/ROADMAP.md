@@ -41,7 +41,7 @@
 - [x] **Phase 13: 소송/법원 계산기 법률 감사** — 6개 계산기 법령 원문 대조 검증 및 오류 수정 (completed 2026-03-24)
 - [x] **Phase 14: 가사/가족법 계산기 법률 감사** — 6개 계산기 민법·가사소송법 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [x] **Phase 15: 노동/근로 계산기 법률 감사** — 12개 계산기 근로기준법·노동법령 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [ ] **Phase 16: 세금 계산기 법률 감사** — 10개 계산기 세법·지방세법 기준 검증 및 오류 수정
+- [x] **Phase 16: 세금 계산기 법률 감사** — 10개 계산기 세법·지방세법 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [ ] **Phase 17: 부동산 계산기 법률 감사** — 7개 계산기 주택임대차보호법·감독규정 기준 검증 및 오류 수정
 - [ ] **Phase 18: 교통/형사 계산기 법률 감사** — 4개 계산기 도로교통법·형사소송법 기준 검증 및 오류 수정
 - [ ] **Phase 19: 채권/이자 계산기 법률 감사** — 3개 계산기 이자제한법·소송촉진특례법 기준 검증 및 오류 수정
@@ -107,9 +107,9 @@ Plans:
   3. acquisition-tax 계산기의 취득세율이 지방세법 제11조 현행 요율과 일치한다
   4. comprehensive-property-tax, registration-tax, vat, securities-tax 각 계산기의 세율이 해당 현행 세법과 일치한다
   5. four-insurances 계산기의 4대보험료율이 2025년 적용 보험료율(건강보험 7.09%, 국민연금 9% 등)과 일치한다
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 Plans:
-- [ ] 16-01-PLAN.md — capital-gains-tax, comprehensive-income-tax, year-end-tax 소득세법 감사
+- [x] 16-01-PLAN.md — capital-gains-tax, comprehensive-income-tax, year-end-tax 소득세법 감사
 - [x] 16-02-PLAN.md — acquisition-tax, comprehensive-property-tax, registration-tax 지방세·종부세 감사
 - [x] 16-03-PLAN.md — vat, securities-tax, rent-tax-credit 부가세·증권세·월세공제 감사
 - [x] 16-04-PLAN.md — four-insurances 4대보험료 감사
@@ -189,7 +189,7 @@ Plans:
 | 13. 소송/법원 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
 | 14. 가사/가족법 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
 | 15. 노동/근로 법률 감사 | v1.3 | 4/4 | Complete    | 2026-03-24 |
-| 16. 세금 법률 감사 | v1.3 | 3/4 | In Progress|  |
+| 16. 세금 법률 감사 | v1.3 | 4/4 | Complete   | 2026-03-24 |
 | 17. 부동산 법률 감사 | v1.3 | 0/? | Not started | - |
 | 18. 교통/형사 법률 감사 | v1.3 | 0/? | Not started | - |
 | 19. 채권/이자 법률 감사 | v1.3 | 0/? | Not started | - |
