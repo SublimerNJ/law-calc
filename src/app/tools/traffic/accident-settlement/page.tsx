@@ -235,7 +235,7 @@ export default function AccidentSettlementPage() {
             {result.faultPercent > 0 && (
               <div className="flex justify-between">
                 <span className="text-sm text-slate-600">과실상계 (-{result.faultPercent}%)</span>
-                <span className="text-red-400">-{formatNumber(result.faultDeduction)}원</span>
+                <span className="text-red-600">-{formatNumber(result.faultDeduction)}원</span>
               </div>
             )}
           </div>

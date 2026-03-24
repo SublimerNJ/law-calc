@@ -274,7 +274,7 @@ export default function DrunkDrivingPage() {
                   { range: '0.2% 이상', admin: '면허취소 (결격 2년)', criminal: '2~5년 징역 / 1,000~2,000만 벌금', active: result.bac >= 0.2 },
                   { range: '측정거부', admin: '면허취소 (결격 2년)', criminal: '1~6년 징역 / 500~3,000만 벌금', active: false },
                 ].map((row, i) => (
-                  <tr key={i} className={`border-b border-slate-200/50 ${row.active ? 'bg-red-500/10' : ''}`}>
+                  <tr key={i} className={`border-b border-slate-200/50 ${row.active ? 'bg-red-50' : ''}`}>
                     <td className="py-2" style={{ color: row.active ? '#ef4444' : '#9ca3af' }}>{row.range}</td>
                     <td className="py-2 text-slate-600">{row.admin}</td>
                     <td className="py-2 text-slate-600">{row.criminal}</td>

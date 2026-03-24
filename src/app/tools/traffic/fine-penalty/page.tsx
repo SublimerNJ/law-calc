@@ -232,7 +232,7 @@ export default function FinePenaltyPage() {
             {result.surcharge > 0 && (
               <div>
                 <p className="text-sm text-slate-600 mb-1">가산금 (월 3% x {result.unpaidMonths}개월)</p>
-                <p className="text-lg text-red-400">+{formatNumber(result.surcharge)}원</p>
+                <p className="text-lg text-red-600">+{formatNumber(result.surcharge)}원</p>
               </div>
             )}
 
