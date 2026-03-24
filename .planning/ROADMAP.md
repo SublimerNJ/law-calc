@@ -298,9 +298,9 @@ Plans:
   5. 6개 계산기 간 날짜 입력 방식, 결과 표시(원, 일, %) 형식, 에러 메시지 스타일이 통일된다
 **Plans**: 3 plans
 Plans:
-- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
-- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
-- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
+- [ ] 27-01-PLAN.md — unfair-dismissal + industrial-accident + maternity-leave 감사 및 수정
+- [ ] 27-02-PLAN.md — parental-leave + unemployment-benefit + shutdown-allowance 감사 및 수정
+- [ ] 27-03-PLAN.md — 6개 계산기 일관성 통일
 
 ### Phase 28: 세금 Part 1 UX·논리 감사
 **Goal**: 세금 전반부 5개 계산기(양도소득세·종합소득세·취득세·종합부동산세·등록세)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
