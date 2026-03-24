@@ -8,14 +8,14 @@ const tool = TOOLS.find(t => t.id === 'attorney-fee')!;
 const category = CATEGORIES.find(c => c.id === 'court')!;
 
 const BRACKETS = [
-  { max: 20_000_000, label: '2,000만원 이하', rate: 0.1, base: 0, prevMax: 0, note: '소가의 10% (최소 10만원)' },
+  { max: 3_000_000, label: '300만원 이하', rate: 0, base: 300_000, prevMax: 0, note: '30만원 (정액)' },
+  { max: 20_000_000, label: '300만원 초과 ~ 2,000만원', rate: 0.1, base: 300_000, prevMax: 3_000_000, note: '30만 + 초과액의 10%' },
   { max: 50_000_000, label: '2,000만원 초과 ~ 5,000만원', rate: 0.08, base: 2_000_000, prevMax: 20_000_000, note: '200만 + 초과액의 8%' },
   { max: 100_000_000, label: '5,000만원 초과 ~ 1억원', rate: 0.06, base: 4_400_000, prevMax: 50_000_000, note: '440만 + 초과액의 6%' },
   { max: 150_000_000, label: '1억원 초과 ~ 1.5억원', rate: 0.04, base: 7_400_000, prevMax: 100_000_000, note: '740만 + 초과액의 4%' },
   { max: 200_000_000, label: '1.5억원 초과 ~ 2억원', rate: 0.02, base: 9_400_000, prevMax: 150_000_000, note: '940만 + 초과액의 2%' },
   { max: 500_000_000, label: '2억원 초과 ~ 5억원', rate: 0.01, base: 10_400_000, prevMax: 200_000_000, note: '1,040만 + 초과액의 1%' },
-  { max: 1_000_000_000, label: '5억원 초과 ~ 10억원', rate: 0.005, base: 13_400_000, prevMax: 500_000_000, note: '1,340만 + 초과액의 0.5%' },
-  { max: Infinity, label: '10억원 초과', rate: 0.001, base: 15_900_000, prevMax: 1_000_000_000, note: '1,590만 + 초과액의 0.1% (상한 3,000만원)' },
+  { max: Infinity, label: '5억원 초과', rate: 0.005, base: 13_400_000, prevMax: 500_000_000, note: '1,340만 + 초과액의 0.5%' },
 ];
 
 interface CalcResult {
@@ -24,10 +24,9 @@ interface CalcResult {
   recoverable: number;
   bracketIndex: number;
   formula: string;
-  levelMultiplier: number;
 }
 
-function calculateAttorneyFee(amount: number, level: number, actualFee: number | null): CalcResult {
+function calculateAttorneyFee(amount: number, actualFee: number | null): CalcResult {
   let bracketIndex = 0;
   let fee = 0;
 
@@ -35,31 +34,29 @@ function calculateAttorneyFee(amount: number, level: number, actualFee: number |
     if (amount <= BRACKETS[i].max || i === BRACKETS.length - 1) {
       bracketIndex = i;
       const b = BRACKETS[i];
-      fee = b.base + (amount - b.prevMax) * b.rate;
-      if (i === 0 && fee < 100_000) fee = 100_000;
-      if (i === BRACKETS.length - 1 && fee > 30_000_000) fee = 30_000_000;
+      if (i === 0) {
+        fee = b.base;
+      } else {
+        fee = b.base + (amount - b.prevMax) * b.rate;
+      }
       break;
     }
   }
 
-  const levelMultiplier = level === 2 ? 1.5 : 1;
-  const limit = Math.floor(fee * levelMultiplier);
+  const limit = Math.floor(fee);
 
   const b = BRACKETS[bracketIndex];
-  const excessAmount = amount - b.prevMax;
   let formula: string;
   if (bracketIndex === 0) {
-    formula = `${formatNumber(amount)} × ${b.rate * 100}% = ${formatNumber(Math.floor(amount * b.rate))}`;
+    formula = `300만원 이하 → 30만원 (정액)`;
   } else {
-    formula = `${formatNumber(b.base)} + (${formatNumber(amount)} - ${formatNumber(b.prevMax)}) × ${b.rate * 100}%\n= ${formatNumber(b.base)} + ${formatNumber(excessAmount)} × ${b.rate * 100}%\n= ${formatNumber(Math.floor(fee))}`;
-  }
-  if (level === 2) {
-    formula += `\n× 1.5 (2심) = ${formatNumber(limit)}`;
+    const excessAmount = amount - b.prevMax;
+    formula = `${formatNumber(b.base)} + (${formatNumber(amount)} - ${formatNumber(b.prevMax)}) × ${b.rate * 100}%\n= ${formatNumber(b.base)} + ${formatNumber(excessAmount)} × ${b.rate * 100}%\n= ${formatNumber(limit)}`;
   }
 
   const recoverable = actualFee !== null ? Math.min(actualFee, limit) : limit;
 
-  return { limit, actualFee, recoverable, bracketIndex, formula, levelMultiplier };
+  return { limit, actualFee, recoverable, bracketIndex, formula };
 }
 
 function formatNumber(n: number): string {
@@ -69,14 +66,13 @@ function formatNumber(n: number): string {
 export default function AttorneyFeePage() {
   const [amount, setAmount] = useState('');
   const [actualFeeInput, setActualFeeInput] = useState('');
-  const [level, setLevel] = useState(1);
   const [result, setResult] = useState<CalcResult | null>(null);
 
   const handleCalculate = () => {
     const val = parseInt(amount.replace(/,/g, ''), 10);
     if (!val || val <= 0) return;
     const actualFee = actualFeeInput ? parseInt(actualFeeInput.replace(/,/g, ''), 10) || null : null;
-    setResult(calculateAttorneyFee(val, level, actualFee));
+    setResult(calculateAttorneyFee(val, actualFee));
   };
 
   const handleNumberChange = (setter: (v: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -109,7 +105,7 @@ export default function AttorneyFeePage() {
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-6">
           <label className="block text-sm text-slate-600 mb-2">실제 지급한 변호사 보수 (원, 선택)</label>
           <input
             type="text"
@@ -120,28 +116,6 @@ export default function AttorneyFeePage() {
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">비워두면 산입 한도만 표시됩니다</p>
-        </div>
-
-        <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">심급 선택</label>
-          <div className="flex gap-4">
-            {[
-              { value: 1, label: '1심' },
-              { value: 2, label: '2심 (1.5배)' },
-              { value: 3, label: '3심' },
-            ].map(opt => (
-              <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  name="level"
-                  checked={level === opt.value}
-                  onChange={() => setLevel(opt.value)}
-                  className="accent-[#3b82f6]"
-                />
-                <span className="text-sm text-slate-600">{opt.label}</span>
-              </label>
-            ))}
-          </div>
         </div>
 
         <button
@@ -159,12 +133,12 @@ export default function AttorneyFeePage() {
             <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
             <div className="mb-4">
-              <p className="text-sm text-slate-600 mb-1">소송비용 산입 한도</p>
+              <p className="text-sm text-slate-600 mb-1">소송비용 산입 한도 (심급당)</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.limit)}원
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                이 금액까지 상대방에게 청구할 수 있습니다
+                각 심급마다 이 금액까지 상대방에게 청구할 수 있습니다
               </p>
             </div>
 
@@ -236,13 +210,16 @@ export default function AttorneyFeePage() {
 
             <div className="mt-4 pt-4 border-t border-slate-200">
               <p className="text-xs text-gray-500">
-                법적 근거: 민사소송법 제109조, 변호사보수의 소송비용 산입에 관한 규칙 (대법원 예규)
+                법적 근거: 민사소송법 제109조, 변호사보수의 소송비용 산입에 관한 규칙 [별표] (대법원규칙 제2936호, 2020.12.28. 시행)
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                2심은 1심 기준의 1.5배, 3심은 1심과 동일한 기준 적용
+                동일한 별표 기준이 모든 심급(1심·2심·3심)에 각각 적용됩니다
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 산입 한도 내에서 실제 지급한 변호사 보수만큼 청구 가능 (실비 한도)
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                본 계산기는 참고용이며, 실제 소송비용 확정은 법원의 판단에 따릅니다
               </p>
             </div>
           </div>
