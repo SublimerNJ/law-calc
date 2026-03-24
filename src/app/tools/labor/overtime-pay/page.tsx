@@ -45,14 +45,41 @@ export default function OvertimePayPage() {
   const [holidayHours, setHolidayHours] = useState('');
   const [holidayOvertimeHours, setHolidayOvertimeHours] = useState('');
   const [result, setResult] = useState<OvertimeResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const wage = parseInt(monthlyWage.replace(/,/g, ''), 10);
-    if (!wage || wage <= 0) return;
+    if (!wage || wage <= 0) {
+      setError('월 통상임금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const ot = parseFloat(overtimeHours) || 0;
     const nt = parseFloat(nightHours) || 0;
     const hd = parseFloat(holidayHours) || 0;
     const hdo = parseFloat(holidayOvertimeHours) || 0;
+
+    if (ot === 0 && nt === 0 && hd === 0 && hdo === 0) {
+      setError('근로시간을 한 항목 이상 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    // 경고: 비현실적 임금
+    if (wage > 100000000) {
+      setWarning('월 통상임금이 1억원을 초과합니다. 확인해주세요.');
+    }
+
+    // 경고: 연장근로 주 12시간 초과
+    if (ot + hdo > 12) {
+      setWarning('연장근로시간 합산이 주 12시간을 초과합니다. 근로기준법 제53조 한도를 확인해주세요.');
+    }
+
     setResult(calculate(wage, weeklyHours, ot, nt, hd, hdo));
   };
 
@@ -70,7 +97,9 @@ export default function OvertimePayPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">
+            월 통상임금 (원) <span className="text-red-500">*</span>
+          </label>
           <input
             type="text"
             inputMode="numeric"
@@ -103,7 +132,7 @@ export default function OvertimePayPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">이번 달 연장근로 시간 (1주 최대 12시간)</label>
+          <label className="block text-sm text-slate-600 mb-2">이번 달 연장근로 시간 (시간, 0 = 해당없음)</label>
           <input
             type="text"
             inputMode="decimal"
@@ -115,7 +144,7 @@ export default function OvertimePayPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">이번 달 야간근로 시간 (22:00~06:00)</label>
+          <label className="block text-sm text-slate-600 mb-2">이번 달 야간근로 시간 22:00~06:00 (시간, 0 = 해당없음)</label>
           <input
             type="text"
             inputMode="decimal"
@@ -127,7 +156,7 @@ export default function OvertimePayPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">이번 달 휴일근로 시간 (8시간 이내)</label>
+          <label className="block text-sm text-slate-600 mb-2">이번 달 휴일근로 시간 8시간 이내 (시간, 0 = 해당없음)</label>
           <input
             type="text"
             inputMode="decimal"
@@ -138,8 +167,8 @@ export default function OvertimePayPage() {
           />
         </div>
 
-        <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">이번 달 휴일 연장근로 시간 (8시간 초과분)</label>
+        <div className="mb-4">
+          <label className="block text-sm text-slate-600 mb-2">이번 달 휴일 연장근로 시간 8시간 초과분 (시간, 0 = 해당없음)</label>
           <input
             type="text"
             inputMode="decimal"
@@ -149,6 +178,18 @@ export default function OvertimePayPage() {
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
+
+        {warning && (
+          <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200">
+            <p className="text-sm text-orange-500">{warning}</p>
+          </div>
+        )}
 
         <button
           onClick={handleCalculate}
