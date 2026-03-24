@@ -378,9 +378,9 @@ Plans:
   5. 8개 계산기/도구 간 날짜 입력 형식, 퍼센트 입력 방식, 금액 결과 표시, 에러 메시지 톤이 통일된다
 **Plans**: 3 plans
 Plans:
-- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
-- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
-- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
+- [ ] 32-01-PLAN.md — damages-general + defamation + medical-malpractice + lost-income 감사 및 수정
+- [ ] 32-02-PLAN.md — statute-of-limitations + public-defender + legal-aid + certified-letter 감사 및 수정
+- [ ] 32-03-PLAN.md — 8개 계산기/도구 일관성 통일
 
 ## Progress
 
