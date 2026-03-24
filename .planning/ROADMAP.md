@@ -362,7 +362,7 @@ Plans:
   5. 7개 계산기 간 날짜 입력 방식, 이율(%) 표시, 금액 결과 천 단위 콤마, 에러 메시지 스타일이 통일된다
 **Plans**: 3 plans
 Plans:
-- [ ] 31-01-PLAN.md — accident-settlement + drunk-driving + fine-penalty + bail 감사 및 수정
+- [x] 31-01-PLAN.md — accident-settlement + drunk-driving + fine-penalty + bail 감사 및 수정
 - [x] 31-02-PLAN.md — late-payment + loan-interest + unjust-enrichment 감사 및 수정
 - [ ] 31-03-PLAN.md — 7개 계산기 일관성 통일
 
@@ -416,5 +416,5 @@ Plans:
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 30. 부동산 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 1/3 | In Progress|  |
+| 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 0/? | Not started | — |
