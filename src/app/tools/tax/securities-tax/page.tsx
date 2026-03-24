@@ -13,15 +13,18 @@ function formatNumber(n: number): string {
 
 type MarketType = 'kospi' | 'kosdaq' | 'konex' | 'kotc' | 'unlisted';
 
-const MARKETS: { value: MarketType; label: string; rate: number; hasAgriTax: boolean }[] = [
-  { value: 'kospi', label: '코스피 (유가증권시장)', rate: 0.0003, hasAgriTax: true },
-  { value: 'kosdaq', label: '코스닥', rate: 0.0018, hasAgriTax: false },
-  { value: 'konex', label: '코넥스', rate: 0.0018, hasAgriTax: false },
-  { value: 'kotc', label: 'K-OTC', rate: 0.0018, hasAgriTax: false },
+// 2025년 기준 세율 (증권거래세법 제8조)
+// 코스피: 증권거래세 0% + 농어촌특별세 0.15% (농어촌특별세법 제5조 제1항 제6호)
+// 코스닥: 0.15%, 코넥스: 0.10%, K-OTC: 0.15%, 비상장: 0.35%
+const MARKETS: { value: MarketType; label: string; rate: number; hasAgriTax: boolean; agriRate?: number }[] = [
+  { value: 'kospi', label: '코스피 (유가증권시장)', rate: 0, hasAgriTax: true, agriRate: 0.0015 },
+  { value: 'kosdaq', label: '코스닥', rate: 0.0015, hasAgriTax: false },
+  { value: 'konex', label: '코넥스', rate: 0.001, hasAgriTax: false },
+  { value: 'kotc', label: 'K-OTC', rate: 0.0015, hasAgriTax: false },
   { value: 'unlisted', label: '비상장 주식', rate: 0.0035, hasAgriTax: false },
 ];
 
-const AGRI_TAX_RATE = 0.0003;
+const AGRI_TAX_RATE = 0.0015;
 
 export default function SecuritiesTaxPage() {
   const [marketType, setMarketType] = useState<MarketType>('kospi');
@@ -42,7 +45,7 @@ export default function SecuritiesTaxPage() {
 
     const market = MARKETS.find(m => m.value === marketType)!;
     const securitiesTax = Math.floor(raw * market.rate);
-    const agriTax = market.hasAgriTax ? Math.floor(raw * AGRI_TAX_RATE) : 0;
+    const agriTax = market.hasAgriTax ? Math.floor(raw * (market.agriRate ?? AGRI_TAX_RATE)) : 0;
     const total = securitiesTax + agriTax;
 
     setResult({
@@ -143,7 +146,7 @@ export default function SecuritiesTaxPage() {
 
           <div className="mb-4 p-3 rounded-lg bg-blue-500/10 border border-blue-500/30">
             <p className="text-sm text-blue-400">
-              2026년 현재 코스피 증권거래세율 0.03% 적용 (농어촌특별세 0.03% 별도)
+              2025년 기준: 코스피 증권거래세 0% (농어촌특별세 0.15% 별도), 코스닥·K-OTC 0.15%, 코넥스 0.10%, 비상장 0.35%
             </p>
           </div>
 
@@ -151,10 +154,11 @@ export default function SecuritiesTaxPage() {
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`양도금액 × 세율 = 증권거래세
-(코스피: 양도금액 × 0.03% 농어촌특별세 별도)`}
+코스피: 증권거래세 0% + 농어촌특별세 0.15%
+코스닥·K-OTC: 0.15%, 코넥스: 0.10%, 비상장: 0.35%`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 증권거래세법 제8조(세율) - 증권거래세는 주권 등의 양도가액에 해당 세율을 적용하여 산출합니다.
+              법적 근거: 증권거래세법 제8조(세율) — 2025년 기준. 코스피는 증권거래세법상 세율이 0%이며, 농어촌특별세법 제5조 제1항 제6호에 따라 농어촌특별세 0.15%가 별도 부과됩니다.
             </p>
           </div>
         </div>
