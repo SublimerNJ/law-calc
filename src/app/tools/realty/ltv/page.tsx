@@ -7,10 +7,17 @@ import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 const tool = TOOLS.find(t => t.id === 'ltv')!;
 const category = CATEGORIES.find(c => c.id === 'realty')!;
 
+// 은행업감독규정 제26조 및 금융위원회 「주택담보대출 LTV 규제 완화」(2022.8 시행) 기준
+// 투기지역: 40%(유주택), 투기과열지구: 50%(유주택 40%), 조정대상지역: 70%, 비규제: 70%
 const REGIONS = [
-  { value: 'speculative', label: '투기지역/투기과열지구', limit: 40 },
-  { value: 'regulated', label: '조정대상지역', limit: 50 },
-  { value: 'general', label: '기타 지역 (일반)', limit: 70 },
+  { value: 'speculative', label: '투기지역 (유주택자)', limit: 40 },
+  { value: 'speculative_none', label: '투기지역 (무주택자)', limit: 50 },
+  { value: 'overheated', label: '투기과열지구 (유주택자)', limit: 50 },
+  { value: 'overheated_none', label: '투기과열지구 (무주택자)', limit: 60 },
+  { value: 'overheated_first', label: '투기과열지구 (생애최초)', limit: 80 },
+  { value: 'regulated', label: '조정대상지역', limit: 70 },
+  { value: 'regulated_first', label: '조정대상지역 (생애최초)', limit: 80 },
+  { value: 'general', label: '비규제지역', limit: 70 },
 ];
 
 function formatNumber(n: number): string {
@@ -20,7 +27,7 @@ function formatNumber(n: number): string {
 export default function LtvPage() {
   const [housePrice, setHousePrice] = useState('');
   const [loanAmount, setLoanAmount] = useState('');
-  const [region, setRegion] = useState('speculative');
+  const [region, setRegion] = useState('regulated');
   const [result, setResult] = useState<{
     ltv: number;
     regulationLimit: number;
@@ -157,7 +164,7 @@ export default function LtvPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 금융위원회 LTV 규제 (2022.8 이후 기준). 무주택 실수요자 예외 및 서민 특례는 별도 조건 적용.
+              법적 근거: 은행업감독규정 제26조(담보인정비율), 금융위원회 「주택담보대출 LTV·DTI 규제 완화」 2022년 8월 시행. 생애최초 주택구입자 LTV 80% 우대(지역 무관), 서민·실수요자 우대 LTV 별도 조건 적용.
             </p>
           </div>
         </div>
