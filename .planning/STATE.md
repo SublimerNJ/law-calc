@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: Ready to execute
-last_updated: "2026-03-24T23:32:39.003Z"
+status: Phase 31 complete — all 3 plans done
+last_updated: "2026-03-25T00:10:00Z"
 progress:
   total_phases: 20
-  completed_phases: 16
+  completed_phases: 17
   total_plans: 47
-  completed_plans: 46
+  completed_plans: 47
 ---
 
 # Project State
@@ -22,8 +22,8 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 
 ## Current Position
 
-Phase: 31 (ux) — EXECUTING
-Plan: 3 of 3
+Phase: 31 (ux) — COMPLETE
+Plan: 3 of 3 (all done)
 
 ## Accumulated Context
 
@@ -55,10 +55,12 @@ Plan: 3 of 3
   - DSR/LTV/DTI error/warning 분리 패턴 적용: 에러는 계산 차단, 경고는 계산 허용, dark 테마 잔재 → light 테마 수정 (30-ux-02)
   - Phase 30 완료: 7개 부동산 계산기 CONSIST-01~03 충족, focus:border-blue-600 전체 통일 (30-ux-03)
   - BAC type=number → type=text+inputMode=decimal: 모바일 UX 개선, 교통/형사 계산기 dark 테마 잔재 → light 테마 통일 (31-ux-01)
+  - text-red-400 결과 섹션 표시 → text-red-600 통일, bg-red-500/10 → bg-red-50 dark 테마 잔재 제거 (31-ux-03)
+  - Phase 31 전체 완료: 7개 교통/채권 계산기 CONSIST-01~03, FLOW-01~03 충족 (31-ux-03)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-25
-- **Stopped At**: Completed 31-01-PLAN.md (4개 교통/형사 계산기 UX 감사 완료)
+- **Stopped At**: Completed 31-03-PLAN.md (Phase 31 전체 완료 — 7개 교통/채권 계산기 일관성 패치)

@@ -70,7 +70,7 @@
 - [x] **Phase 28: 세금 Part 1 UX·논리 감사** — capital-gains-tax, comprehensive-income-tax, acquisition-tax, comprehensive-property-tax, registration-tax (5개 계산기) (completed 2026-03-24)
 - [x] **Phase 29: 세금 Part 2 UX·논리 감사** — vat, securities-tax, year-end-tax, four-insurances, rent-tax-credit (5개 계산기) (completed 2026-03-24)
 - [x] **Phase 30: 부동산 UX·논리 감사** — deposit-return, rent-conversion, brokerage-fee, subscription-score, dsr, ltv, dti (7개 계산기) (completed 2026-03-24)
-- [ ] **Phase 31: 교통/형사 + 채권/이자 UX·논리 감사** — accident-settlement, drunk-driving, fine-penalty, bail, late-payment, loan-interest, unjust-enrichment (7개 계산기)
+- [x] **Phase 31: 교통/형사 + 채권/이자 UX·논리 감사** — accident-settlement, drunk-driving, fine-penalty, bail, late-payment, loan-interest, unjust-enrichment (7개 계산기) (completed 2026-03-24)
 - [ ] **Phase 32: 손해배상 + 기타 법률도구 UX·논리 감사** — damages-general, defamation, medical-malpractice, lost-income, certified-letter, legal-aid, public-defender, statute-of-limitations (8개 계산기)
 
 ## Phase Details
@@ -364,7 +364,7 @@ Plans:
 Plans:
 - [x] 31-01-PLAN.md — accident-settlement + drunk-driving + fine-penalty + bail 감사 및 수정
 - [x] 31-02-PLAN.md — late-payment + loan-interest + unjust-enrichment 감사 및 수정
-- [ ] 31-03-PLAN.md — 7개 계산기 일관성 통일
+- [x] 31-03-PLAN.md — 7개 계산기 일관성 통일
 
 ### Phase 32: 손해배상 + 기타 법률도구 UX·논리 감사
 **Goal**: 손해배상 4개 및 기타 법률도구 4개, 총 8개 계산기/도구에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -416,5 +416,5 @@ Plans:
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 30. 부동산 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
+| 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 3/3 | Complete   | 2026-03-24 |
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 0/? | Not started | — |
