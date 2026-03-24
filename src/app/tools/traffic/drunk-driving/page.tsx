@@ -91,10 +91,32 @@ export default function DrunkDrivingPage() {
   const [hasPropertyDamage, setHasPropertyDamage] = useState(false);
   const [priorRecord, setPriorRecord] = useState<PriorRecord>('none');
   const [result, setResult] = useState<PenaltyResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+
+    // INPUT-02: BAC 빈 문자열 에러
+    if (!bac || bac.trim() === '') {
+      setError('혈중알코올농도(BAC)를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const bacValue = parseFloat(bac);
-    if (isNaN(bacValue) || bacValue < 0 || bacValue > 0.4) return;
+
+    if (isNaN(bacValue) || bacValue < 0) {
+      setError('BAC는 0 이상의 숫자로 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (bacValue > 0.4) {
+      setError('BAC는 최대 0.400%까지 입력 가능합니다.');
+      setResult(null);
+      return;
+    }
+
     setResult(getPenalty(bacValue, method, hasInjury, hasPropertyDamage, priorRecord));
   };
 
@@ -104,14 +126,12 @@ export default function DrunkDrivingPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">혈중알코올농도 BAC (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">혈중알코올농도 BAC (%) *</label>
           <input
-            type="number"
-            step="0.001"
-            min="0"
-            max="0.400"
+            type="text"
+            inputMode="decimal"
             value={bac}
-            onChange={(e) => setBac(e.target.value)}
+            onChange={(e) => setBac(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 0.050"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           />
@@ -185,6 +205,8 @@ export default function DrunkDrivingPage() {
           </div>
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -220,16 +242,16 @@ export default function DrunkDrivingPage() {
           </div>
 
           {result.priorWarning && (
-            <div className="bg-red-900/30 border border-red-800 rounded-lg p-4 mb-4">
-              <p className="text-sm text-red-300 font-semibold mb-1">전력 가중</p>
-              <p className="text-sm text-red-200">{result.priorWarning}</p>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+              <p className="text-sm text-red-600 font-semibold mb-1">전력 가중</p>
+              <p className="text-sm text-red-600">{result.priorWarning}</p>
             </div>
           )}
 
           {result.accidentWarning && (
-            <div className="bg-red-900/30 border border-red-800 rounded-lg p-4 mb-4">
-              <p className="text-sm text-red-300 font-semibold mb-1">사고 가중</p>
-              <p className="text-sm text-red-200">{result.accidentWarning}</p>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+              <p className="text-sm text-red-600 font-semibold mb-1">사고 가중</p>
+              <p className="text-sm text-red-600">{result.accidentWarning}</p>
             </div>
           )}
 

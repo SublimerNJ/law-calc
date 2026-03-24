@@ -102,9 +102,19 @@ export default function BailPage() {
   const [flightRisk, setFlightRisk] = useState<RiskLevel>('low');
   const [evidenceRisk, setEvidenceRisk] = useState<RiskLevel>('low');
   const [result, setResult] = useState<BailResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
     const assetVal = parseInt(assets.replace(/,/g, ''), 10) || 0;
+
+    // INPUT-03: 재산 100억 초과 경고
+    if (assets && assetVal > 10_000_000_000) {
+      setWarning('재산이 100억원을 초과합니다. 입력값을 확인해주세요.');
+    }
+
     setResult(calculateBail(crimeId, assetVal, priorRecord, flightRisk, evidenceRisk));
   };
 
@@ -132,7 +142,7 @@ export default function BailPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">피의자/피고인 재산 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">피의자/피고인 재산 (원, 선택)</label>
           <input
             type="text"
             inputMode="numeric"
@@ -141,9 +151,7 @@ export default function BailPage() {
             placeholder="예: 100,000,000"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
           />
-          {assets && (
-            <p className="text-xs text-gray-500 mt-1">{parseInt(assets).toLocaleString('ko-KR')}원</p>
-          )}
+          <p className="text-xs text-gray-500 mt-1">재산이 없거나 불명확한 경우 비워두면 죄종 기준값으로 계산합니다.</p>
         </div>
 
         <div className="mb-4">
@@ -212,6 +220,9 @@ export default function BailPage() {
           </div>
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -249,8 +260,8 @@ export default function BailPage() {
               </div>
             </div>
 
-            <div className="bg-yellow-900/30 border border-yellow-800 rounded-lg p-3">
-              <p className="text-sm text-yellow-400 font-semibold">
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+              <p className="text-sm text-yellow-700 font-semibold">
                 실제 보석금은 법원의 재량에 따라 크게 다를 수 있습니다. 이 계산기는 실무상 참고 기준에 따른 예상치이며, 법적 효력이 없습니다.
               </p>
             </div>
