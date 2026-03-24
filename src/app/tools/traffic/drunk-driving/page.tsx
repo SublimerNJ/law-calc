@@ -58,9 +58,9 @@ function getPenalty(
   if (priorRecord === 'once') {
     priorWarning = '1회 전력: 가중처벌 대상입니다. 형사처벌이 상향될 수 있습니다.';
   } else if (priorRecord === 'twice-plus') {
-    priorWarning = '2회 이상 전력: 특정범죄가중처벌법 적용 대상입니다. 2년 이상 5년 이하 징역 또는 1,000만원 이상 2,000만원 이하 벌금이 부과됩니다.';
+    priorWarning = '10년 이내 2회 이상 전력: 도로교통법 제148조의2 제1항 가중처벌 대상입니다. 2년 이상 6년 이하 징역 또는 1,000만원 이상 3,000만원 이하 벌금이 부과됩니다.';
     if (bac >= 0.03) {
-      criminalPenalty = '2년 이상 5년 이하 징역 또는 1,000만원 이상 2,000만원 이하 벌금 (가중)';
+      criminalPenalty = '2년 이상 6년 이하 징역 또는 1,000만원 이상 3,000만원 이하 벌금 (도로교통법 제148조의2 제1항 가중)';
       levelColor = '#991b1b';
     }
   }
@@ -247,9 +247,10 @@ export default function DrunkDrivingPage() {
               <tbody>
                 {[
                   { range: '0.03% 미만', admin: '해당 없음', criminal: '해당 없음', active: result.bac < 0.03 },
-                  { range: '0.03~0.08%', admin: '면허정지', criminal: '1년↓ 징역 / 500만↓ 벌금', active: result.bac >= 0.03 && result.bac < 0.08 },
-                  { range: '0.08~0.2%', admin: '면허취소', criminal: '1~2년 징역 / 500~1000만 벌금', active: result.bac >= 0.08 && result.bac < 0.2 },
-                  { range: '0.2% 이상', admin: '면허취소 (가중)', criminal: '2~5년 징역 / 1000~2000만 벌금', active: result.bac >= 0.2 },
+                  { range: '0.03~0.08%', admin: '면허정지 (벌점 100점)', criminal: '1년↓ 징역 / 500만↓ 벌금', active: result.bac >= 0.03 && result.bac < 0.08 },
+                  { range: '0.08~0.2%', admin: '면허취소 (결격 1년)', criminal: '1~2년 징역 / 500~1,000만 벌금', active: result.bac >= 0.08 && result.bac < 0.2 },
+                  { range: '0.2% 이상', admin: '면허취소 (결격 2년)', criminal: '2~5년 징역 / 1,000~2,000만 벌금', active: result.bac >= 0.2 },
+                  { range: '측정거부', admin: '면허취소 (결격 2년)', criminal: '1~6년 징역 / 500~3,000만 벌금', active: false },
                 ].map((row, i) => (
                   <tr key={i} className={`border-b border-slate-200/50 ${row.active ? 'bg-red-500/10' : ''}`}>
                     <td className="py-2" style={{ color: row.active ? '#ef4444' : '#9ca3af' }}>{row.range}</td>
