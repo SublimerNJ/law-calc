@@ -32,16 +32,33 @@ export default function LatePaymentPage() {
     commercialInterest: number;
     lawsuitInterest: number;
   } | null>(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handlePrincipalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrincipal(e.target.value.replace(/[^0-9]/g, ''));
   };
 
   const handleCalculate = () => {
-    setError('');
+    setError(null);
+    setWarning(null);
     const p = parseInt(principal, 10);
-    if (!p || p <= 0 || !startDate || !endDate) return;
+
+    if (!principal || !p || p <= 0) {
+      setError('원금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (!startDate) {
+      setError('지연 시작일을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (p > 999_000_000_000_000) {
+      setWarning('원금이 999조원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -67,14 +84,14 @@ export default function LatePaymentPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">원금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">원금 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -84,22 +101,22 @@ export default function LatePaymentPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">지연 시작일</label>
+          <label className="block text-sm text-slate-600 mb-2">지연 시작일 *</label>
           <input
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">지연 종료일</label>
+          <label className="block text-sm text-slate-600 mb-2">지연 종료일 *</label>
           <input
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -129,10 +146,11 @@ export default function LatePaymentPage() {
         </div>
 
         {error && (
-          <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30">
-            <p className="text-sm text-red-400">{error}</p>
+          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-600">{error}</p>
           </div>
         )}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -146,6 +164,12 @@ export default function LatePaymentPage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.days === 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">시작일과 종료일이 같아 지연일수가 0일입니다. 이자가 발생하지 않습니다.</p>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 gap-4 mb-4">
             <div>
