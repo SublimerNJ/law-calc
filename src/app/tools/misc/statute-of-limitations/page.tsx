@@ -11,16 +11,59 @@ interface ClaimType {
   label: string;
   years: number;
   description: string;
+  note?: string;
 }
 
+// 소멸시효 기간 유형 — 민법·상법·특별법 원문 기준
 const CLAIM_TYPES: ClaimType[] = [
-  { label: '일반채권', years: 10, description: '민법 제162조 제1항' },
-  { label: '상사채권', years: 5, description: '상법 제64조' },
-  { label: '불법행위 손해배상', years: 3, description: '민법 제766조 (피해자 인지일 기산)' },
-  { label: '임금채권', years: 3, description: '근로기준법 제49조' },
-  { label: '단기채권 (음식·숙박·의료·교육)', years: 1, description: '민법 제163조~제164조' },
-  { label: '어음채권', years: 3, description: '어음법 제70조' },
-  { label: '수표채권', years: 1, description: '수표법 제51조' },
+  {
+    label: '일반채권',
+    years: 10,
+    description: '민법 제162조 제1항',
+    note: '채권은 10년간 행사하지 않으면 소멸시효 완성',
+  },
+  {
+    label: '상사채권 (상행위로 인한 채권)',
+    years: 5,
+    description: '상법 제64조',
+    note: '상행위로 인한 채권은 5년간 행사하지 않으면 소멸시효 완성',
+  },
+  {
+    label: '불법행위 손해배상 — 피해자 인지일 기산 (민법 제766조 제1항)',
+    years: 3,
+    description: '민법 제766조 제1항',
+    note: '피해자 또는 법정대리인이 손해 및 가해자를 안 날로부터 3년. 단, 불법행위일로부터 10년(제2항, 제척기간)도 적용 — 먼저 도래하는 기간 기준',
+  },
+  {
+    label: '임금채권',
+    years: 3,
+    description: '근로기준법 제49조',
+    note: '임금채권은 3년간 행사하지 않으면 소멸시효 완성',
+  },
+  {
+    label: '3년 단기소멸시효 (이자·의료비·수업료 등)',
+    years: 3,
+    description: '민법 제163조',
+    note: '이자, 부양료, 급료, 사용료, 도급보수, 의사·조산사·간호사의 치료비·조산료, 약사의 약값, 수업료, 교사의 교육비 등 (각 호 참조)',
+  },
+  {
+    label: '1년 단기소멸시효 (숙박료·음식료·입장료 등)',
+    years: 1,
+    description: '민법 제164조',
+    note: '여관·음식점·대석·오락장의 숙박료·음식료·대석료·입장료, 소매상의 외상대금, 노역인·연예인의 임금 등 (각 호 참조)',
+  },
+  {
+    label: '어음채권 (환어음·약속어음 소지인)',
+    years: 3,
+    description: '어음법 제70조 제1항',
+    note: '소지인의 인수인·발행인에 대한 청구권은 만기로부터 3년',
+  },
+  {
+    label: '수표채권 (소지인)',
+    years: 1,
+    description: '수표법 제51조 제1항',
+    note: '소지인의 발행인 등에 대한 소구권은 제시기간 경과 후 1년',
+  },
 ];
 
 function formatDate(date: Date): string {
@@ -57,6 +100,7 @@ interface Result {
   remaining: string;
   expired: boolean;
   legalBasis: string;
+  note?: string;
 }
 
 export default function StatuteOfLimitationsPage() {
@@ -81,6 +125,7 @@ export default function StatuteOfLimitationsPage() {
       remaining: diffDescription(today, expiry),
       expired,
       legalBasis: claim.description,
+      note: claim.note,
     });
   };
 
@@ -102,7 +147,7 @@ export default function StatuteOfLimitationsPage() {
           </div>
 
           <div>
-            <label className="block text-sm text-slate-600 mb-1">기산일 (권리 발생일 또는 피해 인지일)</label>
+            <label className="block text-sm text-slate-600 mb-1">기산일 (권리 행사 가능일 또는 피해 인지일 — 민법 제166조)</label>
             <input
               type="date"
               value={startDate}
@@ -141,24 +186,31 @@ export default function StatuteOfLimitationsPage() {
             </div>
           </div>
 
+          {result.note && (
+            <div className="mt-4 pt-4 border-t border-slate-200">
+              <p className="text-xs font-semibold text-slate-600 mb-1">유의사항</p>
+              <p className="text-xs text-slate-500">{result.note}</p>
+            </div>
+          )}
+
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <p className="text-xs text-gray-500 font-mono">기산일 + 시효기간 = 만료일</p>
           </div>
           <div className="mt-3 pt-3 border-t border-slate-200">
-            <p className="text-xs text-gray-500">법적 근거: {result.legalBasis}, 민법 제162조~제164조, 상법 제64조</p>
+            <p className="text-xs text-gray-500">법적 근거: {result.legalBasis}, 민법 제166조(기산점)</p>
           </div>
         </div>
       )}
 
       <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">시효 중단 사유</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">시효 중단 사유 (민법 제168조)</h2>
         <ol className="space-y-3">
           {[
-            { color: '#3b82f6', text: '소송 제기 (가장 확실)' },
-            { color: '#f59e0b', text: '내용증명 발송 (6개월 내 소송 필요)' },
-            { color: '#10b981', text: '채무자의 채무 승인 (일부 변제 포함)' },
-            { color: '#8b5cf6', text: '시효 완성 후에도 채무자가 인정하면 유효' },
+            { color: '#3b82f6', text: '청구 — 재판상 청구, 파산절차 참가, 지급명령 신청, 화해를 위한 소환 등 (민법 제168조 제1호, 제170조~제173조)' },
+            { color: '#f59e0b', text: '최고(내용증명) — 6개월 내 재판상 청구 등을 하지 않으면 중단 효력 없음 (민법 제174조)' },
+            { color: '#10b981', text: '압류·가압류·가처분 (민법 제168조 제2호)' },
+            { color: '#8b5cf6', text: '채무자의 승인 — 일부 변제, 이자 지급, 담보 제공 포함 (민법 제168조 제3호)' },
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
@@ -171,6 +223,11 @@ export default function StatuteOfLimitationsPage() {
             </li>
           ))}
         </ol>
+        <div className="mt-4 pt-4 border-t border-slate-200">
+          <p className="text-xs text-slate-500">
+            중단 후: 시효는 새로이 진행하기 시작합니다 (민법 제178조, 제179조). 시효완성 전에는 시효이익을 포기할 수 없으나, 완성 후에는 포기 가능합니다 (민법 제184조).
+          </p>
+        </div>
       </div>
     </CalculatorLayout>
   );
