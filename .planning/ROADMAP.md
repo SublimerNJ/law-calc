@@ -346,8 +346,8 @@ Plans:
   5. 7개 계산기 간 금액 입력 방식, 퍼센트 결과 표시, 필수/선택 구분이 일관된다
 **Plans**: 3 plans
 Plans:
-- [ ] 30-01-PLAN.md — deposit-return + rent-conversion + brokerage-fee 감사 및 수정
-- [ ] 30-02-PLAN.md — subscription-score + dsr + ltv + dti 감사 및 수정
+- [x] 30-01-PLAN.md — deposit-return + rent-conversion + brokerage-fee 감사 및 수정
+- [x] 30-02-PLAN.md — subscription-score + dsr + ltv + dti 감사 및 수정
 - [ ] 30-03-PLAN.md — 7개 계산기 일관성 통일
 
 ### Phase 31: 교통/형사 + 채권/이자 UX·논리 감사
@@ -415,6 +415,6 @@ Plans:
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 30. 부동산 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 30. 부동산 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 0/? | Not started | — |

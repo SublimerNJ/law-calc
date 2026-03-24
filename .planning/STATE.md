@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: Ready to plan
-last_updated: "2026-03-24T23:08:09.379Z"
+status: Ready to execute
+last_updated: "2026-03-24T23:18:12.964Z"
 progress:
   total_phases: 20
   completed_phases: 15
-  total_plans: 41
-  completed_plans: 41
+  total_plans: 44
+  completed_plans: 43
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구 제공
-**Current focus:** Phase 29 — ux
+**Current focus:** Phase 30 — ux
 
 ## Current Position
 
-Phase: 30
-Plan: Not started
+Phase: 30 (ux) — EXECUTING
+Plan: 3 of 3
 
 ## Accumulated Context
 
@@ -52,10 +52,11 @@ Plan: Not started
   - securities-tax 안내 박스 2025년→2026년 기준 텍스트 정정, text-blue-400→text-blue-600 (29-ux-01)
   - 라이트 테마 결과 박스 텍스트: text-*-400 계열 → text-*-600 계열로 통일 (가독성 확보, 29-ux-03)
   - Phase 29 전체 완료: 5개 세금 계산기 CONSIST-01~03, RESULT-02, FLOW-02 충족 (29-ux-03)
+  - DSR/LTV/DTI error/warning 분리 패턴 적용: 에러는 계산 차단, 경고는 계산 허용, dark 테마 잔재 → light 테마 수정 (30-ux-02)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-25
-- **Stopped At**: Completed 29-03-PLAN.md (Phase 29 완료 — 5개 세금 계산기 교차 검증 및 색상 통일)
+- **Stopped At**: Completed 30-02-PLAN.md (subscription-score/dsr/ltv/dti UX 감사 완료)
