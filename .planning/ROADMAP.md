@@ -66,7 +66,7 @@
 - [x] **Phase 24: 소송/법원 UX·논리 감사** — lawsuit-cost, payment-order, civil-mediation, family-court, attorney-fee (5개 계산기) (completed 2026-03-24)
 - [x] **Phase 25: 가사/가족법 UX·논리 감사** — alimony, child-support, property-division, inheritance-tax, forced-heirship, inheritance-order (6개 계산기) (completed 2026-03-24)
 - [x] **Phase 26: 노동/근로 Part 1 UX·논리 감사** — severance-pay, dismissal-notice, annual-leave-pay, overtime-pay, weekly-holiday-pay, minimum-wage-check (6개 계산기) (completed 2026-03-24)
-- [ ] **Phase 27: 노동/근로 Part 2 UX·논리 감사** — unfair-dismissal, industrial-accident, maternity-leave, parental-leave, unemployment-benefit, shutdown-allowance (6개 계산기)
+- [x] **Phase 27: 노동/근로 Part 2 UX·논리 감사** — unfair-dismissal, industrial-accident, maternity-leave, parental-leave, unemployment-benefit, shutdown-allowance (6개 계산기) (completed 2026-03-24)
 - [ ] **Phase 28: 세금 Part 1 UX·논리 감사** — capital-gains-tax, comprehensive-income-tax, acquisition-tax, comprehensive-property-tax, registration-tax (5개 계산기)
 - [ ] **Phase 29: 세금 Part 2 UX·논리 감사** — vat, securities-tax, year-end-tax, four-insurances, rent-tax-credit (5개 계산기)
 - [ ] **Phase 30: 부동산 UX·논리 감사** — deposit-return, rent-conversion, brokerage-fee, subscription-score, dsr, ltv, dti (7개 계산기)
@@ -300,7 +300,7 @@ Plans:
 Plans:
 - [x] 27-01-PLAN.md — unfair-dismissal + industrial-accident + maternity-leave 감사 및 수정
 - [x] 27-02-PLAN.md — parental-leave + unemployment-benefit + shutdown-allowance 감사 및 수정
-- [ ] 27-03-PLAN.md — 6개 계산기 일관성 통일
+- [x] 27-03-PLAN.md — 6개 계산기 일관성 통일
 
 ### Phase 28: 세금 Part 1 UX·논리 감사
 **Goal**: 세금 전반부 5개 계산기(양도소득세·종합소득세·취득세·종합부동산세·등록세)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -412,7 +412,7 @@ Plans:
 | 24. 소송/법원 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 25. 가사/가족법 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
+| 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete   | 2026-03-24 |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 30. 부동산 UX·논리 감사 | v1.5 | 0/? | Not started | — |
