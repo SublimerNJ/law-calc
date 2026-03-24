@@ -39,10 +39,12 @@ Plan: 3 of 3
   - 에러(text-red-500)/경고(text-orange-500) 분리 패턴을 노동 3종 계산기에도 동일 적용 (26-ux-01)
   - 에러/경고 래퍼 div 제거, plain <p> 패턴으로 6개 노동 계산기 통일 (26-ux-03, CONSIST-03)
   - Phase 26 전체 완료: 6개 노동/근로 계산기 CONSIST-01~03 충족
+  - error/warning 분리 패턴을 unfair-dismissal·industrial-accident·maternity-leave 3개 계산기에 적용 (27-ux-01)
+  - 산재보험 간병급여 계산식 주석 금액 수정: 41,170→53,060원, 27,450→35,370원 (코드 상수 일치)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-25
-- **Stopped At**: Completed 26-ux-03-PLAN.md (Phase 26 complete)
+- **Stopped At**: Completed 27-ux-01-PLAN.md
