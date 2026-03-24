@@ -7,7 +7,7 @@ import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 const tool = TOOLS.find(t => t.id === 'unemployment-benefit')!;
 const category = CATEGORIES.find(c => c.id === 'labor')!;
 
-const DAILY_UPPER = 66_000;
+const DAILY_UPPER = 68_100; // 2026.1.1 인상 (고용보험법 시행령 개정)
 
 const BENEFIT_DAYS: Record<string, Record<string, number>> = {
   under50: { lt1: 120, lt3: 150, lt5: 180, lt10: 210, gte10: 240 },
