@@ -105,9 +105,16 @@ export default function DismissalNoticePage() {
           </div>
 
           <div className="mb-4 p-4 rounded-lg bg-blue-600/10 border border-[#f59e0b]/30">
-            <p className="text-sm text-slate-600">
-              <span className="font-semibold text-[#f59e0b]">참고:</span> 계속근로기간이 3개월 미만인 근로자, 천재지변 등 부득이한 사유로 사업을 계속하는 것이 불가능한 경우에는 해고예고 의무가 면제됩니다.
-            </p>
+            <p className="text-sm font-semibold text-[#f59e0b] mb-2">해고예고 적용 제외 (근로기준법 제35조)</p>
+            <ul className="space-y-1 text-sm text-slate-600 list-disc list-inside">
+              <li>일용근로자로서 3개월을 계속 근무하지 아니한 자</li>
+              <li>2개월 이내의 기간을 정하여 사용된 근로자</li>
+              <li>월급 근로자로서 6개월이 되지 못한 자</li>
+              <li>계절적 업무에 6개월 이내의 기간을 정하여 사용된 근로자</li>
+              <li>수습 중인 근로자(3개월 이내)</li>
+              <li>천재·사변, 그 밖의 부득이한 사유로 사업을 계속하는 것이 불가능한 경우</li>
+              <li>근로자가 고의로 사업에 막대한 지장을 초래하거나 재산상 손해를 끼친 경우</li>
+            </ul>
           </div>
 
           <div className="mt-4 pt-4 border-t border-slate-200">
