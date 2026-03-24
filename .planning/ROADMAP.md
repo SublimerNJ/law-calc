@@ -282,9 +282,9 @@ Plans:
   5. 6개 계산기 간 급여 입력 방식(시급/월급/연봉), 기간 입력 형식, 결과 금액 표시가 일관된다
 **Plans**: 3 plans
 Plans:
-- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
-- [x] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
-- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
+- [ ] 26-01-PLAN.md — severance-pay + dismissal-notice + annual-leave-pay 감사 및 수정
+- [ ] 26-02-PLAN.md — overtime-pay + weekly-holiday-pay + minimum-wage-check 감사 및 수정
+- [ ] 26-03-PLAN.md — 6개 계산기 일관성 통일
 
 ### Phase 27: 노동/근로 Part 2 UX·논리 감사
 **Goal**: 노동/근로 후반부 6개 계산기(부당해고·산재·출산·육아·실업급여·휴업)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
