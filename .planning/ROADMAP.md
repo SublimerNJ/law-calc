@@ -64,7 +64,7 @@
 ### 🚧 v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사 (Phases 24-32)
 
 - [x] **Phase 24: 소송/법원 UX·논리 감사** — lawsuit-cost, payment-order, civil-mediation, family-court, attorney-fee (5개 계산기) (completed 2026-03-24)
-- [ ] **Phase 25: 가사/가족법 UX·논리 감사** — alimony, child-support, property-division, inheritance-tax, forced-heirship, inheritance-order (6개 계산기)
+- [x] **Phase 25: 가사/가족법 UX·논리 감사** — alimony, child-support, property-division, inheritance-tax, forced-heirship, inheritance-order (6개 계산기) (completed 2026-03-24)
 - [ ] **Phase 26: 노동/근로 Part 1 UX·논리 감사** — severance-pay, dismissal-notice, annual-leave-pay, overtime-pay, weekly-holiday-pay, minimum-wage-check (6개 계산기)
 - [ ] **Phase 27: 노동/근로 Part 2 UX·논리 감사** — unfair-dismissal, industrial-accident, maternity-leave, parental-leave, unemployment-benefit, shutdown-allowance (6개 계산기)
 - [ ] **Phase 28: 세금 Part 1 UX·논리 감사** — capital-gains-tax, comprehensive-income-tax, acquisition-tax, comprehensive-property-tax, registration-tax (5개 계산기)
@@ -268,7 +268,7 @@ Plans:
 Plans:
 - [x] 25-01-PLAN.md — alimony + child-support + property-division 감사 및 수정
 - [x] 25-02-PLAN.md — inheritance-tax + forced-heirship + inheritance-order 감사 및 수정
-- [ ] 25-03-PLAN.md — 6개 계산기 일관성 통일 (CONSIST-01/02/03)
+- [x] 25-03-PLAN.md — 6개 계산기 일관성 통일 (CONSIST-01/02/03)
 
 ### Phase 26: 노동/근로 Part 1 UX·논리 감사
 **Goal**: 노동/근로 전반부 6개 계산기(퇴직금·해고·연차·연장·주휴·최저임금)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -410,7 +410,7 @@ Plans:
 | 22. 삭제 파일 정리 + 계산기 통합 | v1.4 | 1/1 | Complete | 2026-03-25 |
 | 23. 경계선 UX 개선 + 검증 | v1.4 | 1/1 | Complete | 2026-03-25 |
 | 24. 소송/법원 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 25. 가사/가족법 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
+| 25. 가사/가족법 UX·논리 감사 | v1.5 | 3/3 | Complete   | 2026-03-24 |
 | 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
