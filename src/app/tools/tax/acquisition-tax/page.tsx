@@ -49,11 +49,12 @@ function calculateAcquisitionTax(
       if (adjustedArea) {
         taxRate = 0.08;
       } else {
-        // Non-adjusted: normal rate (same as 1-house)
+        // Non-adjusted: normal rate (same as 1-house, 지방세법 제11조 제1항 제7호의2)
         if (price <= 600_000_000) {
           taxRate = 0.01;
         } else if (price <= 900_000_000) {
-          taxRate = ((price / 100_000_000) - 3) * (1 / 3) / 100;
+          // Linear interpolation 1%~3% (동일 구간세율 적용)
+          taxRate = 0.01 + (price - 600_000_000) / 300_000_000 * 0.02;
           if (taxRate < 0.01) taxRate = 0.01;
           if (taxRate > 0.03) taxRate = 0.03;
         } else {
