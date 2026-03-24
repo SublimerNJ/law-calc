@@ -41,6 +41,8 @@ export default function PropertyDivisionPage() {
   const [contribution, setContribution] = useState('50');
   const [marriageYears, setMarriageYears] = useState('');
   const [result, setResult] = useState<DivisionResult | null>(null);
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
 
   const handleNumberInput = (
     setter: (v: string) => void,
@@ -55,11 +57,38 @@ export default function PropertyDivisionPage() {
   };
 
   const handleCalculate = () => {
+    setError('');
+    setWarning('');
+
+    // INPUT-02: 총재산 빈값 체크
+    if (!totalAssets) {
+      setError('재산 총액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const total = parseKoreanNumber(totalAssets);
     const claimant = parseKoreanNumber(claimantAssets);
     const contribRate = parseInt(contribution, 10);
 
-    if (total <= 0 || isNaN(contribRate) || contribRate < 20 || contribRate > 80) return;
+    // INPUT-01 / EDGE-01: 총재산 0 이하 에러
+    if (total <= 0) {
+      setError('재산 총액은 0원 초과이어야 합니다.');
+      setResult(null);
+      return;
+    }
+
+    // INPUT-02: 기여율 범위 에러
+    if (isNaN(contribRate) || contribRate < 20 || contribRate > 80) {
+      setError('기여율은 20~80% 범위에서 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    // INPUT-03: 비현실값 경고 (1000억 초과)
+    if (total > 100_000_000_000) {
+      setWarning('입력값이 비현실적으로 큽니다. 확인해주세요.');
+    }
 
     // Auto-fill opponent assets if empty
     const opponent = opponentAssets
@@ -74,8 +103,9 @@ export default function PropertyDivisionPage() {
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
+        {/* FLOW-03: 필수 표시 */}
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">혼인 중 형성된 총 재산 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">혼인 중 형성된 총 재산 (원) <span className="text-red-500">*</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -115,15 +145,15 @@ export default function PropertyDivisionPage() {
           />
         </div>
 
+        {/* FLOW-03: 기여율 필수 표시 */}
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">청구인 기여도 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">청구인 기여도 (%) <span className="text-red-500">*</span></label>
           <input
-            type="number"
+            type="text"
             inputMode="numeric"
-            min="20"
-            max="80"
             value={contribution}
-            onChange={e => setContribution(e.target.value)}
+            onChange={e => setContribution(e.target.value.replace(/[^0-9]/g, ''))}
+            placeholder="20~80"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <div className="mt-2 p-3 rounded-lg bg-white border border-slate-200">
@@ -140,16 +170,19 @@ export default function PropertyDivisionPage() {
         <div className="mb-6">
           <label className="block text-sm text-slate-600 mb-2">혼인기간 (년)</label>
           <input
-            type="number"
+            type="text"
             inputMode="numeric"
-            min="0"
             value={marriageYears}
-            onChange={e => setMarriageYears(e.target.value)}
+            onChange={e => setMarriageYears(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 15"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">참고 정보 (법원 판단에 영향)</p>
         </div>
+
+        {/* 에러/경고 표시 (버튼 위) */}
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -176,9 +209,13 @@ export default function PropertyDivisionPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">상대방 지급액</p>
-            <p className="text-lg text-slate-900" style={{ color: result.paymentFromOpponent > 0 ? category.color : undefined }}>
-              {formatNumber(result.paymentFromOpponent)}원
-            </p>
+            {result.paymentFromOpponent === 0 ? (
+              <p className="text-sm text-slate-500">상대방으로부터 받을 금액이 없습니다.</p>
+            ) : (
+              <p className="text-lg text-slate-900" style={{ color: category.color }}>
+                {formatNumber(result.paymentFromOpponent)}원
+              </p>
+            )}
             <p className="text-xs text-gray-500 mt-1">
               {result.paymentFromOpponent > 0
                 ? '청구인 취득 예상액에서 청구인 명의 재산을 뺀 금액'
