@@ -8,6 +8,8 @@ const tool = TOOLS.find(t => t.id === 'lost-income')!;
 const category = CATEGORIES.find(c => c.id === 'damages')!;
 
 type RetirementOption = '60' | '65' | 'custom';
+// 생활비 공제율: 판례상 통상 1/3 (대법원 실무 기준)
+const LIVING_EXPENSE_DEDUCTION = 1 / 3;
 
 function calculateHoffmanCoefficient(months: number): number {
   // 월 단위 호프만 계수: H = sum_{k=1}^{N} 1/(1 + 0.05/12 * k)
@@ -29,12 +31,13 @@ interface Result {
   lostIncomeBeforeFault: number;
   treatmentLoss: number;
   lostIncomeAfterFault: number;
+  livingExpenseDeduction: number;
 }
 
 export default function LostIncomePage() {
   const [age, setAge] = useState('');
   const [monthlyIncome, setMonthlyIncome] = useState('');
-  const [retirementOption, setRetirementOption] = useState<RetirementOption>('60');
+  const [retirementOption, setRetirementOption] = useState<RetirementOption>('65');
   const [customRetirementAge, setCustomRetirementAge] = useState('');
   const [treatmentMonths, setTreatmentMonths] = useState('');
   const [disabilityRate, setDisabilityRate] = useState('');
@@ -56,8 +59,12 @@ export default function LostIncomePage() {
     const remainingMonths = (retAge - ageVal) * 12;
     const hoffmanCoeff = calculateHoffmanCoefficient(remainingMonths);
 
-    const lostIncomeBeforeFault = Math.floor(income * (disRate / 100) * hoffmanCoeff);
-    const treatmentLoss = Math.floor(income * treatMonths);
+    // 생활비 공제 적용: 월소득 × (1 - 생활비공제율) × 노동능력상실률 × 호프만계수
+    // 대법원 판례: 일실수입 산정 시 생활비 1/3 공제 (피해자 자신의 생활비용 제외)
+    const netIncome = income * (1 - LIVING_EXPENSE_DEDUCTION);
+    const lostIncomeBeforeFault = Math.floor(netIncome * (disRate / 100) * hoffmanCoeff);
+    // 치료기간 취업불능 손해도 생활비 공제 적용
+    const treatmentLoss = Math.floor(netIncome * treatMonths);
     const totalBeforeFault = lostIncomeBeforeFault + treatmentLoss;
     const lostIncomeAfterFault = Math.floor(totalBeforeFault * (1 - fRate / 100));
 
@@ -67,6 +74,7 @@ export default function LostIncomePage() {
       lostIncomeBeforeFault: totalBeforeFault,
       treatmentLoss,
       lostIncomeAfterFault,
+      livingExpenseDeduction: LIVING_EXPENSE_DEDUCTION,
     });
   };
 
@@ -113,8 +121,8 @@ export default function LostIncomePage() {
             onChange={(e) => setRetirementOption(e.target.value as RetirementOption)}
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
-            <option value="60">60세 (일반직)</option>
-            <option value="65">65세 (전문직/자영업)</option>
+            <option value="65">65세 (대법원 전원합의체 판결 기준, 2019다232918)</option>
+            <option value="60">60세 (구 기준)</option>
             <option value="custom">직접 입력</option>
           </select>
           {retirementOption === 'custom' && (
@@ -191,6 +199,11 @@ export default function LostIncomePage() {
           </div>
 
           <div className="mb-4">
+            <p className="text-sm text-slate-600 mb-1">생활비 공제율</p>
+            <p className="text-lg text-slate-900">1/3 ({(result.livingExpenseDeduction * 100).toFixed(1)}%) — 대법원 판례 기준</p>
+          </div>
+
+          <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">일실수입 (과실상계 전)</p>
             <p className="text-lg text-slate-900">{formatNumber(result.lostIncomeBeforeFault)}원</p>
           </div>
@@ -212,12 +225,12 @@ export default function LostIncomePage() {
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
-{`월소득 × 노동능력상실률 × 호프만계수 = 일실수입
+{`월소득 × (1-생활비공제율1/3) × 노동능력상실률 × 호프만계수 = 일실수입
 (호프만계수 = Σ 1/(1+0.05/12×k), k=1~잔여개월)
 총액 × (1 - 과실비율) = 과실상계 후 일실수입`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 대법원 1989.3.28 선고 88다카21219
+              법적 근거: 민법 제379조(법정이율 연 5%), 대법원 1989.3.28 선고 88다카21219(호프만식 채택), 대법원 2019.2.21 선고 2019다232918 전원합의체 판결(가동연한 65세), 대법원 2020.9.3 선고 2016다244188(생활비 공제율 1/3)
             </p>
           </div>
 
