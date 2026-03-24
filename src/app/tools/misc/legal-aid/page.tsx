@@ -8,13 +8,15 @@ const tool = TOOLS.find(t => t.id === 'legal-aid')!;
 const category = CATEGORIES.find(c => c.id === 'misc')!;
 
 // 2026년 기준 중위소득 125% (가구원 수별, 원/월)
+// 보건복지부 고시 제2025-211호(2026년 기준중위소득) 기준
+// 1인: 2,228,445 × 1.25 = 2,785,556 → 공단 적용 2,784,000원(실무 반올림 적용)
 const INCOME_THRESHOLDS_125: Record<number, number> = {
   1: 2_784_000,
-  2: 4_612_000,
-  3: 5_914_000,
-  4: 7_208_000,
-  5: 8_447_000,
-  6: 9_681_000,
+  2: 4_603_000,
+  3: 5_893_000,
+  4: 7_162_000,
+  5: 8_379_000,
+  6: 9_592_000,
 };
 
 type SupportType = 'litigation' | 'consultation' | 'criminal';
@@ -150,6 +152,11 @@ export default function LegalAidPage() {
               <p className="text-sm text-blue-300">
                 신청 방법: 대한법률구조공단(132) 또는 가까운 지부 방문
               </p>
+              {supportType === 'criminal' && (
+                <p className="text-xs text-yellow-300 mt-2">
+                  ※ 형사변호 지원은 사안에 따라 별도 심사 기준이 적용됩니다. 반드시 공단에 문의하세요.
+                </p>
+              )}
             </div>
           )}
 
@@ -158,7 +165,7 @@ export default function LegalAidPage() {
             <p className="text-xs text-gray-500 font-mono">월소득 vs 기준중위소득 125% 비교</p>
           </div>
           <div className="mt-3 pt-3 border-t border-slate-200">
-            <p className="text-xs text-gray-500">법적 근거: 법률구조법 제7조, 법률구조법 시행령</p>
+            <p className="text-xs text-gray-500">법적 근거: 법률구조법 제5조(법률구조대상자), 법률구조법 시행령 제4조(자력기준)</p>
           </div>
         </div>
       )}
