@@ -134,6 +134,8 @@ export default function AlimonyPage() {
   const [asset, setAsset] = useState<AssetLevel>('mid');
   const [hasChildren, setHasChildren] = useState(false);
   const [result, setResult] = useState<ReturnType<typeof calculateAlimony> | null>(null);
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
 
   const toggleFault = (key: FaultType) => {
     setFaults(prev => {
@@ -146,8 +148,36 @@ export default function AlimonyPage() {
   };
 
   const handleCalculate = () => {
+    setError('');
+    setWarning('');
+
+    // INPUT-02: 혼인기간 빈값 체크
+    if (years === '') {
+      setError('혼인기간을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const y = parseInt(years, 10);
-    if (isNaN(y) || y < 0 || faults.length === 0) return;
+
+    // INPUT-01: 음수 체크
+    if (isNaN(y) || y < 0) {
+      setError('혼인기간은 0년 이상이어야 합니다.');
+      setResult(null);
+      return;
+    }
+
+    if (faults.length === 0) {
+      setError('유책사유를 1개 이상 선택해주세요.');
+      setResult(null);
+      return;
+    }
+
+    // INPUT-03: 비현실값 경고 (계산은 허용)
+    if (y > 80) {
+      setWarning('혼인기간이 80년을 초과합니다. 입력값을 확인해주세요.');
+    }
+
     setResult(calculateAlimony(y, faults, asset, hasChildren));
   };
 
@@ -163,21 +193,22 @@ export default function AlimonyPage() {
           </p>
         </div>
 
+        {/* INPUT-04: type="text" + inputMode="numeric" + 숫자만 허용 */}
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">혼인기간 (년)</label>
+          <label className="block text-sm text-slate-600 mb-2">혼인기간 (년) <span className="text-red-500">*</span></label>
           <input
-            type="number"
+            type="text"
             inputMode="numeric"
-            min="0"
             value={years}
-            onChange={e => setYears(e.target.value)}
+            onChange={e => setYears(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 10"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
           />
         </div>
 
+        {/* FLOW-03: 유책사유 필수 표시 */}
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">유책사유 (복수 선택 가능)</label>
+          <label className="block text-sm text-slate-600 mb-2">유책사유 (1개 이상 선택) <span className="text-red-500">*</span></label>
           <div className="flex flex-col gap-2">
             {FAULT_KEYS.map(key => (
               <label key={key} className="flex items-center gap-2 cursor-pointer">
@@ -218,6 +249,10 @@ export default function AlimonyPage() {
           </label>
         </div>
 
+        {/* 에러/경고 표시 (버튼 위) */}
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
+
         <button onClick={handleCalculate} className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: category.color }}>
           계산하기
         </button>
@@ -230,9 +265,13 @@ export default function AlimonyPage() {
 
             <div className="mb-4">
               <p className="text-sm text-slate-600 mb-1">예상 위자료</p>
-              <p className="text-2xl font-bold" style={{ color: category.color }}>
-                {formatNumber(result.estimate)}원
-              </p>
+              {result.estimate === 0 ? (
+                <p className="text-sm text-slate-500">해당 조건에서는 위자료가 인정되지 않을 수 있습니다.</p>
+              ) : (
+                <p className="text-2xl font-bold" style={{ color: category.color }}>
+                  {formatNumber(result.estimate)}원
+                </p>
+              )}
             </div>
 
             <div className="mb-4 p-4 rounded-lg bg-slate-50 border border-slate-200">
