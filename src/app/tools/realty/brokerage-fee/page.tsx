@@ -275,7 +275,7 @@ export default function BrokerageFeePage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 공인중개사법 시행규칙 별표1 | 월세 환산: 보증금 + (월세 × 100)
+              법적 근거: 공인중개사법 시행규칙 제20조 제1항 별표1 | 월세 환산보증금: 보증금 + (월세 × 100)
             </p>
           </div>
         </div>
