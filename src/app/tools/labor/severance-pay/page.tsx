@@ -233,7 +233,7 @@ export default function SeverancePayPage() {
 
             <div className="pt-4 border-t border-slate-200">
               <p className="text-xs text-gray-500">
-                법적 근거: 근로자퇴직급여 보장법 제8조 | 퇴직소득세: 소득세법 제48조
+                법적 근거: 근로자퇴직급여보장법 제8조 | 퇴직소득세: 소득세법 제48조
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 퇴직소득세는 간이 계산이며, 실제 세액과 다를 수 있습니다.
