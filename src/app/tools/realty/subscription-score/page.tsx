@@ -179,11 +179,23 @@ export default function SubscriptionScorePage() {
           </div>
           <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 주택공급에 관한 규칙 별표1 (청약가점제 점수산정 기준표)
+              법적 근거: 주택공급에 관한 규칙 별표1 (청약가점제 점수산정 기준표) — 제1호(무주택기간), 제2호(부양가족수), 제3호(입주자저축 가입기간)
             </p>
           </div>
         </div>
       )}
+
+      <div className="premium-card p-6 mb-4">
+        <h2 className="text-lg font-semibold text-slate-900 mb-3">부양가족 인정 기준</h2>
+        <p className="text-xs text-slate-600 mb-2">주택공급에 관한 규칙 별표1 제2호에 따른 부양가족 인정 기준:</p>
+        <ul className="space-y-1 text-xs text-slate-600 list-disc list-inside">
+          <li>배우자 (주민등록 별도 등재 가능)</li>
+          <li>직계존속(부모·조부모 등): 세대원으로 등재된 자로서 3년 이상 계속 동거한 자</li>
+          <li>직계비속(자녀 등): 세대원으로 등재된 미혼 자녀</li>
+          <li>직계존속의 배우자(배우자의 부모 포함): 동거 요건 동일 적용</li>
+        </ul>
+        <p className="text-xs text-gray-400 mt-2">※ 입주자 본인은 부양가족 수에 미포함</p>
+      </div>
 
       <div className="premium-card p-6">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">청약 가점 높이는 방법</h2>
