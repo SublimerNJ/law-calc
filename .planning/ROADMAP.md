@@ -124,7 +124,11 @@ Plans:
   3. brokerage-fee 계산기의 중개보수 요율이 공인중개사법 시행규칙 별표 현행 요율과 일치한다
   4. subscription-score 계산기의 청약 가점 항목·배점이 주택공급에관한규칙 별표 원문과 일치한다
   5. dsr, ltv, dti 계산기의 규제 기준이 은행업감독규정 현행 기준과 일치한다
-**Plans**: TBD
+**Plans:** 3 plans
+Plans:
+- [ ] 17-01-PLAN.md — deposit-return, rent-conversion, brokerage-fee 법률 감사
+- [ ] 17-02-PLAN.md — subscription-score, dsr 법률 감사
+- [ ] 17-03-PLAN.md — ltv, dti 법률 감사
 
 ### Phase 18: 교통/형사 계산기 법률 감사
 **Goal**: 4개 교통/형사 계산기가 도로교통법·형사소송법 현행 기준으로 정확하게 작동한다
@@ -190,7 +194,7 @@ Plans:
 | 14. 가사/가족법 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
 | 15. 노동/근로 법률 감사 | v1.3 | 4/4 | Complete    | 2026-03-24 |
 | 16. 세금 법률 감사 | v1.3 | 4/4 | Complete   | 2026-03-24 |
-| 17. 부동산 법률 감사 | v1.3 | 0/? | Not started | - |
+| 17. 부동산 법률 감사 | v1.3 | 0/3 | Planning | - |
 | 18. 교통/형사 법률 감사 | v1.3 | 0/? | Not started | - |
 | 19. 채권/이자 법률 감사 | v1.3 | 0/? | Not started | - |
 | 20. 손해배상 법률 감사 | v1.3 | 0/? | Not started | - |
