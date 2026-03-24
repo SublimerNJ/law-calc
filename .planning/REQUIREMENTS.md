@@ -1,45 +1,76 @@
-# Requirements: v1.4 중복 계산기 정리 및 코드 클린업
+# Requirements: v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사
 
-**Defined:** 2026-03-24
+**Defined:** 2026-03-25
 **Core Value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구 제공
 
-## CLEANUP — 삭제 파일 정리
+## v1.5 Requirements
 
-- [ ] **CLEANUP-01**: 이미 통합 완료된 삭제 파일 13개가 git에서 커밋되어 코드베이스에 남지 않는다
-- [ ] **CLEANUP-02**: tools-data.ts에서 삭제된 계산기 참조가 없고, 모든 등록된 route에 대응하는 page.tsx가 존재한다
+### 입력값 검증 (INPUT)
 
-## MERGE — 계산기 통합
+- [ ] **INPUT-01**: 모든 계산기에서 음수 입력 시 적절한 에러 메시지 또는 차단
+- [ ] **INPUT-02**: 필수 입력 필드가 비어있을 때 계산 버튼 비활성화 또는 안내
+- [ ] **INPUT-03**: 비현실적 값(소가 999조원 등) 입력 시 경고 또는 상한 안내
+- [ ] **INPUT-04**: 숫자 필드에 문자 입력 방지 및 적절한 포맷팅
 
-- [ ] **MERGE-01**: small-claims 기능이 lawsuit-cost에 "소액사건" 모드로 통합되어, 소가 3,000만원 이하 시 자동으로 소액사건 송달료(10회) 적용된다
-- [ ] **MERGE-02**: e-court 기능이 lawsuit-cost의 전자소송 비교 기능으로 흡수되어 별도 계산기가 불필요하다
-- [ ] **MERGE-03**: small-claims, e-court page.tsx가 삭제되고 tools-data.ts에서 제거된다
-- [ ] **MERGE-04**: 삭제된 계산기의 기존 URL로 접근 시 lawsuit-cost로 리다이렉트된다
+### 결과 표시 (RESULT)
 
-## UX — 경계선 계산기 UI 개선
+- [ ] **RESULT-01**: 계산 결과가 0원 또는 음수일 때 의미 있는 안내 제공
+- [ ] **RESULT-02**: 큰 금액의 원 단위 표시 시 가독성 확보 (천 단위 콤마 등)
+- [ ] **RESULT-03**: 결과 항목 간 합산이 맞는지 (부분합 = 총합)
 
-- [ ] **UX-01**: public-defender와 legal-aid가 하나의 "법률 지원 자격 확인기" 페이지에 탭으로 통합된다
-- [ ] **UX-02**: dsr 페이지에 dti와의 차이 설명 + dti 링크가 표시되고, dti 페이지에도 동일하게 dsr 링크가 표시된다
-- [ ] **UX-03**: dismissal-notice와 unfair-dismissal 페이지에 상호 링크 + 차이 안내가 추가된다
+### UX 흐름 (FLOW)
 
-## VERIFY — 검증
+- [ ] **FLOW-01**: 초기 상태에서 불필요한 0원 결과가 표시되지 않음
+- [ ] **FLOW-02**: 입력 변경 시 결과가 즉시 또는 명확한 타이밍에 업데이트
+- [ ] **FLOW-03**: 필수/선택 필드 구분이 시각적으로 명확
 
-- [ ] **VERIFY-01**: TypeScript 빌드가 에러 없이 통과한다
-- [ ] **VERIFY-02**: 최종 계산기 수가 tools-data.ts 등록 수와 실제 page.tsx 파일 수가 일치한다
+### 일관성 (CONSIST)
 
-## Future Requirements
+- [ ] **CONSIST-01**: 동일 개념(급여, 기간, 이율)의 입력 방식이 계산기 간 통일
+- [ ] **CONSIST-02**: 결과 표시 형식(원, %, 기간)이 계산기 간 통일
+- [ ] **CONSIST-03**: 에러 메시지 스타일과 톤이 일관적
 
-- public-defender + legal-aid 완전 통합 (현재는 탭만, 추후 통합 로직 가능)
+### 엣지 케이스 (EDGE)
+
+- [ ] **EDGE-01**: 경계값(0, 최소값, 최대값)에서 계산 결과가 논리적
+- [ ] **EDGE-02**: 날짜 관련 입력에서 미래/과거 날짜 제한이 적절
+- [ ] **EDGE-03**: 계산 공식의 나누기 0 등 수학적 예외 처리
 
 ## Out of Scope
 
-- dsr/dti 계산 로직 통합 — 규제 기준이 별개
-- dismissal-notice/unfair-dismissal 통합 — 법적 근거와 계산 목적이 다름
+| Feature | Reason |
+|---------|--------|
+| 법률 정확성 재검증 | v1.3에서 완료, 이번은 UX/논리만 |
+| 새로운 계산기 추가 | 기존 51개 품질 개선에 집중 |
+| 디자인/테마 변경 | v1.2에서 확정, 이번은 기능 논리만 |
+| 성능 최적화 | 별도 마일스톤으로 분리 |
 
 ## Traceability
 
-| REQ-ID | Phase |
-|--------|-------|
-| CLEANUP-01, CLEANUP-02 | Phase 22 |
-| MERGE-01~04 | Phase 22 |
-| UX-01~03 | Phase 23 |
-| VERIFY-01~02 | Phase 23 |
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| INPUT-01 | — | Pending |
+| INPUT-02 | — | Pending |
+| INPUT-03 | — | Pending |
+| INPUT-04 | — | Pending |
+| RESULT-01 | — | Pending |
+| RESULT-02 | — | Pending |
+| RESULT-03 | — | Pending |
+| FLOW-01 | — | Pending |
+| FLOW-02 | — | Pending |
+| FLOW-03 | — | Pending |
+| CONSIST-01 | — | Pending |
+| CONSIST-02 | — | Pending |
+| CONSIST-03 | — | Pending |
+| EDGE-01 | — | Pending |
+| EDGE-02 | — | Pending |
+| EDGE-03 | — | Pending |
+
+**Coverage:**
+- v1.5 requirements: 16 total
+- Mapped to phases: 0
+- Unmapped: 16 ⚠️
+
+---
+*Requirements defined: 2026-03-25*
+*Last updated: 2026-03-25 after initial definition*
