@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: 전체 계산기 법률 정확성 감사
-status: Ready to plan
-last_updated: "2026-03-24T03:34:44.753Z"
+status: Ready to execute
+last_updated: "2026-03-24T03:40:48.436Z"
 progress:
   total_phases: 9
   completed_phases: 5
-  total_plans: 16
-  completed_plans: 16
+  total_plans: 18
+  completed_plans: 17
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구 제공
-**Current focus:** Phase 17 — realty-legal-audit
+**Current focus:** Phase 18 — traffic-criminal-legal-audit
 
 ## Current Position
 
-Phase: 18
-Plan: Not started
+Phase: 18 (traffic-criminal-legal-audit) — EXECUTING
+Plan: 2 of 2
 
 ## Accumulated Context
 
@@ -51,13 +51,15 @@ Plan: Not started
   - LTV/DTI 법적 근거: 은행업감독규정 제26조(담보인정비율), 제26조의2(총부채상환비율) 정확한 조문 명시
   - 전월세 전환율 기본값 4.75%: 한국은행 기준금리(2.75%) + 2%p (주택임대차보호법 시행령 제9조)
   - 보증금 반환 지연이자 근거: 민법 제379조(법정이율 연 5%), 제387조는 이행기 조항으로 오류
+  - 음주운전 재범 가중처벌 근거법: 도로교통법 제148조의2 제1항 (특가법 아님), 10년 이내 2회 이상 전력 시 2년 이상 6년 이하 징역/1,000만~3,000만 벌금
+  - 교통사고 합의금 법적 근거: 자동차손해배상 보장법 제3조(운행자 책임) + 민법 제396조(과실상계) + 민법 제750조(불법행위 손해배상)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-24
-- **Stopped At**: Completed 17-01-PLAN.md
+- **Stopped At**: Completed 18-01-PLAN.md
 - **완료**: attorney-fee(이전 세션), lawsuit-cost, small-claims, payment-order, civil-mediation, family-court(13-01), e-court(13-02)
 - **남은**: Phase 14~21
 - **발견된 공통 오류 패턴**: 인지액 올림→버림, 소가 경계값 이하→미만, 송달료 단가/회수 불일치, 심급별 배율 오류

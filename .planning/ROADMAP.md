@@ -139,9 +139,9 @@ Plans:
   2. drunk-driving 계산기의 BAC 처벌 구간(0.03%, 0.08%, 0.2%)이 도로교통법 제44조 및 제148조의2 원문과 일치한다
   3. fine-penalty 계산기의 범칙금·과태료 금액이 도로교통법 별표 현행 기준과 일치한다
   4. bail 계산기의 보석 기준이 형사소송법 제94조~제102조 원문과 일치한다
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
-- [ ] 18-01-PLAN.md — accident-settlement, drunk-driving 법률 감사 (TRAFFIC-01, TRAFFIC-02)
+- [x] 18-01-PLAN.md — accident-settlement, drunk-driving 법률 감사 (TRAFFIC-01, TRAFFIC-02)
 - [ ] 18-02-PLAN.md — fine-penalty, bail 법률 감사 (TRAFFIC-03, TRAFFIC-04)
 
 ### Phase 19: 채권/이자 계산기 법률 감사
@@ -198,7 +198,7 @@ Plans:
 | 15. 노동/근로 법률 감사 | v1.3 | 4/4 | Complete    | 2026-03-24 |
 | 16. 세금 법률 감사 | v1.3 | 4/4 | Complete   | 2026-03-24 |
 | 17. 부동산 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
-| 18. 교통/형사 법률 감사 | v1.3 | 0/2 | Planning | - |
+| 18. 교통/형사 법률 감사 | v1.3 | 1/2 | In Progress|  |
 | 19. 채권/이자 법률 감사 | v1.3 | 0/? | Not started | - |
 | 20. 손해배상 법률 감사 | v1.3 | 0/? | Not started | - |
 | 21. 기타 법률도구 법률 감사 | v1.3 | 0/? | Not started | - |
