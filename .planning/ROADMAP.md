@@ -65,7 +65,7 @@
 
 - [x] **Phase 24: 소송/법원 UX·논리 감사** — lawsuit-cost, payment-order, civil-mediation, family-court, attorney-fee (5개 계산기) (completed 2026-03-24)
 - [x] **Phase 25: 가사/가족법 UX·논리 감사** — alimony, child-support, property-division, inheritance-tax, forced-heirship, inheritance-order (6개 계산기) (completed 2026-03-24)
-- [ ] **Phase 26: 노동/근로 Part 1 UX·논리 감사** — severance-pay, dismissal-notice, annual-leave-pay, overtime-pay, weekly-holiday-pay, minimum-wage-check (6개 계산기)
+- [x] **Phase 26: 노동/근로 Part 1 UX·논리 감사** — severance-pay, dismissal-notice, annual-leave-pay, overtime-pay, weekly-holiday-pay, minimum-wage-check (6개 계산기) (completed 2026-03-24)
 - [ ] **Phase 27: 노동/근로 Part 2 UX·논리 감사** — unfair-dismissal, industrial-accident, maternity-leave, parental-leave, unemployment-benefit, shutdown-allowance (6개 계산기)
 - [ ] **Phase 28: 세금 Part 1 UX·논리 감사** — capital-gains-tax, comprehensive-income-tax, acquisition-tax, comprehensive-property-tax, registration-tax (5개 계산기)
 - [ ] **Phase 29: 세금 Part 2 UX·논리 감사** — vat, securities-tax, year-end-tax, four-insurances, rent-tax-credit (5개 계산기)
@@ -284,7 +284,7 @@ Plans:
 Plans:
 - [x] 26-01-PLAN.md — severance-pay + dismissal-notice + annual-leave-pay 감사 및 수정
 - [x] 26-02-PLAN.md — overtime-pay + weekly-holiday-pay + minimum-wage-check 감사 및 수정
-- [ ] 26-03-PLAN.md — 6개 계산기 일관성 통일
+- [x] 26-03-PLAN.md — 6개 계산기 일관성 통일
 
 ### Phase 27: 노동/근로 Part 2 UX·논리 감사
 **Goal**: 노동/근로 후반부 6개 계산기(부당해고·산재·출산·육아·실업급여·휴업)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -411,7 +411,7 @@ Plans:
 | 23. 경계선 UX 개선 + 검증 | v1.4 | 1/1 | Complete | 2026-03-25 |
 | 24. 소송/법원 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 25. 가사/가족법 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
+| 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete   | 2026-03-24 |
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
