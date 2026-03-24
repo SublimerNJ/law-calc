@@ -104,8 +104,7 @@ export default function DepositReturnPage() {
           <label className="block text-sm text-slate-600 mb-2">연체이자율 (%) *</label>
           <input
             type="text"
-            inputMode="numeric"
-            pattern="[0-9]*\.?[0-9]*"
+            inputMode="decimal"
             value={rate}
             onChange={e => setRate(e.target.value.replace(/[^0-9.]/g, ''))}
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"

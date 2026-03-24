@@ -85,7 +85,7 @@ export default function SubscriptionScorePage() {
           <select
             value={homelessIdx}
             onChange={e => setHomelessIdx(Number(e.target.value))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {homelessOptions.map((opt, i) => (
               <option key={i} value={i}>{opt.label} ({opt.score}점)</option>
@@ -98,7 +98,7 @@ export default function SubscriptionScorePage() {
           <select
             value={dependentIdx}
             onChange={e => setDependentIdx(Number(e.target.value))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {dependentOptions.map((opt, i) => (
               <option key={i} value={i}>{opt.label} ({opt.score}점)</option>
@@ -111,7 +111,7 @@ export default function SubscriptionScorePage() {
           <select
             value={savingsIdx}
             onChange={e => setSavingsIdx(Number(e.target.value))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {savingsOptions.map((opt, i) => (
               <option key={i} value={i}>{opt.label} ({opt.score}점)</option>

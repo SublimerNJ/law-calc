@@ -90,7 +90,7 @@ export default function LtvPage() {
             value={housePrice ? parseInt(housePrice).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setHousePrice)}
             placeholder="예: 500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {housePrice && (
             <p className="text-xs text-gray-500 mt-1">
@@ -107,7 +107,7 @@ export default function LtvPage() {
             value={loanAmount ? parseInt(loanAmount).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setLoanAmount)}
             placeholder="예: 200,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {loanAmount && (
             <p className="text-xs text-gray-500 mt-1">
@@ -121,7 +121,7 @@ export default function LtvPage() {
           <select
             value={region}
             onChange={e => setRegion(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {REGIONS.map(r => (
               <option key={r.value} value={r.value}>{r.label} (LTV {r.limit}%)</option>

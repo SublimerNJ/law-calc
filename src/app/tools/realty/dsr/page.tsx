@@ -83,7 +83,7 @@ export default function DsrPage() {
             value={displayValue(income)}
             onChange={handleNumberInput(setIncome)}
             placeholder="예: 60,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {income && <p className="text-xs text-gray-500 mt-1">{formatNumber(parseNum(income))}원</p>}
         </div>
@@ -96,7 +96,7 @@ export default function DsrPage() {
             value={displayValue(mortgage)}
             onChange={handleNumberInput(setMortgage)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -108,7 +108,7 @@ export default function DsrPage() {
             value={displayValue(credit)}
             onChange={handleNumberInput(setCredit)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -120,7 +120,7 @@ export default function DsrPage() {
             value={displayValue(other)}
             onChange={handleNumberInput(setOther)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
