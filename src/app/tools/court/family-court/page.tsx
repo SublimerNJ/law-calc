@@ -75,12 +75,12 @@ const CASE_OPTIONS: CaseOption[] = [
 // 100원 미만 버림: 민사소송등인지법 제2조 제3항
 function calculateStampFee(amount: number): number {
   let fee: number;
-  if (amount <= 10_000_000) {
+  if (amount < 10_000_000) {
     fee = amount * 0.005;
     if (fee < 1_000) fee = 1_000;
-  } else if (amount <= 100_000_000) {
+  } else if (amount < 100_000_000) {
     fee = amount * 0.0045 + 5_000;
-  } else if (amount <= 1_000_000_000) {
+  } else if (amount < 1_000_000_000) {
     fee = amount * 0.004 + 55_000;
   } else {
     fee = amount * 0.0035 + 555_000;
