@@ -42,6 +42,8 @@ export default function UnemploymentBenefitPage() {
   const [period, setPeriod] = useState('lt5');
   const [ageGroup, setAgeGroup] = useState('under50');
   const [dailyHours, setDailyHours] = useState(8);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     dailyBase: number;
     dailyPayment: number;
@@ -53,8 +55,19 @@ export default function UnemploymentBenefitPage() {
   } | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const w = parseInt(monthlyWage.replace(/[^0-9]/g, ''), 10);
-    if (!w || w <= 0) return;
+    if (!w || w <= 0) {
+      setError('퇴직 전 3개월 평균 월임금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (w > 100_000_000) {
+      setWarning('월임금이 1억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const dailyLower = Math.floor(10_320 * 0.8 * dailyHours); // 2026년 최저임금 10,320원/시간 (고용노동부 고시)
     const dailyBase = Math.floor((w * 12) / 365 * 0.6);
@@ -83,7 +96,7 @@ export default function UnemploymentBenefitPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">퇴직 전 3개월 평균 월임금 (세전, 원)</label>
+          <label className="block text-sm text-slate-600 mb-2">퇴직 전 3개월 평균 월임금 (세전, 원) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -137,6 +150,9 @@ export default function UnemploymentBenefitPage() {
             ))}
           </select>
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
