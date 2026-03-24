@@ -168,18 +168,27 @@ ${formatDateKR(sendDate)}
             </button>
           </div>
 
-          <div className="p-6 rounded-lg bg-white text-white font-mono text-sm whitespace-pre-wrap leading-relaxed">
+          <div className="p-6 rounded-lg bg-white text-slate-900 font-mono text-sm whitespace-pre-wrap leading-relaxed">
             {generateText()}
           </div>
 
-          <div className="mt-4 p-3 rounded-lg bg-yellow-900/20 border border-yellow-800">
-            <p className="text-sm text-yellow-300">
-              작성 후 동일 내용 3부를 우체국에 제출하세요 (1부 발신인 보관, 1부 수신인 송달, 1부 우체국 보관).
+          <div className="mt-4 p-3 rounded-lg bg-yellow-50 border border-yellow-300">
+            <p className="text-sm text-yellow-800">
+              작성 후 동일 내용 3부를 우체국에 제출하세요 (1부 발신인 보관, 1부 수신인 송달, 1부 우체국 보관). — 우편법 시행규칙 제25조
             </p>
           </div>
 
+          <div className="mt-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+            <p className="text-sm font-semibold text-blue-800 mb-1">법적 효력 안내</p>
+            <ul className="text-xs text-blue-700 space-y-1 list-disc pl-4">
+              <li>내용증명은 발송 사실과 내용을 공증하는 수단이며, 그 자체로 법적 강제력은 없습니다.</li>
+              <li><strong>도달주의</strong>: 의사표시는 상대방에게 도달한 때 효력이 발생합니다 (민법 제111조).</li>
+              <li><strong>소멸시효 중단</strong>: 내용증명(최고)은 시효중단의 효력이 있으나, 최고 후 <strong>6개월 이내에 재판상 청구·압류 등</strong>을 하지 않으면 시효중단 효력이 소멸됩니다 (민법 제174조).</li>
+            </ul>
+          </div>
+
           <div className="mt-4 pt-4 border-t border-slate-200">
-            <p className="text-xs text-gray-500">법적 근거: 우편법 시행규칙 제25조 (내용증명 우편)</p>
+            <p className="text-xs text-gray-500">법적 근거: 우편법 시행규칙 제25조 (내용증명 우편), 민법 제111조 (의사표시 효력발생시기), 민법 제174조 (최고와 소멸시효)</p>
           </div>
         </div>
       )}
