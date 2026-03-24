@@ -43,6 +43,8 @@ export default function ParentalLeavePage() {
   const [wage, setWage] = useState('');
   const [months, setMonths] = useState(6);
   const [type, setType] = useState<'normal' | 'single'>('normal');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     monthly: { month: number; rate: number; amount: number }[];
     totalImmediate: number;
@@ -51,8 +53,19 @@ export default function ParentalLeavePage() {
   } | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const w = parseInt(wage.replace(/[^0-9]/g, ''), 10);
-    if (!w || w <= 0) return;
+    if (!w || w <= 0) {
+      setError('월 통상임금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (w > 100_000_000) {
+      setWarning('월 통상임금이 1억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const isSingleParent = type === 'single';
     const monthly: { month: number; rate: number; amount: number }[] = [];
@@ -82,7 +95,7 @@ export default function ParentalLeavePage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -126,6 +139,9 @@ export default function ParentalLeavePage() {
             ))}
           </div>
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -178,7 +194,9 @@ export default function ParentalLeavePage() {
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
-{`전 기간: 월 통상임금 × 80% (상한 150만원, 하한 70만원)
+{`1~3개월: 월 통상임금 × 80% (상한 250만원, 하한 70만원)
+4~6개월: 월 통상임금 × 80% (상한 200만원, 하한 70만원)
+7개월~: 월 통상임금 × 80% (상한 160만원, 하한 70만원)
 한부모/장애아동: 첫 3개월 상한 300만원
 2024.1.1 개정: 사후지급금 제도 폐지, 전액 즉시 지급`}
             </pre>
