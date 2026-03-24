@@ -314,7 +314,7 @@ Plans:
   5. 5개 계산기 간 금액 입력(원 단위), 결과 세액 표시, 세율/공제 항목 소계 구성이 일관된다
 **Plans**: 3 plans
 Plans:
-- [ ] 28-01-PLAN.md — capital-gains-tax + comprehensive-income-tax 감사 및 수정
+- [x] 28-01-PLAN.md — capital-gains-tax + comprehensive-income-tax 감사 및 수정
 - [x] 28-02-PLAN.md — acquisition-tax + comprehensive-property-tax + registration-tax 감사 및 수정
 - [ ] 28-03-PLAN.md — 5개 계산기 일관성 통일
 
@@ -413,7 +413,7 @@ Plans:
 | 25. 가사/가족법 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 28. 세금 Part 1 UX·논리 감사 | v1.5 | 1/3 | In Progress|  |
+| 28. 세금 Part 1 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 30. 부동산 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 0/? | Not started | — |
