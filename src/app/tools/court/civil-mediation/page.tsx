@@ -9,8 +9,8 @@ const category = CATEGORIES.find(c => c.id === 'court')!;
 
 // 2026년 기준 송달료 단가
 const SERVICE_FEE_UNIT = 5_500;
-// 조정사건 송달료 예납 회수: 당사자 1인당 10회분 (법원실무)
-const MEDIATION_SERVICE_ROUNDS = 10;
+// 조정사건 송달료 예납 회수: 당사자 1인당 5회분 (송달료규칙 업무처리요령 별표 1)
+const MEDIATION_SERVICE_ROUNDS = 5;
 // 소송사건 송달료 예납 회수 (비교용): 1심 15회분
 const LAWSUIT_SERVICE_ROUNDS = 15;
 
@@ -55,9 +55,9 @@ export default function CivilMediationPage() {
 
     const lawsuitStampFee = calculateLawsuitStampFee(val);
 
-    // 조정 인지대 = 소송 인지대의 1/5 (민사조정법 제7조, 민사소송등인지법 준용)
+    // 조정 인지대 = 소송 인지대의 1/10 (민사조정규칙 제3조 제1항)
     // 100원 미만 버림: 민사소송등인지법 제2조 제3항
-    let mediationStampFee = Math.floor((lawsuitStampFee * 0.2) / 100) * 100;
+    let mediationStampFee = Math.floor((lawsuitStampFee * 0.1) / 100) * 100;
     if (mediationStampFee < 1_000) mediationStampFee = 1_000;
 
     const serviceFee = parties * MEDIATION_SERVICE_ROUNDS * SERVICE_FEE_UNIT;
@@ -122,7 +122,7 @@ export default function CivilMediationPage() {
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-slate-600 mb-1">조정신청 인지대 (소송인지의 1/5)</p>
+              <p className="text-sm text-slate-600 mb-1">조정신청 인지대 (소송인지의 1/10)</p>
               <p className="text-2xl font-bold" style={{ color: category.color }}>
                 {formatNumber(result.mediationStampFee)}원
               </p>
@@ -155,7 +155,7 @@ export default function CivilMediationPage() {
             <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
             <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
 {`소송인지대: ${formatNumber(result.lawsuitStampFee)}원
-× 1/5 = 조정인지대: ${formatNumber(result.mediationStampFee)}원
+× 1/10 = 조정인지대: ${formatNumber(result.mediationStampFee)}원
 + 송달료: ${formatNumber(result.serviceFee)}원 (${parties}명 × ${MEDIATION_SERVICE_ROUNDS}회 × ${formatNumber(SERVICE_FEE_UNIT)}원)
 = 합계: ${formatNumber(result.total)}원`}
             </pre>
@@ -169,7 +169,7 @@ export default function CivilMediationPage() {
               조정 불성립 시 소송으로 이행, 차액 인지대 추가 납부
             </p>
             <p className="text-xs text-gray-500 mt-2">
-              법적 근거: 민사조정법 제7조, 민사소송등인지법 제2조, 민사소송규칙 제19조
+              법적 근거: 민사조정규칙 제3조, 민사소송등인지법 제2조
             </p>
             <p className="text-xs text-gray-500">
               송달료: 2026년 기준 1회 {formatNumber(SERVICE_FEE_UNIT)}원 | 조정사건 {MEDIATION_SERVICE_ROUNDS}회분 예납
