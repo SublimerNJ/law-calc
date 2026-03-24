@@ -35,13 +35,14 @@ Plan: 2 of 2
   - e-court: 소가 경계값 미만(<), 100원 미만 버림(floor), 송달료 5,500원/심급별 회수 적용
   - 유류분 기산기간: 제3자 증여 1년 이내, 상속인 증여 기간 제한 없음 (민법 제1114조)
   - 대습상속 근거: 제1001조 (대습상속 규정), 제1010조는 대습상속인의 상속분 규정
+  - 양육비 법적 근거: 민법 제833조(부부협조)는 오류, 민법 제837조(양육책임)가 정확
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-24
-- **Stopped At**: Completed 14-02-PLAN.md
+- **Stopped At**: Completed 14-01-PLAN.md (parallel agent)
 - **완료**: attorney-fee(이전 세션), lawsuit-cost, small-claims, payment-order, civil-mediation, family-court(13-01), e-court(13-02)
 - **남은**: Phase 14~21
 - **발견된 공통 오류 패턴**: 인지액 올림→버림, 소가 경계값 이하→미만, 송달료 단가/회수 불일치, 심급별 배율 오류
