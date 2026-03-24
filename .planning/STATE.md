@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: Ready to execute
-last_updated: "2026-03-24T22:51:19.442Z"
+status: Phase complete — ready for verification
+last_updated: "2026-03-24T22:54:21.221Z"
 progress:
   total_phases: 20
-  completed_phases: 13
+  completed_phases: 14
   total_plans: 38
-  completed_plans: 37
+  completed_plans: 38
 ---
 
 # Project State
@@ -22,8 +22,8 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 
 ## Current Position
 
-Phase: 28 (ux) — EXECUTING
-Plan: 3 of 3
+Phase: 28 (ux) — COMPLETE
+Plan: 3 of 3 (all complete)
 
 ## Accumulated Context
 
@@ -45,10 +45,13 @@ Plan: 3 of 3
   - registration-tax: isLicense 분기로 면허 유형은 에러 검증 제외 (금액 입력 불필요) (28-ux-02)
   - 세금 계산기 3종(취득세·종합부동산세·등록세)에 error/warning 분리 패턴 적용 완료 (28-ux-02)
   - 에러(text-red-500)/경고(text-orange-500) 분리 패턴을 세금 2종 계산기(capital-gains-tax, comprehensive-income-tax)에 적용, 날짜 역전 방지 포함 (28-ux-01)
+  - focus:border-[#10b981] → focus:border-blue-600 통일: 카테고리 색상은 결과 강조에만, 입력 포커스는 blue-600 (28-ux-03)
+  - registration-tax 결과 합계 계층 수정: 합계 text-xl font-bold category.color 강조 (28-ux-03)
+  - Phase 28 전체 완료: 5개 세금 계산기 CONSIST-01~03 + 전체 16개 UX 요구사항 충족 (28-ux-03)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-25
-- **Stopped At**: Completed 28-01-PLAN.md (Phase 28 Plan 1)
+- **Stopped At**: Completed 28-03-PLAN.md (Phase 28 Plan 3 — Phase 28 complete)
