@@ -203,7 +203,7 @@ export default function UnfairDismissalPage() {
 
           <div className="mt-4 p-4 bg-slate-100/50 rounded-lg">
             <p className="text-xs text-slate-600 leading-relaxed">
-              <strong className="text-slate-600">법적 근거:</strong> 근로기준법 제30조(구제명령 등), 제33조(이행강제금)
+              <strong className="text-slate-600">법적 근거:</strong> 근로기준법 제28조(부당해고 구제신청, 3개월 이내), 제30조(구제명령 등), 제33조(이행강제금)
             </p>
           </div>
         </div>
@@ -214,7 +214,7 @@ export default function UnfairDismissalPage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">부당해고 구제 신청 방법</h2>
           <div className="space-y-3">
             {[
-              { step: '1', title: '구제신청서 작성', desc: '해고일로부터 3개월 이내에 지방노동위원회에 신청 (기한 엄수)' },
+              { step: '1', title: '구제신청서 작성', desc: '해고일로부터 3개월 이내에 지방노동위원회에 신청 (근로기준법 제28조, 상시 5인 이상 사업장 적용)' },
               { step: '2', title: '필요 서류', desc: '근로계약서, 급여명세서, 해고통보서, 재직증명서 등' },
               { step: '3', title: '심판 진행', desc: '신청 후 60일 이내 판정 (조사→심문→판정)' },
               { step: '4', title: '판정 결과', desc: '복직명령 또는 금전보상명령 (사용자 불이행 시 이행강제금)' },
