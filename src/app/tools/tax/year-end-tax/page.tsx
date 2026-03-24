@@ -89,6 +89,9 @@ export default function YearEndTaxPage() {
   const [rentPaid, setRentPaid] = useState('');
   const [childrenUnder20, setChildrenUnder20] = useState('0');
 
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
+
   const [result, setResult] = useState<{
     grossPay: number;
     earnedDeduction: number;
@@ -110,9 +113,21 @@ export default function YearEndTaxPage() {
   } | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const gross = parseAmount(grossPay);
     const withheld = parseAmount(withheldTax);
-    if (gross <= 0) return;
+
+    if (gross <= 0) {
+      setError('총급여액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (gross > 500_000_000) {
+      setWarning('총급여액이 5억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const deps = parseInt(dependents, 10) || 1;
     const creditCard = parseAmount(creditCardUsage);
@@ -222,12 +237,12 @@ export default function YearEndTaxPage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">1. 소득 정보</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className={labelClass}>총급여액 (원)</label>
-              <input type="text" className={inputClass} placeholder="예: 50,000,000" value={grossPay} onChange={e => setGrossPay(e.target.value)} />
+              <label className={labelClass}>총급여액 (원) *</label>
+              <input type="text" className={inputClass} placeholder="예: 50,000,000" value={grossPay} onChange={e => setGrossPay(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>기납부 원천징수세액 (원)</label>
-              <input type="text" className={inputClass} placeholder="예: 2,000,000" value={withheldTax} onChange={e => setWithheldTax(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="예: 2,000,000" value={withheldTax} onChange={e => setWithheldTax(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
           </div>
         </div>
@@ -238,23 +253,23 @@ export default function YearEndTaxPage() {
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className={labelClass}>부양가족 수 (본인 포함)</label>
-              <input type="number" min="1" className={inputClass} value={dependents} onChange={e => setDependents(e.target.value)} />
+              <input type="text" inputMode="numeric" className={inputClass} value={dependents} onChange={e => setDependents(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>신용카드 사용액 (원)</label>
-              <input type="text" className={inputClass} placeholder="0" value={creditCardUsage} onChange={e => setCreditCardUsage(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="0" value={creditCardUsage} onChange={e => setCreditCardUsage(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>체크카드/현금영수증 사용액 (원)</label>
-              <input type="text" className={inputClass} placeholder="0" value={debitCardUsage} onChange={e => setDebitCardUsage(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="0" value={debitCardUsage} onChange={e => setDebitCardUsage(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>국민연금 납입액 (원)</label>
-              <input type="text" className={inputClass} placeholder="0" value={pensionPaid} onChange={e => setPensionPaid(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="0" value={pensionPaid} onChange={e => setPensionPaid(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>건강보험료 (원)</label>
-              <input type="text" className={inputClass} placeholder="0" value={healthInsurance} onChange={e => setHealthInsurance(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="0" value={healthInsurance} onChange={e => setHealthInsurance(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
           </div>
         </div>
@@ -265,26 +280,29 @@ export default function YearEndTaxPage() {
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className={labelClass}>의료비 지출액 (원)</label>
-              <input type="text" className={inputClass} placeholder="0" value={medicalExpense} onChange={e => setMedicalExpense(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="0" value={medicalExpense} onChange={e => setMedicalExpense(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>교육비 지출액 (원)</label>
-              <input type="text" className={inputClass} placeholder="0" value={educationExpense} onChange={e => setEducationExpense(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="0" value={educationExpense} onChange={e => setEducationExpense(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>기부금 (원)</label>
-              <input type="text" className={inputClass} placeholder="0" value={donation} onChange={e => setDonation(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="0" value={donation} onChange={e => setDonation(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>월세 납부액 (월, 원)</label>
-              <input type="text" className={inputClass} placeholder="0" value={rentPaid} onChange={e => setRentPaid(e.target.value)} />
+              <input type="text" className={inputClass} placeholder="0" value={rentPaid} onChange={e => setRentPaid(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
               <label className={labelClass}>20세 이하 자녀 수</label>
-              <input type="number" min="0" className={inputClass} value={childrenUnder20} onChange={e => setChildrenUnder20(e.target.value)} />
+              <input type="text" inputMode="numeric" className={inputClass} value={childrenUnder20} onChange={e => setChildrenUnder20(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
           </div>
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
