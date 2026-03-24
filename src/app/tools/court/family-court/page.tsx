@@ -205,12 +205,6 @@ export default function FamilyCourtPage() {
                 {formatNumber(parseInt(amount))}원
               </p>
             )}
-            {error && (
-              <p className="text-xs text-red-500 mt-1">{error}</p>
-            )}
-            {warning && (
-              <p className="text-xs text-orange-500 mt-1">{warning}</p>
-            )}
           </div>
         )}
 
@@ -224,6 +218,17 @@ export default function FamilyCourtPage() {
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
+        {warning && (
+          <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200">
+            <p className="text-sm text-orange-500">{warning}</p>
+          </div>
+        )}
 
         <button
           onClick={handleCalculate}
