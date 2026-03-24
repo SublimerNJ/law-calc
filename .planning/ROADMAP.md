@@ -71,7 +71,7 @@
 - [x] **Phase 29: 세금 Part 2 UX·논리 감사** — vat, securities-tax, year-end-tax, four-insurances, rent-tax-credit (5개 계산기) (completed 2026-03-24)
 - [x] **Phase 30: 부동산 UX·논리 감사** — deposit-return, rent-conversion, brokerage-fee, subscription-score, dsr, ltv, dti (7개 계산기) (completed 2026-03-24)
 - [x] **Phase 31: 교통/형사 + 채권/이자 UX·논리 감사** — accident-settlement, drunk-driving, fine-penalty, bail, late-payment, loan-interest, unjust-enrichment (7개 계산기) (completed 2026-03-24)
-- [ ] **Phase 32: 손해배상 + 기타 법률도구 UX·논리 감사** — damages-general, defamation, medical-malpractice, lost-income, certified-letter, legal-aid, public-defender, statute-of-limitations (8개 계산기)
+- [x] **Phase 32: 손해배상 + 기타 법률도구 UX·논리 감사** — damages-general, defamation, medical-malpractice, lost-income, certified-letter, legal-aid, public-defender, statute-of-limitations (8개 계산기) (completed 2026-03-24)
 
 ## Phase Details
 
@@ -378,9 +378,9 @@ Plans:
   5. 8개 계산기/도구 간 날짜 입력 형식, 퍼센트 입력 방식, 금액 결과 표시, 에러 메시지 톤이 통일된다
 **Plans**: 3 plans
 Plans:
-- [ ] 32-01-PLAN.md — damages-general + defamation + medical-malpractice + lost-income 감사 및 수정
+- [x] 32-01-PLAN.md — damages-general + defamation + medical-malpractice + lost-income 감사 및 수정
 - [x] 32-02-PLAN.md — statute-of-limitations + public-defender + legal-aid + certified-letter 감사 및 수정
-- [ ] 32-03-PLAN.md — 8개 계산기/도구 일관성 통일
+- [x] 32-03-PLAN.md — 8개 계산기/도구 일관성 통일
 
 ## Progress
 
@@ -417,4 +417,4 @@ Plans:
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 30. 부동산 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 1/3 | In Progress|  |
+| 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 3/3 | Complete   | 2026-03-24 |

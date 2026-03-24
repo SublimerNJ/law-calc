@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: Ready to execute
-last_updated: "2026-03-24T23:47:34.794Z"
+status: Phase complete — ready for verification
+last_updated: "2026-03-24T23:49:43.905Z"
 progress:
   total_phases: 20
-  completed_phases: 17
+  completed_phases: 18
   total_plans: 50
-  completed_plans: 49
+  completed_plans: 50
 ---
 
 # Project State
@@ -58,10 +58,12 @@ Plan: 3 of 3
   - text-red-400 결과 섹션 표시 → text-red-600 통일, bg-red-500/10 → bg-red-50 dark 테마 잔재 제거 (31-ux-03)
   - Phase 31 전체 완료: 7개 교통/채권 계산기 CONSIST-01~03, FLOW-01~03 충족 (31-ux-03)
   - damages 4종 계산기에도 error(text-red-500)/warning(text-orange-500) 분리 패턴 적용, type=number→type=text+inputMode=decimal 전환 (32-ux-01)
+  - hover:bg-[#2a3d5a] dark 테마 잔재 → hover:bg-slate-200 교체, 나머지 7개 파일 변경 없음 (32-ux-03, D-06)
+  - Phase 32 전체 완료: 8개 손해배상/기타 계산기 CONSIST-01~03, INPUT-04, FLOW-03 충족 (32-ux-03)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-25
-- **Stopped At**: Completed 32-01-PLAN.md (손해배상 4종 계산기 UX 감사 수정 완료 — damages-general/defamation/medical-malpractice/lost-income)
+- **Stopped At**: Completed 32-03-PLAN.md (Phase 32 완료 — 8개 계산기/도구 UX 일관성 최종 검증, certified-letter hover dark 잔재 제거)
