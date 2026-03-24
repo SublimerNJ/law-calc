@@ -4,21 +4,21 @@ import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
-const UNIT_COST = 4500;
+const UNIT_COST = 5_500;
 
 function calcStampFee(amount: number): number {
   let fee: number;
-  if (amount <= 10_000_000) {
+  if (amount < 10_000_000) {
     fee = amount * 0.005;
-  } else if (amount <= 100_000_000) {
+  } else if (amount < 100_000_000) {
     fee = amount * 0.0045 + 5000;
-  } else if (amount <= 1_000_000_000) {
+  } else if (amount < 1_000_000_000) {
     fee = amount * 0.004 + 55000;
   } else {
     fee = amount * 0.0035 + 555000;
   }
-  fee = Math.max(fee, 1000);
-  return Math.ceil(fee / 100) * 100;
+  if (fee < 1000) return 1000;
+  return Math.floor(fee / 100) * 100;
 }
 
 function formatNumber(n: number): string {
@@ -35,12 +35,12 @@ export default function PaymentOrderPage() {
   const numAmount = parseInt(amount, 10) || 0;
   const lawsuitStampFee = calcStampFee(numAmount);
   const paymentOrderStampFee = Math.max(
-    Math.ceil((lawsuitStampFee * 0.1) / 100) * 100,
+    Math.floor((lawsuitStampFee * 0.1) / 100) * 100,
     1000
   );
   // 당사자 수 = 채권자(1) + 채무자 수
   const totalParties = 1 + debtors;
-  const serviceFee = totalParties * 3 * UNIT_COST;
+  const serviceFee = totalParties * 6 * UNIT_COST;
   const total = paymentOrderStampFee + serviceFee;
   const savings = lawsuitStampFee - paymentOrderStampFee;
 
@@ -95,7 +95,7 @@ export default function PaymentOrderPage() {
               <span>{formatNumber(lawsuitStampFee)}원</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600">송달료 ({totalParties}명 x 3회 x {formatNumber(UNIT_COST)}원)</span>
+              <span className="text-slate-600">송달료 ({totalParties}명 x 6회 x {formatNumber(UNIT_COST)}원)</span>
               <span className="text-slate-900">{formatNumber(serviceFee)}원</span>
             </div>
             <hr className="border-[var(--color-border-subtle)]" />
@@ -133,7 +133,11 @@ export default function PaymentOrderPage() {
             <li>지급명령 이의 시 소송으로 전환, 차액 인지대 납부 필요</li>
             <li>채무자가 이의신청하지 않으면 확정판결과 동일한 효력</li>
             <li>금전 기타 대체물, 유가증권의 일정 수량 지급 청구에 한함</li>
+            <li>송달료: 당사자 1인당 6회분 (송달료규칙 별표)</li>
           </ul>
+          <p className="text-xs text-gray-500 mt-3">
+            본 계산기는 참고용이며, 실제 비용은 법원의 판단에 따릅니다
+          </p>
         </div>
       </div>
     </CalculatorLayout>
