@@ -71,7 +71,7 @@ function calculateBail(
 
   let finalBail = Math.round(amount * priorMultiplier * flightMultiplier * evidenceMultiplier);
 
-  // Cap at 500M
+  // Cap at 500M (실무상 참고치 — 형사소송법에 보석금 상한 명문 규정 없음)
   const CAP = 500_000_000;
   if (finalBail > CAP) finalBail = CAP;
 
@@ -261,10 +261,10 @@ export default function BailPage() {
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`기본보석금(죄종 중간값) vs 재산기준값 → 높은 값 선택
 × 전과 가중배율 × 도주위험 배율 × 증거인멸 배율
-= 예상 보석금 (상한 5억원)`}
+= 예상 보석금 (실무상 참고 상한 5억원 — 법정 상한 없음)`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 형사소송법 제94조, 제99조. 보석금은 법원이 피고인의 자력, 범죄의 성질과 정상 등을 고려하여 결정합니다.
+              법적 근거: 형사소송법 제94조(보석), 제95조(필요적 보석), 제96조(임의적 보석), 제99조(보석 조건), 제102조(보석 취소), 제103조(보증금 몰취). 보석금은 법원이 피고인의 자력, 범죄의 성질과 정상, 피해자 위해 가능성 등을 고려하여 결정합니다(제99조 제1항).
             </p>
           </div>
         </div>
@@ -291,7 +291,7 @@ export default function BailPage() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-gray-500 mt-4">법적 근거: 형사소송법 제94조, 제99조 | 보석 관련 문의는 담당 변호인과 상담하세요</p>
+          <p className="text-xs text-gray-500 mt-4">법적 근거: 형사소송법 제94조(보석), 제95조(필요적 보석), 제96조(임의적 보석), 제99조(보석 조건), 제102조(보석 취소), 제103조(보증금 몰취) | 보석 관련 문의는 담당 변호인과 상담하세요</p>
         </div>
       )}
     </CalculatorLayout>
