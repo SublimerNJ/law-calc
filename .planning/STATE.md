@@ -2,8 +2,8 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: Phase complete — ready for verification
-last_updated: "2026-03-24T21:11:39.647Z"
+status: Ready to plan
+last_updated: "2026-03-24T21:15:46.127Z"
 progress:
   total_phases: 20
   completed_phases: 10
@@ -22,8 +22,8 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 
 ## Current Position
 
-Phase: 24 (ux) — EXECUTING
-Plan: 3 of 3
+Phase: 25
+Plan: Not started
 
 ## Accumulated Context
 
