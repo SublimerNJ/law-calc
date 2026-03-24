@@ -55,9 +55,9 @@
 
 ### 부동산 (REALTY)
 
-- [ ] **REALTY-01**: 임대차 보증금 반환 계산기 (deposit-return) — 주택임대차보호법 기준 검증 및 오류 수정
-- [ ] **REALTY-02**: 전월세 전환율 계산기 (rent-conversion) — 주택임대차보호법 전환율 상한 검증 및 오류 수정
-- [ ] **REALTY-03**: 중개보수 계산기 (brokerage-fee) — 공인중개사법 중개보수 요율 검증 및 오류 수정
+- [x] **REALTY-01**: 임대차 보증금 반환 계산기 (deposit-return) — 주택임대차보호법 기준 검증 및 오류 수정
+- [x] **REALTY-02**: 전월세 전환율 계산기 (rent-conversion) — 주택임대차보호법 전환율 상한 검증 및 오류 수정
+- [x] **REALTY-03**: 중개보수 계산기 (brokerage-fee) — 공인중개사법 중개보수 요율 검증 및 오류 수정
 - [x] **REALTY-04**: 청약가점 계산기 (subscription-score) — 주택공급에관한규칙 가점 기준 검증 및 오류 수정
 - [x] **REALTY-05**: DSR 계산기 (dsr) — 은행업감독규정 DSR 기준 검증 및 오류 수정
 - [x] **REALTY-06**: LTV 계산기 (ltv) — 은행업감독규정 LTV 기준 검증 및 오류 수정
@@ -136,9 +136,9 @@
 | TAX-08 | Phase 16 | Complete |
 | TAX-09 | Phase 16 | Complete |
 | TAX-10 | Phase 16 | Complete |
-| REALTY-01 | Phase 17 | Pending |
-| REALTY-02 | Phase 17 | Pending |
-| REALTY-03 | Phase 17 | Pending |
+| REALTY-01 | Phase 17 | Complete |
+| REALTY-02 | Phase 17 | Complete |
+| REALTY-03 | Phase 17 | Complete |
 | REALTY-04 | Phase 17 | Complete |
 | REALTY-05 | Phase 17 | Complete |
 | REALTY-06 | Phase 17 | Complete |
