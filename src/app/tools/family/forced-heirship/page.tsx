@@ -136,7 +136,7 @@ export default function ForcedHeirshipPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">1년 이내 생전증여 합계 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">생전증여 합계 (원) <span className="text-xs text-gray-500">(제3자: 1년 이내 / 상속인: 기간 제한 없음)</span></label>
           <input
             type="text"
             inputMode="numeric"
