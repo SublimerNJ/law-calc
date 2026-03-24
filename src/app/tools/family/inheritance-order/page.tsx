@@ -278,17 +278,8 @@ export default function InheritanceOrderPage() {
           </label>
         </div>
 
-        {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-sm text-red-500">{error}</p>
-          </div>
-        )}
-
-        {warning && (
-          <div className="mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg">
-            <p className="text-sm text-orange-500">{warning}</p>
-          </div>
-        )}
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleDetermine}
