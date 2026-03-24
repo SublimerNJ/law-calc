@@ -72,27 +72,61 @@ export default function SeverancePayPage() {
   const [monthlyWage, setMonthlyWage] = useState('');
   const [totalWage, setTotalWage] = useState('');
   const [result, setResult] = useState<CalcResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
-    if (!startDate || !endDate) return;
+    setError(null);
+    setWarning(null);
+
+    if (!startDate || !endDate) {
+      setError('입사일과 퇴사일을 모두 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const start = new Date(startDate);
     const end = new Date(endDate);
+    const totalDays = getDaysInRange(start, end);
+
+    if (totalDays <= 0) {
+      setError('퇴사일이 입사일보다 앞설 수 없습니다.');
+      setResult(null);
+      return;
+    }
 
     let threeMonthTotal: number;
     if (wageMode === 'monthly') {
       const monthly = parseInt(monthlyWage.replace(/[^0-9]/g, ''), 10);
-      if (!monthly || monthly <= 0) return;
+      if (!monthly || monthly <= 0) {
+        setError('월 급여를 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (monthly > 100_000_000) {
+        setWarning('월 급여가 1억원을 초과합니다. 입력값을 확인해주세요.');
+      }
       threeMonthTotal = monthly * 3;
     } else {
       threeMonthTotal = parseInt(totalWage.replace(/[^0-9]/g, ''), 10);
-      if (!threeMonthTotal || threeMonthTotal <= 0) return;
+      if (!threeMonthTotal || threeMonthTotal <= 0) {
+        setError('3개월 총 임금을 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (threeMonthTotal > 300_000_000) {
+        setWarning('3개월 총 임금이 3억원을 초과합니다. 입력값을 확인해주세요.');
+      }
     }
 
-    const totalDays = getDaysInRange(start, end);
-    if (totalDays <= 0) return;
+    const threeMonthDays = getThreeMonthDays(end);
+    if (threeMonthDays <= 0) {
+      setError('3개월 역일수 계산 오류가 발생했습니다. 퇴사일을 확인해주세요.');
+      setResult(null);
+      return;
+    }
 
     const eligible = totalDays >= 365;
-    const threeMonthDays = getThreeMonthDays(end);
     const dailyAvgWage = threeMonthTotal / threeMonthDays;
     const severancePay = Math.floor(dailyAvgWage * 30 * (totalDays / 365));
     const years = totalDays / 365;
@@ -127,11 +161,11 @@ export default function SeverancePayPage() {
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-slate-600 mb-2">입사일</label>
+            <label className="block text-sm text-slate-600 mb-2">입사일 <span className="text-red-500">*</span></label>
             <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className="block text-sm text-slate-600 mb-2">퇴사일</label>
+            <label className="block text-sm text-slate-600 mb-2">퇴사일 <span className="text-red-500">*</span></label>
             <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} className={inputClass} />
           </div>
         </div>
@@ -153,17 +187,20 @@ export default function SeverancePayPage() {
 
         {wageMode === 'monthly' ? (
           <div className="mb-6">
-            <label className="block text-sm text-slate-600 mb-2">월 급여 (세전, 원)</label>
+            <label className="block text-sm text-slate-600 mb-2">월 급여 (세전, 원) <span className="text-red-500">*</span></label>
             <input type="text" inputMode="numeric" value={displayValue(monthlyWage)} onChange={handleNumberChange(setMonthlyWage)} placeholder="예: 3,000,000" className={inputClass} />
             <p className="text-xs text-gray-500 mt-1">기본급 + 고정수당 포함 (세전 월급)</p>
           </div>
         ) : (
           <div className="mb-6">
-            <label className="block text-sm text-slate-600 mb-2">퇴직 전 3개월 총 임금 (세전, 원)</label>
+            <label className="block text-sm text-slate-600 mb-2">퇴직 전 3개월 총 임금 (세전, 원) <span className="text-red-500">*</span></label>
             <input type="text" inputMode="numeric" value={displayValue(totalWage)} onChange={handleNumberChange(setTotalWage)} placeholder="예: 9,000,000" className={inputClass} />
             <p className="text-xs text-gray-500 mt-1">매월 급여가 다른 경우 (잔업수당 변동 등) 3개월 합계 직접 입력</p>
           </div>
         )}
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button onClick={handleCalculate} className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: category.color }}>
           퇴직금 계산하기
@@ -177,8 +214,8 @@ export default function SeverancePayPage() {
 
             {!result.eligible && (
               <div className="mb-4 p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
-                <p className="text-sm text-yellow-400">
-                  재직기간 1년 미만({formatNumber(result.totalDays)}일). 법정 퇴직금은 1년 이상 근무 시 발생하나, 취업규칙에 따라 비례 퇴직금이 지급될 수 있습니다.
+                <p className="text-sm text-yellow-600">
+                  퇴직금 지급 요건 미충족 (근속 1년 미만, {formatNumber(result.totalDays)}일). 법정 퇴직금은 1년 이상 근무 시 발생하나, 취업규칙에 따라 비례 퇴직금이 지급될 수 있습니다.
                 </p>
               </div>
             )}
