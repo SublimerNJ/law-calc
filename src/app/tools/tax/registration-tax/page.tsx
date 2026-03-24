@@ -22,7 +22,7 @@ type RegistrationType =
   | 'license';
 
 const REGISTRATION_TYPES: { value: RegistrationType; label: string; rateLabel: string; amountLabel: string }[] = [
-  { value: 'ownership-transfer', label: '부동산 소유권 이전', rateLabel: '1.5%', amountLabel: '취득가액 (원)' },
+  { value: 'ownership-transfer', label: '부동산 소유권 이전 (유상)', rateLabel: '2.0%', amountLabel: '취득가액 (원)' },
   { value: 'ownership-preservation', label: '부동산 소유권 보존', rateLabel: '0.8%', amountLabel: '취득가액 (원)' },
   { value: 'mortgage', label: '부동산 저당권 설정', rateLabel: '0.2%', amountLabel: '채권금액 (원)' },
   { value: 'corporation-establishment', label: '법인 설립/증자', rateLabel: '0.4%', amountLabel: '납입자본금 (원)' },
@@ -33,7 +33,7 @@ const REGISTRATION_TYPES: { value: RegistrationType; label: string; rateLabel: s
 ];
 
 const RATE_MAP: Record<Exclude<RegistrationType, 'license'>, number> = {
-  'ownership-transfer': 0.015,
+  'ownership-transfer': 0.02,
   'ownership-preservation': 0.008,
   'mortgage': 0.002,
   'corporation-establishment': 0.004,
@@ -222,7 +222,7 @@ export default function RegistrationTaxPage() {
 합계 = 등록면허세 + 지방교육세 (최소 6,000원)`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 지방세법 제23조~제36조(등록면허세) - 등록에 대한 등록면허세는 등록 당시의 가액 또는 채권금액 등을 과세표준으로 하여 해당 세율을 적용합니다. 최소 세액은 6,000원입니다.
+              법적 근거: 지방세법 제28조(등록면허세 세율), 제34조(면허에 대한 등록면허세) - 부동산 소유권 이전(유상) 20/1000, 소유권 보존 8/1000, 저당권 설정 2/1000. 최소 세액 6,000원.
             </p>
           </div>
         </div>
