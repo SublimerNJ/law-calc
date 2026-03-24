@@ -107,16 +107,28 @@ export default function StatuteOfLimitationsPage() {
   const [claimTypeIdx, setClaimTypeIdx] = useState<number>(0);
   const [startDate, setStartDate] = useState('');
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const calculate = () => {
-    if (!startDate) return;
+    setError(null);
+    setWarning(null);
+    // INPUT-02: 기산일 필수
+    if (!startDate) {
+      setError('기산일을 선택해주세요.');
+      setResult(null);
+      return;
+    }
     const claim = CLAIM_TYPES[claimTypeIdx];
     const start = new Date(startDate);
-    const expiry = new Date(start);
-    expiry.setFullYear(expiry.getFullYear() + claim.years);
-
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    // EDGE-02: 미래 기산일 경고 (차단하지는 않음 — 계약 만료일 등 미래 기산도 유효)
+    if (start > today) {
+      setWarning('기산일이 오늘 이후입니다. 미래 기산일인 경우 그대로 계산합니다.');
+    }
+    const expiry = new Date(start);
+    expiry.setFullYear(expiry.getFullYear() + claim.years);
     const expired = expiry <= today;
 
     setResult({
@@ -147,7 +159,7 @@ export default function StatuteOfLimitationsPage() {
           </div>
 
           <div>
-            <label className="block text-sm text-slate-600 mb-1">기산일 (권리 행사 가능일 또는 피해 인지일 — 민법 제166조)</label>
+            <label className="block text-sm text-slate-600 mb-1">기산일 (권리 행사 가능일 또는 피해 인지일 — 민법 제166조) *</label>
             <input
               type="date"
               value={startDate}
@@ -157,6 +169,8 @@ export default function StatuteOfLimitationsPage() {
           </div>
         </div>
 
+        {error && <p className="text-red-500 text-sm mt-3 mb-0">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mt-3 mb-0">{warning}</p>}
         <button
           onClick={calculate}
           className="w-full mt-6 py-3 rounded-lg font-semibold text-slate-900"
@@ -180,7 +194,7 @@ export default function StatuteOfLimitationsPage() {
             </div>
             <div className="flex justify-between">
               <span className="text-slate-600">남은 기간</span>
-              <span className={`font-semibold ${result.expired ? 'text-red-400' : 'text-green-400'}`}>
+              <span className={`font-semibold ${result.expired ? 'text-red-600' : 'text-green-600'}`}>
                 {result.remaining}
               </span>
             </div>
