@@ -42,14 +42,14 @@
 
 ### 세금 (TAX)
 
-- [ ] **TAX-01**: 양도소득세 계산기 (capital-gains-tax) — 소득세법 양도소득 세율·공제 검증 및 오류 수정
-- [ ] **TAX-02**: 종합소득세 계산기 (comprehensive-income-tax) — 소득세법 종합소득 세율·공제 검증 및 오류 수정
+- [x] **TAX-01**: 양도소득세 계산기 (capital-gains-tax) — 소득세법 양도소득 세율·공제 검증 및 오류 수정
+- [x] **TAX-02**: 종합소득세 계산기 (comprehensive-income-tax) — 소득세법 종합소득 세율·공제 검증 및 오류 수정
 - [x] **TAX-03**: 취득세 계산기 (acquisition-tax) — 지방세법 취득세율 검증 및 오류 수정
 - [x] **TAX-04**: 종합부동산세·재산세 계산기 (comprehensive-property-tax) — 종합부동산세법·지방세법 검증 및 오류 수정
 - [x] **TAX-05**: 등록면허세 계산기 (registration-tax) — 지방세법 등록면허세 기준 검증 및 오류 수정
 - [x] **TAX-06**: 부가가치세 계산기 (vat) — 부가가치세법 기준 검증 및 오류 수정
 - [x] **TAX-07**: 증권거래세 계산기 (securities-tax) — 증권거래세법 세율 검증 및 오류 수정
-- [ ] **TAX-08**: 연말정산 계산기 (year-end-tax) — 소득세법 공제항목·한도 검증 및 오류 수정
+- [x] **TAX-08**: 연말정산 계산기 (year-end-tax) — 소득세법 공제항목·한도 검증 및 오류 수정
 - [x] **TAX-09**: 4대보험료 계산기 (four-insurances) — 각 보험료율 검증 및 오류 수정
 - [x] **TAX-10**: 월세 세액공제 계산기 (rent-tax-credit) — 조세특례제한법 세액공제 기준 검증 및 오류 수정
 
@@ -58,8 +58,8 @@
 - [ ] **REALTY-01**: 임대차 보증금 반환 계산기 (deposit-return) — 주택임대차보호법 기준 검증 및 오류 수정
 - [ ] **REALTY-02**: 전월세 전환율 계산기 (rent-conversion) — 주택임대차보호법 전환율 상한 검증 및 오류 수정
 - [ ] **REALTY-03**: 중개보수 계산기 (brokerage-fee) — 공인중개사법 중개보수 요율 검증 및 오류 수정
-- [ ] **REALTY-04**: 청약가점 계산기 (subscription-score) — 주택공급에관한규칙 가점 기준 검증 및 오류 수정
-- [ ] **REALTY-05**: DSR 계산기 (dsr) — 은행업감독규정 DSR 기준 검증 및 오류 수정
+- [x] **REALTY-04**: 청약가점 계산기 (subscription-score) — 주택공급에관한규칙 가점 기준 검증 및 오류 수정
+- [x] **REALTY-05**: DSR 계산기 (dsr) — 은행업감독규정 DSR 기준 검증 및 오류 수정
 - [ ] **REALTY-06**: LTV 계산기 (ltv) — 은행업감독규정 LTV 기준 검증 및 오류 수정
 - [ ] **REALTY-07**: DTI 계산기 (dti) — 은행업감독규정 DTI 기준 검증 및 오류 수정
 
@@ -126,21 +126,21 @@
 | LABOR-10 | Phase 15 | Complete |
 | LABOR-11 | Phase 15 | Complete |
 | LABOR-12 | Phase 15 | Complete |
-| TAX-01 | Phase 16 | Pending |
-| TAX-02 | Phase 16 | Pending |
+| TAX-01 | Phase 16 | Complete |
+| TAX-02 | Phase 16 | Complete |
 | TAX-03 | Phase 16 | Complete |
 | TAX-04 | Phase 16 | Complete |
 | TAX-05 | Phase 16 | Complete |
 | TAX-06 | Phase 16 | Complete |
 | TAX-07 | Phase 16 | Complete |
-| TAX-08 | Phase 16 | Pending |
+| TAX-08 | Phase 16 | Complete |
 | TAX-09 | Phase 16 | Complete |
 | TAX-10 | Phase 16 | Complete |
 | REALTY-01 | Phase 17 | Pending |
 | REALTY-02 | Phase 17 | Pending |
 | REALTY-03 | Phase 17 | Pending |
-| REALTY-04 | Phase 17 | Pending |
-| REALTY-05 | Phase 17 | Pending |
+| REALTY-04 | Phase 17 | Complete |
+| REALTY-05 | Phase 17 | Complete |
 | REALTY-06 | Phase 17 | Pending |
 | REALTY-07 | Phase 17 | Pending |
 | TRAFFIC-01 | Phase 18 | Pending |

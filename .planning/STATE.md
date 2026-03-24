@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: 전체 계산기 법률 정확성 감사
 status: Phase complete — ready for verification
-last_updated: "2026-03-24T03:21:18.705Z"
+last_updated: "2026-03-24T03:32:01.308Z"
 progress:
   total_phases: 9
-  completed_phases: 4
-  total_plans: 13
-  completed_plans: 13
+  completed_phases: 5
+  total_plans: 16
+  completed_plans: 16
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구 제공
-**Current focus:** Phase 16 — tax-legal-audit
+**Current focus:** Phase 17 — realty-legal-audit
 
 ## Current Position
 
-Phase: 16 (tax-legal-audit) — EXECUTING
-Plan: 4 of 4
+Phase: 17 (realty-legal-audit) — EXECUTING
+Plan: 3 of 3
 
 ## Accumulated Context
 
@@ -47,6 +47,8 @@ Plan: 4 of 4
   - 증권거래세 2025년 기준: 코스피 증권거래세 0%, 농어촌특별세 0.15% (증권거래세법 제8조)
   - 월세 세액공제율: 총급여 5,500만원 이하 17%, 초과 15% (조세특례제한법 제95조의2)
   - 월세 세액공제 법적 근거: 소득세법이 아닌 조세특례제한법 제95조의2
+  - LTV 조정대상지역 비율: 50% → 70% 수정 (금융위원회 2022.8 완화 기준), 지역 구분 세분화 (주택보유 여부·생애최초 여부)
+  - LTV/DTI 법적 근거: 은행업감독규정 제26조(담보인정비율), 제26조의2(총부채상환비율) 정확한 조문 명시
 - **Blockers**:
   - None
 
