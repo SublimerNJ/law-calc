@@ -14,7 +14,7 @@
 - [ ] **COURT-03**: 지급명령 비용 계산기 (payment-order) — 독촉절차 비용 기준 검증 및 오류 수정
 - [ ] **COURT-04**: 민사조정 비용 계산기 (civil-mediation) — 민사조정법 기준 검증 및 오류 수정
 - [ ] **COURT-05**: 가사소송 비용 계산기 (family-court) — 가사소송법 비용 기준 검증 및 오류 수정
-- [ ] **COURT-06**: 전자소송 비용 계산기 (e-court) — 전자소송 할인 기준 검증 및 오류 수정
+- [x] **COURT-06**: 전자소송 비용 계산기 (e-court) — 전자소송 할인 기준 검증 및 오류 수정
 
 ### 가사/가족법 (FAMILY)
 
@@ -107,7 +107,7 @@
 | COURT-03 | Phase 13 | Pending |
 | COURT-04 | Phase 13 | Pending |
 | COURT-05 | Phase 13 | Pending |
-| COURT-06 | Phase 13 | Pending |
+| COURT-06 | Phase 13 | Complete |
 | FAMILY-01 | Phase 14 | Pending |
 | FAMILY-02 | Phase 14 | Pending |
 | FAMILY-03 | Phase 14 | Pending |
