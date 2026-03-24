@@ -30,10 +30,14 @@ export default function ShutdownAllowancePage() {
   const dailyOrdinaryWage = Math.floor(ordinaryWageMonthly / 30);
   const avgWage70 = Math.floor(avgWage * 0.7);
 
-  // Which base to apply
+  // 근로기준법 제46조 제1항:
+  // 원칙: 평균임금의 70% 이상 지급
+  // 단서: 평균임금의 70%가 통상임금을 초과하면 통상임금을 지급할 수 있음 (상한 제한)
   const effectiveDaily = laborBoardApproval
     ? Math.floor(avgWage * (parseFloat(approvedRate) || 70) / 100)
-    : Math.max(avgWage70, dailyOrdinaryWage);
+    : (avgWage70 > dailyOrdinaryWage && dailyOrdinaryWage > 0)
+      ? dailyOrdinaryWage
+      : avgWage70;
 
   const totalByAvg70 = avgWage70 * days;
   const totalByOrdinary = dailyOrdinaryWage * days;
@@ -181,7 +185,8 @@ export default function ShutdownAllowancePage() {
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
-{`max(평균임금×70%, 통상임금) × 휴업일수 = 총 휴업수당`}
+{`평균임금×70% × 휴업일수 = 총 휴업수당
+(단, 평균임금 70%가 통상임금 초과 시 통상임금 적용)`}
             </pre>
             <p className="text-xs text-gray-500">
               법적 근거: 근로기준법 제46조 (휴업수당)
