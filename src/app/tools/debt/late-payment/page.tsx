@@ -24,10 +24,12 @@ export default function LatePaymentPage() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState(getToday());
   const [isLawsuit, setIsLawsuit] = useState(false);
+  const [isCommercial, setIsCommercial] = useState(false);
   const [result, setResult] = useState<{
     principal: number;
     days: number;
     civilInterest: number;
+    commercialInterest: number;
     lawsuitInterest: number;
   } | null>(null);
   const [error, setError] = useState('');
@@ -54,6 +56,7 @@ export default function LatePaymentPage() {
       principal: p,
       days,
       civilInterest: calculateLatePayment(p, days, 5),
+      commercialInterest: calculateLatePayment(p, days, 6),
       lawsuitInterest: calculateLatePayment(p, days, 12),
     });
   };
@@ -100,6 +103,18 @@ export default function LatePaymentPage() {
           />
         </div>
 
+        <div className="mb-4">
+          <label className="flex items-center gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={isCommercial}
+              onChange={(e) => setIsCommercial(e.target.checked)}
+              className="w-4 h-4 accent-[#06b6d4]"
+            />
+            <span className="text-sm text-slate-600">상사 채권 여부 (상법 제54조 연 6%)</span>
+          </label>
+        </div>
+
         <div className="mb-6">
           <label className="flex items-center gap-3 cursor-pointer">
             <input
@@ -108,8 +123,9 @@ export default function LatePaymentPage() {
               onChange={(e) => setIsLawsuit(e.target.checked)}
               className="w-4 h-4 accent-[#06b6d4]"
             />
-            <span className="text-sm text-slate-600">소송 제기 여부 (소송촉진법 이율 강조)</span>
+            <span className="text-sm text-slate-600">소송 제기 여부 (소송촉진특례법 제3조 연 12%)</span>
           </label>
+          <p className="text-xs text-gray-500 mt-1 ml-7">※ 소장 부본 송달일 다음날부터 소송촉진법 이율 적용</p>
         </div>
 
         {error && (
@@ -133,14 +149,20 @@ export default function LatePaymentPage() {
 
           <div className="grid grid-cols-1 gap-4 mb-4">
             <div>
-              <p className="text-sm text-slate-600 mb-1">민사 법정이자 (연 5%)</p>
-              <p className={`text-2xl font-bold ${isLawsuit ? 'text-slate-600' : ''}`} style={!isLawsuit ? { color: category.color } : undefined}>
+              <p className="text-sm text-slate-600 mb-1">민사 법정이자 (연 5%) — 민법 제379조</p>
+              <p className={`text-2xl font-bold ${isLawsuit || isCommercial ? 'text-slate-400' : ''}`} style={!isLawsuit && !isCommercial ? { color: category.color } : undefined}>
                 {formatNumber(result.civilInterest)}원
               </p>
             </div>
             <div>
-              <p className="text-sm text-slate-600 mb-1">소송촉진법 지연이자 (연 12%)</p>
-              <p className={`text-2xl font-bold ${!isLawsuit ? 'text-slate-600' : ''}`} style={isLawsuit ? { color: category.color } : undefined}>
+              <p className="text-sm text-slate-600 mb-1">상사 법정이자 (연 6%) — 상법 제54조</p>
+              <p className={`text-2xl font-bold ${!isCommercial || isLawsuit ? 'text-slate-400' : ''}`} style={isCommercial && !isLawsuit ? { color: category.color } : undefined}>
+                {formatNumber(result.commercialInterest)}원
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-slate-600 mb-1">소송촉진법 지연이자 (연 12%) — 소송촉진 등에 관한 특례법 제3조</p>
+              <p className={`text-2xl font-bold ${!isLawsuit ? 'text-slate-400' : ''}`} style={isLawsuit ? { color: category.color } : undefined}>
                 {formatNumber(result.lawsuitInterest)}원
               </p>
             </div>
@@ -162,17 +184,20 @@ export default function LatePaymentPage() {
             <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
               {`원금 × 지연이율 × 일수 ÷ 365 = 지연손해금
 
-민사 법정이자 (연 5%)
+민사 법정이자 (연 5%, 민법 제379조)
   = ${formatNumber(result.principal)}원 × 5% × ${result.days}일 ÷ 365 = ${formatNumber(result.civilInterest)}원
 
-소송촉진법 지연이자 (연 12%)
+상사 법정이자 (연 6%, 상법 제54조)
+  = ${formatNumber(result.principal)}원 × 6% × ${result.days}일 ÷ 365 = ${formatNumber(result.commercialInterest)}원
+
+소송촉진법 지연이자 (연 12%, 소송촉진 등에 관한 특례법 제3조)
   = ${formatNumber(result.principal)}원 × 12% × ${result.days}일 ÷ 365 = ${formatNumber(result.lawsuitInterest)}원`}
             </pre>
           </div>
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제397조(이행지체), 소송촉진 등에 관한 특례법 제3조(연 12%)
+              법적 근거: 민법 제379조(법정이율 연 5%), 상법 제54조(상사 법정이율 연 6%), 소송촉진 등에 관한 특례법 제3조(연 12%)
             </p>
           </div>
         </div>
