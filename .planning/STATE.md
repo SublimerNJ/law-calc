@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
 status: Ready to execute
-last_updated: "2026-03-24T23:46:17.683Z"
+last_updated: "2026-03-24T23:47:34.794Z"
 progress:
   total_phases: 20
   completed_phases: 17
   total_plans: 50
-  completed_plans: 48
+  completed_plans: 49
 ---
 
 # Project State
@@ -23,7 +23,7 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 32 (ux) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Accumulated Context
 
@@ -57,10 +57,11 @@ Plan: 2 of 3
   - BAC type=number → type=text+inputMode=decimal: 모바일 UX 개선, 교통/형사 계산기 dark 테마 잔재 → light 테마 통일 (31-ux-01)
   - text-red-400 결과 섹션 표시 → text-red-600 통일, bg-red-500/10 → bg-red-50 dark 테마 잔재 제거 (31-ux-03)
   - Phase 31 전체 완료: 7개 교통/채권 계산기 CONSIST-01~03, FLOW-01~03 충족 (31-ux-03)
+  - damages 4종 계산기에도 error(text-red-500)/warning(text-orange-500) 분리 패턴 적용, type=number→type=text+inputMode=decimal 전환 (32-ux-01)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-25
-- **Stopped At**: Completed 31-03-PLAN.md (Phase 31 전체 완료 — 7개 교통/채권 계산기 일관성 패치)
+- **Stopped At**: Completed 32-01-PLAN.md (손해배상 4종 계산기 UX 감사 수정 완료 — damages-general/defamation/medical-malpractice/lost-income)
