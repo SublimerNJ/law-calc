@@ -13,6 +13,8 @@ const SERVICE_FEE_UNIT = 5_500;
 const MEDIATION_SERVICE_ROUNDS = 5;
 // 소송사건 송달료 예납 회수 (비교용): 1심 15회분
 const LAWSUIT_SERVICE_ROUNDS = 15;
+// 비현실적 금액 기준 (1000억원)
+const MAX_AMOUNT = 100_000_000_000;
 
 // 소송 인지대 계산 (민사소송등인지법 별표 1)
 // 100원 미만 버림: 민사소송등인지법 제2조 제3항
@@ -48,10 +50,32 @@ export default function CivilMediationPage() {
   const [amount, setAmount] = useState('');
   const [parties, setParties] = useState(2);
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
 
   const handleCalculate = () => {
+    setError('');
+    setWarning('');
+    setResult(null);
+
+    // INPUT-02: 필수 필드 비어있으면 안내
+    if (!amount.trim()) {
+      setError('조정 신청 금액을 입력해주세요.');
+      return;
+    }
+
     const val = parseInt(amount.replace(/,/g, ''), 10);
-    if (!val || val <= 0) return;
+
+    // INPUT-01: 음수/0 → 에러
+    if (!val || val <= 0) {
+      setError('금액은 0보다 커야 합니다.');
+      return;
+    }
+
+    // INPUT-03: 비현실 값 경고
+    if (val > MAX_AMOUNT) {
+      setWarning('입력값이 비현실적으로 큽니다. 확인해주세요.');
+    }
 
     const lawsuitStampFee = calculateLawsuitStampFee(val);
 
@@ -72,6 +96,8 @@ export default function CivilMediationPage() {
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^0-9]/g, '');
     setAmount(raw);
+    setError('');
+    setWarning('');
   };
 
   return (
@@ -80,7 +106,9 @@ export default function CivilMediationPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">조정 신청 금액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">
+            조정 신청 금액 (원) <span className="text-red-500">*</span>
+          </label>
           <input
             type="text"
             inputMode="numeric"
@@ -89,10 +117,16 @@ export default function CivilMediationPage() {
             placeholder="예: 50,000,000"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
-          {amount && (
+          {amount && !error && (
             <p className="text-xs text-gray-500 mt-1">
               {formatNumber(parseInt(amount))}원
             </p>
+          )}
+          {error && (
+            <p className="text-xs text-red-500 mt-1">{error}</p>
+          )}
+          {warning && (
+            <p className="text-xs text-orange-500 mt-1">{warning}</p>
           )}
         </div>
 
@@ -123,9 +157,13 @@ export default function CivilMediationPage() {
           <div className="space-y-4">
             <div>
               <p className="text-sm text-slate-600 mb-1">조정신청 인지대 (소송인지의 1/10)</p>
-              <p className="text-2xl font-bold" style={{ color: category.color }}>
-                {formatNumber(result.mediationStampFee)}원
-              </p>
+              {result.mediationStampFee === 0 ? (
+                <p className="text-base text-slate-600">해당 조건에서는 비용이 발생하지 않습니다.</p>
+              ) : (
+                <p className="text-2xl font-bold" style={{ color: category.color }}>
+                  {formatNumber(result.mediationStampFee)}원
+                </p>
+              )}
             </div>
 
             <div>
@@ -135,14 +173,18 @@ export default function CivilMediationPage() {
 
             <div className="pt-4 border-t border-slate-200">
               <p className="text-sm text-slate-600 mb-1">합계</p>
-              <p className="text-2xl font-bold" style={{ color: category.color }}>
-                {formatNumber(result.total)}원
-              </p>
+              {result.total === 0 ? (
+                <p className="text-base text-slate-600">해당 조건에서는 비용이 발생하지 않습니다.</p>
+              ) : (
+                <p className="text-2xl font-bold" style={{ color: category.color }}>
+                  {formatNumber(result.total)}원
+                </p>
+              )}
             </div>
 
             <div className="pt-4 border-t border-slate-200">
               <p className="text-sm text-slate-600 mb-1">소송 대비 절약액</p>
-              <p className="text-lg font-semibold text-green-400">
+              <p className="text-lg font-semibold text-green-600">
                 -{formatNumber(result.savings)}원
               </p>
               <p className="text-xs text-gray-500 mt-1">
