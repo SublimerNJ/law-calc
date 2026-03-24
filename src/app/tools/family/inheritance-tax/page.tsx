@@ -31,7 +31,8 @@ function calculateInheritanceTax(
   debts: number
 ): TaxResult {
   // 1. 과세가액
-  const cappedFuneral = Math.min(funeralExpenses, 15_000_000);
+  // 장례비 공제: 기본 한도 1,000만원 (봉안/자연장지 시 +500만원은 별도 — 상속세및증여세법 제14조 제5항)
+  const cappedFuneral = Math.min(funeralExpenses, 10_000_000);
   const taxableBase = Math.max(0, grossEstate - debts - cappedFuneral);
 
   // 2. 공제
@@ -110,7 +111,7 @@ export default function InheritanceTaxPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">장례비 (원, 최대 공제 1,500만원)</label>
+          <label className="block text-sm text-slate-600 mb-2">장례비 (원, 최대 공제 1,000만원)</label>
           <input
             type="text"
             inputMode="numeric"
