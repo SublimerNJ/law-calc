@@ -22,6 +22,8 @@ export default function DepositReturnPage() {
   const [days, setDays] = useState('');
   const [rate, setRate] = useState('5');
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleDepositChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^0-9]/g, '');
@@ -29,10 +31,32 @@ export default function DepositReturnPage() {
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const depositVal = parseInt(deposit, 10);
     const daysVal = parseInt(days, 10);
     const rateVal = parseFloat(rate);
-    if (!depositVal || depositVal <= 0 || !daysVal || daysVal <= 0 || !rateVal || rateVal <= 0) return;
+
+    if (!deposit || isNaN(depositVal) || depositVal <= 0) {
+      setError('보증금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (!days || isNaN(daysVal) || daysVal <= 0) {
+      setError('반환 지연일수를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (!rate || isNaN(rateVal) || rateVal <= 0) {
+      setError('연체이자율을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (depositVal > 10_000_000_000) {
+      setWarning('보증금이 100억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const interest = Math.floor(depositVal * (rateVal / 100) * (daysVal / 365));
     setResult({
@@ -48,14 +72,14 @@ export default function DepositReturnPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">보증금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">보증금 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
             value={deposit ? parseInt(deposit).toLocaleString('ko-KR') : ''}
             onChange={handleDepositChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {deposit && (
             <p className="text-xs text-gray-500 mt-1">
@@ -65,29 +89,32 @@ export default function DepositReturnPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">반환 지연일수 (일)</label>
+          <label className="block text-sm text-slate-600 mb-2">반환 지연일수 (일) *</label>
           <input
-            type="number"
+            type="text"
+            inputMode="numeric"
             value={days}
-            onChange={e => setDays(e.target.value)}
+            onChange={e => setDays(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 30"
-            min="1"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">연체이자율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">연체이자율 (%) *</label>
           <input
-            type="number"
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*\.?[0-9]*"
             value={rate}
-            onChange={e => setRate(e.target.value)}
-            step="0.1"
-            min="0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            onChange={e => setRate(e.target.value.replace(/[^0-9.]/g, ''))}
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">민법 제379조 법정이율: 연 5% (보증금 미반환 시)</p>
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
