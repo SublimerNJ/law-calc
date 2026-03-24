@@ -282,8 +282,8 @@ Plans:
   5. 6개 계산기 간 급여 입력 방식(시급/월급/연봉), 기간 입력 형식, 결과 금액 표시가 일관된다
 **Plans**: 3 plans
 Plans:
-- [ ] 26-01-PLAN.md — severance-pay + dismissal-notice + annual-leave-pay 감사 및 수정
-- [ ] 26-02-PLAN.md — overtime-pay + weekly-holiday-pay + minimum-wage-check 감사 및 수정
+- [x] 26-01-PLAN.md — severance-pay + dismissal-notice + annual-leave-pay 감사 및 수정
+- [x] 26-02-PLAN.md — overtime-pay + weekly-holiday-pay + minimum-wage-check 감사 및 수정
 - [ ] 26-03-PLAN.md — 6개 계산기 일관성 통일
 
 ### Phase 27: 노동/근로 Part 2 UX·논리 감사
@@ -411,7 +411,7 @@ Plans:
 | 23. 경계선 UX 개선 + 검증 | v1.4 | 1/1 | Complete | 2026-03-25 |
 | 24. 소송/법원 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 25. 가사/가족법 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
