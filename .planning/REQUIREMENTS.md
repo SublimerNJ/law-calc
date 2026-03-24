@@ -60,8 +60,8 @@
 - [ ] **REALTY-03**: 중개보수 계산기 (brokerage-fee) — 공인중개사법 중개보수 요율 검증 및 오류 수정
 - [x] **REALTY-04**: 청약가점 계산기 (subscription-score) — 주택공급에관한규칙 가점 기준 검증 및 오류 수정
 - [x] **REALTY-05**: DSR 계산기 (dsr) — 은행업감독규정 DSR 기준 검증 및 오류 수정
-- [ ] **REALTY-06**: LTV 계산기 (ltv) — 은행업감독규정 LTV 기준 검증 및 오류 수정
-- [ ] **REALTY-07**: DTI 계산기 (dti) — 은행업감독규정 DTI 기준 검증 및 오류 수정
+- [x] **REALTY-06**: LTV 계산기 (ltv) — 은행업감독규정 LTV 기준 검증 및 오류 수정
+- [x] **REALTY-07**: DTI 계산기 (dti) — 은행업감독규정 DTI 기준 검증 및 오류 수정
 
 ### 교통/형사 (TRAFFIC)
 
@@ -141,8 +141,8 @@
 | REALTY-03 | Phase 17 | Pending |
 | REALTY-04 | Phase 17 | Complete |
 | REALTY-05 | Phase 17 | Complete |
-| REALTY-06 | Phase 17 | Pending |
-| REALTY-07 | Phase 17 | Pending |
+| REALTY-06 | Phase 17 | Complete |
+| REALTY-07 | Phase 17 | Complete |
 | TRAFFIC-01 | Phase 18 | Pending |
 | TRAFFIC-02 | Phase 18 | Pending |
 | TRAFFIC-03 | Phase 18 | Pending |
