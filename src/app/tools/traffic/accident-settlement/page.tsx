@@ -39,9 +39,27 @@ export default function AccidentSettlementPage() {
   const [lostWages, setLostWages] = useState('');
   const [faultPercent, setFaultPercent] = useState('0');
   const [result, setResult] = useState<CalculationResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const medical = parseInt(medicalCost.replace(/[^0-9]/g, ''), 10) || 0;
+
+    // INPUT-02: 치료비 필수
+    if (!medicalCost || medical <= 0) {
+      setError('치료비를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    // INPUT-03: 치료비 100억 초과 경고 (계산 허용)
+    if (medical > 10_000_000_000) {
+      setWarning('치료비가 100억원을 초과합니다. 입력값을 확인해주세요.');
+    }
+
     const hospDays = parseInt(hospitalizationDays, 10) || 0;
     const outDays = parseInt(outpatientDays, 10) || 0;
     const fault = Math.min(100, Math.max(0, parseInt(faultPercent, 10) || 0));
@@ -79,7 +97,7 @@ export default function AccidentSettlementPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">치료비 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">치료비 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -105,7 +123,7 @@ export default function AccidentSettlementPage() {
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-slate-600 mb-2">입원일수 (일)</label>
+            <label className="block text-sm text-slate-600 mb-2">입원일수 (일) *</label>
             <input
               type="text"
               inputMode="numeric"
@@ -116,7 +134,7 @@ export default function AccidentSettlementPage() {
             />
           </div>
           <div>
-            <label className="block text-sm text-slate-600 mb-2">통원일수 (일)</label>
+            <label className="block text-sm text-slate-600 mb-2">통원일수 (일) *</label>
             <input
               type="text"
               inputMode="numeric"
@@ -163,6 +181,9 @@ export default function AccidentSettlementPage() {
           </div>
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -175,6 +196,12 @@ export default function AccidentSettlementPage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.finalAmount === 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">합의금이 0원으로 계산되었습니다. 과실비율 또는 손해항목을 확인해주세요.</p>
+            </div>
+          )}
 
           <div className="space-y-3 mb-4">
             <div className="flex justify-between">
