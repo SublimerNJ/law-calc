@@ -35,6 +35,8 @@ interface InsuranceRow {
 
 export default function FourInsurancesPage() {
   const [salary, setSalary] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     rows: InsuranceRow[];
     totalEmployee: number;
@@ -42,8 +44,20 @@ export default function FourInsurancesPage() {
   } | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const monthlySalary = parseAmount(salary);
-    if (monthlySalary <= 0) return;
+
+    if (monthlySalary <= 0) {
+      setError('월 급여를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (monthlySalary > 50_000_000) {
+      setWarning('월 급여가 5,000만원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const pensionBase = Math.min(monthlySalary, PENSION_CAP);
     const pensionEmployee = Math.floor(pensionBase * PENSION_RATE);
@@ -62,9 +76,9 @@ export default function FourInsurancesPage() {
     const industrialEmployer = Math.floor(monthlySalary * INDUSTRIAL_RATE);
 
     const rows: InsuranceRow[] = [
-      { name: '국민연금', employee: pensionEmployee, employer: pensionEmployer, employeeRate: '4.5%', employerRate: '4.5%' },
-      { name: '건강보험', employee: healthEmployee, employer: healthEmployer, employeeRate: '3.545%', employerRate: '3.545%' },
-      { name: '장기요양보험', employee: longTermEmployee, employer: longTermEmployer, employeeRate: '12.95%*', employerRate: '12.95%*' },
+      { name: '국민연금', employee: pensionEmployee, employer: pensionEmployer, employeeRate: '4.75%', employerRate: '4.75%' },
+      { name: '건강보험', employee: healthEmployee, employer: healthEmployer, employeeRate: '3.595%', employerRate: '3.595%' },
+      { name: '장기요양보험', employee: longTermEmployee, employer: longTermEmployer, employeeRate: '13.14%*', employerRate: '13.14%*' },
       { name: '고용보험', employee: employmentEmployee, employer: employmentEmployer, employeeRate: '0.9%', employerRate: '1.15%' },
       { name: '산재보험', employee: industrialEmployee, employer: industrialEmployer, employeeRate: '-', employerRate: '1.47%' },
     ];
@@ -83,11 +97,14 @@ export default function FourInsurancesPage() {
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">급여 정보 입력</h2>
           <div>
-            <label className="block text-sm text-slate-600 mb-1">월 급여 (원)</label>
-            <input type="text" className={inputClass} placeholder="예: 3,000,000" value={salary} onChange={e => setSalary(e.target.value)} />
+            <label className="block text-sm text-slate-600 mb-1">월 급여 (원) *</label>
+            <input type="text" className={inputClass} placeholder="예: 3,000,000" value={salary} onChange={e => setSalary(e.target.value.replace(/[^0-9]/g, ''))} />
           </div>
           <p className="mt-2 text-xs text-gray-600">* 150인 미만 사업장 기준 (고용안정·직업능력개발 0.25% 적용). 산재보험료율은 제조업 평균(1.47%)이며 업종별로 상이합니다.</p>
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -148,12 +165,12 @@ export default function FourInsurancesPage() {
             </div>
 
             <div className="mt-3 p-3 rounded-lg bg-surface-50">
-              <p className="text-xs text-gray-500">* 장기요양보험 요율은 건강보험료의 12.95% | 국민연금 월 상한 {formatNumber(PENSION_CAP)}원</p>
+              <p className="text-xs text-gray-500">* 장기요양보험 요율은 건강보험료의 13.14% | 국민연금 월 상한 {formatNumber(PENSION_CAP)}원</p>
             </div>
 
             <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
               <p className="font-semibold text-slate-600 mb-1">법적 근거</p>
-              <p>국민연금법, 국민건강보험법, 고용보험법, 산업재해보상보험법 (2026년 요율). 국민연금 상한 월 617만원. 실제 보험료와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
+              <p>국민연금법, 국민건강보험법, 고용보험법, 산업재해보상보험법 (2026년 요율). 국민연금 상한 월 637만원. 실제 보험료와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
             </div>
           </div>
         )}

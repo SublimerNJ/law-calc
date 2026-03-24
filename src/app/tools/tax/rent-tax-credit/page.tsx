@@ -28,6 +28,8 @@ export default function RentTaxCreditPage() {
   const [isHomeless, setIsHomeless] = useState(false);
   const [exceedsMarketValue, setExceedsMarketValue] = useState(false);
 
+  const [error, setError] = useState<string | null>(null);
+
   const [result, setResult] = useState<{
     eligible: boolean;
     items: EligibilityItem[];
@@ -38,8 +40,22 @@ export default function RentTaxCreditPage() {
   } | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+
     const gross = parseAmount(annualGross);
     const rent = parseAmount(monthlyRent);
+
+    if (gross <= 0) {
+      setError('연간 총급여를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (rent <= 0) {
+      setError('월세 납부액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
 
     const items: EligibilityItem[] = [
       {
@@ -86,12 +102,12 @@ export default function RentTaxCreditPage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">기본 정보 입력</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-slate-600 mb-1">연간 총급여 (원)</label>
-              <input type="text" className={inputClass} placeholder="예: 45,000,000" value={annualGross} onChange={e => setAnnualGross(e.target.value)} />
+              <label className="block text-sm text-slate-600 mb-1">연간 총급여 (원) *</label>
+              <input type="text" className={inputClass} placeholder="예: 45,000,000" value={annualGross} onChange={e => setAnnualGross(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
             <div>
-              <label className="block text-sm text-slate-600 mb-1">월세 월 납부액 (원)</label>
-              <input type="text" className={inputClass} placeholder="예: 500,000" value={monthlyRent} onChange={e => setMonthlyRent(e.target.value)} />
+              <label className="block text-sm text-slate-600 mb-1">월세 월 납부액 (원) *</label>
+              <input type="text" className={inputClass} placeholder="예: 500,000" value={monthlyRent} onChange={e => setMonthlyRent(e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
           </div>
 
@@ -117,6 +133,8 @@ export default function RentTaxCreditPage() {
           </div>
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-xl font-semibold text-slate-900 transition-all"
@@ -132,11 +150,11 @@ export default function RentTaxCreditPage() {
             <div className="space-y-2">
               {result.items.map((item, i) => (
                 <div key={i} className={`flex items-center gap-3 p-3 rounded-lg ${item.met ? 'bg-emerald-500/10 border border-emerald-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
-                  <span className={`text-lg ${item.met ? 'text-emerald-400' : 'text-red-400'}`}>
+                  <span className={`text-lg ${item.met ? 'text-emerald-600' : 'text-red-600'}`}>
                     {item.met ? '\u2713' : '\u2717'}
                   </span>
                   <div>
-                    <p className={`text-sm font-medium ${item.met ? 'text-emerald-300' : 'text-red-300'}`}>{item.label}</p>
+                    <p className={`text-sm font-medium ${item.met ? 'text-emerald-600' : 'text-red-600'}`}>{item.label}</p>
                     {!item.met && <p className="text-xs text-gray-500 mt-0.5">{item.reason}</p>}
                   </div>
                 </div>
