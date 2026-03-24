@@ -9,11 +9,11 @@
 
 ### 소송/법원 (COURT)
 
-- [ ] **COURT-01**: 소송비용 계산기 (lawsuit-cost) — 인지대·송달료 산정 기준 법령 원문 대조 검증 및 오류 수정
-- [ ] **COURT-02**: 소액사건 재판비용 계산기 (small-claims) — 소액사건심판법 기준 검증 및 오류 수정
-- [ ] **COURT-03**: 지급명령 비용 계산기 (payment-order) — 독촉절차 비용 기준 검증 및 오류 수정
-- [ ] **COURT-04**: 민사조정 비용 계산기 (civil-mediation) — 민사조정법 기준 검증 및 오류 수정
-- [ ] **COURT-05**: 가사소송 비용 계산기 (family-court) — 가사소송법 비용 기준 검증 및 오류 수정
+- [x] **COURT-01**: 소송비용 계산기 (lawsuit-cost) — 인지대·송달료 산정 기준 법령 원문 대조 검증 및 오류 수정
+- [x] **COURT-02**: 소액사건 재판비용 계산기 (small-claims) — 소액사건심판법 기준 검증 및 오류 수정
+- [x] **COURT-03**: 지급명령 비용 계산기 (payment-order) — 독촉절차 비용 기준 검증 및 오류 수정
+- [x] **COURT-04**: 민사조정 비용 계산기 (civil-mediation) — 민사조정법 기준 검증 및 오류 수정
+- [x] **COURT-05**: 가사소송 비용 계산기 (family-court) — 가사소송법 비용 기준 검증 및 오류 수정
 - [x] **COURT-06**: 전자소송 비용 계산기 (e-court) — 전자소송 할인 기준 검증 및 오류 수정
 
 ### 가사/가족법 (FAMILY)
@@ -102,11 +102,11 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| COURT-01 | Phase 13 | Pending |
-| COURT-02 | Phase 13 | Pending |
-| COURT-03 | Phase 13 | Pending |
-| COURT-04 | Phase 13 | Pending |
-| COURT-05 | Phase 13 | Pending |
+| COURT-01 | Phase 13 | Complete |
+| COURT-02 | Phase 13 | Complete |
+| COURT-03 | Phase 13 | Complete |
+| COURT-04 | Phase 13 | Complete |
+| COURT-05 | Phase 13 | Complete |
 | COURT-06 | Phase 13 | Complete |
 | FAMILY-01 | Phase 14 | Pending |
 | FAMILY-02 | Phase 14 | Pending |

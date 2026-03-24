@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: 전체 계산기 법률 정확성 감사
-status: Ready to execute
-last_updated: "2026-03-24T02:34:02.761Z"
+status: Phase complete — ready for verification
+last_updated: "2026-03-24T02:35:01.283Z"
 progress:
   total_phases: 9
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
+  completed_plans: 2
 ---
 
 # Project State
@@ -40,6 +40,6 @@ Plan: 2 of 2
 
 - **Last Session**: 2026-03-24
 - **Stopped At**: Completed 13-02-PLAN.md
-- **완료**: attorney-fee(이전 세션), lawsuit-cost, small-claims, payment-order, e-court(13-02)
+- **완료**: attorney-fee(이전 세션), lawsuit-cost, small-claims, payment-order, civil-mediation, family-court(13-01), e-court(13-02)
 - **남은**: Phase 14~21
 - **발견된 공통 오류 패턴**: 인지액 올림→버림, 소가 경계값 이하→미만, 송달료 단가/회수 불일치, 심급별 배율 오류
