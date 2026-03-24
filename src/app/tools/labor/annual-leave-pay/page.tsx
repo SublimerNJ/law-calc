@@ -27,11 +27,37 @@ export default function AnnualLeavePayPage() {
     monthlyBaseHours: number;
     days: number;
   } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const wage = parseInt(monthlyWage.replace(/[^0-9]/g, ''), 10);
+    if (!wage || wage <= 0) {
+      setError('월 통상임금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const days = parseInt(unusedDays, 10);
-    if (!wage || wage <= 0 || !days || days <= 0) return;
+    if (!unusedDays || isNaN(days) || days <= 0) {
+      setError('미사용 연차일수를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    const newWarnings: string[] = [];
+    if (days > 25) {
+      newWarnings.push('미사용 연차일수가 25일을 초과합니다. 근로기준법상 연차 한도(최대 25일)를 확인해주세요.');
+    }
+    if (wage > 100_000_000) {
+      newWarnings.push('월 통상임금이 1억원을 초과합니다. 확인해주세요.');
+    }
+    if (newWarnings.length > 0) {
+      setWarning(newWarnings.join(' '));
+    }
 
     const option = WORK_HOUR_OPTIONS.find(o => o.value === weeklyHours)!;
     const monthlyBaseHours = option.monthlyHours;
@@ -47,18 +73,22 @@ export default function AnnualLeavePayPage() {
     setMonthlyWage(raw);
   };
 
+  const handleUnusedDaysChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUnusedDays(e.target.value.replace(/[^0-9]/g, ''));
+  };
+
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">미사용 연차일수 (일)</label>
+          <label className="block text-sm text-slate-600 mb-2">미사용 연차일수 (일) <span className="text-red-500">*</span></label>
           <input
-            type="number"
-            min="1"
+            type="text"
+            inputMode="numeric"
             value={unusedDays}
-            onChange={e => setUnusedDays(e.target.value)}
+            onChange={handleUnusedDaysChange}
             placeholder="예: 5"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
@@ -68,7 +98,7 @@ export default function AnnualLeavePayPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원) <span className="text-red-500">*</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -102,6 +132,9 @@ export default function AnnualLeavePayPage() {
           </div>
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -114,6 +147,14 @@ export default function AnnualLeavePayPage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.totalPay === 0 && (
+            <div className="mb-4 p-4 rounded-lg bg-yellow-50 border border-yellow-200">
+              <p className="text-sm text-yellow-700">
+                연차수당이 0원입니다. 임금 정보를 확인해주세요.
+              </p>
+            </div>
+          )}
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">연차수당 합계</p>
