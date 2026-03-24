@@ -7,24 +7,32 @@ import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 const tool = TOOLS.find(t => t.id === 'parental-leave')!;
 const category = CATEGORIES.find(c => c.id === 'labor')!;
 
-// 고용보험법 제73조, 동법 시행령 제95조 (2024.1.1 시행 기준)
-// 표준 육아휴직급여: 통상임금의 80%, 상한 월 150만원, 하한 월 70만원 (전 기간 동일)
-// 한부모/장애아동: 첫 3개월 상한 월 300만원 (고용보험법 시행령 제95조제3항)
-const PARENTAL_CAPS = {
-  standard: { upper: 1_500_000, lower: 700_000, rate: 0.8 },
-};
+// 고용보험법 제73조, 동법 시행령 제95조 (2025.1.1 시행 기준)
+// 육아휴직급여: 통상임금의 80%, 기간별 상한 차등
+// 1~3개월: 상한 월 250만원
+// 4~6개월: 상한 월 200만원
+// 7개월~: 상한 월 160만원
+// 하한: 월 70만원 (전 기간 동일)
+// 사후지급금 폐지 — 전액 즉시 지급
+// 한부모/장애아동: 첫 3개월 상한 월 300만원
+const PARENTAL_RATE = 0.8;
+const PARENTAL_LOWER = 700_000;
 
-const SINGLE_PARENT_FIRST3_UPPER = 3_000_000;
+function getParentalUpper(month: number, isSingleParent: boolean): number {
+  if (isSingleParent && month <= 3) return 3_000_000;
+  if (month <= 3) return 2_500_000;
+  if (month <= 6) return 2_000_000;
+  return 1_600_000;
+}
 
 function calcMonthlyBenefit(
   monthlyWage: number,
   month: number,
   isSingleParent: boolean
 ): number {
-  const cap = PARENTAL_CAPS.standard;
-  const upper = month <= 3 && isSingleParent ? SINGLE_PARENT_FIRST3_UPPER : cap.upper;
-  const raw = monthlyWage * cap.rate;
-  return Math.min(Math.max(raw, cap.lower), upper);
+  const upper = getParentalUpper(month, isSingleParent);
+  const raw = monthlyWage * PARENTAL_RATE;
+  return Math.min(Math.max(raw, PARENTAL_LOWER), upper);
 }
 
 function formatNumber(n: number): string {
@@ -52,7 +60,7 @@ export default function ParentalLeavePage() {
 
     for (let m = 1; m <= months; m++) {
       const amount = calcMonthlyBenefit(w, m, isSingleParent);
-      const rate = PARENTAL_CAPS.standard.rate;
+      const rate = PARENTAL_RATE;
       monthly.push({ month: m, rate, amount });
       totalBenefit += amount;
     }
