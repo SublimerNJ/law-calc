@@ -321,7 +321,7 @@ export default function InheritanceOrderPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제1000조, 제1003조, 제1010조 (대습상속)
+              법적 근거: 민법 제1000조(상속순위), 제1003조(배우자상속), 제1009조(법정상속분), 제1001조(대습상속)
             </p>
           </div>
 
