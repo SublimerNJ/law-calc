@@ -314,9 +314,9 @@ Plans:
   5. 5개 계산기 간 금액 입력(원 단위), 결과 세액 표시, 세율/공제 항목 소계 구성이 일관된다
 **Plans**: 3 plans
 Plans:
-- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
-- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
-- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
+- [ ] 28-01-PLAN.md — capital-gains-tax + comprehensive-income-tax 감사 및 수정
+- [ ] 28-02-PLAN.md — acquisition-tax + comprehensive-property-tax + registration-tax 감사 및 수정
+- [ ] 28-03-PLAN.md — 5개 계산기 일관성 통일
 
 ### Phase 29: 세금 Part 2 UX·논리 감사
 **Goal**: 세금 후반부 5개 계산기(부가세·증권거래세·연말정산·4대보험·월세공제)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
