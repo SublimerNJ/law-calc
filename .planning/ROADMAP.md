@@ -248,7 +248,11 @@ Plans:
   3. 소가 상한(999조원 등 비현실 값) 입력 시 경고가 표시되고, 나누기 0 같은 수학적 예외 상황에서 계산기가 오류 없이 처리된다
   4. 금액 결과가 모두 천 단위 콤마로 표시되며 부분합과 합계가 일치한다
   5. 5개 계산기 간 동일 개념(소가, 기간) 입력 방식과 에러 메시지 스타일이 통일된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 25: 가사/가족법 UX·논리 감사
 **Goal**: 가사/가족법 6개 계산기에서 사용자가 잘못된 입력이나 엣지 케이스를 만날 때 논리적이고 일관된 동작을 경험한다
@@ -260,7 +264,11 @@ Plans:
   3. inheritance-tax 계산기에서 상속인 수 0명 입력 등 비현실 값에 대한 경고가 제공된다
   4. forced-heirship, inheritance-order 계산기에서 날짜 입력이 있는 경우 미래 날짜 제한이 적절히 처리된다
   5. 6개 계산기 간 금액 표시(천 단위 콤마), 필수/선택 필드 구분, 에러 메시지 톤이 통일된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 26: 노동/근로 Part 1 UX·논리 감사
 **Goal**: 노동/근로 전반부 6개 계산기(퇴직금·해고·연차·연장·주휴·최저임금)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -272,7 +280,11 @@ Plans:
   3. minimum-wage-check 계산기에서 시급이 최저임금 이하일 때 위반 경고가 명확히 표시되고 경계값(정확히 최저임금과 동일 금액)에서 결과가 올바르다
   4. annual-leave-pay, overtime-pay, weekly-holiday-pay 계산기에서 근무시간 음수 또는 주 52시간 초과 등 비현실 입력 시 경고가 제공된다
   5. 6개 계산기 간 급여 입력 방식(시급/월급/연봉), 기간 입력 형식, 결과 금액 표시가 일관된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 27: 노동/근로 Part 2 UX·논리 감사
 **Goal**: 노동/근로 후반부 6개 계산기(부당해고·산재·출산·육아·실업급여·휴업)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -284,7 +296,11 @@ Plans:
   3. industrial-accident 계산기에서 장해등급 경계값(1등급, 14등급)에서 계산 결과가 논리적으로 맞다
   4. unfair-dismissal, shutdown-allowance 계산기에서 날짜 입력이 미래로 설정될 경우 적절한 제한 또는 경고가 표시된다
   5. 6개 계산기 간 날짜 입력 방식, 결과 표시(원, 일, %) 형식, 에러 메시지 스타일이 통일된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 28: 세금 Part 1 UX·논리 감사
 **Goal**: 세금 전반부 5개 계산기(양도소득세·종합소득세·취득세·종합부동산세·등록세)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -296,7 +312,11 @@ Plans:
   3. acquisition-tax 계산기에서 세율 구간 경계값(6억원, 9억원 등)에서 세율이 올바르게 적용되는지 확인된다
   4. comprehensive-property-tax, registration-tax 계산기에서 음수 또는 0원 과세표준 입력 시 에러 처리가 된다
   5. 5개 계산기 간 금액 입력(원 단위), 결과 세액 표시, 세율/공제 항목 소계 구성이 일관된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 29: 세금 Part 2 UX·논리 감사
 **Goal**: 세금 후반부 5개 계산기(부가세·증권거래세·연말정산·4대보험·월세공제)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -308,7 +328,11 @@ Plans:
   3. year-end-tax 계산기에서 공제 항목 합계가 소득금액을 초과할 때(환급 발생) 환급 금액으로 결과가 올바르게 표시된다
   4. securities-tax 계산기에서 양도금액 0원 또는 음수 입력 시 에러 처리가 되고, rent-tax-credit 계산기에서 월세 0원 입력 시 공제액 0원이 의미 있는 안내와 함께 표시된다
   5. 5개 계산기 간 퍼센트(%) 결과 표시 방식, 금액 천 단위 콤마, 필수 입력 강조 방식이 통일된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 30: 부동산 UX·논리 감사
 **Goal**: 부동산 7개 계산기에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -320,7 +344,11 @@ Plans:
   3. brokerage-fee 계산기에서 거래금액 구간 경계값(2억원, 9억원 등)에서 요율이 올바르게 전환되며, 음수 거래금액 입력 시 에러 처리가 된다
   4. dsr, ltv, dti 계산기에서 소득 또는 담보가치 0원 입력 시 나누기 0 예외가 처리되고, 비율 결과가 0~100% 범위를 벗어날 때 명확히 표시된다
   5. 7개 계산기 간 금액 입력 방식, 퍼센트 결과 표시, 필수/선택 구분이 일관된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 31: 교통/형사 + 채권/이자 UX·논리 감사
 **Goal**: 교통/형사 4개 및 채권/이자 3개, 총 7개 계산기에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -332,7 +360,11 @@ Plans:
   3. late-payment 계산기에서 원금 0원, 기간 0일 입력 시 나누기 0 또는 무의미한 결과 없이 처리되고, 날짜 입력에서 종료일이 시작일보다 이른 경우 에러 처리가 된다
   4. loan-interest 계산기에서 이자율이 법정 최고이자율(연 20%)을 초과할 때 경고가 표시되고, unjust-enrichment 계산기에서 반환 원금이 0원일 때 결과가 적절히 처리된다
   5. 7개 계산기 간 날짜 입력 방식, 이율(%) 표시, 금액 결과 천 단위 콤마, 에러 메시지 스타일이 통일된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ### Phase 32: 손해배상 + 기타 법률도구 UX·논리 감사
 **Goal**: 손해배상 4개 및 기타 법률도구 4개, 총 8개 계산기/도구에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
@@ -344,7 +376,11 @@ Plans:
   3. medical-malpractice 계산기에서 과실비율 합계가 100%를 초과할 때 에러 처리가 되고, 치료비 0원 입력 시 의미 있는 안내가 표시된다
   4. statute-of-limitations 계산기에서 기산일이 미래 날짜로 입력될 때 적절한 경고가 표시되고, certified-letter·legal-aid·public-defender 도구에서 필수 입력 누락 시 명확한 안내가 제공된다
   5. 8개 계산기/도구 간 날짜 입력 형식, 퍼센트 입력 방식, 금액 결과 표시, 에러 메시지 톤이 통일된다
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
+- [ ] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
+- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
 
 ## Progress
 
