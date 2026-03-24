@@ -45,7 +45,7 @@
 - [x] **Phase 17: 부동산 계산기 법률 감사** — 7개 계산기 주택임대차보호법·감독규정 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [x] **Phase 18: 교통/형사 계산기 법률 감사** — 4개 계산기 도로교통법·형사소송법 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [x] **Phase 19: 채권/이자 계산기 법률 감사** — 3개 계산기 이자제한법·소송촉진특례법 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [ ] **Phase 20: 손해배상 계산기 법률 감사** — 4개 계산기 민법·판례 기준 검증 및 오류 수정
+- [x] **Phase 20: 손해배상 계산기 법률 감사** — 4개 계산기 민법·판례 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [ ] **Phase 21: 기타 법률도구 법률 감사** — 4개 계산기 우편법·형사소송법·민법 기준 검증 및 오류 수정
 
 ## Phase Details
@@ -166,10 +166,10 @@ Plans:
   2. defamation 계산기의 명예훼손 위자료 산정 기준이 대법원 판례 인정 기준 범위와 일치한다
   3. medical-malpractice 계산기의 의료사고 손해배상 산정이 의료법 및 관련 판례 기준과 일치한다
   4. lost-income 계산기의 일실수입 산정 공식(호프만식·라이프니츠식)이 대법원 판례 기준과 일치한다
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [x] 20-01-PLAN.md — damages-general, defamation 법률 감사 (DAMAGES-01, DAMAGES-02)
-- [ ] 20-02-PLAN.md — medical-malpractice, lost-income 법률 감사 (DAMAGES-03, DAMAGES-04)
+- [x] 20-02-PLAN.md — medical-malpractice, lost-income 법률 감사 (DAMAGES-03, DAMAGES-04)
 
 ### Phase 21: 기타 법률도구 법률 감사
 **Goal**: 4개 기타 법률도구가 우편법·법률구조법·형사소송법·민법 현행 기준으로 정확하게 작동한다
@@ -207,5 +207,5 @@ Plans:
 | 17. 부동산 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
 | 18. 교통/형사 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
 | 19. 채권/이자 법률 감사 | v1.3 | 1/1 | Complete    | 2026-03-24 |
-| 20. 손해배상 법률 감사 | v1.3 | 1/2 | In Progress|  |
+| 20. 손해배상 법률 감사 | v1.3 | 2/2 | Complete   | 2026-03-24 |
 | 21. 기타 법률도구 법률 감사 | v1.3 | 0/? | Not started | - |

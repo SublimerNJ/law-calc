@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: 전체 계산기 법률 정확성 감사
-status: Ready to execute
-last_updated: "2026-03-24T03:57:45.114Z"
+status: Phase complete — ready for verification
+last_updated: "2026-03-24T03:58:47.082Z"
 progress:
   total_phases: 9
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 21
-  completed_plans: 20
+  completed_plans: 21
 ---
 
 # Project State
@@ -55,13 +55,15 @@ Plan: 2 of 2
   - 교통사고 합의금 법적 근거: 자동차손해배상 보장법 제3조(운행자 책임) + 민법 제396조(과실상계) + 민법 제750조(불법행위 손해배상)
   - 보험 미가입은 과태료가 아닌 형사처벌 대상 (자동차손해배상보장법 제46조 제2항): 1년 이하 징역 또는 1,000만원 이하 벌금
   - 보석금 상한 5억원은 법정 규정 아닌 실무상 참고치 (형사소송법에 상한 없음)
+  - 가동연한: 대법원 2019다232918 전원합의체 판결 기준 65세 기본값 적용 (일실수입 계산기)
+  - 생활비 공제율 1/3: 대법원 판례 기준으로 일실수입 산정 시 필수 적용 (대법원 2016다244188)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-24
-- **Stopped At**: Completed 18-02-PLAN.md
+- **Stopped At**: Completed 20-02-PLAN.md
 - **완료**: attorney-fee(이전 세션), lawsuit-cost, small-claims, payment-order, civil-mediation, family-court(13-01), e-court(13-02)
 - **남은**: Phase 14~21
 - **발견된 공통 오류 패턴**: 인지액 올림→버림, 소가 경계값 이하→미만, 송달료 단가/회수 불일치, 심급별 배율 오류
