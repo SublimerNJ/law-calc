@@ -46,7 +46,7 @@
 - [x] **Phase 18: 교통/형사 계산기 법률 감사** — 4개 계산기 도로교통법·형사소송법 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [x] **Phase 19: 채권/이자 계산기 법률 감사** — 3개 계산기 이자제한법·소송촉진특례법 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [x] **Phase 20: 손해배상 계산기 법률 감사** — 4개 계산기 민법·판례 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [ ] **Phase 21: 기타 법률도구 법률 감사** — 4개 계산기 우편법·형사소송법·민법 기준 검증 및 오류 수정
+- [x] **Phase 21: 기타 법률도구 법률 감사** — 4개 계산기 우편법·형사소송법·민법 기준 검증 및 오류 수정 (completed 2026-03-24)
 
 ## Phase Details
 
@@ -180,10 +180,10 @@ Plans:
   2. legal-aid 도구의 법률구조 자격 소득 기준이 법률구조법 및 대한법률구조공단 현행 기준과 일치한다
   3. public-defender 도구의 국선변호인 선정 기준이 형사소송법 제33조 원문과 일치한다
   4. statute-of-limitations 계산기의 소멸시효 기간 및 기산점이 민법 제162조~제184조 및 상법 원문과 일치한다
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [x] 21-01-PLAN.md — certified-letter, legal-aid 법률 감사 (MISC-01, MISC-02)
-- [ ] 21-02-PLAN.md — public-defender, statute-of-limitations 법률 감사 (MISC-03, MISC-04)
+- [x] 21-02-PLAN.md — public-defender, statute-of-limitations 법률 감사 (MISC-03, MISC-04)
 
 ## Progress
 
@@ -209,4 +209,4 @@ Plans:
 | 18. 교통/형사 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
 | 19. 채권/이자 법률 감사 | v1.3 | 1/1 | Complete    | 2026-03-24 |
 | 20. 손해배상 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
-| 21. 기타 법률도구 법률 감사 | v1.3 | 1/2 | In Progress|  |
+| 21. 기타 법률도구 법률 감사 | v1.3 | 2/2 | Complete   | 2026-03-24 |

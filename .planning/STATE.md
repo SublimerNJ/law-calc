@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: 전체 계산기 법률 정확성 감사
-status: Ready to execute
-last_updated: "2026-03-24T04:10:44.662Z"
+status: Phase complete — ready for verification
+last_updated: "2026-03-24T04:11:34.020Z"
 progress:
   total_phases: 9
-  completed_phases: 8
+  completed_phases: 9
   total_plans: 23
-  completed_plans: 22
+  completed_plans: 23
 ---
 
 # Project State
@@ -57,13 +57,15 @@ Plan: 2 of 2
   - 보석금 상한 5억원은 법정 규정 아닌 실무상 참고치 (형사소송법에 상한 없음)
   - 가동연한: 대법원 2019다232918 전원합의체 판결 기준 65세 기본값 적용 (일실수입 계산기)
   - 생활비 공제율 1/3: 대법원 판례 기준으로 일실수입 산정 시 필수 적용 (대법원 2016다244188)
+  - 형사소송법 제33조 제1항 필요적 국선 7가지 사유 모두 UI에 표시 (제1호~제7호)
+  - 소멸시효 민법 제163조(3년)와 제164조(1년) 항목 분리, 민법 제766조 10년 제척기간 안내 추가
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-24
-- **Stopped At**: Completed 20-02-PLAN.md
+- **Stopped At**: Completed 21-02-PLAN.md
 - **완료**: attorney-fee(이전 세션), lawsuit-cost, small-claims, payment-order, civil-mediation, family-court(13-01), e-court(13-02)
 - **남은**: Phase 14~21
 - **발견된 공통 오류 패턴**: 인지액 올림→버림, 소가 경계값 이하→미만, 송달료 단가/회수 불일치, 심급별 배율 오류
