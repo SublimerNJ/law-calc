@@ -18,6 +18,8 @@ export default function VatPage() {
   const [salesAmount, setSalesAmount] = useState('');
   const [purchaseAmount, setPurchaseAmount] = useState('');
   const [totalPrice, setTotalPrice] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     mode: CalcMode;
     // Mode 1
@@ -36,10 +38,22 @@ export default function VatPage() {
   const parseAmount = (v: string) => parseInt(v.replace(/[^0-9]/g, ''), 10) || 0;
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     if (mode === 'supply') {
       const sales = parseAmount(salesAmount);
       const purchase = parseAmount(purchaseAmount);
-      if (sales <= 0 && purchase <= 0) return;
+
+      if (sales <= 0 && purchase <= 0) {
+        setError('매출 또는 매입 공급가액 중 하나 이상을 입력해주세요.');
+        setResult(null);
+        return;
+      }
+
+      if (sales > 50_000_000_000 || purchase > 50_000_000_000) {
+        setWarning('입력 금액이 500억원을 초과합니다. 입력값을 확인해주세요.');
+      }
 
       const salesVat = Math.floor(sales * 0.1);
       const purchaseVat = Math.floor(purchase * 0.1);
@@ -56,7 +70,16 @@ export default function VatPage() {
       });
     } else {
       const total = parseAmount(totalPrice);
-      if (total <= 0) return;
+
+      if (total <= 0) {
+        setError('공급대가(VAT 포함 금액)를 입력해주세요.');
+        setResult(null);
+        return;
+      }
+
+      if (total > 50_000_000_000) {
+        setWarning('입력 금액이 500억원을 초과합니다. 입력값을 확인해주세요.');
+      }
 
       const supplyBase = Math.floor(total / 1.1);
       const supplyVat = total - supplyBase;
@@ -89,7 +112,7 @@ export default function VatPage() {
                 type="radio"
                 name="mode"
                 checked={mode === 'supply'}
-                onChange={() => { setMode('supply'); setResult(null); }}
+                onChange={() => { setMode('supply'); setResult(null); setError(null); setWarning(null); }}
                 className="accent-[#10b981]"
               />
               <span className="text-slate-900 text-sm">공급가액으로 계산</span>
@@ -99,7 +122,7 @@ export default function VatPage() {
                 type="radio"
                 name="mode"
                 checked={mode === 'total'}
-                onChange={() => { setMode('total'); setResult(null); }}
+                onChange={() => { setMode('total'); setResult(null); setError(null); setWarning(null); }}
                 className="accent-[#10b981]"
               />
               <span className="text-slate-900 text-sm">공급대가(VAT 포함)로 계산</span>
@@ -110,14 +133,14 @@ export default function VatPage() {
         {mode === 'supply' ? (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-slate-600 mb-2">매출 공급가액 (원)</label>
+              <label className="block text-sm text-slate-600 mb-2">매출 공급가액 (원) *</label>
               <input
                 type="text"
                 inputMode="numeric"
                 value={formatInput(salesAmount)}
                 onChange={handleChange(setSalesAmount)}
                 placeholder="예: 50,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
             <div className="mb-6">
@@ -128,23 +151,26 @@ export default function VatPage() {
                 value={formatInput(purchaseAmount)}
                 onChange={handleChange(setPurchaseAmount)}
                 placeholder="예: 30,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
           </>
         ) : (
           <div className="mb-6">
-            <label className="block text-sm text-slate-600 mb-2">공급대가 (VAT 포함 금액, 원)</label>
+            <label className="block text-sm text-slate-600 mb-2">공급대가 (VAT 포함 금액, 원) *</label>
             <input
               type="text"
               inputMode="numeric"
               value={formatInput(totalPrice)}
               onChange={handleChange(setTotalPrice)}
               placeholder="예: 55,000,000"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         )}
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
