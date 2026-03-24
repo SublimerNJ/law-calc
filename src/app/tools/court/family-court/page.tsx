@@ -11,6 +11,8 @@ const category = CATEGORIES.find(c => c.id === 'court')!;
 const SERVICE_FEE_UNIT = 5_500;
 // 가사사건 송달료 예납 회수: 당사자 1인당 10회분 (가사소송규칙 제7조)
 const SERVICE_ROUNDS = 10;
+// 비현실적 금액 기준 (1000억원)
+const MAX_AMOUNT = 100_000_000_000;
 
 type CaseType = 'divorce' | 'consolation' | 'custody' | 'support' | 'inheritance';
 
@@ -106,20 +108,44 @@ export default function FamilyCourtPage() {
   const [amount, setAmount] = useState('');
   const [parties, setParties] = useState(2);
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
 
   const selectedCase = CASE_OPTIONS.find(c => c.value === caseType)!;
 
   const handleCalculate = () => {
+    setError('');
+    setWarning('');
+    setResult(null);
+
     let stampFee: number;
 
     if (selectedCase.fixedFee !== null) {
       stampFee = selectedCase.fixedFee;
     } else {
+      // INPUT-02: 필수 필드 비어있으면 안내
+      if (!amount.trim()) {
+        setError('청구금액을 입력해주세요.');
+        return;
+      }
+
       const val = parseInt(amount.replace(/,/g, ''), 10);
-      if (!val || val <= 0) return;
+
+      // INPUT-01: 음수/0 → 에러
+      if (!val || val <= 0) {
+        setError('금액은 0보다 커야 합니다.');
+        return;
+      }
+
+      // INPUT-03: 비현실 값 경고
+      if (val > MAX_AMOUNT) {
+        setWarning('입력값이 비현실적으로 큽니다. 확인해주세요.');
+      }
+
       // 상속재산 분할 등: 민사소송등인지법 제2조 준용 금액의 1/2 (가사소송수수료규칙 제3조)
       const baseFee = calculateStampFee(val);
       stampFee = Math.floor((baseFee * 0.5) / 100) * 100;
+      if (stampFee < 1_000) stampFee = 1_000;
     }
 
     const serviceFee = parties * SERVICE_ROUNDS * SERVICE_FEE_UNIT;
@@ -138,6 +164,8 @@ export default function FamilyCourtPage() {
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^0-9]/g, '');
     setAmount(raw);
+    setError('');
+    setWarning('');
   };
 
   return (
@@ -149,7 +177,7 @@ export default function FamilyCourtPage() {
           <label className="block text-sm text-slate-600 mb-2">사건 유형</label>
           <select
             value={caseType}
-            onChange={e => { setCaseType(e.target.value as CaseType); setResult(null); }}
+            onChange={e => { setCaseType(e.target.value as CaseType); setResult(null); setError(''); setWarning(''); }}
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {CASE_OPTIONS.map(opt => (
@@ -161,7 +189,9 @@ export default function FamilyCourtPage() {
 
         {selectedCase.needsAmount && (
           <div className="mb-4">
-            <label className="block text-sm text-slate-600 mb-2">청구금액 (원)</label>
+            <label className="block text-sm text-slate-600 mb-2">
+              청구금액 (원) <span className="text-red-500">*</span>
+            </label>
             <input
               type="text"
               inputMode="numeric"
@@ -170,10 +200,16 @@ export default function FamilyCourtPage() {
               placeholder="예: 50,000,000"
               className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
-            {amount && (
+            {amount && !error && (
               <p className="text-xs text-gray-500 mt-1">
                 {formatNumber(parseInt(amount))}원
               </p>
+            )}
+            {error && (
+              <p className="text-xs text-red-500 mt-1">{error}</p>
+            )}
+            {warning && (
+              <p className="text-xs text-orange-500 mt-1">{warning}</p>
             )}
           </div>
         )}
@@ -210,9 +246,13 @@ export default function FamilyCourtPage() {
 
             <div>
               <p className="text-sm text-slate-600 mb-1">인지대</p>
-              <p className="text-2xl font-bold" style={{ color: category.color }}>
-                {formatNumber(result.stampFee)}원
-              </p>
+              {result.stampFee === 0 ? (
+                <p className="text-base text-slate-600">해당 조건에서는 비용이 발생하지 않습니다.</p>
+              ) : (
+                <p className="text-2xl font-bold" style={{ color: category.color }}>
+                  {formatNumber(result.stampFee)}원
+                </p>
+              )}
             </div>
 
             <div>
@@ -222,9 +262,13 @@ export default function FamilyCourtPage() {
 
             <div className="pt-4 border-t border-slate-200">
               <p className="text-sm text-slate-600 mb-1">합계</p>
-              <p className="text-2xl font-bold" style={{ color: category.color }}>
-                {formatNumber(result.total)}원
-              </p>
+              {result.total === 0 ? (
+                <p className="text-base text-slate-600">해당 조건에서는 비용이 발생하지 않습니다.</p>
+              ) : (
+                <p className="text-2xl font-bold" style={{ color: category.color }}>
+                  {formatNumber(result.total)}원
+                </p>
+              )}
             </div>
           </div>
 
