@@ -29,6 +29,8 @@ const AGRI_TAX_RATE = 0.0015;
 export default function SecuritiesTaxPage() {
   const [marketType, setMarketType] = useState<MarketType>('kospi');
   const [amount, setAmount] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     transferAmount: number;
     marketLabel: string;
@@ -40,8 +42,20 @@ export default function SecuritiesTaxPage() {
   } | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const raw = parseInt(amount.replace(/[^0-9]/g, ''), 10);
-    if (!raw || raw <= 0) return;
+
+    if (!raw || raw <= 0) {
+      setError('양도(매도)가액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (raw > 50_000_000_000) {
+      setWarning('양도가액이 500억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const market = MARKETS.find(m => m.value === marketType)!;
     const securitiesTax = Math.floor(raw * market.rate);
@@ -73,7 +87,7 @@ export default function SecuritiesTaxPage() {
           <select
             value={marketType}
             onChange={e => { setMarketType(e.target.value as MarketType); setResult(null); }}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             {MARKETS.map(m => (
               <option key={m.value} value={m.value}>
@@ -84,19 +98,22 @@ export default function SecuritiesTaxPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">양도(매도)가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">양도(매도)가액 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {amount && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(amount).toLocaleString('ko-KR')}원</p>
           )}
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -145,8 +162,8 @@ export default function SecuritiesTaxPage() {
           </div>
 
           <div className="mb-4 p-3 rounded-lg bg-blue-500/10 border border-blue-500/30">
-            <p className="text-sm text-blue-400">
-              2025년 기준: 코스피 증권거래세 0% (농어촌특별세 0.15% 별도), 코스닥·K-OTC 0.15%, 코넥스 0.10%, 비상장 0.35%
+            <p className="text-sm text-blue-600">
+              2026년 기준: 코스피 증권거래세 0.05% + 농어촌특별세 0.15%, 코스닥·K-OTC 0.20%, 코넥스 0.10%, 비상장 0.35%
             </p>
           </div>
 
@@ -154,11 +171,11 @@ export default function SecuritiesTaxPage() {
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
 {`양도금액 × 세율 = 증권거래세
-코스피: 증권거래세 0% + 농어촌특별세 0.15%
-코스닥·K-OTC: 0.15%, 코넥스: 0.10%, 비상장: 0.35%`}
+코스피: 증권거래세 0.05% + 농어촌특별세 0.15%
+코스닥·K-OTC: 0.20%, 코넥스: 0.10%, 비상장: 0.35%`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 증권거래세법 제8조(세율) — 2025년 기준. 코스피는 증권거래세법상 세율이 0%이며, 농어촌특별세법 제5조 제1항 제6호에 따라 농어촌특별세 0.15%가 별도 부과됩니다.
+              법적 근거: 증권거래세법 제8조(세율) — 2026년 기준. 코스피는 증권거래세 0.05%이며, 농어촌특별세법 제5조 제1항 제6호에 따라 농어촌특별세 0.15%가 별도 부과됩니다.
             </p>
           </div>
         </div>
