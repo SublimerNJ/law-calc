@@ -31,11 +31,44 @@ export default function WeeklyHolidayPayPage() {
   const [hourlyWage, setHourlyWage] = useState('');
   const [fullAttendance, setFullAttendance] = useState(true);
   const [result, setResult] = useState<HolidayPayResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const hours = parseFloat(weeklyHours);
     const wage = parseInt(hourlyWage.replace(/,/g, ''), 10);
-    if (!hours || hours <= 0 || !wage || wage <= 0) return;
+
+    if (!hours || hours <= 0) {
+      setError('1주 소정근로시간을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (hours < 1) {
+      setError('소정근로시간은 1시간 이상이어야 합니다.');
+      setResult(null);
+      return;
+    }
+
+    if (!wage || wage <= 0) {
+      setError('시간당 통상임금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    // 경고: 52시간 초과
+    if (hours > 52) {
+      setWarning('1주 소정근로시간이 52시간을 초과합니다. 근로기준법 한도(40+연장12시간)를 확인해주세요.');
+    }
+
+    // 경고: 비현실적 임금
+    if (wage > 1000000) {
+      setWarning('시간당 임금이 100만원을 초과합니다. 확인해주세요.');
+    }
+
     setResult(calculate(hours, wage, fullAttendance));
   };
 
@@ -49,7 +82,9 @@ export default function WeeklyHolidayPayPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">1주 소정근로시간 (1~52시간)</label>
+          <label className="block text-sm text-slate-600 mb-2">
+            1주 소정근로시간 (시간) <span className="text-red-500">*</span>
+          </label>
           <input
             type="text"
             inputMode="numeric"
@@ -61,7 +96,9 @@ export default function WeeklyHolidayPayPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">시간당 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">
+            시간당 통상임금 (원) <span className="text-red-500">*</span>
+          </label>
           <input
             type="text"
             inputMode="numeric"
@@ -72,7 +109,7 @@ export default function WeeklyHolidayPayPage() {
           />
         </div>
 
-        <div className="mb-6">
+        <div className="mb-4">
           <label className="block text-sm text-slate-600 mb-2">이번 주 개근 여부</label>
           <div className="flex gap-4">
             {[
@@ -92,6 +129,18 @@ export default function WeeklyHolidayPayPage() {
             ))}
           </div>
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
+
+        {warning && (
+          <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200">
+            <p className="text-sm text-orange-500">{warning}</p>
+          </div>
+        )}
 
         <button
           onClick={handleCalculate}
@@ -133,6 +182,17 @@ export default function WeeklyHolidayPayPage() {
             <p className="text-lg text-slate-900">{result.weeklyHolidayHours.toFixed(1)}시간</p>
           </div>
 
+          {!result.eligible && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm text-red-500 font-semibold mb-1">주휴수당 지급 요건 미충족</p>
+              <p className="text-sm text-slate-600">
+                {parseFloat(weeklyHours) < 15
+                  ? '주 소정근로시간이 15시간 미만이면 주휴수당이 발생하지 않습니다. (주 15시간 이상 근무 및 개근 필요)'
+                  : '결근이 있는 경우 해당 주의 주휴수당이 발생하지 않습니다. (주 15시간 이상 근무 및 개근 필요)'}
+              </p>
+            </div>
+          )}
+
           {result.eligible && (
             <div className="mb-4 p-4 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
               <p className="text-xs text-slate-600 mb-1">월 예상 총급여 (기본급 + 주휴수당)</p>
@@ -141,16 +201,6 @@ export default function WeeklyHolidayPayPage() {
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 주 {weeklyHours}시간 × {formatNumber(parseInt(hourlyWage))}원 + 주휴 {formatNumber(result.amount)}원 = 주 {formatNumber(parseFloat(weeklyHours) * parseInt(hourlyWage) + result.amount)}원 × 4.33주
-              </p>
-            </div>
-          )}
-
-          {!result.eligible && (
-            <div className="mb-4 p-3 bg-white rounded-lg">
-              <p className="text-sm text-slate-600">
-                {parseFloat(weeklyHours) < 15
-                  ? '주 소정근로시간이 15시간 미만이면 주휴수당이 발생하지 않습니다.'
-                  : '결근이 있는 경우 해당 주의 주휴수당이 발생하지 않습니다.'}
               </p>
             </div>
           )}
