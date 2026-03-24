@@ -7,9 +7,11 @@ import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 const tool = TOOLS.find(t => t.id === 'parental-leave')!;
 const category = CATEGORIES.find(c => c.id === 'labor')!;
 
+// 고용보험법 제73조, 동법 시행령 제95조 (2024.1.1 시행 기준)
+// 표준 육아휴직급여: 통상임금의 80%, 상한 월 150만원, 하한 월 70만원 (전 기간 동일)
+// 한부모/장애아동: 첫 3개월 상한 월 300만원 (고용보험법 시행령 제95조제3항)
 const PARENTAL_CAPS = {
-  first3: { upper: 2_000_000, lower: 700_000, rate: 0.8 },
-  rest: { upper: 1_200_000, lower: 700_000, rate: 0.5 },
+  standard: { upper: 1_500_000, lower: 700_000, rate: 0.8 },
 };
 
 const SINGLE_PARENT_FIRST3_UPPER = 3_000_000;
@@ -19,7 +21,7 @@ function calcMonthlyBenefit(
   month: number,
   isSingleParent: boolean
 ): number {
-  const cap = month <= 3 ? PARENTAL_CAPS.first3 : PARENTAL_CAPS.rest;
+  const cap = PARENTAL_CAPS.standard;
   const upper = month <= 3 && isSingleParent ? SINGLE_PARENT_FIRST3_UPPER : cap.upper;
   const raw = monthlyWage * cap.rate;
   return Math.min(Math.max(raw, cap.lower), upper);
@@ -50,13 +52,14 @@ export default function ParentalLeavePage() {
 
     for (let m = 1; m <= months; m++) {
       const amount = calcMonthlyBenefit(w, m, isSingleParent);
-      const rate = m <= 3 ? PARENTAL_CAPS.first3.rate : PARENTAL_CAPS.rest.rate;
+      const rate = PARENTAL_CAPS.standard.rate;
       monthly.push({ month: m, rate, amount });
       totalBenefit += amount;
     }
 
-    const totalDeferred = Math.floor(totalBenefit * 0.25);
-    const totalImmediate = totalBenefit - totalDeferred;
+    // 2024.1.1 개정: 사후지급금 제도 폐지, 전액 즉시 지급
+    const totalDeferred = 0;
+    const totalImmediate = totalBenefit;
 
     setResult({ monthly, totalImmediate, totalDeferred, total: totalBenefit });
   };
@@ -100,7 +103,7 @@ export default function ParentalLeavePage() {
           <div className="flex gap-4">
             {[
               { value: 'normal' as const, label: '일반' },
-              { value: 'single' as const, label: '한부모/장애아동 (첫 3개월 상한 300만원)' },
+              { value: 'single' as const, label: '한부모가족/장애아동 (첫 3개월 상한 300만원, 시행령 제95조제3항)' },
             ].map(opt => (
               <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
                 <input
@@ -136,16 +139,8 @@ export default function ParentalLeavePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <p className="text-sm text-slate-600 mb-1">즉시지급분 (75%)</p>
-              <p className="text-lg text-slate-900">{formatNumber(result.totalImmediate)}원</p>
-            </div>
-            <div>
-              <p className="text-sm text-slate-600 mb-1">사후지급분 (25%)</p>
-              <p className="text-lg text-slate-900">{formatNumber(result.totalDeferred)}원</p>
-              <p className="text-xs text-gray-500">복직 후 6개월 계속근무 시 일시 지급</p>
-            </div>
+          <div className="mb-4 p-3 bg-green-50 rounded-lg">
+            <p className="text-xs text-green-700">※ 2024.1.1 개정: 사후지급금 제도 폐지 — 급여 전액 매월 즉시 지급</p>
           </div>
 
           <div className="mt-4">
@@ -175,12 +170,12 @@ export default function ParentalLeavePage() {
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
-{`1~3개월: 월급 × 80% (상한 200만원, 하한 70만원)
-4개월~: 월급 × 50% (상한 120만원, 하한 70만원)
-월 급여액 합계의 25%는 복직 후 사후지급`}
+{`전 기간: 월 통상임금 × 80% (상한 150만원, 하한 70만원)
+한부모/장애아동: 첫 3개월 상한 300만원
+2024.1.1 개정: 사후지급금 제도 폐지, 전액 즉시 지급`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 고용보험법 제70조(육아휴직급여), 제73조의2(육아기 근로시간 단축급여) | 2026년 기준
+              법적 근거: 고용보험법 제73조(육아휴직급여), 동법 시행령 제95조 | 2024.1.1 개정 기준
             </p>
           </div>
         </div>

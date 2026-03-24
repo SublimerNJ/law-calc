@@ -22,11 +22,13 @@ const DISABILITY_PENSION_DAYS: Record<number, number> = {
   1: 329, 2: 291, 3: 257, 4: 224, 5: 193, 6: 164, 7: 138,
 };
 
-// 2026 간병급여
+// 2025년 간병급여 (고용노동부 고시 제2024-53호): 상시 41,170원/일, 수시 27,450원/일
+// 2026년 간병급여: 추후 고시 기준 적용 (현재 2025년 고시 기준)
 const NURSING_DAILY = { fullTime: 41_170, partTime: 27_450 };
 
-// 최저임금 80% 기준 (시급 10,030 * 0.8 * 8시간)
-const MIN_WAGE_80_DAILY = 10_030 * 0.8 * 8; // = 64,192
+// 휴업급여 최저보상기준: 최저임금 80% (2026년 최저임금 10,320원 × 0.8 × 8시간)
+// 산업재해보상보험법 제54조(최저·최고 보상기준)
+const MIN_WAGE_80_DAILY = 10_320 * 0.8 * 8; // = 66,048원
 
 type BenefitType = 'absence' | 'disability' | 'nursing';
 type PaymentType = 'lump' | 'pension';
