@@ -17,6 +17,8 @@ export default function DamagesGeneralPage() {
   const [includeConsolation, setIncludeConsolation] = useState(false);
   const [consolationType, setConsolationType] = useState<'death' | 'severe' | 'custom'>('severe');
   const [customConsolation, setCustomConsolation] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     adjustedProperty: number;
     consolation: number;
@@ -30,9 +32,27 @@ export default function DamagesGeneralPage() {
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
     const property = parseInt(propertyDamage.replace(/[^0-9]/g, ''), 10) || 0;
     const fault = parseFloat(faultRatio) || 0;
-    if (property <= 0) return;
+
+    // INPUT-02: 재산손해액 필수
+    if (!propertyDamage || property <= 0) {
+      setError('재산상 손해액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    // INPUT-03: 100억 초과 경고
+    if (property > 10_000_000_000) {
+      setWarning('재산손해액이 100억원을 초과합니다. 입력값을 확인해주세요.');
+    }
+    // 과실비율 범위 검증
+    if (fault < 0 || fault > 100) {
+      setError('과실비율은 0~100 사이 숫자를 입력해주세요.');
+      setResult(null);
+      return;
+    }
 
     const adjustedProperty = Math.floor(property * (1 - fault / 100));
     let consolation = 0;
@@ -54,14 +74,14 @@ export default function DamagesGeneralPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">재산상 손해액 (치료비 + 일실이익 + 기타, 원)</label>
+          <label className="block text-sm text-slate-600 mb-2">재산상 손해액 (치료비 + 일실이익 + 기타, 원) *</label>
           <input
             type="text"
             inputMode="numeric"
             value={propertyDamage ? parseInt(propertyDamage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setPropertyDamage)}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {propertyDamage && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(propertyDamage).toLocaleString('ko-KR')}원</p>
@@ -71,13 +91,12 @@ export default function DamagesGeneralPage() {
         <div className="mb-4">
           <label className="block text-sm text-slate-600 mb-2">피해자 과실비율 (%)</label>
           <input
-            type="number"
-            min="0"
-            max="100"
+            type="text"
+            inputMode="decimal"
             value={faultRatio}
-            onChange={(e) => setFaultRatio(e.target.value)}
+            onChange={(e) => setFaultRatio(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="0 ~ 100"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -99,7 +118,7 @@ export default function DamagesGeneralPage() {
             <select
               value={consolationType}
               onChange={(e) => setConsolationType(e.target.value as 'death' | 'severe' | 'custom')}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none mb-2"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none mb-2"
             >
               <option value="death">사망 (1억원)</option>
               <option value="severe">중상해 (3,000만원)</option>
@@ -112,11 +131,14 @@ export default function DamagesGeneralPage() {
                 value={customConsolation ? parseInt(customConsolation).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setCustomConsolation)}
                 placeholder="위자료 기준액 입력"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             )}
           </div>
         )}
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -130,6 +152,12 @@ export default function DamagesGeneralPage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.total === 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">총 배상액이 0원으로 계산되었습니다. 과실비율 또는 손해항목을 확인해주세요.</p>
+            </div>
+          )}
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">재산상 손해 (과실상계 후)</p>

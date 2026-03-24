@@ -73,7 +73,7 @@ export default function DefamationPage() {
           <select
             value={defamationType}
             onChange={(e) => setDefamationType(e.target.value as DefamationType)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             <option value="fact">사실 적시</option>
             <option value="false-fact">허위 사실 적시</option>
@@ -86,7 +86,7 @@ export default function DefamationPage() {
           <select
             value={mediaType}
             onChange={(e) => setMediaType(e.target.value as MediaType)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             <option value="online">온라인/SNS</option>
             <option value="broadcast">방송</option>
@@ -100,7 +100,7 @@ export default function DefamationPage() {
           <select
             value={victimType}
             onChange={(e) => setVictimType(e.target.value as VictimType)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             <option value="private">일반인</option>
             <option value="public">공인 (공직자/연예인 등)</option>
@@ -108,14 +108,14 @@ export default function DefamationPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">유포 기간 (개월)</label>
+          <label className="block text-sm text-slate-600 mb-2">유포 기간 (개월, 선택)</label>
           <input
-            type="number"
-            min="0"
+            type="text"
+            inputMode="decimal"
             value={duration}
-            onChange={(e) => setDuration(e.target.value)}
+            onChange={(e) => setDuration(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 3"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -124,7 +124,7 @@ export default function DefamationPage() {
           <select
             value={severity}
             onChange={(e) => setSeverity(e.target.value as SeverityType)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             <option value="mild">경미</option>
             <option value="moderate">보통</option>
