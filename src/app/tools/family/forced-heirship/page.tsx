@@ -88,6 +88,8 @@ export default function ForcedHeirshipPage() {
   const [statutorySharePct, setStatutorySharePct] = useState('');
   const [actualReceived, setActualReceived] = useState('');
   const [result, setResult] = useState<ForcedHeirshipResult | null>(null);
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
 
   const handleNumberInput = (setter: (v: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setter(e.target.value.replace(/[^0-9]/g, ''));
@@ -96,10 +98,38 @@ export default function ForcedHeirshipPage() {
   const displayValue = (raw: string) => raw ? parseInt(raw).toLocaleString('ko-KR') : '';
 
   const handleCalculate = () => {
+    setError('');
+    setWarning('');
+
+    if (estateAtDeath === '') {
+      setError('상속 개시 시 재산을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const estate = parseInput(estateAtDeath);
-    if (estate <= 0) return;
+    if (estate <= 0) {
+      setError('상속 개시 시 재산은 0보다 커야 합니다.');
+      setResult(null);
+      return;
+    }
+
+    if (statutorySharePct === '') {
+      setError('법정상속분율을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const pct = parseFloat(statutorySharePct);
-    if (isNaN(pct) || pct <= 0 || pct > 100) return;
+    if (isNaN(pct) || pct <= 0 || pct > 100) {
+      setError('법정상속분율은 0%보다 크고 100% 이하여야 합니다.');
+      setResult(null);
+      return;
+    }
+
+    if (estate > 1_000_000_000_000) {
+      setWarning('입력값이 1조원을 초과합니다. 입력 단위(원)를 확인해주세요.');
+    }
 
     setResult(calculateForcedHeirship(
       estate,
@@ -124,7 +154,9 @@ export default function ForcedHeirshipPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">상속 개시 시 재산 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">
+            상속 개시 시 재산 (원) <span className="text-red-500 font-semibold">*</span> <span className="text-xs text-slate-400">(필수)</span>
+          </label>
           <input
             type="text"
             inputMode="numeric"
@@ -136,7 +168,10 @@ export default function ForcedHeirshipPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">생전증여 합계 (원) <span className="text-xs text-gray-500">(제3자: 1년 이내 / 상속인: 기간 제한 없음)</span></label>
+          <label className="block text-sm text-slate-600 mb-2">
+            생전증여 합계 (원) <span className="text-xs text-slate-400">(선택)</span>
+            <span className="text-xs text-gray-500 ml-1">(제3자: 1년 이내 / 상속인: 기간 제한 없음)</span>
+          </label>
           <input
             type="text"
             inputMode="numeric"
@@ -148,7 +183,7 @@ export default function ForcedHeirshipPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">상속채무 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">상속채무 (원) <span className="text-xs text-slate-400">(선택)</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -178,7 +213,9 @@ export default function ForcedHeirshipPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">청구인 법정상속분 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">
+            청구인 법정상속분 (%) <span className="text-red-500 font-semibold">*</span> <span className="text-xs text-slate-400">(필수)</span>
+          </label>
           <input
             type="number"
             min={0}
@@ -195,7 +232,7 @@ export default function ForcedHeirshipPage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">청구인 실제 취득액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">청구인 실제 취득액 (원) <span className="text-xs text-slate-400">(선택)</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -205,6 +242,18 @@ export default function ForcedHeirshipPage() {
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
           />
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
+
+        {warning && (
+          <div className="mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+            <p className="text-sm text-orange-500">{warning}</p>
+          </div>
+        )}
 
         <button
           onClick={handleCalculate}
@@ -240,18 +289,24 @@ export default function ForcedHeirshipPage() {
             </div>
             <div className={result.shortfall > 0 ? 'p-3 bg-[#2a1525] border border-[#ec4899]/30 rounded-lg' : ''}>
               <p className="text-sm text-slate-600 mb-1">유류분 부족액 (반환청구 가능액)</p>
-              <p className="text-2xl font-bold" style={{ color: result.shortfall > 0 ? category.color : '#9ca3af' }}>
-                {formatNumber(result.shortfall)}원
-              </p>
-              {result.shortfall > 0 && (
-                <p className="text-xs mt-1" style={{ color: category.color }}>
-                  유류분 침해가 인정되어 반환청구가 가능합니다.
-                </p>
-              )}
-              {result.shortfall === 0 && (
-                <p className="text-xs text-gray-500 mt-1">
-                  유류분 침해가 없습니다.
-                </p>
+              {result.shortfall === 0 ? (
+                <>
+                  <p className="text-2xl font-bold" style={{ color: '#9ca3af' }}>
+                    {formatNumber(result.shortfall)}원
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    유류분 부족액이 없습니다 (이미 충분히 수령하였습니다)
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="text-2xl font-bold" style={{ color: category.color }}>
+                    {formatNumber(result.shortfall)}원
+                  </p>
+                  <p className="text-xs mt-1" style={{ color: category.color }}>
+                    유류분 침해가 인정되어 반환청구가 가능합니다.
+                  </p>
+                </>
               )}
             </div>
           </div>
