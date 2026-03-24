@@ -1,14 +1,15 @@
 # Roadmap: 법률 도구 (Legal Calculator Hub)
 
 **Created:** 2026-03-23
-**Milestone:** v1.3 전체 계산기 법률 정확성 감사
+**Milestone:** v1.4 중복 계산기 정리 및 코드 클린업
 
 ## Milestones
 
 - ✅ **v1.0** — 초기 프로젝트 셋업 (shipped)
 - ✅ **v1.1 계산기 품질 개선** — Phases 1-10 (shipped 2026-03-23)
 - ✅ **v1.2 UI/UX 개편 및 라이트 테마 적용** — Phases 11-12 (shipped 2026-03-23)
-- 🚧 **v1.3 전체 계산기 법률 정확성 감사** — Phases 13-21 (active)
+- ✅ **v1.3 전체 계산기 법률 정확성 감사** — Phases 13-21 (shipped 2026-03-24)
+- 🚧 **v1.4 중복 계산기 정리 및 코드 클린업** — Phases 22-23 (active)
 
 ## Phases
 
@@ -36,7 +37,7 @@
 
 </details>
 
-### 🚧 v1.3 전체 계산기 법률 정확성 감사 (Phases 13-21)
+### ✅ v1.3 전체 계산기 법률 정확성 감사 (Phases 13-21) — SHIPPED 2026-03-24
 
 - [x] **Phase 13: 소송/법원 계산기 법률 감사** — 6개 계산기 법령 원문 대조 검증 및 오류 수정 (completed 2026-03-24)
 - [x] **Phase 14: 가사/가족법 계산기 법률 감사** — 6개 계산기 민법·가사소송법 기준 검증 및 오류 수정 (completed 2026-03-24)
@@ -185,6 +186,35 @@ Plans:
 - [x] 21-01-PLAN.md — certified-letter, legal-aid 법률 감사 (MISC-01, MISC-02)
 - [x] 21-02-PLAN.md — public-defender, statute-of-limitations 법률 감사 (MISC-03, MISC-04)
 
+### 🚧 v1.4 중복 계산기 정리 및 코드 클린업 (Phases 22-23)
+
+- [ ] **Phase 22: 삭제 파일 정리 + 계산기 통합** — 미커밋 삭제 13개 정리, small-claims·e-court→lawsuit-cost 통합
+- [ ] **Phase 23: 경계선 계산기 UX 개선 + 검증** — public-defender/legal-aid 탭 통합, dsr/dti·해고 상호링크, 최종 검증
+
+### Phase 22: 삭제 파일 정리 + 계산기 통합
+**Goal**: 미커밋 삭제 파일을 정리하고, small-claims와 e-court를 lawsuit-cost로 통합한다
+**Requirements**: CLEANUP-01, CLEANUP-02, MERGE-01, MERGE-02, MERGE-03, MERGE-04
+**Success Criteria**:
+  1. 삭제된 13개 파일이 git에서 커밋되어 코드베이스에 남지 않는다
+  2. lawsuit-cost에 소액사건 모드(소가 3,000만원 이하, 송달료 10회)가 추가된다
+  3. small-claims, e-court page.tsx가 삭제되고 tools-data.ts에서 제거된다
+  4. 삭제된 계산기 URL이 lawsuit-cost로 리다이렉트된다
+  5. TypeScript 빌드 통과
+Plans:
+- [ ] 22-01-PLAN.md — 삭제 파일 커밋 + small-claims/e-court 통합
+
+### Phase 23: 경계선 계산기 UX 개선 + 최종 검증
+**Goal**: 유사 계산기 간 UX를 개선하고 전체 정합성을 검증한다
+**Requirements**: UX-01, UX-02, UX-03, VERIFY-01, VERIFY-02
+**Success Criteria**:
+  1. public-defender와 legal-aid가 탭으로 통합된 단일 페이지에서 작동한다
+  2. dsr/dti 페이지에 상호 링크와 차이 설명이 표시된다
+  3. dismissal-notice/unfair-dismissal 페이지에 상호 링크가 추가된다
+  4. tools-data.ts 등록 수와 실제 page.tsx 파일 수가 일치한다
+  5. TypeScript 빌드 에러 없이 통과한다
+Plans:
+- [ ] 23-01-PLAN.md — 탭 통합 + 상호 링크 + 최종 검증
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -210,3 +240,5 @@ Plans:
 | 19. 채권/이자 법률 감사 | v1.3 | 1/1 | Complete    | 2026-03-24 |
 | 20. 손해배상 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
 | 21. 기타 법률도구 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
+| 22. 삭제 파일 정리 + 계산기 통합 | v1.4 | 0/1 | Not started | — |
+| 23. 경계선 UX 개선 + 검증 | v1.4 | 0/1 | Not started | — |

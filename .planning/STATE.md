@@ -5,9 +5,9 @@ milestone_name: 중복 계산기 정리 및 코드 클린업
 status: defining requirements
 last_updated: "2026-03-24T12:00:00.000Z"
 progress:
-  total_phases: 0
+  total_phases: 2
   completed_phases: 0
-  total_plans: 0
+  total_plans: 2
   completed_plans: 0
 ---
 
