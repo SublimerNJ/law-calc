@@ -63,14 +63,34 @@ function formatNumber(n: number): string {
   return n.toLocaleString('ko-KR');
 }
 
+const UNREALISTIC_LIMIT = 100_000_000_000;
+
 export default function AttorneyFeePage() {
   const [amount, setAmount] = useState('');
   const [actualFeeInput, setActualFeeInput] = useState('');
   const [result, setResult] = useState<CalcResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
+    if (!amount) {
+      setError('소가를 입력해주세요.');
+      setResult(null);
+      return;
+    }
     const val = parseInt(amount.replace(/,/g, ''), 10);
-    if (!val || val <= 0) return;
+    if (isNaN(val) || val <= 0) {
+      setError('금액은 0보다 커야 합니다.');
+      setResult(null);
+      return;
+    }
+    if (val > UNREALISTIC_LIMIT) {
+      setWarning('입력값이 비현실적으로 큽니다. 확인해주세요.');
+    }
+
     const actualFee = actualFeeInput ? parseInt(actualFeeInput.replace(/,/g, ''), 10) || null : null;
     setResult(calculateAttorneyFee(val, actualFee));
   };
@@ -117,6 +137,17 @@ export default function AttorneyFeePage() {
           />
           <p className="text-xs text-gray-500 mt-1">비워두면 산입 한도만 표시됩니다</p>
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
+        {warning && (
+          <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200">
+            <p className="text-sm text-orange-500">{warning}</p>
+          </div>
+        )}
 
         <button
           onClick={handleCalculate}
