@@ -20,11 +20,42 @@ export default function DismissalNoticePage() {
     dailyWage: number;
     unpaidDays: number;
   } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const wage = parseInt(monthlyWage.replace(/[^0-9]/g, ''), 10);
+    if (!wage || wage <= 0) {
+      setError('월 통상임금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (!noticeDays && noticeDays !== '0') {
+      setError('해고예고일수를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const days = parseInt(noticeDays, 10);
-    if (!wage || wage <= 0 || isNaN(days) || days < 0) return;
+    if (isNaN(days) || days < 0) {
+      setError('해고예고일수를 올바르게 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (days >= 30) {
+      setError('해고예고일수는 0~29일 사이여야 합니다. 30일 이상 예고 시 해고예고수당이 발생하지 않습니다.');
+      setResult(null);
+      return;
+    }
+
+    if (wage > 100_000_000) {
+      setWarning('월 통상임금이 1억원을 초과합니다. 확인해주세요.');
+    }
 
     const dailyWage = Math.floor(wage / 30);
     const unpaidDays = Math.max(0, 30 - days);
@@ -38,13 +69,17 @@ export default function DismissalNoticePage() {
     setMonthlyWage(raw);
   };
 
+  const handleNoticeDaysChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNoticeDays(e.target.value.replace(/[^0-9]/g, ''));
+  };
+
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원) <span className="text-red-500">*</span></label>
           <input
             type="text"
             inputMode="numeric"
@@ -61,18 +96,20 @@ export default function DismissalNoticePage() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">해고예고일수 (0~29일)</label>
+          <label className="block text-sm text-slate-600 mb-2">해고예고일수 (0~29일) <span className="text-red-500">*</span></label>
           <input
-            type="number"
-            min="0"
-            max="29"
+            type="text"
+            inputMode="numeric"
             value={noticeDays}
-            onChange={e => setNoticeDays(e.target.value)}
+            onChange={handleNoticeDaysChange}
             placeholder="0 = 즉시해고"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">실제 받은 예고 기간. 0 = 예고 없이 즉시해고 (30일분 수당 전액 지급)</p>
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -86,6 +123,14 @@ export default function DismissalNoticePage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.allowance === 0 && (
+            <div className="mb-4 p-4 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-700">
+                해고예고수당이 발생하지 않습니다 (30일 이상 예고). 사용자가 30일 이상의 예고를 한 경우 수당 지급 의무가 없습니다.
+              </p>
+            </div>
+          )}
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">해고예고수당</p>
