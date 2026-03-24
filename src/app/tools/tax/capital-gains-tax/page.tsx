@@ -14,7 +14,7 @@ function formatNumber(n: number): string {
 type AssetType = 'house' | 'land' | 'commercial' | 'stock';
 type HouseCount = '1' | '2' | '3+';
 
-/** 기본세율 (소득세법 제55조, 2026년) */
+/** 기본세율 (소득세법 제104조 제1항, 2026년) */
 function calcBasicTax(taxBase: number): number {
   if (taxBase <= 14_000_000) return taxBase * 0.06;
   if (taxBase <= 50_000_000) return 840_000 + (taxBase - 14_000_000) * 0.15;
@@ -26,17 +26,18 @@ function calcBasicTax(taxBase: number): number {
   return 384_060_000 + (taxBase - 1_000_000_000) * 0.45;
 }
 
-/** 장기보유특별공제율 (1세대1주택) */
-function getLongTermRate(years: number): number {
-  if (years < 3) return 0;
-  if (years < 4) return 0.12;
-  if (years < 5) return 0.16;
-  if (years < 6) return 0.20;
-  if (years < 7) return 0.24;
-  if (years < 8) return 0.28;
-  if (years < 9) return 0.32;
-  if (years < 10) return 0.36;
-  return 0.40;
+/**
+ * 장기보유특별공제율 (1세대1주택, 소득세법 제95조 제2항 별표2)
+ * 보유기간 3년 이상: 4%/년 (최대 40%)
+ * 거주기간 3년 이상: 4%/년 (최대 40%)
+ * 합산 최대 80%
+ */
+function getLongTermRate(holdingYears: number, residenceYears: number): number {
+  // 보유기간 공제율: 3년 이상부터 4%×보유년수, 최대 40% (3년→12%, 10년→40%)
+  const holdingRate = holdingYears >= 3 ? Math.min(holdingYears * 0.04, 0.40) : 0;
+  // 거주기간 공제율: 3년 이상부터 4%×거주년수, 최대 40% (3년→12%, 10년→40%)
+  const residenceRate = residenceYears >= 3 ? Math.min(residenceYears * 0.04, 0.40) : 0;
+  return Math.min(holdingRate + residenceRate, 0.80);
 }
 
 /** 일반 장기보유특별공제율 (비1세대1주택) */
@@ -79,6 +80,7 @@ function calculate(
   assetType: AssetType,
   isSingleHouse: boolean,
   houseCount: HouseCount,
+  residenceYears: number,
 ): Result {
   const gain = transferPrice - acquisitionPrice;
   const acqMs = new Date(acquisitionDate).getTime();
@@ -108,7 +110,7 @@ function calculate(
   if (assetType === 'stock') {
     longTermRate = 0;
   } else if (isSingleHouse) {
-    longTermRate = getLongTermRate(holdingYears);
+    longTermRate = getLongTermRate(holdingYears, residenceYears);
   } else {
     longTermRate = getGeneralLongTermRate(holdingYears);
   }
@@ -165,13 +167,15 @@ export default function CapitalGainsTaxPage() {
   const [assetType, setAssetType] = useState<AssetType>('house');
   const [isSingleHouse, setIsSingleHouse] = useState(false);
   const [houseCount, setHouseCount] = useState<HouseCount>('1');
+  const [residenceYears, setResidenceYears] = useState('');
   const [result, setResult] = useState<Result | null>(null);
 
   const handleCalculate = () => {
     const acq = parseInt(acquisitionPrice.replace(/,/g, ''), 10);
     const trn = parseInt(transferPrice.replace(/,/g, ''), 10);
     if (!acq || !trn || !acquisitionDate || !transferDate) return;
-    setResult(calculate(acq, trn, acquisitionDate, transferDate, assetType, isSingleHouse, houseCount));
+    const resYears = parseInt(residenceYears, 10) || 0;
+    setResult(calculate(acq, trn, acquisitionDate, transferDate, assetType, isSingleHouse, houseCount, resYears));
   };
 
   const numInput = (value: string, setter: (v: string) => void) => ({
@@ -256,6 +260,24 @@ export default function CapitalGainsTaxPage() {
                 <span className="text-sm text-slate-600">1세대 1주택 해당</span>
               </label>
             </div>
+
+            {isSingleHouse && (
+              <div className="mb-4">
+                <label className="block text-sm text-slate-600 mb-2">
+                  실거주 기간 (년) — 장기보유특별공제 거주기간 공제율 적용 (소득세법 제95조 제2항 별표2)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  max="15"
+                  value={residenceYears}
+                  onChange={e => setResidenceYears(e.target.value)}
+                  placeholder="예: 3"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                />
+                <p className="text-xs text-gray-500 mt-1">거주 3년부터 4%/년 추가 공제, 최대 40% (보유+거주 합산 최대 80%)</p>
+              </div>
+            )}
 
             <div className="mb-6">
               <label className="block text-sm text-slate-600 mb-2">보유 주택 수</label>
@@ -350,7 +372,7 @@ export default function CapitalGainsTaxPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 소득세법 제94~118조, 조세특례제한법 1세대1주택 비과세
+              법적 근거: 소득세법 제89조(1세대1주택 비과세), 제94조(양도소득 범위), 제95조(장기보유특별공제), 제103조(기본공제), 제104조(세율)
             </p>
           </div>
         </div>
