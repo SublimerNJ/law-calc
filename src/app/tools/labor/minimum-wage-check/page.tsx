@@ -7,7 +7,9 @@ import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 const tool = TOOLS.find(t => t.id === 'minimum-wage-check')!;
 const category = CATEGORIES.find(c => c.id === 'labor')!;
 
-const MINIMUM_WAGE_2026 = 10030;
+// 2025년 최저임금: 10,030원/시간 (고용노동부 고시 제2024-44호)
+// 2026년 최저임금: 10,320원/시간 (고용노동부 고시 제2025-38호)
+const MINIMUM_WAGE_2026 = 10320;
 
 function formatNumber(n: number): string {
   return n.toLocaleString('ko-KR');
@@ -214,7 +216,7 @@ export default function MinimumWageCheckPage() {
   : `실제 시급: ${formatNumber(result.actualHourly)}원\nvs 최저임금: ${formatNumber(MINIMUM_WAGE_2026)}원\n차액: ${formatNumber(result.hourlyDiff)}원`}
             </pre>
             <p className="text-xs text-gray-500 mt-3">
-              법적 근거: 최저임금법 제6조, 2026년 최저임금 고시 (10,030원/시간)
+              법적 근거: 최저임금법 제6조, 2026년 최저임금 고시 (10,320원/시간, 고용노동부 고시 제2025-38호)
             </p>
           </div>
 
