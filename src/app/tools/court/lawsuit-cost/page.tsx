@@ -9,22 +9,22 @@ const category = CATEGORIES.find(c => c.id === 'court')!;
 
 type FilingMethod = 'offline' | 'ecourt';
 
-const SERVICE_FEE_UNIT = 4_500;
-const SERVICE_ROUNDS = { 1: 10, 2: 8, 3: 5 } as const;
+const SERVICE_FEE_UNIT = 5_500;
+const SERVICE_ROUNDS = { 1: 15, 2: 12, 3: 8 } as const;
 
 function calculateStampFee(amount: number): number {
   let fee: number;
-  if (amount <= 10_000_000) {
+  if (amount < 10_000_000) {
     fee = amount * 0.005;
-    if (fee < 1_000) fee = 1_000;
-  } else if (amount <= 100_000_000) {
+  } else if (amount < 100_000_000) {
     fee = amount * 0.0045 + 5_000;
-  } else if (amount <= 1_000_000_000) {
+  } else if (amount < 1_000_000_000) {
     fee = amount * 0.004 + 55_000;
   } else {
     fee = amount * 0.0035 + 555_000;
   }
-  return Math.ceil(fee / 100) * 100;
+  if (fee < 1_000) return 1_000;
+  return Math.floor(fee / 100) * 100;
 }
 
 function formatNumber(n: number): string {
@@ -32,50 +32,66 @@ function formatNumber(n: number): string {
 }
 
 interface CalcResult {
-  // 오프라인
   offlineStampFee: number;
   offlineServiceFee: number;
   offlineTotal: number;
-  // 전자소송
   ecourtStampFee: number;
   ecourtDiscount: number;
   ecourtServiceFee: number;
   ecourtTotal: number;
-  // 공통
   serviceRounds: number;
-  parties: number;
+  plaintiffs: number;
+  defendants: number;
   savings: number;
   levelLabel: string;
 }
 
 export default function LawsuitCostPage() {
   const [amount, setAmount] = useState('');
-  const [partyCount, setPartyCount] = useState('2');
+  const [plaintiffCount, setPlaintiffCount] = useState('1');
+  const [defendantCount, setDefendantCount] = useState('1');
   const [level, setLevel] = useState<1 | 2 | 3>(1);
   const [filingMethod, setFilingMethod] = useState<FilingMethod>('offline');
   const [result, setResult] = useState<CalcResult | null>(null);
+  const [error, setError] = useState('');
 
   const handleCalculate = () => {
+    setError('');
     const val = parseInt(amount.replace(/,/g, ''), 10);
-    const parties = parseInt(partyCount, 10);
-    if (!val || val <= 0 || !parties || parties < 2) return;
+    const plaintiffs = parseInt(plaintiffCount, 10);
+    const defendants = parseInt(defendantCount, 10);
+
+    if (!val || val <= 0) {
+      setError('소가를 입력해 주세요.');
+      return;
+    }
+    if (!plaintiffs || plaintiffs < 1) {
+      setError('원고는 최소 1명 이상이어야 합니다.');
+      return;
+    }
+    if (!defendants || defendants < 1) {
+      setError('피고는 최소 1명 이상이어야 합니다.');
+      return;
+    }
+
+    const totalParties = plaintiffs + defendants;
 
     let baseStampFee = calculateStampFee(val);
-    // 항소심/상고심: 인지대 1.5배
-    if (level >= 2) baseStampFee = Math.ceil((baseStampFee * 1.5) / 100) * 100;
+    if (level === 2) baseStampFee = Math.floor((baseStampFee * 1.5) / 100) * 100;
+    else if (level === 3) baseStampFee = Math.floor((baseStampFee * 2) / 100) * 100;
 
     const serviceRounds = SERVICE_ROUNDS[level];
 
-    // 오프라인
+    // 오프라인: 전체 당사자 수 × 회분
     const offlineStampFee = baseStampFee;
-    const offlineServiceFee = parties * serviceRounds * SERVICE_FEE_UNIT;
+    const offlineServiceFee = totalParties * serviceRounds * SERVICE_FEE_UNIT;
     const offlineTotal = offlineStampFee + offlineServiceFee;
 
-    // 전자소송: 인지대 10% 할인
+    // 전자소송: 인지대 10% 할인, 송달료는 피고(상대방) 수만 계산
     let ecourtStampFee = Math.ceil((baseStampFee * 0.9) / 100) * 100;
     if (ecourtStampFee < 1_000) ecourtStampFee = 1_000;
     const ecourtDiscount = offlineStampFee - ecourtStampFee;
-    const ecourtServiceFee = offlineServiceFee; // 송달료는 동일 (전자송달 별도)
+    const ecourtServiceFee = defendants * serviceRounds * SERVICE_FEE_UNIT;
     const ecourtTotal = ecourtStampFee + ecourtServiceFee;
 
     const savings = offlineTotal - ecourtTotal;
@@ -84,7 +100,7 @@ export default function LawsuitCostPage() {
     setResult({
       offlineStampFee, offlineServiceFee, offlineTotal,
       ecourtStampFee, ecourtDiscount, ecourtServiceFee, ecourtTotal,
-      serviceRounds, parties, savings, levelLabel,
+      serviceRounds, plaintiffs, defendants, savings, levelLabel,
     });
   };
 
@@ -110,15 +126,27 @@ export default function LawsuitCostPage() {
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">당사자 수 (원고 + 피고)</label>
-          <input
-            type="number"
-            min={2}
-            value={partyCount}
-            onChange={e => setPartyCount(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
-          />
+        <div className="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label className="block text-sm text-slate-600 mb-2">원고 수</label>
+            <input
+              type="number"
+              min={1}
+              value={plaintiffCount}
+              onChange={e => setPlaintiffCount(e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-slate-600 mb-2">피고 수</label>
+            <input
+              type="number"
+              min={1}
+              value={defendantCount}
+              onChange={e => setDefendantCount(e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            />
+          </div>
         </div>
 
         <div className="mb-4">
@@ -127,7 +155,7 @@ export default function LawsuitCostPage() {
             {([
               { value: 1 as const, label: '1심' },
               { value: 2 as const, label: '항소심 (인지대 1.5배)' },
-              { value: 3 as const, label: '상고심 (인지대 1.5배)' },
+              { value: 3 as const, label: '상고심 (인지대 2배)' },
             ]).map(opt => (
               <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
                 <input
@@ -163,9 +191,15 @@ export default function LawsuitCostPage() {
             ))}
           </div>
           {filingMethod === 'ecourt' && (
-            <p className="text-xs text-gray-500 mt-1">전자소송 이용 시 인지대 10% 할인 (ecfs.scourt.go.kr)</p>
+            <p className="text-xs text-gray-500 mt-1">전자소송: 인지대 10% 할인 + 송달료 피고 수만 산정 (ecfs.scourt.go.kr)</p>
           )}
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-600">{error}</p>
+          </div>
+        )}
 
         <button
           onClick={handleCalculate}
@@ -178,7 +212,6 @@ export default function LawsuitCostPage() {
 
       {result && (
         <>
-          {/* 선택한 방법의 결과 */}
           <div className="premium-card p-6 mb-4">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">
               {filingMethod === 'ecourt' ? '전자소송' : '오프라인'} 소송비용 ({result.levelLabel})
@@ -194,15 +227,19 @@ export default function LawsuitCostPage() {
                 </tr>
                 {filingMethod === 'ecourt' && result.ecourtDiscount > 0 && (
                   <tr className="border-b border-slate-200">
-                    <td className="py-3 text-sm text-green-400">전자소송 할인 (-10%)</td>
-                    <td className="py-3 text-right text-green-400 font-medium">
+                    <td className="py-3 text-sm text-green-600">전자소송 할인 (-10%)</td>
+                    <td className="py-3 text-right text-green-600 font-medium">
                       -{formatNumber(result.ecourtDiscount)}원
                     </td>
                   </tr>
                 )}
                 <tr className="border-b border-slate-200">
                   <td className="py-3 text-sm text-slate-600">
-                    송달료 ({result.parties}명 × {result.serviceRounds}회 × {formatNumber(SERVICE_FEE_UNIT)}원)
+                    송달료 (
+                    {filingMethod === 'ecourt'
+                      ? `피고 ${result.defendants}명`
+                      : `${result.plaintiffs + result.defendants}명`
+                    } × {result.serviceRounds}회 × {formatNumber(SERVICE_FEE_UNIT)}원)
                   </td>
                   <td className="py-3 text-right text-slate-900 font-medium">
                     {formatNumber(filingMethod === 'ecourt' ? result.ecourtServiceFee : result.offlineServiceFee)}원
@@ -218,7 +255,6 @@ export default function LawsuitCostPage() {
             </table>
           </div>
 
-          {/* 비교표 */}
           <div className="premium-card p-6">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">오프라인 vs 전자소송 비교</h2>
 
@@ -241,12 +277,16 @@ export default function LawsuitCostPage() {
                   </td>
                 </tr>
                 <tr className="border-b border-slate-200/50">
-                  <td className="py-2.5 text-slate-600">송달료</td>
+                  <td className="py-2.5 text-slate-600">
+                    송달료
+                  </td>
                   <td className={`py-2.5 text-right ${filingMethod === 'offline' ? 'font-semibold' : 'text-slate-600'}`}>
                     {formatNumber(result.offlineServiceFee)}원
+                    <span className="block text-xs text-gray-400">{result.plaintiffs + result.defendants}명 × {result.serviceRounds}회</span>
                   </td>
                   <td className={`py-2.5 text-right ${filingMethod === 'ecourt' ? 'font-semibold' : 'text-slate-600'}`}>
                     {formatNumber(result.ecourtServiceFee)}원
+                    <span className="block text-xs text-gray-400">피고 {result.defendants}명 × {result.serviceRounds}회</span>
                   </td>
                 </tr>
                 <tr>
@@ -262,8 +302,8 @@ export default function LawsuitCostPage() {
             </table>
 
             {result.savings > 0 && (
-              <div className="mt-4 p-3 rounded-lg bg-green-500/10 border border-green-500/30">
-                <p className="text-sm text-green-400">
+              <div className="mt-4 p-3 rounded-lg bg-green-50 border border-green-200">
+                <p className="text-sm text-green-700">
                   전자소송 이용 시 절약: {formatNumber(result.savings)}원
                 </p>
               </div>
@@ -274,7 +314,13 @@ export default function LawsuitCostPage() {
                 인지대: 민사소송등인지법 별표 기준 | 전자소송 할인: 민사소송 등에서의 전자문서 이용 등에 관한 법률
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                송달료: 2026년 기준 1회 {formatNumber(SERVICE_FEE_UNIT)}원 | 심급별 회수: 1심 10회, 항소심 8회, 상고심 5회
+                송달료: 2026년 기준 1회 {formatNumber(SERVICE_FEE_UNIT)}원 | 심급별 회수: 1심 15회, 항소심 12회, 상고심 8회
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                전자소송 송달료: 피고(상대방) 수만 산정 | 오프라인: 전체 당사자 수 산정
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                본 계산기는 참고용이며, 실제 소송비용은 법원의 판단에 따릅니다
               </p>
             </div>
           </div>
