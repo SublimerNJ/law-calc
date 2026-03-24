@@ -13,6 +13,7 @@ const SERVICE_FEE_UNIT = 5_500;
 const SERVICE_ROUNDS = { 1: 15, 2: 12, 3: 8 } as const;
 const SMALL_CLAIMS_LIMIT = 30_000_000;
 const SMALL_CLAIMS_ROUNDS = 10;
+const UNREALISTIC_LIMIT = 100_000_000_000;
 
 function calculateStampFee(amount: number): number {
   let fee: number;
@@ -57,24 +58,38 @@ export default function LawsuitCostPage() {
   const [filingMethod, setFilingMethod] = useState<FilingMethod>('offline');
   const [result, setResult] = useState<CalcResult | null>(null);
   const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
 
   const handleCalculate = () => {
     setError('');
+    setWarning('');
     const val = parseInt(amount.replace(/,/g, ''), 10);
     const plaintiffs = parseInt(plaintiffCount, 10);
     const defendants = parseInt(defendantCount, 10);
 
-    if (!val || val <= 0) {
-      setError('소가를 입력해 주세요.');
+    if (!amount || isNaN(val)) {
+      setError('소가를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (val <= 0) {
+      setError('금액은 0보다 커야 합니다.');
+      setResult(null);
       return;
     }
     if (!plaintiffs || plaintiffs < 1) {
       setError('원고는 최소 1명 이상이어야 합니다.');
+      setResult(null);
       return;
     }
     if (!defendants || defendants < 1) {
       setError('피고는 최소 1명 이상이어야 합니다.');
+      setResult(null);
       return;
+    }
+
+    if (val > UNREALISTIC_LIMIT) {
+      setWarning('입력값이 비현실적으로 큽니다. 확인해주세요.');
     }
 
     const totalParties = plaintiffs + defendants;
@@ -109,8 +124,15 @@ export default function LawsuitCostPage() {
   };
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAmount(e.target.value.replace(/[^0-9]/g, ''));
+    const raw = e.target.value.replace(/[^0-9]/g, '');
+    setAmount(raw);
   };
+
+  const displayAmount = amount ? parseInt(amount, 10).toLocaleString('ko-KR') : '';
+
+  const currentTotal = result
+    ? (filingMethod === 'ecourt' ? result.ecourtTotal : result.offlineTotal)
+    : null;
 
   return (
     <CalculatorLayout tool={tool} category={category}>
@@ -118,12 +140,14 @@ export default function LawsuitCostPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">소가 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">
+            소가 (원) <span className="text-red-500">(필수)</span>
+          </label>
           <p className="text-xs text-gray-500 mb-1">소가 = 소송에서 청구하는 금액</p>
           <input
             type="text"
             inputMode="numeric"
-            value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
+            value={displayAmount}
             onChange={handleAmountChange}
             placeholder="예: 50,000,000"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
@@ -201,7 +225,12 @@ export default function LawsuitCostPage() {
 
         {error && (
           <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
-            <p className="text-sm text-red-600">{error}</p>
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
+        {warning && (
+          <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200">
+            <p className="text-sm text-orange-500">{warning}</p>
           </div>
         )}
 
@@ -226,6 +255,12 @@ export default function LawsuitCostPage() {
             <h2 className="text-lg font-semibold text-slate-900 mb-4">
               {filingMethod === 'ecourt' ? '전자소송' : '오프라인'} 소송비용 ({result.levelLabel})
             </h2>
+
+            {currentTotal === 0 && (
+              <div className="mb-4 p-3 rounded-lg bg-gray-50 border border-gray-200">
+                <p className="text-sm text-gray-600">해당 조건에서는 비용이 발생하지 않습니다.</p>
+              </div>
+            )}
 
             <table className="w-full mb-4">
               <tbody>
