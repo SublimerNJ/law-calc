@@ -145,8 +145,7 @@ export default function ParentalLeavePage() {
 
         <button
           onClick={handleCalculate}
-          className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
-          style={{ backgroundColor: category.color }}
+          className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
         >
           계산하기
         </button>
