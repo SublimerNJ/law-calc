@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: 전체 계산기 법률 정확성 감사
 status: Ready to execute
-last_updated: "2026-03-24T03:07:29.555Z"
+last_updated: "2026-03-24T03:08:05.791Z"
 progress:
   total_phases: 9
   completed_phases: 2
   total_plans: 9
-  completed_plans: 6
+  completed_plans: 8
 ---
 
 # Project State
@@ -23,7 +23,7 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 15 (labor-legal-audit) — EXECUTING
-Plan: 2 of 4
+Plan: 4 of 4
 
 ## Accumulated Context
 
@@ -36,13 +36,16 @@ Plan: 2 of 4
   - 유류분 기산기간: 제3자 증여 1년 이내, 상속인 증여 기간 제한 없음 (민법 제1114조)
   - 대습상속 근거: 제1001조 (대습상속 규정), 제1010조는 대습상속인의 상속분 규정
   - 양육비 법적 근거: 민법 제833조(부부협조)는 오류, 민법 제837조(양육책임)가 정확
+  - 2026년 최저임금 10,320원 확정 적용 (고용노동부 고시 제2025-38호) — minimum-wage-check, industrial-accident 반영
+  - 연장근로 레이블 '52시간'은 오류: 연장근로 한도는 1주 12시간(제53조 제1항), 52시간은 주 총근로시간 합산
+  - 제61조 사용촉진 조항은 수당 면제 예외이므로 계산기에 명시 필요
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-24
-- **Stopped At**: Completed 15-01-PLAN.md (parallel agent)
+- **Stopped At**: Completed 15-02-PLAN.md (parallel agent)
 - **완료**: attorney-fee(이전 세션), lawsuit-cost, small-claims, payment-order, civil-mediation, family-court(13-01), e-court(13-02)
 - **남은**: Phase 14~21
 - **발견된 공통 오류 패턴**: 인지액 올림→버림, 소가 경계값 이하→미만, 송달료 단가/회수 불일치, 심급별 배율 오류

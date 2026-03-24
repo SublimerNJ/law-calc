@@ -32,9 +32,9 @@
 - [ ] **LABOR-03**: 연차수당 계산기 (annual-leave-pay) — 근로기준법 연차유급휴가 기준 검증 및 오류 수정
 - [ ] **LABOR-04**: 연장근로수당 계산기 (overtime-pay) — 근로기준법 통상임금·가산율 검증 및 오류 수정
 - [ ] **LABOR-05**: 주휴수당 계산기 (weekly-holiday-pay) — 근로기준법 주휴일 기준 검증 및 오류 수정
-- [ ] **LABOR-06**: 최저임금 위반 계산기 (minimum-wage-check) — 최저임금법 기준 검증 및 오류 수정
-- [ ] **LABOR-07**: 부당해고 보상금 계산기 (unfair-dismissal) — 근로기준법 부당해고 구제 기준 검증 및 오류 수정
-- [ ] **LABOR-08**: 산재보험급여 계산기 (industrial-accident) — 산업재해보상보험법 기준 검증 및 오류 수정
+- [x] **LABOR-06**: 최저임금 위반 계산기 (minimum-wage-check) — 최저임금법 기준 검증 및 오류 수정
+- [x] **LABOR-07**: 부당해고 보상금 계산기 (unfair-dismissal) — 근로기준법 부당해고 구제 기준 검증 및 오류 수정
+- [x] **LABOR-08**: 산재보험급여 계산기 (industrial-accident) — 산업재해보상보험법 기준 검증 및 오류 수정
 - [ ] **LABOR-09**: 출산휴가급여 계산기 (maternity-leave) — 남녀고용평등법 기준 검증 및 오류 수정
 - [ ] **LABOR-10**: 육아휴직급여 계산기 (parental-leave) — 남녀고용평등법 기준 검증 및 오류 수정
 - [ ] **LABOR-11**: 실업급여 계산기 (unemployment-benefit) — 고용보험법 기준 검증 및 오류 수정
@@ -119,9 +119,9 @@
 | LABOR-03 | Phase 15 | Pending |
 | LABOR-04 | Phase 15 | Pending |
 | LABOR-05 | Phase 15 | Pending |
-| LABOR-06 | Phase 15 | Pending |
-| LABOR-07 | Phase 15 | Pending |
-| LABOR-08 | Phase 15 | Pending |
+| LABOR-06 | Phase 15 | Complete |
+| LABOR-07 | Phase 15 | Complete |
+| LABOR-08 | Phase 15 | Complete |
 | LABOR-09 | Phase 15 | Pending |
 | LABOR-10 | Phase 15 | Pending |
 | LABOR-11 | Phase 15 | Pending |
