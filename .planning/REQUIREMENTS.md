@@ -72,9 +72,9 @@
 
 ### 채권/이자 (DEBT)
 
-- [ ] **DEBT-01**: 지연손해금 계산기 (late-payment) — 소송촉진특례법 법정이율 검증 및 오류 수정
-- [ ] **DEBT-02**: 대여금 이자 계산기 (loan-interest) — 이자제한법 최고이자율 검증 및 오류 수정
-- [ ] **DEBT-03**: 부당이득 반환 계산기 (unjust-enrichment) — 민법 부당이득 기준 검증 및 오류 수정
+- [x] **DEBT-01**: 지연손해금 계산기 (late-payment) — 소송촉진특례법 법정이율 검증 및 오류 수정
+- [x] **DEBT-02**: 대여금 이자 계산기 (loan-interest) — 이자제한법 최고이자율 검증 및 오류 수정
+- [x] **DEBT-03**: 부당이득 반환 계산기 (unjust-enrichment) — 민법 부당이득 기준 검증 및 오류 수정
 
 ### 손해배상 (DAMAGES)
 
@@ -147,9 +147,9 @@
 | TRAFFIC-02 | Phase 18 | Complete |
 | TRAFFIC-03 | Phase 18 | Complete |
 | TRAFFIC-04 | Phase 18 | Complete |
-| DEBT-01 | Phase 19 | Pending |
-| DEBT-02 | Phase 19 | Pending |
-| DEBT-03 | Phase 19 | Pending |
+| DEBT-01 | Phase 19 | Complete |
+| DEBT-02 | Phase 19 | Complete |
+| DEBT-03 | Phase 19 | Complete |
 | DAMAGES-01 | Phase 20 | Pending |
 | DAMAGES-02 | Phase 20 | Pending |
 | DAMAGES-03 | Phase 20 | Pending |
