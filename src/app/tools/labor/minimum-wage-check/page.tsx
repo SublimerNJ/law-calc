@@ -53,15 +53,41 @@ export default function MinimumWageCheckPage() {
   const [weeklyHours, setWeeklyHours] = useState(40);
   const [hourlyWage, setHourlyWage] = useState('');
   const [result, setResult] = useState<WageCheckResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
+
+  const handleModeChange = (newMode: 'monthly' | 'hourly') => {
+    setMode(newMode);
+    setResult(null);
+    setError(null);
+    setWarning(null);
+  };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     if (mode === 'monthly') {
       const val = parseInt(monthlySalary.replace(/,/g, ''), 10);
-      if (!val || val <= 0) return;
+      if (!val || val <= 0) {
+        setError('임금을 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (val > 100000000) {
+        setWarning('월 급여가 1억원을 초과합니다. 확인해주세요.');
+      }
       setResult(calculateFromMonthly(val, weeklyHours));
     } else {
       const val = parseInt(hourlyWage.replace(/,/g, ''), 10);
-      if (!val || val <= 0) return;
+      if (!val || val <= 0) {
+        setError('임금을 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (val > 1000000) {
+        setWarning('시간당 임금이 100만원을 초과합니다. 확인해주세요.');
+      }
       setResult(calculateFromHourly(val));
     }
   };
@@ -78,7 +104,7 @@ export default function MinimumWageCheckPage() {
         {/* Tab toggle */}
         <div className="flex mb-6 bg-white rounded-lg p-1">
           <button
-            onClick={() => { setMode('monthly'); setResult(null); }}
+            onClick={() => handleModeChange('monthly')}
             className="flex-1 py-2 rounded-md text-sm font-semibold transition-colors"
             style={{
               backgroundColor: mode === 'monthly' ? category.color : 'transparent',
@@ -88,7 +114,7 @@ export default function MinimumWageCheckPage() {
             월급 기준
           </button>
           <button
-            onClick={() => { setMode('hourly'); setResult(null); }}
+            onClick={() => handleModeChange('hourly')}
             className="flex-1 py-2 rounded-md text-sm font-semibold transition-colors"
             style={{
               backgroundColor: mode === 'hourly' ? category.color : 'transparent',
@@ -102,7 +128,9 @@ export default function MinimumWageCheckPage() {
         {mode === 'monthly' ? (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-slate-600 mb-2">월 수령액 (원)</label>
+              <label className="block text-sm text-slate-600 mb-2">
+                월 급여 (원) <span className="text-red-500">*</span>
+              </label>
               <input
                 type="text"
                 inputMode="numeric"
@@ -139,7 +167,9 @@ export default function MinimumWageCheckPage() {
           </>
         ) : (
           <div className="mb-6">
-            <label className="block text-sm text-slate-600 mb-2">실제 시급 (원)</label>
+            <label className="block text-sm text-slate-600 mb-2">
+              시간당 임금 (원) <span className="text-red-500">*</span>
+            </label>
             <input
               type="text"
               inputMode="numeric"
@@ -148,6 +178,18 @@ export default function MinimumWageCheckPage() {
               placeholder="예: 9,860"
               className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
+          </div>
+        )}
+
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
+
+        {warning && (
+          <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200">
+            <p className="text-sm text-orange-500">{warning}</p>
           </div>
         )}
 
@@ -166,20 +208,16 @@ export default function MinimumWageCheckPage() {
 
           <div className="mb-4">
             <span
-              className="inline-block px-3 py-1 rounded-full text-sm font-semibold"
-              style={{
-                backgroundColor: result.isViolation ? 'rgba(239,68,68,0.15)' : `${category.color}1a`,
-                color: result.isViolation ? '#ef4444' : category.color,
-              }}
+              className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${result.isViolation ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}
             >
-              {result.isViolation ? '최저임금 위반' : '적법'}
+              {result.isViolation ? '최저임금 위반' : '준수 (적법)'}
             </span>
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <p className="text-sm text-slate-600 mb-1">실제 시급</p>
-              <p className="text-2xl font-bold" style={{ color: result.isViolation ? '#ef4444' : category.color }}>
+              <p className={`text-2xl font-bold ${result.isViolation ? 'text-red-600' : 'text-green-600'}`}>
                 {formatNumber(result.actualHourly)}원
               </p>
             </div>
@@ -192,18 +230,18 @@ export default function MinimumWageCheckPage() {
           </div>
 
           {result.isViolation && (
-            <div className="space-y-3 mb-4 p-4 bg-white rounded-lg">
+            <div className="space-y-3 mb-4 p-4 bg-red-50 rounded-lg border border-red-200">
               <div>
                 <p className="text-sm text-slate-600 mb-1">차액 시급</p>
-                <p className="text-lg font-semibold text-red-400">{formatNumber(result.hourlyDiff)}원</p>
+                <p className="text-lg font-semibold text-red-600">{formatNumber(result.hourlyDiff)}원</p>
               </div>
               <div>
                 <p className="text-sm text-slate-600 mb-1">월 미지급 금액</p>
-                <p className="text-lg font-semibold text-red-400">{formatNumber(result.monthlyShortage)}원</p>
+                <p className="text-lg font-semibold text-red-600">{formatNumber(result.monthlyShortage)}원</p>
               </div>
               <div>
                 <p className="text-sm text-slate-600 mb-1">연간 미지급 금액</p>
-                <p className="text-lg font-semibold text-red-400">{formatNumber(result.annualShortage)}원</p>
+                <p className="text-lg font-semibold text-red-600">{formatNumber(result.annualShortage)}원</p>
               </div>
             </div>
           )}
@@ -221,8 +259,8 @@ export default function MinimumWageCheckPage() {
           </div>
 
           {result.isViolation && (
-            <div className="mt-4 p-4 rounded-lg bg-red-500/10 border border-red-500/30">
-              <p className="text-sm font-semibold text-red-400 mb-2">최저임금 위반 시 대응 방법</p>
+            <div className="mt-4 p-4 rounded-lg bg-red-50 border border-red-200">
+              <p className="text-sm font-semibold text-red-600 mb-2">최저임금 위반 시 대응 방법</p>
               <ul className="text-xs text-slate-600 space-y-2">
                 <li><strong className="text-slate-700">1. 사업주에게 시정 요구</strong> — 미지급 차액 청구 (최저임금법 제6조)</li>
                 <li><strong className="text-slate-700">2. 고용노동부 신고</strong> — 관할 지방고용노동청 (국번 없이 1350)</li>
