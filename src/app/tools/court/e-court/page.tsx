@@ -10,20 +10,27 @@ const category = CATEGORIES.find(c => c.id === 'court')!;
 type CourtLevel = 1 | 2 | 3;
 type CaseType = 'civil' | 'payment-order' | 'mediation';
 
+// 민사소송등인지법 별표: 소가 구간 경계값은 미만(<) 기준
+// 100원 미만 버림(Math.floor) — 인지법 제2조의2
 function calculateStampFee(amount: number): number {
   let fee: number;
-  if (amount <= 10_000_000) {
+  if (amount < 10_000_000) {
     fee = amount * 0.005;
     if (fee < 1_000) fee = 1_000;
-  } else if (amount <= 100_000_000) {
+  } else if (amount < 100_000_000) {
     fee = amount * 0.0045 + 5_000;
-  } else if (amount <= 1_000_000_000) {
+  } else if (amount < 1_000_000_000) {
     fee = amount * 0.004 + 55_000;
   } else {
     fee = amount * 0.0035 + 555_000;
   }
-  return Math.ceil(fee / 100) * 100;
+  return Math.floor(fee / 100) * 100;
 }
+
+// 송달료 단가: 2026년 기준 1회 5,500원 (송달료규칙 제2조)
+// 심급별 회수: 1심 15회, 항소심 12회, 상고심 8회
+const SERVICE_FEE_UNIT = 5_500;
+const SERVICE_ROUNDS: Record<CourtLevel, number> = { 1: 15, 2: 12, 3: 8 };
 
 function formatNumber(n: number): string {
   return n.toLocaleString('ko-KR');
@@ -39,6 +46,7 @@ interface Result {
   serviceFee: number;
   total: number;
   savings: number;
+  serviceRounds: number;
 }
 
 export default function ECourtPage() {
@@ -54,26 +62,34 @@ export default function ECourtPage() {
 
     const baseStampFee = calculateStampFee(val);
 
-    // Court level multiplier
+    // 심급 배율: 항소심 1.5배, 상고심 2배 (민사소송등인지법 제3조)
     const levelMultiplier = level === 2 ? 1.5 : level === 3 ? 2 : 1;
 
-    // Case type multiplier
+    // 소송유형 배율: 지급명령 1/10, 민사조정 1/5 (민사소송등인지법 제9조, 제10조)
     let caseMultiplier = 1;
     if (caseType === 'payment-order') caseMultiplier = 0.1;
     else if (caseType === 'mediation') caseMultiplier = 0.2;
 
-    // Regular (non-e-court) stamp fee
-    let regularStampFee = Math.ceil((baseStampFee * levelMultiplier * caseMultiplier) / 100) * 100;
+    // 일반 소송 인지대: 기본인지대 × 심급배율 × 유형배율, 100원 미만 버림
+    let regularStampFee = Math.floor((baseStampFee * levelMultiplier * caseMultiplier) / 100) * 100;
     if (regularStampFee < 1_000) regularStampFee = 1_000;
 
-    // E-court 10% discount
-    let eCourtStampFee = Math.ceil((regularStampFee * 0.9) / 100) * 100;
+    // 전자소송 인지대: 10% 감액 후 100원 미만 버림
+    // 근거: 민사소송 등에서의 전자문서 이용 등에 관한 법률 제10조의2 (인지액의 10/100 감액)
+    let eCourtStampFee = Math.floor((regularStampFee * 0.9) / 100) * 100;
     if (eCourtStampFee < 1_000) eCourtStampFee = 1_000;
 
     const discount = regularStampFee - eCourtStampFee;
-    const serviceFee = parties * 10 * 4_500;
+
+    // 송달료: 당사자 수 × 심급별 회수 × 단가 (송달료규칙 제2조)
+    const serviceRounds = SERVICE_ROUNDS[level];
+    const serviceFee = parties * serviceRounds * SERVICE_FEE_UNIT;
+
+    // 일반 소송 총비용 (비교용): 동일 당사자 수, 동일 회수
+    const regularServiceFee = serviceFee;
+    const regularTotal = regularStampFee + regularServiceFee;
+
     const total = eCourtStampFee + serviceFee;
-    const regularTotal = regularStampFee + serviceFee;
     const savings = regularTotal - total;
 
     setResult({
@@ -86,6 +102,7 @@ export default function ECourtPage() {
       serviceFee,
       total,
       savings,
+      serviceRounds,
     });
   };
 
@@ -183,7 +200,7 @@ export default function ECourtPage() {
 
             <div>
               <p className="text-sm text-slate-600 mb-1">전자소송 할인 (-10%)</p>
-              <p className="text-lg font-semibold text-green-400">
+              <p className="text-lg font-semibold text-green-600">
                 -{formatNumber(result.discount)}원
               </p>
             </div>
@@ -196,7 +213,9 @@ export default function ECourtPage() {
             </div>
 
             <div>
-              <p className="text-sm text-slate-600 mb-1">송달료 ({parties}명 x 10회 x 4,500원)</p>
+              <p className="text-sm text-slate-600 mb-1">
+                송달료 ({parties}명 × {result.serviceRounds}회 × {formatNumber(SERVICE_FEE_UNIT)}원)
+              </p>
               <p className="text-lg text-slate-900">{formatNumber(result.serviceFee)}원</p>
             </div>
 
@@ -208,9 +227,9 @@ export default function ECourtPage() {
             </div>
 
             <div className="pt-4 border-t border-slate-200">
-              <p className="text-sm text-slate-600 mb-1">전자소송 절약액</p>
-              <p className="text-lg font-semibold text-green-400">
-                -{formatNumber(result.savings)}원
+              <p className="text-sm text-slate-600 mb-1">전자소송 절약액 (인지대 기준)</p>
+              <p className="text-lg font-semibold text-green-600">
+                -{formatNumber(result.discount)}원
               </p>
             </div>
           </div>
@@ -232,7 +251,13 @@ export default function ECourtPage() {
               전자소송 이용: ecfs.scourt.go.kr
             </p>
             <p className="text-xs text-gray-500 mt-2">
-              법적 근거: 민사소송 등에서의 전자문서 이용 등에 관한 법률
+              인지대: 민사소송등인지법 별표 | 전자소송 할인: 민사소송 등에서의 전자문서 이용 등에 관한 법률 제10조의2
+            </p>
+            <p className="text-xs text-gray-500">
+              송달료: 2026년 기준 1회 {formatNumber(SERVICE_FEE_UNIT)}원 | 심급별 회수: 1심 {SERVICE_ROUNDS[1]}회, 항소심 {SERVICE_ROUNDS[2]}회, 상고심 {SERVICE_ROUNDS[3]}회
+            </p>
+            <p className="text-xs text-gray-500">
+              본 계산기는 참고용이며, 실제 소송비용은 법원의 판단에 따릅니다
             </p>
           </div>
         </div>
