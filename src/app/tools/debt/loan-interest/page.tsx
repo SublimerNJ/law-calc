@@ -142,7 +142,10 @@ export default function LoanInterestPage() {
           </div>
           <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 이자제한법 제2조 (2026년 현행 최고이자율 연 20%)
+              법적 근거: 이자제한법 제2조 제1항(최고이자율 연 20%), 제2조 제3항(초과이자 무효), 제3조(선이자 공제 시 원금 산입)
+            </p>
+            <p className="text-xs text-gray-500 mt-1">
+              ※ 대부업자는 대부업 등의 등록 및 금융이용자 보호에 관한 법률 제8조(최고금리 연 20%) 동일 적용
             </p>
           </div>
         </div>
@@ -152,9 +155,10 @@ export default function LoanInterestPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">이자 과다 청구 시</h2>
         <ol className="space-y-3">
           {[
-            { color: '#06b6d4', text: '이자제한법 초과분은 무효 (연 20% 상한)' },
-            { color: '#3b82f6', text: '초과 지급한 이자는 원금에 충당' },
-            { color: '#ef4444', text: '대부업법 위반 시 금융감독원 신고' },
+            { color: '#06b6d4', text: '이자제한법 제2조 제3항: 초과 이자 약정은 초과 부분 무효 (연 20% 상한)' },
+            { color: '#3b82f6', text: '이자제한법 제3조: 선이자 공제 시 공제액은 원금에서 제한 (실제 수령액이 원금)' },
+            { color: '#f59e0b', text: '초과 지급한 이자는 원금에 충당, 원금 완제 후 반환 청구 가능' },
+            { color: '#ef4444', text: '대부업자는 대부업법 제8조 위반 시 금융감독원 신고 가능' },
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
