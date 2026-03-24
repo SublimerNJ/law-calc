@@ -1,7 +1,7 @@
 # Roadmap: 법률 도구 (Legal Calculator Hub)
 
 **Created:** 2026-03-23
-**Milestone:** v1.4 중복 계산기 정리 및 코드 클린업
+**Milestone:** v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사
 
 ## Milestones
 
@@ -9,7 +9,8 @@
 - ✅ **v1.1 계산기 품질 개선** — Phases 1-10 (shipped 2026-03-23)
 - ✅ **v1.2 UI/UX 개편 및 라이트 테마 적용** — Phases 11-12 (shipped 2026-03-23)
 - ✅ **v1.3 전체 계산기 법률 정확성 감사** — Phases 13-21 (shipped 2026-03-24)
-- 🚧 **v1.4 중복 계산기 정리 및 코드 클린업** — Phases 22-23 (active)
+- ✅ **v1.4 중복 계산기 정리 및 코드 클린업** — Phases 22-23 (shipped 2026-03-25)
+- 🚧 **v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사** — Phases 24-32 (active)
 
 ## Phases
 
@@ -37,17 +38,40 @@
 
 </details>
 
-### ✅ v1.3 전체 계산기 법률 정확성 감사 (Phases 13-21) — SHIPPED 2026-03-24
+<details>
+<summary>✅ v1.3 전체 계산기 법률 정확성 감사 (Phases 13-21) — SHIPPED 2026-03-24</summary>
 
-- [x] **Phase 13: 소송/법원 계산기 법률 감사** — 6개 계산기 법령 원문 대조 검증 및 오류 수정 (completed 2026-03-24)
-- [x] **Phase 14: 가사/가족법 계산기 법률 감사** — 6개 계산기 민법·가사소송법 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [x] **Phase 15: 노동/근로 계산기 법률 감사** — 12개 계산기 근로기준법·노동법령 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [x] **Phase 16: 세금 계산기 법률 감사** — 10개 계산기 세법·지방세법 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [x] **Phase 17: 부동산 계산기 법률 감사** — 7개 계산기 주택임대차보호법·감독규정 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [x] **Phase 18: 교통/형사 계산기 법률 감사** — 4개 계산기 도로교통법·형사소송법 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [x] **Phase 19: 채권/이자 계산기 법률 감사** — 3개 계산기 이자제한법·소송촉진특례법 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [x] **Phase 20: 손해배상 계산기 법률 감사** — 4개 계산기 민법·판례 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [x] **Phase 21: 기타 법률도구 법률 감사** — 4개 계산기 우편법·형사소송법·민법 기준 검증 및 오류 수정 (completed 2026-03-24)
+- [x] Phase 13: 소송/법원 계산기 법률 감사 (3/3 plans)
+- [x] Phase 14: 가사/가족법 계산기 법률 감사 (2/2 plans)
+- [x] Phase 15: 노동/근로 계산기 법률 감사 (4/4 plans)
+- [x] Phase 16: 세금 계산기 법률 감사 (4/4 plans)
+- [x] Phase 17: 부동산 계산기 법률 감사 (3/3 plans)
+- [x] Phase 18: 교통/형사 계산기 법률 감사 (2/2 plans)
+- [x] Phase 19: 채권/이자 계산기 법률 감사 (1/1 plans)
+- [x] Phase 20: 손해배상 계산기 법률 감사 (2/2 plans)
+- [x] Phase 21: 기타 법률도구 법률 감사 (2/2 plans)
+
+</details>
+
+<details>
+<summary>✅ v1.4 중복 계산기 정리 및 코드 클린업 (Phases 22-23) — SHIPPED 2026-03-25</summary>
+
+- [x] Phase 22: 삭제 파일 정리 + 계산기 통합 (1/1 plans)
+- [x] Phase 23: 경계선 UX 개선 + 검증 (1/1 plans)
+
+</details>
+
+### 🚧 v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사 (Phases 24-32)
+
+- [ ] **Phase 24: 소송/법원 UX·논리 감사** — lawsuit-cost, payment-order, civil-mediation, family-court, attorney-fee (5개 계산기)
+- [ ] **Phase 25: 가사/가족법 UX·논리 감사** — alimony, child-support, property-division, inheritance-tax, forced-heirship, inheritance-order (6개 계산기)
+- [ ] **Phase 26: 노동/근로 Part 1 UX·논리 감사** — severance-pay, dismissal-notice, annual-leave-pay, overtime-pay, weekly-holiday-pay, minimum-wage-check (6개 계산기)
+- [ ] **Phase 27: 노동/근로 Part 2 UX·논리 감사** — unfair-dismissal, industrial-accident, maternity-leave, parental-leave, unemployment-benefit, shutdown-allowance (6개 계산기)
+- [ ] **Phase 28: 세금 Part 1 UX·논리 감사** — capital-gains-tax, comprehensive-income-tax, acquisition-tax, comprehensive-property-tax, registration-tax (5개 계산기)
+- [ ] **Phase 29: 세금 Part 2 UX·논리 감사** — vat, securities-tax, year-end-tax, four-insurances, rent-tax-credit (5개 계산기)
+- [ ] **Phase 30: 부동산 UX·논리 감사** — deposit-return, rent-conversion, brokerage-fee, subscription-score, dsr, ltv, dti (7개 계산기)
+- [ ] **Phase 31: 교통/형사 + 채권/이자 UX·논리 감사** — accident-settlement, drunk-driving, fine-penalty, bail, late-payment, loan-interest, unjust-enrichment (7개 계산기)
+- [ ] **Phase 32: 손해배상 + 기타 법률도구 UX·논리 감사** — damages-general, defamation, medical-malpractice, lost-income, certified-letter, legal-aid, public-defender, statute-of-limitations (8개 계산기)
 
 ## Phase Details
 
@@ -186,11 +210,6 @@ Plans:
 - [x] 21-01-PLAN.md — certified-letter, legal-aid 법률 감사 (MISC-01, MISC-02)
 - [x] 21-02-PLAN.md — public-defender, statute-of-limitations 법률 감사 (MISC-03, MISC-04)
 
-### 🚧 v1.4 중복 계산기 정리 및 코드 클린업 (Phases 22-23)
-
-- [ ] **Phase 22: 삭제 파일 정리 + 계산기 통합** — 미커밋 삭제 13개 정리, small-claims·e-court→lawsuit-cost 통합
-- [ ] **Phase 23: 경계선 계산기 UX 개선 + 검증** — public-defender/legal-aid 탭 통합, dsr/dti·해고 상호링크, 최종 검증
-
 ### Phase 22: 삭제 파일 정리 + 계산기 통합
 **Goal**: 미커밋 삭제 파일을 정리하고, small-claims와 e-court를 lawsuit-cost로 통합한다
 **Requirements**: CLEANUP-01, CLEANUP-02, MERGE-01, MERGE-02, MERGE-03, MERGE-04
@@ -200,8 +219,9 @@ Plans:
   3. small-claims, e-court page.tsx가 삭제되고 tools-data.ts에서 제거된다
   4. 삭제된 계산기 URL이 lawsuit-cost로 리다이렉트된다
   5. TypeScript 빌드 통과
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 22-01-PLAN.md — 삭제 파일 커밋 + small-claims/e-court 통합
+- [x] 22-01-PLAN.md — 삭제 파일 커밋 + small-claims/e-court 통합
 
 ### Phase 23: 경계선 계산기 UX 개선 + 최종 검증
 **Goal**: 유사 계산기 간 UX를 개선하고 전체 정합성을 검증한다
@@ -212,8 +232,119 @@ Plans:
   3. dismissal-notice/unfair-dismissal 페이지에 상호 링크가 추가된다
   4. tools-data.ts 등록 수와 실제 page.tsx 파일 수가 일치한다
   5. TypeScript 빌드 에러 없이 통과한다
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 23-01-PLAN.md — 탭 통합 + 상호 링크 + 최종 검증
+- [x] 23-01-PLAN.md — 탭 통합 + 상호 링크 + 최종 검증
+
+---
+
+### Phase 24: 소송/법원 UX·논리 감사
+**Goal**: 소송/법원 5개 계산기에서 사용자가 잘못된 입력이나 엣지 케이스를 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing (first phase of v1.5)
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. lawsuit-cost, payment-order, civil-mediation, family-court, attorney-fee 모든 계산기에서 음수 또는 0 입력 시 에러 안내가 표시되고 잘못된 결과가 출력되지 않는다
+  2. 필수 입력이 비어 있을 때 계산 버튼이 비활성화되거나 명확한 안내가 표시되며, 초기 상태에서 불필요한 0원 결과가 노출되지 않는다
+  3. 소가 상한(999조원 등 비현실 값) 입력 시 경고가 표시되고, 나누기 0 같은 수학적 예외 상황에서 계산기가 오류 없이 처리된다
+  4. 금액 결과가 모두 천 단위 콤마로 표시되며 부분합과 합계가 일치한다
+  5. 5개 계산기 간 동일 개념(소가, 기간) 입력 방식과 에러 메시지 스타일이 통일된다
+**Plans**: TBD
+
+### Phase 25: 가사/가족법 UX·논리 감사
+**Goal**: 가사/가족법 6개 계산기에서 사용자가 잘못된 입력이나 엣지 케이스를 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. alimony, child-support, property-division 계산기에서 재산·소득 음수 입력 시 에러 처리가 되고, 결과가 0원 이하일 때 "해당 없음" 등 의미 있는 안내가 표시된다
+  2. child-support 계산기의 자녀 수·나이 등 필수 입력 누락 시 계산이 실행되지 않고 명확한 안내가 제공된다
+  3. inheritance-tax 계산기에서 상속인 수 0명 입력 등 비현실 값에 대한 경고가 제공된다
+  4. forced-heirship, inheritance-order 계산기에서 날짜 입력이 있는 경우 미래 날짜 제한이 적절히 처리된다
+  5. 6개 계산기 간 금액 표시(천 단위 콤마), 필수/선택 필드 구분, 에러 메시지 톤이 통일된다
+**Plans**: TBD
+
+### Phase 26: 노동/근로 Part 1 UX·논리 감사
+**Goal**: 노동/근로 전반부 6개 계산기(퇴직금·해고·연차·연장·주휴·최저임금)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. severance-pay 계산기에서 근속기간 0일 또는 음수 급여 입력 시 에러 안내가 표시되고, 퇴직금 0원 결과 시 "퇴직금 미발생" 안내가 출력된다
+  2. dismissal-notice 계산기에서 근속기간 1개월 미만(해고예고 면제 구간) 입력 시 결과가 논리적으로 0원 또는 면제 안내로 처리된다
+  3. minimum-wage-check 계산기에서 시급이 최저임금 이하일 때 위반 경고가 명확히 표시되고 경계값(정확히 최저임금과 동일 금액)에서 결과가 올바르다
+  4. annual-leave-pay, overtime-pay, weekly-holiday-pay 계산기에서 근무시간 음수 또는 주 52시간 초과 등 비현실 입력 시 경고가 제공된다
+  5. 6개 계산기 간 급여 입력 방식(시급/월급/연봉), 기간 입력 형식, 결과 금액 표시가 일관된다
+**Plans**: TBD
+
+### Phase 27: 노동/근로 Part 2 UX·논리 감사
+**Goal**: 노동/근로 후반부 6개 계산기(부당해고·산재·출산·육아·실업급여·휴업)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. maternity-leave, parental-leave 계산기에서 급여 상한·하한 경계값 입력 시 결과가 상·하한에 정확히 클램핑되어 표시된다
+  2. unemployment-benefit 계산기에서 피보험기간 0개월 또는 180일 미만(수급 요건 미달) 입력 시 "수급 요건 미충족" 등 명확한 안내가 제공된다
+  3. industrial-accident 계산기에서 장해등급 경계값(1등급, 14등급)에서 계산 결과가 논리적으로 맞다
+  4. unfair-dismissal, shutdown-allowance 계산기에서 날짜 입력이 미래로 설정될 경우 적절한 제한 또는 경고가 표시된다
+  5. 6개 계산기 간 날짜 입력 방식, 결과 표시(원, 일, %) 형식, 에러 메시지 스타일이 통일된다
+**Plans**: TBD
+
+### Phase 28: 세금 Part 1 UX·논리 감사
+**Goal**: 세금 전반부 5개 계산기(양도소득세·종합소득세·취득세·종합부동산세·등록세)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. capital-gains-tax 계산기에서 취득가액이 양도가액보다 클 때(양도차손 발생) 세액 0원 처리와 함께 손실 안내가 표시된다
+  2. comprehensive-income-tax 계산기에서 소득금액 0원 입력 시 불필요한 세액 0원 결과가 초기 상태에서 노출되지 않는다
+  3. acquisition-tax 계산기에서 세율 구간 경계값(6억원, 9억원 등)에서 세율이 올바르게 적용되는지 확인된다
+  4. comprehensive-property-tax, registration-tax 계산기에서 음수 또는 0원 과세표준 입력 시 에러 처리가 된다
+  5. 5개 계산기 간 금액 입력(원 단위), 결과 세액 표시, 세율/공제 항목 소계 구성이 일관된다
+**Plans**: TBD
+
+### Phase 29: 세금 Part 2 UX·논리 감사
+**Goal**: 세금 후반부 5개 계산기(부가세·증권거래세·연말정산·4대보험·월세공제)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. vat 계산기에서 공급가액 0원 또는 음수 입력 시 에러 처리가 되고, 매입세액이 매출세액을 초과할 때 환급 상황임을 명확히 안내한다
+  2. four-insurances 계산기에서 월급 0원 또는 음수 입력 시 계산이 실행되지 않고, 보험료 각 항목 소계와 합계가 일치한다
+  3. year-end-tax 계산기에서 공제 항목 합계가 소득금액을 초과할 때(환급 발생) 환급 금액으로 결과가 올바르게 표시된다
+  4. securities-tax 계산기에서 양도금액 0원 또는 음수 입력 시 에러 처리가 되고, rent-tax-credit 계산기에서 월세 0원 입력 시 공제액 0원이 의미 있는 안내와 함께 표시된다
+  5. 5개 계산기 간 퍼센트(%) 결과 표시 방식, 금액 천 단위 콤마, 필수 입력 강조 방식이 통일된다
+**Plans**: TBD
+
+### Phase 30: 부동산 UX·논리 감사
+**Goal**: 부동산 7개 계산기에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. deposit-return 계산기에서 보증금이 0원 또는 음수일 때 에러 처리가 되고, 우선변제 금액이 보증금을 초과하는 경우 결과가 논리적으로 처리된다
+  2. rent-conversion 계산기에서 전환율 경계값(법정 상한 이율)에서 계산 결과가 올바르고, 이율이 0%일 때 나누기 0 예외가 처리된다
+  3. brokerage-fee 계산기에서 거래금액 구간 경계값(2억원, 9억원 등)에서 요율이 올바르게 전환되며, 음수 거래금액 입력 시 에러 처리가 된다
+  4. dsr, ltv, dti 계산기에서 소득 또는 담보가치 0원 입력 시 나누기 0 예외가 처리되고, 비율 결과가 0~100% 범위를 벗어날 때 명확히 표시된다
+  5. 7개 계산기 간 금액 입력 방식, 퍼센트 결과 표시, 필수/선택 구분이 일관된다
+**Plans**: TBD
+
+### Phase 31: 교통/형사 + 채권/이자 UX·논리 감사
+**Goal**: 교통/형사 4개 및 채권/이자 3개, 총 7개 계산기에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. accident-settlement 계산기에서 과실비율 합계가 100%를 초과하거나 음수로 입력될 때 에러 처리가 되고, 합의금 0원 결과 시 의미 있는 안내가 제공된다
+  2. drunk-driving 계산기에서 혈중알코올농도 0% 또는 음수 입력 시 에러 처리가 되고, 처벌 구간 경계값(0.03%, 0.08%, 0.2%)에서 결과가 올바르게 전환된다
+  3. late-payment 계산기에서 원금 0원, 기간 0일 입력 시 나누기 0 또는 무의미한 결과 없이 처리되고, 날짜 입력에서 종료일이 시작일보다 이른 경우 에러 처리가 된다
+  4. loan-interest 계산기에서 이자율이 법정 최고이자율(연 20%)을 초과할 때 경고가 표시되고, unjust-enrichment 계산기에서 반환 원금이 0원일 때 결과가 적절히 처리된다
+  5. 7개 계산기 간 날짜 입력 방식, 이율(%) 표시, 금액 결과 천 단위 콤마, 에러 메시지 스타일이 통일된다
+**Plans**: TBD
+
+### Phase 32: 손해배상 + 기타 법률도구 UX·논리 감사
+**Goal**: 손해배상 4개 및 기타 법률도구 4개, 총 8개 계산기/도구에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
+**Depends on**: Nothing
+**Requirements**: INPUT-01, INPUT-02, INPUT-03, INPUT-04, RESULT-01, RESULT-02, RESULT-03, FLOW-01, FLOW-02, FLOW-03, CONSIST-01, CONSIST-02, CONSIST-03, EDGE-01, EDGE-02, EDGE-03
+**Success Criteria** (what must be TRUE):
+  1. damages-general, defamation 계산기에서 손해액 또는 재산 손해액 0원 입력 시 위자료만 남거나 0원 결과임이 명확히 표시되고, 음수 입력 시 에러 처리가 된다
+  2. lost-income 계산기에서 잔여 가동연수가 0년(이미 가동연한 초과) 입력 시 일실수입 0원으로 처리되고, 생활비 공제율 경계값(0%, 100%)에서 나누기 0 예외가 처리된다
+  3. medical-malpractice 계산기에서 과실비율 합계가 100%를 초과할 때 에러 처리가 되고, 치료비 0원 입력 시 의미 있는 안내가 표시된다
+  4. statute-of-limitations 계산기에서 기산일이 미래 날짜로 입력될 때 적절한 경고가 표시되고, certified-letter·legal-aid·public-defender 도구에서 필수 입력 누락 시 명확한 안내가 제공된다
+  5. 8개 계산기/도구 간 날짜 입력 형식, 퍼센트 입력 방식, 금액 결과 표시, 에러 메시지 톤이 통일된다
+**Plans**: TBD
 
 ## Progress
 
@@ -231,14 +362,23 @@ Plans:
 | 10. 기타 법률도구 | v1.1 | 2/2 | Complete | 2026-03-23 |
 | 11. 라이트 테마 전환 | v1.2 | 3/3 | Complete | 2026-03-23 |
 | 12. 패럴랙스 UI 적용 | v1.2 | 2/2 | Complete | 2026-03-23 |
-| 13. 소송/법원 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
-| 14. 가사/가족법 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
-| 15. 노동/근로 법률 감사 | v1.3 | 4/4 | Complete    | 2026-03-24 |
-| 16. 세금 법률 감사 | v1.3 | 4/4 | Complete   | 2026-03-24 |
-| 17. 부동산 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
-| 18. 교통/형사 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
-| 19. 채권/이자 법률 감사 | v1.3 | 1/1 | Complete    | 2026-03-24 |
-| 20. 손해배상 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
-| 21. 기타 법률도구 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
-| 22. 삭제 파일 정리 + 계산기 통합 | v1.4 | 0/1 | Not started | — |
-| 23. 경계선 UX 개선 + 검증 | v1.4 | 0/1 | Not started | — |
+| 13. 소송/법원 법률 감사 | v1.3 | 3/3 | Complete | 2026-03-24 |
+| 14. 가사/가족법 법률 감사 | v1.3 | 2/2 | Complete | 2026-03-24 |
+| 15. 노동/근로 법률 감사 | v1.3 | 4/4 | Complete | 2026-03-24 |
+| 16. 세금 법률 감사 | v1.3 | 4/4 | Complete | 2026-03-24 |
+| 17. 부동산 법률 감사 | v1.3 | 3/3 | Complete | 2026-03-24 |
+| 18. 교통/형사 법률 감사 | v1.3 | 2/2 | Complete | 2026-03-24 |
+| 19. 채권/이자 법률 감사 | v1.3 | 1/1 | Complete | 2026-03-24 |
+| 20. 손해배상 법률 감사 | v1.3 | 2/2 | Complete | 2026-03-24 |
+| 21. 기타 법률도구 법률 감사 | v1.3 | 2/2 | Complete | 2026-03-24 |
+| 22. 삭제 파일 정리 + 계산기 통합 | v1.4 | 1/1 | Complete | 2026-03-25 |
+| 23. 경계선 UX 개선 + 검증 | v1.4 | 1/1 | Complete | 2026-03-25 |
+| 24. 소송/법원 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 25. 가사/가족법 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 28. 세금 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 29. 세금 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 30. 부동산 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 0/? | Not started | — |

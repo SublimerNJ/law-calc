@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: defining requirements
-last_updated: "2026-03-24T15:00:00.000Z"
+status: roadmap ready
+last_updated: "2026-03-25T00:00:00.000Z"
 progress:
-  total_phases: 0
+  total_phases: 9
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -22,10 +22,10 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: Not started (roadmap created, ready for Phase 24)
 Plan: —
-Status: Defining requirements
-Last activity: 2026-03-24 — Milestone v1.5 started
+Status: Roadmap ready — start with `/gsd:plan-phase 24`
+Last activity: 2026-03-25 — v1.5 roadmap created (Phases 24-32)
 
 ## Accumulated Context
 
@@ -33,11 +33,12 @@ Last activity: 2026-03-24 — Milestone v1.5 started
   - v1.2 에서는 기존 다크/AI 느낌의 테마를 벗어나 전문적인 라이트 테마를 기본으로 사용.
   - 패럴랙스 효과는 성능(Performance First)과 접근성(reduced-motion)을 고려하여 transform/opacity만 사용하고 모바일에서는 비활성화.
   - v1.3 전체 법률 정확성 감사 완료 (28건 수정)
-  - v1.4 중복 계산기 정리 완료
+  - v1.4 중복 계산기 정리 완료 (51개로 정리)
+  - v1.5 감사 범위: UX/논리 오류만, 법률 정확성 재검증 제외
 - **Blockers**:
   - None
 
 ## Session Continuity
 
-- **Last Session**: 2026-03-24
-- **Stopped At**: Milestone v1.5 초기화 중
+- **Last Session**: 2026-03-25
+- **Stopped At**: v1.5 로드맵 작성 완료

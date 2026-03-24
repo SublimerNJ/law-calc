@@ -47,30 +47,32 @@
 
 ## Traceability
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| INPUT-01 | — | Pending |
-| INPUT-02 | — | Pending |
-| INPUT-03 | — | Pending |
-| INPUT-04 | — | Pending |
-| RESULT-01 | — | Pending |
-| RESULT-02 | — | Pending |
-| RESULT-03 | — | Pending |
-| FLOW-01 | — | Pending |
-| FLOW-02 | — | Pending |
-| FLOW-03 | — | Pending |
-| CONSIST-01 | — | Pending |
-| CONSIST-02 | — | Pending |
-| CONSIST-03 | — | Pending |
-| EDGE-01 | — | Pending |
-| EDGE-02 | — | Pending |
-| EDGE-03 | — | Pending |
+Each v1.5 requirement applies to ALL phases (24-32). Every phase audits all 16 requirements for its calculator category.
+
+| Requirement | Phases | Status |
+|-------------|--------|--------|
+| INPUT-01 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| INPUT-02 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| INPUT-03 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| INPUT-04 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| RESULT-01 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| RESULT-02 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| RESULT-03 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| FLOW-01 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| FLOW-02 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| FLOW-03 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| CONSIST-01 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| CONSIST-02 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| CONSIST-03 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| EDGE-01 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| EDGE-02 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
+| EDGE-03 | 24, 25, 26, 27, 28, 29, 30, 31, 32 | Pending |
 
 **Coverage:**
 - v1.5 requirements: 16 total
-- Mapped to phases: 0
-- Unmapped: 16 ⚠️
+- All 16 requirements apply to each of 9 phases (24-32)
+- Coverage: 16/16 ✓
 
 ---
 *Requirements defined: 2026-03-25*
-*Last updated: 2026-03-25 after initial definition*
+*Last updated: 2026-03-25 — traceability mapped to Phases 24-32*
