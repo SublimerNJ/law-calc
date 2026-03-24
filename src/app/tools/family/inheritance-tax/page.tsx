@@ -204,7 +204,7 @@ export default function InheritanceTaxPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 상속세 및 증여세법 제25조~제27조
+              법적 근거: 상속세 및 증여세법 제18조(기초공제), 제19조(배우자공제), 제21조(일괄공제), 제26조(세율)
             </p>
           </div>
 
