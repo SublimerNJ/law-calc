@@ -258,7 +258,7 @@ export default function ComprehensiveIncomeTaxPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 소득세법 제14조(종합소득), 제55조(세율), 제56조(세액공제)
+              법적 근거: 소득세법 제14조(종합소득), 제50조(기본공제), 제55조(세율), 제59조의4(표준세액공제)
             </p>
           </div>
         </div>
