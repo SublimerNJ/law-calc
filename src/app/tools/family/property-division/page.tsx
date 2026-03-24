@@ -209,6 +209,9 @@ export default function PropertyDivisionPage() {
             <p className="text-xs text-gray-500">
               법적 근거: 민법 제839조의2 (재산분할청구권)
             </p>
+            <p className="text-xs text-gray-500 mt-1">
+              제척기간: 이혼한 날부터 2년 이내 청구 필요 (민법 제839조의2 제3항)
+            </p>
           </div>
 
           <div className="mt-3">
