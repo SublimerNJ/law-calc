@@ -21,11 +21,15 @@ function getBasePerChild(combinedIncome: number): number {
   return 1_600_000;
 }
 
+// 양육비 산정기준표: 2인 자녀 4인가구 기준 1인당 평균양육비
+// 자녀 1인: 1.065배 가산 (6.5% 증가)
+// 자녀 2인: 기준표 그대로 (×2 = 2인분)
+// 자녀 3인: 0.783배 감산 (21.7% 감소, ×3 = 3인분)
 function getMultiChildTotal(childCount: ChildCount, basePerChild: number): number {
   switch (childCount) {
-    case '1': return basePerChild * 1.0;
-    case '2': return basePerChild * 1.8;
-    case '3': return basePerChild * 2.4;
+    case '1': return Math.floor(basePerChild * 1.065);
+    case '2': return basePerChild * 2;
+    case '3': return Math.floor(basePerChild * 0.783) * 3;
   }
 }
 
@@ -79,7 +83,7 @@ function calculateChildSupport(
   const custodialPayment = monthlyTotal - noncustodialPayment;
 
   const incomeTableIdx = INCOME_TABLE.findIndex(t => combinedIncome < t.max);
-  const multiChildFactor = childCount === '1' ? 1.0 : childCount === '2' ? 1.8 : 2.4;
+  const multiChildFactor = childCount === '1' ? 1.065 : childCount === '2' ? 2.0 : 2.349;
 
   return { monthlyTotal, noncustodialPayment, custodialPayment, combinedIncome, noncustodialShare, basePerChild, incomeTableIdx: incomeTableIdx >= 0 ? incomeTableIdx : INCOME_TABLE.length - 1, ageFactor: getAgeFactor(ageGroup), multiChildFactor };
 }
@@ -256,7 +260,7 @@ export default function ChildSupportPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제837조, 가사소송법 제2조, 서울가정법원 양육비산정기준표(2024 개정)
+              법적 근거: 민법 제837조, 가사소송법 제2조, 서울가정법원 양육비산정기준표(2025 개정)
             </p>
             <p className="text-xs text-gray-500 mt-1">
               본 계산기는 참고용이며, 실제 법원 결정과 다를 수 있습니다.
