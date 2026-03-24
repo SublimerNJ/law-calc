@@ -159,11 +159,11 @@ export default function UnjustEnrichmentPage() {
           <div className="mb-4 p-3 rounded-lg" style={{ backgroundColor: beneficiaryType === 'good' ? '#06b6d41a' : '#ef44441a' }}>
             {beneficiaryType === 'good' ? (
               <p className="text-sm text-cyan-400">
-                선의 수익자는 현존이익 한도 내에서 반환하며, 이자 반환의무가 없을 수 있습니다.
+                선의 수익자는 현존이익 한도 내에서 반환하며, 반환청구를 받은 날부터 이자 부담 (민법 제748조 제1항). 이미 소비·훼손된 부분은 반환 불요.
               </p>
             ) : (
               <p className="text-sm text-red-400 font-semibold">
-                악의 수익자는 받은 이익 전부 + 이자 + 손해를 반환해야 합니다.
+                악의 수익자는 받은 이익 전부 + 이자(취득일부터) + 손해배상 책임 (민법 제748조 제2항, 제749조). 민법 제379조 법정이율 연 5% 적용.
               </p>
             )}
           </div>
@@ -175,7 +175,10 @@ export default function UnjustEnrichmentPage() {
           </div>
           <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제741조(부당이득의 내용), 제748조(수익자의 반환범위)
+              법적 근거: 민법 제741조(부당이득의 내용), 제748조 제1항(선의 수익자 현존이익 반환), 제748조 제2항(악의 수익자 전액+이자+손해배상), 제749조(비용상환), 제379조(법정이율 연 5%)
+            </p>
+            <p className="text-xs text-gray-500 mt-1">
+              ※ 이자 기산점: 악의 수익자는 취득일부터, 선의 수익자는 반환청구를 받은 날부터 (대법원 판례 기준)
             </p>
           </div>
         </div>
