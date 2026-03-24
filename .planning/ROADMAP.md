@@ -60,7 +60,7 @@
   3. payment-order, civil-mediation, family-court, e-court 각 계산기의 비용 산정이 해당 법령 원문과 일치한다
   4. 전자소송 할인율이 현행 전자소송 촉진에 관한 규정 기준과 일치한다
   5. 발견된 모든 오류가 코드에서 수정되고 수정 내용이 검증된다
-**Plans:** 2/2 plans complete
+**Plans:** 3/3 plans complete
 Plans:
 - [x] 13-01-PLAN.md — civil-mediation + family-court 법률 감사 (COURT-01~05)
 - [x] 13-02-PLAN.md — e-court 법률 감사 (COURT-06)
@@ -173,7 +173,7 @@ Plans:
 | 10. 기타 법률도구 | v1.1 | 2/2 | Complete | 2026-03-23 |
 | 11. 라이트 테마 전환 | v1.2 | 3/3 | Complete | 2026-03-23 |
 | 12. 패럴랙스 UI 적용 | v1.2 | 2/2 | Complete | 2026-03-23 |
-| 13. 소송/법원 법률 감사 | v1.3 | 2/2 | Complete   | 2026-03-24 |
+| 13. 소송/법원 법률 감사 | v1.3 | 3/3 | Complete   | 2026-03-24 |
 | 14. 가사/가족법 법률 감사 | v1.3 | 0/? | Not started | - |
 | 15. 노동/근로 법률 감사 | v1.3 | 0/? | Not started | - |
 | 16. 세금 법률 감사 | v1.3 | 0/? | Not started | - |
