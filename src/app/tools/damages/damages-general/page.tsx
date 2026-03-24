@@ -164,7 +164,7 @@ export default function DamagesGeneralPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제750조(불법행위), 제763조(과실상계)
+              법적 근거: 민법 제750조(불법행위의 내용), 제751조(재산 이외의 손해배상), 제393조(손해배상의 범위) 및 제396조(과실상계) 준용(제763조)
             </p>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function DamagesGeneralPage() {
           </li>
           <li className="flex gap-3">
             <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>3</span>
-            <span className="text-sm text-slate-600">소멸시효: 불법행위 안 날부터 3년</span>
+            <span className="text-sm text-slate-600">소멸시효: 손해 및 가해자를 안 날부터 3년, 불법행위일부터 10년 (민법 제766조)</span>
           </li>
           <li className="flex gap-3">
             <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>4</span>
