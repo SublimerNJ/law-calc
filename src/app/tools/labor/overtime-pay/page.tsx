@@ -70,14 +70,18 @@ export default function OvertimePayPage() {
       return;
     }
 
+    const warnings: string[] = [];
     // 경고: 비현실적 임금
     if (wage > 100000000) {
-      setWarning('월 통상임금이 1억원을 초과합니다. 확인해주세요.');
+      warnings.push('월 통상임금이 1억원을 초과합니다. 확인해주세요.');
     }
 
     // 경고: 연장근로 주 12시간 초과
     if (ot + hdo > 12) {
-      setWarning('연장근로시간 합산이 주 12시간을 초과합니다. 근로기준법 제53조 한도를 확인해주세요.');
+      warnings.push('연장근로시간 합산이 주 12시간을 초과합니다. 근로기준법 제53조 한도를 확인해주세요.');
+    }
+    if (warnings.length > 0) {
+      setWarning(warnings.join(' '));
     }
 
     setResult(calculate(wage, weeklyHours, ot, nt, hd, hdo));
@@ -179,17 +183,8 @@ export default function OvertimePayPage() {
           />
         </div>
 
-        {error && (
-          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
-            <p className="text-sm text-red-500">{error}</p>
-          </div>
-        )}
-
-        {warning && (
-          <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200">
-            <p className="text-sm text-orange-500">{warning}</p>
-          </div>
-        )}
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}

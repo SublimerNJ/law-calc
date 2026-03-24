@@ -130,17 +130,8 @@ export default function WeeklyHolidayPayPage() {
           </div>
         </div>
 
-        {error && (
-          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
-            <p className="text-sm text-red-500">{error}</p>
-          </div>
-        )}
-
-        {warning && (
-          <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200">
-            <p className="text-sm text-orange-500">{warning}</p>
-          </div>
-        )}
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
