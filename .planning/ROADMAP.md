@@ -75,7 +75,10 @@ Plans:
   3. property-division 계산기의 재산분할 비율이 민법 및 판례 기준과 일치한다
   4. inheritance-tax 계산기의 상속세·증여세 세율 및 공제 한도가 상속세및증여세법 원문과 일치한다
   5. forced-heirship 유류분 비율과 inheritance-order 상속순위·상속분이 민법 제1000조~제1118조 원문과 일치한다
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 14-01-PLAN.md — alimony, child-support, property-division 법률 감사
+- [ ] 14-02-PLAN.md — inheritance-tax, forced-heirship, inheritance-order 법률 감사
 
 ### Phase 15: 노동/근로 계산기 법률 감사
 **Goal**: 12개 노동/근로 계산기가 근로기준법·노동 관련 법령 기준으로 정확하게 작동한다
@@ -174,7 +177,7 @@ Plans:
 | 11. 라이트 테마 전환 | v1.2 | 3/3 | Complete | 2026-03-23 |
 | 12. 패럴랙스 UI 적용 | v1.2 | 2/2 | Complete | 2026-03-23 |
 | 13. 소송/법원 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
-| 14. 가사/가족법 법률 감사 | v1.3 | 0/? | Not started | - |
+| 14. 가사/가족법 법률 감사 | v1.3 | 0/2 | In progress | - |
 | 15. 노동/근로 법률 감사 | v1.3 | 0/? | Not started | - |
 | 16. 세금 법률 감사 | v1.3 | 0/? | Not started | - |
 | 17. 부동산 법률 감사 | v1.3 | 0/? | Not started | - |
