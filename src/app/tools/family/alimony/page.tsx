@@ -99,7 +99,7 @@ export default function AlimonyPage() {
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
-        <div className="mb-4 p-3 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
+        <div className="mb-4 p-3 rounded-lg bg-slate-50 border border-slate-200">
           <p className="text-xs text-slate-600">
             💡 위자료는 법원이 개별 사안을 종합적으로 판단합니다. 이 계산기는 <strong className="text-slate-600">판례 기반 예상 범위</strong>를 제공하며, 실제 법원 결정과 차이가 있을 수 있습니다.
           </p>
@@ -168,7 +168,7 @@ export default function AlimonyPage() {
               </p>
             </div>
 
-            <div className="mb-4 p-4 rounded-lg bg-[#1a1025] border border-[#2a1a3a]">
+            <div className="mb-4 p-4 rounded-lg bg-slate-50 border border-slate-200">
               <p className="text-sm text-slate-600 mb-1">예상 범위</p>
               <p className="text-lg text-slate-900">
                 {formatNumber(result.minRange)}원 ~ {formatNumber(result.maxRange)}원
