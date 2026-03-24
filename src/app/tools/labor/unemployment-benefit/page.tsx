@@ -56,7 +56,7 @@ export default function UnemploymentBenefitPage() {
     const w = parseInt(monthlyWage.replace(/[^0-9]/g, ''), 10);
     if (!w || w <= 0) return;
 
-    const dailyLower = Math.floor(10_030 * 0.8 * dailyHours);
+    const dailyLower = Math.floor(10_320 * 0.8 * dailyHours); // 2026년 최저임금 10,320원/시간 (고용노동부 고시)
     const dailyBase = Math.floor((w * 12) / 365 * 0.6);
     let dailyPayment = dailyBase;
     let upperApplied = false;
@@ -247,7 +247,7 @@ export default function UnemploymentBenefitPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 고용보험법 제46조, 제50조 | 2026년 기준 상한 {formatNumber(DAILY_UPPER)}원/일, 하한 최저임금 80%
+              법적 근거: 고용보험법 제45조(구직급여 기초일액), 제46조(구직급여일액), 제50조(소정급여일수) | 2026년 기준 상한 {formatNumber(DAILY_UPPER)}원/일, 하한 최저임금(10,320원) × 80% × 소정근로시간
             </p>
           </div>
         </div>
