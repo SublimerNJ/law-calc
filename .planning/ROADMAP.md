@@ -266,8 +266,8 @@ Plans:
   5. 6개 계산기 간 금액 표시(천 단위 콤마), 필수/선택 필드 구분, 에러 메시지 톤이 통일된다
 **Plans**: 3 plans
 Plans:
-- [ ] 25-01-PLAN.md — alimony + child-support + property-division 감사 및 수정
-- [ ] 25-02-PLAN.md — inheritance-tax + forced-heirship + inheritance-order 감사 및 수정
+- [x] 25-01-PLAN.md — alimony + child-support + property-division 감사 및 수정
+- [x] 25-02-PLAN.md — inheritance-tax + forced-heirship + inheritance-order 감사 및 수정
 - [ ] 25-03-PLAN.md — 6개 계산기 일관성 통일 (CONSIST-01/02/03)
 
 ### Phase 26: 노동/근로 Part 1 UX·논리 감사
@@ -410,7 +410,7 @@ Plans:
 | 22. 삭제 파일 정리 + 계산기 통합 | v1.4 | 1/1 | Complete | 2026-03-25 |
 | 23. 경계선 UX 개선 + 검증 | v1.4 | 1/1 | Complete | 2026-03-25 |
 | 24. 소송/법원 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 25. 가사/가족법 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 25. 가사/가족법 UX·논리 감사 | v1.5 | 2/3 | In Progress|  |
 | 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
