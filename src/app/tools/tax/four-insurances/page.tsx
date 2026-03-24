@@ -17,10 +17,10 @@ function parseAmount(s: string): number {
 }
 
 // 2026 rates
-const PENSION_RATE = 0.045; // each side
-const PENSION_CAP = 6_170_000; // monthly salary cap
-const HEALTH_RATE = 0.03545; // each side
-const LONGTERM_RATE = 0.1295; // of health insurance premium
+const PENSION_RATE = 0.0475; // each side (2026년 인상: 4.5→4.75%)
+const PENSION_CAP = 6_370_000; // monthly salary cap (2026년 상한: 617→637만원)
+const HEALTH_RATE = 0.03595; // each side (2026년 인상: 3.545→3.595%)
+const LONGTERM_RATE = 0.1314; // of health insurance premium (2026년: 약 13.14%)
 const EMPLOYMENT_EMPLOYEE = 0.009;
 const EMPLOYMENT_EMPLOYER = 0.0115; // 150인 미만: 실업급여 0.9% + 고용안정·직업능력개발 0.25%
 const INDUSTRIAL_RATE = 0.0147; // manufacturing average

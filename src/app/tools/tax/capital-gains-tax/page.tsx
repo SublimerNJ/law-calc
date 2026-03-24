@@ -126,11 +126,13 @@ function calculate(
   let surchargeNote: string | null = null;
 
   if (assetType !== 'stock' && holdingYears < 1) {
-    taxRate = '70% (1년 미만 보유)';
-    computedTax = Math.floor(taxBase * 0.70);
+    const shortRate = assetType === 'house' ? 0.70 : 0.50;
+    taxRate = assetType === 'house' ? '70% (주택, 1년 미만 보유)' : '50% (토지/상가, 1년 미만 보유)';
+    computedTax = Math.floor(taxBase * shortRate);
   } else if (assetType !== 'stock' && holdingYears < 2) {
-    taxRate = '60% (1~2년 보유)';
-    computedTax = Math.floor(taxBase * 0.60);
+    const shortRate = assetType === 'house' ? 0.60 : 0.40;
+    taxRate = assetType === 'house' ? '60% (주택, 1~2년 보유)' : '40% (토지/상가, 1~2년 보유)';
+    computedTax = Math.floor(taxBase * shortRate);
   } else {
     computedTax = Math.floor(calcBasicTax(taxBase));
     taxRate = '기본세율 (6~45%)';
@@ -276,7 +278,7 @@ export default function CapitalGainsTaxPage() {
                   placeholder="예: 3"
                   className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
                 />
-                <p className="text-xs text-gray-500 mt-1">거주 3년부터 4%/년 추가 공제, 최대 40% (보유+거주 합산 최대 80%)</p>
+                <p className="text-xs text-gray-500 mt-1">거주 2년부터 4%/년 추가 공제, 최대 40% (보유+거주 합산 최대 80%)</p>
               </div>
             )}
 

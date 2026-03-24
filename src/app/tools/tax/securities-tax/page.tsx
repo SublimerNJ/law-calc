@@ -13,14 +13,14 @@ function formatNumber(n: number): string {
 
 type MarketType = 'kospi' | 'kosdaq' | 'konex' | 'kotc' | 'unlisted';
 
-// 2025년 기준 세율 (증권거래세법 제8조)
-// 코스피: 증권거래세 0% + 농어촌특별세 0.15% (농어촌특별세법 제5조 제1항 제6호)
-// 코스닥: 0.15%, 코넥스: 0.10%, K-OTC: 0.15%, 비상장: 0.35%
+// 2026년 기준 세율 (증권거래세법 제8조, 2026.1.1 시행)
+// 코스피: 증권거래세 0.05% + 농어촌특별세 0.15% (농어촌특별세법 제5조 제1항 제6호)
+// 코스닥: 0.20%, 코넥스: 0.10%, K-OTC: 0.20%, 비상장: 0.35%
 const MARKETS: { value: MarketType; label: string; rate: number; hasAgriTax: boolean; agriRate?: number }[] = [
-  { value: 'kospi', label: '코스피 (유가증권시장)', rate: 0, hasAgriTax: true, agriRate: 0.0015 },
-  { value: 'kosdaq', label: '코스닥', rate: 0.0015, hasAgriTax: false },
+  { value: 'kospi', label: '코스피 (유가증권시장)', rate: 0.0005, hasAgriTax: true, agriRate: 0.0015 },
+  { value: 'kosdaq', label: '코스닥', rate: 0.0020, hasAgriTax: false },
   { value: 'konex', label: '코넥스', rate: 0.001, hasAgriTax: false },
-  { value: 'kotc', label: 'K-OTC', rate: 0.0015, hasAgriTax: false },
+  { value: 'kotc', label: 'K-OTC', rate: 0.0020, hasAgriTax: false },
   { value: 'unlisted', label: '비상장 주식', rate: 0.0035, hasAgriTax: false },
 ];
 
@@ -132,7 +132,7 @@ export default function SecuritiesTaxPage() {
 
           {result.hasAgriTax && (
             <div className="mb-4">
-              <p className="text-sm text-slate-600 mb-1">농어촌특별세 (0.03%)</p>
+              <p className="text-sm text-slate-600 mb-1">농어촌특별세 (0.15%)</p>
               <p className="text-lg text-slate-900">{formatNumber(result.agriTax)}원</p>
             </div>
           )}

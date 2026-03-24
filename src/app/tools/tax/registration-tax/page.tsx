@@ -42,13 +42,32 @@ const RATE_MAP: Record<Exclude<RegistrationType, 'license'>, number> = {
   'aircraft': 0.0001,
 };
 
-const LICENSE_FEES: { grade: number; label: string; fee: number }[] = [
-  { grade: 1, label: '1종', fee: 67500 },
-  { grade: 2, label: '2종', fee: 54000 },
-  { grade: 3, label: '3종', fee: 40500 },
-  { grade: 4, label: '4종', fee: 27000 },
-  { grade: 5, label: '5종', fee: 18000 },
-];
+type RegionType = 'metro' | 'city' | 'county';
+
+// 지방세법 제34조, 별표: 면허 종별·지역별 등록면허세
+const LICENSE_FEES: Record<RegionType, { grade: number; label: string; fee: number }[]> = {
+  metro: [
+    { grade: 1, label: '1종', fee: 67_500 },
+    { grade: 2, label: '2종', fee: 54_000 },
+    { grade: 3, label: '3종', fee: 40_500 },
+    { grade: 4, label: '4종', fee: 27_000 },
+    { grade: 5, label: '5종', fee: 18_000 },
+  ],
+  city: [
+    { grade: 1, label: '1종', fee: 45_000 },
+    { grade: 2, label: '2종', fee: 34_000 },
+    { grade: 3, label: '3종', fee: 22_500 },
+    { grade: 4, label: '4종', fee: 15_000 },
+    { grade: 5, label: '5종', fee: 7_500 },
+  ],
+  county: [
+    { grade: 1, label: '1종', fee: 27_000 },
+    { grade: 2, label: '2종', fee: 18_000 },
+    { grade: 3, label: '3종', fee: 12_000 },
+    { grade: 4, label: '4종', fee: 9_000 },
+    { grade: 5, label: '5종', fee: 4_500 },
+  ],
+};
 
 const MINIMUM_TAX = 6000;
 
@@ -56,6 +75,7 @@ export default function RegistrationTaxPage() {
   const [regType, setRegType] = useState<RegistrationType>('ownership-transfer');
   const [amount, setAmount] = useState('');
   const [licenseGrade, setLicenseGrade] = useState(1);
+  const [licenseRegion, setLicenseRegion] = useState<RegionType>('metro');
   const [result, setResult] = useState<{
     regType: string;
     rateDisplay: string;
@@ -74,9 +94,10 @@ export default function RegistrationTaxPage() {
     let metroNote: string | undefined;
 
     if (isLicense) {
-      const licenseInfo = LICENSE_FEES.find(l => l.grade === licenseGrade)!;
+      const licenseInfo = LICENSE_FEES[licenseRegion].find(l => l.grade === licenseGrade)!;
       registrationTax = licenseInfo.fee;
-      rateDisplay = `${licenseInfo.label} 정액`;
+      const regionLabel = licenseRegion === 'metro' ? '인구50만+시' : licenseRegion === 'city' ? '그 밖의 시' : '군';
+      rateDisplay = `${licenseInfo.label} 정액 (${regionLabel})`;
     } else {
       const raw = parseInt(amount.replace(/[^0-9]/g, ''), 10);
       if (!raw || raw <= 0) return;
@@ -131,22 +152,36 @@ export default function RegistrationTaxPage() {
         </div>
 
         {isLicense ? (
-          <div className="mb-6">
-            <label className="block text-sm text-slate-600 mb-2">면허 종류</label>
-            <div className="space-y-2">
-              {LICENSE_FEES.map(l => (
-                <label key={l.grade} className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="licenseGrade"
-                    checked={licenseGrade === l.grade}
-                    onChange={() => setLicenseGrade(l.grade)}
-                    className="accent-[#10b981]"
-                  />
-                  <span className="text-slate-900">{l.label}</span>
-                  <span className="text-gray-500 text-sm">({formatNumber(l.fee)}원)</span>
-                </label>
-              ))}
+          <div className="mb-6 space-y-4">
+            <div>
+              <label className="block text-sm text-slate-600 mb-2">지역 구분 (지방세법 제34조)</label>
+              <select
+                value={licenseRegion}
+                onChange={e => setLicenseRegion(e.target.value as RegionType)}
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#10b981] focus:outline-none"
+              >
+                <option value="metro">인구 50만 이상 시 (서울·부산·대구 등)</option>
+                <option value="city">그 밖의 시</option>
+                <option value="county">군</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm text-slate-600 mb-2">면허 종류</label>
+              <div className="space-y-2">
+                {LICENSE_FEES[licenseRegion].map(l => (
+                  <label key={l.grade} className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="licenseGrade"
+                      checked={licenseGrade === l.grade}
+                      onChange={() => setLicenseGrade(l.grade)}
+                      className="accent-[#10b981]"
+                    />
+                    <span className="text-slate-900">{l.label}</span>
+                    <span className="text-gray-500 text-sm">({formatNumber(l.fee)}원)</span>
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
         ) : (

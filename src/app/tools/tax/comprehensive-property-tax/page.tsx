@@ -29,7 +29,7 @@ function calculateComprehensivePropertyTax(
 ): CompTaxResult {
   const deduction = singleHousehold ? 1_200_000_000 : 900_000_000;
   const fairMarketRatio = 0.6;
-  const taxBase = Math.max(0, Math.floor(assessedValue * fairMarketRatio) - deduction);
+  const taxBase = Math.max(0, Math.floor((assessedValue - deduction) * fairMarketRatio));
 
   if (taxBase <= 0) {
     return {

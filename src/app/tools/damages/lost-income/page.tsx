@@ -121,7 +121,7 @@ export default function LostIncomePage() {
             onChange={(e) => setRetirementOption(e.target.value as RetirementOption)}
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
           >
-            <option value="65">65세 (대법원 전원합의체 판결 기준, 2019다232918)</option>
+            <option value="65">65세 (대법원 전원합의체 판결 기준, 2018다248909)</option>
             <option value="60">60세 (구 기준)</option>
             <option value="custom">직접 입력</option>
           </select>
@@ -230,7 +230,7 @@ export default function LostIncomePage() {
 총액 × (1 - 과실비율) = 과실상계 후 일실수입`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제379조(법정이율 연 5%), 대법원 1989.3.28 선고 88다카21219(호프만식 채택), 대법원 2019.2.21 선고 2019다232918 전원합의체 판결(가동연한 65세), 대법원 2020.9.3 선고 2016다244188(생활비 공제율 1/3)
+              법적 근거: 민법 제379조(법정이율 연 5%), 대법원 1989.3.28 선고 88다카21219(호프만식 채택), 대법원 2019.2.21 선고 2018다248909 전원합의체 판결(가동연한 65세), 대법원 2020.9.3 선고 2016다244188(생활비 공제율 1/3)
             </p>
           </div>
 

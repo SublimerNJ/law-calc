@@ -161,9 +161,9 @@ export default function YearEndTaxPage() {
     const earnedCredit = earnedIncomeTaxCredit(computedTax, gross);
 
     let childCredit = 0;
-    if (children === 1) childCredit = 150_000;
-    else if (children === 2) childCredit = 350_000;
-    else if (children >= 3) childCredit = 650_000 + (children - 3) * 300_000;
+    if (children === 1) childCredit = 250_000;
+    else if (children === 2) childCredit = 550_000;
+    else if (children >= 3) childCredit = 550_000 + (children - 2) * 400_000;
 
     // 의료비세액공제: 총급여 3% 초과분의 15%, 일반의료비 한도 700만원 (소득세법 제59조의4 제2항)
     const medicalOver = medical - gross * 0.03;
@@ -182,7 +182,7 @@ export default function YearEndTaxPage() {
     if (gross <= 80_000_000 && rent > 0) {
       const annualRent = rent * 12;
       const cappedRent = Math.min(annualRent, 10_000_000);
-      const rate = gross <= 55_000_000 ? 0.2 : 0.17;
+      const rate = gross <= 55_000_000 ? 0.17 : 0.15;
       rentCredit = Math.floor(cappedRent * rate);
     }
 
