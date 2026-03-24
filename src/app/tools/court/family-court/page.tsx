@@ -23,11 +23,10 @@ interface CaseOption {
   legalBasis: string;
 }
 
-// 가사소송법 제37조 및 가사소송규칙 별표 기준 인지액
-// 가사소송 가류(나류): 민사소송 인지액 그대로 (가사소송법 제37조 제1항)
-// 가사소송 나류: 20,000원 정액 (가사소송규칙 제5조 별표)
-// 가사비송 라류: 5,000원 정액 (가사소송규칙 제5조 별표)
-// 가사비송 마류: 5,000원 정액 (가사소송규칙 제5조 별표)
+// 가사소송수수료규칙 기준 인지액
+// 가사소송 가류·나류: 1건당 20,000원 정액 (가사소송수수료규칙 제2조 제1항)
+// 가사비송 라류: 5,000원 정액 (가사소송수수료규칙 제3조)
+// 가사비송 마류: 5,000원 정액 (가사소송수수료규칙 제3조)
 const CASE_OPTIONS: CaseOption[] = [
   {
     value: 'divorce',
@@ -35,15 +34,15 @@ const CASE_OPTIONS: CaseOption[] = [
     fixedFee: 20_000,
     needsAmount: false,
     description: '가사소송 나류 — 이혼, 혼인취소, 친생자관계 확인, 입양취소/파양',
-    legalBasis: '가사소송규칙 제5조 별표 나류: 20,000원 정액',
+    legalBasis: '가사소송수수료규칙 제2조 제1항: 나류 1건당 20,000원 정액',
   },
   {
     value: 'consolation',
     label: '위자료/재산분할 (가류)',
-    fixedFee: null,
-    needsAmount: true,
-    description: '가사소송 가류 — 재산관계 소송, 민사소송 인지액 산정식 적용',
-    legalBasis: '가사소송법 제37조 제1항: 민사소송 인지액 그대로 적용',
+    fixedFee: 20_000,
+    needsAmount: false,
+    description: '가사소송 가류 — 재산관계 소송 (가류·나류 동일 정액)',
+    legalBasis: '가사소송수수료규칙 제2조 제1항: 가류 1건당 20,000원 정액',
   },
   {
     value: 'custody',
@@ -51,7 +50,7 @@ const CASE_OPTIONS: CaseOption[] = [
     fixedFee: 5_000,
     needsAmount: false,
     description: '가사비송 라류 — 친권/양육권 지정, 양육비 심판',
-    legalBasis: '가사소송규칙 제5조 별표 라류: 5,000원 정액',
+    legalBasis: '가사소송수수료규칙 제3조: 라류 5,000원 정액',
   },
   {
     value: 'support',
@@ -59,7 +58,7 @@ const CASE_OPTIONS: CaseOption[] = [
     fixedFee: 5_000,
     needsAmount: false,
     description: '가사비송 마류 — 부양료 심판, 성년후견 등',
-    legalBasis: '가사소송규칙 제5조 별표 마류: 5,000원 정액',
+    legalBasis: '가사소송수수료규칙 제3조: 마류 5,000원 정액',
   },
   {
     value: 'inheritance',
@@ -67,7 +66,7 @@ const CASE_OPTIONS: CaseOption[] = [
     fixedFee: null,
     needsAmount: true,
     description: '상속재산 분할 심판 — 청구금액 기준 민사소송 인지액 준용',
-    legalBasis: '가사소송법 제37조 준용: 민사소송 인지액 산정식 적용',
+    legalBasis: '가사소송수수료규칙 제3조: 민사소송등인지법 제2조 준용 금액의 1/2',
   },
 ];
 
@@ -118,7 +117,9 @@ export default function FamilyCourtPage() {
     } else {
       const val = parseInt(amount.replace(/,/g, ''), 10);
       if (!val || val <= 0) return;
-      stampFee = calculateStampFee(val);
+      // 상속재산 분할 등: 민사소송등인지법 제2조 준용 금액의 1/2 (가사소송수수료규칙 제3조)
+      const baseFee = calculateStampFee(val);
+      stampFee = Math.floor((baseFee * 0.5) / 100) * 100;
     }
 
     const serviceFee = parties * SERVICE_ROUNDS * SERVICE_FEE_UNIT;
