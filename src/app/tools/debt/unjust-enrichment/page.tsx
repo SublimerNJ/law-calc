@@ -24,7 +24,8 @@ export default function UnjustEnrichmentPage() {
   const [returnDate, setReturnDate] = useState(new Date().toISOString().split('T')[0]);
   const [beneficiaryType, setBeneficiaryType] = useState<'good' | 'bad'>('bad');
   const [result, setResult] = useState<ReturnType<typeof calculateUnjustEnrichment> | null>(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handlePrincipalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^0-9]/g, '');
@@ -32,9 +33,25 @@ export default function UnjustEnrichmentPage() {
   };
 
   const handleCalculate = () => {
-    setError('');
+    setError(null);
+    setWarning(null);
     const p = parseInt(principal, 10);
-    if (!p || p <= 0 || !acquiredDate || !returnDate) return;
+
+    if (!principal || !p || p <= 0) {
+      setError('부당이득 금액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (!acquiredDate) {
+      setError('부당이득 취득일을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (p > 999_000_000_000_000) {
+      setWarning('금액이 999조원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     const acq = new Date(acquiredDate);
     const ret = new Date(returnDate);
@@ -54,7 +71,7 @@ export default function UnjustEnrichmentPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">부당이득 금액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">부당이득 금액 (원) *</label>
           <p className="text-xs text-gray-500 mb-1">상대방이 부당하게 취득한 금액 (예: 초과 지급액, 착오 송금액)</p>
           <input
             type="text"
@@ -62,7 +79,7 @@ export default function UnjustEnrichmentPage() {
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -72,22 +89,22 @@ export default function UnjustEnrichmentPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">부당이득 취득일</label>
+          <label className="block text-sm text-slate-600 mb-2">부당이득 취득일 *</label>
           <input
             type="date"
             value={acquiredDate}
             onChange={e => setAcquiredDate(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">반환 기준일</label>
+          <label className="block text-sm text-slate-600 mb-2">반환 기준일 *</label>
           <input
             type="date"
             value={returnDate}
             onChange={e => setReturnDate(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -112,6 +129,13 @@ export default function UnjustEnrichmentPage() {
           </div>
         </div>
 
+        {error && (
+          <div className="mt-3 mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-600">{error}</p>
+          </div>
+        )}
+        {warning && <p className="text-orange-500 text-sm mt-2 mb-3">{warning}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -119,10 +143,6 @@ export default function UnjustEnrichmentPage() {
         >
           계산하기
         </button>
-
-        {error && (
-          <p className="mt-3 text-sm text-red-400 font-semibold">{error}</p>
-        )}
       </div>
 
       {result !== null && (
@@ -156,13 +176,13 @@ export default function UnjustEnrichmentPage() {
             <p className="text-lg text-slate-900">{formatNumber(result.days)}일</p>
           </div>
 
-          <div className="mb-4 p-3 rounded-lg" style={{ backgroundColor: beneficiaryType === 'good' ? '#06b6d41a' : '#ef44441a' }}>
+          <div className={`mb-4 p-3 rounded-lg ${beneficiaryType === 'good' ? 'bg-cyan-50 border border-cyan-200' : 'bg-red-50 border border-red-200'}`}>
             {beneficiaryType === 'good' ? (
-              <p className="text-sm text-cyan-400">
+              <p className="text-sm text-cyan-700">
                 선의 수익자는 현존이익 한도 내에서 반환하며, 반환청구를 받은 날부터 이자 부담 (민법 제748조 제1항). 이미 소비·훼손된 부분은 반환 불요.
               </p>
             ) : (
-              <p className="text-sm text-red-400 font-semibold">
+              <p className="text-sm text-red-600 font-semibold">
                 악의 수익자는 받은 이익 전부 + 이자(취득일부터) + 손해배상 책임 (민법 제748조 제2항, 제749조). 민법 제379조 법정이율 연 5% 적용.
               </p>
             )}

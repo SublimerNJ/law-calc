@@ -25,6 +25,8 @@ export default function LoanInterestPage() {
   const [rate, setRate] = useState('');
   const [days, setDays] = useState('');
   const [result, setResult] = useState<ReturnType<typeof calculateLoanInterest> | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handlePrincipalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^0-9]/g, '');
@@ -32,10 +34,40 @@ export default function LoanInterestPage() {
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
     const p = parseInt(principal, 10);
     const r = parseFloat(rate);
     const d = parseInt(days, 10);
-    if (!p || p <= 0 || isNaN(r) || r < 0 || !d || d < 1) return;
+
+    if (!principal || !p || p <= 0) {
+      setError('대여 원금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (!rate || rate.trim() === '' || isNaN(r)) {
+      setError('약정 이율을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (r < 0) {
+      setError('이율은 0% 이상이어야 합니다.');
+      setResult(null);
+      return;
+    }
+
+    if (!days || days.trim() === '' || isNaN(d) || d < 1) {
+      setError('대여 기간을 1일 이상으로 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (p > 999_000_000_000_000) {
+      setWarning('원금이 999조원을 초과합니다. 입력값을 확인해주세요.');
+    }
+
     setResult(calculateLoanInterest(p, r, d));
   };
 
@@ -45,14 +77,14 @@ export default function LoanInterestPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">대여 원금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">대여 원금 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -62,30 +94,35 @@ export default function LoanInterestPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">약정 이율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">약정 이율 (%) *</label>
           <input
-            type="number"
-            min="0"
-            max="200"
-            step="0.1"
+            type="text"
+            inputMode="decimal"
             value={rate}
-            onChange={e => setRate(e.target.value)}
+            onChange={e => setRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 15"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">대여 기간 (일)</label>
+          <label className="block text-sm text-slate-600 mb-2">대여 기간 (일) *</label>
           <input
-            type="number"
-            min="1"
+            type="text"
+            inputMode="numeric"
             value={days}
-            onChange={e => setDays(e.target.value)}
+            onChange={e => setDays(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 365"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#06b6d4] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <p className="text-sm text-red-600">{error}</p>
+          </div>
+        )}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -101,10 +138,16 @@ export default function LoanInterestPage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.isExceeded && (
-            <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30">
-              <p className="text-sm text-red-400 font-semibold">
+            <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+              <p className="text-sm text-red-600 font-semibold">
                 약정이율이 이자제한법 최고이율(20%)을 초과합니다. 초과 부분은 무효입니다.
               </p>
+            </div>
+          )}
+
+          {result.interest === 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">이자액이 0원으로 계산되었습니다. 이율 또는 기간을 확인해주세요.</p>
             </div>
           )}
 
