@@ -29,12 +29,13 @@ const ASSET_FACTORS: Record<AssetLevel, number> = {
   high: 1.2, mid: 1.0, low: 0.9,
 };
 
+// 판례 경향 기반 기본 범위 (일반적 상한 3,000만~5,000만원, 특별한 사정 시 초과 가능)
 const BASE_RANGES: { maxYears: number; label: string; min: number; max: number }[] = [
-  { maxYears: 1, label: '1년 미만', min: 5_000_000, max: 20_000_000 },
-  { maxYears: 5, label: '1~5년', min: 10_000_000, max: 50_000_000 },
-  { maxYears: 10, label: '5~10년', min: 20_000_000, max: 80_000_000 },
-  { maxYears: 20, label: '10~20년', min: 30_000_000, max: 100_000_000 },
-  { maxYears: Infinity, label: '20년 이상', min: 50_000_000, max: 150_000_000 },
+  { maxYears: 1, label: '1년 미만', min: 3_000_000, max: 10_000_000 },
+  { maxYears: 5, label: '1~5년', min: 5_000_000, max: 20_000_000 },
+  { maxYears: 10, label: '5~10년', min: 10_000_000, max: 30_000_000 },
+  { maxYears: 20, label: '10~20년', min: 15_000_000, max: 50_000_000 },
+  { maxYears: Infinity, label: '20년 이상', min: 20_000_000, max: 50_000_000 },
 ];
 
 function getBaseRange(years: number): { idx: number; min: number; max: number } {
