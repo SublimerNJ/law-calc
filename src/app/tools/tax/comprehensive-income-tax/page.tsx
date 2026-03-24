@@ -104,6 +104,8 @@ export default function ComprehensiveIncomeTaxPage() {
   const [pensionPaid, setPensionPaid] = useState('');
   const [healthPaid, setHealthPaid] = useState('');
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const toggleIncomeType = (id: string) => {
     setIncomeTypes(prev => {
@@ -115,10 +117,25 @@ export default function ComprehensiveIncomeTaxPage() {
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const income = parseInt(totalIncome.replace(/,/g, ''), 10);
-    if (!income || income <= 0) return;
+    if (!income || income <= 0) {
+      setError('종합소득금액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
     const pension = parseInt((pensionPaid || '0').replace(/,/g, ''), 10) || 0;
     const health = parseInt((healthPaid || '0').replace(/,/g, ''), 10) || 0;
+
+    if (income > 1_000_000_000) {
+      setWarning('종합소득금액이 10억원을 초과합니다. 입력값을 확인해주세요.');
+    } else if (pension > income || health > income) {
+      setWarning('공제액이 소득금액을 초과합니다. 입력값을 확인해주세요.');
+    }
+
     setResult(calculate(income, parseInt(dependents) || 1, pension, health, incomeTypes.has('earned')));
   };
 
@@ -153,7 +170,7 @@ export default function ComprehensiveIncomeTaxPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">종합소득금액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">종합소득금액 (원) *</label>
           <input {...numInput(totalIncome, setTotalIncome, '예: 80,000,000')} />
           {totalIncome && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(totalIncome).toLocaleString('ko-KR')}원</p>
@@ -178,12 +195,13 @@ export default function ComprehensiveIncomeTaxPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">인적공제 대상 인원수 (본인 포함)</label>
+          <label className="block text-sm text-slate-600 mb-2">인적공제 대상 인원수 (본인 포함) *</label>
           <input
-            type="number"
+            type="text"
+            inputMode="numeric"
             min="1"
             value={dependents}
-            onChange={e => setDependents(e.target.value)}
+            onChange={e => setDependents(e.target.value.replace(/[^0-9]/g, ''))}
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
@@ -198,6 +216,9 @@ export default function ComprehensiveIncomeTaxPage() {
           <input {...numInput(healthPaid, setHealthPaid, '예: 3,000,000')} />
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -210,6 +231,12 @@ export default function ComprehensiveIncomeTaxPage() {
       {result && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.taxBase === 0 && result.totalDeduction >= result.totalIncome && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">소득공제 합계가 종합소득금액과 같거나 커서 과세표준이 0원입니다.</p>
+            </div>
+          )}
 
           <div className="mb-4 p-3 rounded-lg bg-[#10b981]/10 border border-[#10b981]/30">
             <p className="text-sm text-[#10b981]">
