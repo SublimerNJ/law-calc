@@ -25,27 +25,65 @@ export default function RentConversionPage() {
   const [wolse, setWolse] = useState('');
   const [conversionRate, setConversionRate] = useState('4.50');
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleNumberChange = (setter: (v: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setter(e.target.value.replace(/[^0-9]/g, ''));
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const rateVal = parseFloat(conversionRate);
-    if (!rateVal || rateVal <= 0) return;
+    if (!conversionRate || isNaN(rateVal) || rateVal <= 0) {
+      setError('전환율을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (rateVal > 100) {
+      setError('전환율은 100% 이하여야 합니다.');
+      setResult(null);
+      return;
+    }
 
     if (mode === 'jeonse-to-wolse') {
       const jeonseVal = parseInt(jeonse, 10);
       const depositVal = parseInt(deposit, 10);
-      if (!jeonseVal || jeonseVal <= 0 || isNaN(depositVal) || depositVal < 0) return;
-      if (depositVal >= jeonseVal) return;
-      const monthly = Math.floor((jeonseVal - depositVal) * (rateVal / 100) / 12);
+
+      if (!jeonse || isNaN(jeonseVal) || jeonseVal <= 0) {
+        setError('전세금을 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (!isNaN(depositVal) && depositVal >= jeonseVal) {
+        setError('전환 후 보증금이 전세금 이상이면 전환할 금액이 없습니다.');
+        setResult(null);
+        return;
+      }
+
+      if (jeonseVal > 1_000_000_000) {
+        setWarning('전세금이 10억원을 초과합니다. 입력값을 확인해주세요.');
+      }
+
+      const monthly = Math.floor((jeonseVal - (isNaN(depositVal) ? 0 : depositVal)) * (rateVal / 100) / 12);
       setResult({ mode, amount: monthly });
     } else {
       const depositVal = parseInt(deposit, 10);
       const wolseVal = parseInt(wolse, 10);
-      if (isNaN(depositVal) || depositVal < 0 || !wolseVal || wolseVal <= 0) return;
-      const jeonseAmount = Math.floor(depositVal + wolseVal * 12 / (rateVal / 100));
+
+      if (!wolse || isNaN(wolseVal) || wolseVal <= 0) {
+        setError('월세를 입력해주세요.');
+        setResult(null);
+        return;
+      }
+
+      if (wolseVal > 10_000_000) {
+        setWarning('월세가 1,000만원을 초과합니다. 입력값을 확인해주세요.');
+      }
+
+      const jeonseAmount = Math.floor((isNaN(depositVal) ? 0 : depositVal) + wolseVal * 12 / (rateVal / 100));
       setResult({ mode, amount: jeonseAmount });
     }
   };
@@ -67,7 +105,7 @@ export default function RentConversionPage() {
                   type="radio"
                   name="mode"
                   checked={mode === opt.value}
-                  onChange={() => { setMode(opt.value); setResult(null); }}
+                  onChange={() => { setMode(opt.value); setResult(null); setError(null); setWarning(null); }}
                   className="accent-[#8b5cf6]"
                 />
                 <span className="text-sm text-slate-600">{opt.label}</span>
@@ -79,14 +117,14 @@ export default function RentConversionPage() {
         {mode === 'jeonse-to-wolse' && (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-slate-600 mb-2">전세금 (원)</label>
+              <label className="block text-sm text-slate-600 mb-2">전세금 (원) *</label>
               <input
                 type="text"
                 inputMode="numeric"
                 value={jeonse ? parseInt(jeonse).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setJeonse)}
                 placeholder="예: 300,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
             <div className="mb-4">
@@ -97,7 +135,7 @@ export default function RentConversionPage() {
                 value={deposit ? parseInt(deposit).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDeposit)}
                 placeholder="예: 50,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
           </>
@@ -113,35 +151,37 @@ export default function RentConversionPage() {
                 value={deposit ? parseInt(deposit).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDeposit)}
                 placeholder="예: 50,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
             <div className="mb-4">
-              <label className="block text-sm text-slate-600 mb-2">월세 (원)</label>
+              <label className="block text-sm text-slate-600 mb-2">월세 (원) *</label>
               <input
                 type="text"
                 inputMode="numeric"
                 value={wolse ? parseInt(wolse).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setWolse)}
                 placeholder="예: 500,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
           </>
         )}
 
         <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">전환율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">전환율 (%) *</label>
           <input
-            type="number"
+            type="text"
+            inputMode="decimal"
             value={conversionRate}
-            onChange={e => setConversionRate(e.target.value)}
-            step="0.1"
-            min="0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            onChange={e => setConversionRate(e.target.value.replace(/[^0-9.]/g, ''))}
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">법정 상한 전환율: 한국은행 기준금리(2.50%) + 2%p = 4.50% (주택임대차보호법 시행령 제9조)</p>
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -155,6 +195,12 @@ export default function RentConversionPage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.mode === 'jeonse-to-wolse' && result.amount === 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">전환 월세가 0원입니다. 전환할 금액 차이가 매우 작거나 전환율이 낮습니다.</p>
+            </div>
+          )}
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">
