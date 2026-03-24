@@ -17,7 +17,12 @@ interface Violation {
 }
 
 const VIOLATIONS: Violation[] = [
-  // 교통 위반
+  // 속도위반 (도로교통법 시행령 별표 8, 별표 10)
+  { id: 'speed-20', name: '속도위반 20km/h 이하 (승용차)', group: '속도위반', fine: 30_000, penalty: 40_000 },
+  { id: 'speed-20-40', name: '속도위반 20~40km/h (승용차)', group: '속도위반', fine: 60_000, penalty: 70_000 },
+  { id: 'speed-40-60', name: '속도위반 40~60km/h (승용차)', group: '속도위반', fine: 90_000, penalty: 100_000 },
+  { id: 'speed-60', name: '속도위반 60km/h 초과 (승용차)', group: '속도위반', fine: 120_000, penalty: 130_000 },
+  // 교통 위반 (도로교통법 시행령 별표 8, 별표 10)
   { id: 'signal', name: '신호위반 (승용차)', group: '교통 위반', fine: 60_000, penalty: 70_000 },
   { id: 'center-line', name: '중앙선침범', group: '교통 위반', fine: 60_000, penalty: 70_000 },
   { id: 'seatbelt-driver', name: '안전벨트 미착용 (운전자)', group: '교통 위반', fine: 30_000, penalty: null },
@@ -25,11 +30,12 @@ const VIOLATIONS: Violation[] = [
   { id: 'phone-driving', name: '휴대폰 사용 운전 중', group: '교통 위반', fine: 60_000, penalty: 70_000 },
   { id: 'illegal-parking', name: '불법 주정차 (일반구역)', group: '교통 위반', fine: null, penalty: 40_000 },
   { id: 'illegal-parking-fire', name: '불법 주정차 (소방/장애인)', group: '교통 위반', fine: null, penalty: 80_000 },
-  { id: 'no-insurance', name: '보험 미가입 운행', group: '교통 위반', fine: null, penalty: 150_000 },
-  { id: 'inspection-30', name: '정기검사 미이행 (30일 이내)', group: '교통 위반', fine: null, penalty: 30_000 },
-  { id: 'inspection-115', name: '정기검사 미이행 (30일 초과)', group: '교통 위반', fine: null, penalty: 115_000 },
-  // 음주/약물
-  { id: 'drunk-003-008', name: '음주운전 (0.03~0.08%)', group: '음주/약물', fine: null, penalty: null, note: '형사처벌 대상 (1년 이상 2년 이하 징역 또는 500만원 이상 1,000만원 이하 벌금)' },
+  { id: 'inspection-30', name: '정기검사 미이행 (30일 이내)', group: '교통 위반', fine: null, penalty: 30_000, note: '자동차관리법 시행규칙 별표 16 적용' },
+  { id: 'inspection-115', name: '정기검사 미이행 (30일 초과)', group: '교통 위반', fine: null, penalty: 115_000, note: '자동차관리법 시행규칙 별표 16 적용' },
+  // 음주/약물 (도로교통법 제148조의2 — 형사처벌 대상, 범칙금·과태료 없음)
+  { id: 'drunk-003-008', name: '음주운전 (0.03~0.08%)', group: '음주/약물', fine: null, penalty: null, note: '형사처벌 대상 (도로교통법 제148조의2 제3항): 1년 이상 2년 이하 징역 또는 500만원 이상 1,000만원 이하 벌금' },
+  { id: 'drunk-008-plus', name: '음주운전 (0.08% 이상)', group: '음주/약물', fine: null, penalty: null, note: '형사처벌 대상 (도로교통법 제148조의2 제1항): 1년 이상 5년 이하 징역 또는 500만원 이상 2,000만원 이하 벌금' },
+  { id: 'no-insurance', name: '보험 미가입 운행', group: '음주/약물', fine: null, penalty: null, note: '형사처벌 대상 (자동차손해배상보장법 제46조 제2항): 1년 이하 징역 또는 1,000만원 이하 벌금 — 과태료 아님' },
   // 생활 불편
   { id: 'smoking-zone', name: '흡연 금지구역 흡연', group: '생활 불편', fine: null, penalty: 100_000 },
   { id: 'illegal-dump', name: '쓰레기 불법투기', group: '생활 불편', fine: null, penalty: 100_000 },
@@ -248,7 +254,7 @@ export default function FinePenaltyPage() {
           </div>
           <div className="mt-3 pt-3 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 도로교통법, 질서위반행위규제법. 실제 금액은 위반 상황에 따라 달라질 수 있습니다.
+              법적 근거: 도로교통법 시행령 별표 8(범칙금), 별표 10(과태료) | 질서위반행위규제법 제18조(자진납부 감경), 제24조의3(가산금) | 자동차관리법(정기검사) | 자동차손해배상보장법(보험). 실제 금액은 위반 상황에 따라 달라질 수 있습니다.
             </p>
           </div>
         </div>
