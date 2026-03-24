@@ -379,7 +379,7 @@ Plans:
 **Plans**: 3 plans
 Plans:
 - [ ] 32-01-PLAN.md — damages-general + defamation + medical-malpractice + lost-income 감사 및 수정
-- [ ] 32-02-PLAN.md — statute-of-limitations + public-defender + legal-aid + certified-letter 감사 및 수정
+- [x] 32-02-PLAN.md — statute-of-limitations + public-defender + legal-aid + certified-letter 감사 및 수정
 - [ ] 32-03-PLAN.md — 8개 계산기/도구 일관성 통일
 
 ## Progress
@@ -417,4 +417,4 @@ Plans:
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 30. 부동산 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 1/3 | In Progress|  |
