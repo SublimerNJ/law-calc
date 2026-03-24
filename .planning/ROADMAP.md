@@ -412,7 +412,7 @@ Plans:
 | 24. 소송/법원 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 25. 가사/가족법 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete   | 2026-03-24 |
+| 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 29. 세금 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 30. 부동산 UX·논리 감사 | v1.5 | 0/? | Not started | — |
