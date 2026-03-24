@@ -22,7 +22,7 @@ const PENSION_CAP = 6_170_000; // monthly salary cap
 const HEALTH_RATE = 0.03545; // each side
 const LONGTERM_RATE = 0.1295; // of health insurance premium
 const EMPLOYMENT_EMPLOYEE = 0.009;
-const EMPLOYMENT_EMPLOYER = 0.0165; // 150인 미만 일반사업장
+const EMPLOYMENT_EMPLOYER = 0.0115; // 150인 미만: 실업급여 0.9% + 고용안정·직업능력개발 0.25%
 const INDUSTRIAL_RATE = 0.0147; // manufacturing average
 
 interface InsuranceRow {
@@ -65,7 +65,7 @@ export default function FourInsurancesPage() {
       { name: '국민연금', employee: pensionEmployee, employer: pensionEmployer, employeeRate: '4.5%', employerRate: '4.5%' },
       { name: '건강보험', employee: healthEmployee, employer: healthEmployer, employeeRate: '3.545%', employerRate: '3.545%' },
       { name: '장기요양보험', employee: longTermEmployee, employer: longTermEmployer, employeeRate: '12.95%*', employerRate: '12.95%*' },
-      { name: '고용보험', employee: employmentEmployee, employer: employmentEmployer, employeeRate: '0.9%', employerRate: '1.65%' },
+      { name: '고용보험', employee: employmentEmployee, employer: employmentEmployer, employeeRate: '0.9%', employerRate: '1.15%' },
       { name: '산재보험', employee: industrialEmployee, employer: industrialEmployer, employeeRate: '-', employerRate: '1.47%' },
     ];
 
@@ -86,7 +86,7 @@ export default function FourInsurancesPage() {
             <label className="block text-sm text-slate-600 mb-1">월 급여 (원)</label>
             <input type="text" className={inputClass} placeholder="예: 3,000,000" value={salary} onChange={e => setSalary(e.target.value)} />
           </div>
-          <p className="mt-2 text-xs text-gray-600">* 150인 미만 일반사업장 기준. 산재보험료율은 제조업 평균(1.47%)이며 업종별로 상이합니다.</p>
+          <p className="mt-2 text-xs text-gray-600">* 150인 미만 사업장 기준 (고용안정·직업능력개발 0.25% 적용). 산재보험료율은 제조업 평균(1.47%)이며 업종별로 상이합니다.</p>
         </div>
 
         <button
