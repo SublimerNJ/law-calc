@@ -40,7 +40,7 @@
 
 - [x] **Phase 13: 소송/법원 계산기 법률 감사** — 6개 계산기 법령 원문 대조 검증 및 오류 수정 (completed 2026-03-24)
 - [x] **Phase 14: 가사/가족법 계산기 법률 감사** — 6개 계산기 민법·가사소송법 기준 검증 및 오류 수정 (completed 2026-03-24)
-- [ ] **Phase 15: 노동/근로 계산기 법률 감사** — 12개 계산기 근로기준법·노동법령 기준 검증 및 오류 수정
+- [x] **Phase 15: 노동/근로 계산기 법률 감사** — 12개 계산기 근로기준법·노동법령 기준 검증 및 오류 수정 (completed 2026-03-24)
 - [ ] **Phase 16: 세금 계산기 법률 감사** — 10개 계산기 세법·지방세법 기준 검증 및 오류 수정
 - [ ] **Phase 17: 부동산 계산기 법률 감사** — 7개 계산기 주택임대차보호법·감독규정 기준 검증 및 오류 수정
 - [ ] **Phase 18: 교통/형사 계산기 법률 감사** — 4개 계산기 도로교통법·형사소송법 기준 검증 및 오류 수정
@@ -90,12 +90,12 @@ Plans:
   3. minimum-wage-check 계산기의 기준 시급이 고용노동부 고시 최저임금(2025년 10,030원)과 일치한다
   4. maternity-leave, parental-leave, unemployment-benefit 계산기의 급여 상·하한액이 현행 법령·고시와 일치한다
   5. industrial-accident, unfair-dismissal, dismissal-notice, shutdown-allowance 계산기의 산정 기준이 해당 법령 원문과 일치한다
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 Plans:
 - [x] 15-01-PLAN.md — severance-pay, dismissal-notice, shutdown-allowance 법률 감사
 - [x] 15-02-PLAN.md — overtime-pay, weekly-holiday-pay, annual-leave-pay 법률 감사
 - [x] 15-03-PLAN.md — minimum-wage-check, unfair-dismissal, industrial-accident 법률 감사
-- [ ] 15-04-PLAN.md — maternity-leave, parental-leave, unemployment-benefit 법률 감사
+- [x] 15-04-PLAN.md — maternity-leave, parental-leave, unemployment-benefit 법률 감사
 
 ### Phase 16: 세금 계산기 법률 감사
 **Goal**: 10개 세금 계산기가 소득세법·지방세법·조세특례제한법 현행 기준으로 정확하게 작동한다
@@ -183,7 +183,7 @@ Plans:
 | 12. 패럴랙스 UI 적용 | v1.2 | 2/2 | Complete | 2026-03-23 |
 | 13. 소송/법원 법률 감사 | v1.3 | 3/3 | Complete    | 2026-03-24 |
 | 14. 가사/가족법 법률 감사 | v1.3 | 2/2 | Complete    | 2026-03-24 |
-| 15. 노동/근로 법률 감사 | v1.3 | 3/4 | In Progress|  |
+| 15. 노동/근로 법률 감사 | v1.3 | 4/4 | Complete   | 2026-03-24 |
 | 16. 세금 법률 감사 | v1.3 | 0/? | Not started | - |
 | 17. 부동산 법률 감사 | v1.3 | 0/? | Not started | - |
 | 18. 교통/형사 법률 감사 | v1.3 | 0/? | Not started | - |
