@@ -65,14 +65,27 @@ export default function BrokerageFeePage() {
   const [amount, setAmount] = useState('');
   const [monthlyRent, setMonthlyRent] = useState('');
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleNumberChange = (setter: (v: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setter(e.target.value.replace(/[^0-9]/g, ''));
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const amountVal = parseInt(amount, 10);
-    if (!amountVal || amountVal <= 0) return;
+    if (!amount || isNaN(amountVal) || amountVal <= 0) {
+      setError('거래금액(보증금)을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (amountVal > 5_000_000_000) {
+      setWarning('거래금액이 50억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     let transactionAmount = amountVal;
     let rateInfo: { rate: number; cap?: number };
@@ -82,7 +95,14 @@ export default function BrokerageFeePage() {
     } else {
       if (leaseType === 'wolse') {
         const rentVal = parseInt(monthlyRent, 10);
-        if (!rentVal || rentVal <= 0) return;
+        if (!monthlyRent || isNaN(rentVal) || rentVal <= 0) {
+          setError('월세를 입력해주세요.');
+          setResult(null);
+          return;
+        }
+        if (rentVal > 10_000_000) {
+          setWarning('월세가 1,000만원을 초과합니다. 입력값을 확인해주세요.');
+        }
         // 환산보증금 = 보증금 + 월세 x 100
         transactionAmount = amountVal + rentVal * 100;
       }
@@ -132,7 +152,7 @@ export default function BrokerageFeePage() {
                   type="radio"
                   name="txType"
                   checked={txType === opt.value}
-                  onChange={() => { setTxType(opt.value); setResult(null); }}
+                  onChange={() => { setTxType(opt.value); setResult(null); setError(null); setWarning(null); }}
                   className="accent-[#8b5cf6]"
                 />
                 <span className="text-sm text-slate-600">{opt.label}</span>
@@ -154,7 +174,7 @@ export default function BrokerageFeePage() {
                     type="radio"
                     name="leaseType"
                     checked={leaseType === opt.value}
-                    onChange={() => { setLeaseType(opt.value); setResult(null); }}
+                    onChange={() => { setLeaseType(opt.value); setResult(null); setError(null); setWarning(null); }}
                     className="accent-[#8b5cf6]"
                   />
                   <span className="text-sm text-slate-600">{opt.label}</span>
@@ -166,7 +186,7 @@ export default function BrokerageFeePage() {
 
         <div className="mb-4">
           <label className="block text-sm text-slate-600 mb-2">
-            {txType === 'sale' ? '거래금액 (원)' : '보증금 (원)'}
+            {txType === 'sale' ? '거래금액 (원) *' : '보증금 (원) *'}
           </label>
           <input
             type="text"
@@ -174,23 +194,26 @@ export default function BrokerageFeePage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setAmount)}
             placeholder="예: 300,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         {txType === 'lease' && leaseType === 'wolse' && (
           <div className="mb-4">
-            <label className="block text-sm text-slate-600 mb-2">월세 (원)</label>
+            <label className="block text-sm text-slate-600 mb-2">월세 (원) *</label>
             <input
               type="text"
               inputMode="numeric"
               value={monthlyRent ? parseInt(monthlyRent).toLocaleString('ko-KR') : ''}
               onChange={handleNumberChange(setMonthlyRent)}
               placeholder="예: 500,000"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         )}
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -204,6 +227,12 @@ export default function BrokerageFeePage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.fee === 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">거래금액이 매우 작아 중개보수가 0원으로 계산되었습니다.</p>
+            </div>
+          )}
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">
@@ -241,8 +270,8 @@ export default function BrokerageFeePage() {
             </pre>
           </div>
 
-          <div className="mb-4 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
-            <p className="text-xs text-yellow-400">
+          <div className="mb-4 p-3 rounded-lg bg-yellow-50 border border-yellow-200">
+            <p className="text-xs text-yellow-700">
               부가세는 법인 중개사무소만 부과됩니다. 개인 공인중개사는 부가세 면제 대상입니다.
             </p>
           </div>
