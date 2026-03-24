@@ -330,7 +330,7 @@ Plans:
   5. 5개 계산기 간 퍼센트(%) 결과 표시 방식, 금액 천 단위 콤마, 필수 입력 강조 방식이 통일된다
 **Plans**: 3 plans
 Plans:
-- [ ] 29-01-PLAN.md — vat + securities-tax 감사 및 수정
+- [x] 29-01-PLAN.md — vat + securities-tax 감사 및 수정
 - [ ] 29-02-PLAN.md — year-end-tax + four-insurances + rent-tax-credit 감사 및 수정
 - [ ] 29-03-PLAN.md — 5개 계산기 일관성 통일
 
@@ -414,7 +414,7 @@ Plans:
 | 26. 노동/근로 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 27. 노동/근로 Part 2 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 28. 세금 Part 1 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 29. 세금 Part 2 UX·논리 감사 | v1.5 | 0/? | Not started | — |
+| 29. 세금 Part 2 UX·논리 감사 | v1.5 | 1/3 | In Progress|  |
 | 30. 부동산 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 0/? | Not started | — |
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 0/? | Not started | — |

@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: Ready to plan
-last_updated: "2026-03-24T22:55:20.766Z"
+status: Ready to execute
+last_updated: "2026-03-24T23:03:05.772Z"
 progress:
   total_phases: 20
   completed_phases: 14
-  total_plans: 38
-  completed_plans: 38
+  total_plans: 41
+  completed_plans: 39
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구 제공
-**Current focus:** Phase 28 — ux
+**Current focus:** Phase 29 — ux
 
 ## Current Position
 
-Phase: 29
-Plan: Not started
+Phase: 29 (ux) — EXECUTING
+Plan: 2 of 3
 
 ## Accumulated Context
 
@@ -48,10 +48,12 @@ Plan: Not started
   - focus:border-[#10b981] → focus:border-blue-600 통일: 카테고리 색상은 결과 강조에만, 입력 포커스는 blue-600 (28-ux-03)
   - registration-tax 결과 합계 계층 수정: 합계 text-xl font-bold category.color 강조 (28-ux-03)
   - Phase 28 전체 완료: 5개 세금 계산기 CONSIST-01~03 + 전체 16개 UX 요구사항 충족 (28-ux-03)
+  - 에러(text-red-500)/경고(text-orange-500) 분리 패턴을 세금 2종 계산기(vat, securities-tax)에 적용, 500억 초과 경고 포함 (29-ux-01)
+  - securities-tax 안내 박스 2025년→2026년 기준 텍스트 정정, text-blue-400→text-blue-600 (29-ux-01)
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-25
-- **Stopped At**: Completed 28-03-PLAN.md (Phase 28 Plan 3 — Phase 28 complete)
+- **Stopped At**: Completed 29-01-PLAN.md (Phase 29 Plan 1 — vat·securities-tax UX 완료)
