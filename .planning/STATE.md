@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: Ready to execute
-last_updated: "2026-03-24T21:08:02.634Z"
+status: Phase complete — ready for verification
+last_updated: "2026-03-24T21:11:39.647Z"
 progress:
   total_phases: 20
-  completed_phases: 9
+  completed_phases: 10
   total_plans: 26
-  completed_plans: 25
+  completed_plans: 26
 ---
 
 # Project State
@@ -34,10 +34,11 @@ Plan: 3 of 3
   - v1.4 중복 계산기 정리 완료 (51개로 정리)
   - v1.5 감사 범위: UX/논리 오류만, 법률 정확성 재검증 제외
   - payment-order 실시간 계산 → 버튼 클릭 방식 전환 (FLOW-01/02 일관성)
+  - attorney-fee silent return 제거, 5개 court 계산기 에러 표시 방식 버튼 위 블록으로 통일
 - **Blockers**:
   - None
 
 ## Session Continuity
 
 - **Last Session**: 2026-03-25
-- **Stopped At**: Completed 24-ux-01-PLAN.md
+- **Stopped At**: Completed 24-ux-03-PLAN.md
