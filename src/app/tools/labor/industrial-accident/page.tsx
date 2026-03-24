@@ -53,12 +53,32 @@ export default function IndustrialAccidentPage() {
   const [nursingDays, setNursingDays] = useState('');
 
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     if (benefitType === 'absence') {
       const wage = parseInt(dailyWage.replace(/,/g, ''), 10);
       const days = parseInt(absenceDays.replace(/,/g, ''), 10);
-      if (!wage || !days || wage <= 0 || days <= 0) return;
+      if (!wage || wage <= 0) {
+        setError('평균임금(원/일)을 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (!days || days <= 0) {
+        setError('요양일수를 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (wage > 500_000) {
+        setWarning('1일 평균임금이 50만원을 초과합니다. 입력값을 확인해주세요.');
+      }
+      if (days > 1095) {
+        setWarning((prev) => (prev ? prev + ' ' : '') + '요양일수가 3년(1,095일)을 초과합니다. 확인해주세요.');
+      }
       const benefit70 = Math.floor(wage * 0.7);
       const minDaily = Math.floor(MIN_WAGE_80_DAILY);
       const dailyBenefit = Math.max(benefit70, minDaily);
@@ -66,19 +86,37 @@ export default function IndustrialAccidentPage() {
       setResult({ type: 'absence', dailyBenefit, totalDays: days, total: dailyBenefit * days, minApplied });
     } else if (benefitType === 'disability') {
       const wage = parseInt(disabilityDailyWage.replace(/,/g, ''), 10);
-      if (!wage || wage <= 0) return;
+      if (!wage || wage <= 0) {
+        setError('평균임금(원/일)을 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (wage > 500_000) {
+        setWarning('1일 평균임금이 50만원을 초과합니다. 확인해주세요.');
+      }
+      if (paymentType === 'pension' && disabilityGrade > 7) {
+        setError('연금은 1~7급에만 적용됩니다.');
+        setResult(null);
+        return;
+      }
       if (paymentType === 'lump') {
         const days = DISABILITY_LUMP_DAYS[disabilityGrade];
         setResult({ type: 'disability', grade: disabilityGrade, paymentType: 'lump', dailyWage: wage, days, total: wage * days });
       } else {
-        if (disabilityGrade > 7) return; // pension only for 1-7
         const days = DISABILITY_PENSION_DAYS[disabilityGrade];
         const monthlyPension = Math.floor((wage * days) / 12);
         setResult({ type: 'disability', grade: disabilityGrade, paymentType: 'pension', dailyWage: wage, days, total: wage * days, monthlyPension });
       }
     } else {
       const days = parseInt(nursingDays.replace(/,/g, ''), 10);
-      if (!days || days <= 0) return;
+      if (!days || days <= 0) {
+        setError('간병일수를 입력해주세요.');
+        setResult(null);
+        return;
+      }
+      if (days > 1095) {
+        setWarning('간병일수가 3년을 초과합니다. 확인해주세요.');
+      }
       const dailyAmount = NURSING_DAILY[nursingType];
       setResult({ type: 'nursing', nursingType, dailyAmount, totalDays: days, total: dailyAmount * days });
     }
@@ -93,19 +131,26 @@ export default function IndustrialAccidentPage() {
       active ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
     }`;
 
+  const handleTabChange = (type: BenefitType) => {
+    setBenefitType(type);
+    setResult(null);
+    setError(null);
+    setWarning(null);
+  };
+
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">급여 유형 선택</h2>
 
         <div className="flex gap-2 mb-6">
-          <button onClick={() => { setBenefitType('absence'); setResult(null); }} className={tabClass(benefitType === 'absence')}>
+          <button onClick={() => handleTabChange('absence')} className={tabClass(benefitType === 'absence')}>
             휴업급여
           </button>
-          <button onClick={() => { setBenefitType('disability'); setResult(null); }} className={tabClass(benefitType === 'disability')}>
+          <button onClick={() => handleTabChange('disability')} className={tabClass(benefitType === 'disability')}>
             장해급여
           </button>
-          <button onClick={() => { setBenefitType('nursing'); setResult(null); }} className={tabClass(benefitType === 'nursing')}>
+          <button onClick={() => handleTabChange('nursing')} className={tabClass(benefitType === 'nursing')}>
             간병급여
           </button>
         </div>
@@ -113,7 +158,7 @@ export default function IndustrialAccidentPage() {
         {benefitType === 'absence' && (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-slate-600 mb-2">평균임금 (원/일)</label>
+              <label className="block text-sm text-slate-600 mb-2">평균임금 (원/일) *</label>
               <input
                 type="text" inputMode="numeric"
                 value={dailyWage ? parseInt(dailyWage).toLocaleString('ko-KR') : ''}
@@ -123,7 +168,7 @@ export default function IndustrialAccidentPage() {
               />
             </div>
             <div className="mb-6">
-              <label className="block text-sm text-slate-600 mb-2">요양일수 (일)</label>
+              <label className="block text-sm text-slate-600 mb-2">요양일수 (일) *</label>
               <input
                 type="text" inputMode="numeric"
                 value={absenceDays}
@@ -138,7 +183,7 @@ export default function IndustrialAccidentPage() {
         {benefitType === 'disability' && (
           <>
             <div className="mb-4">
-              <label className="block text-sm text-slate-600 mb-2">평균임금 (원/일)</label>
+              <label className="block text-sm text-slate-600 mb-2">평균임금 (원/일) *</label>
               <input
                 type="text" inputMode="numeric"
                 value={disabilityDailyWage ? parseInt(disabilityDailyWage).toLocaleString('ko-KR') : ''}
@@ -184,7 +229,7 @@ export default function IndustrialAccidentPage() {
               </div>
             </div>
             <div className="mb-6">
-              <label className="block text-sm text-slate-600 mb-2">간병일수 (일)</label>
+              <label className="block text-sm text-slate-600 mb-2">간병일수 (일) *</label>
               <input
                 type="text" inputMode="numeric"
                 value={nursingDays}
@@ -195,6 +240,9 @@ export default function IndustrialAccidentPage() {
             </div>
           </>
         )}
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -303,7 +351,7 @@ export default function IndustrialAccidentPage() {
             )}
             {result.type === 'nursing' && (
               <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
-{`정액 간병급여(상시: 41,170원 / 수시: 27,450원) × 간병일수`}
+{`정액 간병급여(상시: 53,060원 / 수시: 35,370원) × 간병일수 (2026.1.1~2028.12.31 적용)`}
               </pre>
             )}
             <p className="text-xs text-slate-600 leading-relaxed">
