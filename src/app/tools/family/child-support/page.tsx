@@ -256,7 +256,7 @@ export default function ChildSupportPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제833조, 서울가정법원 양육비산정기준표(2026)
+              법적 근거: 민법 제837조, 가사소송법 제2조, 서울가정법원 양육비산정기준표(2024 개정)
             </p>
             <p className="text-xs text-gray-500 mt-1">
               본 계산기는 참고용이며, 실제 법원 결정과 다를 수 있습니다.
