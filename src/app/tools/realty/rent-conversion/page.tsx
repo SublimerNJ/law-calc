@@ -23,7 +23,7 @@ export default function RentConversionPage() {
   const [jeonse, setJeonse] = useState('');
   const [deposit, setDeposit] = useState('');
   const [wolse, setWolse] = useState('');
-  const [conversionRate, setConversionRate] = useState('5.5');
+  const [conversionRate, setConversionRate] = useState('4.75');
   const [result, setResult] = useState<Result | null>(null);
 
   const handleNumberChange = (setter: (v: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -140,7 +140,7 @@ export default function RentConversionPage() {
             min="0"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#8b5cf6] focus:outline-none"
           />
-          <p className="text-xs text-gray-500 mt-1">2026년 법정 상한 전환율 참고: 한국은행 기준금리 + 2%p</p>
+          <p className="text-xs text-gray-500 mt-1">법정 상한 전환율: 한국은행 기준금리(2.75%) + 2%p = 4.75% (주택임대차보호법 시행령 제9조)</p>
         </div>
 
         <button
@@ -184,7 +184,7 @@ export default function RentConversionPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 주택임대차보호법 제7조의2 | 법정 상한: 한국은행 기준금리 + 2%p
+              법적 근거: 주택임대차보호법 제7조의2, 동법 시행령 제9조 | 법정 상한: 기준금리(2.75%) + 2%p = 4.75%
             </p>
           </div>
         </div>
