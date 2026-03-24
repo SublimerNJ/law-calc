@@ -22,6 +22,8 @@ export default function ShutdownAllowancePage() {
   const [laborBoardApproval, setLaborBoardApproval] = useState(false);
   const [approvedRate, setApprovedRate] = useState('60');
   const [calculated, setCalculated] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const avgWage = parseNum(dailyAvgWage);
   const ordinaryWageMonthly = parseNum(monthlyOrdinaryWage);
@@ -46,7 +48,36 @@ export default function ShutdownAllowancePage() {
   const higherBase = avgWage70 >= dailyOrdinaryWage ? '평균임금 70%' : '통상임금';
 
   const handleCalculate = () => {
-    if (avgWage <= 0 || days <= 0) return;
+    setError(null);
+    setWarning(null);
+    setCalculated(false);
+
+    if (avgWage <= 0) {
+      setError('1일 평균임금을 입력해주세요.');
+      return;
+    }
+    if (days <= 0) {
+      setError('휴업일수를 입력해주세요.');
+      return;
+    }
+    if (laborBoardApproval) {
+      const rate = parseFloat(approvedRate);
+      if (!approvedRate || isNaN(rate) || rate <= 0) {
+        setError('승인 지급률(%)을 입력해주세요.');
+        return;
+      }
+    }
+
+    let warn = '';
+    if (avgWage > 500_000) {
+      warn = '1일 평균임금이 50만원을 초과합니다. 확인해주세요.';
+    }
+    if (days > 365) {
+      const extra = '휴업일수가 1년을 초과합니다. 확인해주세요.';
+      warn = warn ? warn + ' ' + extra : extra;
+    }
+    if (warn) setWarning(warn);
+
     setCalculated(true);
   };
 
@@ -56,7 +87,7 @@ export default function ShutdownAllowancePage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">1일 평균임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">1일 평균임금 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -68,7 +99,7 @@ export default function ShutdownAllowancePage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">월 통상임금 (원, 선택사항)</label>
           <input
             type="text"
             inputMode="numeric"
@@ -85,7 +116,7 @@ export default function ShutdownAllowancePage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">휴업일수 (일)</label>
+          <label className="block text-sm text-slate-600 mb-2">휴업일수 (일) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -110,7 +141,7 @@ export default function ShutdownAllowancePage() {
 
         {laborBoardApproval && (
           <div className="mb-4">
-            <label className="block text-sm text-slate-600 mb-2">승인 지급률 (%)</label>
+            <label className="block text-sm text-slate-600 mb-2">승인 지급률 (%) *</label>
             <input
               type="text"
               inputMode="numeric"
@@ -124,6 +155,9 @@ export default function ShutdownAllowancePage() {
             </p>
           </div>
         )}
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
