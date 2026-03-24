@@ -16,13 +16,16 @@ function parseAmount(s: string): number {
   return isNaN(v) ? 0 : v;
 }
 
-/** 근로소득공제 */
+/** 근로소득공제 (소득세법 제47조 제1항, 한도 2,000만원) */
 function earnedIncomeDeduction(gross: number): number {
-  if (gross <= 5_000_000) return gross * 0.7;
-  if (gross <= 15_000_000) return 3_500_000 + (gross - 5_000_000) * 0.4;
-  if (gross <= 45_000_000) return 7_500_000 + (gross - 15_000_000) * 0.15;
-  if (gross <= 100_000_000) return 12_450_000 + (gross - 45_000_000) * 0.05;
-  return 14_750_000 + (gross - 100_000_000) * 0.02;
+  let deduction: number;
+  if (gross <= 5_000_000) deduction = gross * 0.7;
+  else if (gross <= 15_000_000) deduction = 3_500_000 + (gross - 5_000_000) * 0.4;
+  else if (gross <= 45_000_000) deduction = 7_500_000 + (gross - 15_000_000) * 0.15;
+  else if (gross <= 100_000_000) deduction = 12_450_000 + (gross - 45_000_000) * 0.05;
+  else deduction = 14_750_000 + (gross - 100_000_000) * 0.02;
+  // 한도: 2,000만원 (소득세법 제47조 제1항 단서)
+  return Math.min(deduction, 20_000_000);
 }
 
 /** 소득세 산출세액 (2026 누진세율) */
@@ -49,8 +52,11 @@ function incomeTax(taxableIncome: number): number {
   return Math.floor(tax);
 }
 
-/** 근로소득세액공제 */
-function earnedIncomeTaxCredit(computed: number): number {
+/**
+ * 근로소득세액공제 (소득세법 제59조)
+ * 한도는 총급여액 기준: 3,300만원 이하 74만원, 7,000만원 이하 66만원, 초과 50만원
+ */
+function earnedIncomeTaxCredit(computed: number, grossPay: number): number {
   if (computed <= 0) return 0;
   let credit: number;
   if (computed <= 1_300_000) {
@@ -58,9 +64,9 @@ function earnedIncomeTaxCredit(computed: number): number {
   } else {
     credit = 715_000 + (computed - 1_300_000) * 0.3;
   }
-  // 한도
-  if (computed <= 33_000_000) return Math.min(credit, 740_000);
-  if (computed <= 70_000_000) return Math.min(credit, 660_000);
+  // 한도 (총급여액 기준, 소득세법 제59조 제2항)
+  if (grossPay <= 33_000_000) return Math.min(credit, 740_000);
+  if (grossPay <= 70_000_000) return Math.min(credit, 660_000);
   return Math.min(credit, 500_000);
 }
 
@@ -152,15 +158,16 @@ export default function YearEndTaxPage() {
     const computedTax = incomeTax(taxableIncome);
 
     // 세액공제들
-    const earnedCredit = earnedIncomeTaxCredit(computedTax);
+    const earnedCredit = earnedIncomeTaxCredit(computedTax, gross);
 
     let childCredit = 0;
     if (children === 1) childCredit = 150_000;
     else if (children === 2) childCredit = 350_000;
     else if (children >= 3) childCredit = 650_000 + (children - 3) * 300_000;
 
+    // 의료비세액공제: 총급여 3% 초과분의 15%, 일반의료비 한도 700만원 (소득세법 제59조의4 제2항)
     const medicalOver = medical - gross * 0.03;
-    const medicalCredit = medicalOver > 0 ? Math.floor(medicalOver * 0.15) : 0;
+    const medicalCredit = medicalOver > 0 ? Math.min(Math.floor(medicalOver * 0.15), 700_000) : 0;
 
     const educationCredit = Math.floor(education * 0.15);
 
@@ -398,7 +405,7 @@ export default function YearEndTaxPage() {
 
             <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
               <p className="font-semibold text-slate-600 mb-1">법적 근거</p>
-              <p>소득세법 제137조~제140조 (연말정산). 2026년 기준 세율 및 공제율 적용. 실제 연말정산 결과와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
+              <p>소득세법 제47조(근로소득공제), 제50조(기본공제), 제55조(세율), 제59조(근로소득세액공제), 제59조의2(자녀세액공제), 제59조의4(의료비·교육비·월세세액공제), 제137조~제140조(연말정산). 2026년 기준. 참고용으로만 활용하시기 바랍니다.</p>
             </div>
           </div>
         )}
