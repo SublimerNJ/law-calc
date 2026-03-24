@@ -28,6 +28,8 @@ export default function MedicalMalpracticePage() {
   const [disabilityRate, setDisabilityRate] = useState('');
   const [consolationPreset, setConsolationPreset] = useState<ConsolationPreset>('severe');
   const [customConsolation, setCustomConsolation] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<{
     propertyDamage: number;
     consolation: number;
@@ -42,12 +44,37 @@ export default function MedicalMalpracticePage() {
   };
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
     const treatment = parseInt(treatmentCost.replace(/[^0-9]/g, ''), 10) || 0;
     const future = parseInt(futureTreatmentCost.replace(/[^0-9]/g, ''), 10) || 0;
     const lost = parseInt(lostIncome.replace(/[^0-9]/g, ''), 10) || 0;
     const fault = parseFloat(doctorFault) || 0;
 
-    if (fault <= 0) return;
+    // INPUT-02: 과실비율 필수
+    if (!doctorFault || fault <= 0) {
+      setError('의사 과실비율을 입력해주세요. (1~100% 사이)');
+      setResult(null);
+      return;
+    }
+    if (fault > 100) {
+      setError('과실비율은 100%를 초과할 수 없습니다.');
+      setResult(null);
+      return;
+    }
+    // INPUT-03: 총 치료비 100억 초과 경고
+    if (treatment + future > 10_000_000_000) {
+      setWarning('치료비 합계가 100억원을 초과합니다. 입력값을 확인해주세요.');
+    }
+    // EDGE-01: 후유장해율 상한 검증
+    if (hasDisability) {
+      const disRate = parseFloat(disabilityRate) || 0;
+      if (disRate > 100) {
+        setError('후유장해율은 100%를 초과할 수 없습니다.');
+        setResult(null);
+        return;
+      }
+    }
 
     const propertyDamage = Math.floor((treatment + future + lost) * (fault / 100));
 
@@ -78,7 +105,7 @@ export default function MedicalMalpracticePage() {
             value={treatmentCost ? parseInt(treatmentCost).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setTreatmentCost)}
             placeholder="예: 5,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -90,7 +117,7 @@ export default function MedicalMalpracticePage() {
             value={futureTreatmentCost ? parseInt(futureTreatmentCost).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setFutureTreatmentCost)}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -102,20 +129,19 @@ export default function MedicalMalpracticePage() {
             value={lostIncome ? parseInt(lostIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setLostIncome)}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">의사 과실비율 (%)</label>
+          <label className="block text-sm text-slate-600 mb-2">의사 과실비율 (%) *</label>
           <input
-            type="number"
-            min="0"
-            max="100"
+            type="text"
+            inputMode="decimal"
             value={doctorFault}
-            onChange={(e) => setDoctorFault(e.target.value)}
+            onChange={(e) => setDoctorFault(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="0 ~ 100"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -136,13 +162,12 @@ export default function MedicalMalpracticePage() {
             <div>
               <label className="block text-sm text-slate-600 mb-2">후유장해율 (%)</label>
               <input
-                type="number"
-                min="0"
-                max="100"
+                type="text"
+                inputMode="decimal"
                 value={disabilityRate}
-                onChange={(e) => setDisabilityRate(e.target.value)}
+                onChange={(e) => setDisabilityRate(e.target.value.replace(/[^0-9.]/g, ''))}
                 placeholder="0 ~ 100"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             </div>
             <div>
@@ -150,7 +175,7 @@ export default function MedicalMalpracticePage() {
               <select
                 value={consolationPreset}
                 onChange={(e) => setConsolationPreset(e.target.value as ConsolationPreset)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               >
                 <option value="death">사망 (1억원)</option>
                 <option value="severe">중상해 (3,000만원)</option>
@@ -165,11 +190,14 @@ export default function MedicalMalpracticePage() {
                 value={customConsolation ? parseInt(customConsolation).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setCustomConsolation)}
                 placeholder="위자료 기준액 입력"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
               />
             )}
           </div>
         )}
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
         <button
           onClick={handleCalculate}
@@ -183,6 +211,12 @@ export default function MedicalMalpracticePage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.total === 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">총 배상액이 0원으로 계산되었습니다. 과실비율 또는 손해항목을 확인해주세요.</p>
+            </div>
+          )}
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">재산상 손해 배상액</p>

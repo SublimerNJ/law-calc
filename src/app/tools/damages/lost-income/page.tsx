@@ -42,9 +42,11 @@ export default function LostIncomePage() {
   const [treatmentMonths, setTreatmentMonths] = useState('');
   const [disabilityRate, setDisabilityRate] = useState('');
   const [faultRate, setFaultRate] = useState('');
+  const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<Result | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
     const ageVal = parseInt(age, 10);
     const income = parseInt(monthlyIncome.replace(/,/g, ''), 10);
     const retAge = retirementOption === 'custom'
@@ -54,7 +56,35 @@ export default function LostIncomePage() {
     const disRate = parseFloat(disabilityRate) || 0;
     const fRate = parseFloat(faultRate) || 0;
 
-    if (!ageVal || !income || !retAge || ageVal >= retAge) return;
+    // INPUT-02: 나이 필수
+    if (!age || !ageVal || ageVal <= 0) {
+      setError('사고 당시 나이를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (ageVal > 100) {
+      setError('나이는 100세 이하로 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    // INPUT-02: 월순수입 필수
+    if (!monthlyIncome || !income || income <= 0) {
+      setError('월 순수입을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    // INPUT-02: 가동연한 custom 시 검증
+    if (retirementOption === 'custom' && (!customRetirementAge || !retAge || retAge <= 0)) {
+      setError('가동연한 종료 나이를 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    // EDGE-01: 나이 >= 가동연한
+    if (ageVal >= retAge) {
+      setError(`사고 당시 나이(${ageVal}세)가 가동연한(${retAge}세) 이상입니다. 나이 또는 가동연한을 확인해주세요.`);
+      setResult(null);
+      return;
+    }
 
     const remainingMonths = (retAge - ageVal) * 12;
     const hoffmanCoeff = calculateHoffmanCoefficient(remainingMonths);
@@ -88,26 +118,26 @@ export default function LostIncomePage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">사고 당시 나이 (세)</label>
+          <label className="block text-sm text-slate-600 mb-2">사고 당시 나이 (세) *</label>
           <input
             type="text"
             inputMode="numeric"
             value={age}
             onChange={handleNumberChange(setAge)}
             placeholder="예: 40"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">월 순수입 (원, 세후 실수령액)</label>
+          <label className="block text-sm text-slate-600 mb-2">월 순수입 (원, 세후 실수령액) *</label>
           <input
             type="text"
             inputMode="numeric"
             value={monthlyIncome ? parseInt(monthlyIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyIncome)}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {monthlyIncome && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(monthlyIncome).toLocaleString('ko-KR')}원</p>
@@ -119,7 +149,7 @@ export default function LostIncomePage() {
           <select
             value={retirementOption}
             onChange={(e) => setRetirementOption(e.target.value as RetirementOption)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           >
             <option value="65">65세 (대법원 전원합의체 판결 기준, 2018다248909)</option>
             <option value="60">60세 (구 기준)</option>
@@ -132,7 +162,7 @@ export default function LostIncomePage() {
               value={customRetirementAge}
               onChange={handleNumberChange(setCustomRetirementAge)}
               placeholder="가동연한 나이 입력"
-              className="w-full mt-2 bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+              className="w-full mt-2 bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           )}
         </div>
@@ -145,19 +175,19 @@ export default function LostIncomePage() {
             value={treatmentMonths}
             onChange={handleNumberChange(setTreatmentMonths)}
             placeholder="예: 6"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">노동능력 상실률 (%, 완전 상실 = 100)</label>
+          <label className="block text-sm text-slate-600 mb-2">노동능력 상실률 (%, 완전 상실 = 100) *</label>
           <input
             type="text"
             inputMode="numeric"
             value={disabilityRate}
             onChange={(e) => setDisabilityRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 100"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -169,9 +199,11 @@ export default function LostIncomePage() {
             value={faultRate}
             onChange={(e) => setFaultRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
+
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
         <button
           onClick={handleCalculate}
@@ -185,6 +217,12 @@ export default function LostIncomePage() {
       {result !== null && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.lostIncomeAfterFault === 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">일실수입이 0원으로 계산되었습니다. 노동능력상실률 또는 과실비율을 확인해주세요.</p>
+            </div>
+          )}
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-1">잔여 가동기간</p>
