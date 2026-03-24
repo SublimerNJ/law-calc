@@ -103,7 +103,7 @@ export default function OvertimePayPage() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">이번 달 연장근로 시간 (최대 52시간)</label>
+          <label className="block text-sm text-slate-600 mb-2">이번 달 연장근로 시간 (1주 최대 12시간)</label>
           <input
             type="text"
             inputMode="decimal"
@@ -211,7 +211,7 @@ ${result.overtimePay > 0 ? `\n연장근로 = ${formatNumber(result.hourlyWage)} 
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 근로기준법 제56조 | 야간수당은 기본급에 이미 포함된 시간의 추가분(0.5배)만 가산
+              법적 근거: 근로기준법 제56조(연장·야간 및 휴일 근로) | 연장·야간·휴일 각 가산은 중복 적용 가능 (제56조 제3항) | 연장근로 한도: 1주 12시간 (제53조 제1항)
             </p>
           </div>
         </div>
