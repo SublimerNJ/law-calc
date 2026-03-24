@@ -172,11 +172,44 @@ export default function CapitalGainsTaxPage() {
   const [houseCount, setHouseCount] = useState<HouseCount>('1');
   const [residenceYears, setResidenceYears] = useState('');
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const acq = parseInt(acquisitionPrice.replace(/,/g, ''), 10);
     const trn = parseInt(transferPrice.replace(/,/g, ''), 10);
-    if (!acq || !trn || !acquisitionDate || !transferDate) return;
+
+    if (!acq || acq <= 0) {
+      setError('취득가액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (!trn || trn <= 0) {
+      setError('양도가액을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+    if (!acquisitionDate || !transferDate) {
+      setError('취득일과 양도일을 모두 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    const acqMs = new Date(acquisitionDate).getTime();
+    const trnMs = new Date(transferDate).getTime();
+    if (trnMs <= acqMs) {
+      setError('양도일이 취득일보다 앞서거나 같을 수 없습니다.');
+      setResult(null);
+      return;
+    }
+
+    if (acq > 10_000_000_000 || trn > 10_000_000_000) {
+      setWarning('입력 금액이 100억원을 초과합니다. 입력값을 확인해주세요.');
+    }
+
     const resYears = parseInt(residenceYears, 10) || 0;
     setResult(calculate(acq, trn, acquisitionDate, transferDate, assetType, isSingleHouse, houseCount, resYears));
   };
@@ -202,18 +235,18 @@ export default function CapitalGainsTaxPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">취득가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">취득가액 (원) *</label>
           <input {...numInput(acquisitionPrice, setAcquisitionPrice)} placeholder="예: 300,000,000" />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">양도가액 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">양도가액 (원) *</label>
           <input {...numInput(transferPrice, setTransferPrice)} placeholder="예: 500,000,000" />
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm text-slate-600 mb-2">취득일</label>
+            <label className="block text-sm text-slate-600 mb-2">취득일 *</label>
             <input
               type="date"
               value={acquisitionDate}
@@ -222,7 +255,7 @@ export default function CapitalGainsTaxPage() {
             />
           </div>
           <div>
-            <label className="block text-sm text-slate-600 mb-2">양도일</label>
+            <label className="block text-sm text-slate-600 mb-2">양도일 *</label>
             <input
               type="date"
               value={transferDate}
@@ -270,11 +303,10 @@ export default function CapitalGainsTaxPage() {
                   실거주 기간 (년) — 장기보유특별공제 거주기간 공제율 적용 (소득세법 제95조 제2항 별표2)
                 </label>
                 <input
-                  type="number"
-                  min="0"
-                  max="15"
+                  type="text"
+                  inputMode="numeric"
                   value={residenceYears}
-                  onChange={e => setResidenceYears(e.target.value)}
+                  onChange={e => setResidenceYears(e.target.value.replace(/[^0-9]/g, ''))}
                   placeholder="예: 3"
                   className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
                 />
@@ -302,6 +334,9 @@ export default function CapitalGainsTaxPage() {
           </>
         )}
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
@@ -314,6 +349,12 @@ export default function CapitalGainsTaxPage() {
       {result && (
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+
+          {result.gain <= 0 && (
+            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-sm text-blue-600">양도차익이 없거나 손실이 발생한 경우 양도소득세가 부과되지 않습니다.</p>
+            </div>
+          )}
 
           {result.exemptionNote && (
             <div className="mb-4 p-3 rounded-lg bg-[#10b981]/10 border border-[#10b981]/30">
