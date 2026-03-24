@@ -28,21 +28,46 @@ export default function UnfairDismissalPage() {
   const [dismissalMonths, setDismissalMonths] = useState('');
   const [interimIncome, setInterimIncome] = useState('');
   const [result, setResult] = useState<Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
+    setWarning(null);
+
     const wage = parseInt(monthlyWage.replace(/,/g, ''), 10);
-    if (!wage || wage <= 0) return;
+    if (!wage || wage <= 0) {
+      setError('퇴직 전 3개월 평균 월임금을 입력해주세요.');
+      setResult(null);
+      return;
+    }
+
+    if (wage > 100_000_000) {
+      setWarning('월임금이 1억원을 초과합니다. 입력값을 확인해주세요.');
+    }
 
     let days: number;
     if (useDate) {
-      if (!dismissalDate || !reinstatementDate) return;
+      if (!dismissalDate || !reinstatementDate) {
+        setError('해고 시작일과 판정/복직 예상일을 모두 입력해주세요.');
+        setResult(null);
+        return;
+      }
       const start = new Date(dismissalDate);
       const end = new Date(reinstatementDate);
       days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-      if (days <= 0) return;
+      if (days <= 0) {
+        setError('판정/복직 예상일이 해고 시작일보다 앞설 수 없습니다.');
+        setResult(null);
+        return;
+      }
     } else {
       const months = parseFloat(dismissalMonths);
-      if (!months || months <= 0) return;
+      if (!months || months <= 0) {
+        setError('해고 경과 개월수를 입력해주세요.');
+        setResult(null);
+        return;
+      }
       days = Math.round(months * 30);
     }
 
@@ -71,7 +96,7 @@ export default function UnfairDismissalPage() {
 
         {/* Monthly wage */}
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">퇴직 전 3개월 평균 월임금 (원)</label>
+          <label className="block text-sm text-slate-600 mb-2">퇴직 전 3개월 평균 월임금 (원) *</label>
           <input
             type="text"
             inputMode="numeric"
@@ -108,7 +133,7 @@ export default function UnfairDismissalPage() {
         {useDate ? (
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm text-slate-600 mb-2">해고 시작일</label>
+              <label className="block text-sm text-slate-600 mb-2">해고 시작일 *</label>
               <input
                 type="date"
                 value={dismissalDate}
@@ -117,7 +142,7 @@ export default function UnfairDismissalPage() {
               />
             </div>
             <div>
-              <label className="block text-sm text-slate-600 mb-2">판정/복직 예상일</label>
+              <label className="block text-sm text-slate-600 mb-2">판정/복직 예상일 *</label>
               <input
                 type="date"
                 value={reinstatementDate}
@@ -128,7 +153,7 @@ export default function UnfairDismissalPage() {
           </div>
         ) : (
           <div className="mb-4">
-            <label className="block text-sm text-slate-600 mb-2">해고 경과 개월수</label>
+            <label className="block text-sm text-slate-600 mb-2">해고 경과 개월수 *</label>
             <input
               type="text"
               inputMode="numeric"
@@ -153,6 +178,9 @@ export default function UnfairDismissalPage() {
           />
         </div>
 
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
+
         <button
           onClick={handleCalculate}
           className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
@@ -168,6 +196,9 @@ export default function UnfairDismissalPage() {
           <div className="bg-white rounded-xl p-5 mb-4 text-center">
             <p className="text-sm text-slate-600 mb-1">보상금 예상액</p>
             <p className="text-3xl font-bold text-[#f59e0b]">{formatNumber(result.netCompensation)}원</p>
+            {result.netCompensation === 0 && (
+              <p className="text-sm text-yellow-500 mt-2">중간수입이 임금상당액 이상으로 보상금이 발생하지 않습니다.</p>
+            )}
           </div>
 
           <div className="space-y-3">
