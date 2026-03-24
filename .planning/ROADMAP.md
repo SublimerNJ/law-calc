@@ -266,9 +266,9 @@ Plans:
   5. 6개 계산기 간 금액 표시(천 단위 콤마), 필수/선택 필드 구분, 에러 메시지 톤이 통일된다
 **Plans**: 3 plans
 Plans:
-- [x] 24-01-PLAN.md — lawsuit-cost + payment-order 감사 및 수정
-- [x] 24-02-PLAN.md — civil-mediation + family-court 감사 및 수정
-- [ ] 24-03-PLAN.md — attorney-fee 감사 + 5개 계산기 일관성 통일
+- [ ] 25-01-PLAN.md — alimony + child-support + property-division 감사 및 수정
+- [ ] 25-02-PLAN.md — inheritance-tax + forced-heirship + inheritance-order 감사 및 수정
+- [ ] 25-03-PLAN.md — 6개 계산기 일관성 통일 (CONSIST-01/02/03)
 
 ### Phase 26: 노동/근로 Part 1 UX·논리 감사
 **Goal**: 노동/근로 전반부 6개 계산기(퇴직금·해고·연차·연장·주휴·최저임금)에서 사용자가 잘못된 입력이나 경계값을 만날 때 논리적이고 일관된 동작을 경험한다
