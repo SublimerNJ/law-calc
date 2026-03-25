@@ -2,8 +2,8 @@
 gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: Milestone complete
-last_updated: "2026-03-24T23:50:35.831Z"
+status: v1.5 milestone complete
+last_updated: "2026-03-25T00:04:08.194Z"
 progress:
   total_phases: 20
   completed_phases: 18

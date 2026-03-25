@@ -8,16 +8,9 @@
 
 법률 관련 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구를 제공하여, 사용자가 머무르고 반복 방문하게 만든다 (= 애드센스 수익 극대화).
 
-## Current Milestone: v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사
+## Current State
 
-**Goal:** 정상적인 사용자가 정상적인 흐름으로 사용할 때 "이건 좀 이상한데?"라고 느낄 모든 포인트를 찾아 수정한다.
-
-**Target features:**
-- 입력값 검증: 음수/0/비정상 값 입력 시 적절한 처리 확인
-- 결과 표시 직관성: 계산 결과가 이해하기 쉽고 해석 가능한지 검증
-- UX 흐름 일관성: 필수 입력 누락, 순서, 초기값 등 사용 흐름 점검
-- 계산기 간 일관성: 비슷한 필드/패턴이 계산기마다 동일하게 동작하는지
-- 엣지 케이스: 경계값, 특수 상황에서 결과가 논리적으로 맞는지
+v1.5 마일스톤 완료. 51개 계산기 전체 UX/논리 감사 완료.
 
 ## Requirements
 
@@ -39,13 +32,15 @@
 - ✓ 성능 최적화된 패럴랙스 스크롤링 — v1.2
 - ✓ AI 느낌 탈피 및 전문적인 법률 도구 UI 디자인 개편 — v1.2
 
+- ✓ 전체 계산기 입력값 검증 (음수/0/비정상 값 처리) — v1.5
+- ✓ 계산 결과 표시 직관성 검증 — v1.5
+- ✓ UX 흐름 일관성 (필수 입력, 순서, 초기값) — v1.5
+- ✓ 계산기 간 일관성 (동일 패턴 동일 동작) — v1.5
+- ✓ 엣지 케이스 논리 검증 (경계값, 특수 상황) — v1.5
+
 ### Active
 
-- [ ] 전체 계산기 입력값 검증 (음수/0/비정상 값 처리)
-- [ ] 계산 결과 표시 직관성 검증
-- [ ] UX 흐름 일관성 점검 (필수 입력, 순서, 초기값)
-- [ ] 계산기 간 일관성 검증 (동일 패턴 동일 동작)
-- [ ] 엣지 케이스 논리 검증 (경계값, 특수 상황)
+(None — planning next milestone)
 
 ### Out of Scope
 
@@ -57,9 +52,11 @@
 
 ## Context
 
-- 57개 계산기 전체 구축 완료 (v1.1)
+- 51개 계산기 전체 구축 완료 (v1.1), 중복 정리 (v1.4)
 - UI/UX 라이트 테마 및 패럴랙스 성능 최적화 개편 완료 (v1.2)
-- attorney-fee 계산기 법률 검증에서 6건의 중대 오류 발견됨 (v1.3 착수 계기)
+- 전체 계산기 법률 정확성 감사 완료 — 28건 수정 (v1.3)
+- 전체 계산기 UX/논리 감사 완료 — 입력 검증, 에러 표시, 일관성 통일 (v1.5)
+- Critical 버그 7건 수정: four-insurances 요율 3건, capital-gains-tax 날짜 역전, dti mortgage=0, parental-leave 주석 오류
 - 기존 스택: Next.js 16 + React 19 + Tailwind v4 + TypeScript
 - 애드센스 승인 및 수익 극대화가 주 목적
 - 한국 법률 기준 (2025-2026년 기준 법률/세율 적용)
@@ -81,7 +78,9 @@
 | 클라이언트 사이드 계산 | 서버 비용 없음, 빠른 응답, 호스팅 단순화 | ✓ Good |
 | 라이트 테마 & 깔끔한 UI 전면 적용 | AI 생성 느낌을 지우고 법률 서비스의 신뢰감을 줌 | ✓ Good |
 | 성능 최적화된 패럴랙스 | 모바일 비활성화 및 CSS transform으로 60fps 보장 | ✓ Good |
-| /Launcelot-Lawyer 스킬 기반 법률 감사 | attorney-fee에서 6건 중대 오류 발견, 전체 감사 필수 | v1.3 |
+| /Launcelot-Lawyer 스킬 기반 법률 감사 | attorney-fee에서 6건 중대 오류 발견, 전체 감사 필수 | ✓ Good (v1.3) |
+| 카테고리별 UX 감사 (9 phases) | 51개 계산기를 카테고리별로 나눠 체계적 감사 | ✓ Good (v1.5) |
+| 에러/경고 3단계 분류 | Critical(red)/Warning(orange)/Info 시각적 구분 | ✓ Good (v1.5) |
 
 ## Evolution
 
@@ -101,4 +100,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-24 — v1.5 milestone started*
+*Last updated: 2026-03-25 — v1.5 milestone completed*
