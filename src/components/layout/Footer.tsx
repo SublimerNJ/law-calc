@@ -47,7 +47,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500 font-light tracking-wider">
-            © 2026 Law-Calc.com
+            © 2026 law-calc.kr
           </p>
           <div className="flex items-center gap-6 text-xs text-slate-500">
             <Link href="/privacy" className="hover:text-slate-900 transition-colors">개인정보처리방침</Link>

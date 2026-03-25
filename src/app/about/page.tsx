@@ -3,14 +3,14 @@ import Link from 'next/link';
 import { CATEGORIES } from '@/lib/tools-data';
 
 export const metadata: Metadata = {
-  title: '소개 | Law-Calc.com 법률 계산기',
-  description: 'Law-Calc.com은 대한민국 법률 기준 51개 법률 계산기를 무료로 제공합니다.',
+  title: '소개 | law-calc.kr 법률 계산기',
+  description: 'law-calc.kr은 대한민국 법률 기준 51개 법률 계산기를 무료로 제공합니다.',
 };
 
 export default function AboutPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <h1 className="text-3xl font-bold text-slate-900 mb-4">Law-Calc.com</h1>
+      <h1 className="text-3xl font-bold text-slate-900 mb-4">law-calc.kr</h1>
       <p className="text-lg text-slate-600 mb-10">
         대한민국 법률 기준으로 정확하게 계산해주는 무료 법률 계산기
       </p>
@@ -19,7 +19,7 @@ export default function AboutPage() {
         <section>
           <h2 className="text-lg font-semibold text-slate-900 mb-3">서비스 소개</h2>
           <p>
-            Law-Calc.com은 소송비용, 세금, 노동/근로, 부동산, 가사/가족법, 교통/형사, 채권, 손해배상 등
+            law-calc.kr은 소송비용, 세금, 노동/근로, 부동산, 가사/가족법, 교통/형사, 채권, 손해배상 등
             다양한 법률 관련 비용과 금액을 빠르고 정확하게 계산할 수 있는 무료 온라인 도구입니다.
           </p>
           <p className="mt-3">

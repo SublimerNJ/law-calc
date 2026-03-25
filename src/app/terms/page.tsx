@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '이용약관 | Law-Calc.com 법률 계산기',
-  description: 'Law-Calc.com 법률 계산기의 이용약관입니다.',
+  title: '이용약관 | law-calc.kr 법률 계산기',
+  description: 'law-calc.kr 법률 계산기의 이용약관입니다.',
 };
 
 export default function TermsPage() {
@@ -15,7 +15,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-lg font-semibold text-slate-900 mb-3">1. 서비스 이용 목적</h2>
           <p>
-            Law-Calc.com(이하 &quot;서비스&quot;)은 대한민국 법률 기준에 따른 각종 법률 계산을 보조하는
+            law-calc.kr(이하 &quot;서비스&quot;)은 대한민국 법률 기준에 따른 각종 법률 계산을 보조하는
             무료 온라인 도구를 제공합니다. 이용자는 본 서비스를 개인적·비상업적 목적으로 이용할 수 있습니다.
           </p>
           <p className="mt-3">

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '개인정보처리방침 | Law-Calc.com 법률 계산기',
-  description: 'Law-Calc.com 법률 계산기의 개인정보처리방침입니다.',
+  title: '개인정보처리방침 | law-calc.kr 법률 계산기',
+  description: 'law-calc.kr 법률 계산기의 개인정보처리방침입니다.',
 };
 
 export default function PrivacyPage() {
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-lg font-semibold text-slate-900 mb-3">1. 수집하는 개인정보</h2>
           <p>
-            Law-Calc.com은 <strong className="text-slate-900">개인정보를 일절 수집하지 않습니다.</strong>
+            law-calc.kr은 <strong className="text-slate-900">개인정보를 일절 수집하지 않습니다.</strong>
           </p>
           <ul className="list-disc list-inside mt-3 space-y-1 text-slate-600">
             <li>회원가입 기능이 없습니다.</li>
