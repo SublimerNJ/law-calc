@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { TOOLS } from '@/lib/tools-data';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lawcalc.kr';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const toolUrls: MetadataRoute.Sitemap = TOOLS.map((tool) => ({

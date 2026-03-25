@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://lawcalc.kr/sitemap.xml',
+    sitemap: 'https://law-calc.kr/sitemap.xml',
   };
 }
