@@ -223,7 +223,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numChildren}
               onChange={e => setNumChildren(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
           <div>
@@ -236,7 +236,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numGrandchildren}
               onChange={e => setNumGrandchildren(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         </div>
@@ -250,7 +250,7 @@ export default function InheritanceOrderPage() {
               max={2}
               value={numParents}
               onChange={e => setNumParents(Math.max(0, Math.min(2, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
           <div>
@@ -261,7 +261,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numSiblings}
               onChange={e => setNumSiblings(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         </div>

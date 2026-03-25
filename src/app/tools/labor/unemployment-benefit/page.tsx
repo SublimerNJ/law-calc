@@ -198,13 +198,13 @@ export default function UnemploymentBenefitPage() {
               <p className="text-sm text-slate-600 mb-1">적용 여부</p>
               <p className="text-sm text-slate-900">
                 {result.upperApplied && (
-                  <span className="text-yellow-400">상한 적용 ({formatNumber(DAILY_UPPER)}원/일)</span>
+                  <span className="text-yellow-600">상한 적용 ({formatNumber(DAILY_UPPER)}원/일)</span>
                 )}
                 {result.lowerApplied && (
-                  <span className="text-yellow-400">하한 적용 ({formatNumber(result.dailyLower)}원/일)</span>
+                  <span className="text-yellow-600">하한 적용 ({formatNumber(result.dailyLower)}원/일)</span>
                 )}
                 {!result.upperApplied && !result.lowerApplied && (
-                  <span className="text-green-400">상한/하한 미적용</span>
+                  <span className="text-green-600">상한/하한 미적용</span>
                 )}
               </p>
             </div>

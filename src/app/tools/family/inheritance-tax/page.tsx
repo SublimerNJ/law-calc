@@ -115,7 +115,7 @@ export default function InheritanceTaxPage() {
             value={displayValue(grossEstate)}
             onChange={handleNumberInput(setGrossEstate)}
             placeholder="예: 1,000,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           {grossEstate && <p className="text-xs text-gray-500 mt-1">{displayValue(grossEstate)}원</p>}
         </div>
@@ -140,7 +140,7 @@ export default function InheritanceTaxPage() {
             value={displayValue(funeralExpenses)}
             onChange={handleNumberInput(setFuneralExpenses)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -152,7 +152,7 @@ export default function InheritanceTaxPage() {
             value={displayValue(debts)}
             onChange={handleNumberInput(setDebts)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 

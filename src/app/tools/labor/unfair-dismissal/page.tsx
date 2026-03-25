@@ -217,7 +217,7 @@ export default function UnfairDismissalPage() {
             {result.interimDeduction > 0 && (
               <div className="flex justify-between text-sm">
                 <span className="text-slate-600">중간수입 공제액</span>
-                <span className="text-red-400">-{formatNumber(result.interimDeduction)}원</span>
+                <span className="text-red-600">-{formatNumber(result.interimDeduction)}원</span>
               </div>
             )}
           </div>

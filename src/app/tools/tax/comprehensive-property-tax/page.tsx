@@ -247,7 +247,7 @@ export default function ComprehensivePropertyTaxPage() {
                 {result.seniorDeduction > 0 && (
                   <div className="flex justify-between">
                     <span className="text-sm text-slate-600">고령자공제</span>
-                    <span className="text-red-400">-{formatNumber(result.seniorDeduction)}원</span>
+                    <span className="text-red-600">-{formatNumber(result.seniorDeduction)}원</span>
                   </div>
                 )}
                 <div className="flex justify-between">

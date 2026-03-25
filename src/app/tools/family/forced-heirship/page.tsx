@@ -163,7 +163,7 @@ export default function ForcedHeirshipPage() {
             value={displayValue(estateAtDeath)}
             onChange={handleNumberInput(setEstateAtDeath)}
             placeholder="예: 1,000,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -178,7 +178,7 @@ export default function ForcedHeirshipPage() {
             value={displayValue(giftsWithinYear)}
             onChange={handleNumberInput(setGiftsWithinYear)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -190,7 +190,7 @@ export default function ForcedHeirshipPage() {
             value={displayValue(debts)}
             onChange={handleNumberInput(setDebts)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 
@@ -224,7 +224,7 @@ export default function ForcedHeirshipPage() {
             value={statutorySharePct}
             onChange={e => setStatutorySharePct(e.target.value)}
             placeholder="예: 42.86"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">
             <a href="/tools/family/legal-inheritance" className="text-[#ec4899] underline hover:opacity-80">법정상속분 계산기</a>로 먼저 확인하세요
@@ -239,7 +239,7 @@ export default function ForcedHeirshipPage() {
             value={displayValue(actualReceived)}
             onChange={handleNumberInput(setActualReceived)}
             placeholder="수증재산 + 상속받은 금액"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ec4899] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
           />
         </div>
 

@@ -260,7 +260,7 @@ export default function RegistrationTaxPage() {
 
           {result.metroNote && (
             <div className="mb-4 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
-              <p className="text-sm text-yellow-400">{result.metroNote}</p>
+              <p className="text-sm text-yellow-600">{result.metroNote}</p>
             </div>
           )}
 

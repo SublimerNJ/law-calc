@@ -230,7 +230,7 @@ export default function SeverancePayPage() {
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div className="p-3 rounded-lg bg-white">
                 <p className="text-xs text-slate-600 mb-1">예상 퇴직소득세</p>
-                <p className="text-lg text-red-400">-{formatNumber(result.retirementTax)}원</p>
+                <p className="text-lg text-red-600">-{formatNumber(result.retirementTax)}원</p>
               </div>
               <div className="p-3 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
                 <p className="text-xs text-slate-600 mb-1">예상 실수령액</p>
