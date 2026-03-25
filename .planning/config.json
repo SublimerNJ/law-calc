@@ -6,6 +6,6 @@
     "auto_commit": true,
     "parallel_agents": true,
     "model_profile": "balanced",
-    "_auto_chain_active": false
+    "_auto_chain_active": true
   }
 }
