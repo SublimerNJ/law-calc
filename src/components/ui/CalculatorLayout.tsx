@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Tool, Category } from '@/lib/tools-data';
 import { TOOLS } from '@/lib/tools-data';
+import AdBanner from '@/components/ads/AdBanner';
 
 interface CalculatorLayoutProps {
   tool: Tool;
@@ -43,11 +44,15 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
         <div className="grid lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             {children}
+            {/* Ad after calculator result */}
+            <div className="mt-6">
+              <AdBanner format="horizontal" />
+            </div>
           </div>
           <div className="lg:col-span-1 space-y-4">
-            {/* Ad placeholder */}
-            <div className="bg-white border border-slate-200 p-4 text-center text-xs text-slate-500 rounded-2xl sticky top-24">
-              <p className="mb-2">광고</p>
+            {/* Sidebar ad */}
+            <div className="sticky top-24">
+              <AdBanner format="rectangle" className="rounded-2xl overflow-hidden" />
             </div>
 
             {/* Related tools */}
@@ -105,6 +110,11 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
             </div>
           </section>
         )}
+
+        {/* Ad between FAQ and disclaimer */}
+        <div className="mt-8">
+          <AdBanner format="horizontal" />
+        </div>
 
         {/* Disclaimer */}
         <div className="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200">
