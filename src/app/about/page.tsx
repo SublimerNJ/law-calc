@@ -4,7 +4,7 @@ import { CATEGORIES } from '@/lib/tools-data';
 
 export const metadata: Metadata = {
   title: '소개 | Law-Calc.com 법률 계산기',
-  description: 'Law-Calc.com은 대한민국 법률 기준 70개 법률 계산기를 무료로 제공합니다.',
+  description: 'Law-Calc.com은 대한민국 법률 기준 51개 법률 계산기를 무료로 제공합니다.',
 };
 
 export default function AboutPage() {
@@ -23,7 +23,7 @@ export default function AboutPage() {
             다양한 법률 관련 비용과 금액을 빠르고 정확하게 계산할 수 있는 무료 온라인 도구입니다.
           </p>
           <p className="mt-3">
-            총 <strong className="text-slate-900">70개의 법률 계산기</strong>를
+            총 <strong className="text-slate-900">51개의 법률 계산기</strong>를
             회원가입이나 로그인 없이 즉시 이용할 수 있습니다.
           </p>
         </section>
