@@ -45,10 +45,20 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
           </div>
           <div className="lg:col-span-1">
             {/* Sidebar placeholder for ads/related tools */}
-            <div className="bg-white border border-slate-200 p-4 text-center text-xs text-slate-500 rounded-2xl">
-              광고 영역
+            <div className="bg-white border border-slate-200 p-4 text-center text-xs text-slate-500 rounded-2xl sticky top-24">
+              <p className="mb-2">광고</p>
+              {/* AdSense slot - replace data-ad-client after approval */}
             </div>
           </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200">
+          <p className="text-xs text-slate-500 leading-relaxed">
+            <strong className="text-slate-600">면책 안내:</strong> 본 계산기의 결과는 참고용이며, 법률 자문을 대체하지 않습니다.
+            실제 법률 문제에 대해서는 반드시 변호사 등 전문가와 상담하시기 바랍니다.
+            계산 기준일 및 적용 법령에 따라 실제 금액과 차이가 있을 수 있습니다.
+          </p>
         </div>
 
         {/* Back link */}
