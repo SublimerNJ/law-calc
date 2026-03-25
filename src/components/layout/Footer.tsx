@@ -17,7 +17,7 @@ export default function Footer() {
               <Logo size="sm" />
             </div>
             <p className="text-sm text-slate-600 leading-relaxed font-light">
-              70개 법률 계산기를 무료로 이용하세요. 대한민국 법률 기준으로 정확하게 계산해드립니다.
+              51개 법률 계산기를 무료로 이용하세요. 대한민국 법률 기준으로 정확하게 계산해드립니다.
             </p>
           </div>
 
@@ -51,6 +51,8 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6 text-xs text-slate-500">
             <Link href="/privacy" className="hover:text-slate-900 transition-colors">개인정보처리방침</Link>
+            <Link href="/terms" className="hover:text-slate-900 transition-colors">이용약관</Link>
+            <a href="mailto:sublimernj@gmail.com" className="hover:text-slate-900 transition-colors">문의</a>
             <Link href="/about" className="hover:text-slate-900 transition-colors">소개</Link>
           </div>
         </div>
