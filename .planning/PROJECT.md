@@ -8,17 +8,18 @@
 
 법률 관련 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구를 제공하여, 사용자가 머무르고 반복 방문하게 만든다 (= 애드센스 수익 극대화).
 
-## Current Milestone: v1.6 애드센스 승인 준비
+## Current Milestone: v1.7 SEO 완벽 최적화
 
-**Goal:** 구글 애드센스 승인에 필요한 필수 페이지, 메타 설정, 광고 컴포넌트를 추가한다.
+**Goal:** 구글 검색 유입을 극대화하여 애드센스 수익 기반을 만든다.
 
 **Target features:**
-- 이용약관 페이지 생성
-- robots.txt 생성
-- 문의 이메일 Footer 노출
-- 각 계산기 면책조항 추가
-- AdSense 컴포넌트 구현
-- sitemap에 정적 페이지 추가
+- 각 계산기 설명 콘텐츠 + FAQ 추가
+- JSON-LD 구조화 데이터
+- 관련 계산기 내부 링크
+- OG 이미지 + Twitter Card + 카카오 공유 최적화
+- Canonical URL 설정
+- 메타 키워드 강화
+- GA4 / GSC 연동 준비
 
 ## Requirements
 
