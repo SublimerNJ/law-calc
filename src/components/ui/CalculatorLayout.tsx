@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Tool, Category } from '@/lib/tools-data';
+import { TOOLS } from '@/lib/tools-data';
 
 interface CalculatorLayoutProps {
   tool: Tool;
@@ -43,14 +44,67 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
           <div className="lg:col-span-2">
             {children}
           </div>
-          <div className="lg:col-span-1">
-            {/* Sidebar placeholder for ads/related tools */}
+          <div className="lg:col-span-1 space-y-4">
+            {/* Ad placeholder */}
             <div className="bg-white border border-slate-200 p-4 text-center text-xs text-slate-500 rounded-2xl sticky top-24">
               <p className="mb-2">광고</p>
-              {/* AdSense slot - replace data-ad-client after approval */}
             </div>
+
+            {/* Related tools */}
+            {tool.relatedTools && tool.relatedTools.length > 0 && (
+              <div className="bg-white border border-slate-200 rounded-2xl p-5">
+                <h3 className="text-sm font-semibold text-slate-900 mb-3">관련 계산기</h3>
+                <ul className="space-y-2">
+                  {tool.relatedTools.map((rid) => {
+                    const related = TOOLS.find((t) => t.id === rid);
+                    if (!related) return null;
+                    return (
+                      <li key={rid}>
+                        <Link
+                          href={related.route}
+                          className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors py-1"
+                        >
+                          <span className="text-base">{related.icon}</span>
+                          <span>{related.name}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Long description */}
+        {tool.longDescription && (
+          <section className="mt-10">
+            <h2 className="text-lg font-semibold text-slate-900 mb-3">이 계산기에 대하여</h2>
+            <p className="text-sm text-slate-600 leading-relaxed">{tool.longDescription}</p>
+          </section>
+        )}
+
+        {/* FAQ */}
+        {tool.faqItems && tool.faqItems.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">자주 묻는 질문</h2>
+            <div className="space-y-4">
+              {tool.faqItems.map((faq, i) => (
+                <details key={i} className="group bg-white border border-slate-200 rounded-lg">
+                  <summary className="flex items-center justify-between cursor-pointer p-4 text-sm font-medium text-slate-800 hover:bg-slate-50 transition-colors">
+                    <span>Q. {faq.question}</span>
+                    <svg className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </summary>
+                  <div className="px-4 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                    {faq.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Disclaimer */}
         <div className="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200">

@@ -6,8 +6,25 @@ import { CATEGORIES, TOOLS, getToolsByCategory } from '@/lib/tools-data';
 export default function Home() {
   const totalTools = TOOLS.length;
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'law-calc.kr 법률 계산기',
+    url: 'https://law-calc.kr',
+    description: '대한민국 법률 기준 51개 무료 법률 계산기',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://law-calc.kr/?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
       {/* Hero with parallax */}
       <HeroSection totalTools={totalTools} />
 
