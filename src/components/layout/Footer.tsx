@@ -49,11 +49,12 @@ export default function Footer() {
           <p className="text-xs text-slate-500 font-light tracking-wider">
             © 2026 law-calc.kr
           </p>
-          <div className="flex items-center gap-6 text-xs text-slate-500">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-500">
             <Link href="/privacy" className="hover:text-slate-900 transition-colors">개인정보처리방침</Link>
             <Link href="/terms" className="hover:text-slate-900 transition-colors">이용약관</Link>
+            <Link href="/editorial-policy" className="hover:text-slate-900 transition-colors font-medium">편집/검증 정책</Link>
             <a href="mailto:sublimernj@gmail.com" className="hover:text-slate-900 transition-colors">문의</a>
-            <Link href="/about" className="hover:text-slate-900 transition-colors">소개</Link>
+            <Link href="/about" className="hover:text-slate-900 transition-colors">사이트 소개</Link>
           </div>
         </div>
       </div>

@@ -62,6 +62,12 @@ export default function Header() {
             >
               전체 도구
             </Link>
+            <Link
+              href="/guides"
+              className="text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300"
+            >
+              법률 가이드
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
