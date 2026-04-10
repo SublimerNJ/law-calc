@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'parental-leave')!;
@@ -206,27 +207,12 @@ export default function ParentalLeavePage() {
         </div>
       )}
 
-      <div className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">육아휴직 신청 방법</h2>
-        <ol className="space-y-3">
-          {[
-            { color: '#f59e0b', text: '사업주에게 30일 전 서면 신청' },
-            { color: '#10b981', text: '고용보험 홈페이지에서 급여 신청' },
-            { color: '#3b82f6', text: '필요서류: 육아휴직확인서, 통장사본' },
-            { color: '#f97316', text: '문의: 고용보험 (1350)' },
-          ].map((item, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
-                style={{ backgroundColor: item.color }}
-              >
-                {i + 1}
-              </span>
-              <span className="text-sm text-slate-600">{item.text}</span>
-            </li>
-          ))}
-        </ol>
-      </div>
+      {result !== null && (
+        <ActionInsight 
+          calculatorId="parental-leave" 
+          amount={result.total} 
+        />
+      )}
     </CalculatorLayout>
   );
 }
