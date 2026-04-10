@@ -13,8 +13,8 @@
 - [x] **ACTION-04**: 세금 계산기 실무 대응 팁 및 템플릿 작성
 - [x] **ACTION-05**: 부동산 계산기 실무 대응 팁 및 템플릿 작성
 - [x] **ACTION-06**: 교통/형사 계산기 실무 대응 팁 및 템플릿 작성
-- [ ] **ACTION-07**: 채권/이자 계산기 실무 대응 팁 및 템플릿 작성
-- [ ] **ACTION-08**: 손해배상 및 기타 법률도구 실무 대응 팁 및 템플릿 작성
+- [x] **ACTION-07**: 채권/이자 계산기 실무 대응 팁 및 템플릿 작성
+- [x] **ACTION-08**: 손해배상 및 기타 법률도구 실무 대응 팁 및 템플릿 작성
 
 ### UI Integration (UI)
 
@@ -50,9 +50,9 @@
 | UI-05 | Phase 37 | Complete |
 | ACTION-06 | Phase 38 | Complete |
 | UI-06 | Phase 38 | Pending |
-| ACTION-07 | Phase 39 | Pending |
+| ACTION-07 | Phase 39 | Complete |
 | UI-07 | Phase 39 | Pending |
-| ACTION-08 | Phase 40 | Pending |
+| ACTION-08 | Phase 40 | Complete |
 | UI-08 | Phase 40 | Pending |
 
 **Coverage:**
