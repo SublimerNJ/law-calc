@@ -78,7 +78,8 @@
   1. 모바일 및 PC 환경에서 ActionInsight UI가 깨짐 없이 렌더링된다
   2. 모든 계산기에서 대응 팁과 템플릿 텍스트가 정상적으로 표시된다
   3. 복사 기능 등 ActionInsight의 인터랙션이 오류 없이 동작한다
-**Plans**: TBD
+**Plans**: 1 plans
+- [ ] 46-01-PLAN.md — 55개 계산기 ActionInsight 연동 자동 검증 및 수동 UI/UX 테스트
 **UI hint**: yes
 
 ## Progress
