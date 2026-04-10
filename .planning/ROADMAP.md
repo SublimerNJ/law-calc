@@ -30,7 +30,8 @@
   1. 가사 4종, 노동 6종 계산기 결과 화면 하단에 ActionInsight 영역이 표시된다
   2. 이혼, 상속, 임금 등 도메인에 특화된 대응 팁이 제공된다
   3. 사용자가 관련 문서 템플릿을 확인하고 복사할 수 있다
-**Plans**: TBD
+**Plans**: 1 plans
+- [ ] 42-01-PLAN.md — child-support 계산기에 ActionInsight 연동 (가사/노동 계산기 적용 마무리)
 **UI hint**: yes
 
 ### Phase 43: Tax & Realty ActionInsight 연동
@@ -82,7 +83,7 @@
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 41. Court ActionInsight 연동 | 0/0 | Not started | - |
-| 42. Family & Labor ActionInsight 연동 | 0/0 | Not started | - |
+| 42. Family & Labor ActionInsight 연동 | 0/1 | Planned | - |
 | 43. Tax & Realty ActionInsight 연동 | 0/0 | Not started | - |
 | 44. Traffic & Debt ActionInsight 연동 | 0/0 | Not started | - |
 | 45. Damages & Misc ActionInsight 연동 | 0/0 | Not started | - |
