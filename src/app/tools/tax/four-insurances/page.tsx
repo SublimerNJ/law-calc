@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'four-insurances')!;
@@ -115,6 +116,7 @@ export default function FourInsurancesPage() {
         </button>
 
         {result && (
+          <>
           <div className="premium-card p-6">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
             <div className="overflow-x-auto">
@@ -173,6 +175,8 @@ export default function FourInsurancesPage() {
               <p>국민연금법, 국민건강보험법, 고용보험법, 산업재해보상보험법 (2026년 요율). 국민연금 상한 월 637만원. 실제 보험료와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
             </div>
           </div>
+          <ActionInsight calculatorId="four-insurances" amount={result.totalEmployee} />
+          </>
         )}
       </div>
     </CalculatorLayout>
