@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'comprehensive-property-tax')!;
@@ -215,7 +216,8 @@ export default function ComprehensivePropertyTaxPage() {
       </div>
 
       {result !== null && (
-        <div className="premium-card p-6">
+        <>
+        <div className="premium-card p-6 mb-8">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.exempt ? (
@@ -284,6 +286,8 @@ export default function ComprehensivePropertyTaxPage() {
             </p>
           </div>
         </div>
+        <ActionInsight calculatorId="comprehensive-property-tax" amount={result.total} />
+      </>
       )}
     </CalculatorLayout>
   );
