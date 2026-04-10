@@ -33,7 +33,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Quality Assurance (품질 검증 및 렌더링 확인)
 
-- [ ] **QA-01**: 전체 53개 계산기 ActionInsight 내용 및 UI 정상 노출 확인 (모바일/PC)
+- [x] **QA-01**: 전체 53개 계산기 ActionInsight 내용 및 UI 정상 노출 확인 (모바일/PC)
 
 ## v2 Requirements
 
@@ -78,7 +78,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-07 | Phase 44 | Complete |
 | COMP-08 | Phase 45 | Complete |
 | COMP-09 | Phase 45 | Complete |
-| QA-01 | Phase 46 | Pending |
+| QA-01 | Phase 46 | Complete |
 
 **Coverage:**
 - v1 requirements: 19 total

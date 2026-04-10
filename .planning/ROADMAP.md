@@ -7,7 +7,7 @@
 - [x] **Phase 43: Tax & Realty ActionInsight 연동** - 세금 5종, 부동산 7종 대응 팁 작성 및 UI 연동 (completed 2026-04-10)
 - [x] **Phase 44: Traffic & Debt ActionInsight 연동** - 교통/형사 4종, 채권/이자 3종 대응 팁 작성 및 UI 연동 (completed 2026-04-10)
 - [x] **Phase 45: Damages & Misc ActionInsight 연동** - 손해배상 4종, 기타 4종 대응 팁 작성 및 UI 연동 (completed 2026-04-10)
-- [ ] **Phase 46: 전체 ActionInsight 품질 검증** - 53개 계산기 ActionInsight UI/UX 크로스 브라우징 및 렌더링 검증
+- [x] **Phase 46: 전체 ActionInsight 품질 검증** - 53개 계산기 ActionInsight UI/UX 크로스 브라우징 및 렌더링 검증 (completed 2026-04-10)
 
 ## Phase Details
 
@@ -79,7 +79,7 @@
   2. 모든 계산기에서 대응 팁과 템플릿 텍스트가 정상적으로 표시된다
   3. 복사 기능 등 ActionInsight의 인터랙션이 오류 없이 동작한다
 **Plans**: 1 plans
-- [ ] 46-01-PLAN.md — 55개 계산기 ActionInsight 연동 자동 검증 및 수동 UI/UX 테스트
+- [x] 46-01-PLAN.md — 55개 계산기 ActionInsight 연동 자동 검증 및 수동 UI/UX 테스트
 **UI hint**: yes
 
 ## Progress
@@ -91,4 +91,4 @@
 | 43. Tax & Realty ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
 | 44. Traffic & Debt ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
 | 45. Damages & Misc ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
-| 46. 전체 ActionInsight 품질 검증 | 0/0 | Not started | - |
+| 46. 전체 ActionInsight 품질 검증 | 1/1 | Complete   | 2026-04-10 |
