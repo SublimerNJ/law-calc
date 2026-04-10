@@ -195,14 +195,6 @@ export default function LoanInterestPage() {
         </div>
       )}
 
-      {result !== null && (
-        <div className="mt-6">
-          <ActionInsight
-            calculatorId="loan-interest"
-            amount={result.isExceeded ? result.excessInterest : result.interest}
-          />
-        </div>
-      )}
 
       <div className="premium-card p-6 mt-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">이자 과다 청구 시</h2>
@@ -225,6 +217,15 @@ export default function LoanInterestPage() {
           ))}
         </ol>
       </div>
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight
+            calculatorId="loan-interest"
+            amount={result.isExceeded ? result.excessInterest : result.interest}
+          />
+        </div>
+      )}
+
     </CalculatorLayout>
   );
 }

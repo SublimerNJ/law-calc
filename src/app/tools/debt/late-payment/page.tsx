@@ -228,14 +228,6 @@ export default function LatePaymentPage() {
         </div>
       )}
 
-      {result !== null && (
-        <div className="mt-6">
-          <ActionInsight
-            calculatorId="late-payment"
-            amount={result.principal + (isLawsuit ? result.lawsuitInterest : isCommercial ? result.commercialInterest : result.civilInterest)}
-          />
-        </div>
-      )}
 
       <div className="premium-card p-6 mt-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">지연손해금 청구 방법</h2>
@@ -258,6 +250,15 @@ export default function LatePaymentPage() {
           ))}
         </ol>
       </div>
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight
+            calculatorId="late-payment"
+            amount={result.principal + (isLawsuit ? result.lawsuitInterest : isCommercial ? result.commercialInterest : result.civilInterest)}
+          />
+        </div>
+      )}
+
     </CalculatorLayout>
   );
 }

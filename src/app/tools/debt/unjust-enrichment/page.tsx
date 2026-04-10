@@ -205,14 +205,6 @@ export default function UnjustEnrichmentPage() {
         </div>
       )}
 
-      {result !== null && (
-        <div className="mt-6">
-          <ActionInsight
-            calculatorId="unjust-enrichment"
-            amount={beneficiaryType === 'bad' ? result.total : result.principal}
-          />
-        </div>
-      )}
 
       <div className="premium-card p-6 mt-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">부당이득 반환 청구</h2>
@@ -235,6 +227,15 @@ export default function UnjustEnrichmentPage() {
           </li>
         </ol>
       </div>
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight
+            calculatorId="unjust-enrichment"
+            amount={beneficiaryType === 'bad' ? result.total : result.principal}
+          />
+        </div>
+      )}
+
     </CalculatorLayout>
   );
 }
