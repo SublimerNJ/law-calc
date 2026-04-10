@@ -10,7 +10,7 @@
 - [x] **ACTION-01**: 소송/법원 계산기 실무 대응 팁 및 템플릿 작성
 - [x] **ACTION-02**: 가사/가족법 계산기 실무 대응 팁 및 템플릿 작성
 - [x] **ACTION-03**: 노동/근로 계산기 (나머지) 실무 대응 팁 및 템플릿 작성
-- [ ] **ACTION-04**: 세금 계산기 실무 대응 팁 및 템플릿 작성
+- [x] **ACTION-04**: 세금 계산기 실무 대응 팁 및 템플릿 작성
 - [ ] **ACTION-05**: 부동산 계산기 실무 대응 팁 및 템플릿 작성
 - [ ] **ACTION-06**: 교통/형사 계산기 실무 대응 팁 및 템플릿 작성
 - [ ] **ACTION-07**: 채권/이자 계산기 실무 대응 팁 및 템플릿 작성
@@ -44,7 +44,7 @@
 | UI-02 | Phase 34 | Pending |
 | ACTION-03 | Phase 35 | Complete |
 | UI-03 | Phase 35 | Complete |
-| ACTION-04 | Phase 36 | Pending |
+| ACTION-04 | Phase 36 | Complete |
 | UI-04 | Phase 36 | Pending |
 | ACTION-05 | Phase 37 | Pending |
 | UI-05 | Phase 37 | Pending |
