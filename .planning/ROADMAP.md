@@ -54,7 +54,8 @@
   1. 교통 4종, 채권 3종 계산기 결과 화면 하단에 ActionInsight 영역이 표시된다
   2. 합의, 내용증명, 채권 추심에 특화된 실전 대응 팁이 제공된다
   3. 사용자가 내용증명, 합의서 등 관련 템플릿을 확인할 수 있다
-**Plans**: TBD
+**Plans**: 1 plans
+- [ ] 44-01-PLAN.md — 교통/형사 4종, 채권/이자 3종 계산기에 ActionInsight를 올바르게 연동하고 위치를 통일합니다.
 **UI hint**: yes
 
 ### Phase 45: Damages & Misc ActionInsight 연동
