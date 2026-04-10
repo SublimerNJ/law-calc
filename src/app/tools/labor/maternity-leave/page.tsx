@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'maternity-leave')!;
@@ -208,28 +209,10 @@ export default function MaternityLeavePage() {
       )}
 
       {result !== null && (
-        <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">급여 수령 및 신청 방법</h2>
-          <div className="space-y-3">
-            {[
-              { step: '1', title: '고용보험 급여', desc: '휴가 종료 후 고용센터에 신청, 약 14일 내 지급' },
-              { step: '2', title: '사업주 부담분', desc: '휴가 기간 중 통상임금으로 지급 (월급처럼)' },
-              { step: '3', title: '우선지원대상기업', desc: '전액 고용보험에서 지급' },
-              { step: '4', title: '신청방법', desc: '고용보험 홈페이지 또는 고용센터 방문' },
-            ].map(item => (
-              <div key={item.step} className="flex gap-3 items-start">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
-                  {item.step}
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-slate-600">{item.title}</p>
-                  <p className="text-xs text-gray-500">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-gray-500 mt-4">온라인 신청: 고용보험 홈페이지 (www.ei.go.kr) | 고용센터 (1350)</p>
-        </div>
+        <ActionInsight 
+          calculatorId="maternity-leave" 
+          amount={result.grandTotal} 
+        />
       )}
     </CalculatorLayout>
   );
