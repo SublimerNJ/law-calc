@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+import { ActionInsight } from '@/components/ui/ActionInsight';
+import { actionData } from '@/lib/action-data';
 
 const tool = TOOLS.find(t => t.id === 'rent-tax-credit')!;
 const category = CATEGORIES.find(c => c.id === 'tax')!;
@@ -225,6 +227,10 @@ export default function RentTaxCreditPage() {
             </div>
             <p className="text-xs text-gray-500 mt-4">국세청 홈택스 (www.hometax.go.kr) | 문의: 국세청 (126)</p>
           </div>
+        )}
+
+        {result && actionData['rent-tax-credit'] && (
+          <ActionInsight calculatorId="rent-tax-credit" amount={result.credit} />
         )}
       </div>
     </CalculatorLayout>
