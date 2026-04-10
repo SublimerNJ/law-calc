@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.5
 milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
 status: v1.8 milestone started
-last_updated: "2026-04-10T03:49:27.510Z"
+last_updated: "2026-04-10T04:04:54.637Z"
 progress:
-  total_phases: 28
+  total_phases: 20
   completed_phases: 18
-  total_plans: 53
-  completed_plans: 51
+  total_plans: 50
+  completed_plans: 50
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-10)
 
 **Core value:** 법률 관련 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구를 제공하여, 사용자가 머무르고 반복 방문하게 만든다 (= 애드센스 수익 극대화).
-**Current focus:** Not started (defining requirements)
+**Current focus:** Phase 34 — 가사/가족법 ActionInsight 연동
 
 ## Current Position
 
-Phase: Not started
-Plan: —
+Phase: 34
+Plan: Not started
 
 ## Accumulated Context
 

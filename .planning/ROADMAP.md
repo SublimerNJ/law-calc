@@ -417,7 +417,7 @@ Plans:
   2. UI 연동 및 템플릿 테스트 완료
 **Plans**: 3 plans
 Plans:
-- [ ] 34-01-PLAN.md — action-data.ts 6개 도구 데이터 추가
+- [x] 34-01-PLAN.md — action-data.ts 6개 도구 데이터 추가
 - [ ] 34-02-PLAN.md — alimony, child-support, property-division UI 연동
 - [ ] 34-03-PLAN.md — inheritance-tax, forced-heirship, inheritance-order UI 연동
 
@@ -512,7 +512,7 @@ Plans:
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 33. 소송/법원 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
-| 34. 가사/가족법 ActionInsight 연동 | v1.8 | 0/3 | Pending | — |
+| 34. 가사/가족법 ActionInsight 연동 | v1.8 | 1/3 | In Progress|  |
 | 35. 노동/근로 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 36. 세금 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 37. 부동산 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
