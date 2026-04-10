@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+import { ActionInsight } from '@/components/ui/ActionInsight';
+import { actionData } from '@/lib/action-data';
 
 const tool = TOOLS.find(t => t.id === 'securities-tax')!;
 const category = CATEGORIES.find(c => c.id === 'tax')!;
@@ -179,6 +181,10 @@ export default function SecuritiesTaxPage() {
             </p>
           </div>
         </div>
+      )}
+
+      {result && actionData['securities-tax'] && (
+        <ActionInsight calculatorId="securities-tax" amount={result.total} />
       )}
     </CalculatorLayout>
   );
