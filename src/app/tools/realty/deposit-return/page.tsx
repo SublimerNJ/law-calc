@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'deposit-return')!;
@@ -164,6 +165,11 @@ export default function DepositReturnPage() {
               법적 근거: 주택임대차보호법 제3조(대항력), 제3조의2(우선변제권) | 지연이자: 민법 제379조(법정이율 연 5%)
             </p>
           </div>
+
+          <ActionInsight
+            calculatorId="deposit-return"
+            amount={result.deposit}
+          />
         </div>
       )}
 

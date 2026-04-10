@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'rent-conversion')!;
@@ -233,6 +234,11 @@ export default function RentConversionPage() {
               법적 근거: 주택임대차보호법 제7조의2, 동법 시행령 제9조 | 법정 상한: 기준금리(2.50%) + 2%p = 4.50%
             </p>
           </div>
+
+          <ActionInsight
+            calculatorId="rent-conversion"
+            amount={result.amount}
+          />
         </div>
       )}
     </CalculatorLayout>
