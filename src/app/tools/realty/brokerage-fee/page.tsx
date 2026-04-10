@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'brokerage-fee')!;
@@ -307,6 +308,11 @@ export default function BrokerageFeePage() {
               법적 근거: 공인중개사법 시행규칙 제20조 제1항 별표1 | 월세 환산보증금: 보증금 + (월세 × 100)
             </p>
           </div>
+
+          <ActionInsight
+            calculatorId="brokerage-fee"
+            amount={result.fee}
+          />
         </div>
       )}
     </CalculatorLayout>

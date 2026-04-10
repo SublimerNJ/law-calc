@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'subscription-score')!;
@@ -182,6 +183,11 @@ export default function SubscriptionScorePage() {
               법적 근거: 주택공급에 관한 규칙 별표1 (청약가점제 점수산정 기준표) — 제1호(무주택기간), 제2호(부양가족수), 제3호(입주자저축 가입기간)
             </p>
           </div>
+
+          <ActionInsight
+            calculatorId="subscription-score"
+            amount={result.total}
+          />
         </div>
       )}
 
