@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'alimony')!;
@@ -386,6 +387,8 @@ export default function AlimonyPage() {
               </p>
             </div>
           </div>
+          
+          <ActionInsight calculatorId="alimony" amount={result.estimate} />
         </>
       )}
 

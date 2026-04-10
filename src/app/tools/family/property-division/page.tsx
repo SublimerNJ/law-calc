@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'property-division')!;
@@ -194,6 +195,7 @@ export default function PropertyDivisionPage() {
       </div>
 
       {result !== null && (
+        <>
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
@@ -257,6 +259,9 @@ export default function PropertyDivisionPage() {
             </p>
           </div>
         </div>
+
+        <ActionInsight calculatorId="property-division" amount={result.claimantShare} />
+        </>
       )}
     </CalculatorLayout>
   );

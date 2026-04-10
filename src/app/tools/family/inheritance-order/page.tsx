@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'inheritance-order')!;
@@ -291,6 +292,7 @@ export default function InheritanceOrderPage() {
       </div>
 
       {results !== null && (
+        <>
         <div className="premium-card p-6 mb-4">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">상속순위 결과</h2>
 
@@ -352,6 +354,9 @@ export default function InheritanceOrderPage() {
             </p>
           </div>
         </div>
+
+        <ActionInsight calculatorId="inheritance-order" />
+        </>
       )}
 
       {/* Static reference section */}
