@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'legal-aid')!;
@@ -143,6 +144,7 @@ export default function LegalAidPage() {
       </div>
 
       {result && (
+        <>
         <div className="premium-card p-6">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">판정 결과</h3>
           <div className={`p-4 rounded-lg mb-4 ${result.eligible ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
@@ -173,6 +175,9 @@ export default function LegalAidPage() {
             <p className="text-xs text-gray-500">법적 근거: 법률구조법 제5조(법률구조대상자), 법률구조법 시행령 제4조(자력기준)</p>
           </div>
         </div>
+
+        <ActionInsight calculatorId="legal-aid" />
+        </>
       )}
 
       {result && (

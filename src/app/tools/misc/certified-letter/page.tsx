@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'certified-letter')!;
@@ -184,6 +185,7 @@ ${formatDateKR(sendDate)}
       </div>
 
       {preview && (
+        <>
         <div className="premium-card p-6">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-semibold text-slate-900">내용증명 미리보기</h3>
@@ -218,6 +220,9 @@ ${formatDateKR(sendDate)}
             <p className="text-xs text-gray-500">법적 근거: 우편법 시행규칙 제25조 (내용증명 우편), 민법 제111조 (의사표시 효력발생시기), 민법 제174조 (최고와 소멸시효)</p>
           </div>
         </div>
+
+        <ActionInsight calculatorId="certified-letter" />
+        </>
       )}
 
       <div className="premium-card p-6">

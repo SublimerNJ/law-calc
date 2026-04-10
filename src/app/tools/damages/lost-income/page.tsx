@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'lost-income')!;
@@ -285,6 +286,10 @@ export default function LostIncomePage() {
             </p>
           </div>
         </div>
+      )}
+
+      {result !== null && (
+        <ActionInsight calculatorId="lost-income" amount={result.lostIncomeAfterFault} />
       )}
     </CalculatorLayout>
   );

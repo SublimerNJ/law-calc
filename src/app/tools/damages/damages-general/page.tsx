@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'damages-general')!;
@@ -196,6 +197,10 @@ export default function DamagesGeneralPage() {
             </p>
           </div>
         </div>
+      )}
+
+      {result !== null && (
+        <ActionInsight calculatorId="damages-general" amount={result.total} />
       )}
 
       <div className="premium-card p-6">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'defamation')!;
@@ -171,6 +172,10 @@ export default function DefamationPage() {
             </p>
           </div>
         </div>
+      )}
+
+      {result !== null && (
+        <ActionInsight calculatorId="defamation" amount={result.mid} />
       )}
 
       <div className="premium-card p-6 mt-4">

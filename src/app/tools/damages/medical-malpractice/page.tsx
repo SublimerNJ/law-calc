@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'medical-malpractice')!;
@@ -278,6 +279,10 @@ export default function MedicalMalpracticePage() {
           </div>
           <p className="text-xs text-gray-500 mt-4">한국의료분쟁조정중재원 (www.k-medi.or.kr) | 1670-2545</p>
         </div>
+      )}
+
+      {result !== null && (
+        <ActionInsight calculatorId="medical-malpractice" amount={result.total} />
       )}
     </CalculatorLayout>
   );
