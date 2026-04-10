@@ -402,7 +402,11 @@ Plans:
 **Success Criteria**:
   1. 각 계산기에 특화된 `actionData`가 생성됨
   2. 결과 화면에 ActionInsight 컴포넌트가 올바르게 렌더링됨
-**Plans**: Pending
+**Plans**: 3 plans
+Plans:
+- [ ] 33-01-PLAN.md — action-data.ts 5개 도구 데이터 추가
+- [ ] 33-02-PLAN.md — lawsuit-cost, payment-order, civil-mediation UI 연동
+- [ ] 33-03-PLAN.md — family-court, attorney-fee UI 연동
 
 ### Phase 34: 가사/가족법 도구 ActionInsight 연동
 **Goal**: 가사/가족법 6개 계산기 하단에 ActionInsight 기반 실무 팁 및 템플릿 제공
