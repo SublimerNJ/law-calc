@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import ActionInsight from '@/components/ui/ActionInsight';
+import { actionData } from '@/lib/action-data';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'capital-gains-tax')!;
@@ -347,7 +349,8 @@ export default function CapitalGainsTaxPage() {
       </div>
 
       {result && (
-        <div className="premium-card p-6">
+        <>
+        <div className="premium-card p-6 mb-8">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.gain <= 0 && (
@@ -420,6 +423,8 @@ export default function CapitalGainsTaxPage() {
             </p>
           </div>
         </div>
+        <ActionInsight data={actionData['capital-gains-tax']} amount={result.totalTax} />
+        </>
       )}
     </CalculatorLayout>
   );
