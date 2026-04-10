@@ -60,30 +60,30 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DATA-01 | Pending | Pending |
-| DATA-02 | Pending | Pending |
-| DATA-03 | Pending | Pending |
-| DATA-04 | Pending | Pending |
-| DATA-05 | Pending | Pending |
-| DATA-06 | Pending | Pending |
-| DATA-07 | Pending | Pending |
-| DATA-08 | Pending | Pending |
-| DATA-09 | Pending | Pending |
-| COMP-01 | Pending | Pending |
-| COMP-02 | Pending | Pending |
-| COMP-03 | Pending | Pending |
-| COMP-04 | Pending | Pending |
-| COMP-05 | Pending | Pending |
-| COMP-06 | Pending | Pending |
-| COMP-07 | Pending | Pending |
-| COMP-08 | Pending | Pending |
-| COMP-09 | Pending | Pending |
-| QA-01 | Pending | Pending |
+| DATA-01 | Phase 41 | Pending |
+| DATA-02 | Phase 42 | Pending |
+| DATA-03 | Phase 42 | Pending |
+| DATA-04 | Phase 43 | Pending |
+| DATA-05 | Phase 43 | Pending |
+| DATA-06 | Phase 44 | Pending |
+| DATA-07 | Phase 44 | Pending |
+| DATA-08 | Phase 45 | Pending |
+| DATA-09 | Phase 45 | Pending |
+| COMP-01 | Phase 41 | Pending |
+| COMP-02 | Phase 42 | Pending |
+| COMP-03 | Phase 42 | Pending |
+| COMP-04 | Phase 43 | Pending |
+| COMP-05 | Phase 43 | Pending |
+| COMP-06 | Phase 44 | Pending |
+| COMP-07 | Phase 44 | Pending |
+| COMP-08 | Phase 45 | Pending |
+| COMP-09 | Phase 45 | Pending |
+| QA-01 | Phase 46 | Pending |
 
 **Coverage:**
 - v1 requirements: 19 total
-- Mapped to phases: 0
-- Unmapped: 19 ⚠️
+- Mapped to phases: 19
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-04-10*
