@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'minimum-wage-check')!;
@@ -250,18 +251,20 @@ export default function MinimumWageCheckPage() {
           </div>
 
           {result.isViolation && (
-            <div className="mt-4 p-4 rounded-lg bg-red-50 border border-red-200">
-              <p className="text-sm font-semibold text-red-600 mb-2">최저임금 위반 시 대응 방법</p>
-              <ul className="text-xs text-slate-600 space-y-2">
-                <li><strong className="text-slate-700">1. 사업주에게 시정 요구</strong> — 미지급 차액 청구 (최저임금법 제6조)</li>
-                <li><strong className="text-slate-700">2. 고용노동부 신고</strong> — 관할 지방고용노동청 (국번 없이 1350)</li>
-                <li><strong className="text-slate-700">3. 진정서 제출</strong> — 고용노동부 민원마당 (minwon.moel.go.kr)</li>
-                <li><strong className="text-slate-700">4. 체불임금 소송</strong> — 3년 이내 미지급 임금 소급 청구 가능</li>
-              </ul>
-              <p className="text-xs text-gray-500 mt-2">최저임금 위반 사업주: 3년 이하 징역 또는 2,000만원 이하 벌금 (최저임금법 제28조)</p>
+            <div className="mt-4 pt-4 border-t border-slate-200">
+              <p className="text-xs text-gray-500">
+                최저임금 위반 사업주: 3년 이하 징역 또는 2,000만원 이하 벌금 (최저임금법 제28조)
+              </p>
             </div>
           )}
         </div>
+      )}
+
+      {result !== null && result.isViolation && (
+        <ActionInsight 
+          calculatorId="minimum-wage-check" 
+          amount={result.monthlyShortage || result.hourlyDiff || 0} 
+        />
       )}
     </CalculatorLayout>
   );
