@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'civil-mediation')!;
@@ -156,7 +157,8 @@ export default function CivilMediationPage() {
       </div>
 
       {result !== null && (
-        <div className="premium-card p-6">
+        <>
+        <div className="premium-card p-6 mb-4">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-4">
@@ -223,6 +225,9 @@ export default function CivilMediationPage() {
             </p>
           </div>
         </div>
+
+        <ActionInsight calculatorId="civil-mediation" amount={Number(amount)} />
+        </>
       )}
     </CalculatorLayout>
   );

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const UNIT_COST = 5_500;
@@ -204,6 +205,8 @@ export default function PaymentOrderPage() {
 = 합계: ${formatNumber(result.total)}원`}
               </pre>
             </div>
+            
+            <ActionInsight calculatorId="payment-order" amount={Number(amountRaw)} />
           </>
         )}
 
