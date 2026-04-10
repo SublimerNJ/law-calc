@@ -1,29 +1,29 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.5
-milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
-status: v1.5 milestone complete
-last_updated: "2026-03-25T00:04:08.194Z"
+milestone: v1.8
+milestone_name: 모든 계산기 실전 대응 팁(ActionInsight) 적용
+status: v1.8 milestone started
+last_updated: "2026-04-10T00:00:00.000Z"
 progress:
-  total_phases: 20
-  completed_phases: 18
-  total_plans: 50
-  completed_plans: 50
+  total_phases: 8
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-24)
+See: .planning/PROJECT.md (updated 2026-04-10)
 
-**Core value:** 법률 비전문가가 복잡한 법률 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구 제공
-**Current focus:** Phase 32 — ux
+**Core value:** 법률 관련 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구를 제공하여, 사용자가 머무르고 반복 방문하게 만든다 (= 애드센스 수익 극대화).
+**Current focus:** Not started (defining requirements)
 
 ## Current Position
 
-Phase: 32
-Plan: Not started
+Phase: Not started
+Plan: —
 
 ## Accumulated Context
 
@@ -60,10 +60,13 @@ Plan: Not started
   - damages 4종 계산기에도 error(text-red-500)/warning(text-orange-500) 분리 패턴 적용, type=number→type=text+inputMode=decimal 전환 (32-ux-01)
   - hover:bg-[#2a3d5a] dark 테마 잔재 → hover:bg-slate-200 교체, 나머지 7개 파일 변경 없음 (32-ux-03, D-06)
   - Phase 32 전체 완료: 8개 손해배상/기타 계산기 CONSIST-01~03, INPUT-04, FLOW-03 충족 (32-ux-03)
+  - v1.7 SEO 최적화 진행: 구조화 데이터 추가 및 ActionInsight 통합 진행
+  - v1.8 전면 확대로, ActionInsight를 전 계산기 56개에 적용하기로 결정
+
 - **Blockers**:
   - None
 
 ## Session Continuity
 
-- **Last Session**: 2026-03-25
-- **Stopped At**: Completed 32-03-PLAN.md (Phase 32 완료 — 8개 계산기/도구 UX 일관성 최종 검증, certified-letter hover dark 잔재 제거)
+- **Last Session**: 2026-04-10
+- **Stopped At**: v1.8 마일스톤 시작 (ActionInsight 컴포넌트 3개 계산기에 선적용 후 나머지 적용)

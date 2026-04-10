@@ -382,6 +382,91 @@ Plans:
 - [x] 32-02-PLAN.md — statute-of-limitations + public-defender + legal-aid + certified-letter 감사 및 수정
 - [x] 32-03-PLAN.md — 8개 계산기/도구 일관성 통일
 
+### 🚧 v1.8 모든 계산기 실전 대응 팁(ActionInsight) 적용 (Phases 33-40)
+
+- [ ] **Phase 33: 소송/법원 도구 ActionInsight 연동** — ACTION-01, UI-01
+- [ ] **Phase 34: 가사/가족법 도구 ActionInsight 연동** — ACTION-02, UI-02
+- [ ] **Phase 35: 노동/근로(나머지) 도구 ActionInsight 연동** — ACTION-03, UI-03
+- [ ] **Phase 36: 세금 도구 ActionInsight 연동** — ACTION-04, UI-04
+- [ ] **Phase 37: 부동산 도구 ActionInsight 연동** — ACTION-05, UI-05
+- [ ] **Phase 38: 교통/형사 도구 ActionInsight 연동** — ACTION-06, UI-06
+- [ ] **Phase 39: 채권/이자 도구 ActionInsight 연동** — ACTION-07, UI-07
+- [ ] **Phase 40: 손해배상/기타 도구 ActionInsight 연동** — ACTION-08, UI-08
+
+## Phase Details
+
+### Phase 33: 소송/법원 도구 ActionInsight 연동
+**Goal**: 소송/법원 5개 계산기 하단에 ActionInsight 기반 실전 대응 팁 및 액션 플랜 템플릿 제공
+**Depends on**: Nothing
+**Requirements**: ACTION-01, UI-01
+**Success Criteria**:
+  1. 각 계산기에 특화된 `actionData`가 생성됨
+  2. 결과 화면에 ActionInsight 컴포넌트가 올바르게 렌더링됨
+**Plans**: Pending
+
+### Phase 34: 가사/가족법 도구 ActionInsight 연동
+**Goal**: 가사/가족법 6개 계산기 하단에 ActionInsight 기반 실무 팁 및 템플릿 제공
+**Depends on**: Nothing
+**Requirements**: ACTION-02, UI-02
+**Success Criteria**:
+  1. 특화 `actionData` 생성 완료
+  2. UI 연동 및 템플릿 테스트 완료
+**Plans**: Pending
+
+### Phase 35: 노동/근로(나머지) 도구 ActionInsight 연동
+**Goal**: 노동/근로 9개 계산기에 ActionInsight 기반 팁/템플릿 연동
+**Depends on**: Nothing
+**Requirements**: ACTION-03, UI-03
+**Success Criteria**:
+  1. 특화 `actionData` 생성 완료
+  2. UI 연동 및 템플릿 테스트 완료
+**Plans**: Pending
+
+### Phase 36: 세금 도구 ActionInsight 연동
+**Goal**: 세금 10개 계산기에 ActionInsight 기반 팁/템플릿 연동
+**Depends on**: Nothing
+**Requirements**: ACTION-04, UI-04
+**Success Criteria**:
+  1. 특화 `actionData` 생성 완료
+  2. UI 연동 및 템플릿 테스트 완료
+**Plans**: Pending
+
+### Phase 37: 부동산 도구 ActionInsight 연동
+**Goal**: 부동산 7개 계산기에 ActionInsight 기반 팁/템플릿 연동
+**Depends on**: Nothing
+**Requirements**: ACTION-05, UI-05
+**Success Criteria**:
+  1. 특화 `actionData` 생성 완료
+  2. UI 연동 및 템플릿 테스트 완료
+**Plans**: Pending
+
+### Phase 38: 교통/형사 도구 ActionInsight 연동
+**Goal**: 교통/형사 4개 계산기에 ActionInsight 기반 팁/템플릿 연동
+**Depends on**: Nothing
+**Requirements**: ACTION-06, UI-06
+**Success Criteria**:
+  1. 특화 `actionData` 생성 완료
+  2. UI 연동 및 템플릿 테스트 완료
+**Plans**: Pending
+
+### Phase 39: 채권/이자 도구 ActionInsight 연동
+**Goal**: 채권/이자 3개 계산기에 ActionInsight 기반 팁/템플릿 연동
+**Depends on**: Nothing
+**Requirements**: ACTION-07, UI-07
+**Success Criteria**:
+  1. 특화 `actionData` 생성 완료
+  2. UI 연동 및 템플릿 테스트 완료
+**Plans**: Pending
+
+### Phase 40: 손해배상/기타 도구 ActionInsight 연동
+**Goal**: 손해배상 및 기타 8개 계산기에 ActionInsight 기반 팁/템플릿 연동
+**Depends on**: Nothing
+**Requirements**: ACTION-08, UI-08
+**Success Criteria**:
+  1. 특화 `actionData` 생성 완료
+  2. UI 연동 및 템플릿 테스트 완료
+**Plans**: Pending
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -418,3 +503,11 @@ Plans:
 | 30. 부동산 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
+| 33. 소송/법원 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 34. 가사/가족법 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 35. 노동/근로 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 36. 세금 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 37. 부동산 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 38. 교통/형사 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 39. 채권/이자 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 40. 손해배상/기타 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
