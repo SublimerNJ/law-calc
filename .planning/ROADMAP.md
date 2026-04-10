@@ -442,7 +442,13 @@ Plans:
 **Success Criteria**:
   1. 특화 `actionData` 생성 완료
   2. UI 연동 및 템플릿 테스트 완료
-**Plans**: Pending
+**Plans**: 5 plans
+Plans:
+- [ ] 36-01-PLAN.md — action-data.ts 10개 세금 도구 데이터 추가
+- [ ] 36-02-PLAN.md — 취득세, 양도소득세, 종합소득세 UI 연동
+- [ ] 36-03-PLAN.md — 종합부동산세, 4대보험, 등록세 UI 연동
+- [ ] 36-04-PLAN.md — 월세세액공제, 증권거래세 UI 연동
+- [ ] 36-05-PLAN.md — 부가세, 연말정산 UI 연동
 
 ### Phase 37: 부동산 도구 ActionInsight 연동
 **Goal**: 부동산 7개 계산기에 ActionInsight 기반 팁/템플릿 연동
@@ -519,7 +525,7 @@ Plans:
 | 33. 소송/법원 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
 | 34. 가사/가족법 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
 | 35. 노동/근로 ActionInsight 연동 | v1.8 | 4/4 | Complete   | 2026-04-10 |
-| 36. 세금 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 36. 세금 ActionInsight 연동 | v1.8 | 0/5 | Pending | — |
 | 37. 부동산 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 38. 교통/형사 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 39. 채권/이자 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
