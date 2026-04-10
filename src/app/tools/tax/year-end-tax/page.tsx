@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 
 const tool = TOOLS.find(t => t.id === 'year-end-tax')!;
 const category = CATEGORIES.find(c => c.id === 'tax')!;
@@ -426,6 +427,10 @@ export default function YearEndTaxPage() {
               <p>소득세법 제47조(근로소득공제), 제50조(기본공제), 제55조(세율), 제59조(근로소득세액공제), 제59조의2(자녀세액공제), 제59조의4(의료비·교육비·월세세액공제), 제137조~제140조(연말정산). 2026년 기준. 참고용으로만 활용하시기 바랍니다.</p>
             </div>
           </div>
+        )}
+
+        {result && (
+          <ActionInsight calculatorId="year-end-tax" amount={Math.abs(result.finalTax)} />
         )}
 
         <div className="premium-card p-6">
