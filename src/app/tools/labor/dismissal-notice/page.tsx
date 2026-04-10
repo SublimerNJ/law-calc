@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'dismissal-notice')!;
@@ -175,6 +176,7 @@ export default function DismissalNoticePage() {
               법적 근거: 근로기준법 제26조 - 사용자는 근로자를 해고하려면 적어도 30일 전에 예고를 하여야 하고, 30일 전에 예고를 하지 아니하였을 때에는 30일분 이상의 통상임금을 지급하여야 합니다.
             </p>
           </div>
+          <ActionInsight calculatorId="dismissal-notice" amount={result.allowance} />
         </div>
       )}
 
