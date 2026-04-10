@@ -263,7 +263,11 @@ export default function AccidentSettlementPage() {
         </div>
       )}
 
-      <ActionInsight calculatorId="accident-settlement" />
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="accident-settlement" />
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

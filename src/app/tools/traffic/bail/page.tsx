@@ -307,7 +307,11 @@ export default function BailPage() {
         </div>
       )}
 
-      <ActionInsight calculatorId="bail" />
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="bail" />
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

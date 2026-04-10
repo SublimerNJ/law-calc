@@ -315,7 +315,11 @@ export default function DrunkDrivingPage() {
         </ol>
       </div>
 
-      <ActionInsight calculatorId="drunk-driving" />
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="drunk-driving" />
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

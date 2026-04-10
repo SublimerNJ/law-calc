@@ -289,7 +289,11 @@ export default function FinePenaltyPage() {
         </ul>
       </div>
 
-      <ActionInsight calculatorId="fine-penalty" />
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="fine-penalty" amount={result.finalAmount} />
+        </div>
+      )}
     </CalculatorLayout>
   );
 }
