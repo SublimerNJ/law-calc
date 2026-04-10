@@ -42,7 +42,8 @@
   1. 세금 5종, 부동산 7종 계산기 결과 화면 하단에 ActionInsight 영역이 표시된다
   2. 절세, 부동산 거래 등에 관한 실무 팁이 제공된다
   3. 사용자가 세금 신고나 계약 관련 템플릿을 확인할 수 있다
-**Plans**: TBD
+**Plans**: 1 plans
+- [ ] 43-01-PLAN.md — Update ActionInsight UI and verify tax/realty data integration
 **UI hint**: yes
 
 ### Phase 44: Traffic & Debt ActionInsight 연동
@@ -84,7 +85,7 @@
 |-------|----------------|--------|-----------|
 | 41. Court ActionInsight 연동 | 0/0 | Not started | - |
 | 42. Family & Labor ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
-| 43. Tax & Realty ActionInsight 연동 | 0/0 | Not started | - |
+| 43. Tax & Realty ActionInsight 연동 | 0/1 | In progress | - |
 | 44. Traffic & Debt ActionInsight 연동 | 0/0 | Not started | - |
 | 45. Damages & Misc ActionInsight 연동 | 0/0 | Not started | - |
 | 46. 전체 ActionInsight 품질 검증 | 0/0 | Not started | - |
