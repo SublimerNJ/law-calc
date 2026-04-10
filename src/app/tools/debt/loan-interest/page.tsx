@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'loan-interest')!;
@@ -191,6 +192,15 @@ export default function LoanInterestPage() {
               ※ 대부업자는 대부업 등의 등록 및 금융이용자 보호에 관한 법률 제8조(최고금리 연 20%) 동일 적용
             </p>
           </div>
+        </div>
+      )}
+
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight
+            calculatorId="loan-interest"
+            amount={result.isExceeded ? result.excessInterest : result.interest}
+          />
         </div>
       )}
 

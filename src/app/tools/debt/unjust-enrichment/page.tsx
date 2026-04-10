@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'unjust-enrichment')!;
@@ -204,7 +205,16 @@ export default function UnjustEnrichmentPage() {
         </div>
       )}
 
-      <div className="premium-card p-6">
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight
+            calculatorId="unjust-enrichment"
+            amount={beneficiaryType === 'bad' ? result.total : result.principal}
+          />
+        </div>
+      )}
+
+      <div className="premium-card p-6 mt-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">부당이득 반환 청구</h2>
         <ol className="space-y-3">
           <li className="flex gap-3">

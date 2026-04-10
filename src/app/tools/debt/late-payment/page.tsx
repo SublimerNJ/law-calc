@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'late-payment')!;
@@ -224,6 +225,15 @@ export default function LatePaymentPage() {
               법적 근거: 민법 제379조(법정이율 연 5%), 상법 제54조(상사 법정이율 연 6%), 소송촉진 등에 관한 특례법 제3조(연 12%)
             </p>
           </div>
+        </div>
+      )}
+
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight
+            calculatorId="late-payment"
+            amount={result.principal + (isLawsuit ? result.lawsuitInterest : isCommercial ? result.commercialInterest : result.civilInterest)}
+          />
         </div>
       )}
 
