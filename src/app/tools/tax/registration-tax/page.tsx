@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'registration-tax')!;
@@ -224,7 +225,8 @@ export default function RegistrationTaxPage() {
       </div>
 
       {result && (
-        <div className="premium-card p-6">
+        <>
+        <div className="premium-card p-6 mb-8">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
@@ -276,6 +278,8 @@ export default function RegistrationTaxPage() {
             </p>
           </div>
         </div>
+        <ActionInsight calculatorId="registration-tax" amount={result.total} />
+        </>
       )}
     </CalculatorLayout>
   );
