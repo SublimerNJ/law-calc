@@ -5,7 +5,7 @@
 - [ ] **Phase 41: Court ActionInsight 연동** - 소송/법원 계산기 13종 대응 팁 작성 및 UI 연동
 - [x] **Phase 42: Family & Labor ActionInsight 연동** - 가사/가족법 4종, 노동/근로 6종 대응 팁 작성 및 UI 연동 (completed 2026-04-10)
 - [x] **Phase 43: Tax & Realty ActionInsight 연동** - 세금 5종, 부동산 7종 대응 팁 작성 및 UI 연동 (completed 2026-04-10)
-- [ ] **Phase 44: Traffic & Debt ActionInsight 연동** - 교통/형사 4종, 채권/이자 3종 대응 팁 작성 및 UI 연동
+- [x] **Phase 44: Traffic & Debt ActionInsight 연동** - 교통/형사 4종, 채권/이자 3종 대응 팁 작성 및 UI 연동 (completed 2026-04-10)
 - [ ] **Phase 45: Damages & Misc ActionInsight 연동** - 손해배상 4종, 기타 4종 대응 팁 작성 및 UI 연동
 - [ ] **Phase 46: 전체 ActionInsight 품질 검증** - 53개 계산기 ActionInsight UI/UX 크로스 브라우징 및 렌더링 검증
 
@@ -55,7 +55,7 @@
   2. 합의, 내용증명, 채권 추심에 특화된 실전 대응 팁이 제공된다
   3. 사용자가 내용증명, 합의서 등 관련 템플릿을 확인할 수 있다
 **Plans**: 1 plans
-- [ ] 44-01-PLAN.md — 교통/형사 4종, 채권/이자 3종 계산기에 ActionInsight를 올바르게 연동하고 위치를 통일합니다.
+- [x] 44-01-PLAN.md — 교통/형사 4종, 채권/이자 3종 계산기에 ActionInsight를 올바르게 연동하고 위치를 통일합니다.
 **UI hint**: yes
 
 ### Phase 45: Damages & Misc ActionInsight 연동
@@ -87,6 +87,6 @@
 | 41. Court ActionInsight 연동 | 0/0 | Not started | - |
 | 42. Family & Labor ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
 | 43. Tax & Realty ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
-| 44. Traffic & Debt ActionInsight 연동 | 0/0 | Not started | - |
+| 44. Traffic & Debt ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
 | 45. Damages & Misc ActionInsight 연동 | 0/0 | Not started | - |
 | 46. 전체 ActionInsight 품질 검증 | 0/0 | Not started | - |

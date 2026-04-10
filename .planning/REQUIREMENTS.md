@@ -14,8 +14,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **DATA-03**: 노동/근로(Labor) 계산기 6종 실무 대응 팁 및 텍스트 템플릿 작성 (기존 3종 제외)
 - [x] **DATA-04**: 세금(Tax) 계산기 5종 실무 대응 팁 및 텍스트 템플릿 작성
 - [x] **DATA-05**: 부동산(Realty) 계산기 7종 실무 대응 팁 및 텍스트 템플릿 작성
-- [ ] **DATA-06**: 교통/형사(Traffic) 계산기 4종 실무 대응 팁 및 텍스트 템플릿 작성
-- [ ] **DATA-07**: 채권/이자(Debt) 계산기 3종 실무 대응 팁 및 텍스트 템플릿 작성
+- [x] **DATA-06**: 교통/형사(Traffic) 계산기 4종 실무 대응 팁 및 텍스트 템플릿 작성
+- [x] **DATA-07**: 채권/이자(Debt) 계산기 3종 실무 대응 팁 및 텍스트 템플릿 작성
 - [ ] **DATA-08**: 손해배상(Damages) 계산기 4종 실무 대응 팁 및 텍스트 템플릿 작성
 - [ ] **DATA-09**: 기타(Misc) 계산기 4종 실무 대응 팁 및 텍스트 템플릿 작성
 
@@ -26,8 +26,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **COMP-03**: 노동/근로(Labor) 계산기 6종 결과 화면에 ActionInsight 연동
 - [x] **COMP-04**: 세금(Tax) 계산기 5종 결과 화면에 ActionInsight 연동
 - [x] **COMP-05**: 부동산(Realty) 계산기 7종 결과 화면에 ActionInsight 연동
-- [ ] **COMP-06**: 교통/형사(Traffic) 계산기 4종 결과 화면에 ActionInsight 연동
-- [ ] **COMP-07**: 채권/이자(Debt) 계산기 3종 결과 화면에 ActionInsight 연동
+- [x] **COMP-06**: 교통/형사(Traffic) 계산기 4종 결과 화면에 ActionInsight 연동
+- [x] **COMP-07**: 채권/이자(Debt) 계산기 3종 결과 화면에 ActionInsight 연동
 - [ ] **COMP-08**: 손해배상(Damages) 계산기 4종 결과 화면에 ActionInsight 연동
 - [ ] **COMP-09**: 기타(Misc) 계산기 4종 결과 화면에 ActionInsight 연동
 
@@ -65,8 +65,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DATA-03 | Phase 42 | Complete |
 | DATA-04 | Phase 43 | Complete |
 | DATA-05 | Phase 43 | Complete |
-| DATA-06 | Phase 44 | Pending |
-| DATA-07 | Phase 44 | Pending |
+| DATA-06 | Phase 44 | Complete |
+| DATA-07 | Phase 44 | Complete |
 | DATA-08 | Phase 45 | Pending |
 | DATA-09 | Phase 45 | Pending |
 | COMP-01 | Phase 41 | Pending |
@@ -74,8 +74,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-03 | Phase 42 | Complete |
 | COMP-04 | Phase 43 | Complete |
 | COMP-05 | Phase 43 | Complete |
-| COMP-06 | Phase 44 | Pending |
-| COMP-07 | Phase 44 | Pending |
+| COMP-06 | Phase 44 | Complete |
+| COMP-07 | Phase 44 | Complete |
 | COMP-08 | Phase 45 | Pending |
 | COMP-09 | Phase 45 | Pending |
 | QA-01 | Phase 46 | Pending |
