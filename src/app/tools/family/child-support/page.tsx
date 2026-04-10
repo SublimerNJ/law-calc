@@ -315,6 +315,10 @@ export default function ChildSupportPage() {
         </div>
       )}
 
+      {result !== null && (
+        <ActionInsight calculatorId="child-support" amount={result.monthlyTotal} />
+      )}
+
       <div className="premium-card p-6">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">양육비 청구 방법</h2>
         <ol className="space-y-3">
