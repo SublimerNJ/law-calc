@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'annual-leave-pay')!;
@@ -199,6 +200,7 @@ export default function AnnualLeavePayPage() {
               법적 근거: 근로기준법 제60조(연차 유급휴가) - 사용자는 근로자의 미사용 연차휴가에 대하여 통상임금을 지급하여야 합니다. 단, 제61조(연차휴가의 사용 촉진)에 따라 사용자가 적법한 사용촉진 조치를 취한 경우에는 미사용 수당 지급 의무가 면제될 수 있습니다.
             </p>
           </div>
+          <ActionInsight calculatorId="annual-leave-pay" amount={result.totalPay} />
         </div>
       )}
 
