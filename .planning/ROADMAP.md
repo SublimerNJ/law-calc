@@ -1,7 +1,7 @@
 # Roadmap: 법률 도구 (Legal Calculator Hub)
 
 **Created:** 2026-03-23
-**Milestone:** v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사
+**Milestone:** v1.8 모든 계산기 실전 대응 팁(ActionInsight) 적용
 
 ## Milestones
 
@@ -10,7 +10,8 @@
 - ✅ **v1.2 UI/UX 개편 및 라이트 테마 적용** — Phases 11-12 (shipped 2026-03-23)
 - ✅ **v1.3 전체 계산기 법률 정확성 감사** — Phases 13-21 (shipped 2026-03-24)
 - ✅ **v1.4 중복 계산기 정리 및 코드 클린업** — Phases 22-23 (shipped 2026-03-25)
-- 🚧 **v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사** — Phases 24-32 (active)
+- ✅ **v1.5 전체 계산기 논리적 오류 및 UX 흐름 감사** — Phases 24-32 (shipped 2026-03-25)
+- ✅ **v1.8 모든 계산기 실전 대응 팁(ActionInsight) 적용** — Phases 33-40 (shipped 2026-04-10)
 
 ## Phases
 
@@ -543,4 +544,4 @@ Plans:
 | 37. 부동산 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
 | 38. 교통/형사 ActionInsight 연동 | v1.8 | 2/2 | Complete | 2026-04-10 |
 | 39. 채권/이자 ActionInsight 연동 | v1.8 | 2/2 | Complete | 2026-04-10 |
-| 40. 손해배상/기타 ActionInsight 연동 | v1.8 | 1/3 | In Progress|  |
+| 40. 손해배상/기타 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |

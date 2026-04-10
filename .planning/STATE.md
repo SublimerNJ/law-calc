@@ -5,10 +5,10 @@ milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
 status: v1.8 milestone started
 last_updated: "2026-04-10T06:51:22.836Z"
 progress:
-  total_phases: 20
-  completed_phases: 18
-  total_plans: 50
-  completed_plans: 50
+  total_phases: 8
+  completed_phases: 8
+  total_plans: 25
+  completed_plans: 25
 ---
 
 # Project State
@@ -18,12 +18,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-10)
 
 **Core value:** 법률 관련 비용/금액을 빠르고 정확하게 계산할 수 있는 신뢰성 있는 도구를 제공하여, 사용자가 머무르고 반복 방문하게 만든다 (= 애드센스 수익 극대화).
-**Current focus:** Phase 40 — 손해배상/기타 ActionInsight 연동
+**Current focus:** Milestone v1.8 Complete
 
 ## Current Position
 
-Phase: 40
-Plan: Not started
+Phase: 40 (Complete)
+Plan: —
 
 ## Accumulated Context
 
