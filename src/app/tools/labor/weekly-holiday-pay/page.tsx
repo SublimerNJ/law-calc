@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'weekly-holiday-pay')!;
@@ -213,6 +214,13 @@ export default function WeeklyHolidayPayPage() {
             </p>
           </div>
         </div>
+      )}
+
+      {result !== null && (
+        <ActionInsight 
+          calculatorId="weekly-holiday-pay" 
+          amount={result.amount} 
+        />
       )}
     </CalculatorLayout>
   );
