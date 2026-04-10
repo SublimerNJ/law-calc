@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'bail')!;
@@ -305,6 +306,8 @@ export default function BailPage() {
           <p className="text-xs text-gray-500 mt-4">법적 근거: 형사소송법 제94조(보석), 제95조(필요적 보석), 제96조(임의적 보석), 제99조(보석 조건), 제102조(보석 취소), 제103조(보증금 몰취) | 보석 관련 문의는 담당 변호인과 상담하세요</p>
         </div>
       )}
+
+      <ActionInsight calculatorId="bail" />
     </CalculatorLayout>
   );
 }
