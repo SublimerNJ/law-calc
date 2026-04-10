@@ -472,7 +472,7 @@ Plans:
   2. UI 연동 및 템플릿 테스트 완료
 **Plans**: 2 plans
 Plans:
-- [ ] 38-01-PLAN.md — action-data.ts 4개 도구 데이터 추가
+- [x] 38-01-PLAN.md — action-data.ts 4개 도구 데이터 추가
 - [ ] 38-02-PLAN.md — accident-settlement, drunk-driving, fine-penalty, bail UI 연동
 
 ### Phase 39: 채권/이자 도구 ActionInsight 연동
@@ -534,5 +534,5 @@ Plans:
 | 35. 노동/근로 ActionInsight 연동 | v1.8 | 4/4 | Complete | 2026-04-10 |
 | 36. 세금 ActionInsight 연동 | v1.8 | 5/5 | Complete | 2026-04-10 |
 | 37. 부동산 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
-| 38. 교통/형사 ActionInsight 연동 | v1.8 | 0/2 | Pending | — |
+| 38. 교통/형사 ActionInsight 연동 | v1.8 | 1/2 | In Progress|  |
 | 40. 손해배상/기타 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
