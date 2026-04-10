@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import ActionInsight from '@/components/ui/ActionInsight';
+import { actionData } from '@/lib/action-data';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'acquisition-tax')!;
@@ -240,8 +242,9 @@ export default function AcquisitionTaxPage() {
       </div>
 
       {result !== null && (
-        <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+        <>
+          <div className="premium-card p-6 mb-8">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           <div className="space-y-3 mb-4">
             <div className="flex justify-between">
@@ -307,6 +310,8 @@ export default function AcquisitionTaxPage() {
             </p>
           </div>
         </div>
+        <ActionInsight data={actionData['acquisition-tax']} amount={result.total} />
+        </>
       )}
     </CalculatorLayout>
   );
