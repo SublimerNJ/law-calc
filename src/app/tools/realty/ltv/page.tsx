@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'ltv')!;
@@ -190,6 +191,8 @@ export default function LtvPage() {
               법적 근거: 은행업감독규정 제26조(담보인정비율), 금융위원회 「주택담보대출 LTV·DTI 규제 완화」 2022년 8월 시행. 생애최초 주택구입자 LTV 80% 우대(지역 무관), 서민·실수요자 우대 LTV 별도 조건 적용.
             </p>
           </div>
+
+          <ActionInsight calculatorId="ltv" amount={result.ltv} />
         </div>
       )}
 

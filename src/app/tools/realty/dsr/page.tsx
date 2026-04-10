@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'dsr')!;
@@ -215,6 +216,8 @@ DSR                ${result.dsr}%
               • 스트레스 DSR: 2024.9.1 시행, 가산금리 적용 (금융위원회 고시 제2024-11호)
             </p>
           </div>
+
+          <ActionInsight calculatorId="dsr" amount={result.dsr} />
         </div>
       )}
 

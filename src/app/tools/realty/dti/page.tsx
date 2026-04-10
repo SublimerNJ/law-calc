@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'dti')!;
@@ -223,6 +224,8 @@ DTI = (주담대 연간 원리금 + 기타대출 연간 이자) ÷ 연소득 × 
               DTI vs DSR 차이: DTI는 기타 대출의 이자만 포함하지만, DSR은 모든 대출의 원금+이자 상환액을 포함합니다. 2024년 이후 대부분 금융기관에서 DSR 규제를 적용하고 있으나, DTI는 여전히 보완적 심사 기준으로 활용됩니다.
             </p>
           </div>
+
+          <ActionInsight calculatorId="dti" amount={result.dti} />
         </div>
       )}
 
