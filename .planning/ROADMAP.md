@@ -459,7 +459,7 @@ Plans:
   2. UI 연동 및 템플릿 테스트 완료
 **Plans**: 3 plans
 Plans:
-- [ ] 37-01-PLAN.md — action-data.ts 7개 부동산 도구 데이터 추가
+- [x] 37-01-PLAN.md — action-data.ts 7개 부동산 도구 데이터 추가
 - [ ] 37-02-PLAN.md — 보증금 반환, 전월세 전환율, 중개보수, 청약가점 UI 연동
 - [ ] 37-03-PLAN.md — dsr, ltv, dti UI 연동
 
@@ -530,7 +530,7 @@ Plans:
 | 34. 가사/가족법 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
 | 35. 노동/근로 ActionInsight 연동 | v1.8 | 4/4 | Complete | 2026-04-10 |
 | 36. 세금 ActionInsight 연동 | v1.8 | 5/5 | Complete | 2026-04-10 |
-| 37. 부동산 ActionInsight 연동 | v1.8 | 0/3 | Active | — |
+| 37. 부동산 ActionInsight 연동 | v1.8 | 1/3 | In Progress|  |
 | 38. 교통/형사 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 39. 채권/이자 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 40. 손해배상/기타 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
