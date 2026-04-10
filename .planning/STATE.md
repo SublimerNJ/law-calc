@@ -1,14 +1,14 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.8
-milestone_name: 모든 계산기 실전 대응 팁(ActionInsight) 적용
+milestone: v1.5
+milestone_name: 전체 계산기 논리적 오류 및 UX 흐름 감사
 status: v1.8 milestone started
-last_updated: "2026-04-10T00:00:00.000Z"
+last_updated: "2026-04-10T03:49:27.510Z"
 progress:
-  total_phases: 8
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_phases: 28
+  completed_phases: 18
+  total_plans: 53
+  completed_plans: 51
 ---
 
 # Project State

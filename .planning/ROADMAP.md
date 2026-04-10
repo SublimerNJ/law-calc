@@ -404,7 +404,7 @@ Plans:
   2. 결과 화면에 ActionInsight 컴포넌트가 올바르게 렌더링됨
 **Plans**: 3 plans
 Plans:
-- [ ] 33-01-PLAN.md — action-data.ts 5개 도구 데이터 추가
+- [x] 33-01-PLAN.md — action-data.ts 5개 도구 데이터 추가
 - [ ] 33-02-PLAN.md — lawsuit-cost, payment-order, civil-mediation UI 연동
 - [ ] 33-03-PLAN.md — family-court, attorney-fee UI 연동
 
@@ -507,7 +507,7 @@ Plans:
 | 30. 부동산 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 31. 교통/형사 + 채권/이자 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
-| 33. 소송/법원 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 33. 소송/법원 ActionInsight 연동 | v1.8 | 1/3 | In Progress|  |
 | 34. 가사/가족법 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 35. 노동/근로 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 36. 세금 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |

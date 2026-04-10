@@ -7,7 +7,7 @@
 
 ### Action Content Generation (ACTION)
 
-- [ ] **ACTION-01**: 소송/법원 계산기 실무 대응 팁 및 템플릿 작성
+- [x] **ACTION-01**: 소송/법원 계산기 실무 대응 팁 및 템플릿 작성
 - [ ] **ACTION-02**: 가사/가족법 계산기 실무 대응 팁 및 템플릿 작성
 - [ ] **ACTION-03**: 노동/근로 계산기 (나머지) 실무 대응 팁 및 템플릿 작성
 - [ ] **ACTION-04**: 세금 계산기 실무 대응 팁 및 템플릿 작성
@@ -18,7 +18,7 @@
 
 ### UI Integration (UI)
 
-- [ ] **UI-01**: 소송/법원 계산기 페이지 ActionInsight 연동
+- [x] **UI-01**: 소송/법원 계산기 페이지 ActionInsight 연동
 - [ ] **UI-02**: 가사/가족법 계산기 페이지 ActionInsight 연동
 - [ ] **UI-03**: 노동/근로 계산기 (나머지) 페이지 ActionInsight 연동
 - [ ] **UI-04**: 세금 계산기 페이지 ActionInsight 연동
@@ -38,8 +38,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ACTION-01 | Phase 33 | Pending |
-| UI-01 | Phase 33 | Pending |
+| ACTION-01 | Phase 33 | Complete |
+| UI-01 | Phase 33 | Complete |
 | ACTION-02 | Phase 34 | Pending |
 | UI-02 | Phase 34 | Pending |
 | ACTION-03 | Phase 35 | Pending |
