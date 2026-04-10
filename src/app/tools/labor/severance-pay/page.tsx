@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'severance-pay')!;
@@ -281,6 +282,8 @@ export default function SeverancePayPage() {
               </p>
             </div>
           </div>
+
+          <ActionInsight calculatorId="severance-pay" amount={result.severancePay} />
         </>
       )}
     </CalculatorLayout>

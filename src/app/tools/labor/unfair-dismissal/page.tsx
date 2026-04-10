@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'unfair-dismissal')!;
@@ -265,6 +266,10 @@ export default function UnfairDismissalPage() {
           </div>
           <p className="text-xs text-gray-500 mt-4">문의: 고용노동부 (국번 없이 1350) | 노동위원회 (www.nlrc.go.kr)</p>
         </div>
+      )}
+
+      {result !== null && (
+        <ActionInsight calculatorId="unfair-dismissal" amount={result.grossCompensation} />
       )}
 
       <div className="premium-card p-4 mt-4">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'industrial-accident')!;
@@ -387,6 +388,10 @@ export default function IndustrialAccidentPage() {
           </div>
           <p className="text-xs text-gray-500 mt-4">온라인 신청: 근로복지공단 (www.comwel.or.kr)</p>
         </div>
+      )}
+
+      {result !== null && (
+        <ActionInsight calculatorId="industrial-accident" amount={result.total} />
       )}
     </CalculatorLayout>
   );
