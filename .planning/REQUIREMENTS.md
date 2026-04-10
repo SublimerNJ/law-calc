@@ -20,7 +20,7 @@
 
 - [x] **UI-01**: 소송/법원 계산기 페이지 ActionInsight 연동
 - [ ] **UI-02**: 가사/가족법 계산기 페이지 ActionInsight 연동
-- [ ] **UI-03**: 노동/근로 계산기 (나머지) 페이지 ActionInsight 연동
+- [x] **UI-03**: 노동/근로 계산기 (나머지) 페이지 ActionInsight 연동
 - [ ] **UI-04**: 세금 계산기 페이지 ActionInsight 연동
 - [ ] **UI-05**: 부동산 계산기 페이지 ActionInsight 연동
 - [ ] **UI-06**: 교통/형사 계산기 페이지 ActionInsight 연동
@@ -43,7 +43,7 @@
 | ACTION-02 | Phase 34 | Complete |
 | UI-02 | Phase 34 | Pending |
 | ACTION-03 | Phase 35 | Complete |
-| UI-03 | Phase 35 | Pending |
+| UI-03 | Phase 35 | Complete |
 | ACTION-04 | Phase 36 | Pending |
 | UI-04 | Phase 36 | Pending |
 | ACTION-05 | Phase 37 | Pending |

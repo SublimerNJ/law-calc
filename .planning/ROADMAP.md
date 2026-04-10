@@ -431,7 +431,7 @@ Plans:
 **Plans**: 4 plans
 Plans:
 - [x] 35-01-PLAN.md — action-data.ts 9개 도구 데이터 추가
-- [ ] 35-02-PLAN.md — dismissal-notice, annual-leave-pay, overtime-pay UI 연동
+- [x] 35-02-PLAN.md — dismissal-notice, annual-leave-pay, overtime-pay UI 연동
 - [ ] 35-03-PLAN.md — weekly-holiday-pay, minimum-wage-check, shutdown-allowance UI 연동
 - [ ] 35-04-PLAN.md — maternity-leave, parental-leave, unemployment-benefit UI 연동
 
@@ -518,7 +518,7 @@ Plans:
 | 32. 손해배상 + 기타 법률도구 UX·논리 감사 | v1.5 | 3/3 | Complete    | 2026-03-24 |
 | 33. 소송/법원 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
 | 34. 가사/가족법 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
-| 35. 노동/근로 ActionInsight 연동 | v1.8 | 1/4 | In Progress|  |
+| 35. 노동/근로 ActionInsight 연동 | v1.8 | 2/4 | In Progress|  |
 | 36. 세금 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 37. 부동산 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 38. 교통/형사 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
