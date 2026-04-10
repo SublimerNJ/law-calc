@@ -484,7 +484,7 @@ Plans:
   2. UI 연동 및 템플릿 테스트 완료
 **Plans**: 2 plans
 Plans:
-- [ ] 39-01-PLAN.md — action-data.ts 3개 채권/이자 도구 데이터 추가
+- [x] 39-01-PLAN.md — action-data.ts 3개 채권/이자 도구 데이터 추가
 - [ ] 39-02-PLAN.md — late-payment, loan-interest, unjust-enrichment UI 연동
 
 ### Phase 40: 손해배상/기타 도구 ActionInsight 연동
@@ -494,7 +494,11 @@ Plans:
 **Success Criteria**:
   1. 특화 `actionData` 생성 완료
   2. UI 연동 및 템플릿 테스트 완료
-**Plans**: Pending
+**Plans**: 3 plans
+Plans:
+- [ ] 40-01-PLAN.md — action-data.ts 8개 도구 데이터 추가
+- [ ] 40-02-PLAN.md — damages-general, defamation, medical-malpractice, lost-income UI 연동
+- [ ] 40-03-PLAN.md — certified-letter, legal-aid, public-defender, statute-of-limitations UI 연동
 
 ## Progress
 
@@ -538,5 +542,5 @@ Plans:
 | 36. 세금 ActionInsight 연동 | v1.8 | 5/5 | Complete | 2026-04-10 |
 | 37. 부동산 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
 | 38. 교통/형사 ActionInsight 연동 | v1.8 | 2/2 | Complete | 2026-04-10 |
-| 39. 채권/이자 ActionInsight 연동 | v1.8 | 0/2 | Pending | — |
-| 40. 손해배상/기타 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
+| 39. 채권/이자 ActionInsight 연동 | v1.8 | 2/2 | Complete | 2026-04-10 |
+| 40. 손해배상/기타 ActionInsight 연동 | v1.8 | 0/3 | Pending | — |
