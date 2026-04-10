@@ -144,7 +144,6 @@ export default function LegalAidPage() {
       </div>
 
       {result && (
-        <>
         <div className="premium-card p-6">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">판정 결과</h3>
           <div className={`p-4 rounded-lg mb-4 ${result.eligible ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
@@ -175,9 +174,6 @@ export default function LegalAidPage() {
             <p className="text-xs text-gray-500">법적 근거: 법률구조법 제5조(법률구조대상자), 법률구조법 시행령 제4조(자력기준)</p>
           </div>
         </div>
-
-        <ActionInsight calculatorId="legal-aid" />
-        </>
       )}
 
       {result && (
@@ -202,6 +198,12 @@ export default function LegalAidPage() {
             ))}
           </div>
           <p className="text-xs text-gray-500 mt-4">대한법률구조공단 (www.klac.or.kr) | 전화: 132</p>
+        </div>
+      )}
+
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="legal-aid" />
         </div>
       )}
     </CalculatorLayout>

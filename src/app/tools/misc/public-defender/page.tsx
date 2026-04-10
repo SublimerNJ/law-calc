@@ -171,7 +171,6 @@ export default function PublicDefenderPage() {
       </div>
 
       {result && (
-        <>
         <div className="premium-card p-6">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">판정 결과</h3>
           <div className={`p-4 rounded-lg mb-4 ${result.eligible ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
@@ -198,9 +197,6 @@ export default function PublicDefenderPage() {
             <p className="text-xs text-gray-500 mt-3">문의: 대한법률구조공단 (국번 없이 132)</p>
           </div>
         </div>
-
-        <ActionInsight calculatorId="public-defender" />
-        </>
       )}
 
       <div className="premium-card p-6 mt-4">
@@ -224,6 +220,12 @@ export default function PublicDefenderPage() {
           </div>
         </div>
       </div>
+
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="public-defender" />
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

@@ -182,7 +182,6 @@ export default function StatuteOfLimitationsPage() {
       </div>
 
       {result && (
-        <>
         <div className="premium-card p-6">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h3>
           <div className="space-y-3">
@@ -217,9 +216,6 @@ export default function StatuteOfLimitationsPage() {
             <p className="text-xs text-gray-500">법적 근거: {result.legalBasis}, 민법 제166조(기산점)</p>
           </div>
         </div>
-
-        <ActionInsight calculatorId="statute-of-limitations" />
-        </>
       )}
 
       <div className="premium-card p-6 mt-4">
@@ -248,6 +244,12 @@ export default function StatuteOfLimitationsPage() {
           </p>
         </div>
       </div>
+
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="statute-of-limitations" />
+        </div>
+      )}
     </CalculatorLayout>
   );
 }
