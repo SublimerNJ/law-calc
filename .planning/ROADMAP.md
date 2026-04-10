@@ -388,7 +388,7 @@ Plans:
 - [ ] **Phase 34: 가사/가족법 도구 ActionInsight 연동** — ACTION-02, UI-02
 - [x] **Phase 35: 노동/근로(나머지) 도구 ActionInsight 연동** — ACTION-03, UI-03 (completed 2026-04-10)
 - [ ] **Phase 36: 세금 도구 ActionInsight 연동** — ACTION-04, UI-04
-- [ ] **Phase 37: 부동산 도구 ActionInsight 연동** — ACTION-05, UI-05
+- [x] **Phase 37: 부동산 도구 ActionInsight 연동** — ACTION-05, UI-05 (completed 2026-04-10)
 - [ ] **Phase 38: 교통/형사 도구 ActionInsight 연동** — ACTION-06, UI-06
 - [ ] **Phase 39: 채권/이자 도구 ActionInsight 연동** — ACTION-07, UI-07
 - [ ] **Phase 40: 손해배상/기타 도구 ActionInsight 연동** — ACTION-08, UI-08
@@ -461,7 +461,7 @@ Plans:
 Plans:
 - [x] 37-01-PLAN.md — action-data.ts 7개 부동산 도구 데이터 추가
 - [x] 37-02-PLAN.md — 보증금 반환, 전월세 전환율, 중개보수, 청약가점 UI 연동
-- [ ] 37-03-PLAN.md — dsr, ltv, dti UI 연동
+- [x] 37-03-PLAN.md — dsr, ltv, dti UI 연동
 
 ### Phase 38: 교통/형사 도구 ActionInsight 연동
 **Goal**: 교통/형사 4개 계산기에 ActionInsight 기반 팁/템플릿 연동
@@ -530,7 +530,7 @@ Plans:
 | 34. 가사/가족법 ActionInsight 연동 | v1.8 | 3/3 | Complete | 2026-04-10 |
 | 35. 노동/근로 ActionInsight 연동 | v1.8 | 4/4 | Complete | 2026-04-10 |
 | 36. 세금 ActionInsight 연동 | v1.8 | 5/5 | Complete | 2026-04-10 |
-| 37. 부동산 ActionInsight 연동 | v1.8 | 2/3 | In Progress|  |
+| 37. 부동산 ActionInsight 연동 | v1.8 | 3/3 | Complete   | 2026-04-10 |
 | 38. 교통/형사 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 39. 채권/이자 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
 | 40. 손해배상/기타 ActionInsight 연동 | v1.8 | 0/1 | Pending | — |
