@@ -289,7 +289,9 @@ export default function LostIncomePage() {
       )}
 
       {result !== null && (
-        <ActionInsight calculatorId="lost-income" amount={result.lostIncomeAfterFault} />
+        <div className="mt-6">
+          <ActionInsight calculatorId="lost-income" amount={result.lostIncomeAfterFault} />
+        </div>
       )}
     </CalculatorLayout>
   );

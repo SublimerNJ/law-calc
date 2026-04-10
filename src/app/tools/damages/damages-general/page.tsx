@@ -199,10 +199,6 @@ export default function DamagesGeneralPage() {
         </div>
       )}
 
-      {result !== null && (
-        <ActionInsight calculatorId="damages-general" amount={result.total} />
-      )}
-
       <div className="premium-card p-6">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">손해배상 청구 절차</h2>
         <ol className="space-y-3">
@@ -224,6 +220,12 @@ export default function DamagesGeneralPage() {
           </li>
         </ol>
       </div>
+
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="damages-general" amount={result.total} />
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

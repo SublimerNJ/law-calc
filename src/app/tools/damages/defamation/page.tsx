@@ -174,10 +174,6 @@ export default function DefamationPage() {
         </div>
       )}
 
-      {result !== null && (
-        <ActionInsight calculatorId="defamation" amount={result.mid} />
-      )}
-
       <div className="premium-card p-6 mt-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">명예훼손 소송 절차</h2>
         <ol className="space-y-3">
@@ -199,6 +195,12 @@ export default function DefamationPage() {
           ))}
         </ol>
       </div>
+
+      {result !== null && (
+        <div className="mt-6">
+          <ActionInsight calculatorId="defamation" amount={result.mid} />
+        </div>
+      )}
     </CalculatorLayout>
   );
 }

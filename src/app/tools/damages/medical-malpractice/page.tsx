@@ -282,7 +282,9 @@ export default function MedicalMalpracticePage() {
       )}
 
       {result !== null && (
-        <ActionInsight calculatorId="medical-malpractice" amount={result.total} />
+        <div className="mt-6">
+          <ActionInsight calculatorId="medical-malpractice" amount={result.total} />
+        </div>
       )}
     </CalculatorLayout>
   );
