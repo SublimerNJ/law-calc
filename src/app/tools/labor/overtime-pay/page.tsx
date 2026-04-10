@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'overtime-pay')!;
@@ -250,6 +251,7 @@ ${result.overtimePay > 0 ? `\n연장근로 = ${formatNumber(result.hourlyWage)} 
               법적 근거: 근로기준법 제56조(연장·야간 및 휴일 근로) | 연장·야간·휴일 각 가산은 중복 적용 가능 (제56조 제3항) | 연장근로 한도: 1주 12시간 (제53조 제1항)
             </p>
           </div>
+          <ActionInsight calculatorId="overtime-pay" amount={result.total} />
         </div>
       )}
 
