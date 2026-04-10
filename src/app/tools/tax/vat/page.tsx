@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 
 const tool = TOOLS.find(t => t.id === 'vat')!;
 const category = CATEGORIES.find(c => c.id === 'tax')!;
@@ -260,6 +261,13 @@ ${result.isRefund ? '환급세액' : '납부세액'} = 매출세액 - 매입세�
             </p>
           </div>
         </div>
+      )}
+
+      {result && (
+        <ActionInsight
+          calculatorId="vat"
+          amount={result.mode === 'supply' ? Math.abs(result.payableTax!) : result.supplyVat!}
+        />
       )}
     </CalculatorLayout>
   );
