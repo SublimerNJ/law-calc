@@ -66,7 +66,8 @@
   1. 손해배상 4종, 기타 4종 계산기 결과 화면 하단에 ActionInsight 영역이 표시된다
   2. 각 도메인 특성에 맞는 실전 대응 팁이 제공된다
   3. 사용자가 청구서, 안내문 등 관련 템플릿을 확인할 수 있다
-**Plans**: TBD
+**Plans**: 1 plans
+- [ ] 45-01-PLAN.md — 손해배상 4종, 기타 4종 계산기에 ActionInsight UI를 보완하고 전체적인 위치와 여백(mt-6)을 통일합니다.
 **UI hint**: yes
 
 ### Phase 46: 전체 ActionInsight 품질 검증
@@ -88,5 +89,5 @@
 | 42. Family & Labor ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
 | 43. Tax & Realty ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
 | 44. Traffic & Debt ActionInsight 연동 | 1/1 | Complete   | 2026-04-10 |
-| 45. Damages & Misc ActionInsight 연동 | 0/0 | Not started | - |
+| 45. Damages & Misc ActionInsight 연동 | 0/1 | Not started | - |
 | 46. 전체 ActionInsight 품질 검증 | 0/0 | Not started | - |
