@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
-import ActionInsight from '@/components/ui/ActionInsight';
-import { actionData } from '@/lib/action-data';
+import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'acquisition-tax')!;
@@ -310,7 +309,7 @@ export default function AcquisitionTaxPage() {
             </p>
           </div>
         </div>
-        <ActionInsight data={actionData['acquisition-tax']} amount={result.total} />
+        <ActionInsight calculatorId="acquisition-tax" amount={result.total} />
         </>
       )}
     </CalculatorLayout>

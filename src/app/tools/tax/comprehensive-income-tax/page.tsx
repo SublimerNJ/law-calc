@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
+import { ActionInsight } from '@/components/ui/ActionInsight';
+import { actionData } from '@/lib/action-data';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'comprehensive-income-tax')!;
@@ -229,7 +231,8 @@ export default function ComprehensiveIncomeTaxPage() {
       </div>
 
       {result && (
-        <div className="premium-card p-6">
+        <>
+        <div className="premium-card p-6 mb-8">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.taxBase === 0 && result.totalDeduction >= result.totalIncome && (
@@ -289,6 +292,8 @@ export default function ComprehensiveIncomeTaxPage() {
             </p>
           </div>
         </div>
+        <ActionInsight calculatorId="comprehensive-income-tax" amount={result.totalTax} />
+        </>
       )}
 
       <div className="premium-card p-6 mt-4">
