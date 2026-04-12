@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { CATEGORIES } from '@/lib/tools-data';
+import { CATEGORIES, TOOLS } from '@/lib/tools-data';
 import Logo from '@/components/ui/Logo';
 
 export default function Footer() {
+  const totalTools = TOOLS.length;
+
   return (
     <footer className="relative bg-slate-50 border-t border-slate-200 mt-24 overflow-hidden">
       {/* Decorative gradient accent line */}
@@ -17,7 +19,7 @@ export default function Footer() {
               <Logo size="sm" />
             </div>
             <p className="text-sm text-slate-600 leading-relaxed font-light">
-              51개 법률 계산기를 무료로 이용하세요. 대한민국 법률 기준으로 정확하게 계산해드립니다.
+              {totalTools}개 법률 계산기를 무료로 이용하세요. 대한민국 법률 기준으로 정확하게 계산해드립니다.
             </p>
           </div>
 
