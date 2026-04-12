@@ -72,7 +72,7 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="mt-4 text-sm text-slate-600">
-            총 <strong>51개의 법률 계산기</strong>가 있으며, 별도의 회원가입이나 개인정보 입력 없이 즉시 이용 가능합니다.
+            총 <strong>55개의 법률 계산기</strong>가 있으며, 별도의 회원가입이나 개인정보 입력 없이 즉시 이용 가능합니다.
           </p>
         </section>
 

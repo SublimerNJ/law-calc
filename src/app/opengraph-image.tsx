@@ -45,7 +45,7 @@ export default function Image() {
           law-calc.kr
         </div>
         <div style={{ fontSize: 20, color: '#94a3b8' }}>
-          대한민국 법률 기준 51개 무료 계산기
+          대한민국 법률 기준 55개 무료 계산기
         </div>
       </div>
     ),

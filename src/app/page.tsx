@@ -13,7 +13,7 @@ export default function Home() {
     '@type': 'WebSite',
     name: 'law-calc.kr 법률 계산기',
     url: 'https://law-calc.kr',
-    description: '대한민국 법률 기준 51개 무료 법률 계산기',
+    description: `대한민국 법률 기준 ${totalTools}개 무료 법률 계산기`,
     potentialAction: {
       '@type': 'SearchAction',
       target: 'https://law-calc.kr/?q={search_term_string}',
