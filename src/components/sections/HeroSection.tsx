@@ -45,7 +45,7 @@ export default function HeroSection({ totalTools }: HeroSectionProps) {
         </p>
 
         {/* Category pills */}
-        <div className="flex flex-wrap justify-center gap-2.5">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-3xl mx-auto">
           {CATEGORIES.map((cat) => {
             const count = getToolsByCategory(cat.id).length;
             return (

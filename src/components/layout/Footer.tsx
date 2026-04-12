@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="md:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {CATEGORIES.map((cat) => (
               <div key={cat.id} className="group">
-                <h3 className="text-sm font-medium text-slate-900 mb-4 flex items-center gap-2">
+                <h3 className="text-base font-medium text-slate-900 mb-4 flex items-center gap-2">
                   <span className="opacity-70 group-hover:opacity-100 transition-opacity">{cat.icon}</span>
                   <span className="tracking-wide">{cat.name}</span>
                 </h3>

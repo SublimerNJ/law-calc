@@ -86,17 +86,17 @@ export default function Home() {
             <Link href="/guides" className="text-sm font-medium text-blue-600 hover:text-blue-700">전체 보기 &rarr;</Link>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/guides/how-to-calculate-attorney-fee" className="block p-6 rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all">
+            <Link href="/guides/how-to-calculate-attorney-fee" className="block p-6 rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-blue-300 hover:shadow-md transition-all">
               <span className="text-xs font-semibold text-blue-600 mb-2 block">소송/법원</span>
               <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">변호사보수 소송비용 산입의 원칙과 실무적 이해</h3>
               <p className="text-sm text-slate-600 line-clamp-3">소송에서 이겼을 때 상대방에게 변호사 비용을 얼마나 돌려받을 수 있을까요? 대법원 규칙에 따른 산입 한도액 계산법을 알아봅니다.</p>
             </Link>
-            <Link href="/guides/understanding-severance-pay" className="block p-6 rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all">
+            <Link href="/guides/understanding-severance-pay" className="block p-6 rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-blue-300 hover:shadow-md transition-all">
               <span className="text-xs font-semibold text-amber-500 mb-2 block">노동/근로</span>
               <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">법정 퇴직금 산정의 핵심: '평균임금'과 '계속근로기간'</h3>
               <p className="text-sm text-slate-600 line-clamp-3">퇴직금은 어떻게 계산될까요? 3개월 평균임금의 중요성과 통상임금과의 비교, 그리고 소멸시효에 대해 상세히 정리했습니다.</p>
             </Link>
-            <Link href="/guides/deposit-return-dispute" className="block p-6 rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all">
+            <Link href="/guides/deposit-return-dispute" className="block p-6 rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-blue-300 hover:shadow-md transition-all">
               <span className="text-xs font-semibold text-purple-500 mb-2 block">부동산</span>
               <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">전세금 미반환 대처법: 내용증명부터 임차권등기명령까지</h3>
               <p className="text-sm text-slate-600 line-clamp-3">역전세난으로 보증금을 돌려받지 못하고 있다면 이사 가기 전 반드시 확인해야 할 법적 절차와 대응 가이드를 제공합니다.</p>
