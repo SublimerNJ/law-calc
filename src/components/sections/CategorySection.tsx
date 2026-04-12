@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { Category } from '@/lib/tools-data';
 
@@ -59,70 +58,13 @@ const categoryContexts: Record<string, { text: string, linkHref?: string, linkTe
 };
 
 export default function CategorySection({ category, children, toolCount }: CategorySectionProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
-
   const contextData = categoryContexts[category.id];
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setIsReducedMotion(prefersReducedMotion);
-
-    if (prefersReducedMotion) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
       id={category.id}
       className="scroll-mt-24"
-      style={{
-        opacity: isVisible || isReducedMotion ? 1 : 0,
-        transform: isVisible || isReducedMotion ? 'translate3d(0, 0, 0)' : 'translate3d(0, 30px, 0)',
-        transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-      }}
     >
-      {!isReducedMotion && (
-        <style dangerouslySetInnerHTML={{__html: `
-          #${category.id} .stagger-container > * > * {
-            opacity: 0;
-            transform: translate3d(0, 20px, 0);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-          }
-          ${isVisible ? `
-            #${category.id} .stagger-container > * > * {
-              opacity: 1;
-              transform: translate3d(0, 0, 0);
-            }
-            ${Array.from({ length: 30 }).map((_, i) => `
-              #${category.id} .stagger-container > * > *:nth-child(${i + 1}) {
-                transition-delay: ${0.1 + i * 0.05}s;
-              }
-            `).join('')}
-          ` : ''}
-        `}} />
-      )}
-
       {/* Category header */}
       <div className="flex items-center gap-3 mb-4">
         <div
