@@ -41,7 +41,7 @@ export default function HeroSection({ totalTools }: HeroSectionProps) {
 
         {/* Subtitle */}
         <p className="text-base sm:text-lg text-slate-500 font-normal max-w-2xl mx-auto mb-12 mt-6 leading-relaxed tracking-wide">
-          변호사 비용부터 세금까지, 70개 법률 계산기를 무료로 이용하세요
+          변호사 비용부터 세금까지, {totalTools}개 법률 계산기를 무료로 이용하세요
         </p>
 
         {/* Category pills */}
