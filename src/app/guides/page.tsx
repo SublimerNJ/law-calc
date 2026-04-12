@@ -99,6 +99,18 @@ export default function GuidesPage() {
         </p>
       </div>
 
+      <section className="mb-10 bg-blue-50 border border-blue-100 rounded-2xl p-6">
+        <h2 className="text-lg font-bold text-slate-900 mb-3">빠른 활용 흐름</h2>
+        <ol className="list-decimal list-inside space-y-2 text-sm text-slate-700">
+          <li>현재 상황과 가까운 가이드를 먼저 읽어 핵심 변수(기간, 금액, 요건)를 파악하세요.</li>
+          <li>관련 계산기로 이동해 1차 추정값을 만든 뒤, 증빙 기준으로 다시 점검하세요.</li>
+          <li>실제 신고·청구·소송 전에는 최신 법령 개정 여부와 전문가 검토 필요성을 확인하세요.</li>
+        </ol>
+        <p className="text-xs text-slate-500 mt-3">
+          안내 내용은 일반 정보이며 개별 사건의 결론을 보장하지 않습니다. 사안별 사실관계에 따라 결과는 달라질 수 있습니다.
+        </p>
+      </section>
+
       <div className="grid gap-6">
         {guides.map(guide => (
           <Link 
@@ -123,6 +135,16 @@ export default function GuidesPage() {
           </Link>
         ))}
       </div>
+
+      <section className="mt-10 pt-8 border-t border-slate-200">
+        <h2 className="text-lg font-bold text-slate-900 mb-3">함께 보면 좋은 페이지</h2>
+        <div className="flex flex-wrap gap-2 text-sm">
+          <Link href="/editorial-policy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">편집/검증 정책</Link>
+          <Link href="/about" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">서비스 소개</Link>
+          <Link href="/terms" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">이용약관</Link>
+          <Link href="/privacy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">개인정보처리방침</Link>
+        </div>
+      </section>
     </main>
   );
 }

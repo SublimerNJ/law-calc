@@ -86,6 +86,15 @@ export default function AboutPage() {
             📧 sublimernj@gmail.com
           </p>
         </section>
+        <section className="bg-blue-50 border border-blue-100 p-6 rounded-2xl">
+          <h2 className="text-lg font-bold text-slate-900 mb-3">서비스 활용 체크리스트</h2>
+          <ul className="list-disc list-inside space-y-2 text-sm text-slate-700">
+            <li>먼저 관련 계산기로 1차 추정값을 만든 뒤, 근거 문서(계약서·명세서·고지서)를 대조하세요.</li>
+            <li>가이드 문서에서 절차와 리스크를 확인하고, 기한·시효가 있는 사안은 일정부터 관리하세요.</li>
+            <li>실제 신고·청구·소송 전에는 전문가 검토를 통해 사건별 사실관계를 점검하세요.</li>
+          </ul>
+        </section>
+
       </div>
     </main>
   );

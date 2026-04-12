@@ -75,6 +75,18 @@ export default function EditorialPolicyPage() {
             ← 사이트 소개 페이지로 돌아가기
           </Link>
         </div>
+        <section>
+          <h2 className="text-xl font-bold text-slate-900 mb-4">원칙 5: 표현 안전장치 (Legal Safety Language)</h2>
+          <p className="mb-3">
+            한국 법률 절차는 사실관계와 관할 기관 판단에 따라 달라질 수 있으므로, 본 사이트는 특정 결과를 단정적으로 보장하는 표현을 지양합니다.
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-slate-600 bg-slate-50 p-5 rounded-lg border border-slate-100">
+            <li>"반드시", "무조건", "확정"과 같은 단정 표현 최소화</li>
+            <li>"사안별로 달라질 수 있음", "최신 기준 확인 필요" 문구 병행</li>
+            <li>실행 전 전문가 확인 권고를 기본 정책으로 유지</li>
+          </ul>
+        </section>
+
       </div>
     </main>
   );

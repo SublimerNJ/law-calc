@@ -74,6 +74,19 @@ export default function PrivacyPage() {
             <p className="text-slate-300 font-mono">이메일: sublimernj@gmail.com</p>
           </div>
         </section>
+        <section>
+          <h2 className="text-xl font-bold text-slate-900 mb-4">제7조 (브라우저 기반 계산 데이터에 대한 안내)</h2>
+          <p className="mb-3">
+            계산기 입력값은 원칙적으로 브라우저 내에서 처리되며, 사용자가 페이지를 벗어나면 재사용되지 않을 수 있습니다.
+            중요 수치는 별도 문서에 저장해 두는 것을 권장합니다.
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-slate-600 bg-slate-50 p-6 rounded-xl border border-slate-100">
+            <li>민감한 주민번호·계좌번호 등 불필요한 개인정보는 입력하지 마세요.</li>
+            <li>공용 기기 사용 후에는 브라우저 기록/자동완성 정보를 점검하세요.</li>
+            <li>광고 개인화 설정은 Google My Ad Center에서 언제든 변경할 수 있습니다.</li>
+          </ul>
+        </section>
+
       </div>
     </main>
   );

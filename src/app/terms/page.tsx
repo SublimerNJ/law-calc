@@ -81,6 +81,18 @@ export default function TermsPage() {
             민사소송법에 따른 관할 법원을 제1심 전속적 합의 관할 법원으로 합니다.
           </p>
         </section>
+        <section>
+          <h2 className="text-xl font-bold text-slate-900 mb-4">제7조 (실무 이용 가이드)</h2>
+          <p className="mb-3">
+            이용자는 서비스 결과를 최종 법적 결론이 아닌 참고 자료로 사용해야 하며, 아래 순서로 활용하는 것을 권장합니다.
+          </p>
+          <ol className="list-decimal list-inside space-y-2 text-slate-600 bg-slate-50 p-6 rounded-xl border border-slate-100">
+            <li>입력값의 출처(계약서·고지서·명세서)를 먼저 확인</li>
+            <li>계산 결과를 내부 의사결정용 1차 수치로 사용</li>
+            <li>실제 제출 문서/절차 진행 전 전문가 검토 및 최신 규정 확인</li>
+          </ol>
+        </section>
+
       </div>
     </main>
   );

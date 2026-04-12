@@ -9,7 +9,71 @@ interface CalculatorLayoutProps {
   children: React.ReactNode;
 }
 
+
 export default function CalculatorLayout({ tool, category, children }: CalculatorLayoutProps) {
+  const categoryNextSteps: Record<string, string[]> = {
+    court: [
+      '입력값(청구금액, 심급, 당사자 수)을 판결문/소장 기준으로 다시 대조해 보세요.',
+      '결과를 기준으로 소송비용·절차 선택(소송, 지급명령, 조정)을 비교 검토해 보세요.',
+      '실제 진행 전에는 사건 관할 법원 서식과 최신 규칙 개정 여부를 확인하세요.',
+    ],
+    family: [
+      '혼인기간, 소득, 부양관계, 특유재산 등 핵심 사실관계를 문서로 정리해 두세요.',
+      '계산 결과를 협의안의 출발점으로 사용하되, 조정·소송 단계에서 달라질 수 있음을 전제로 보세요.',
+      '자녀·상속 관련 사건은 일정과 기한을 먼저 확인한 뒤 전문가 검토를 받는 것이 안전합니다.',
+    ],
+    labor: [
+      '급여명세서, 근로계약서, 출퇴근/근로시간 기록을 먼저 모아 계산 근거를 명확히 하세요.',
+      '결과값은 1차 점검용으로 사용하고, 실제 청구·신청 금액은 증빙 범위에 맞춰 조정하세요.',
+      '노동청 진정·위원회 신청 등 절차는 사안별 요건이 달라 사전 확인이 필요합니다.',
+    ],
+    tax: [
+      '취득·보유·양도 시점과 금액, 공제 항목을 최신 신고 기준으로 다시 검토하세요.',
+      '결과를 신고 전 시뮬레이션으로 활용하고, 실제 신고서는 홈택스 기준으로 대조하세요.',
+      '세법은 개정 주기가 빨라 신고 연도 기준 고시·예규를 확인하는 것이 중요합니다.',
+    ],
+    realty: [
+      '계약서, 등기사항, 보증금·월세·대출조건을 최신 값으로 맞춰 입력하세요.',
+      '결과를 협상/의사결정 참고치로 사용하고, 계약 조항은 별도로 점검하세요.',
+      '지역·주택유형·규제 상태에 따라 실제 적용 기준이 달라질 수 있습니다.',
+    ],
+    traffic: [
+      '사고기록, 진단서, 보험사 자료 등 사실관계 자료를 먼저 정리하세요.',
+      '계산값은 협상 범위의 참고치이며, 과실비율/처분 수위는 별도 판단될 수 있습니다.',
+      '형사·행정 절차는 사건별로 달라질 수 있어 관할 기관 확인이 필요합니다.',
+    ],
+    debt: [
+      '원금, 이율, 기산일, 변제 내역을 기준 문서(계약서/송금내역)로 맞춰 입력하세요.',
+      '지연손해금·이자 계산은 기간 구분이 핵심이므로 날짜를 우선 점검하세요.',
+      '청구 전 소멸시효 및 절차(지급명령/소송) 일정을 함께 검토하세요.',
+    ],
+    damages: [
+      '치료비·휴업손해·후유장해 등 손해 항목별 근거를 분리해서 정리하세요.',
+      '결과값은 합의/청구 준비 단계의 참조치로 보고 증빙 중심으로 재검토하세요.',
+      '과실상계·인과관계 판단에 따라 실제 인정액은 달라질 수 있습니다.',
+    ],
+    misc: [
+      '해당 절차의 기한·요건·필수서류를 먼저 체크리스트로 정리해 두세요.',
+      '계산 결과/안내 문구는 초기 판단용으로 사용하고 공식 서식과 대조하세요.',
+      '권리 보전이 필요한 사안은 시효·기한을 우선 관리하세요.',
+    ],
+  };
+
+  const categoryPitfalls: Record<string, string[]> = {
+    court: ['소가를 실제 청구 구조와 다르게 입력해 비용이 과대·과소 추정되는 경우', '심급별(1심/항소심/상고심) 기준을 혼용하는 경우'],
+    family: ['위자료, 재산분할, 양육비를 같은 성격의 금액으로 오해하는 경우', '특유재산/공동재산 구분을 누락하는 경우'],
+    labor: ['통상임금과 평균임금을 구분하지 않고 계산하는 경우', '근무기록 없이 수당을 단정하는 경우'],
+    tax: ['신고 연도 기준 대신 과거 세율을 그대로 사용하는 경우', '공제 요건 충족 여부 확인 없이 금액만 반영하는 경우'],
+    realty: ['보증금·월세 환산 기준을 임의로 적용하는 경우', '규제지역 여부를 최신 상태로 반영하지 않는 경우'],
+    traffic: ['초기 과실비율을 확정값으로 오해하는 경우', '치료 종결 전 최종 합의로 가정하는 경우'],
+    debt: ['기산일(지연 시작일) 설정 오류로 이자가 크게 달라지는 경우', '약정이율과 법정이율 적용 구간을 혼동하는 경우'],
+    damages: ['손해 항목을 중복 합산하는 경우', '장해·휴업 관련 자료 없이 결과를 확정적으로 해석하는 경우'],
+    misc: ['시효/기한 계산에서 기준일을 잘못 잡는 경우', '안내 문구를 개별 사건의 결론으로 단정하는 경우'],
+  };
+
+  const nextSteps = categoryNextSteps[category.id] ?? categoryNextSteps.misc;
+  const pitfalls = categoryPitfalls[category.id] ?? categoryPitfalls.misc;
+
   // Generate Schema.org JSON-LD for SoftwareApplication & FAQ to improve E-E-A-T and SEO
   const schemaLd = {
     '@context': 'https://schema.org',
@@ -154,6 +218,41 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
                 </div>
               </section>
             )}
+
+            <section className="mt-10 grid gap-6">
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h2 className="text-xl font-bold text-slate-900 mb-4">결과 해석 가이드</h2>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  이 페이지의 계산 결과는 <strong>의사결정 보조용 1차 추정치</strong>입니다. 실제 금액, 책임 범위, 절차 결과는
+                  사실관계, 증빙, 관할 기관 또는 법원의 판단에 따라 달라질 수 있습니다.
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-sm text-slate-700">
+                  {pitfalls.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
+                <h2 className="text-xl font-bold text-slate-900 mb-4">실무 다음 단계 체크리스트</h2>
+                <ol className="list-decimal list-inside space-y-2 text-sm text-slate-700">
+                  {nextSteps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h2 className="text-lg font-bold text-slate-900 mb-3">관련 읽을거리 및 정책</h2>
+                <div className="flex flex-wrap gap-2 text-sm">
+                  <Link href="/guides" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">법률 가이드 모아보기</Link>
+                  <Link href="/editorial-policy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">편집/검증 정책</Link>
+                  <Link href="/about" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">서비스 소개</Link>
+                  <Link href="/terms" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">이용약관</Link>
+                  <Link href="/privacy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">개인정보처리방침</Link>
+                </div>
+              </div>
+            </section>
           </div>
 
           <div className="lg:col-span-1 space-y-6">
