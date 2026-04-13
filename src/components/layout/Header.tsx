@@ -10,7 +10,7 @@ export default function Header() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-white border-b border-slate-200">
+    <header className="fixed top-0 z-50 w-full bg-[rgba(15,15,35,0.8)] backdrop-blur-md border-b border-[var(--color-border-subtle)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -24,10 +24,10 @@ export default function Header() {
               onMouseEnter={() => setIsCategoryOpen(true)}
               onMouseLeave={() => setIsCategoryOpen(false)}
             >
-              <button aria-label="Action button" className="flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2">
+              <button aria-label="Action button" className="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2">
                 카테고리
                 <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180 text-[#1e3a8a]' : ''}`}
+                  className={`w-4 h-4 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180 text-blue-400' : ''}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -38,12 +38,12 @@ export default function Header() {
               </button>
 
               {isCategoryOpen && (
-                <div className="absolute top-full right-0 w-72 bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden py-2 glassmorphism glass-panel">
+                <div className="absolute top-full right-0 w-72 bg-[var(--color-surface-50)] border border-[var(--color-border-subtle)] rounded-2xl shadow-xl overflow-hidden py-2 glassmorphism glass-panel">
                   {CATEGORIES.map((cat) => (
                     <Link aria-label="Navigation link"
                       key={cat.id}
                       href={`/#${cat.id}`}
-                      className="flex items-center gap-3 px-5 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#1e3a8a] transition-all duration-300"
+                      className="flex items-center gap-3 px-5 py-3 text-sm text-slate-300 hover:bg-[var(--color-surface-100)] hover:text-blue-400 transition-all duration-300"
                     >
                       <span className="text-lg opacity-80">{cat.icon}</span>
                       <div>
@@ -58,13 +58,13 @@ export default function Header() {
 
             <Link aria-label="Navigation link"
               href="/"
-              className="text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300"
+              className="text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors duration-300"
             >
               전체 도구
             </Link>
             <Link aria-label="Navigation link"
               href="/guides"
-              className="text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300"
+              className="text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors duration-300"
             >
               법률 가이드
             </Link>
@@ -74,7 +74,7 @@ export default function Header() {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 transition-all glassmorphism glass-panel"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-surface-50)] hover:bg-[var(--color-surface-100)] border border-[var(--color-border-subtle)] text-slate-300 transition-all glassmorphism glass-panel"
               aria-label="메뉴"
             >
               {isMenuOpen ? (
@@ -92,17 +92,17 @@ export default function Header() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-slate-200 py-4">
+          <div className="md:hidden border-t border-[var(--color-border-subtle)] py-4">
             <div className="grid grid-cols-2 gap-3 pb-4">
               {CATEGORIES.map((cat) => (
                 <Link aria-label="Navigation link"
                   key={cat.id}
                   href={`/#${cat.id}`}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-all glassmorphism glass-panel"
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-[var(--color-surface-50)] hover:bg-[var(--color-surface-100)] border border-[var(--color-border-subtle)] transition-all glassmorphism glass-panel"
                 >
                   <span className="text-2xl">{cat.icon}</span>
-                  <span className="text-xs font-medium text-slate-700">{cat.name}</span>
+                  <span className="text-xs font-medium text-slate-300">{cat.name}</span>
                 </Link>
               ))}
             </div>
