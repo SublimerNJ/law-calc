@@ -26,7 +26,7 @@ export default function DepositReturnGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-purple-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-purple-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">부동산</span>
       </div>
@@ -75,10 +75,10 @@ export default function DepositReturnGuide() {
             임차권등기를 마친 후 이사를 나간 다음 날부터는 막대한 지연이자를 임대인에게 청구할 수 있습니다. 지연손해금이 얼마나 되는지 미리 계산해보세요.
           </p>
           <div className="flex gap-3">
-            <Link href="/tools/realty/deposit-return" className="inline-block bg-purple-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/realty/deposit-return" className="inline-block bg-purple-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
               임대차 보증금 반환 계산기
             </Link>
-            <Link href="/tools/misc/certified-letter" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/misc/certified-letter" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
               내용증명 작성 도우미
             </Link>
           </div>

@@ -26,7 +26,7 @@ export default function MinimumWageGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-amber-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-amber-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">노동/근로</span>
       </div>
@@ -61,7 +61,7 @@ export default function MinimumWageGuide() {
           <p className="mb-4 text-sm text-slate-700">
             기본급과 수당을 분리하여 입력하면, 복잡한 산입 범위 규정을 적용하여 최저임금 위반 여부와 미지급 차액을 정확하게 계산해 드립니다.
           </p>
-          <Link href="/tools/labor/minimum-wage-check" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors">
+          <Link aria-label="Navigation link" href="/tools/labor/minimum-wage-check" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
             최저임금 위반 계산기 가기
           </Link>
         </div>

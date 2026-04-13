@@ -106,7 +106,7 @@ export default function MedicalMalpracticePage() {
             value={treatmentCost ? parseInt(treatmentCost).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setTreatmentCost)}
             placeholder="예: 5,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -118,7 +118,7 @@ export default function MedicalMalpracticePage() {
             value={futureTreatmentCost ? parseInt(futureTreatmentCost).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setFutureTreatmentCost)}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -130,7 +130,7 @@ export default function MedicalMalpracticePage() {
             value={lostIncome ? parseInt(lostIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setLostIncome)}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -142,7 +142,7 @@ export default function MedicalMalpracticePage() {
             value={doctorFault}
             onChange={(e) => setDoctorFault(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="0 ~ 100"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -168,7 +168,7 @@ export default function MedicalMalpracticePage() {
                 value={disabilityRate}
                 onChange={(e) => setDisabilityRate(e.target.value.replace(/[^0-9.]/g, ''))}
                 placeholder="0 ~ 100"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div>
@@ -176,7 +176,7 @@ export default function MedicalMalpracticePage() {
               <select
                 value={consolationPreset}
                 onChange={(e) => setConsolationPreset(e.target.value as ConsolationPreset)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               >
                 <option value="death">사망 (1억원)</option>
                 <option value="severe">중상해 (3,000만원)</option>
@@ -191,7 +191,7 @@ export default function MedicalMalpracticePage() {
                 value={customConsolation ? parseInt(customConsolation).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setCustomConsolation)}
                 placeholder="위자료 기준액 입력"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             )}
           </div>
@@ -200,7 +200,7 @@ export default function MedicalMalpracticePage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -244,7 +244,7 @@ export default function MedicalMalpracticePage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`(치료비 + 향후치료비 + 일실수입) × 과실비율 = 재산상 손해
 위자료기준 × 후유장해율 × 과실비율 = 후유장해 위자료
 합계 = 재산상 손해 + 위자료`}

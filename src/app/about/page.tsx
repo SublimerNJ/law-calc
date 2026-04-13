@@ -37,7 +37,7 @@ export default function AboutPage() {
           <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
             <span className="text-blue-600">02.</span> 전문성 및 데이터 검증 체계 (E-E-A-T)
           </h2>
-          <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-4">
+          <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-4 glassmorphism glass-panel">
             <h3 className="font-semibold text-slate-900 mb-2">법률 데이터 분석팀의 엄격한 검토</h3>
             <p className="text-sm">
               모든 계산 로직과 법률 가이드는 <strong>law-calc.kr 법률 데이터 분석팀</strong>에 의해 기획, 검토, 지속적으로 유지보수됩니다. 
@@ -48,7 +48,7 @@ export default function AboutPage() {
           <p className="text-sm text-slate-600">
             당사는 YMYL(Your Money or Your Life) 정보의 중대성을 인지하고 있으며, 
             모든 툴 하단에 적용된 법령 조항 및 계산식을 명확히 공개하여 정보의 신뢰성을 증명합니다. 
-            더 자세한 내용은 <Link href="/editorial-policy" className="text-blue-600 hover:underline">편집 정책(Editorial Policy)</Link>을 참고해 주십시오.
+            더 자세한 내용은 <Link aria-label="Navigation link" href="/editorial-policy" className="text-blue-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">편집 정책(Editorial Policy)</Link>을 참고해 주십시오.
           </p>
         </section>
 
@@ -58,7 +58,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {CATEGORIES.map(cat => (
-              <Link
+              <Link aria-label="Navigation link"
                 key={cat.id}
                 href={`/#${cat.id}`}
                 className="flex items-center gap-2 p-3 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all"
@@ -76,7 +76,7 @@ export default function AboutPage() {
           </p>
         </section>
 
-        <section className="bg-slate-900 text-white p-8 rounded-2xl">
+        <section className="bg-slate-900 text-white p-8 rounded-2xl glassmorphism glass-panel">
           <h2 className="text-lg font-bold mb-3">연락처 및 제휴 문의</h2>
           <p className="text-slate-300 mb-4 text-sm">
             계산 로직 오류 신고, 최신 판례 반영 요청, 제휴 및 기타 문의 사항이 있으시면 아래 이메일로 연락해 주시기 바랍니다. 

@@ -103,7 +103,7 @@ export default function ParentalLeavePage() {
             value={wage ? parseInt(wage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -112,7 +112,7 @@ export default function ParentalLeavePage() {
           <select
             value={months}
             onChange={e => setMonths(Number(e.target.value))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
               <option key={m} value={m}>{m}개월</option>
@@ -144,7 +144,7 @@ export default function ParentalLeavePage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
         >
@@ -193,7 +193,7 @@ export default function ParentalLeavePage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`1~3개월: 월 통상임금 × 80% (상한 250만원, 하한 70만원)
 4~6개월: 월 통상임금 × 80% (상한 200만원, 하한 70만원)
 7개월~: 월 통상임금 × 80% (상한 160만원, 하한 70만원)

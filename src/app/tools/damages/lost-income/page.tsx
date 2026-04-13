@@ -126,7 +126,7 @@ export default function LostIncomePage() {
             value={age}
             onChange={handleNumberChange(setAge)}
             placeholder="예: 40"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -138,7 +138,7 @@ export default function LostIncomePage() {
             value={monthlyIncome ? parseInt(monthlyIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyIncome)}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyIncome && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(monthlyIncome).toLocaleString('ko-KR')}원</p>
@@ -150,7 +150,7 @@ export default function LostIncomePage() {
           <select
             value={retirementOption}
             onChange={(e) => setRetirementOption(e.target.value as RetirementOption)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             <option value="65">65세 (대법원 전원합의체 판결 기준, 2018다248909)</option>
             <option value="60">60세 (구 기준)</option>
@@ -163,7 +163,7 @@ export default function LostIncomePage() {
               value={customRetirementAge}
               onChange={handleNumberChange(setCustomRetirementAge)}
               placeholder="가동연한 나이 입력"
-              className="w-full mt-2 bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full mt-2 bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           )}
         </div>
@@ -176,7 +176,7 @@ export default function LostIncomePage() {
             value={treatmentMonths}
             onChange={handleNumberChange(setTreatmentMonths)}
             placeholder="예: 6"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -188,7 +188,7 @@ export default function LostIncomePage() {
             value={disabilityRate}
             onChange={(e) => setDisabilityRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 100"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -200,13 +200,13 @@ export default function LostIncomePage() {
             value={faultRate}
             onChange={(e) => setFaultRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -263,7 +263,7 @@ export default function LostIncomePage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`월소득 × (1-생활비공제율1/3) × 노동능력상실률 × 호프만계수 = 일실수입
 (호프만계수 = Σ 1/(1+0.05/12×k), k=1~잔여개월)
 총액 × (1 - 과실비율) = 과실상계 후 일실수입`}

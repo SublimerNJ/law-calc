@@ -305,7 +305,7 @@ export default function YearEndTaxPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-xl font-semibold text-slate-900 transition-all"
           style={{ backgroundColor: category.color }}
@@ -399,7 +399,7 @@ export default function YearEndTaxPage() {
 
             <div className="mb-4">
               <p className="text-sm text-slate-600 mb-2">계산식</p>
-              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
                 {`총급여액            ${formatNumber(result.grossPay)}원
 (-) 근로소득공제    ${formatNumber(result.earnedDeduction)}원
 = 근로소득금액      ${formatNumber(result.earnedIncome)}원
@@ -422,7 +422,7 @@ export default function YearEndTaxPage() {
               </pre>
             </div>
 
-            <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
+            <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500 glassmorphism glass-panel">
               <p className="font-semibold text-slate-600 mb-1">법적 근거</p>
               <p>소득세법 제47조(근로소득공제), 제50조(기본공제), 제55조(세율), 제59조(근로소득세액공제), 제59조의2(자녀세액공제), 제59조의4(의료비·교육비·월세세액공제), 제137조~제140조(연말정산). 2026년 기준. 참고용으로만 활용하시기 바랍니다.</p>
             </div>

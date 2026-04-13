@@ -134,7 +134,7 @@ export default function DrunkDrivingPage() {
             value={bac}
             onChange={(e) => setBac(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 0.050"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">0.001 ~ 0.400 범위로 입력하세요</p>
         </div>
@@ -208,7 +208,7 @@ export default function DrunkDrivingPage() {
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}

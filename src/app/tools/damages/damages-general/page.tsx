@@ -82,7 +82,7 @@ export default function DamagesGeneralPage() {
             value={propertyDamage ? parseInt(propertyDamage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setPropertyDamage)}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {propertyDamage && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(propertyDamage).toLocaleString('ko-KR')}원</p>
@@ -97,7 +97,7 @@ export default function DamagesGeneralPage() {
             value={faultRatio}
             onChange={(e) => setFaultRatio(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="0 ~ 100"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -119,7 +119,7 @@ export default function DamagesGeneralPage() {
             <select
               value={consolationType}
               onChange={(e) => setConsolationType(e.target.value as 'death' | 'severe' | 'custom')}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none mb-2"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none mb-2 glassmorphism glass-panel"
             >
               <option value="death">사망 (1억원)</option>
               <option value="severe">중상해 (3,000만원)</option>
@@ -132,7 +132,7 @@ export default function DamagesGeneralPage() {
                 value={customConsolation ? parseInt(customConsolation).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setCustomConsolation)}
                 placeholder="위자료 기준액 입력"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             )}
           </div>
@@ -141,7 +141,7 @@ export default function DamagesGeneralPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -185,7 +185,7 @@ export default function DamagesGeneralPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
 {`재산손해 = ${formatNumber(parseInt(propertyDamage) || 0)} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.adjustedProperty)}원${includeConsolation ? `\n위자료 = ${formatNumber(getConsolationBase())} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.consolation)}원` : ''}
 총 배상액 = ${formatNumber(result.adjustedProperty)}${includeConsolation ? ` + ${formatNumber(result.consolation)}` : ''} = ${formatNumber(result.total)}원`}
             </pre>

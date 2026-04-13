@@ -12,7 +12,7 @@ export default function Card({ children, className = '', href }: CardProps) {
 
   if (href) {
     return (
-      <Link href={href} className={`block ${baseClasses} group cursor-pointer`}>
+      <Link aria-label="Navigation link" href={href} className={`block ${baseClasses} group cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]`}>
         {children}
       </Link>
     );

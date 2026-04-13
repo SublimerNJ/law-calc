@@ -134,7 +134,7 @@ export default function BailPage() {
           <select
             value={crimeId}
             onChange={e => setCrimeId(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           >
             {CRIME_TYPES.map(c => (
               <option key={c.id} value={c.id}>{c.name}</option>
@@ -150,7 +150,7 @@ export default function BailPage() {
             value={assets ? parseInt(assets).toLocaleString('ko-KR') : ''}
             onChange={handleAssetsChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">재산이 없거나 불명확한 경우 비워두면 죄종 기준값으로 계산합니다.</p>
         </div>
@@ -224,7 +224,7 @@ export default function BailPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -245,7 +245,7 @@ export default function BailPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-4 space-y-2">
+            <div className="bg-white rounded-lg p-4 space-y-2 glassmorphism glass-panel">
               <p className="text-sm text-slate-600 font-semibold mb-2">산정 근거</p>
               <div className="grid grid-cols-2 gap-2 text-sm">
                 <span className="text-slate-600">기준 보석금 (죄종 중간값)</span>
@@ -270,7 +270,7 @@ export default function BailPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`기본보석금(죄종 중간값) vs 재산기준값 → 높은 값 선택
 × 전과 가중배율 × 도주위험 배율 × 증거인멸 배율
 = 예상 보석금 (실무상 참고 상한 5억원 — 법정 상한 없음)`}

@@ -119,7 +119,7 @@ export default function RentTaxCreditPage() {
                 type="checkbox"
                 checked={isHomeless}
                 onChange={e => setIsHomeless(e.target.checked)}
-                className="w-4 h-4 rounded border-gray-600 text-emerald-500 focus:ring-emerald-500 bg-surface-50"
+                className="w-4 h-4 rounded border-gray-600 text-emerald-500 focus:ring-emerald-500 bg-surface-50 glassmorphism glass-panel"
               />
               <span className="text-sm text-slate-600">무주택 세대주입니다</span>
             </label>
@@ -128,7 +128,7 @@ export default function RentTaxCreditPage() {
                 type="checkbox"
                 checked={exceedsMarketValue}
                 onChange={e => setExceedsMarketValue(e.target.checked)}
-                className="w-4 h-4 rounded border-gray-600 text-red-500 focus:ring-red-500 bg-surface-50"
+                className="w-4 h-4 rounded border-gray-600 text-red-500 focus:ring-red-500 bg-surface-50 glassmorphism glass-panel"
               />
               <span className="text-sm text-slate-600">주택 기준시가 4억원 초과</span>
             </label>
@@ -137,7 +137,7 @@ export default function RentTaxCreditPage() {
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-xl font-semibold text-slate-900 transition-all"
           style={{ backgroundColor: category.color }}
@@ -192,9 +192,9 @@ export default function RentTaxCreditPage() {
               </div>
             )}
 
-            <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
+            <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500 glassmorphism glass-panel">
               <p className="font-semibold text-slate-600 mb-1">계산식</p>
-              <pre className="font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+              <pre className="font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`min(월세 × 12, 1,000만원) × 공제율 = 세액공제액
 (총급여 5,500만원 이하: 17%, 5,500만원 초과~8,000만원 이하: 15%)`}
               </pre>

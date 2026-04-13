@@ -104,7 +104,7 @@ export default function UnfairDismissalPage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyWage)}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -112,7 +112,7 @@ export default function UnfairDismissalPage() {
         <div className="mb-4">
           <label className="block text-sm text-slate-600 mb-2">해고기간 입력 방식</label>
           <div className="flex gap-2">
-            <button
+            <button aria-label="Action button"
               onClick={() => setUseDate(true)}
               className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
                 useDate ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
@@ -120,7 +120,7 @@ export default function UnfairDismissalPage() {
             >
               날짜 입력
             </button>
-            <button
+            <button aria-label="Action button"
               onClick={() => setUseDate(false)}
               className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
                 !useDate ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
@@ -139,7 +139,7 @@ export default function UnfairDismissalPage() {
                 type="date"
                 value={dismissalDate}
                 onChange={e => setDismissalDate(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div>
@@ -148,7 +148,7 @@ export default function UnfairDismissalPage() {
                 type="date"
                 value={reinstatementDate}
                 onChange={e => setReinstatementDate(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </div>
@@ -161,7 +161,7 @@ export default function UnfairDismissalPage() {
               value={dismissalMonths}
               onChange={e => setDismissalMonths(e.target.value.replace(/[^0-9.]/g, ''))}
               placeholder="예: 6"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         )}
@@ -175,14 +175,14 @@ export default function UnfairDismissalPage() {
             value={interimIncome ? parseInt(interimIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setInterimIncome)}
             placeholder="예: 5,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
         >
@@ -194,7 +194,7 @@ export default function UnfairDismissalPage() {
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
-          <div className="bg-white rounded-xl p-5 mb-4 text-center">
+          <div className="bg-white rounded-xl p-5 mb-4 text-center glassmorphism glass-panel">
             <p className="text-sm text-slate-600 mb-1">보상금 예상액</p>
             <p className="text-3xl font-bold text-[#f59e0b]">{formatNumber(result.netCompensation)}원</p>
             {result.netCompensation === 0 && (
@@ -225,7 +225,7 @@ export default function UnfairDismissalPage() {
 
           <div className="mt-6 pt-4 border-t border-slate-200">
             <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
-            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
+            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`1일 평균임금: ${formatNumber(result.dailyAvgWage)}원
 × 미복직일수: ${formatNumber(result.dismissalDays)}일
 = 임금상당액: ${formatNumber(result.grossCompensation)}원
@@ -234,7 +234,7 @@ export default function UnfairDismissalPage() {
             </pre>
           </div>
 
-          <div className="mt-4 p-4 bg-slate-100/50 rounded-lg">
+          <div className="mt-4 p-4 bg-slate-100/50 rounded-lg glassmorphism glass-panel">
             <p className="text-xs text-slate-600 leading-relaxed">
               <strong className="text-slate-600">법적 근거:</strong> 근로기준법 제28조(부당해고 구제신청, 3개월 이내), 제30조(구제명령 등), 제33조(이행강제금)
             </p>
@@ -277,7 +277,7 @@ export default function UnfairDismissalPage() {
           <strong className="text-slate-900">해고예고를 받지 못하셨나요?</strong> 해고예고수당(30일분 통상임금)은 부당해고 보상금과 별개입니다.
           해고 30일 전 예고 없이 해고된 경우 해고예고수당도 청구할 수 있습니다.
         </p>
-        <Link href="/tools/labor/dismissal-notice" className="mt-2 inline-block text-sm font-medium hover:underline" style={{ color: category.color }}>
+        <Link aria-label="Navigation link" href="/tools/labor/dismissal-notice" className="mt-2 inline-block text-sm font-medium hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]" style={{ color: category.color }}>
           → 해고예고수당 계산기로 이동
         </Link>
       </div>

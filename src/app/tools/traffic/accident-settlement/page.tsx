@@ -105,7 +105,7 @@ export default function AccidentSettlementPage() {
             value={medicalCost ? parseInt(medicalCost).toLocaleString('ko-KR') : ''}
             onChange={handleNumberInput(setMedicalCost)}
             placeholder="예: 5,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -117,7 +117,7 @@ export default function AccidentSettlementPage() {
             value={lostWages ? parseInt(lostWages).toLocaleString('ko-KR') : ''}
             onChange={handleNumberInput(setLostWages)}
             placeholder="사고로 못 번 소득 (없으면 비워두세요)"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">월급 ÷ 30 × 치료일수로 계산. 자영업자는 매출 감소분.</p>
         </div>
@@ -131,7 +131,7 @@ export default function AccidentSettlementPage() {
               value={hospitalizationDays}
               onChange={handleNumberInput(setHospitalizationDays)}
               placeholder="0"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -142,7 +142,7 @@ export default function AccidentSettlementPage() {
               value={outpatientDays}
               onChange={handleNumberInput(setOutpatientDays)}
               placeholder="0"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function AccidentSettlementPage() {
           <select
             value={disabilityGrade}
             onChange={(e) => setDisabilityGrade(parseInt(e.target.value, 10))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           >
             <option value={0}>없음</option>
             {Array.from({ length: 14 }, (_, i) => i + 1).map(grade => (
@@ -185,7 +185,7 @@ export default function AccidentSettlementPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}

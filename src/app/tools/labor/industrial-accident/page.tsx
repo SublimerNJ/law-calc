@@ -145,13 +145,13 @@ export default function IndustrialAccidentPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">급여 유형 선택</h2>
 
         <div className="flex gap-2 mb-6">
-          <button onClick={() => handleTabChange('absence')} className={tabClass(benefitType === 'absence')}>
+          <button aria-label="Action button" onClick={() => handleTabChange('absence')} className={tabClass(benefitType === 'absence')}>
             휴업급여
           </button>
-          <button onClick={() => handleTabChange('disability')} className={tabClass(benefitType === 'disability')}>
+          <button aria-label="Action button" onClick={() => handleTabChange('disability')} className={tabClass(benefitType === 'disability')}>
             장해급여
           </button>
-          <button onClick={() => handleTabChange('nursing')} className={tabClass(benefitType === 'nursing')}>
+          <button aria-label="Action button" onClick={() => handleTabChange('nursing')} className={tabClass(benefitType === 'nursing')}>
             간병급여
           </button>
         </div>
@@ -165,7 +165,7 @@ export default function IndustrialAccidentPage() {
                 value={dailyWage ? parseInt(dailyWage).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDailyWage)}
                 placeholder="예: 100,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div className="mb-6">
@@ -175,7 +175,7 @@ export default function IndustrialAccidentPage() {
                 value={absenceDays}
                 onChange={handleNumberChange(setAbsenceDays)}
                 placeholder="예: 30"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </>
@@ -190,7 +190,7 @@ export default function IndustrialAccidentPage() {
                 value={disabilityDailyWage ? parseInt(disabilityDailyWage).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDisabilityDailyWage)}
                 placeholder="예: 100,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div className="mb-4">
@@ -198,7 +198,7 @@ export default function IndustrialAccidentPage() {
               <select
                 value={disabilityGrade}
                 onChange={e => setDisabilityGrade(parseInt(e.target.value))}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               >
                 {Array.from({ length: 14 }, (_, i) => i + 1).map(g => (
                   <option key={g} value={g}>{g}급 ({DISABILITY_LUMP_DAYS[g]}일)</option>
@@ -208,8 +208,8 @@ export default function IndustrialAccidentPage() {
             <div className="mb-6">
               <label className="block text-sm text-slate-600 mb-2">지급방식</label>
               <div className="flex gap-2">
-                <button onClick={() => setPaymentType('lump')} className={tabClass(paymentType === 'lump')}>일시금</button>
-                <button
+                <button aria-label="Action button" onClick={() => setPaymentType('lump')} className={tabClass(paymentType === 'lump')}>일시금</button>
+                <button aria-label="Action button"
                   onClick={() => { if (disabilityGrade <= 7) setPaymentType('pension'); }}
                   className={`${tabClass(paymentType === 'pension')} ${disabilityGrade > 7 ? 'opacity-40 cursor-not-allowed' : ''}`}
                 >
@@ -225,8 +225,8 @@ export default function IndustrialAccidentPage() {
             <div className="mb-4">
               <label className="block text-sm text-slate-600 mb-2">간병유형</label>
               <div className="flex gap-2">
-                <button onClick={() => setNursingType('fullTime')} className={tabClass(nursingType === 'fullTime')}>상시간병</button>
-                <button onClick={() => setNursingType('partTime')} className={tabClass(nursingType === 'partTime')}>수시간병</button>
+                <button aria-label="Action button" onClick={() => setNursingType('fullTime')} className={tabClass(nursingType === 'fullTime')}>상시간병</button>
+                <button aria-label="Action button" onClick={() => setNursingType('partTime')} className={tabClass(nursingType === 'partTime')}>수시간병</button>
               </div>
             </div>
             <div className="mb-6">
@@ -236,7 +236,7 @@ export default function IndustrialAccidentPage() {
                 value={nursingDays}
                 onChange={handleNumberChange(setNursingDays)}
                 placeholder="예: 30"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </>
@@ -245,7 +245,7 @@ export default function IndustrialAccidentPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
         >
@@ -259,7 +259,7 @@ export default function IndustrialAccidentPage() {
 
           {result.type === 'absence' && (
             <>
-              <div className="bg-white rounded-xl p-5 mb-4 text-center">
+              <div className="bg-white rounded-xl p-5 mb-4 text-center glassmorphism glass-panel">
                 <p className="text-sm text-slate-600 mb-1">총 휴업급여</p>
                 <p className="text-3xl font-bold text-[#f59e0b]">{formatNumber(result.total)}원</p>
               </div>
@@ -281,7 +281,7 @@ export default function IndustrialAccidentPage() {
 
           {result.type === 'disability' && (
             <>
-              <div className="bg-white rounded-xl p-5 mb-4 text-center">
+              <div className="bg-white rounded-xl p-5 mb-4 text-center glassmorphism glass-panel">
                 <p className="text-sm text-slate-600 mb-1">
                   {result.paymentType === 'lump' ? '장해급여 일시금' : '장해급여 연금 (연간)'}
                 </p>
@@ -314,7 +314,7 @@ export default function IndustrialAccidentPage() {
 
           {result.type === 'nursing' && (
             <>
-              <div className="bg-white rounded-xl p-5 mb-4 text-center">
+              <div className="bg-white rounded-xl p-5 mb-4 text-center glassmorphism glass-panel">
                 <p className="text-sm text-slate-600 mb-1">총 간병급여</p>
                 <p className="text-3xl font-bold text-[#f59e0b]">{formatNumber(result.total)}원</p>
               </div>
@@ -335,23 +335,23 @@ export default function IndustrialAccidentPage() {
             </>
           )}
 
-          <div className="mt-6 p-4 bg-slate-100/50 rounded-lg">
+          <div className="mt-6 p-4 bg-slate-100/50 rounded-lg glassmorphism glass-panel">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             {result.type === 'absence' && (
-              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`평균임금 × 70% = 1일 휴업급여
 (최저임금 80% 미만 시 최저임금 80% 적용)
 1일 휴업급여 × 요양일수 = 총 휴업급여`}
               </pre>
             )}
             {result.type === 'disability' && (
-              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`평균임금 × 등급별 일수 = 장해급여 일시금
 (연금: 평균임금 × 연금일수 ÷ 12 = 월 연금액)`}
               </pre>
             )}
             {result.type === 'nursing' && (
-              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+              <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`정액 간병급여(상시: 53,060원 / 수시: 35,370원) × 간병일수 (2026.1.1~2028.12.31 적용)`}
               </pre>
             )}

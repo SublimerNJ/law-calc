@@ -252,7 +252,7 @@ export default function CapitalGainsTaxPage() {
               type="date"
               value={acquisitionDate}
               onChange={e => setAcquisitionDate(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -261,7 +261,7 @@ export default function CapitalGainsTaxPage() {
               type="date"
               value={transferDate}
               onChange={e => setTransferDate(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -309,7 +309,7 @@ export default function CapitalGainsTaxPage() {
                   value={residenceYears}
                   onChange={e => setResidenceYears(e.target.value.replace(/[^0-9]/g, ''))}
                   placeholder="예: 3"
-                  className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
                 />
                 <p className="text-xs text-gray-500 mt-1">거주 2년부터 4%/년 추가 공제, 최대 40% (보유+거주 합산 최대 80%)</p>
               </div>
@@ -338,7 +338,7 @@ export default function CapitalGainsTaxPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}

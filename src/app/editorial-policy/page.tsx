@@ -23,7 +23,7 @@ export default function EditorialPolicyPage() {
             law-calc.kr에서 제공하는 모든 계산식, 법률 가이드, 그리고 FAQ의 내용은 반드시 대한민국 국가 기관에서 발행한 
             공식 문헌과 성문법에 기초합니다. 개인의 자의적 해석이나 검증되지 않은 민간의 주장은 철저히 배제합니다.
           </p>
-          <ul className="list-disc list-inside space-y-2 text-slate-600 bg-slate-50 p-5 rounded-lg border border-slate-100">
+          <ul className="list-disc list-inside space-y-2 text-slate-600 bg-slate-50 p-5 rounded-lg border border-slate-100 glassmorphism glass-panel">
             <li><strong>법령:</strong> 국가법령정보센터(law.go.kr)에 등록된 현행 법률, 시행령, 시행규칙, 대법원규칙</li>
             <li><strong>판례:</strong> 대한민국 대법원 종합법률정보 판례 (전원합의체 등 확정 판례 기준)</li>
             <li><strong>행정 규칙:</strong> 국세청 예규·고시, 고용노동부 행정해석 및 지침, 금융위원회 보도자료</li>
@@ -71,7 +71,7 @@ export default function EditorialPolicyPage() {
         </section>
 
         <div className="mt-12 pt-8 border-t border-slate-200">
-          <Link href="/about" className="text-blue-600 hover:underline font-medium">
+          <Link aria-label="Navigation link" href="/about" className="text-blue-600 hover:underline font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
             ← 사이트 소개 페이지로 돌아가기
           </Link>
         </div>
@@ -80,7 +80,7 @@ export default function EditorialPolicyPage() {
           <p className="mb-3">
             한국 법률 절차는 사실관계와 관할 기관 판단에 따라 달라질 수 있으므로, 본 사이트는 특정 결과를 단정적으로 보장하는 표현을 지양합니다.
           </p>
-          <ul className="list-disc list-inside space-y-2 text-slate-600 bg-slate-50 p-5 rounded-lg border border-slate-100">
+          <ul className="list-disc list-inside space-y-2 text-slate-600 bg-slate-50 p-5 rounded-lg border border-slate-100 glassmorphism glass-panel">
             <li>"반드시", "무조건", "확정"과 같은 단정 표현 최소화</li>
             <li>"사안별로 달라질 수 있음", "최신 기준 확인 필요" 문구 병행</li>
             <li>실행 전 전문가 확인 권고를 기본 정책으로 유지</li>

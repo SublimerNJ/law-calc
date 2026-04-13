@@ -26,7 +26,7 @@ export default function FreelancerTaxGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-emerald-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-emerald-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">세금</span>
       </div>
@@ -76,10 +76,10 @@ export default function FreelancerTaxGuide() {
             총 수입과 경비, 주요 소득공제를 입력하여 5월 종합소득세 확정 신고 시 예상되는 환급액 또는 납부액을 미리 계산해 보세요.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/tools/tax/comprehensive-income-tax" className="inline-block bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/tax/comprehensive-income-tax" className="inline-block bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
               종합소득세 계산기
             </Link>
-            <Link href="/tools/tax/vat" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/tax/vat" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
               부가가치세 계산기
             </Link>
           </div>

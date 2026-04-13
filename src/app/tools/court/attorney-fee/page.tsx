@@ -107,7 +107,7 @@ export default function AttorneyFeePage() {
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
-        <div className="mb-4 p-3 rounded-lg bg-white border border-slate-200">
+        <div className="mb-4 p-3 rounded-lg bg-white border border-slate-200 glassmorphism glass-panel">
           <p className="text-xs text-slate-600">
             💡 소송에서 이겨서 상대방에게 <strong className="text-slate-600">소송비용으로 청구할 수 있는 변호사 보수의 상한</strong>을 계산합니다. 실제 변호사 선임비용과 다릅니다.
           </p>
@@ -122,7 +122,7 @@ export default function AttorneyFeePage() {
             value={displayValue(amount)}
             onChange={handleNumberChange(setAmount)}
             placeholder="예: 50,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -134,7 +134,7 @@ export default function AttorneyFeePage() {
             value={displayValue(actualFeeInput)}
             onChange={handleNumberChange(setActualFeeInput)}
             placeholder="입력하면 실제 돌려받을 금액도 표시됩니다"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">비워두면 산입 한도만 표시됩니다</p>
         </div>
@@ -150,7 +150,7 @@ export default function AttorneyFeePage() {
           </div>
         )}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -203,7 +203,7 @@ export default function AttorneyFeePage() {
 
             <div className="mb-4">
               <p className="text-sm text-slate-600 mb-2">계산식</p>
-              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
                 {result.formula}
               </pre>
             </div>

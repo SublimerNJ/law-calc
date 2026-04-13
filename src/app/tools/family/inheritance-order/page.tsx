@@ -224,7 +224,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numChildren}
               onChange={e => setNumChildren(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -237,7 +237,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numGrandchildren}
               onChange={e => setNumGrandchildren(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -251,7 +251,7 @@ export default function InheritanceOrderPage() {
               max={2}
               value={numParents}
               onChange={e => setNumParents(Math.max(0, Math.min(2, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -262,7 +262,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numSiblings}
               onChange={e => setNumSiblings(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -282,7 +282,7 @@ export default function InheritanceOrderPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleDetermine}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}

@@ -203,7 +203,7 @@ export default function SeverancePayPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button onClick={handleCalculate} className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: category.color }}>
+        <button aria-label="Action button" onClick={handleCalculate} className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]" style={{ backgroundColor: category.color }}>
           퇴직금 계산하기
         </button>
       </div>
@@ -229,11 +229,11 @@ export default function SeverancePayPage() {
             </div>
 
             <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-white">
+              <div className="p-3 rounded-lg bg-white glassmorphism glass-panel">
                 <p className="text-xs text-slate-600 mb-1">예상 퇴직소득세</p>
                 <p className="text-lg text-red-600">-{formatNumber(result.retirementTax)}원</p>
               </div>
-              <div className="p-3 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
+              <div className="p-3 rounded-lg bg-white glassmorphism glass-panel" style={{ borderLeft: `3px solid ${category.color}` }}>
                 <p className="text-xs text-slate-600 mb-1">예상 실수령액</p>
                 <p className="text-lg font-bold" style={{ color: category.color }}>{formatNumber(result.netSeverance)}원</p>
               </div>
@@ -261,7 +261,7 @@ export default function SeverancePayPage() {
 
           <div className="premium-card p-6">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono mb-4">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono mb-4 glassmorphism glass-panel">
 {`[퇴직금]
 3개월 총임금: ${formatNumber(result.threeMonthTotal)}원${wageMode === 'monthly' ? ` (월 ${displayValue(monthlyWage)} × 3)` : ''}
 1일 평균임금 = ${formatNumber(result.threeMonthTotal)} ÷ ${result.threeMonthDays}일 = ${formatNumber(result.dailyAvgWage)}원

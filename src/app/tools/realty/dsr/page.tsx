@@ -84,7 +84,7 @@ export default function DsrPage() {
             value={displayValue(income)}
             onChange={handleNumberInput(setIncome)}
             placeholder="예: 60,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {income && <p className="text-xs text-gray-500 mt-1">{formatNumber(parseNum(income))}원</p>}
         </div>
@@ -97,7 +97,7 @@ export default function DsrPage() {
             value={displayValue(mortgage)}
             onChange={handleNumberInput(setMortgage)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -109,7 +109,7 @@ export default function DsrPage() {
             value={displayValue(credit)}
             onChange={handleNumberInput(setCredit)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -121,13 +121,13 @@ export default function DsrPage() {
             value={displayValue(other)}
             onChange={handleNumberInput(setOther)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -173,7 +173,7 @@ export default function DsrPage() {
             </div>
           </div>
 
-          <div className="mb-4 p-4 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
+          <div className="mb-4 p-4 rounded-lg bg-white glassmorphism glass-panel" style={{ borderLeft: `3px solid ${category.color}` }}>
             <p className="text-xs text-slate-600 mb-1">추가 대출 가능 월 상환액 (은행권 40% 기준)</p>
             <p className="text-lg font-bold" style={{ color: category.color }}>
               {formatNumber(Math.max(0, Math.floor(result.annualIncome * 0.4 / 12 - result.annualRepayment / 12)))}원/월
@@ -194,7 +194,7 @@ export default function DsrPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {`연간 원리금 상환액  ${formatNumber(result.annualRepayment)}원
 ÷ 연소득           ${formatNumber(result.annualIncome)}원
 × 100
@@ -228,7 +228,7 @@ DSR                ${result.dsr}%
           <p><strong className="text-slate-900">DTI</strong>: 주담대 원리금 + 기타 대출 이자만 합계 ÷ 연소득</p>
           <p className="text-xs text-gray-500 mt-2">DSR이 더 엄격한 기준입니다. 2024년부터 총대출 1억원 초과 시 DSR 규제가 우선 적용됩니다.</p>
         </div>
-        <Link href="/tools/realty/dti" className="mt-3 inline-block text-sm font-medium hover:underline" style={{ color: category.color }}>
+        <Link aria-label="Navigation link" href="/tools/realty/dti" className="mt-3 inline-block text-sm font-medium hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]" style={{ color: category.color }}>
           → DTI 계산기로 이동
         </Link>
       </div>

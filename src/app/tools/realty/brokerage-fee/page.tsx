@@ -195,7 +195,7 @@ export default function BrokerageFeePage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setAmount)}
             placeholder="예: 300,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -208,7 +208,7 @@ export default function BrokerageFeePage() {
               value={monthlyRent ? parseInt(monthlyRent).toLocaleString('ko-KR') : ''}
               onChange={handleNumberChange(setMonthlyRent)}
               placeholder="예: 500,000"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         )}
@@ -216,7 +216,7 @@ export default function BrokerageFeePage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90 mt-2"
           style={{ backgroundColor: category.color }}
@@ -266,7 +266,7 @@ export default function BrokerageFeePage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {result.formula}
             </pre>
           </div>

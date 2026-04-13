@@ -77,19 +77,19 @@ export default function CategorySection({ category, children, toolCount }: Categ
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">{category.name}</h2>
           <p className="text-sm text-slate-500 mt-1">{category.description}</p>
         </div>
-        <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap">
+        <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap glassmorphism glass-panel">
           {toolCount} tools
         </span>
       </div>
 
       {/* Rich Category Context for SEO and Information Architecture */}
       {contextData && (
-        <div className="mb-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <div className="mb-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-sm glassmorphism glass-panel">
           <p className="text-sm text-slate-700 leading-relaxed mb-3">
             {contextData.text}
           </p>
           {contextData.linkHref && (
-            <Link 
+            <Link aria-label="Navigation link" 
               href={contextData.linkHref} 
               className="inline-flex items-center text-sm font-medium transition-colors hover:underline"
               style={{ color: category.color }}

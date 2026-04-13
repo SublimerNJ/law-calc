@@ -141,7 +141,7 @@ export default function VatPage() {
                 value={formatInput(salesAmount)}
                 onChange={handleChange(setSalesAmount)}
                 placeholder="예: 50,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div className="mb-6">
@@ -152,7 +152,7 @@ export default function VatPage() {
                 value={formatInput(purchaseAmount)}
                 onChange={handleChange(setPurchaseAmount)}
                 placeholder="예: 30,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </>
@@ -165,7 +165,7 @@ export default function VatPage() {
               value={formatInput(totalPrice)}
               onChange={handleChange(setTotalPrice)}
               placeholder="예: 55,000,000"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         )}
@@ -173,7 +173,7 @@ export default function VatPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -241,7 +241,7 @@ export default function VatPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {result.mode === 'supply'
                 ? `공급가액 × 10% = 부가가치세
 

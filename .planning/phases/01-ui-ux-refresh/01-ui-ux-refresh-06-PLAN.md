@@ -1,0 +1,140 @@
+---
+phase: 01-ui-ux-refresh
+plan: 06
+type: execute
+wave: 1
+depends_on: []
+files_modified: ["src/app/tools/court/civil-mediation/page.tsx", "src/app/tools/court/family-court/page.tsx", "src/app/tools/court/lawsuit-cost/page.tsx", "src/app/tools/court/attorney-fee/page.tsx", "src/app/tools/court/payment-order/page.tsx"]
+autonomous: true
+requirements: [UX-01]
+
+must_haves:
+  truths:
+    - "User can view data-dense dashboard layout with minimal padding"
+    - "Charts and KPI cards are clearly visible above the fold"
+    - "UI uses Primary #3B82F6 and Fira Code typography"
+  artifacts:
+    - path: "src/app/tools/court/civil-mediation/page.tsx"
+      provides: "Data-Dense Dashboard UI"
+    - path: "src/app/tools/court/family-court/page.tsx"
+      provides: "Data-Dense Dashboard UI"
+    - path: "src/app/tools/court/lawsuit-cost/page.tsx"
+      provides: "Data-Dense Dashboard UI"
+    - path: "src/app/tools/court/attorney-fee/page.tsx"
+      provides: "Data-Dense Dashboard UI"
+    - path: "src/app/tools/court/payment-order/page.tsx"
+      provides: "Data-Dense Dashboard UI"
+
+  key_links: []
+---
+
+<objective>
+Update UI/UX to Data-Dense Dashboard style based on ui-ux-pro-max skill.
+Purpose: Enhance readability and data visibility for dashboard components.
+Output: Refactored page.tsx files using Grid layout, Fira Code, and accessible contrast.
+</objective>
+
+<execution_context>
+@$HOME/.gemini/skills/ui-ux-pro-max/SKILL.md
+</execution_context>
+
+<context>
+@.planning/PROJECT.md
+@.planning/ROADMAP.md
+</context>
+
+<tasks>
+<task type="auto">
+  <name>Task 1: Update civil-mediation/page.tsx</name>
+  <files>src/app/tools/court/civil-mediation/page.tsx</files>
+  <action>
+Refactor UI to match Data-Dense Dashboard style.
+- Use Fira Code / Fira Sans for typography.
+- Implement minimal padding, grid layouts, and KPI cards above the fold.
+- Ensure colors use Primary #3B82F6, CTA #F97316, and accessible text #1E293B.
+- Replace emojis with SVG icons (Heroicons/Lucide).
+- Add cursor-pointer and hover transitions (150-300ms) on all interactive elements.
+  </action>
+  <verify>
+    <automated>grep -q "Fira Code\|grid\|#3B82F6" "src/app/tools/court/civil-mediation/page.tsx" || echo "Verification warning"</automated>
+  </verify>
+  <done>Page reflects data-dense dashboard style and passes contrast checks</done>
+</task>
+<task type="auto">
+  <name>Task 2: Update family-court/page.tsx</name>
+  <files>src/app/tools/court/family-court/page.tsx</files>
+  <action>
+Refactor UI to match Data-Dense Dashboard style.
+- Use Fira Code / Fira Sans for typography.
+- Implement minimal padding, grid layouts, and KPI cards above the fold.
+- Ensure colors use Primary #3B82F6, CTA #F97316, and accessible text #1E293B.
+- Replace emojis with SVG icons (Heroicons/Lucide).
+- Add cursor-pointer and hover transitions (150-300ms) on all interactive elements.
+  </action>
+  <verify>
+    <automated>grep -q "Fira Code\|grid\|#3B82F6" "src/app/tools/court/family-court/page.tsx" || echo "Verification warning"</automated>
+  </verify>
+  <done>Page reflects data-dense dashboard style and passes contrast checks</done>
+</task>
+<task type="auto">
+  <name>Task 3: Update lawsuit-cost/page.tsx</name>
+  <files>src/app/tools/court/lawsuit-cost/page.tsx</files>
+  <action>
+Refactor UI to match Data-Dense Dashboard style.
+- Use Fira Code / Fira Sans for typography.
+- Implement minimal padding, grid layouts, and KPI cards above the fold.
+- Ensure colors use Primary #3B82F6, CTA #F97316, and accessible text #1E293B.
+- Replace emojis with SVG icons (Heroicons/Lucide).
+- Add cursor-pointer and hover transitions (150-300ms) on all interactive elements.
+  </action>
+  <verify>
+    <automated>grep -q "Fira Code\|grid\|#3B82F6" "src/app/tools/court/lawsuit-cost/page.tsx" || echo "Verification warning"</automated>
+  </verify>
+  <done>Page reflects data-dense dashboard style and passes contrast checks</done>
+</task>
+<task type="auto">
+  <name>Task 4: Update attorney-fee/page.tsx</name>
+  <files>src/app/tools/court/attorney-fee/page.tsx</files>
+  <action>
+Refactor UI to match Data-Dense Dashboard style.
+- Use Fira Code / Fira Sans for typography.
+- Implement minimal padding, grid layouts, and KPI cards above the fold.
+- Ensure colors use Primary #3B82F6, CTA #F97316, and accessible text #1E293B.
+- Replace emojis with SVG icons (Heroicons/Lucide).
+- Add cursor-pointer and hover transitions (150-300ms) on all interactive elements.
+  </action>
+  <verify>
+    <automated>grep -q "Fira Code\|grid\|#3B82F6" "src/app/tools/court/attorney-fee/page.tsx" || echo "Verification warning"</automated>
+  </verify>
+  <done>Page reflects data-dense dashboard style and passes contrast checks</done>
+</task>
+<task type="auto">
+  <name>Task 5: Update payment-order/page.tsx</name>
+  <files>src/app/tools/court/payment-order/page.tsx</files>
+  <action>
+Refactor UI to match Data-Dense Dashboard style.
+- Use Fira Code / Fira Sans for typography.
+- Implement minimal padding, grid layouts, and KPI cards above the fold.
+- Ensure colors use Primary #3B82F6, CTA #F97316, and accessible text #1E293B.
+- Replace emojis with SVG icons (Heroicons/Lucide).
+- Add cursor-pointer and hover transitions (150-300ms) on all interactive elements.
+  </action>
+  <verify>
+    <automated>grep -q "Fira Code\|grid\|#3B82F6" "src/app/tools/court/payment-order/page.tsx" || echo "Verification warning"</automated>
+  </verify>
+  <done>Page reflects data-dense dashboard style and passes contrast checks</done>
+</task>
+
+</tasks>
+
+<verification>
+Check that there are no emojis used as icons, all interactive elements have cursor-pointer, hover transitions are 150-300ms, and light mode text contrast is at least 4.5:1.
+</verification>
+
+<success_criteria>
+Pages reflect Data-Dense Dashboard structure with accessible colors and drill-down pattern.
+</success_criteria>
+
+<output>
+After completion, create `.planning/phases/01-ui-ux-refresh/01-ui-ux-refresh-06-SUMMARY.md`
+</output>

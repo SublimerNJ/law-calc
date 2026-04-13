@@ -104,7 +104,7 @@ export default function UnemploymentBenefitPage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={e => setMonthlyWage(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -113,7 +113,7 @@ export default function UnemploymentBenefitPage() {
           <select
             value={period}
             onChange={e => setPeriod(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             {PERIOD_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -144,7 +144,7 @@ export default function UnemploymentBenefitPage() {
           <select
             value={dailyHours}
             onChange={e => setDailyHours(Number(e.target.value))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             {HOURS_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -155,7 +155,7 @@ export default function UnemploymentBenefitPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
         >
@@ -175,16 +175,16 @@ export default function UnemploymentBenefitPage() {
           </div>
 
           <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="p-3 rounded-lg bg-white">
+            <div className="p-3 rounded-lg bg-white glassmorphism glass-panel">
               <p className="text-xs text-slate-600 mb-1">수령 기간</p>
               <p className="text-lg text-slate-900 font-semibold">{Math.floor(result.days / 30)}개월</p>
               <p className="text-xs text-gray-500">({result.days}일)</p>
             </div>
-            <div className="p-3 rounded-lg bg-white">
+            <div className="p-3 rounded-lg bg-white glassmorphism glass-panel">
               <p className="text-xs text-slate-600 mb-1">월 수령액 (약)</p>
               <p className="text-lg text-slate-900 font-semibold">{formatNumber(result.dailyPayment * 30)}원</p>
             </div>
-            <div className="p-3 rounded-lg bg-white">
+            <div className="p-3 rounded-lg bg-white glassmorphism glass-panel">
               <p className="text-xs text-slate-600 mb-1">1일 지급액</p>
               <p className="text-lg text-slate-900">{formatNumber(result.dailyPayment)}원</p>
             </div>
@@ -218,7 +218,7 @@ export default function UnemploymentBenefitPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
 {`기초일액 = (월급 × 12) ÷ 365 × 60%
   = (${monthlyWage ? formatNumber(parseInt(monthlyWage)) : '0'} × 12) ÷ 365 × 0.6
   = ${formatNumber(result.dailyBase)}원/일

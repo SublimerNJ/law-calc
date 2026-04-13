@@ -33,7 +33,7 @@ export default function Footer() {
                 </h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link
+                    <Link aria-label="Navigation link"
                       href={`/#${cat.id}`}
                       className="text-sm text-slate-500 hover:text-[#c9a84c] transition-colors duration-300"
                     >
@@ -52,11 +52,11 @@ export default function Footer() {
             © 2026 law-calc.kr
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-500">
-            <Link href="/privacy" className="hover:text-slate-900 transition-colors">개인정보처리방침</Link>
-            <Link href="/terms" className="hover:text-slate-900 transition-colors">이용약관</Link>
-            <Link href="/editorial-policy" className="hover:text-slate-900 transition-colors font-medium">편집/검증 정책</Link>
-            <a href="mailto:sublimernj@gmail.com" className="hover:text-slate-900 transition-colors">문의</a>
-            <Link href="/about" className="hover:text-slate-900 transition-colors">사이트 소개</Link>
+            <Link aria-label="Navigation link" href="/privacy" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">개인정보처리방침</Link>
+            <Link aria-label="Navigation link" href="/terms" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">이용약관</Link>
+            <Link aria-label="Navigation link" href="/editorial-policy" className="hover:text-slate-900 transition-colors font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">편집/검증 정책</Link>
+            <a aria-label="Link" href="mailto:sublimernj@gmail.com" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">문의</a>
+            <Link aria-label="Navigation link" href="/about" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">사이트 소개</Link>
           </div>
         </div>
       </div>

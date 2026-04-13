@@ -101,7 +101,7 @@ export default function PublicDefenderPage() {
     <CalculatorLayout tool={tool} category={category}>
       <div className="flex rounded-lg overflow-hidden mb-4 border border-slate-200">
         <div className="flex-1 py-3 text-center text-sm font-semibold bg-slate-900 text-white">국선변호인</div>
-        <Link href="/tools/misc/legal-aid" className="flex-1 py-3 text-center text-sm font-medium bg-white text-slate-500 hover:bg-slate-50 transition-colors">법률구조공단</Link>
+        <Link aria-label="Navigation link" href="/tools/misc/legal-aid" className="flex-1 py-3 text-center text-sm font-medium bg-white text-slate-500 hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률구조공단</Link>
       </div>
       <div className="premium-card p-6 mb-4">
         <div className="space-y-4">
@@ -110,7 +110,7 @@ export default function PublicDefenderPage() {
             <select
               value={caseType}
               onChange={e => setCaseType(e.target.value as CaseType)}
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             >
               <option value="mandatory">필요적 국선 (제33조 제1항 — 당연 선정)</option>
               <option value="investigative">청구에 의한 국선 (제33조 제2항 — 빈곤 등 사유)</option>
@@ -125,7 +125,7 @@ export default function PublicDefenderPage() {
               <select
                 value={mandatoryGround}
                 onChange={e => setMandatoryGround(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               >
                 {MANDATORY_GROUNDS.map((g, i) => (
                   <option key={i} value={i}>{g.label}</option>
@@ -143,7 +143,7 @@ export default function PublicDefenderPage() {
                   value={monthlyIncome}
                   onChange={e => setMonthlyIncome(formatNumber(e.target.value))}
                   placeholder="0"
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
                 />
               </div>
 
@@ -154,14 +154,14 @@ export default function PublicDefenderPage() {
                   value={totalAssets}
                   onChange={e => setTotalAssets(formatNumber(e.target.value))}
                   placeholder="0"
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
                 />
               </div>
             </>
           )}
         </div>
 
-        <button
+        <button aria-label="Action button"
           onClick={calculate}
           className="w-full mt-6 py-3 rounded-lg font-semibold text-slate-900"
           style={{ backgroundColor: category.color }}

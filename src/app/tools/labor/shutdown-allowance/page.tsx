@@ -95,7 +95,7 @@ export default function ShutdownAllowancePage() {
             value={dailyAvgWage ? parseNum(dailyAvgWage).toLocaleString('ko-KR') : ''}
             onChange={e => setDailyAvgWage(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="평균임금 계산기에서 산출한 금액"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -107,7 +107,7 @@ export default function ShutdownAllowancePage() {
             value={monthlyOrdinaryWage ? parseNum(monthlyOrdinaryWage).toLocaleString('ko-KR') : ''}
             onChange={e => setMonthlyOrdinaryWage(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="비교 기준 통상임금"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {ordinaryWageMonthly > 0 && (
             <p className="text-xs text-gray-500 mt-1">
@@ -124,7 +124,7 @@ export default function ShutdownAllowancePage() {
             value={shutdownDays ? parseNum(shutdownDays).toLocaleString('ko-KR') : ''}
             onChange={e => setShutdownDays(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="휴업 기간의 일수"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -149,7 +149,7 @@ export default function ShutdownAllowancePage() {
               value={approvedRate}
               onChange={e => setApprovedRate(e.target.value.replace(/[^0-9]/g, ''))}
               placeholder="60"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
             <p className="text-xs text-gray-500 mt-1">
               노동위원회 승인 시 평균임금의 70% 미만으로 지급 가능
@@ -160,7 +160,7 @@ export default function ShutdownAllowancePage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors mt-2"
         >
@@ -183,12 +183,12 @@ export default function ShutdownAllowancePage() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="bg-white rounded-lg p-3">
+            <div className="bg-white rounded-lg p-3 glassmorphism glass-panel">
               <p className="text-xs text-gray-500 mb-1">평균임금 70% 기준</p>
               <p className="text-lg text-slate-900">{formatNumber(avgWage70)}원/일</p>
               <p className="text-sm text-slate-600">{formatNumber(totalByAvg70)}원 (총액)</p>
             </div>
-            <div className="bg-white rounded-lg p-3">
+            <div className="bg-white rounded-lg p-3 glassmorphism glass-panel">
               <p className="text-xs text-gray-500 mb-1">통상임금 기준</p>
               <p className="text-lg text-slate-900">{formatNumber(dailyOrdinaryWage)}원/일</p>
               <p className="text-sm text-slate-600">{formatNumber(totalByOrdinary)}원 (총액)</p>
@@ -196,7 +196,7 @@ export default function ShutdownAllowancePage() {
           </div>
 
           {!laborBoardApproval && ordinaryWageMonthly > 0 && (
-            <div className="mb-4 bg-white rounded-lg p-3">
+            <div className="mb-4 bg-white rounded-lg p-3 glassmorphism glass-panel">
               <p className="text-sm text-slate-600 mb-1">적용 기준</p>
               <p className="text-sm text-slate-900">
                 {higherBase} 적용 ({avgWage70 >= dailyOrdinaryWage
@@ -208,7 +208,7 @@ export default function ShutdownAllowancePage() {
           )}
 
           {laborBoardApproval && (
-            <div className="mb-4 bg-white rounded-lg p-3">
+            <div className="mb-4 bg-white rounded-lg p-3 glassmorphism glass-panel">
               <p className="text-sm text-slate-600 mb-1">노동위원회 승인 지급률</p>
               <p className="text-sm text-slate-900">
                 평균임금의 {approvedRate}% = {formatNumber(effectiveDaily)}원/일
@@ -218,7 +218,7 @@ export default function ShutdownAllowancePage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`평균임금×70% × 휴업일수 = 총 휴업수당
 (단, 평균임금 70%가 통상임금 초과 시 통상임금 적용)`}
             </pre>

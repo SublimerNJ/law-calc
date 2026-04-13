@@ -85,7 +85,7 @@ export default function LoanInterestPage() {
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -102,7 +102,7 @@ export default function LoanInterestPage() {
             value={rate}
             onChange={e => setRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 15"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -114,7 +114,7 @@ export default function LoanInterestPage() {
             value={days}
             onChange={e => setDays(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 365"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -125,7 +125,7 @@ export default function LoanInterestPage() {
         )}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}

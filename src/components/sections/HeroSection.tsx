@@ -25,7 +25,7 @@ export default function HeroSection({ totalTools }: HeroSectionProps) {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
         {/* Eyebrow badge */}
         <ParallaxLayer speed={-0.1} className="mb-8">
-          <div className="inline-flex items-center gap-2 bg-white text-slate-600 text-xs font-medium tracking-[0.2em] uppercase px-5 py-2 rounded-full border border-slate-200 shadow-sm">
+          <div className="inline-flex items-center gap-2 bg-white text-slate-600 text-xs font-medium tracking-[0.2em] uppercase px-5 py-2 rounded-full border border-slate-200 shadow-sm glassmorphism glass-panel">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
             <span>{totalTools}개 무료 법률 계산기</span>
           </div>

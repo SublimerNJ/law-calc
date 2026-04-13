@@ -144,7 +144,7 @@ export default function PaymentOrderPage() {
             </div>
           )}
 
-          <button
+          <button aria-label="Action button"
             onClick={handleCalculate}
             className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
             style={{ backgroundColor: category.color }}

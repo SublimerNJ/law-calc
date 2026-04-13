@@ -187,7 +187,7 @@ export default function AlimonyPage() {
       <div className="premium-card p-6 mb-4">
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
-        <div className="mb-4 p-3 rounded-lg bg-slate-50 border border-slate-200">
+        <div className="mb-4 p-3 rounded-lg bg-slate-50 border border-slate-200 glassmorphism glass-panel">
           <p className="text-xs text-slate-600">
             위자료는 법원이 개별 사안을 <strong>종합적으로</strong> 판단합니다.
             이 계산기는 판례 분석 기반 <strong>예상 범위</strong>를 제공하며, 실제 법원 결정과 차이가 있을 수 있습니다.
@@ -203,7 +203,7 @@ export default function AlimonyPage() {
             value={years}
             onChange={e => setYears(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 10"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -254,7 +254,7 @@ export default function AlimonyPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button onClick={handleCalculate} className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: category.color }}>
+        <button aria-label="Action button" onClick={handleCalculate} className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]" style={{ backgroundColor: category.color }}>
           계산하기
         </button>
       </div>
@@ -275,7 +275,7 @@ export default function AlimonyPage() {
               )}
             </div>
 
-            <div className="mb-4 p-4 rounded-lg bg-slate-50 border border-slate-200">
+            <div className="mb-4 p-4 rounded-lg bg-slate-50 border border-slate-200 glassmorphism glass-panel">
               <p className="text-sm text-slate-600 mb-1">예상 범위</p>
               <p className="text-lg text-slate-900">
                 {formatNumber(result.minRange)}원 ~ {formatNumber(result.maxRange)}원
@@ -285,7 +285,7 @@ export default function AlimonyPage() {
             {/* 산출 근거 */}
             <div className="mb-4">
               <p className="text-sm text-slate-600 mb-2">산출 근거</p>
-              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+              <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
 {`기본 범위 (혼인 ${years}년, ${BASE_RANGES[result.baseRangeIdx].label}):
   ${formatWon(result.baseMin)} ~ ${formatWon(result.baseMax)}
 

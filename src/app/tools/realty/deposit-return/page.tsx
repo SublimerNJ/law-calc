@@ -80,7 +80,7 @@ export default function DepositReturnPage() {
             value={deposit ? parseInt(deposit).toLocaleString('ko-KR') : ''}
             onChange={handleDepositChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {deposit && (
             <p className="text-xs text-gray-500 mt-1">
@@ -97,7 +97,7 @@ export default function DepositReturnPage() {
             value={days}
             onChange={e => setDays(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 30"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -108,7 +108,7 @@ export default function DepositReturnPage() {
             inputMode="decimal"
             value={rate}
             onChange={e => setRate(e.target.value.replace(/[^0-9.]/g, ''))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">민법 제379조 법정이율: 연 5% (보증금 미반환 시)</p>
         </div>
@@ -116,7 +116,7 @@ export default function DepositReturnPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -148,7 +148,7 @@ export default function DepositReturnPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {`보증금 반환 계산 (지연이자 포함)
 
 지연이자 = 보증금 × 연체이자율(%) ÷ 100 × 지연일수 ÷ 365
@@ -195,7 +195,7 @@ export default function DepositReturnPage() {
               </div>
             ))}
           </div>
-          <div className="mt-4 p-3 rounded-lg bg-white border border-slate-200">
+          <div className="mt-4 p-3 rounded-lg bg-white border border-slate-200 glassmorphism glass-panel">
             <p className="text-xs text-slate-600">
               💡 <strong className="text-slate-600">전세보증금반환보증보험</strong>(HUG/SGI)에 가입한 경우, 보증기관에 직접 보증금을 청구할 수 있습니다.
             </p>

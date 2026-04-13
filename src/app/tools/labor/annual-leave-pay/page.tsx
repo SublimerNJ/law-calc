@@ -91,7 +91,7 @@ export default function AnnualLeavePayPage() {
             value={unusedDays}
             onChange={handleUnusedDaysChange}
             placeholder="예: 5"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">
             연차 일수 기준 (근로기준법 제60조): 1년 미만 월 개근 시 1일(최대 11일), 1년 이상 80% 출근 시 15일, 3년 이상 매 2년마다 1일 추가(최대 25일)
@@ -106,7 +106,7 @@ export default function AnnualLeavePayPage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 2,090,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyWage && (
             <p className="text-xs text-gray-500 mt-1">
@@ -136,7 +136,7 @@ export default function AnnualLeavePayPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -185,7 +185,7 @@ export default function AnnualLeavePayPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {`시급 × 8시간 × 미사용일수 = 연차수당
 
 시급 = 월 통상임금 ÷ 월 기준시간

@@ -74,7 +74,7 @@ export default function DefamationPage() {
           <select
             value={defamationType}
             onChange={(e) => setDefamationType(e.target.value as DefamationType)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             <option value="fact">사실 적시</option>
             <option value="false-fact">허위 사실 적시</option>
@@ -87,7 +87,7 @@ export default function DefamationPage() {
           <select
             value={mediaType}
             onChange={(e) => setMediaType(e.target.value as MediaType)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             <option value="online">온라인/SNS</option>
             <option value="broadcast">방송</option>
@@ -101,7 +101,7 @@ export default function DefamationPage() {
           <select
             value={victimType}
             onChange={(e) => setVictimType(e.target.value as VictimType)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             <option value="private">일반인</option>
             <option value="public">공인 (공직자/연예인 등)</option>
@@ -116,7 +116,7 @@ export default function DefamationPage() {
             value={duration}
             onChange={(e) => setDuration(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 3"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -125,7 +125,7 @@ export default function DefamationPage() {
           <select
             value={severity}
             onChange={(e) => setSeverity(e.target.value as SeverityType)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             <option value="mild">경미</option>
             <option value="moderate">보통</option>
@@ -133,7 +133,7 @@ export default function DefamationPage() {
           </select>
         </div>
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -164,7 +164,7 @@ export default function DefamationPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`기본위자료 × 매체배율 × 피해자배율 × 심각도배율 × 기간배율 = 위자료`}
             </pre>
             <p className="text-xs text-gray-500">

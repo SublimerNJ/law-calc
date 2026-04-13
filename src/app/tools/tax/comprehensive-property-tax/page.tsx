@@ -140,7 +140,7 @@ export default function ComprehensivePropertyTaxPage() {
             value={assessedValue ? parseInt(assessedValue).toLocaleString('ko-KR') : ''}
             onChange={handleValueChange}
             placeholder="예: 1,500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {assessedValue && (
             <p className="text-xs text-gray-500 mt-1">
@@ -156,7 +156,7 @@ export default function ComprehensivePropertyTaxPage() {
               { value: '1' as HouseCount, label: '1주택' },
               { value: '2plus' as HouseCount, label: '2주택 이상' },
             ].map(opt => (
-              <button
+              <button aria-label="Action button"
                 key={opt.value}
                 onClick={() => setHouseCount(opt.value)}
                 className={`px-4 py-2 rounded-lg text-sm border transition-colors ${
@@ -192,12 +192,12 @@ export default function ComprehensivePropertyTaxPage() {
               value={age}
               onChange={e => setAge(e.target.value.replace(/[^0-9]/g, ''))}
               placeholder="예: 65"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         )}
 
-        <div className="mb-6 p-3 rounded-lg bg-white border border-slate-200">
+        <div className="mb-6 p-3 rounded-lg bg-white border border-slate-200 glassmorphism glass-panel">
           <p className="text-xs text-gray-500">
             * 장기보유공제는 보유기간에 따라 별도 적용됩니다 (5~15년: 20~50%).
             정확한 공제액은 관할 세무서에 문의하세요.
@@ -206,7 +206,7 @@ export default function ComprehensivePropertyTaxPage() {
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -275,7 +275,7 @@ export default function ComprehensivePropertyTaxPage() {
 
           <div className="pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`(공시가격 × 60% - 공제액) = 과세표준
 과세표준 × 세율 = 산출세액
 산출세액 - 고령자공제 = 종합부동산세

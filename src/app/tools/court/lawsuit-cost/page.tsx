@@ -151,7 +151,7 @@ export default function LawsuitCostPage() {
             value={displayAmount}
             onChange={handleAmountChange}
             placeholder="예: 50,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -163,7 +163,7 @@ export default function LawsuitCostPage() {
               min={1}
               value={plaintiffCount}
               onChange={e => setPlaintiffCount(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -173,7 +173,7 @@ export default function LawsuitCostPage() {
               min={1}
               value={defendantCount}
               onChange={e => setDefendantCount(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -235,7 +235,7 @@ export default function LawsuitCostPage() {
           </div>
         )}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}

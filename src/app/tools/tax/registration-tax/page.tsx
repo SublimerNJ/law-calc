@@ -155,7 +155,7 @@ export default function RegistrationTaxPage() {
           <select
             value={regType}
             onChange={e => { setRegType(e.target.value as RegistrationType); setResult(null); setError(null); setWarning(null); }}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             {REGISTRATION_TYPES.map(t => (
               <option key={t.value} value={t.value}>{t.label} ({t.rateLabel})</option>
@@ -170,7 +170,7 @@ export default function RegistrationTaxPage() {
               <select
                 value={licenseRegion}
                 onChange={e => setLicenseRegion(e.target.value as RegionType)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               >
                 <option value="metro">인구 50만 이상 시 (서울·부산·대구 등)</option>
                 <option value="city">그 밖의 시</option>
@@ -205,7 +205,7 @@ export default function RegistrationTaxPage() {
               value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
               onChange={handleAmountChange}
               placeholder="예: 300,000,000"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
             {amount && (
               <p className="text-xs text-gray-500 mt-1">{parseInt(amount).toLocaleString('ko-KR')}원</p>
@@ -215,7 +215,7 @@ export default function RegistrationTaxPage() {
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -268,7 +268,7 @@ export default function RegistrationTaxPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`과세표준 × 세율 = 등록면허세
 등록면허세 × 20% = 지방교육세
 합계 = 등록면허세 + 지방교육세 (최소 6,000원)`}

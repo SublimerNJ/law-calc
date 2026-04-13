@@ -112,11 +112,11 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6">
-          <Link href="/" className="hover:text-slate-900 transition-colors">
+          <Link aria-label="Navigation link" href="/" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
             홈
           </Link>
           <span>/</span>
-          <Link href={`/#${category.id}`} className="hover:text-slate-900 transition-colors">
+          <Link aria-label="Navigation link" href={`/#${category.id}`} className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
             {category.name}
           </Link>
           <span>/</span>
@@ -138,7 +138,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
         </div>
 
         {/* Trust Signals Badge (E-E-A-T) */}
-        <div className="flex flex-wrap items-center gap-4 mb-8 text-xs text-slate-600 bg-white border border-slate-200 px-4 py-2.5 rounded-lg w-fit shadow-sm">
+        <div className="flex flex-wrap items-center gap-4 mb-8 text-xs text-slate-600 bg-white border border-slate-200 px-4 py-2.5 rounded-lg w-fit shadow-sm glassmorphism glass-panel">
           <div className="flex items-center gap-1.5">
             <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -153,7 +153,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
             <span className="font-semibold text-slate-800">최근 검토일:</span> {tool.updatedAt || '2026.04.08'}
           </div>
           <span className="text-slate-300">|</span>
-          <Link href="/editorial-policy" className="text-blue-600 hover:underline">데이터 검증 정책</Link>
+          <Link aria-label="Navigation link" href="/editorial-policy" className="text-blue-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">데이터 검증 정책</Link>
         </div>
 
         {/* Two-column layout */}
@@ -163,7 +163,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
             
             {/* Extended Editorial Guide for Thin Content Prevention */}
             {tool.extendedGuide && (
-              <article className="mt-10 bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm prose prose-slate max-w-none">
+              <article className="mt-10 bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm prose prose-slate max-w-none glassmorphism glass-panel">
                 <h2 className="text-xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-4">상세 법률 가이드: {tool.name}의 이해</h2>
                 <div 
                   className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap"
@@ -191,7 +191,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
 
             {/* Long description fallback */}
             {tool.longDescription && !tool.extendedGuide && (
-              <section className="mt-8 bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+              <section className="mt-8 bg-white border border-slate-200 rounded-xl p-6 shadow-sm glassmorphism glass-panel">
                 <h2 className="text-lg font-semibold text-slate-900 mb-3">계산기 요약 설명</h2>
                 <p className="text-sm text-slate-700 leading-relaxed">{tool.longDescription}</p>
               </section>
@@ -203,7 +203,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
                 <h2 className="text-xl font-bold text-slate-900 mb-5">자주 묻는 질문 (FAQ)</h2>
                 <div className="space-y-3">
                   {tool.faqItems.map((faq, i) => (
-                    <details key={i} className="group bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+                    <details key={i} className="group bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden glassmorphism glass-panel">
                       <summary className="flex items-center justify-between cursor-pointer p-5 text-sm font-semibold text-slate-800 hover:bg-slate-50 transition-colors">
                         <span>Q. {faq.question}</span>
                         <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -220,7 +220,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
             )}
 
             <section className="mt-10 grid gap-6">
-              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm glassmorphism glass-panel">
                 <h2 className="text-xl font-bold text-slate-900 mb-4">결과 해석 가이드</h2>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
                   이 페이지의 계산 결과는 <strong>의사결정 보조용 1차 추정치</strong>입니다. 실제 금액, 책임 범위, 절차 결과는
@@ -242,14 +242,14 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
                 </ol>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm glassmorphism glass-panel">
                 <h2 className="text-lg font-bold text-slate-900 mb-3">관련 읽을거리 및 정책</h2>
                 <div className="flex flex-wrap gap-2 text-sm">
-                  <Link href="/guides" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">법률 가이드 모아보기</Link>
-                  <Link href="/editorial-policy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">편집/검증 정책</Link>
-                  <Link href="/about" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">서비스 소개</Link>
-                  <Link href="/terms" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">이용약관</Link>
-                  <Link href="/privacy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">개인정보처리방침</Link>
+                  <Link aria-label="Navigation link" href="/guides" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드 모아보기</Link>
+                  <Link aria-label="Navigation link" href="/editorial-policy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">편집/검증 정책</Link>
+                  <Link aria-label="Navigation link" href="/about" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">서비스 소개</Link>
+                  <Link aria-label="Navigation link" href="/terms" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">이용약관</Link>
+                  <Link aria-label="Navigation link" href="/privacy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">개인정보처리방침</Link>
                 </div>
               </div>
             </section>
@@ -263,7 +263,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
 
             {/* Related tools */}
             {tool.relatedTools && tool.relatedTools.length > 0 && (
-              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm sticky top-24">
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm sticky top-24 glassmorphism glass-panel">
                 <h3 className="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
                   <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -276,7 +276,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
                     if (!related) return null;
                     return (
                       <li key={rid}>
-                        <Link
+                        <Link aria-label="Navigation link"
                           href={related.route}
                           className="flex items-center gap-3 text-sm text-slate-600 hover:text-blue-700 hover:bg-blue-50 p-2.5 rounded-lg transition-all"
                         >
@@ -293,7 +293,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-12 p-5 bg-slate-100 rounded-xl border border-slate-200">
+        <div className="mt-12 p-5 bg-slate-100 rounded-xl border border-slate-200 glassmorphism glass-panel">
           <p className="text-xs text-slate-500 leading-relaxed text-justify">
             <strong className="text-slate-700">법적 면책 조항 (Legal Disclaimer):</strong> law-calc.kr에서 제공하는 모든 계산 결과 및 법률 가이드는 참고 목적으로만 제공되며, 법적 구속력이 없습니다. 본 서비스는 최대한 정확한 최신 법령 및 판례(2026년 기준)를 반영하고자 노력하나, 개별 사건의 특수한 사실관계나 향후 법령 개정에 따라 실제 산정 결과와 차이가 발생할 수 있습니다. 본 사이트의 정보를 바탕으로 한 법적 조치에 대해 당사는 어떠한 책임도 지지 않으며, 실제 법적 분쟁 및 소송 진행 전에는 반드시 대한변호사협회 등록 전문 변호사, 법무사, 노무사, 세무사 등 관련 자격을 갖춘 법률 전문가와 직접 상담하시기 바랍니다.
           </p>
@@ -301,9 +301,9 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
 
         {/* Back link */}
         <div className="mt-8 text-center">
-          <Link
+          <Link aria-label="Navigation link"
             href={`/#${category.id}`}
-            className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors bg-white border border-slate-200 px-6 py-3 rounded-full shadow-sm hover:shadow"
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors bg-white border border-slate-200 px-6 py-3 rounded-full shadow-sm hover:shadow glassmorphism glass-panel"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />

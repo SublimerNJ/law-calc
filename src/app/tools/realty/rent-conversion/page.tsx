@@ -125,7 +125,7 @@ export default function RentConversionPage() {
                 value={jeonse ? parseInt(jeonse).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setJeonse)}
                 placeholder="예: 300,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div className="mb-4">
@@ -136,7 +136,7 @@ export default function RentConversionPage() {
                 value={deposit ? parseInt(deposit).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDeposit)}
                 placeholder="예: 50,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </>
@@ -152,7 +152,7 @@ export default function RentConversionPage() {
                 value={deposit ? parseInt(deposit).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDeposit)}
                 placeholder="예: 50,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div className="mb-4">
@@ -163,7 +163,7 @@ export default function RentConversionPage() {
                 value={wolse ? parseInt(wolse).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setWolse)}
                 placeholder="예: 500,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </>
@@ -176,7 +176,7 @@ export default function RentConversionPage() {
             inputMode="decimal"
             value={conversionRate}
             onChange={e => setConversionRate(e.target.value.replace(/[^0-9.]/g, ''))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">법정 상한 전환율: 한국은행 기준금리(2.50%) + 2%p = 4.50% (주택임대차보호법 시행령 제9조)</p>
         </div>
@@ -184,7 +184,7 @@ export default function RentConversionPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -215,7 +215,7 @@ export default function RentConversionPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
 {result.mode === 'jeonse-to-wolse'
   ? `월세 = (전세금 - 보증금) × 전환율 ÷ 12\n  = (${formatNumber(parseInt(jeonse))} - ${formatNumber(parseInt(deposit) || 0)}) × ${conversionRate}% ÷ 12\n  = ${formatNumber(result.amount)}원/월`
   : `전세금 = 보증금 + (월세 × 12 ÷ 전환율)\n  = ${formatNumber(parseInt(deposit) || 0)} + (${formatNumber(parseInt(wolse))} × 12 ÷ ${conversionRate}%)\n  = ${formatNumber(result.amount)}원`}

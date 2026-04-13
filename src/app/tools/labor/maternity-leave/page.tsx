@@ -108,8 +108,8 @@ export default function MaternityLeavePage() {
         <div className="mb-4">
           <label className="block text-sm text-slate-600 mb-2">출산 유형</label>
           <div className="flex gap-2">
-            <button onClick={() => setBirthType('single')} className={tabClass(birthType === 'single')}>단태아</button>
-            <button onClick={() => setBirthType('multiple')} className={tabClass(birthType === 'multiple')}>다태아</button>
+            <button aria-label="Action button" onClick={() => setBirthType('single')} className={tabClass(birthType === 'single')}>단태아</button>
+            <button aria-label="Action button" onClick={() => setBirthType('multiple')} className={tabClass(birthType === 'multiple')}>다태아</button>
           </div>
         </div>
 
@@ -117,8 +117,8 @@ export default function MaternityLeavePage() {
         <div className="mb-4">
           <label className="block text-sm text-slate-600 mb-2">기업 규모</label>
           <div className="flex gap-2">
-            <button onClick={() => setCompanySize('sme')} className={tabClass(companySize === 'sme')}>우선지원대상기업 (중소)</button>
-            <button onClick={() => setCompanySize('large')} className={tabClass(companySize === 'large')}>대기업</button>
+            <button aria-label="Action button" onClick={() => setCompanySize('sme')} className={tabClass(companySize === 'sme')}>우선지원대상기업 (중소)</button>
+            <button aria-label="Action button" onClick={() => setCompanySize('large')} className={tabClass(companySize === 'large')}>대기업</button>
           </div>
         </div>
 
@@ -131,7 +131,7 @@ export default function MaternityLeavePage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange}
             placeholder="예: 2,500,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">2026 고용보험 상한: 월 {formatNumber(MATERNITY_UPPER)}원 / 최저임금 기준: 월 {formatNumber(MIN_WAGE_MONTHLY)}원</p>
         </div>
@@ -139,7 +139,7 @@ export default function MaternityLeavePage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
         >
@@ -151,13 +151,13 @@ export default function MaternityLeavePage() {
         <div className="premium-card p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
-          <div className="bg-white rounded-xl p-5 mb-4 text-center">
+          <div className="bg-white rounded-xl p-5 mb-4 text-center glassmorphism glass-panel">
             <p className="text-sm text-slate-600 mb-1">고용보험 지급액</p>
             <p className="text-3xl font-bold text-[#f59e0b]">{formatNumber(result.insuranceTotal)}원</p>
           </div>
 
           {result.employerTotal > 0 && (
-            <div className="bg-white rounded-xl p-4 mb-4 text-center">
+            <div className="bg-white rounded-xl p-4 mb-4 text-center glassmorphism glass-panel">
               <p className="text-sm text-slate-600 mb-1">사업주 부담액</p>
               <p className="text-2xl font-bold text-slate-900">{formatNumber(result.employerTotal)}원</p>
             </div>
@@ -191,9 +191,9 @@ export default function MaternityLeavePage() {
             )}
           </div>
 
-          <div className="mt-6 p-4 bg-slate-100/50 rounded-lg">
+          <div className="mt-6 p-4 bg-slate-100/50 rounded-lg glassmorphism glass-panel">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`[고용보험 지급] min(1일 통상임금, 상한액) × 고용보험 지급일수
 [사업주 부담] 1일 통상임금 × 사업주 부담일수
 (대기업: 단태아 첫 60일·다태아 첫 75일 사업주 부담, 나머지 고용보험 지급)`}

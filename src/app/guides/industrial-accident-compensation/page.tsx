@@ -26,7 +26,7 @@ export default function IndustrialAccidentGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-amber-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-amber-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">노동/근로</span>
       </div>
@@ -79,7 +79,7 @@ export default function IndustrialAccidentGuide() {
           <p className="mb-4 text-sm text-slate-700">
             최근 3개월 급여와 요양 일수, 예상 장해등급을 입력하면 복잡한 최저보상기준과 등급별 일수를 모두 적용하여 산재 보험금을 정확히 계산합니다.
           </p>
-          <Link href="/tools/labor/industrial-accident" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors">
+          <Link aria-label="Navigation link" href="/tools/labor/industrial-accident" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
             산재보험급여 계산기 가기
           </Link>
         </div>

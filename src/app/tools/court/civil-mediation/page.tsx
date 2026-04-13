@@ -116,7 +116,7 @@ export default function CivilMediationPage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 50,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {amount && !error && (
             <p className="text-xs text-gray-500 mt-1">
@@ -132,7 +132,7 @@ export default function CivilMediationPage() {
             min={2}
             value={parties}
             onChange={e => setParties(Math.max(2, parseInt(e.target.value) || 2))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -147,7 +147,7 @@ export default function CivilMediationPage() {
           </div>
         )}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -202,7 +202,7 @@ export default function CivilMediationPage() {
 
           <div className="mt-6 pt-4 border-t border-slate-200">
             <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
-            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
+            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`소송인지대: ${formatNumber(result.lawsuitStampFee)}원
 × 1/10 = 조정인지대: ${formatNumber(result.mediationStampFee)}원
 + 송달료: ${formatNumber(result.serviceFee)}원 (${parties}명 × ${MEDIATION_SERVICE_ROUNDS}회 × ${formatNumber(SERVICE_FEE_UNIT)}원)

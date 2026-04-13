@@ -98,7 +98,7 @@ export default function DtiPage() {
             value={annualIncome ? parseInt(annualIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setAnnualIncome)}
             placeholder="예: 60,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {annualIncome && (
             <p className="text-xs text-gray-500 mt-1">
@@ -115,7 +115,7 @@ export default function DtiPage() {
             value={monthlyMortgage ? parseInt(monthlyMortgage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyMortgage)}
             placeholder="예: 1,500,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyMortgage && (
             <p className="text-xs text-gray-500 mt-1">
@@ -132,7 +132,7 @@ export default function DtiPage() {
             value={monthlyOtherInterest ? parseInt(monthlyOtherInterest).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyOtherInterest)}
             placeholder="예: 200,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyOtherInterest && parseInt(monthlyOtherInterest) > 0 && (
             <p className="text-xs text-gray-500 mt-1">
@@ -146,7 +146,7 @@ export default function DtiPage() {
           <select
             value={region}
             onChange={e => setRegion(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             {REGIONS.map(r => (
               <option key={r.value} value={r.value}>{r.label} (DTI {r.limit}%)</option>
@@ -156,7 +156,7 @@ export default function DtiPage() {
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -207,7 +207,7 @@ export default function DtiPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {`연간 원리금 ÷ 연소득 = DTI%
 
 DTI = (주담대 연간 원리금 + 기타대출 연간 이자) ÷ 연소득 × 100
@@ -236,7 +236,7 @@ DTI = (주담대 연간 원리금 + 기타대출 연간 이자) ÷ 연소득 × 
           <p><strong className="text-slate-900">DSR</strong>: 모든 대출의 원금 + 이자 <u>전체</u> 상환액 ÷ 연소득</p>
           <p className="text-xs text-gray-500 mt-2">총대출 1억원 초과 시 DSR 규제가 우선 적용되므로, DSR 계산을 먼저 확인하는 것을 권장합니다.</p>
         </div>
-        <Link href="/tools/realty/dsr" className="mt-3 inline-block text-sm font-medium hover:underline" style={{ color: category.color }}>
+        <Link aria-label="Navigation link" href="/tools/realty/dsr" className="mt-3 inline-block text-sm font-medium hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]" style={{ color: category.color }}>
           → DSR 계산기로 이동
         </Link>
       </div>

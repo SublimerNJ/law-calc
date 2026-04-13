@@ -166,7 +166,7 @@ export default function ChildSupportPage() {
           <select
             value={childCount}
             onChange={e => setChildCount(e.target.value as ChildCount)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             {(Object.entries(CHILD_COUNT_LABELS) as [ChildCount, string][]).map(([key, label]) => (
               <option key={key} value={key}>{label}</option>
@@ -183,7 +183,7 @@ export default function ChildSupportPage() {
             value={custodialIncome}
             onChange={handleNumberInput(setCustodialIncome)}
             placeholder="예: 300"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -195,7 +195,7 @@ export default function ChildSupportPage() {
             value={noncustodialIncome}
             onChange={handleNumberInput(setNoncustodialIncome)}
             placeholder="예: 500"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -222,7 +222,7 @@ export default function ChildSupportPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -272,7 +272,7 @@ export default function ChildSupportPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">산출 근거</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
 {`합산소득: ${formatNumber(result.combinedIncome)}만원 → 1인당 기준: ${formatNumber(result.basePerChild)}원
 자녀수 배율: ×${result.multiChildFactor}
 나이 배율: ×${result.ageFactor}

@@ -107,7 +107,7 @@ export default function FourInsurancesPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-xl font-semibold text-slate-900 transition-all"
           style={{ backgroundColor: category.color }}
@@ -151,26 +151,26 @@ export default function FourInsurancesPage() {
             </div>
 
             <div className="mt-4 grid grid-cols-3 gap-3">
-              <div className="p-3 rounded-lg bg-surface-50 text-center">
+              <div className="p-3 rounded-lg bg-surface-50 text-center glassmorphism glass-panel">
                 <p className="text-xs text-gray-500 mb-1">4대보험 공제액</p>
                 <p className="text-lg font-bold text-slate-900">{formatNumber(result.totalEmployee)}원</p>
               </div>
-              <div className="p-3 rounded-lg bg-surface-50 text-center">
+              <div className="p-3 rounded-lg bg-surface-50 text-center glassmorphism glass-panel">
                 <p className="text-xs text-gray-500 mb-1">예상 실수령액</p>
                 <p className="text-lg font-bold" style={{ color: category.color }}>{formatNumber(parseAmount(salary) - result.totalEmployee)}원</p>
                 <p className="text-xs text-gray-600">소득세 별도</p>
               </div>
-              <div className="p-3 rounded-lg bg-surface-50 text-center">
+              <div className="p-3 rounded-lg bg-surface-50 text-center glassmorphism glass-panel">
                 <p className="text-xs text-gray-500 mb-1">사업주 총비용</p>
                 <p className="text-lg font-bold text-slate-900">{formatNumber(parseAmount(salary) + result.totalEmployer)}원</p>
               </div>
             </div>
 
-            <div className="mt-3 p-3 rounded-lg bg-surface-50">
+            <div className="mt-3 p-3 rounded-lg bg-surface-50 glassmorphism glass-panel">
               <p className="text-xs text-gray-500">* 장기요양보험 요율은 건강보험료의 13.14% | 국민연금 월 상한 {formatNumber(PENSION_CAP)}원</p>
             </div>
 
-            <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500">
+            <div className="mt-4 p-3 rounded-lg bg-surface-50 text-xs text-gray-500 glassmorphism glass-panel">
               <p className="font-semibold text-slate-600 mb-1">법적 근거</p>
               <p>국민연금법, 국민건강보험법, 고용보험법, 산업재해보상보험법 (2026년 요율). 국민연금 상한 월 637만원. 실제 보험료와 다를 수 있으며, 참고용으로만 활용하시기 바랍니다.</p>
             </div>

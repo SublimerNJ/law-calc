@@ -26,7 +26,7 @@ export default function AttorneyFeeGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-blue-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-blue-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">소송/법원</span>
       </div>
@@ -83,7 +83,7 @@ export default function AttorneyFeeGuide() {
           <p className="mb-4 text-sm text-slate-700">
             복잡한 구간별 이율을 직접 계산하실 필요 없이, 소가만 입력하면 대법원 최신 규칙이 적용된 산입 한도액을 즉시 확인할 수 있습니다.
           </p>
-          <Link href="/tools/court/attorney-fee" className="inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+          <Link aria-label="Navigation link" href="/tools/court/attorney-fee" className="inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
             변호사보수 소송비용산입 계산기 가기
           </Link>
         </div>

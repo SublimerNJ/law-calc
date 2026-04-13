@@ -92,7 +92,7 @@ export default function WeeklyHolidayPayPage() {
             value={weeklyHours}
             onChange={(e) => setWeeklyHours(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 40"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -106,7 +106,7 @@ export default function WeeklyHolidayPayPage() {
             value={hourlyWage ? parseInt(hourlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setHourlyWage)}
             placeholder="예: 10,030"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -134,7 +134,7 @@ export default function WeeklyHolidayPayPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -186,7 +186,7 @@ export default function WeeklyHolidayPayPage() {
           )}
 
           {result.eligible && (
-            <div className="mb-4 p-4 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
+            <div className="mb-4 p-4 rounded-lg bg-white glassmorphism glass-panel" style={{ borderLeft: `3px solid ${category.color}` }}>
               <p className="text-xs text-slate-600 mb-1">월 예상 총급여 (기본급 + 주휴수당)</p>
               <p className="text-lg font-bold" style={{ color: category.color }}>
                 {formatNumber(Math.floor((parseFloat(weeklyHours) * parseInt(hourlyWage) + result.amount) * 4.33))}원/월
@@ -199,7 +199,7 @@ export default function WeeklyHolidayPayPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {`주휴시간 = 주근로시간 ÷ 40 × 8
 수당 = 주휴시간 × 시간당 통상임금
 

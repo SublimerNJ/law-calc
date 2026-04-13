@@ -103,8 +103,8 @@ export default function MinimumWageCheckPage() {
         <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
 
         {/* Tab toggle */}
-        <div className="flex mb-6 bg-white rounded-lg p-1">
-          <button
+        <div className="flex mb-6 bg-white rounded-lg p-1 glassmorphism glass-panel">
+          <button aria-label="Action button"
             onClick={() => handleModeChange('monthly')}
             className="flex-1 py-2 rounded-md text-sm font-semibold transition-colors"
             style={{
@@ -114,7 +114,7 @@ export default function MinimumWageCheckPage() {
           >
             월급 기준
           </button>
-          <button
+          <button aria-label="Action button"
             onClick={() => handleModeChange('hourly')}
             className="flex-1 py-2 rounded-md text-sm font-semibold transition-colors"
             style={{
@@ -138,7 +138,7 @@ export default function MinimumWageCheckPage() {
                 value={monthlySalary ? parseInt(monthlySalary).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setMonthlySalary)}
                 placeholder="예: 2,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
               <p className="text-xs text-gray-500 mt-1">
                 최저임금 산입 임금 기준 (기본급+고정수당, 식대/교통비 월 20만원 초과분 제외)
@@ -177,7 +177,7 @@ export default function MinimumWageCheckPage() {
               value={hourlyWage ? parseInt(hourlyWage).toLocaleString('ko-KR') : ''}
               onChange={handleNumberChange(setHourlyWage)}
               placeholder="예: 9,860"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         )}
@@ -185,7 +185,7 @@ export default function MinimumWageCheckPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -240,7 +240,7 @@ export default function MinimumWageCheckPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
-            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
+            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap glassmorphism glass-panel">
 {mode === 'monthly'
   ? `월급: ${monthlySalary ? parseInt(monthlySalary).toLocaleString('ko-KR') : 0}원\n÷ 기준시간 ${result.monthlyBaseHours}시간\n= 실제 시급: ${formatNumber(result.actualHourly)}원\nvs 최저임금: ${formatNumber(MINIMUM_WAGE_2026)}원`
   : `실제 시급: ${formatNumber(result.actualHourly)}원\nvs 최저임금: ${formatNumber(MINIMUM_WAGE_2026)}원\n차액: ${formatNumber(result.hourlyDiff)}원`}

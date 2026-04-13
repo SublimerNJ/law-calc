@@ -10,7 +10,7 @@ export default function Logo({ size = 'md', showText = true }: LogoProps) {
   const textClass = size === 'sm' ? 'text-lg' : size === 'md' ? 'text-xl' : 'text-2xl';
 
   return (
-    <Link href="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
+    <Link aria-label="Navigation link" href="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.02] cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2">
       <svg
         width={iconSize}
         height={iconSize}

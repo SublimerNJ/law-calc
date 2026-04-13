@@ -26,7 +26,7 @@ export default function CapitalGainsGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-emerald-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-emerald-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">세금</span>
       </div>
@@ -71,10 +71,10 @@ export default function CapitalGainsGuide() {
             취득가액과 양도가액, 거주 기간만 입력하면 12억 초과분 비율 계산부터 장기보유특별공제, 지방소득세까지 최신 세법으로 자동 계산합니다.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/tools/tax/capital-gains-tax" className="inline-block bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/tax/capital-gains-tax" className="inline-block bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
               양도소득세 계산기
             </Link>
-            <Link href="/tools/tax/acquisition-tax" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/tax/acquisition-tax" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
               부동산 취득세 계산기
             </Link>
           </div>

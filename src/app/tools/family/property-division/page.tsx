@@ -113,7 +113,7 @@ export default function PropertyDivisionPage() {
             value={getDisplayValue(totalAssets)}
             onChange={handleNumberInput(setTotalAssets)}
             placeholder="예: 500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {totalAssets && (
             <p className="text-xs text-gray-500 mt-1">
@@ -130,7 +130,7 @@ export default function PropertyDivisionPage() {
             value={getDisplayValue(claimantAssets)}
             onChange={handleNumberInput(setClaimantAssets)}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -142,7 +142,7 @@ export default function PropertyDivisionPage() {
             value={getDisplayValue(opponentAssets)}
             onChange={handleNumberInput(setOpponentAssets)}
             placeholder="비워두면 자동 계산 (총재산 - 청구인 명의)"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -155,9 +155,9 @@ export default function PropertyDivisionPage() {
             value={contribution}
             onChange={e => setContribution(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="20~80"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
-          <div className="mt-2 p-3 rounded-lg bg-white border border-slate-200">
+          <div className="mt-2 p-3 rounded-lg bg-white border border-slate-200 glassmorphism glass-panel">
             <p className="text-xs text-slate-600 mb-1">기여도 참고 (판례 기준)</p>
             <ul className="text-xs text-gray-500 space-y-0.5">
               <li>맞벌이 부부: 보통 <strong className="text-slate-600">50%</strong></li>
@@ -176,7 +176,7 @@ export default function PropertyDivisionPage() {
             value={marriageYears}
             onChange={e => setMarriageYears(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 15"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">참고 정보 (법원 판단에 영향)</p>
         </div>
@@ -185,7 +185,7 @@ export default function PropertyDivisionPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -234,7 +234,7 @@ export default function PropertyDivisionPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {`총재산             ${formatNumber(result.totalAssets)}원
 × 기여도           ${result.contributionRate}%
 ────────────────────────────────

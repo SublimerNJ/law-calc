@@ -157,7 +157,7 @@ export default function AcquisitionTaxPage() {
             value={price ? parseInt(price).toLocaleString('ko-KR') : ''}
             onChange={handlePriceChange}
             placeholder="예: 500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {price && (
             <p className="text-xs text-gray-500 mt-1">
@@ -170,7 +170,7 @@ export default function AcquisitionTaxPage() {
           <label className="block text-sm text-slate-600 mb-2">부동산 유형</label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {propertyTypes.map(opt => (
-              <button
+              <button aria-label="Action button"
                 key={opt.value}
                 onClick={() => setPropertyType(opt.value)}
                 className={`px-3 py-2 rounded-lg text-sm border transition-colors ${
@@ -191,7 +191,7 @@ export default function AcquisitionTaxPage() {
               <label className="block text-sm text-slate-600 mb-2">주택 보유 수</label>
               <div className="flex gap-2">
                 {houseCounts.map(opt => (
-                  <button
+                  <button aria-label="Action button"
                     key={opt.value}
                     onClick={() => setHouseCount(opt.value)}
                     className={`px-4 py-2 rounded-lg text-sm border transition-colors ${
@@ -231,7 +231,7 @@ export default function AcquisitionTaxPage() {
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -278,11 +278,11 @@ export default function AcquisitionTaxPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg bg-white">
+            <div className="p-3 rounded-lg bg-white glassmorphism glass-panel">
               <p className="text-xs text-slate-600 mb-1">실효 부담률</p>
               <p className="text-lg text-slate-900">{(result.total / result.acquisitionPrice * 100).toFixed(2)}%</p>
             </div>
-            <div className="p-3 rounded-lg bg-white" style={{ borderLeft: `3px solid ${category.color}` }}>
+            <div className="p-3 rounded-lg bg-white glassmorphism glass-panel" style={{ borderLeft: `3px solid ${category.color}` }}>
               <p className="text-xs text-slate-600 mb-1">총 매입비용 (취득가 + 세금)</p>
               <p className="text-lg font-bold" style={{ color: category.color }}>
                 {formatNumber(result.acquisitionPrice + result.total)}원
@@ -292,7 +292,7 @@ export default function AcquisitionTaxPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
 {`취득세 = ${formatNumber(result.acquisitionPrice)} × ${(result.taxRate * 100).toFixed(1)}% = ${formatNumber(result.acquisitionTax)}원
 농특세 = ${result.ruralSpecialTax > 0 ? `${formatNumber(result.acquisitionTax)} × 10% = ${formatNumber(result.ruralSpecialTax)}원` : '면제 (85m² 이하 주택)'}
 교육세 = ${formatNumber(result.acquisitionTax)} × 20% = ${formatNumber(result.localEducationTax)}원

@@ -26,7 +26,7 @@ export default function DefamationGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-orange-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-orange-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">손해배상</span>
       </div>
@@ -72,10 +72,10 @@ export default function DefamationGuide() {
             형사 처벌과 별개로 민사상 정신적 고통(위자료)을 배상해야 합니다. 허위사실 유무, 전파성, 사과 여부 등을 입력하여 법원 실무 기준에 따른 위자료 예상액을 확인해 보세요.
           </p>
           <div className="flex gap-3">
-            <Link href="/tools/damages/defamation" className="inline-block bg-orange-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/damages/defamation" className="inline-block bg-orange-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
               명예훼손 손해배상 계산기
             </Link>
-            <Link href="/tools/damages/damages-general" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/damages/damages-general" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
               일반 손해배상 계산기
             </Link>
           </div>

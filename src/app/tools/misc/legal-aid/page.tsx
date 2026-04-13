@@ -80,7 +80,7 @@ export default function LegalAidPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="flex rounded-lg overflow-hidden mb-4 border border-slate-200">
-        <Link href="/tools/misc/public-defender" className="flex-1 py-3 text-center text-sm font-medium bg-white text-slate-500 hover:bg-slate-50 transition-colors">국선변호인</Link>
+        <Link aria-label="Navigation link" href="/tools/misc/public-defender" className="flex-1 py-3 text-center text-sm font-medium bg-white text-slate-500 hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">국선변호인</Link>
         <div className="flex-1 py-3 text-center text-sm font-semibold bg-slate-900 text-white">법률구조공단</div>
       </div>
       <div className="premium-card p-6 mb-4">
@@ -90,7 +90,7 @@ export default function LegalAidPage() {
             <select
               value={householdSize}
               onChange={e => setHouseholdSize(Number(e.target.value))}
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             >
               {[1, 2, 3, 4, 5, 6].map(n => (
                 <option key={n} value={n}>{n}{n === 6 ? '인 이상' : '인'}</option>
@@ -105,7 +105,7 @@ export default function LegalAidPage() {
               value={monthlyIncome}
               onChange={e => setMonthlyIncome(formatNumber(e.target.value))}
               placeholder="0"
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
 
@@ -116,7 +116,7 @@ export default function LegalAidPage() {
               value={totalAssets}
               onChange={e => setTotalAssets(formatNumber(e.target.value))}
               placeholder="0"
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
 
@@ -125,7 +125,7 @@ export default function LegalAidPage() {
             <select
               value={supportType}
               onChange={e => setSupportType(e.target.value as SupportType)}
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             >
               <option value="litigation">소송대리 (무료법률구조)</option>
               <option value="consultation">법률상담</option>
@@ -134,7 +134,7 @@ export default function LegalAidPage() {
           </div>
         </div>
 
-        <button
+        <button aria-label="Action button"
           onClick={calculate}
           className="w-full mt-6 py-3 rounded-lg font-semibold text-slate-900"
           style={{ backgroundColor: category.color }}

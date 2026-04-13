@@ -113,13 +113,13 @@ export default function GuidesPage() {
 
       <div className="grid gap-6">
         {guides.map(guide => (
-          <Link 
+          <Link aria-label="Navigation link" 
             href={`/guides/${guide.id}`} 
             key={guide.id}
-            className="block p-6 sm:p-8 bg-white border border-slate-200 rounded-2xl hover:border-blue-300 hover:shadow-md transition-all group"
+            className="block p-6 sm:p-8 bg-white border border-slate-200 rounded-2xl hover:border-blue-300 hover:shadow-md transition-all group glassmorphism glass-panel"
           >
             <div className="flex items-center gap-3 mb-3">
-              <span className={`text-xs font-bold px-2 py-1 bg-slate-50 rounded-md ${guide.color}`}>{guide.category}</span>
+              <span className={`text-xs font-bold px-2 py-1 bg-slate-50 rounded-md ${guide.color} glassmorphism glass-panel`}>{guide.category}</span>
               <span className="text-xs text-slate-300">|</span>
               <span className="text-xs text-slate-500">{guide.date}</span>
             </div>
@@ -139,10 +139,10 @@ export default function GuidesPage() {
       <section className="mt-10 pt-8 border-t border-slate-200">
         <h2 className="text-lg font-bold text-slate-900 mb-3">함께 보면 좋은 페이지</h2>
         <div className="flex flex-wrap gap-2 text-sm">
-          <Link href="/editorial-policy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">편집/검증 정책</Link>
-          <Link href="/about" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">서비스 소개</Link>
-          <Link href="/terms" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">이용약관</Link>
-          <Link href="/privacy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors">개인정보처리방침</Link>
+          <Link aria-label="Navigation link" href="/editorial-policy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">편집/검증 정책</Link>
+          <Link aria-label="Navigation link" href="/about" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">서비스 소개</Link>
+          <Link aria-label="Navigation link" href="/terms" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">이용약관</Link>
+          <Link aria-label="Navigation link" href="/privacy" className="px-3 py-1.5 rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">개인정보처리방침</Link>
         </div>
       </section>
     </main>

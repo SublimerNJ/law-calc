@@ -26,7 +26,7 @@ export default function UnfairDismissalGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-amber-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-amber-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">노동/근로</span>
       </div>
@@ -82,10 +82,10 @@ export default function UnfairDismissalGuide() {
             해고일과 노동위원회 판정일까지의 예상 기간, 급여를 입력하면 받을 수 있는 임금상당액(백페이)과 금전보상(위로금) 예상액을 계산해 드립니다.
           </p>
           <div className="flex gap-3">
-            <Link href="/tools/labor/unfair-dismissal" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/labor/unfair-dismissal" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
               부당해고 보상금 계산기
             </Link>
-            <Link href="/tools/labor/dismissal-notice" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/labor/dismissal-notice" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
               해고예고수당 계산기
             </Link>
           </div>

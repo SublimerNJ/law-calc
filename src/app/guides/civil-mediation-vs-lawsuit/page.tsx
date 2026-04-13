@@ -26,7 +26,7 @@ export default function CivilMediationGuide() {
       />
       
       <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link href="/guides" className="text-blue-600 hover:underline">법률 가이드</Link>
+        <Link aria-label="Navigation link" href="/guides" className="text-blue-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
         <span className="text-slate-400">/</span>
         <span className="text-slate-600">소송/법원</span>
       </div>
@@ -74,10 +74,10 @@ export default function CivilMediationGuide() {
             청구금액(소가)만 입력하면 정식 소송과 민사조정의 인지대, 송달료 차이를 명확하게 비교해 드립니다.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/tools/court/civil-mediation" className="inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/court/civil-mediation" className="inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
               민사조정 비용 계산기
             </Link>
-            <Link href="/tools/court/lawsuit-cost" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
+            <Link aria-label="Navigation link" href="/tools/court/lawsuit-cost" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
               일반 소송비용 계산기
             </Link>
           </div>

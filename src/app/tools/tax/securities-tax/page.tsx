@@ -89,7 +89,7 @@ export default function SecuritiesTaxPage() {
           <select
             value={marketType}
             onChange={e => { setMarketType(e.target.value as MarketType); setResult(null); }}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             {MARKETS.map(m => (
               <option key={m.value} value={m.value}>
@@ -107,7 +107,7 @@ export default function SecuritiesTaxPage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {amount && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(amount).toLocaleString('ko-KR')}원</p>
@@ -117,7 +117,7 @@ export default function SecuritiesTaxPage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -171,7 +171,7 @@ export default function SecuritiesTaxPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
-            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap">
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`양도금액 × 세율 = 증권거래세
 코스피: 증권거래세 0.05% + 농어촌특별세 0.15%
 코스닥·K-OTC: 0.20%, 코넥스: 0.10%, 비상장: 0.35%`}

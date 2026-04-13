@@ -131,7 +131,7 @@ export default function FinePenaltyPage() {
           <select
             value={violationId}
             onChange={e => setViolationId(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           >
             {groups.map(group => (
               <optgroup key={group} label={group}>
@@ -173,11 +173,11 @@ export default function FinePenaltyPage() {
             value={unpaidMonths}
             onChange={e => setUnpaidMonths(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -244,7 +244,7 @@ export default function FinePenaltyPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-4">
+            <div className="bg-white rounded-lg p-4 glassmorphism glass-panel">
               <p className="text-sm text-slate-600 mb-2 font-semibold">납부 방법 안내</p>
               <ul className="text-sm text-slate-600 space-y-1">
                 <li>- 이파인 (efine.go.kr) 온라인 납부</li>

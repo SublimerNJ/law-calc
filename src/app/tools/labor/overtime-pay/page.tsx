@@ -111,7 +111,7 @@ export default function OvertimePayPage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyWage)}
             placeholder="예: 2,090,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -144,7 +144,7 @@ export default function OvertimePayPage() {
             value={overtimeHours}
             onChange={handleDecimalChange(setOvertimeHours)}
             placeholder="예: 10"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -156,7 +156,7 @@ export default function OvertimePayPage() {
             value={nightHours}
             onChange={handleDecimalChange(setNightHours)}
             placeholder="예: 5"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -168,7 +168,7 @@ export default function OvertimePayPage() {
             value={holidayHours}
             onChange={handleDecimalChange(setHolidayHours)}
             placeholder="예: 8"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -180,14 +180,14 @@ export default function OvertimePayPage() {
             value={holidayOvertimeHours}
             onChange={handleDecimalChange(setHolidayOvertimeHours)}
             placeholder="예: 2"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -228,7 +228,7 @@ export default function OvertimePayPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
 {`시간급 = ${monthlyWage ? formatNumber(parseInt(monthlyWage)) : '0'} ÷ ${weeklyHours === 40 ? 209 : 226} = ${formatNumber(result.hourlyWage)}원
 ${result.overtimePay > 0 ? `\n연장근로 = ${formatNumber(result.hourlyWage)} × ${overtimeHours}h × 1.5배 = ${formatNumber(result.overtimePay)}원` : ''}${result.nightPay > 0 ? `\n야간근로 = ${formatNumber(result.hourlyWage)} × ${nightHours}h × 0.5배(가산) = ${formatNumber(result.nightPay)}원` : ''}${result.holidayPay > 0 ? `\n휴일근로 = ${formatNumber(result.hourlyWage)} × ${holidayHours}h × 1.5배${holidayOvertimeHours && parseFloat(holidayOvertimeHours) > 0 ? ` + ${formatNumber(result.hourlyWage)} × ${holidayOvertimeHours}h × 2.0배` : ''} = ${formatNumber(result.holidayPay)}원` : ''}`}
             </pre>

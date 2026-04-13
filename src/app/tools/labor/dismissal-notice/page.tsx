@@ -87,7 +87,7 @@ export default function DismissalNoticePage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyWage && (
             <p className="text-xs text-gray-500 mt-1">
@@ -104,7 +104,7 @@ export default function DismissalNoticePage() {
             value={noticeDays}
             onChange={handleNoticeDaysChange}
             placeholder="0 = 즉시해고"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">실제 받은 예고 기간. 0 = 예고 없이 즉시해고 (30일분 수당 전액 지급)</p>
         </div>
@@ -112,7 +112,7 @@ export default function DismissalNoticePage() {
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -166,7 +166,7 @@ export default function DismissalNoticePage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
-            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap">
+            <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap glassmorphism glass-panel">
 {`통상임금: ${monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : 0}원
 ÷ 30 = 1일 통상임금: ${formatNumber(result.dailyWage)}원
 × (30 - ${noticeDays}일) = 미지급 ${result.unpaidDays}일
@@ -207,7 +207,7 @@ export default function DismissalNoticePage() {
           <strong className="text-slate-900">부당해고를 당하셨나요?</strong> 해고예고수당과 부당해고 보상금은 다릅니다.
           부당해고 시 받을 수 있는 보상금은 별도 계산이 필요합니다.
         </p>
-        <Link href="/tools/labor/unfair-dismissal" className="mt-2 inline-block text-sm font-medium hover:underline" style={{ color: category.color }}>
+        <Link aria-label="Navigation link" href="/tools/labor/unfair-dismissal" className="mt-2 inline-block text-sm font-medium hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]" style={{ color: category.color }}>
           → 부당해고 보상금 계산기로 이동
         </Link>
       </div>

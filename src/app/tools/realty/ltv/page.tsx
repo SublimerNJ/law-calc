@@ -91,7 +91,7 @@ export default function LtvPage() {
             value={housePrice ? parseInt(housePrice).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setHousePrice)}
             placeholder="예: 500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {housePrice && (
             <p className="text-xs text-gray-500 mt-1">
@@ -108,7 +108,7 @@ export default function LtvPage() {
             value={loanAmount ? parseInt(loanAmount).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setLoanAmount)}
             placeholder="예: 200,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {loanAmount && (
             <p className="text-xs text-gray-500 mt-1">
@@ -122,7 +122,7 @@ export default function LtvPage() {
           <select
             value={region}
             onChange={e => setRegion(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           >
             {REGIONS.map(r => (
               <option key={r.value} value={r.value}>{r.label} (LTV {r.limit}%)</option>
@@ -132,7 +132,7 @@ export default function LtvPage() {
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -177,7 +177,7 @@ export default function LtvPage() {
 
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {`주택가격 × LTV비율 = 최대 대출가능액
 
 현재 LTV = 대출금액 ÷ 주택가격 × 100

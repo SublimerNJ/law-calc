@@ -116,7 +116,7 @@ export default function InheritanceTaxPage() {
             value={displayValue(grossEstate)}
             onChange={handleNumberInput(setGrossEstate)}
             placeholder="예: 1,000,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
           {grossEstate && <p className="text-xs text-gray-500 mt-1">{displayValue(grossEstate)}원</p>}
         </div>
@@ -141,7 +141,7 @@ export default function InheritanceTaxPage() {
             value={displayValue(funeralExpenses)}
             onChange={handleNumberInput(setFuneralExpenses)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -153,14 +153,14 @@ export default function InheritanceTaxPage() {
             value={displayValue(debts)}
             onChange={handleNumberInput(setDebts)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button
+        <button aria-label="Action button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
@@ -222,7 +222,7 @@ export default function InheritanceTaxPage() {
 
           <div className="mb-4 mt-4">
             <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono">
+            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
               {`총 상속재산가액     ${formatNumber(parseInput(grossEstate))}원
 (-) 채무/장례비    ${formatNumber(parseInput(debts) + Math.min(parseInput(funeralExpenses), 15_000_000))}원
 = 과세가액         ${formatNumber(result.taxableBase)}원

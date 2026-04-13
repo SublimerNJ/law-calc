@@ -24,7 +24,7 @@ export default function Header() {
               onMouseEnter={() => setIsCategoryOpen(true)}
               onMouseLeave={() => setIsCategoryOpen(false)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300">
+              <button aria-label="Action button" className="flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2">
                 카테고리
                 <svg
                   className={`w-4 h-4 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180 text-[#1e3a8a]' : ''}`}
@@ -38,9 +38,9 @@ export default function Header() {
               </button>
 
               {isCategoryOpen && (
-                <div className="absolute top-full right-0 w-72 bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden py-2">
+                <div className="absolute top-full right-0 w-72 bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden py-2 glassmorphism glass-panel">
                   {CATEGORIES.map((cat) => (
-                    <Link
+                    <Link aria-label="Navigation link"
                       key={cat.id}
                       href={`/#${cat.id}`}
                       className="flex items-center gap-3 px-5 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#1e3a8a] transition-all duration-300"
@@ -56,13 +56,13 @@ export default function Header() {
               )}
             </div>
 
-            <Link
+            <Link aria-label="Navigation link"
               href="/"
               className="text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300"
             >
               전체 도구
             </Link>
-            <Link
+            <Link aria-label="Navigation link"
               href="/guides"
               className="text-sm font-medium text-slate-600 hover:text-[#1e3a8a] transition-colors duration-300"
             >
@@ -74,7 +74,7 @@ export default function Header() {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 transition-all"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 transition-all glassmorphism glass-panel"
               aria-label="메뉴"
             >
               {isMenuOpen ? (
@@ -95,11 +95,11 @@ export default function Header() {
           <div className="md:hidden border-t border-slate-200 py-4">
             <div className="grid grid-cols-2 gap-3 pb-4">
               {CATEGORIES.map((cat) => (
-                <Link
+                <Link aria-label="Navigation link"
                   key={cat.id}
                   href={`/#${cat.id}`}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-all"
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-all glassmorphism glass-panel"
                 >
                   <span className="text-2xl">{cat.icon}</span>
                   <span className="text-xs font-medium text-slate-700">{cat.name}</span>

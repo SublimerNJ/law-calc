@@ -102,7 +102,7 @@ ${formatDateKR(sendDate)}
                 value={senderName}
                 onChange={e => setSenderName(e.target.value)}
                 placeholder="홍길동"
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div>
@@ -112,7 +112,7 @@ ${formatDateKR(sendDate)}
                 value={senderAddress}
                 onChange={e => setSenderAddress(e.target.value)}
                 placeholder="서울특별시 강남구..."
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </div>
@@ -125,7 +125,7 @@ ${formatDateKR(sendDate)}
                 value={receiverName}
                 onChange={e => setReceiverName(e.target.value)}
                 placeholder="김철수"
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div>
@@ -135,7 +135,7 @@ ${formatDateKR(sendDate)}
                 value={receiverAddress}
                 onChange={e => setReceiverAddress(e.target.value)}
                 placeholder="서울특별시 서초구..."
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </div>
@@ -147,7 +147,7 @@ ${formatDateKR(sendDate)}
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="채무 이행 촉구 내용증명"
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
 
@@ -158,7 +158,7 @@ ${formatDateKR(sendDate)}
               onChange={e => setBody(e.target.value)}
               rows={6}
               placeholder="내용증명 본문을 입력하세요..."
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none resize-y"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none resize-y glassmorphism glass-panel"
             />
           </div>
 
@@ -168,14 +168,14 @@ ${formatDateKR(sendDate)}
               type="date"
               value={sendDate}
               onChange={e => setSendDate(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
 
         {error && <p className="text-red-500 text-sm mt-3 mb-0">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mt-3 mb-0">{warning}</p>}
-        <button
+        <button aria-label="Action button"
           onClick={handlePreview}
           className="w-full mt-6 py-3 rounded-lg font-semibold text-slate-900"
           style={{ backgroundColor: category.color }}
@@ -188,15 +188,15 @@ ${formatDateKR(sendDate)}
         <div className="premium-card p-6">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-semibold text-slate-900">내용증명 미리보기</h3>
-            <button
+            <button aria-label="Action button"
               onClick={handleCopy}
-              className="px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-900 hover:bg-slate-200 transition-colors"
+              className="px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-900 hover:bg-slate-200 transition-colors glassmorphism glass-panel"
             >
               {copied ? '복사됨!' : '복사'}
             </button>
           </div>
 
-          <div className="p-6 rounded-lg bg-white text-slate-900 font-mono text-sm whitespace-pre-wrap leading-relaxed">
+          <div className="p-6 rounded-lg bg-white text-slate-900 font-mono text-sm whitespace-pre-wrap leading-relaxed glassmorphism glass-panel">
             {generateText()}
           </div>
 
