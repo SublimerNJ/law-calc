@@ -6,7 +6,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 export default function sitemap(): MetadataRoute.Sitemap {
  const toolUrls: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
  url: `${BASE_URL}${tool.route}`,
- lastModified: new Date(),
+ lastModified: tool.updatedAt ? new Date(tool.updatedAt.replace(/\./g, '-')) : new Date(),
  changeFrequency: 'monthly' as const,
  priority: 0.8,
  }));

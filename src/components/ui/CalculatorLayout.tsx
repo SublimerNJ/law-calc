@@ -99,6 +99,16 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
             text: faq.answer
           }
         }))
+      }] : []),
+      ...(tool.extendedGuide ? [{
+        '@type': 'Article',
+        headline: `상세 법률 가이드: ${tool.name}의 이해`,
+        articleBody: tool.extendedGuide.replace(/<[^>]*>?/gm, ''), // Remove HTML tags for plain text
+        author: {
+          '@type': 'Organization',
+          name: tool.expertReviewer || 'law-calc.kr 법률 데이터 분석팀'
+        },
+        dateModified: tool.updatedAt ? new Date(tool.updatedAt.replace(/\./g, '-')).toISOString() : new Date().toISOString()
       }] : [])
     ]
   };
