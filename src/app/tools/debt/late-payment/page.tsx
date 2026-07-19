@@ -92,7 +92,7 @@ export default function LatePaymentPage() {
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -107,7 +107,7 @@ export default function LatePaymentPage() {
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -117,7 +117,7 @@ export default function LatePaymentPage() {
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -167,8 +167,8 @@ export default function LatePaymentPage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.days === 0 && (
-            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
-              <p className="text-sm text-blue-600">시작일과 종료일이 같아 지연일수가 0일입니다. 이자가 발생하지 않습니다.</p>
+            <div className="mb-4 p-3 rounded-lg bg-teal-50 border border-blue-200">
+              <p className="text-sm text-teal-800">시작일과 종료일이 같아 지연일수가 0일입니다. 이자가 발생하지 않습니다.</p>
             </div>
           )}
 

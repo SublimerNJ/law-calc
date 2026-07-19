@@ -1,102 +1,106 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import GuideShell from '@/components/guides/GuideShell';
 
 export const metadata: Metadata = {
-  title: '부당해고 구제신청의 골든타임과 금전보상제도 | law-calc.kr',
-  description: '5인 이상 사업장에서 억울하게 해고를 당했을 때, 3개월 이내 노동위원회 구제신청 절차와 원직복직을 대체하는 금전보상제도에 대해 설명합니다.',
+  title: '부당해고 구제: 서면통지·3개월 제척·금전보상 실무',
+  description:
+    '해고 서면통지, 정당한 이유, 노동위원회 구제신청 제척기간 3개월, 원직복직·금전보상, 증거 준비와 병행 쟁점(임금·퇴직금)을 실무 순서로 안내합니다.',
+  alternates: { canonical: 'https://law-calc.kr/guides/unfair-dismissal-relief' },
 };
 
 export default function UnfairDismissalGuide() {
-  const schemaLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: '부당해고 구제신청의 골든타임과 금전보상제도',
-    datePublished: '2026-04-08',
-    author: {
-      '@type': 'Organization',
-      name: 'law-calc.kr 노동법 데이터 분석팀'
-    }
-  };
-
   return (
-    <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
-      <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link aria-label="Navigation link" href="/guides" className="text-amber-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
-        <span className="text-slate-400">/</span>
-        <span className="text-slate-600">노동/근로</span>
-      </div>
+    <GuideShell
+      title="부당해고 구제신청의 골든타임과 금전보상제도"
+      category="노동/근로"
+      accentClass="text-teal-900"
+      ctaBgClass="bg-teal-800 hover:bg-teal-900"
+      datePublished="2026-04-08"
+      dateModified="2026-07-19"
+      description="부당해고 구제신청과 금전보상 실무 가이드"
+      path="/guides/unfair-dismissal-relief"
+      toolHref="/tools/labor/unfair-dismissal"
+      toolLabel="부당해고 관련 계산·점검 도구"
+    >
+      <p>
+        해고 문자를 받은 날부터 시계가 돌아갑니다. 부당해고 구제신청에는 <strong>제척기간 3개월</strong>이 있어,
+        &quot;좀 진정되면 따지자&quot;고 미루다 신청 자체를 못하는 사례가 반복됩니다. 이 글은 서면통지, 정당한
+        이유, 노동위원회 절차, 금전보상의 실무 포인트를 정리합니다.
+      </p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-        부당해고 구제신청의 골든타임과 금전보상제도
-      </h1>
-      
-      <div className="flex items-center gap-4 text-sm text-slate-500 mb-10 pb-8 border-b border-slate-200">
-        <span className="font-medium text-slate-700">작성자: law-calc.kr 노동법 데이터 분석팀</span>
-        <span>|</span>
-        <span>최종 업데이트: 2026년 4월 8일</span>
-      </div>
+      <h2>1. 해고가 유효하려면: 정당한 이유 + 절차</h2>
+      <p>
+        근로기준법상 사용자는 정당한 이유 없이 해고하지 못합니다. 징계해고·정리해고·통상해고마다 요건이 다르지만,
+        공통적으로 <strong>이유의 실질</strong>과 <strong>절차의 정당성</strong>이 다투어집니다. 또한 해고는
+        서면으로 해야 한다는 점이 중요합니다. 구두·메신저만으로 끝난 경우 효력 자체가 문제 될 수 있습니다.
+      </p>
 
-      <article className="prose prose-slate prose-lg max-w-none">
-        <p>
-          "내일부터 나오지 마세요." 사용자의 말 한마디에 직장을 잃었다면 당황스러울 수밖에 없습니다. 
-          상시 근로자 5인 이상 사업장에서 <strong>정당한 이유 없는 해고</strong>를 당했다면, 민사소송보다 훨씬 빠르고 비용이 적게 드는 노동위원회 구제신청 제도를 이용해야 합니다.
-        </p>
+      <h2>2. 골든타임: 3개월 제척기간</h2>
+      <p>
+        노동위원회 부당해고 구제신청은 해고가 있었던 날부터 <strong>3개월 이내</strong>에 해야 하는 것이
+        원칙입니다. 민사 소송의 소멸시효와 다른 개념이므로, &quot;나중에 소송하면 되지&quot;와 혼동하면 안
+        됩니다. 해고일을 달력에 표시하고 D-30, D-7 알림을 두세요.
+      </p>
 
-        <h2>1. 해고의 서면 통지: 가장 확실한 부당해고 판정 기준</h2>
-        <p>
-          해고가 정당한지 따지기 전에 <strong>'절차적 정당성'</strong>부터 확인해야 합니다. 근로기준법 제27조에 따라 사용자는 해고 사유와 해고 시기를 반드시 <strong>'서면(종이 문서 또는 요건을 갖춘 이메일)'</strong>으로 통지해야 합니다.
-        </p>
-        <p>
-          만약 구두(말)나 일반적인 카카오톡, 문자메시지로만 해고를 통보했다면? 
-          그 근로자가 아무리 큰 잘못을 저질렀다 하더라도, <strong>절차 위반으로 100% 무효인 부당해고</strong>가 됩니다. 이것이 구제신청에서 근로자가 승소하는 가장 흔한 이유 중 하나입니다.
-        </p>
+      <h2>3. 구제신청으로 무엇을 받을 수 있나</h2>
+      <ul>
+        <li>
+          <strong>원직복직</strong> 및 해고 기간 중 임금 상당액
+        </li>
+        <li>
+          <strong>금전보상</strong>: 복직 대신 금전으로 종결하는 제도 (요건·당사자 의사 등 검토)
+        </li>
+      </ul>
+      <p>
+        이미 다른 직장을 다니거나 관계가 회복 불가능하면 금전보상 협의가 실무적으로 많습니다. 금액은 근속·임금·
+        해고 경위 등에 따라 달라지며, &quot;월급 × N개월&quot; 공식만으로 단정할 수 없습니다.
+      </p>
 
-        <h2>2. 구제신청의 골든타임: '3개월' 제척기간</h2>
-        <p>
-          부당해고 구제신청에서 가장 치명적인 함정이 바로 '기간'입니다. 
-          근로기준법 제28조 제2항에 따라, 부당해고 구제신청은 해고가 있었던 날부터 반드시 <strong>3개월 이내</strong>에 관할 지방노동위원회에 제기해야 합니다.
-        </p>
-        <p>
-          이 3개월은 소멸시효가 아니라 <strong>제척기간</strong>이므로 단 하루라도 지나면 노동위원회는 아예 사건을 들여다보지도 않고 각하합니다. 
-          회사와 합의를 기다리며 차일피일 미루다 이 기간을 넘겨 구제받을 권리를 영원히 상실하는 경우가 매우 많습니다.
-        </p>
+      <h2>4. 증거 패키지 (신청 전 48시간 안에 모을 것)</h2>
+      <ol>
+        <li>근로계약서, 취업규칙, 인사 평가·징계 기록</li>
+        <li>해고 통지 문자·이메일·내용증명·회의 녹취(적법 수집 범위 내)</li>
+        <li>급여명세, 출퇴근 기록, 업무 성과 자료</li>
+        <li>동종 사례 처리 관행(차별적 해고 주장 시)</li>
+        <li>타임라인: 경고 → 조사 → 통보 → 퇴사 처리 일자</li>
+      </ol>
 
-        <h2>3. 복직하기 싫다면? '금전보상명령' 제도의 활용</h2>
-        <p>
-          부당해고로 인정받으면 원칙적으로 '원직복직(원래 자리로 돌아감)' 명령과 함께 '해고 기간 동안 받지 못한 임금상당액(백페이)'을 받게 됩니다.
-        </p>
-        <p>
-          하지만 이미 얼굴을 붉히고 법적 다툼까지 간 회사로 돌아가고 싶은 근로자는 거의 없습니다. 
-          이럴 때 근로자는 복직 대신 <strong>'금전보상명령'</strong>을 신청할 수 있습니다. 
-          노동위원회가 부당해고를 인정하면, 임금상당액(백페이)에 더하여 근로자의 고통과 재취업 기간을 고려한 소정의 <strong>'위로금(통상 통상임금의 1~3개월분)'</strong>을 추가로 지급하도록 명합니다.
-        </p>
+      <h2>5. 노동위원회 절차 흐름 (개요)</h2>
+      <p>
+        신청 → 조사·심문 → 판정. 화해(조정)로 끝나는 사건도 많습니다. 심문에서는 감정적 비난보다{' '}
+        <strong>사실 타임라인과 서류</strong>가 설득력을 만듭니다. 사용자가 경영상 이유·징계 이유를 입증해야
+        하는 구조인지, 본인이 반박 증거를 준비해야 하는 포인트인지를 사전에 정리하세요.
+      </p>
 
-        <div className="bg-amber-50 border border-amber-100 p-6 rounded-xl my-8">
-          <h3 className="text-amber-800 mt-0">💡 내 부당해고 보상금은 얼마일까?</h3>
-          <p className="mb-4 text-sm text-slate-700">
-            해고일과 노동위원회 판정일까지의 예상 기간, 급여를 입력하면 받을 수 있는 임금상당액(백페이)과 금전보상(위로금) 예상액을 계산해 드립니다.
-          </p>
-          <div className="flex gap-3">
-            <Link aria-label="Navigation link" href="/tools/labor/unfair-dismissal" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
-              부당해고 보상금 계산기
-            </Link>
-            <Link aria-label="Navigation link" href="/tools/labor/dismissal-notice" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
-              해고예고수당 계산기
-            </Link>
-          </div>
-        </div>
+      <h2>6. 병행 쟁점: 임금·퇴직금·연차</h2>
+      <p>
+        해고 분쟁에는 미지급 임금, 퇴직금, 연차수당, 실업급여 수급이 함께 붙는 경우가 많습니다. 구제신청만
+        하고 임금체불을 방치하면 시효에 걸릴 수 있습니다. 필요 시 노동청 진정과 병행 검토하세요.
+      </p>
 
-        <h2>4. 해고예고수당과의 중복 청구</h2>
-        <p>
-          회사가 30일 전에 해고 예고를 하지 않았다면, 부당해고 구제신청과 <strong>별개로</strong> 30일분의 통상임금인 '해고예고수당'을 노동청에 즉시 청구할 수 있습니다. 
-          이는 해고의 정당성(부당해고 여부)과 무관하게, 단순히 "30일 전 예고 절차"를 지키지 않은 것에 대한 금전적 보상입니다.
-        </p>
-      </article>
-    </main>
+      <h2>7. 자주 있는 오해</h2>
+      <ul>
+        <li>&quot;수습이라 마음대로 자를 수 있다&quot; → 수습도 해고 제한·절차 이슈가 남을 수 있음</li>
+        <li>&quot;권고사직서에 사인했으니 끝&quot; → 의사 하자·강요 여부가 쟁점 될 수 있음</li>
+        <li>&quot;5인 미만이라 부당해고 구제 불가&quot; → 적용 제외 범위는 쟁점별로 다름, 단정 금지</li>
+      </ul>
+
+      <h2>8. 체크리스트</h2>
+      <ol>
+        <li>해고일 확정 및 3개월 만료일 계산</li>
+        <li>서면통지 여부 확인</li>
+        <li>이유·절차 하자 메모</li>
+        <li>증거 폴더 정리</li>
+        <li>복직 vs 금전보상 희망 정리</li>
+        <li>임금·퇴직금 병행 조치 일정</li>
+      </ol>
+
+      <h2>9. 정리</h2>
+      <p>
+        부당해고 대응의 핵심은 속도입니다. 3개월 안에 신청 여부를 결정하고, 서면·이유를 확보한 뒤, 복직과
+        금전 중 목표를 정하세요. 계산·점검 도구는 임금 공백 기간의 손해를 가늠하는 보조 수단일 뿐, 노동위원회
+        전략은 사실관계에 맞춰 별도로 세워야 합니다.
+      </p>
+    </GuideShell>
   );
 }

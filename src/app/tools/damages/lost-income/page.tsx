@@ -126,7 +126,7 @@ export default function LostIncomePage() {
             value={age}
             onChange={handleNumberChange(setAge)}
             placeholder="예: 40"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -138,7 +138,7 @@ export default function LostIncomePage() {
             value={monthlyIncome ? parseInt(monthlyIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyIncome)}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyIncome && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(monthlyIncome).toLocaleString('ko-KR')}원</p>
@@ -150,7 +150,7 @@ export default function LostIncomePage() {
           <select
             value={retirementOption}
             onChange={(e) => setRetirementOption(e.target.value as RetirementOption)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           >
             <option value="65">65세 (대법원 전원합의체 판결 기준, 2018다248909)</option>
             <option value="60">60세 (구 기준)</option>
@@ -163,7 +163,7 @@ export default function LostIncomePage() {
               value={customRetirementAge}
               onChange={handleNumberChange(setCustomRetirementAge)}
               placeholder="가동연한 나이 입력"
-              className="w-full mt-2 bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full mt-2 bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           )}
         </div>
@@ -176,7 +176,7 @@ export default function LostIncomePage() {
             value={treatmentMonths}
             onChange={handleNumberChange(setTreatmentMonths)}
             placeholder="예: 6"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -188,7 +188,7 @@ export default function LostIncomePage() {
             value={disabilityRate}
             onChange={(e) => setDisabilityRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 100"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -200,7 +200,7 @@ export default function LostIncomePage() {
             value={faultRate}
             onChange={(e) => setFaultRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -220,8 +220,8 @@ export default function LostIncomePage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.lostIncomeAfterFault === 0 && (
-            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
-              <p className="text-sm text-blue-600">일실수입이 0원으로 계산되었습니다. 노동능력상실률 또는 과실비율을 확인해주세요.</p>
+            <div className="mb-4 p-3 rounded-lg bg-teal-50 border border-blue-200">
+              <p className="text-sm text-teal-800">일실수입이 0원으로 계산되었습니다. 노동능력상실률 또는 과실비율을 확인해주세요.</p>
             </div>
           )}
 

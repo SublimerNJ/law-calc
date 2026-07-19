@@ -199,8 +199,8 @@ export default function AccidentSettlementPage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.finalAmount === 0 && (
-            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
-              <p className="text-sm text-blue-600">합의금이 0원으로 계산되었습니다. 과실비율 또는 손해항목을 확인해주세요.</p>
+            <div className="mb-4 p-3 rounded-lg bg-teal-50 border border-blue-200">
+              <p className="text-sm text-teal-800">합의금이 0원으로 계산되었습니다. 과실비율 또는 손해항목을 확인해주세요.</p>
             </div>
           )}
 

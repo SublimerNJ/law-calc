@@ -122,7 +122,7 @@ export default function AttorneyFeePage() {
             value={displayValue(amount)}
             onChange={handleNumberChange(setAmount)}
             placeholder="예: 50,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -134,7 +134,7 @@ export default function AttorneyFeePage() {
             value={displayValue(actualFeeInput)}
             onChange={handleNumberChange(setActualFeeInput)}
             placeholder="입력하면 실제 돌려받을 금액도 표시됩니다"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">비워두면 산입 한도만 표시됩니다</p>
         </div>
@@ -181,7 +181,7 @@ export default function AttorneyFeePage() {
                   <p className="text-lg text-slate-900">{formatNumber(result.actualFee)}원</p>
                 </div>
 
-                <div className="mb-4 p-4 rounded-lg" style={{ backgroundColor: `${category.color}15`, borderLeft: `3px solid ${category.color}` }}>
+                <div className="mb-4 p-4 rounded-lg" style={{ backgroundColor: `${category.color}15`, borderTop: '2px solid #0f766e' }}>
                   <p className="text-sm text-slate-600 mb-1">실제 돌려받을 수 있는 금액</p>
                   <p className="text-2xl font-bold" style={{ color: category.color }}>
                     {formatNumber(result.recoverable)}원

@@ -1,125 +1,186 @@
-// Updated for ui-ux-pro-max guidelines
-// Data-Dense Dashboard: Fira Code, grid, #3B82F6 applied
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import CategorySection from '@/components/sections/CategorySection';
-import Card from '@/components/ui/Card';
 import { CATEGORIES, TOOLS, getToolsByCategory } from '@/lib/tools-data';
 
 const HeroSection = dynamic(() => import('@/components/sections/HeroSection'), { ssr: true });
-const AdBanner = dynamic(() => import('@/components/ads/AdBanner'));
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 
 export default function Home() {
- const totalTools = TOOLS.length;
+  const totalTools = TOOLS.length;
 
- const websiteJsonLd = {
- '@context': 'https://schema.org',
- '@type': 'WebSite',
- name: 'law-calc.kr 법률 계산기',
- url: 'https://law-calc.kr',
- description: `대한민국 법률 기준 ${totalTools}개 무료 법률 계산기`,
- potentialAction: {
- '@type': 'SearchAction',
- target: 'https://law-calc.kr/?q={search_term_string}',
- 'query-input': 'required name=search_term_string',
- },
- };
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        name: 'law-calc.kr 법률 계산기',
+        url: BASE_URL,
+        description: `대한민국 법령 기준 ${totalTools}개 무료 법률·노무·세무 계산기`,
+        inLanguage: 'ko-KR',
+        publisher: {
+          '@type': 'Organization',
+          name: 'law-calc.kr',
+          url: BASE_URL,
+          email: 'sublimernj@gmail.com',
+        },
+      },
+      {
+        '@type': 'Organization',
+        name: 'law-calc.kr',
+        url: BASE_URL,
+        email: 'sublimernj@gmail.com',
+      },
+    ],
+  };
 
- return (
- <>
- <script
- type="application/ld+json"
- dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
- />
- {/* Hero with parallax */}
- <HeroSection totalTools={totalTools} />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
 
- {/* Categories + Tools */}
- <div className="max-w-7xl mx-auto px-2 sm:px-2 lg:px-2 pb-24 pt-16 space-y-16 ">
- {CATEGORIES.map((category, index) => {
- const tools = getToolsByCategory(category.id);
- return (
- <div key={category.id}>
- <CategorySection
- category={category}
- toolCount={tools.length}
- >
- <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
- {tools.map((tool) => (
- <Card key={tool.id} href={tool.route} className="p-2 group bg-[var(--color-surface-50)] border-[var(--color-border-subtle)] hover:border-[var(--color-border-hover)] hover:shadow-md transition-all ">
- <div className="flex items-start justify-between mb-3 ">
- <span className="text-2xl group-hover:scale-110 transition-transform duration-300 ease-out inline-block ">
- {tool.icon}
- </span>
- <svg
- className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-400 transition-colors duration-300 mt-1 "
- fill="none"
- viewBox="0 0 24 24"
- stroke="currentColor"
- strokeWidth={2}
- >
- <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
- </svg>
- </div>
- <h3 className="text-sm font-medium text-slate-100 group-hover:text-blue-300 leading-tight transition-colors duration-300 mb-1 ">
- {tool.name}
- </h3>
- <p className="text-[11px] text-slate-500 group-hover:text-slate-400 line-clamp-2 leading-relaxed transition-colors duration-300 ">
- {tool.description}
- </p>
- </Card>
- ))}
- </div>
- </CategorySection>
- {/* Ad every 3 categories - Temporarily disabled to improve AdSense Content-to-Ad ratio */}
- {/* {(index === 2 || index === 5) && (
- <div className="mt-8 ">
- <AdBanner format="horizontal" />
- </div>
- )} */}
- </div>
- );
- })}
- </div>
+      <HeroSection totalTools={totalTools} />
 
- {/* Latest Guides Section */}
- <section className="relative bg-[var(--color-surface-50)] py-16 border-t border-[var(--color-border-subtle)] ">
- <div className="max-w-7xl mx-auto px-2 sm:px-2 lg:px-2 ">
- <div className="flex items-center justify-between mb-8 ">
- <h2 className="text-2xl font-bold text-slate-100 ">최신 법률 가이드</h2>
- <Link aria-label="Navigation link" href="/guides" className="text-sm font-medium text-blue-400 hover:text-blue-300  focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 cursor-pointer min-h-[44px] min-w-[44px]">전체 보기 &rarr;</Link>
- </div>
- <div className="grid md:grid-cols-3 gap-6 ">
- <Link aria-label="Navigation link" href="/guides/how-to-calculate-attorney-fee" className="block p-2 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-50)] shadow-sm hover:border-[var(--color-border-hover)] hover:shadow-md transition-all  focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 cursor-pointer">
- <span className="text-xs font-semibold text-blue-400 mb-2 block ">소송/법원</span>
- <h3 className="text-lg font-bold text-slate-100 mb-2 line-clamp-2 ">변호사보수 소송비용 산입의 원칙과 실무적 이해</h3>
- <p className="text-sm text-slate-400 line-clamp-3 ">소송에서 이겼을 때 상대방에게 변호사 비용을 얼마나 돌려받을 수 있을까요? 대법원 규칙에 따른 산입 한도액 계산법을 알아봅니다.</p>
- </Link>
- <Link aria-label="Navigation link" href="/guides/understanding-severance-pay" className="block p-2 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-50)] shadow-sm hover:border-[var(--color-border-hover)] hover:shadow-md transition-all  focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 cursor-pointer">
- <span className="text-xs font-semibold text-amber-500 mb-2 block ">노동/근로</span>
- <h3 className="text-lg font-bold text-slate-100 mb-2 line-clamp-2 ">법정 퇴직금 산정의 핵심: '평균임금'과 '계속근로기간'</h3>
- <p className="text-sm text-slate-400 line-clamp-3 ">퇴직금은 어떻게 계산될까요? 3개월 평균임금의 중요성과 통상임금과의 비교, 그리고 소멸시효에 대해 상세히 정리했습니다.</p>
- </Link>
- <Link aria-label="Navigation link" href="/guides/deposit-return-dispute" className="block p-2 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-50)] shadow-sm hover:border-[var(--color-border-hover)] hover:shadow-md transition-all  focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 cursor-pointer">
- <span className="text-xs font-semibold text-purple-500 mb-2 block ">부동산</span>
- <h3 className="text-lg font-bold text-slate-100 mb-2 line-clamp-2 ">전세금 미반환 대처법: 내용증명부터 임차권등기명령까지</h3>
- <p className="text-sm text-slate-400 line-clamp-3 ">역전세난으로 보증금을 돌려받지 못하고 있다면 이사 가기 전 반드시 확인해야 할 법적 절차와 대응 가이드를 제공합니다.</p>
- </Link>
- </div>
- </div>
- </section>
+      {/* Trust as prose band, not three identical icon cards */}
+      <section className="border-b border-stone-200 bg-[var(--color-background)]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+          <div className="max-w-3xl space-y-4 text-[15px] text-zinc-700 leading-relaxed">
+            <p>
+              <strong className="text-zinc-900">법령 근거를 페이지에 둡니다.</strong> 각 계산기는 적용 조문과
+              산정 구조를 같이 보여 줍니다.
+            </p>
+            <p>
+              <strong className="text-zinc-900">입력값은 브라우저에서 처리합니다.</strong> 회원가입 없이
+              쓰고, 민감 정보를 서버에 쌓지 않는 구조를 유지합니다.
+            </p>
+            <p>
+              <strong className="text-zinc-900">법률 자문이 아닙니다.</strong> 1차 참고용이며, 신고·청구·소송
+              전에는 자격 있는 전문가 확인을 권합니다.
+            </p>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+            <Link href="/editorial-policy" className="text-teal-900 underline-offset-2 hover:underline">
+              검증 정책
+            </Link>
+            <Link href="/about" className="text-teal-900 underline-offset-2 hover:underline">
+              운영 주체
+            </Link>
+            <Link href="/contact" className="text-teal-900 underline-offset-2 hover:underline">
+              오류 제보
+            </Link>
+          </div>
+        </div>
+      </section>
 
- {/* Bottom CTA */}
- <section className="relative border-t border-[var(--color-border-subtle)] bg-[var(--color-surface-100)] ">
- <div className="max-w-7xl mx-auto px-2 sm:px-2 lg:px-2 py-16 text-center relative z-10 ">
- <h2 className="text-xl font-semibold text-slate-100 mb-3 ">
- 찾고 있는 법률 계산기가 있나요?
- </h2>
- <p className="text-sm text-slate-500 font-normal tracking-wide ">
- {totalTools}개의 법률 계산기가 준비되어 있어요.
- </p>
- </div>
- </section>
- </>
- );
+      {/* How-to as numbered list, not card grid of numbered circles */}
+      <section className="border-b border-stone-200 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <h2 className="text-xl font-bold text-zinc-900 tracking-tight mb-5">이용 순서</h2>
+          <ol className="max-w-2xl space-y-3 text-[15px] text-zinc-700">
+            <li className="flex gap-3">
+              <span className="tabular-nums text-zinc-400 font-medium w-5 shrink-0">1</span>
+              아래 목록에서 계산기를 고릅니다.
+            </li>
+            <li className="flex gap-3">
+              <span className="tabular-nums text-zinc-400 font-medium w-5 shrink-0">2</span>
+              계약서·명세서 기준 숫자를 입력합니다.
+            </li>
+            <li className="flex gap-3">
+              <span className="tabular-nums text-zinc-400 font-medium w-5 shrink-0">3</span>
+              같은 페이지의 법령 근거와 FAQ를 확인합니다.
+            </li>
+            <li className="flex gap-3">
+              <span className="tabular-nums text-zinc-400 font-medium w-5 shrink-0">4</span>
+              중요 조치는 전문가 또는 관할 기관 안내와 대조합니다.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      {/* Tools */}
+      <div id="tools" className="max-w-6xl mx-auto px-4 sm:px-6 py-14 space-y-16">
+        {CATEGORIES.map((category) => {
+          const tools = getToolsByCategory(category.id);
+          return (
+            <CategorySection key={category.id} category={category} toolCount={tools.length}>
+              <ul className="divide-y divide-stone-200 border border-stone-200 rounded-[12px] bg-white overflow-hidden">
+                {tools.map((tool) => (
+                  <li key={tool.id}>
+                    <Link
+                      href={tool.route}
+                      className="flex items-start sm:items-center gap-3 sm:gap-4 px-4 py-3.5 hover:bg-stone-50 transition-colors group"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-semibold text-zinc-900 group-hover:text-teal-900">
+                          {tool.name}
+                        </p>
+                        <p className="text-xs text-zinc-500 mt-0.5 line-clamp-1">{tool.description}</p>
+                      </div>
+                      <span className="text-xs text-zinc-400 group-hover:text-teal-800 shrink-0 pt-0.5">
+                        열기
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </CategorySection>
+          );
+        })}
+      </div>
+
+      {/* Guides - asymmetric: one lead + two compact */}
+      <section className="border-t border-stone-200 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+          <div className="flex items-end justify-between gap-4 mb-8">
+            <h2 className="text-xl font-bold text-zinc-900 tracking-tight">실무 가이드</h2>
+            <Link href="/guides" className="text-sm font-medium text-teal-900 hover:underline">
+              전체
+            </Link>
+          </div>
+          <div className="grid lg:grid-cols-5 gap-6">
+            <Link
+              href="/guides/understanding-severance-pay"
+              className="lg:col-span-3 block border border-stone-200 rounded-[12px] p-6 sm:p-8 bg-stone-50 hover:bg-white hover:border-stone-300 transition-colors"
+            >
+              <p className="text-xs font-medium text-zinc-500 mb-2">노동</p>
+              <h3 className="text-xl font-bold text-zinc-900 mb-2">
+                퇴직금: 평균임금과 계속근로기간
+              </h3>
+              <p className="text-sm text-zinc-600 leading-relaxed">
+                산입 항목, 중간정산, 지급 기한, 3년 시효까지 퇴사 전후 체크리스트로 정리했습니다.
+              </p>
+            </Link>
+            <div className="lg:col-span-2 flex flex-col gap-4">
+              <Link
+                href="/guides/how-to-calculate-attorney-fee"
+                className="flex-1 border border-stone-200 rounded-[12px] p-5 hover:border-stone-300 transition-colors"
+              >
+                <p className="text-xs font-medium text-zinc-500 mb-1">소송</p>
+                <h3 className="text-base font-bold text-zinc-900">변호사보수 산입 한도</h3>
+              </Link>
+              <Link
+                href="/guides/deposit-return-dispute"
+                className="flex-1 border border-stone-200 rounded-[12px] p-5 hover:border-stone-300 transition-colors"
+              >
+                <p className="text-xs font-medium text-zinc-500 mb-1">부동산</p>
+                <h3 className="text-base font-bold text-zinc-900">전세금 미반환 대응 순서</h3>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-stone-200 bg-[var(--color-background)]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <p className="text-sm text-zinc-600 max-w-xl leading-relaxed">
+            {totalTools}개 계산기는 모두 무료입니다. 결과는 참고용이며 실제 법적 조치 전 전문가 확인을
+            권장합니다.
+          </p>
+        </div>
+      </section>
+    </>
+  );
 }

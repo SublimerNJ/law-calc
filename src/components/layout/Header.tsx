@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { List, X, CaretDown } from '@phosphor-icons/react';
 import { CATEGORIES } from '@/lib/tools-data';
 import Logo from '@/components/ui/Logo';
 
@@ -10,99 +11,102 @@ export default function Header() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-[rgba(15,15,35,0.8)] backdrop-blur-md border-b border-[var(--color-border-subtle)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+    <header className="fixed top-0 z-50 w-full h-16 border-b border-stone-200/80 bg-[#f7f7f5]/90 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-full">
+        <div className="flex items-center justify-between h-full gap-4">
           <Logo size="md" />
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
-            {/* Category Dropdown */}
+          <nav className="hidden md:flex items-center gap-1" aria-label="주요 메뉴">
             <div
-              className="relative py-2"
+              className="relative"
               onMouseEnter={() => setIsCategoryOpen(true)}
               onMouseLeave={() => setIsCategoryOpen(false)}
             >
-              <button aria-label="Action button" className="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2">
+              <button
+                type="button"
+                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-zinc-700 hover:text-teal-900 rounded-[8px] hover:bg-white/80 transition-colors"
+                aria-expanded={isCategoryOpen}
+              >
                 카테고리
-                <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180 text-blue-400' : ''}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
+                <CaretDown
+                  size={14}
+                  weight="bold"
+                  className={`transition-transform ${isCategoryOpen ? 'rotate-180' : ''}`}
+                />
               </button>
-
               {isCategoryOpen && (
-                <div className="absolute top-full right-0 w-72 bg-[var(--color-surface-50)] border border-[var(--color-border-subtle)] rounded-2xl shadow-xl overflow-hidden py-2 glassmorphism glass-panel">
-                  {CATEGORIES.map((cat) => (
-                    <Link aria-label="Navigation link"
-                      key={cat.id}
-                      href={`/#${cat.id}`}
-                      className="flex items-center gap-3 px-5 py-3 text-sm text-slate-300 hover:bg-[var(--color-surface-100)] hover:text-blue-400 transition-all duration-300"
-                    >
-                      <span className="text-lg opacity-80">{cat.icon}</span>
-                      <div>
+                <div className="absolute top-full left-0 pt-1 w-56">
+                  <div className="rounded-[10px] border border-stone-200 bg-white shadow-sm py-1 overflow-hidden">
+                    {CATEGORIES.map((cat) => (
+                      <Link
+                        key={cat.id}
+                        href={`/#${cat.id}`}
+                        className="block px-4 py-2 text-sm text-zinc-700 hover:bg-stone-50 hover:text-teal-900 transition-colors"
+                      >
                         <span className="font-medium">{cat.name}</span>
-                        <p className="text-xs text-slate-500 mt-0.5">{cat.description}</p>
-                      </div>
-                    </Link>
-                  ))}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
 
-            <Link aria-label="Navigation link"
+            <Link
               href="/"
-              className="text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors duration-300"
+              className="px-3 py-2 text-sm font-medium text-zinc-700 hover:text-teal-800 rounded-lg hover:bg-white/70 transition-colors"
             >
               전체 도구
             </Link>
-            <Link aria-label="Navigation link"
+            <Link
               href="/guides"
-              className="text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors duration-300"
+              className="px-3 py-2 text-sm font-medium text-zinc-700 hover:text-teal-800 rounded-lg hover:bg-white/70 transition-colors"
             >
-              법률 가이드
+              가이드
+            </Link>
+            <Link
+              href="/about"
+              className="px-3 py-2 text-sm font-medium text-zinc-700 hover:text-teal-800 rounded-lg hover:bg-white/70 transition-colors"
+            >
+              소개
             </Link>
           </nav>
 
-          {/* Mobile menu button */}
-          <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-surface-50)] hover:bg-[var(--color-surface-100)] border border-[var(--color-border-subtle)] text-slate-300 transition-all glassmorphism glass-panel"
-              aria-label="메뉴"
-            >
-              {isMenuOpen ? (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-stone-200 bg-white text-zinc-800"
+            aria-label={isMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
+          </button>
         </div>
 
-        {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-[var(--color-border-subtle)] py-4">
-            <div className="grid grid-cols-2 gap-3 pb-4">
+          <div className="md:hidden absolute left-0 right-0 top-16 border-b border-stone-200 bg-[#f7f7f5] px-4 py-4 shadow-sm">
+            <div className="flex flex-col gap-1 mb-4">
+              <Link href="/" onClick={() => setIsMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-800 hover:bg-white">
+                전체 도구
+              </Link>
+              <Link href="/guides" onClick={() => setIsMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-800 hover:bg-white">
+                가이드
+              </Link>
+              <Link href="/about" onClick={() => setIsMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-800 hover:bg-white">
+                소개
+              </Link>
+              <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-800 hover:bg-white">
+                문의
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-1">
               {CATEGORIES.map((cat) => (
-                <Link aria-label="Navigation link"
+                <Link
                   key={cat.id}
                   href={`/#${cat.id}`}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex flex-col items-center gap-2 p-4 rounded-xl bg-[var(--color-surface-50)] hover:bg-[var(--color-surface-100)] border border-[var(--color-border-subtle)] transition-all glassmorphism glass-panel"
+                  className="px-3 py-2.5 rounded-[8px] text-sm font-medium text-zinc-800 hover:bg-white"
                 >
-                  <span className="text-2xl">{cat.icon}</span>
-                  <span className="text-xs font-medium text-slate-300">{cat.name}</span>
+                  {cat.name}
                 </Link>
               ))}
             </div>

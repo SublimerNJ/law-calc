@@ -153,7 +153,7 @@ export default function SeverancePayPage() {
 
   const displayValue = (raw: string) => raw ? parseInt(raw).toLocaleString('ko-KR') : '';
 
-  const inputClass = 'w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none';
+  const inputClass = 'w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none';
 
   return (
     <CalculatorLayout tool={tool} category={category}>
@@ -233,7 +233,7 @@ export default function SeverancePayPage() {
                 <p className="text-xs text-slate-600 mb-1">예상 퇴직소득세</p>
                 <p className="text-lg text-red-600">-{formatNumber(result.retirementTax)}원</p>
               </div>
-              <div className="p-3 rounded-lg bg-white glassmorphism glass-panel" style={{ borderLeft: `3px solid ${category.color}` }}>
+              <div className="p-3 rounded-lg bg-white glassmorphism glass-panel" style={{ borderTop: '2px solid #0f766e' }}>
                 <p className="text-xs text-slate-600 mb-1">예상 실수령액</p>
                 <p className="text-lg font-bold" style={{ color: category.color }}>{formatNumber(result.netSeverance)}원</p>
               </div>

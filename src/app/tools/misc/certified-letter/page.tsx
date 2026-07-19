@@ -102,7 +102,7 @@ ${formatDateKR(sendDate)}
                 value={senderName}
                 onChange={e => setSenderName(e.target.value)}
                 placeholder="홍길동"
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div>
@@ -112,7 +112,7 @@ ${formatDateKR(sendDate)}
                 value={senderAddress}
                 onChange={e => setSenderAddress(e.target.value)}
                 placeholder="서울특별시 강남구..."
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </div>
@@ -125,7 +125,7 @@ ${formatDateKR(sendDate)}
                 value={receiverName}
                 onChange={e => setReceiverName(e.target.value)}
                 placeholder="김철수"
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div>
@@ -135,7 +135,7 @@ ${formatDateKR(sendDate)}
                 value={receiverAddress}
                 onChange={e => setReceiverAddress(e.target.value)}
                 placeholder="서울특별시 서초구..."
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </div>
@@ -147,7 +147,7 @@ ${formatDateKR(sendDate)}
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="채무 이행 촉구 내용증명"
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
 
@@ -158,7 +158,7 @@ ${formatDateKR(sendDate)}
               onChange={e => setBody(e.target.value)}
               rows={6}
               placeholder="내용증명 본문을 입력하세요..."
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none resize-y glassmorphism glass-panel"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none resize-y glassmorphism glass-panel"
             />
           </div>
 
@@ -168,7 +168,7 @@ ${formatDateKR(sendDate)}
               type="date"
               value={sendDate}
               onChange={e => setSendDate(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -206,8 +206,8 @@ ${formatDateKR(sendDate)}
             </p>
           </div>
 
-          <div className="mt-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
-            <p className="text-sm font-semibold text-blue-800 mb-1">법적 효력 안내</p>
+          <div className="mt-4 p-3 rounded-lg bg-teal-50 border border-blue-200">
+            <p className="text-sm font-semibold text-teal-900 mb-1">법적 효력 안내</p>
             <ul className="text-xs text-blue-700 space-y-1 list-disc pl-4">
               <li>내용증명은 발송 사실과 내용을 공증하는 수단이며, 그 자체로 법적 강제력은 없습니다.</li>
               <li><strong>도달주의</strong>: 의사표시는 상대방에게 도달한 때 효력이 발생합니다 (민법 제111조).</li>

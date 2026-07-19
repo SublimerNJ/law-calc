@@ -1,110 +1,159 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import GuideShell from '@/components/guides/GuideShell';
 
 export const metadata: Metadata = {
-  title: '법정 퇴직금 산정의 핵심: 평균임금과 계속근로기간 | law-calc.kr',
-  description: '법정 퇴직금이 어떻게 계산되는지, 3개월 평균임금의 의미와 계속근로기간의 조건, 소멸시효에 대해 알아봅니다.',
+  title: '법정 퇴직금 산정: 평균임금·계속근로기간·중간정산·시효 실무',
+  description:
+    '퇴직금 발생 요건, 3개월 평균임금, 상여·연차 산입, 통상임금 하한, 중간정산 무효, 14일 지급·3년 시효, 노동청 진정 전 체크리스트를 실무 순서로 정리합니다.',
+  alternates: { canonical: 'https://law-calc.kr/guides/understanding-severance-pay' },
 };
 
 export default function SeverancePayGuide() {
-  const schemaLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: "법정 퇴직금 산정의 핵심: '평균임금'과 '계속근로기간'",
-    datePublished: '2026-04-08',
-    author: {
-      '@type': 'Organization',
-      name: 'law-calc.kr 노동법 데이터 분석팀'
-    }
-  };
-
   return (
-    <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
-      <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link aria-label="Navigation link" href="/guides" className="text-amber-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
-        <span className="text-slate-400">/</span>
-        <span className="text-slate-600">노동/근로</span>
-      </div>
+    <GuideShell
+      title="법정 퇴직금 산정의 핵심: 평균임금과 계속근로기간"
+      category="노동/근로"
+      accentClass="text-teal-900"
+      ctaBgClass="bg-teal-800 hover:bg-teal-900"
+      datePublished="2026-04-08"
+      dateModified="2026-07-19"
+      description="법정 퇴직금 요건, 평균임금 산입, 중간정산, 소멸시효 실무 가이드"
+      path="/guides/understanding-severance-pay"
+      toolHref="/tools/labor/severance-pay"
+      toolLabel="퇴직금 계산기 열기"
+    >
+      <p>
+        퇴사 통보를 받은 뒤 가장 먼저 궁금한 것은 보통 &quot;퇴직금이 얼마인가&quot;입니다. 그런데 회사 인사팀이
+        말한 금액과 본인이 계산한 금액이 어긋나는 경우가 많습니다. 원인은 대개 세 가지입니다. ① 계속근로기간을
+        달력 연수로만 어림잡은 경우, ② 평균임금에 넣어야 할 수당을 빠뜨린 경우, ③ 퇴직연금(DB·DC)과 법정
+        퇴직금을 혼동한 경우입니다.
+      </p>
+      <p>
+        이 글은 <strong>근로자퇴직급여 보장법</strong>과 <strong>근로기준법상 평균임금</strong> 규정을 기준으로,
+        실무에서 자주 틀리는 지점만 순서대로 정리합니다. 계산 결과는 사건마다 달라질 수 있으므로, 최종 청구
+        전에는 급여명세·근로계약·근태 기록을 모아 대조하는 것이 안전합니다.
+      </p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-        법정 퇴직금 산정의 핵심: '평균임금'과 '계속근로기간'
-      </h1>
-      
-      <div className="flex items-center gap-4 text-sm text-slate-500 mb-10 pb-8 border-b border-slate-200">
-        <span className="font-medium text-slate-700">작성자: law-calc.kr 노동법 데이터 분석팀</span>
-        <span>|</span>
-        <span>최종 업데이트: 2026년 4월 8일</span>
-      </div>
+      <h2>1. 먼저 확인할 것: 법정 퇴직금이 발생하나</h2>
+      <p>법정 퇴직금(또는 그에 상응하는 퇴직급여) 의무가 생기는 기본 조건은 두 가지입니다.</p>
+      <ul>
+        <li>
+          <strong>계속근로기간 1년 이상</strong>
+        </li>
+        <li>
+          <strong>4주 평균 1주 소정근로시간 15시간 이상</strong>
+        </li>
+      </ul>
+      <p>
+        정규직·계약직·아르바이트·일용직 명칭과 무관하게, 위 요건을 충족하면 원칙적으로 퇴직급여 제도 적용
+        대상이 됩니다. 사업장 규모가 5인 미만이라는 이유만으로 법정 퇴직금이 사라지지 않습니다. 또한 근로계약서에
+        &quot;퇴직금 없음&quot;이라고 써 두었어도, 강행규정에 반하는 약정은 효력이 부정되는 것이 일반적입니다.
+      </p>
+      <p>
+        <strong>실무 팁:</strong> 계약이 여러 번 갱신되었거나, 계열사 전적·휴직·대기발령이 있었다면
+        &quot;계속근로&quot; 여부를 날짜 단위로 다시 그려 보세요. 공백이 실질적으로 근로관계가 단절된 것인지,
+        형식만 끊긴 것인지는 사실관계에 따라 다릅니다.
+      </p>
 
-      <article className="prose prose-slate prose-lg max-w-none">
-        <p>
-          퇴사할 때 누구나 기대하는 '퇴직금'. 하지만 정확히 얼마를 받을 수 있는지, 
-          자신이 수급 조건을 만족하는지 헷갈려 하는 분들이 많습니다. 
-          근로자퇴직급여 보장법에 따른 퇴직금 산정의 두 가지 핵심 축인 <strong>'계속근로기간'</strong>과 <strong>'평균임금'</strong>에 대해 상세히 정리해 드립니다.
-        </p>
+      <h2>2. 기본 공식과 왜 &apos;3개월&apos;인가</h2>
+      <p>법정 퇴직금(퇴직금 제도)의 기본 구조는 다음과 같습니다.</p>
+      <p>
+        <code>(1일 평균임금 × 30일) × (계속근로일수 ÷ 365)</code>
+      </p>
+      <p>
+        여기서 핵심은 <strong>1일 평균임금</strong>입니다. 평균임금은 퇴직일 이전 3개월 동안 지급된 임금 총액을
+        그 기간의 총 일수로 나눈 금액입니다. &quot;월급 × 12 ÷ 365&quot;처럼 단순화하면 연장·야간·휴일수당이나
+        상여 반영이 빠질 수 있습니다.
+      </p>
 
-        <h2>1. 퇴직금 발생 조건: 1주 15시간, 1년 이상</h2>
-        <p>
-          대한민국에서 근로자가 법정 퇴직금을 받기 위한 조건은 단 두 가지입니다.
-        </p>
-        <ul>
-          <li><strong>계속근로기간이 1년 이상일 것</strong></li>
-          <li><strong>4주간을 평균하여 1주간의 소정근로시간이 15시간 이상일 것</strong></li>
-        </ul>
-        <p>
-          이 조건만 충족한다면 정규직, 계약직, 아르바이트, 일용직 등 <strong>고용 형태나 5인 미만 사업장 여부와 무관하게</strong> 퇴직금을 무조건 받을 수 있습니다. 
-          사용자가 근로계약서에 "퇴직금은 없다"고 명시했더라도 이는 강행법규 위반으로 원천 무효입니다.
-        </p>
+      <h2>3. 평균임금에 넣는 것 / 빼는 것</h2>
+      <h3>3-1. 보통 포함되는 항목</h3>
+      <ul>
+        <li>기본급, 직책·자격 수당 등 고정적·일률적 수당</li>
+        <li>연장·야간·휴일근로수당 등 근로의 대가</li>
+        <li>정기적으로 지급된 식대·교통비 성격의 임금성 금원 (명칭이 아닌 실질로 판단)</li>
+      </ul>
+      <h3>3-2. 연간 상여·연차수당의 처리</h3>
+      <p>
+        상여금·연차수당처럼 1년에 걸쳐 지급되는 금액을 퇴직 직전 3개월에 우연히 받았다고 해서 전액을 3개월
+        임금에 넣는 방식이 아닙니다. 실무에서는 보통 <strong>연간 지급액의 3/12</strong>를 평균임금 산정 기초에
+        가산하는 방식으로 정리합니다. 회사 규정·지급 관행에 따라 세부 계산이 달라질 수 있으므로 명세서 원본이
+        필요합니다.
+      </p>
+      <h3>3-3. 통상임금 하한</h3>
+      <p>
+        육아휴직 직후 퇴사, 질병·무급휴직 등으로 최근 3개월 임금이 비정상적으로 낮아지면 평균임금이 통상임금보다
+        작아질 수 있습니다. 근로기준법은 이 경우 <strong>통상임금을 평균임금으로 본다</strong>는 보호 장치를
+        두고 있습니다. &quot;최근 월급이 적으니 퇴직금도 적다&quot;고 단정하기 전에 통상임금 비교를 해 보세요.
+      </p>
 
-        <h2>2. 퇴직금 산정의 기초: 평균임금</h2>
-        <p>
-          퇴직금은 <code>(1일 평균임금 × 30일) × (계속근로기간 / 365)</code> 공식으로 산출됩니다. 
-          여기서 가장 중요한 것이 <strong>'1일 평균임금'</strong>입니다.
-        </p>
-        <p>
-          평균임금이란 <strong>'퇴직한 날 이전 3개월 동안에 그 근로자에게 지급된 임금의 총액을 그 기간의 총 일수로 나눈 금액'</strong>을 말합니다.
-          기본급뿐만 아니라 연장근로수당, 직책수당, 식대 등 고정적·일률적으로 지급된 임금이 모두 포함됩니다.
-        </p>
-        <p>
-          <strong>주의할 점:</strong> 연차수당이나 상여금처럼 1년에 한두 번 지급되는 금액은 퇴직 전 3개월에 지급되었다고 해서 
-          전액 산입되는 것이 아니라, <strong>1년치 지급액의 3/12 (즉, 1/4)</strong>만 평균임금 산정 기초에 산입해야 합니다.
-        </p>
+      <h2>4. 퇴직연금(DB·DC)과 법정 퇴직금</h2>
+      <p>
+        회사가 퇴직연금에 가입되어 있으면, 퇴직 시 &quot;법정 퇴직금을 별도로 또 받는다&quot;기보다 제도 유형에
+        따라 연금 적립금·일시금으로 수령하는 구조인 경우가 많습니다.
+      </p>
+      <ul>
+        <li>
+          <strong>DB(확정급여):</strong> 급여 산식에 따라 회사가 책임지는 급여 수준
+        </li>
+        <li>
+          <strong>DC(확정기여):</strong> 매년 부담금이 계좌에 적립되고 운용 성과가 반영
+        </li>
+      </ul>
+      <p>
+        본인 IRP·퇴직연금 가입 여부를 먼저 확인하고, 미적립·지연 부담금이 있는지는 별도 쟁점이 됩니다.
+      </p>
 
-        <div className="bg-amber-50 border border-amber-100 p-6 rounded-xl my-8">
-          <h3 className="text-amber-800 mt-0">💡 관련 도구로 바로 확인하기</h3>
-          <p className="mb-4 text-sm text-slate-700">
-            입사일과 퇴사일, 최근 3개월 급여만 입력하면 복잡한 평균임금과 퇴직금을 한 번에 계산해 드립니다.
-          </p>
-          <Link aria-label="Navigation link" href="/tools/labor/severance-pay" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
-            퇴직금 계산기 가기
-          </Link>
-        </div>
+      <h2>5. 중간정산: &quot;월급에 포함해서 줬다&quot;는 주장</h2>
+      <p>
+        법령이 정한 사유(무주택자 주택 구입, 전세 자금, 6개월 이상 요양, 파산 등) 없이 매달 급여에 퇴직금을
+        쪼개 지급했다고 주장하는 경우가 있습니다. 요건을 갖추지 못한 중간정산·분할 지급은 무효로 보아, 퇴직 시
+        다시 산정해야 한다는 취지의 분쟁이 반복됩니다. 계약서 문구만으로 안심하지 말고, 실제 지급 내역과 사유
+        충족 여부를 확인하세요.
+      </p>
 
-        <h2>3. 평균임금이 통상임금보다 적을 때의 보호장치</h2>
-        <p>
-          만약 퇴사 직전 3개월 동안 회사가 어려워져서 무급 휴직을 했거나, 개인적인 질병으로 급여를 제대로 받지 못했다면 어떻게 될까요? 
-          평균임금이 비정상적으로 낮게 산출되어 퇴직금이 깎이는 억울한 상황이 발생할 수 있습니다.
-        </p>
-        <p>
-          이를 방지하기 위해 근로기준법 제2조 제2항은 <strong>"산출된 평균임금이 그 근로자의 통상임금보다 적으면 그 통상임금액을 평균임금으로 한다"</strong>고 규정하여 근로자를 보호하고 있습니다.
-        </p>
+      <h2>6. 지급 기한·지연이자·소멸시효</h2>
+      <ul>
+        <li>
+          <strong>지급 기한:</strong> 퇴직일부터 14일 이내 (당사자 합의로 연장 가능한 범위는 별도 검토)
+        </li>
+        <li>
+          <strong>지연:</strong> 미지급 시 법령상 지연이자 이슈가 생길 수 있음
+        </li>
+        <li>
+          <strong>시효:</strong> 퇴직금 청구권은 퇴직일부터 <strong>3년</strong> 경과 시 시효 완성 위험이 큼
+        </li>
+      </ul>
+      <p>
+        시효가 임박했다면 내용증명·노동청 진정·민사 청구 중 어떤 경로가 맞는지는 사실관계에 따라 다릅니다.
+        &quot;나중에 한꺼번에&quot;라고 미루다 권리를 잃는 사례가 실제 많습니다.
+      </p>
 
-        <h2>4. 퇴직금 중간정산과 소멸시효</h2>
-        <p>
-          무주택자의 주택 구입, 전세자금 부담, 본인이나 부양가족의 6개월 이상 요양, 파산선고 등 
-          법령이 엄격하게 정한 특별한 사유가 아니면 <strong>퇴직금의 중간정산은 법적으로 원천 무효</strong>입니다. 
-          회사가 매월 급여에 퇴직금을 포함해서 지급했다고 주장하더라도 법원은 이를 인정하지 않으며, 회사는 퇴직 시 별도로 퇴직금을 다시 지급해야 합니다.
-        </p>
-        <p>
-          퇴직금은 퇴직한 날로부터 14일 이내에 지급되어야 하며, 이를 어길 시 연 20%의 무거운 지연이자가 부과됩니다. 
-          또한 퇴직금 청구권은 퇴직일로부터 <strong>3년이 지나면 소멸시효가 완성</strong>되므로, 미지급 시 지체 없이 고용노동청에 임금체불 진정을 제기해야 합니다.
-        </p>
-      </article>
-    </main>
+      <h2>7. 실무 체크리스트 (퇴사 전·후 7일)</h2>
+      <ol>
+        <li>근로계약서, 최근 12개월 급여명세, 출퇴근·연장근로 기록을 확보한다.</li>
+        <li>입사일·퇴사일·휴직 기간을 달력에 표시해 계속근로일수를 적는다.</li>
+        <li>상여·연차수당·고정수당 목록을 만들고 평균임금 반영 여부를 표시한다.</li>
+        <li>퇴직연금 가입 유형(DB/DC/IRP)과 적립 현황을 확인한다.</li>
+        <li>회사 제시액과 본인 추정치 차이를 항목별로 메모한다.</li>
+        <li>14일 내 미지급 시 관할 고용노동청 상담·진정 일정을 잡는다.</li>
+        <li>3년 시효를 달력에 표시해 둔다.</li>
+      </ol>
+
+      <h2>8. 자주 하는 실수</h2>
+      <ul>
+        <li>세전·세후를 섞어 입력해 평균임금을 낮게 잡는 경우</li>
+        <li>수습·인턴 기간을 무조건 제외하거나 무조건 포함하는 경우 (실질 근로 여부 확인 필요)</li>
+        <li>퇴직소득세까지 회사 제시 순지급액과 혼동하는 경우</li>
+        <li>동료 사례 금액만 보고 본인 사건을 단정하는 경우</li>
+      </ul>
+
+      <h2>9. 정리</h2>
+      <p>
+        퇴직금 분쟁의 승패는 &quot;감정&quot;이 아니라 <strong>기간·임금성·증빙</strong>에서 갈립니다. 먼저
+        계산기로 1차 범위를 보고, 명세서로 평균임금 구성 항목을 맞춘 뒤, 미지급이 확실하면 기한과 시효를 기준으로
+        다음 절차를 선택하세요. 금액이 크거나 중간정산·퇴직연금 이슈가 겹치면 노무사·변호사 검토를 권합니다.
+      </p>
+    </GuideShell>
   );
 }

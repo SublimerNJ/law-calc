@@ -129,7 +129,7 @@ export default function IndustrialAccidentPage() {
 
   const tabClass = (active: boolean) =>
     `flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-      active ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+      active ? 'seg-on' : 'seg-off'
     }`;
 
   const handleTabChange = (type: BenefitType) => {
@@ -165,7 +165,7 @@ export default function IndustrialAccidentPage() {
                 value={dailyWage ? parseInt(dailyWage).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDailyWage)}
                 placeholder="예: 100,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div className="mb-6">
@@ -175,7 +175,7 @@ export default function IndustrialAccidentPage() {
                 value={absenceDays}
                 onChange={handleNumberChange(setAbsenceDays)}
                 placeholder="예: 30"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </>
@@ -190,7 +190,7 @@ export default function IndustrialAccidentPage() {
                 value={disabilityDailyWage ? parseInt(disabilityDailyWage).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setDisabilityDailyWage)}
                 placeholder="예: 100,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div className="mb-4">
@@ -198,7 +198,7 @@ export default function IndustrialAccidentPage() {
               <select
                 value={disabilityGrade}
                 onChange={e => setDisabilityGrade(parseInt(e.target.value))}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               >
                 {Array.from({ length: 14 }, (_, i) => i + 1).map(g => (
                   <option key={g} value={g}>{g}급 ({DISABILITY_LUMP_DAYS[g]}일)</option>
@@ -236,7 +236,7 @@ export default function IndustrialAccidentPage() {
                 value={nursingDays}
                 onChange={handleNumberChange(setNursingDays)}
                 placeholder="예: 30"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </>
@@ -247,7 +247,7 @@ export default function IndustrialAccidentPage() {
 
         <button aria-label="Action button"
           onClick={handleCalculate}
-          className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
+          className="w-full bg-teal-700 hover:bg-teal-900 text-white font-semibold py-3 rounded-lg transition-colors"
         >
           계산하기
         </button>

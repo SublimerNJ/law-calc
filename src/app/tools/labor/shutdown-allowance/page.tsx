@@ -95,7 +95,7 @@ export default function ShutdownAllowancePage() {
             value={dailyAvgWage ? parseNum(dailyAvgWage).toLocaleString('ko-KR') : ''}
             onChange={e => setDailyAvgWage(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="평균임금 계산기에서 산출한 금액"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -107,7 +107,7 @@ export default function ShutdownAllowancePage() {
             value={monthlyOrdinaryWage ? parseNum(monthlyOrdinaryWage).toLocaleString('ko-KR') : ''}
             onChange={e => setMonthlyOrdinaryWage(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="비교 기준 통상임금"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {ordinaryWageMonthly > 0 && (
             <p className="text-xs text-gray-500 mt-1">
@@ -124,7 +124,7 @@ export default function ShutdownAllowancePage() {
             value={shutdownDays ? parseNum(shutdownDays).toLocaleString('ko-KR') : ''}
             onChange={e => setShutdownDays(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="휴업 기간의 일수"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -149,7 +149,7 @@ export default function ShutdownAllowancePage() {
               value={approvedRate}
               onChange={e => setApprovedRate(e.target.value.replace(/[^0-9]/g, ''))}
               placeholder="60"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
             <p className="text-xs text-gray-500 mt-1">
               노동위원회 승인 시 평균임금의 70% 미만으로 지급 가능
@@ -162,7 +162,7 @@ export default function ShutdownAllowancePage() {
 
         <button aria-label="Action button"
           onClick={handleCalculate}
-          className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors mt-2"
+          className="w-full bg-teal-700 hover:bg-teal-900 text-white font-semibold py-3 rounded-lg transition-colors mt-2"
         >
           계산하기
         </button>

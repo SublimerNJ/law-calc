@@ -87,7 +87,7 @@ export default function DismissalNoticePage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyWage && (
             <p className="text-xs text-gray-500 mt-1">
@@ -104,7 +104,7 @@ export default function DismissalNoticePage() {
             value={noticeDays}
             onChange={handleNoticeDaysChange}
             placeholder="0 = 즉시해고"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">실제 받은 예고 기간. 0 = 예고 없이 즉시해고 (30일분 수당 전액 지급)</p>
         </div>
@@ -126,7 +126,7 @@ export default function DismissalNoticePage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.allowance === 0 && (
-            <div className="mb-4 p-4 rounded-lg bg-blue-50 border border-blue-200">
+            <div className="mb-4 p-4 rounded-lg bg-teal-50 border border-blue-200">
               <p className="text-sm text-blue-700">
                 해고예고수당이 발생하지 않습니다 (30일 이상 예고). 사용자가 30일 이상의 예고를 한 경우 수당 지급 의무가 없습니다.
               </p>
@@ -151,7 +151,7 @@ export default function DismissalNoticePage() {
             </div>
           </div>
 
-          <div className="mb-4 p-4 rounded-lg bg-blue-600/10 border border-[#f59e0b]/30">
+          <div className="mb-4 p-4 rounded-lg bg-teal-700/10 border border-[#f59e0b]/30">
             <p className="text-sm font-semibold text-[#f59e0b] mb-2">해고예고 적용 제외 (근로기준법 제35조)</p>
             <ul className="space-y-1 text-sm text-slate-600 list-disc list-inside">
               <li>일용근로자로서 3개월을 계속 근무하지 아니한 자</li>

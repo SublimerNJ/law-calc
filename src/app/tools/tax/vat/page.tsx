@@ -141,7 +141,7 @@ export default function VatPage() {
                 value={formatInput(salesAmount)}
                 onChange={handleChange(setSalesAmount)}
                 placeholder="예: 50,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
             <div className="mb-6">
@@ -152,7 +152,7 @@ export default function VatPage() {
                 value={formatInput(purchaseAmount)}
                 onChange={handleChange(setPurchaseAmount)}
                 placeholder="예: 30,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
             </div>
           </>
@@ -165,7 +165,7 @@ export default function VatPage() {
               value={formatInput(totalPrice)}
               onChange={handleChange(setTotalPrice)}
               placeholder="예: 55,000,000"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         )}
@@ -213,7 +213,7 @@ export default function VatPage() {
                 </p>
                 <p className="text-2xl font-bold" style={{ color: result.isRefund ? '#3b82f6' : category.color }}>
                   {formatNumber(Math.abs(result.payableTax!))}원
-                  {result.isRefund && <span className="text-sm ml-2 text-blue-600">(환급)</span>}
+                  {result.isRefund && <span className="text-sm ml-2 text-teal-800">(환급)</span>}
                 </p>
               </div>
             </>

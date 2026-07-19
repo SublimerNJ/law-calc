@@ -33,8 +33,8 @@ export default function PrivacyPage() {
           <ul className="list-disc list-inside space-y-2 text-slate-600 bg-slate-50 p-6 rounded-xl border border-slate-100 glassmorphism glass-panel">
             <li>Google을 포함한 제3자 공급업체는 쿠키를 사용하여 사용자가 본 사이트 또는 다른 웹사이트를 이전에 방문한 이력을 기반으로 광고를 게재합니다.</li>
             <li>Google은 <strong>광고 쿠키(DoubleClick DART 쿠키)</strong>를 사용하여 사용자가 인터넷의 다른 사이트를 방문한 내역을 기반으로 사용자와 연관성이 높은 광고를 제공합니다.</li>
-            <li>사용자는 <a aria-label="Link" href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">Google 광고 설정 (My Ad Center)</a>을 방문하여 맞춤 광고에 사용되는 DART 쿠키의 사용을 선택 해제(Opt-out)할 수 있습니다.</li>
-            <li>또는 <a aria-label="Link" href="https://www.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">aboutads.info</a> 페이지를 방문하여 제3자 공급업체의 맞춤 광고 쿠키 사용을 해제할 수 있습니다.</li>
+            <li>사용자는 <a aria-label="Link" href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" className="text-teal-800 hover:underline font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">Google 광고 설정 (My Ad Center)</a>을 방문하여 맞춤 광고에 사용되는 DART 쿠키의 사용을 선택 해제(Opt-out)할 수 있습니다.</li>
+            <li>또는 <a aria-label="Link" href="https://www.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-teal-800 hover:underline font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">aboutads.info</a> 페이지를 방문하여 제3자 공급업체의 맞춤 광고 쿠키 사용을 해제할 수 있습니다.</li>
           </ul>
         </section>
 
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
           <p>
             본 사이트의 개인정보 처리와 관련한 불만, 불법 광고 신고, 또는 쿠키 정책에 관한 문의 사항은 아래의 연락처로 접수해 주시기 바랍니다.
           </p>
-          <div className="mt-4 p-4 bg-slate-900 text-white rounded-lg glassmorphism glass-panel">
+          <div className="mt-4 p-4 bg-teal-800 text-white rounded-lg glassmorphism glass-panel">
             <p className="font-medium mb-1">law-calc.kr 서비스 운영팀</p>
             <p className="text-slate-300 font-mono">이메일: sublimernj@gmail.com</p>
           </div>

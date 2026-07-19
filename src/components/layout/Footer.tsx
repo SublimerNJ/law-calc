@@ -6,58 +6,71 @@ export default function Footer() {
   const totalTools = TOOLS.length;
 
   return (
-    <footer className="relative bg-slate-50 border-t border-slate-200 mt-24 overflow-hidden">
-      {/* Decorative gradient accent line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent opacity-50" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-[#c9a84c]/5 blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="md:col-span-1">
-            <div className="mb-6">
-              <Logo size="sm" />
-            </div>
-            <p className="text-sm text-slate-600 leading-relaxed font-light">
-              {totalTools}개 법률 계산기를 무료로 이용하세요. 대한민국 법률 기준으로 정확하게 계산해드립니다.
+    <footer className="mt-24 border-t border-stone-200 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          <div className="md:col-span-4">
+            <Logo size="sm" />
+            <p className="mt-4 text-sm text-zinc-600 leading-relaxed max-w-sm">
+              {totalTools}개 법률 계산기를 무료로 제공합니다. 공개 법령 기준 참고용이며 법률 자문을 대체하지
+              않습니다.
             </p>
           </div>
 
-          {/* Categories */}
-          <div className="md:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-8">
-            {CATEGORIES.map((cat) => (
-              <div key={cat.id} className="group">
-                <h3 className="text-base font-medium text-slate-900 mb-4 flex items-center gap-2">
-                  <span className="opacity-70 group-hover:opacity-100 transition-opacity">{cat.icon}</span>
-                  <span className="tracking-wide">{cat.name}</span>
-                </h3>
-                <ul className="space-y-3">
-                  <li>
-                    <Link aria-label="Navigation link"
-                      href={`/#${cat.id}`}
-                      className="text-sm text-slate-500 hover:text-[#c9a84c] transition-colors duration-300"
-                    >
-                      카테고리 보기 →
-                    </Link>
-                  </li>
-                </ul>
+          <div className="md:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-6">
+            {CATEGORIES.slice(0, 6).map((cat) => (
+              <div key={cat.id}>
+                <p className="text-sm font-semibold text-zinc-900 mb-2">{cat.name}</p>
+                <Link
+                  href={`/#${cat.id}`}
+                  className="text-sm text-zinc-500 hover:text-teal-800 transition-colors"
+                >
+                  도구 보기
+                </Link>
               </div>
             ))}
           </div>
+
+          <div className="md:col-span-3">
+            <p className="text-sm font-semibold text-zinc-900 mb-3">바로가기</p>
+            <ul className="space-y-2 text-sm text-zinc-600">
+              <li>
+                <Link href="/guides" className="hover:text-teal-800">
+                  법률 가이드
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-teal-800">
+                  소개
+                </Link>
+              </li>
+              <li>
+                <Link href="/editorial-policy" className="hover:text-teal-800">
+                  편집 정책
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-teal-800">
+                  문의
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-teal-800">
+                  개인정보처리방침
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-teal-800">
+                  이용약관
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-500 font-light tracking-wider">
-            © 2026 law-calc.kr
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-500">
-            <Link aria-label="Navigation link" href="/privacy" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">개인정보처리방침</Link>
-            <Link aria-label="Navigation link" href="/terms" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">이용약관</Link>
-            <Link aria-label="Navigation link" href="/editorial-policy" className="hover:text-slate-900 transition-colors font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">편집/검증 정책</Link>
-            <a aria-label="Link" href="mailto:sublimernj@gmail.com" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">문의</a>
-            <Link aria-label="Navigation link" href="/about" className="hover:text-slate-900 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">사이트 소개</Link>
-          </div>
+        <div className="mt-12 pt-6 border-t border-stone-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-zinc-500">
+          <p>© 2026 law-calc.kr</p>
+          <p>참고용 정보 · 전문가 자문 대체 불가</p>
         </div>
       </div>
     </footer>

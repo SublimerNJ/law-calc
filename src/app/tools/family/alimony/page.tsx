@@ -203,7 +203,7 @@ export default function AlimonyPage() {
             value={years}
             onChange={e => setYears(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 10"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 

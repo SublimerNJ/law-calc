@@ -151,7 +151,7 @@ export default function LawsuitCostPage() {
             value={displayAmount}
             onChange={handleAmountChange}
             placeholder="예: 50,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -163,7 +163,7 @@ export default function LawsuitCostPage() {
               min={1}
               value={plaintiffCount}
               onChange={e => setPlaintiffCount(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -173,7 +173,7 @@ export default function LawsuitCostPage() {
               min={1}
               value={defendantCount}
               onChange={e => setDefendantCount(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -247,9 +247,9 @@ export default function LawsuitCostPage() {
       {result && (
         <>
           {result.isSmallClaims && (
-            <div className="premium-card p-4 mb-4 bg-blue-50 border border-blue-200">
-              <p className="text-sm font-semibold text-blue-800">소액사건 자동 적용</p>
-              <p className="text-xs text-blue-600 mt-1">소가 3,000만원 이하 → 소액사건심판법 적용, 송달료 {SMALL_CLAIMS_ROUNDS}회 기준 산정</p>
+            <div className="premium-card p-4 mb-4 bg-teal-50 border border-blue-200">
+              <p className="text-sm font-semibold text-teal-900">소액사건 자동 적용</p>
+              <p className="text-xs text-teal-800 mt-1">소가 3,000만원 이하 → 소액사건심판법 적용, 송달료 {SMALL_CLAIMS_ROUNDS}회 기준 산정</p>
             </div>
           )}
           <div className="premium-card p-6 mb-4">

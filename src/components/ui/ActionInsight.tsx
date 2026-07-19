@@ -29,32 +29,31 @@ export function ActionInsight({ calculatorId, amount }: ActionInsightProps) {
   };
 
   return (
-    <div className="mt-8 mb-6 bg-blue-50 border border-blue-200 rounded-lg p-5 md:p-6 shadow-sm">
-      <h3 className="text-lg font-bold text-blue-900 mb-4 flex items-center">
-        {data.title || '💡 실전 대응 팁'}
-      </h3>
-      
-      <ul className="space-y-3 mb-6">
+    <div className="mt-8 mb-2 rounded-2xl border border-teal-100 bg-teal-50/50 p-5">
+      <h3 className="text-base font-bold text-zinc-900 mb-3">{data.title || '실전 대응 팁'}</h3>
+
+      <ul className="space-y-2 mb-5">
         {data.tips.map((tip, idx) => (
-          <li key={idx} className="flex text-blue-900 text-sm md:text-base">
-            <span className="mr-2 text-blue-600 font-bold">•</span>
+          <li key={idx} className="flex text-sm text-zinc-700 gap-2">
+            <span className="text-teal-700 font-bold shrink-0">·</span>
             <span className="leading-relaxed">{replaceAmount(tip)}</span>
           </li>
         ))}
       </ul>
 
       {data.scriptTemplate && (
-        <div className="mt-6 bg-white border border-blue-200 rounded-md p-4 glassmorphism glass-panel">
-          <h4 className="text-sm font-bold text-slate-700 mb-3">
+        <div className="rounded-xl border border-stone-200 bg-white p-4">
+          <h4 className="text-sm font-bold text-zinc-800 mb-2">
             {data.scriptTemplate.title || '발송용 텍스트 템플릿'}
           </h4>
-          <div className="bg-slate-50 p-4 rounded text-sm text-slate-700 whitespace-pre-wrap font-mono mb-4 border border-slate-200 leading-relaxed glassmorphism glass-panel">
+          <div className="bg-stone-50 p-3 rounded-lg text-sm text-zinc-700 whitespace-pre-wrap font-mono mb-3 border border-stone-200 leading-relaxed">
             {replaceAmount(data.scriptTemplate.text)}
           </div>
           <div className="text-right">
-            <button aria-label="Action button"
+            <button
+              type="button"
               onClick={() => data.scriptTemplate && handleCopy(data.scriptTemplate.text)}
-              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium transition-colors bg-white border border-slate-300 text-slate-700 rounded-md hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 glassmorphism glass-panel"
+              className="inline-flex items-center px-4 py-2 text-sm font-semibold rounded-[10px] bg-teal-800 text-white hover:bg-teal-800 active:scale-[0.98] transition-all"
             >
               {data.scriptTemplate.buttonLabel || '텍스트 복사하기'}
             </button>

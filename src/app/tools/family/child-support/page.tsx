@@ -166,7 +166,7 @@ export default function ChildSupportPage() {
           <select
             value={childCount}
             onChange={e => setChildCount(e.target.value as ChildCount)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           >
             {(Object.entries(CHILD_COUNT_LABELS) as [ChildCount, string][]).map(([key, label]) => (
               <option key={key} value={key}>{label}</option>
@@ -183,7 +183,7 @@ export default function ChildSupportPage() {
             value={custodialIncome}
             onChange={handleNumberInput(setCustodialIncome)}
             placeholder="예: 300"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -195,7 +195,7 @@ export default function ChildSupportPage() {
             value={noncustodialIncome}
             onChange={handleNumberInput(setNoncustodialIncome)}
             placeholder="예: 500"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 

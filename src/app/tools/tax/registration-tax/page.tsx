@@ -155,7 +155,7 @@ export default function RegistrationTaxPage() {
           <select
             value={regType}
             onChange={e => { setRegType(e.target.value as RegistrationType); setResult(null); setError(null); setWarning(null); }}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           >
             {REGISTRATION_TYPES.map(t => (
               <option key={t.value} value={t.value}>{t.label} ({t.rateLabel})</option>
@@ -170,7 +170,7 @@ export default function RegistrationTaxPage() {
               <select
                 value={licenseRegion}
                 onChange={e => setLicenseRegion(e.target.value as RegionType)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               >
                 <option value="metro">인구 50만 이상 시 (서울·부산·대구 등)</option>
                 <option value="city">그 밖의 시</option>
@@ -205,7 +205,7 @@ export default function RegistrationTaxPage() {
               value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
               onChange={handleAmountChange}
               placeholder="예: 300,000,000"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
             {amount && (
               <p className="text-xs text-gray-500 mt-1">{parseInt(amount).toLocaleString('ko-KR')}원</p>

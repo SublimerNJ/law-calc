@@ -1,105 +1,104 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import GuideShell from '@/components/guides/GuideShell';
 
 export const metadata: Metadata = {
-  title: '전세금 미반환 대처법: 내용증명부터 임차권등기명령까지 | law-calc.kr',
-  description: '역전세난이나 깡통전세로 임대차 보증금을 돌려받지 못할 때, 세입자가 취해야 할 법적 조치와 임차권등기명령 절차를 안내합니다.',
+  title: '전세금 미반환 대처: 내용증명·임차권등기·소송 순서',
+  description:
+    '계약 종료 후 보증금 미반환 시 내용증명, 임차권등기명령, 이사 시기, 지연이자, 지급명령·소송 선택 기준을 단계별로 안내합니다.',
+  alternates: { canonical: 'https://law-calc.kr/guides/deposit-return-dispute' },
 };
 
 export default function DepositReturnGuide() {
-  const schemaLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: '전세금 미반환 대처법: 내용증명부터 임차권등기명령까지',
-    datePublished: '2026-04-08',
-    author: {
-      '@type': 'Organization',
-      name: 'law-calc.kr 부동산법 데이터 분석팀'
-    }
-  };
-
   return (
-    <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
-      <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link aria-label="Navigation link" href="/guides" className="text-purple-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
-        <span className="text-slate-400">/</span>
-        <span className="text-slate-600">부동산</span>
-      </div>
+    <GuideShell
+      title="전세금 미반환 대처법: 내용증명부터 임차권등기명령까지"
+      category="부동산"
+      accentClass="text-teal-900"
+      ctaBgClass="bg-teal-800 hover:bg-teal-900"
+      datePublished="2026-04-08"
+      dateModified="2026-07-19"
+      description="전세금 미반환 대응 절차 실무 가이드"
+      path="/guides/deposit-return-dispute"
+      toolHref="/tools/realty/deposit-return"
+      toolLabel="보증금 반환·지연 관련 계산기"
+    >
+      <p>
+        &quot;다음 세입자 구하면 줄게&quot;는 사정일 뿐, 원칙적으로 임대인은 계약이 끝난 뒤 보증금을 반환할
+        의무가 있습니다. 문제는 <strong>이사를 먼저 나가면 대항력이 약해질 수 있다</strong>는 점과, 절차 순서를
+        잘못 밟으면 시간이 길어진다는 점입니다. 아래는 실무에서 자주 쓰는 단계입니다.
+      </p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-        전세금 미반환 대처법: 내용증명부터 임차권등기명령까지
-      </h1>
-      
-      <div className="flex items-center gap-4 text-sm text-slate-500 mb-10 pb-8 border-b border-slate-200">
-        <span className="font-medium text-slate-700">작성자: law-calc.kr 부동산법 데이터 분석팀</span>
-        <span>|</span>
-        <span>최종 업데이트: 2026년 4월 8일</span>
-      </div>
+      <h2>1. 계약 종료 요건부터 확인</h2>
+      <ul>
+        <li>계약 기간 만료 / 중도해지 합의 / 해지 통고의 적법성</li>
+        <li>묵시적 갱신 여부, 갱신요구권 행사 이력</li>
+        <li>특약(원상복구, 연체 차감) 범위</li>
+      </ul>
+      <p>
+        종료 자체가 다투어지면 보증금 소송 전에 계약 관계를 먼저 정리해야 합니다. 문자·내용증명 발송일을
+        남겨 두세요.
+      </p>
 
-      <article className="prose prose-slate prose-lg max-w-none">
-        <p>
-          "새 세입자가 들어와야 돈을 빼줄 수 있다." 부동산 시장 침체기에 임대인들로부터 가장 많이 듣게 되는 말입니다. 
-          하지만 법적으로 임대인은 계약이 종료되는 즉시 보증금을 반환할 절대적 의무가 있습니다. 
-          보증금을 돌려받지 못하고 있는 세입자가 소중한 전세금을 지키기 위해 밟아야 할 필수적인 법적 대응 절차를 안내합니다.
-        </p>
+      <h2>2. 1단계: 내용증명으로 반환 최고</h2>
+      <p>
+        반환 기한, 입금 계좌, 지연 시 법조치 예고를 명확히 적습니다. 감정적인 비난보다 날짜·금액·계좌가 중요합니다.
+        이후 소송·지급명령에서 &quot;언제부터 지체했는지&quot;를 입증하는 기초 자료가 됩니다.
+      </p>
 
-        <h2>1단계: 명확한 계약 해지 통보와 내용증명 발송</h2>
-        <p>
-          모든 법적 절차의 대전제는 <strong>"임대차 계약이 적법하게 종료되었음"</strong>을 증명하는 것입니다. 
-          주택임대차보호법상 임차인은 계약 종료 2개월 전까지 갱신 거절의 의사를 통지해야 합니다. 
-          (이 기한을 놓치면 '묵시적 갱신'이 되어버릴 수 있습니다.)
-        </p>
-        <p>
-          통지는 카카오톡이나 문자메시지, 통화 녹음으로도 가능하지만, 가장 확실한 법적 증거를 남기고 임대인에게 강력한 심리적 압박을 가하기 위해서는 <strong>'내용증명 우편'</strong>을 발송하는 것이 좋습니다. 내용증명에는 계약 만료일, 보증금 반환 요청액, 미반환 시 임차권등기명령 및 지연이자 청구 등의 법적 조치를 취하겠다는 의사를 명확히 기재해야 합니다.
-        </p>
+      <h2>3. 2단계: 임차권등기명령 — 이사 전 필수 검토</h2>
+      <p>
+        보증금을 못 받은 채 이사를 가면 점유·주민등록에 기초한 대항력·우선변제권이 흔들릴 수 있습니다.
+        <strong>임차권등기명령</strong>이 경료되면 이사를 가도 일정 효력을 유지하는 데 도움이 됩니다. 신청
+        요건·관할·필요 서류를 미리 확인하고, 등기 촉탁이 끝난 것을 본 뒤 이사 일정을 잡는 것이 안전합니다.
+      </p>
+      <p>
+        <strong>실무 팁:</strong> 집주인이 &quot;등기하면 안 준다&quot;고 압박해도, 권리를 포기한 채 무조건
+        이사하는 것은 위험할 수 있습니다. 반대로 등기 전 무단 퇴거는 피하세요.
+      </p>
 
-        <h2>2단계: 절대 이사 가면 안 됩니다! 임차권등기명령 신청</h2>
-        <p>
-          전세 대출 만기가 다가오거나 새 집을 구해서 부득이하게 이사를 가야 하는 상황이 올 수 있습니다. 
-          이때 가장 주의해야 할 점은 <strong>보증금을 받기 전에 전출신고(주민등록 이전)를 하거나 짐을 빼면 절대로 안 된다</strong>는 것입니다. 
-          전출을 하는 순간 주택임대차보호법상 우선변제권과 대항력이 상실되어 다른 채권자들에게 순위가 밀리게 됩니다.
-        </p>
-        <p>
-          이사를 가야만 한다면 반드시 관할 법원에 <strong>'임차권등기명령'</strong>을 신청해야 합니다. 
-          법원의 결정에 따라 부동산 등기부등본에 임차권이 등재된 것을 확인(보통 신청 후 2~3주 소요)한 이후에 전출과 이사를 해야 기존의 대항력과 우선변제권 순위가 그대로 유지됩니다.
-        </p>
+      <h2>4. 3단계: 지급명령 vs 소송 vs 조정</h2>
+      <ul>
+        <li>
+          <strong>지급명령:</strong> 금전 청구, 상대 이의가 없으면 빠른 집행권원. 주소 불명·이의 가능성 높으면
+          비효율일 수 있음.
+        </li>
+        <li>
+          <strong>민사조정:</strong> 분할 반환·이사 일정 합의에 유리.
+        </li>
+        <li>
+          <strong>본안 소송:</strong> 다툼이 크거나 손해·수리비 상계가 복잡할 때.
+        </li>
+      </ul>
 
-        <div className="bg-purple-50 border border-purple-100 p-6 rounded-xl my-8">
-          <h3 className="text-purple-800 mt-0">💡 관련 도구로 바로 확인하기</h3>
-          <p className="mb-4 text-sm text-slate-700">
-            임차권등기를 마친 후 이사를 나간 다음 날부터는 막대한 지연이자를 임대인에게 청구할 수 있습니다. 지연손해금이 얼마나 되는지 미리 계산해보세요.
-          </p>
-          <div className="flex gap-3">
-            <Link aria-label="Navigation link" href="/tools/realty/deposit-return" className="inline-block bg-purple-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
-              임대차 보증금 반환 계산기
-            </Link>
-            <Link aria-label="Navigation link" href="/tools/misc/certified-letter" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
-              내용증명 작성 도우미
-            </Link>
-          </div>
-        </div>
+      <h2>5. 지연이자·손해</h2>
+      <p>
+        반환 지체가 인정되면 지연손해금이 문제 됩니다. 약정이율·법정이율·기산일이 쟁점입니다. 계산기로 대략
+        규모를 본 뒤, 소장·조정신청서에 청구 취지를 맞추세요. 원상복구 비용 공제는 근거 견적·사진이 없으면
+        다투어집니다.
+      </p>
 
-        <h2>3단계: 지연이자 청구와 보증금 반환 소송</h2>
-        <p>
-          임차권등기명령을 설정하고 주택을 비워주었음에도 임대인이 보증금을 반환하지 않는다면 어떻게 될까요? 
-          임차인이 목적물(주택)을 인도한 날의 다음 날부터는 민법에 따라 <strong>연 5%의 지연손해금</strong>을 청구할 수 있습니다.
-        </p>
-        <p>
-          더 나아가 법원에 '지급명령 신청'이나 '보증금 반환 청구 소송'을 제기하여 소장 부본이 임대인에게 송달된 다음 날부터는 
-          소송촉진 등에 관한 특례법에 따라 무려 <strong>연 12%의 고율 지연이자</strong>가 적용됩니다. 
-          이는 임대인에게 엄청난 경제적 압박으로 작용하여 보증금 반환을 앞당기는 핵심 지렛대가 됩니다.
-        </p>
+      <h2>6. 전세보증보험·경매 국면</h2>
+      <p>
+        보증보험에 가입되어 있다면 보험금 청구 요건(판결·화해 등)을 따로 확인하세요. 경매·회생 국면이면
+        배당 요구·임차인 권리 신고 기한을 놓치지 않는 것이 최우선입니다. 일반 미반환 분쟁과 전략이 달라집니다.
+      </p>
 
-        <h2>마치며</h2>
-        <p>
-          보증금 미반환 사태는 초기 대응이 결과의 90%를 좌우합니다. 감정적인 호소보다는 내용증명 발송과 임차권등기명령이라는 냉정하고 합법적인 무기를 사용하여 권리를 지키시길 바랍니다.
-        </p>
-      </article>
-    </main>
+      <h2>7. 체크리스트 (이사 2주 전)</h2>
+      <ol>
+        <li>계약서·확정일자·전입 일자 확인</li>
+        <li>내용증명 발송 및 수령 여부</li>
+        <li>임차권등기 필요성 판단·신청</li>
+        <li>보증보험·최우선변제 해당 여부</li>
+        <li>수리비 공제 주장에 대한 반박 사진</li>
+        <li>지급명령/조정/소송 경로 선택</li>
+        <li>새 집 계약금 일정과 충돌 여부</li>
+      </ol>
+
+      <h2>8. 정리</h2>
+      <p>
+        전세금 분쟁은 감정 싸움이 아니라 <strong>순서 싸움</strong>입니다. 종료 확인 → 최고 → (필요 시)
+        임차권등기 → 집행권원 → 강제집행/보험. 이 순서를 건너뛰고 이사부터 하면 회복 비용이 커질 수 있습니다.
+      </p>
+    </GuideShell>
   );
 }

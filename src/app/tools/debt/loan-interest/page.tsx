@@ -85,7 +85,7 @@ export default function LoanInterestPage() {
             value={principal ? parseInt(principal).toLocaleString('ko-KR') : ''}
             onChange={handlePrincipalChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {principal && (
             <p className="text-xs text-gray-500 mt-1">
@@ -102,7 +102,7 @@ export default function LoanInterestPage() {
             value={rate}
             onChange={e => setRate(e.target.value.replace(/[^0-9.]/g, ''))}
             placeholder="예: 15"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -114,7 +114,7 @@ export default function LoanInterestPage() {
             value={days}
             onChange={e => setDays(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 365"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -147,8 +147,8 @@ export default function LoanInterestPage() {
           )}
 
           {result.interest === 0 && (
-            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
-              <p className="text-sm text-blue-600">이자액이 0원으로 계산되었습니다. 이율 또는 기간을 확인해주세요.</p>
+            <div className="mb-4 p-3 rounded-lg bg-teal-50 border border-blue-200">
+              <p className="text-sm text-teal-800">이자액이 0원으로 계산되었습니다. 이율 또는 기간을 확인해주세요.</p>
             </div>
           )}
 

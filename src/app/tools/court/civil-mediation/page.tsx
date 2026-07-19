@@ -116,7 +116,7 @@ export default function CivilMediationPage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 50,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {amount && !error && (
             <p className="text-xs text-gray-500 mt-1">
@@ -132,7 +132,7 @@ export default function CivilMediationPage() {
             min={2}
             value={parties}
             onChange={e => setParties(Math.max(2, parseInt(e.target.value) || 2))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 

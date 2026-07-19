@@ -104,7 +104,7 @@ export default function UnemploymentBenefitPage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={e => setMonthlyWage(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -113,7 +113,7 @@ export default function UnemploymentBenefitPage() {
           <select
             value={period}
             onChange={e => setPeriod(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           >
             {PERIOD_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -144,7 +144,7 @@ export default function UnemploymentBenefitPage() {
           <select
             value={dailyHours}
             onChange={e => setDailyHours(Number(e.target.value))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           >
             {HOURS_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -157,7 +157,7 @@ export default function UnemploymentBenefitPage() {
 
         <button aria-label="Action button"
           onClick={handleCalculate}
-          className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
+          className="w-full bg-teal-700 hover:bg-teal-900 text-white font-semibold py-3 rounded-lg transition-colors"
         >
           계산하기
         </button>
@@ -245,7 +245,7 @@ export default function UnemploymentBenefitPage() {
                   {PERIOD_OPTIONS.map(p => {
                     const isActive = p.value === period;
                     return (
-                      <tr key={p.value} className={`border-b border-slate-200/50 ${isActive ? 'bg-blue-600/10' : ''}`}>
+                      <tr key={p.value} className={`border-b border-slate-200/50 ${isActive ? 'bg-teal-700/10' : ''}`}>
                         <td className="py-2 text-slate-600">{p.label}</td>
                         <td className="py-2 text-right" style={{ color: isActive && ageGroup === 'under50' ? category.color : '#9ca3af' }}>
                           {BENEFIT_DAYS.under50[p.value]}일

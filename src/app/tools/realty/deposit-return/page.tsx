@@ -80,7 +80,7 @@ export default function DepositReturnPage() {
             value={deposit ? parseInt(deposit).toLocaleString('ko-KR') : ''}
             onChange={handleDepositChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {deposit && (
             <p className="text-xs text-gray-500 mt-1">
@@ -97,7 +97,7 @@ export default function DepositReturnPage() {
             value={days}
             onChange={e => setDays(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 30"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -108,7 +108,7 @@ export default function DepositReturnPage() {
             inputMode="decimal"
             value={rate}
             onChange={e => setRate(e.target.value.replace(/[^0-9.]/g, ''))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">민법 제379조 법정이율: 연 5% (보증금 미반환 시)</p>
         </div>

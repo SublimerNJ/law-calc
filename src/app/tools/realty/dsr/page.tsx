@@ -84,7 +84,7 @@ export default function DsrPage() {
             value={displayValue(income)}
             onChange={handleNumberInput(setIncome)}
             placeholder="예: 60,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {income && <p className="text-xs text-gray-500 mt-1">{formatNumber(parseNum(income))}원</p>}
         </div>
@@ -97,7 +97,7 @@ export default function DsrPage() {
             value={displayValue(mortgage)}
             onChange={handleNumberInput(setMortgage)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -109,7 +109,7 @@ export default function DsrPage() {
             value={displayValue(credit)}
             onChange={handleNumberInput(setCredit)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -121,7 +121,7 @@ export default function DsrPage() {
             value={displayValue(other)}
             onChange={handleNumberInput(setOther)}
             placeholder="없으면 0"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -173,7 +173,7 @@ export default function DsrPage() {
             </div>
           </div>
 
-          <div className="mb-4 p-4 rounded-lg bg-white glassmorphism glass-panel" style={{ borderLeft: `3px solid ${category.color}` }}>
+          <div className="mb-4 p-4 rounded-lg bg-white glassmorphism glass-panel" style={{ borderTop: '2px solid #0f766e' }}>
             <p className="text-xs text-slate-600 mb-1">추가 대출 가능 월 상환액 (은행권 40% 기준)</p>
             <p className="text-lg font-bold" style={{ color: category.color }}>
               {formatNumber(Math.max(0, Math.floor(result.annualIncome * 0.4 / 12 - result.annualRepayment / 12)))}원/월

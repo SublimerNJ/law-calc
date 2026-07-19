@@ -1,104 +1,98 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import GuideShell from '@/components/guides/GuideShell';
 
 export const metadata: Metadata = {
-  title: '1세대 1주택 양도소득세 비과세 요건과 장기보유특별공제 | law-calc.kr',
-  description: '부동산 매도 시 가장 큰 절세 수단인 1세대 1주택 비과세 거주 요건과 최대 80% 장기보유특별공제 적용 방법을 해설합니다.',
+  title: '1세대 1주택 양도세 비과세·장특공제 실무 체크',
+  description:
+    '1세대 1주택 비과세 보유·거주 요건, 고가주택, 장기보유특별공제, 일시적 2주택, 신고 전 체크리스트를 실무 관점으로 정리합니다.',
+  alternates: { canonical: 'https://law-calc.kr/guides/capital-gains-tax-exemption' },
 };
 
 export default function CapitalGainsGuide() {
-  const schemaLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: '1세대 1주택 양도소득세 비과세 요건과 장기보유특별공제',
-    datePublished: '2026-04-08',
-    author: {
-      '@type': 'Organization',
-      name: 'law-calc.kr 세금 데이터 분석팀'
-    }
-  };
-
   return (
-    <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
-      <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link aria-label="Navigation link" href="/guides" className="text-emerald-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
-        <span className="text-slate-400">/</span>
-        <span className="text-slate-600">세금</span>
-      </div>
+    <GuideShell
+      title="1세대 1주택 양도소득세 비과세 요건과 장특공제"
+      category="세금"
+      accentClass="text-teal-900"
+      ctaBgClass="bg-teal-800 hover:bg-teal-900"
+      datePublished="2026-04-08"
+      dateModified="2026-07-19"
+      description="1세대 1주택 양도세 비과세와 장특공제 실무 가이드"
+      path="/guides/capital-gains-tax-exemption"
+      toolHref="/tools/tax/capital-gains-tax"
+      toolLabel="양도소득세 계산기 열기"
+    >
+      <p>
+        주택을 팔 때 양도소득세는 거래 차익 전부가 과세 대상이 아닐 수 있습니다. 대표 감면·비과세가{' '}
+        <strong>1세대 1주택 비과세</strong>이고, 고가주택·다주택·규제 이력에 따라 계산이 급변합니다. 세법은
+        개정 주기가 빨라 이 글은 구조와 체크리스트 중심으로 설명합니다. 신고 전에는 귀속 연도 기준 현행 법령을
+        홈택스·국세청 자료로 재확인하세요.
+      </p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-        1세대 1주택 양도소득세 비과세 요건과 장특공제
-      </h1>
-      
-      <div className="flex items-center gap-4 text-sm text-slate-500 mb-10 pb-8 border-b border-slate-200">
-        <span className="font-medium text-slate-700">작성자: law-calc.kr 세금 데이터 분석팀</span>
-        <span>|</span>
-        <span>최종 업데이트: 2026년 4월 8일</span>
-      </div>
+      <h2>1. 비과세의 뼈대: 1세대 · 1주택 · 보유·거주</h2>
+      <p>
+        비과세는 보통 ① 1세대가 ② 1주택을 ③ 법령이 정한 보유(및 거주) 기간 요건을 충족한 채 양도할 때 논의됩니다.
+        &quot;명의가 나 하나&quot;만으로 부족하고, <strong>세대 판정</strong>(배우자·동거 가족 등)이 핵심입니다.
+        부모·자녀 합가, 결혼, 중학생 자녀 유학 등으로 세대 구성이 바뀌면 결과가 달라질 수 있습니다.
+      </p>
 
-      <article className="prose prose-slate prose-lg max-w-none">
-        <p>
-          집값이 크게 올라 차익이 발생했을 때, 이 차익(양도소득)에 대해 수천만 원에서 수억 원의 세금이 매겨질 수 있습니다. 
-          하지만 세법은 서민의 주거 안정을 위해 <strong>1세대 1주택자</strong>에게 엄청난 세제 혜택을 제공합니다. 비과세 요건과 장기보유특별공제의 핵심을 정리합니다.
-        </p>
+      <h2>2. 보유 2년·거주 2년? 유형별 차이</h2>
+      <p>
+        흔히 &quot;2년 보유·2년 거주&quot;로 기억하지만, 취득 시기·조정대상지역 여부·주택 유형에 따라 거주 요건
+        적용이 달라져 온 이력이 있습니다. 실무에서는 다음을 문서로 고정합니다.
+      </p>
+      <ul>
+        <li>취득일·양도일 (잔금일·등기일 중 기준 확인)</li>
+        <li>전입일·전출일, 주민등록 이력</li>
+        <li>취득 당시 조정대상지역 여부</li>
+        <li>임시 거주, 직주 근접, 취학·근무 예외 해당 여부</li>
+      </ul>
 
-        <h2>1. 1세대 1주택 '비과세'의 3가지 핵심 조건</h2>
-        <p>
-          양도가액 12억 원 이하까지 세금을 전액 면제받기 위해서는 다음 요건을 모두 충족해야 합니다.
-        </p>
-        <ul>
-          <li><strong>1세대 1주택:</strong> 양도일 현재 대한민국에 주민등록상 동일 세대원이 1주택만을 보유해야 합니다. (일시적 2주택 특례 있음)</li>
-          <li><strong>2년 보유 요건:</strong> 주택을 취득한 날부터 양도한 날까지의 보유 기간이 2년 이상이어야 합니다.</li>
-          <li><strong>2년 거주 요건 (조정대상지역 한정):</strong> <strong>2017년 8월 3일 이후</strong> 취득 당시 해당 주택이 '조정대상지역'에 지정되어 있었다면, 단순히 2년을 보유하는 것을 넘어 세대 전원이 <strong>실제로 2년 이상 거주</strong>해야 비과세를 받습니다. 취득 후 비규제지역으로 해제되었더라도, 취득 당시 규제지역이었다면 거주 요건을 지켜야 합니다.</li>
-        </ul>
+      <h2>3. 고가주택: 비과세여도 일부가 과세</h2>
+      <p>
+        양도가액이 법령상 고가 기준을 넘으면, 비과세 대상이라도 <strong>기준 초과분에 대한 양도차익</strong>이
+        과세될 수 있습니다. &quot;비과세라서 세금 0&quot;이 아닙니다. 필요경비·장기보유특별공제 적용 방식도 함께
+        봐야 합니다.
+      </p>
 
-        <h2>2. 고가주택 (12억 원 초과) 양도 시 세금 계산</h2>
-        <p>
-          실거래가 12억 원을 넘는 이른바 '고가주택'은 1세대 1주택 비과세 요건을 완벽히 갖추었더라도 12억 원을 초과하는 비율만큼은 양도소득세가 부과됩니다.
-        </p>
-        <p>
-          예를 들어, 10억 원에 사서 15억 원에 팔아 5억 원의 차익이 발생했다면, 전체 차익 5억 원 중 (15억 - 12억) / 15억 = 20% 인 '1억 원'에 대해서만 과세 대상이 됩니다.
-        </p>
+      <h2>4. 장기보유특별공제(장특공제)</h2>
+      <p>
+        장특공제는 보유·거주 기간에 따라 양도차익에서 공제하는 제도로, 세액 차이를 크게 만듭니다. 1세대 1주택과
+        그 외 자산의 공제율이 다를 수 있고, 거주 기간 요건이 붙는 구간이 있습니다. 보유만 길고 거주가 짧으면
+        기대보다 공제가 줄어들 수 있습니다.
+      </p>
 
-        <div className="bg-emerald-50 border border-emerald-100 p-6 rounded-xl my-8">
-          <h3 className="text-emerald-800 mt-0">💡 복잡한 12억 초과분 세금, 1초 만에 확인</h3>
-          <p className="mb-4 text-sm text-slate-700">
-            취득가액과 양도가액, 거주 기간만 입력하면 12억 초과분 비율 계산부터 장기보유특별공제, 지방소득세까지 최신 세법으로 자동 계산합니다.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link aria-label="Navigation link" href="/tools/tax/capital-gains-tax" className="inline-block bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
-              양도소득세 계산기
-            </Link>
-            <Link aria-label="Navigation link" href="/tools/tax/acquisition-tax" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
-              부동산 취득세 계산기
-            </Link>
-          </div>
-        </div>
+      <h2>5. 일시적 2주택·대물림·상속</h2>
+      <p>
+        이사 과정에서 일시적으로 주택이 2채가 되는 경우, 종전 주택 양도 기한·세대 요건을 맞추면 비과세 특례가
+        논의됩니다. 반대로 기한을 넘기거나 신규 주택 취득 구조를 잘못 잡으면 다주택 중과·비과세 배제로 이어질
+        수 있습니다. 상속·혼인으로 주택 수가 늘어난 경우도 별도 특례·유예가 있는지 확인이 필요합니다.
+      </p>
 
-        <h2>3. 세금 폭탄을 막는 방패: 장기보유특별공제(장특공제)</h2>
-        <p>
-          12억 초과분으로 세금이 부과되더라도, 3년 이상 장기 보유했다면 물가 상승분을 감안해 양도차익에서 일정 비율을 깎아주는 것이 장특공제입니다.
-        </p>
-        <p>
-          다주택자나 거주 요건을 못 채운 1주택자는 3년 보유부터 1년에 2%씩, 최대 30%(15년 보유)까지만 공제됩니다 (표 1).
-        </p>
-        <p>
-          반면, 1세대 1주택 비과세 요건을 갖추고 <strong>2년 이상 실거주</strong>한 사람은 파격적인 공제를 받습니다 (표 2).<br/>
-          보유 기간 1년당 4% (최대 40%) + 거주 기간 1년당 4% (최대 40%)를 합산하여, <strong>10년 보유 및 거주 시 최대 80%</strong>의 양도차익을 공제받아 세금이 극적으로 줄어듭니다.
-        </p>
+      <h2>6. 필요경비: 빼먹을 때와 못 뺄 때</h2>
+      <ul>
+        <li>취득세, 중개수수료, 자본적 지출 성격의 인테리어 등</li>
+        <li>단순 수선비·생활비성 지출은 제외될 수 있음</li>
+        <li>증빙(세금계산서·이체·계약서) 없는 금액은 다투어짐</li>
+      </ul>
 
-        <h2>마치며</h2>
-        <p>
-          양도소득세는 수천만 원이 왔다 갔다 하는 중대한 세금입니다. 
-          취득 시 세금계산서, 샷시 교체 비용 등 자본적 지출 증빙(필요경비)을 철저히 챙기고, 
-          매도 전 반드시 세무 전문가와 상담하여 비과세 요건과 장특공제율을 이중 점검하시기 바랍니다.
-        </p>
-      </article>
-    </main>
+      <h2>7. 신고 전 체크리스트</h2>
+      <ol>
+        <li>세대원·주택 수 확정</li>
+        <li>취득·양도 일정과 거주 이력 표 작성</li>
+        <li>비과세 / 고가 / 과세 중 어느 유형인지 1차 분류</li>
+        <li>장특공제율 시나리오 (보유·거주 연수)</li>
+        <li>필요경비 증빙 철</li>
+        <li>예정신고·확정신고 기한</li>
+        <li>세무사 검토 필요 여부 (다주택·고가·특례)</li>
+      </ol>
+
+      <h2>8. 정리</h2>
+      <p>
+        양도세는 계산기 한 번으로 끝나지 않습니다. 세대·지역·일정·증빙이 맞물립니다. 먼저 비과세 해당 여부를
+        가르고, 고가·장특공제·필요경비로 세액을 좁힌 뒤, 신고 기한 안에 전문가 확인을 받으세요. 본 사이트
+        계산기는 신고 전 시뮬레이션용입니다.
+      </p>
+    </GuideShell>
   );
 }

@@ -195,7 +195,7 @@ export default function BrokerageFeePage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setAmount)}
             placeholder="예: 300,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -208,7 +208,7 @@ export default function BrokerageFeePage() {
               value={monthlyRent ? parseInt(monthlyRent).toLocaleString('ko-KR') : ''}
               onChange={handleNumberChange(setMonthlyRent)}
               placeholder="예: 500,000"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         )}
@@ -230,8 +230,8 @@ export default function BrokerageFeePage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.fee === 0 && (
-            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
-              <p className="text-sm text-blue-600">거래금액이 매우 작아 중개보수가 0원으로 계산되었습니다.</p>
+            <div className="mb-4 p-3 rounded-lg bg-teal-50 border border-blue-200">
+              <p className="text-sm text-teal-800">거래금액이 매우 작아 중개보수가 0원으로 계산되었습니다.</p>
             </div>
           )}
 

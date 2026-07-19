@@ -1,102 +1,110 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import GuideShell from '@/components/guides/GuideShell';
 
 export const metadata: Metadata = {
-  title: '프리랜서 3.3% 종합소득세 신고 방법과 절세 팁 | law-calc.kr',
-  description: '매달 3.3% 원천징수되는 프리랜서, 크리에이터의 5월 종합소득세 확정신고 원리와 환급금 추계신고 방법에 대해 설명합니다.',
+  title: '프리랜서 3.3% 종합소득세: 신고·환급·경비율 실무',
+  description:
+    '3.3% 원천징수 구조, 5월 종소세 신고, 단순경비율·기준경비율, 환급이 나는 이유, 증빙 관리와 자주 하는 실수를 실무 순서로 정리합니다.',
+  alternates: { canonical: 'https://law-calc.kr/guides/comprehensive-income-tax-freelancer' },
 };
 
 export default function FreelancerTaxGuide() {
-  const schemaLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: '프리랜서 3.3% 종합소득세 신고 방법과 절세 팁',
-    datePublished: '2026-04-08',
-    author: {
-      '@type': 'Organization',
-      name: 'law-calc.kr 세금 데이터 분석팀'
-    }
-  };
-
   return (
-    <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
-      <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link aria-label="Navigation link" href="/guides" className="text-emerald-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
-        <span className="text-slate-400">/</span>
-        <span className="text-slate-600">세금</span>
-      </div>
+    <GuideShell
+      title="프리랜서 3.3% 종합소득세 신고 방법과 환급 절세 팁"
+      category="세금"
+      accentClass="text-teal-900"
+      ctaBgClass="bg-teal-800 hover:bg-teal-900"
+      datePublished="2026-04-08"
+      dateModified="2026-07-19"
+      description="프리랜서 종합소득세 신고와 환급 실무 가이드"
+      path="/guides/comprehensive-income-tax-freelancer"
+      toolHref="/tools/tax/comprehensive-income-tax"
+      toolLabel="종합소득세 계산기 열기"
+    >
+      <p>
+        외주 개발, 디자인, 강의, 배달, 콘텐츠 제작… 사업자가 원천징수하는 3.3%(소득세 3%+지방소득세 0.3% 구조로
+        이해하는 경우가 많음)를 &quot;이미 세금 다 낸 것&quot;으로 착각하면 안 됩니다. 5월 종합소득세 신고에서
+        정산되며, <strong>환급</strong>이 나기도 하고 <strong>추가 납부</strong>가 생기기도 합니다.
+      </p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-        프리랜서 3.3% 종합소득세 신고 방법과 환급의 비밀
-      </h1>
-      
-      <div className="flex items-center gap-4 text-sm text-slate-500 mb-10 pb-8 border-b border-slate-200">
-        <span className="font-medium text-slate-700">작성자: law-calc.kr 세금 데이터 분석팀</span>
-        <span>|</span>
-        <span>최종 업데이트: 2026년 4월 8일</span>
-      </div>
+      <h2>1. 3.3%는 중간 징수</h2>
+      <p>
+        지급자가 원천징수한 세금은 미리 떼어 둔 금액입니다. 연간 소득·경비·공제에 따라 최종 세액이 결정됩니다.
+        원천징수영수증·지급명세를 모아 두지 않으면 신고 때 누락·중복이 생깁니다.
+      </p>
 
-      <article className="prose prose-slate prose-lg max-w-none">
-        <p>
-          배달 라이더, 웹 개발 외주, 학원 강사, 유튜브 크리에이터 등 매달 급여에서 3.3%를 떼고 입금받는 분들이 늘고 있습니다. 
-          이들은 근로소득자가 아닌 <strong>세법상 개인사업자(사업소득자)</strong>이므로 연말정산을 하지 않고, 이듬해 5월 직접 종합소득세 신고를 해야 합니다.
-        </p>
+      <h2>2. 신고 대상과 시기</h2>
+      <p>
+        전년도 소득에 대해 보통 다음 해 5월에 종합소득세 확정신고를 합니다. 수입이 여러 플랫폼·클라이언트에
+        흩어져 있으면 합산이 필요합니다. 직장 급여와 프리랜서 소득이 함께 있으면 합산 과세 구조를 이해해야
+        합니다.
+      </p>
 
-        <h2>1. 3.3%는 왜 떼는 것이고, 환급은 왜 발생할까?</h2>
-        <p>
-          소득을 지급하는 회사(원천징수의무자)는 프리랜서의 정확한 연소득을 알 수 없으므로, 임시로 국가에 국세 3% + 지방세 0.3%를 먼저 떼어서 납부합니다 (원천징수).
-        </p>
-        <p>
-          5월이 되면 프리랜서는 국세청 홈택스에 지난 1년간 벌어들인 총 수입과 업무에 쓴 경비, 그리고 각종 공제(부양가족 등)를 합산하여 '진짜 나의 세금(결정세액)'을 계산합니다.
-        </p>
-        <ul>
-          <li><strong>결정세액 &lt; 미리 낸 3.3% 세금:</strong> 국가가 세금을 많이 뗐으므로 <strong>환급(돌려받음)</strong>.</li>
-          <li><strong>결정세액 &gt; 미리 낸 3.3% 세금:</strong> 세금을 덜 냈으므로 5월에 <strong>추가 납부(토해냄)</strong>.</li>
-        </ul>
+      <h2>3. 경비 처리: 장부 vs 추계(경비율)</h2>
+      <ul>
+        <li>
+          <strong>장부 작성:</strong> 실제 필요경비를 증빙으로 인정받는 방식. 경비 비중이 크면 유리할 수 있음.
+        </li>
+        <li>
+          <strong>추계(단순·기준경비율):</strong> 업종 코드·수입 규모에 따라 경비율을 적용. 증빙이 부족할 때
+          사용하나, 무조건 유리한 것은 아님.
+        </li>
+      </ul>
+      <p>
+        &quot;단순경비율 쓰면 무조건 환급&quot;은 미신에 가깝습니다. 수입 규모, 다른 소득, 공제 항목에 따라
+        결과가 갈립니다.
+      </p>
 
-        <h2>2. 세금 폭탄의 갈림길: 단순경비율 vs 기준경비율</h2>
-        <p>
-          사업자는 장부를 작성해 진짜 쓴 돈을 증빙하는 것이 원칙이나, 영세 사업자를 위해 국세청이 업종별 평균 경비율을 인정해 주는 <strong>추계신고</strong> 제도가 있습니다. 여기서 명운이 갈립니다.
-        </p>
-        <p>
-          직전 연도 수입이 2,400만 원(업종별 상이) 미만이라면 <strong>'단순경비율'</strong>이 적용됩니다. 예를 들어 수입이 2,000만 원이고 단순경비율이 60%라면, 실제로 돈을 썼는지 묻지 않고 1,200만 원을 경비로 인정해 세금을 대폭 깎아줍니다. 환급받을 확률이 매우 높습니다.
-        </p>
-        <p>
-          하지만 수입이 기준선을 초과하면 <strong>'기준경비율'</strong> 대상자가 됩니다. 기준경비율은 인정 비율이 10~20%대로 처참하게 낮습니다. 기준경비율 대상자가 무턱대고 추계신고를 하면 막대한 세금 폭탄을 맞게 되므로, 영수증을 모아 <strong>간편장부</strong>를 작성하여 실제 경비를 인정받아야 합니다.
-        </p>
+      <h2>4. 환급이 나는 대표 패턴</h2>
+      <ul>
+        <li>원천징수세액이 최종 산출세액보다 큰 경우</li>
+        <li>경비가 충분히 인정되어 과세표준이 낮아진 경우</li>
+        <li>각종 소득공제·세액공제 적용</li>
+      </ul>
+      <p>
+        반대로 수입이 큰데 경비가 거의 없거나, 다른 소득과 합산되면 추가 납부가 납부서가 나올 수 있습니다.
+      </p>
 
-        <div className="bg-emerald-50 border border-emerald-100 p-6 rounded-xl my-8">
-          <h3 className="text-emerald-800 mt-0">💡 올해 나는 세금을 토해낼까, 돌려받을까?</h3>
-          <p className="mb-4 text-sm text-slate-700">
-            총 수입과 경비, 주요 소득공제를 입력하여 5월 종합소득세 확정 신고 시 예상되는 환급액 또는 납부액을 미리 계산해 보세요.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link aria-label="Navigation link" href="/tools/tax/comprehensive-income-tax" className="inline-block bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
-              종합소득세 계산기
-            </Link>
-            <Link aria-label="Navigation link" href="/tools/tax/vat" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
-              부가가치세 계산기
-            </Link>
-          </div>
-        </div>
+      <h2>5. 실무 증빙 폴더 구조</h2>
+      <ol>
+        <li>월별 입금 내역 / 세금계산서·현금영수증</li>
+        <li>노트북·소프트웨어·통신비·교통비·교육비 등 업무 관련성 메모</li>
+        <li>원천징수 명세 연간 합계</li>
+        <li>건강보험·국민연금 등 지역가입 납부 내역</li>
+      </ol>
 
-        <h2>3. 근로자 연말정산과 다른 프리랜서 절세 팁</h2>
-        <p>
-          프리랜서는 직장인들이 열광하는 '신용카드 소득공제, 의료비/교육비 세액공제, 월세 세액공제'를 <strong>전혀 받을 수 없습니다.</strong> 
-          대신 사업과 관련된 지출을 '경비'로 털어내야 합니다.
-        </p>
-        <ul>
-          <li><strong>업무용 비용 증빙:</strong> 휴대폰 요금, 교통비, 차량 유지비, 접대비, 소모품 등 업무와 연관성 있는 지출은 모두 사업용 카드나 현금영수증을 통해 적격 증빙을 남겨야 장부 작성 시 경비로 인정받습니다.</li>
-          <li><strong>인적 공제 챙기기:</strong> 소득이 없는 부모님, 배우자, 자녀를 부양가족으로 올리면 1인당 150만 원의 과세표준을 낮출 수 있습니다.</li>
-          <li><strong>노란우산공제 및 연금저축:</strong> 소상공인 공제부금(노란우산)과 연금저축계좌 세액공제는 프리랜서가 합법적으로 세액을 깎을 수 있는 가장 강력한 금융 상품입니다. 적극 활용하세요.</li>
-        </ul>
+      <h2>6. 자주 하는 실수</h2>
+      <ul>
+        <li>지인 카드로 결제하고 증빙을 못 맞추는 경우</li>
+        <li>생활비성 지출을 무리하게 경비 처리</li>
+        <li>해외 플랫폼 소득 누락</li>
+        <li>사업자등록·업종 코드 불일치</li>
+      </ul>
 
-      </article>
-    </main>
+      <h2>7. 신고 전 체크리스트</h2>
+      <ol>
+        <li>연간 수입 합계 확정</li>
+        <li>원천징수세액 합계 확정</li>
+        <li>장부 vs 추계 비교 시뮬레이션</li>
+        <li>공제 항목 점검</li>
+        <li>홈택스 미리채움 자료와 대조</li>
+        <li>납부·환급 일정 확인</li>
+      </ol>
+
+      <h2>8. 건강보험·연금과의 연결</h2>
+      <p>
+        소득이 늘어나면 지역가입 건강보험료·국민연금 기준 소득도 달라질 수 있습니다. 세금 환급만 보고 현금
+        흐름을 낙관했다가, 보험료 정산에서 부담이 커지는 경우가 있습니다. 종합소득 확정 금액이 나오면 공단
+        고지 일정도 같이 체크하세요.
+      </p>
+
+      <h2>9. 정리</h2>
+      <p>
+        프리랜서 세금의 핵심은 3.3%가 아니라 <strong>연간 정산</strong>입니다. 평소 증빙을 남기고, 5월 전에
+        장부/경비율 시나리오를 비교하세요. 계산기는 개략 세액을 보는 용도이며, 업종·특례·해외 소득이 복잡하면
+        세무사 검토를 권합니다.
+      </p>
+    </GuideShell>
   );
 }

@@ -138,7 +138,7 @@ export default function MinimumWageCheckPage() {
                 value={monthlySalary ? parseInt(monthlySalary).toLocaleString('ko-KR') : ''}
                 onChange={handleNumberChange(setMonthlySalary)}
                 placeholder="예: 2,000,000"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
               />
               <p className="text-xs text-gray-500 mt-1">
                 최저임금 산입 임금 기준 (기본급+고정수당, 식대/교통비 월 20만원 초과분 제외)
@@ -177,7 +177,7 @@ export default function MinimumWageCheckPage() {
               value={hourlyWage ? parseInt(hourlyWage).toLocaleString('ko-KR') : ''}
               onChange={handleNumberChange(setHourlyWage)}
               placeholder="예: 9,860"
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         )}

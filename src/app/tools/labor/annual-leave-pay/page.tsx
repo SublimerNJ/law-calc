@@ -91,7 +91,7 @@ export default function AnnualLeavePayPage() {
             value={unusedDays}
             onChange={handleUnusedDaysChange}
             placeholder="예: 5"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">
             연차 일수 기준 (근로기준법 제60조): 1년 미만 월 개근 시 1일(최대 11일), 1년 이상 80% 출근 시 15일, 3년 이상 매 2년마다 1일 추가(최대 25일)
@@ -106,7 +106,7 @@ export default function AnnualLeavePayPage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 2,090,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyWage && (
             <p className="text-xs text-gray-500 mt-1">

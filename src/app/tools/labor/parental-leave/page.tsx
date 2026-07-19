@@ -103,7 +103,7 @@ export default function ParentalLeavePage() {
             value={wage ? parseInt(wage).toLocaleString('ko-KR') : ''}
             onChange={handleWageChange}
             placeholder="예: 3,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -112,7 +112,7 @@ export default function ParentalLeavePage() {
           <select
             value={months}
             onChange={e => setMonths(Number(e.target.value))}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           >
             {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
               <option key={m} value={m}>{m}개월</option>
@@ -146,7 +146,7 @@ export default function ParentalLeavePage() {
 
         <button aria-label="Action button"
           onClick={handleCalculate}
-          className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
+          className="w-full bg-teal-700 hover:bg-teal-900 text-white font-semibold py-3 rounded-lg transition-colors"
         >
           계산하기
         </button>

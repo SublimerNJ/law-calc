@@ -224,7 +224,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numChildren}
               onChange={e => setNumChildren(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -237,7 +237,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numGrandchildren}
               onChange={e => setNumGrandchildren(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -251,7 +251,7 @@ export default function InheritanceOrderPage() {
               max={2}
               value={numParents}
               onChange={e => setNumParents(Math.max(0, Math.min(2, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -262,7 +262,7 @@ export default function InheritanceOrderPage() {
               max={10}
               value={numSiblings}
               onChange={e => setNumSiblings(Math.max(0, Math.min(10, parseInt(e.target.value) || 0)))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -303,7 +303,7 @@ export default function InheritanceOrderPage() {
                 className={`flex items-start gap-3 p-3 rounded-lg${!heir.isInheriting && heir.label === '상속인 없음' ? ' border border-orange-200 bg-orange-50' : ''}`}
                 style={heir.label !== '상속인 없음' ? {
                   backgroundColor: heir.isInheriting ? `${category.color}15` : 'rgba(107,114,128,0.1)',
-                  borderLeft: `3px solid ${heir.isInheriting ? category.color : '#4b5563'}`,
+                  borderTop: '2px solid #0f766e',
                 } : undefined}
               >
                 <div className="flex-1">

@@ -151,7 +151,7 @@ export default function StatuteOfLimitationsPage() {
             <select
               value={claimTypeIdx}
               onChange={e => setClaimTypeIdx(Number(e.target.value))}
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             >
               {CLAIM_TYPES.map((ct, i) => (
                 <option key={i} value={i}>{ct.label} ({ct.years}년)</option>
@@ -165,7 +165,7 @@ export default function StatuteOfLimitationsPage() {
               type="date"
               value={startDate}
               onChange={e => setStartDate(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>

@@ -1,104 +1,108 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import GuideShell from '@/components/guides/GuideShell';
 
 export const metadata: Metadata = {
-  title: '산재보험 휴업급여 및 장해급여 청구 완벽 가이드 | law-calc.kr',
-  description: '업무상 재해 발생 시 근로복지공단에서 받을 수 있는 휴업급여(평균임금의 70%)와 치료 종결 후의 장해급여 보상액 산정 방식을 설명합니다.',
+  title: '산재 휴업급여·장해급여: 청구 순서와 실무 함정',
+  description:
+    '업무상 재해 인정, 요양·휴업급여, 장해등급, 사업주 협조가 없어도 되는 청구, 민사상 손해배상과의 관계를 실무 순서로 정리합니다.',
+  alternates: { canonical: 'https://law-calc.kr/guides/industrial-accident-compensation' },
 };
 
 export default function IndustrialAccidentGuide() {
-  const schemaLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: '산재보험 휴업급여 및 장해급여 청구 완벽 가이드',
-    datePublished: '2026-04-08',
-    author: {
-      '@type': 'Organization',
-      name: 'law-calc.kr 노동법 데이터 분석팀'
-    }
-  };
-
   return (
-    <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
-      <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link aria-label="Navigation link" href="/guides" className="text-amber-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
-        <span className="text-slate-400">/</span>
-        <span className="text-slate-600">노동/근로</span>
-      </div>
+    <GuideShell
+      title="산재보험 휴업급여 및 장해급여 청구 실무 가이드"
+      category="노동/근로"
+      accentClass="text-teal-900"
+      ctaBgClass="bg-teal-800 hover:bg-teal-900"
+      datePublished="2026-04-08"
+      dateModified="2026-07-19"
+      description="산재 휴업급여·장해급여 청구 실무 가이드"
+      path="/guides/industrial-accident-compensation"
+      toolHref="/tools/labor/industrial-accident"
+      toolLabel="산재 보상 관련 계산기 열기"
+    >
+      <p>
+        일하다 다쳤을 때 가장 먼저 나오는 말은 &quot;산재 처리해 줄게&quot; 또는 &quot;공상으로 하자&quot;입니다.
+        공상(회사가 치료비를 私下 처리)은 당장은 편해 보여도, 장해가 남거나 재발이 있으면 나중에 곤란해질 수
+        있습니다. 산재보험은 사업주 협조가 없어도 근로자가 직접 청구할 수 있는 길이 있습니다.
+      </p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-        산재보험 휴업급여 및 장해급여 청구 완벽 가이드
-      </h1>
-      
-      <div className="flex items-center gap-4 text-sm text-slate-500 mb-10 pb-8 border-b border-slate-200">
-        <span className="font-medium text-slate-700">작성자: law-calc.kr 노동법 데이터 분석팀</span>
-        <span>|</span>
-        <span>최종 업데이트: 2026년 4월 8일</span>
-      </div>
+      <h2>1. 산재의 출발점: 업무상 재해</h2>
+      <p>
+        산재보험 급여는 업무상 사고·질병으로 인정될 때 지급됩니다. 출퇴근 재해, 업무 중 사고, 직업성 질병 등
+        유형이 다양하고, 인과관계·업무 관련성이 쟁점입니다. &quot;회사 밖이라 안 된다&quot;고 단정하지 말고,
+        경위서를 시간 순으로 남기세요.
+      </p>
 
-      <article className="prose prose-slate prose-lg max-w-none">
-        <p>
-          업무상 재해(출퇴근 사고 포함)로 다쳤을 때, 가장 시급한 것은 치료비(요양급여)입니다. 
-          하지만 일을 하지 못해 끊긴 월급은 어떻게 충당할까요? 영구적인 후유증이 남았다면 그 보상은 어떻게 될까요? 
-          산업재해보상보험법이 보장하는 <strong>휴업급여</strong>와 <strong>장해급여</strong>의 산정 원리를 완벽 정리합니다.
-        </p>
+      <h2>2. 급여의 종류를 한눈에</h2>
+      <ul>
+        <li>
+          <strong>요양급여:</strong> 치료에 드는 비용
+        </li>
+        <li>
+          <strong>휴업급여:</strong> 일하지 못하는 기간의 소득 보전 (일반적으로 평균임금의 일정 비율)
+        </li>
+        <li>
+          <strong>장해급여:</strong> 치료 종결 후 남은 장해에 대한 보상 (등급별)
+        </li>
+        <li>
+          <strong>간병·유족 등:</strong> 사안에 따라 추가 급여
+        </li>
+      </ul>
 
-        <h2>1. 요양으로 못 번 돈, '휴업급여' (평균임금의 70%)</h2>
-        <p>
-          치료(요양) 때문에 출근하지 못한 기간에 대해, 국가는 <strong>1일 평균임금의 70%</strong>에 해당하는 금액을 휴업급여로 지급합니다.
-        </p>
-        <p>
-          여기서 중요한 점은 <strong>"최저보상기준"</strong>입니다. 급여가 낮거나 파트타임인 경우 평균임금의 70%가 터무니없이 적을 수 있습니다. 
-          따라서 산재보험법은 계산된 휴업급여가 그 해 <strong>최저임금액의 80%</strong>보다 적으면, 최소한 최저임금액의 80%를 보장해 주도록 안전장치를 마련하고 있습니다. 
-          (예외적으로 고령자 등 일부 감액 규정이 있습니다.)
-        </p>
+      <h2>3. 휴업급여 실무 포인트</h2>
+      <p>
+        휴업급여는 &quot;치료를 위해 취업하지 못한 기간&quot;이 핵심입니다. 일부 근무·투잡·무단 취업이 있으면
+        지급이 제한되거나 부당이득 이슈가 생길 수 있습니다. 평균임금 산정이 낮게 잡히면 급여도 낮아지므로,
+        사고 전 임금 내역을 정확히 제출하는 것이 중요합니다. 최저 보상기준이 적용되는 구간도 있으니 고시
+        수치를 확인하세요.
+      </p>
 
-        <h2>2. 치료 종결 후 남은 후유증, '장해급여'</h2>
-        <p>
-          치료가 모두 끝났음에도(증상 고정) 신체에 영구적인 장해가 남았다면, 장해 등급(1급~14급) 판정을 받아 장해급여를 받을 수 있습니다.
-        </p>
-        <p>
-          장해급여는 등급별로 정해진 <strong>'지급 일수'</strong>에 평균임금을 곱하여 일시금으로 지급됩니다.
-        </p>
-        <ul>
-          <li><strong>1급 (가장 심각한 장해):</strong> 329일분 (연금으로 선택 시 평생 매년 329일분)</li>
-          <li><strong>7급 (일시금/연금 선택 가능 마지노선):</strong> 138일분</li>
-          <li><strong>14급 (가장 가벼운 장해):</strong> 55일분</li>
-        </ul>
-        <p>
-          예를 들어 1일 평균임금이 10만 원인 근로자가 10급(지급일수 297일, 아님. 10급은 297일이 아니라 297일은 4급. 10급은 297시간분. 수정요망. 올바른 지급일수: 14급 55일, 13급 73일, 12급 154일, 11급 220일, 10급 297일. 등등) 장해 판정을 받았다면 장해 일시금으로 2,970만 원을 받게 됩니다.
-        </p>
+      <h2>4. 장해급여: 치료 종결 후가 시작</h2>
+      <p>
+        장해는 증상이 고정된 뒤 등급 평가로 이어집니다. 등급에 따라 일시금·연금 형태가 달라질 수 있습니다.
+        주치의 소견, 영상 자료, 기능 평가가 핵심 증거가 됩니다. &quot;아직 아픈데 종결하라&quot;는 압박이 있으면
+        의료 기록을 남기고 근로복지공단 절차를 확인하세요.
+      </p>
 
-        <div className="bg-amber-50 border border-amber-100 p-6 rounded-xl my-8">
-          <h3 className="text-amber-800 mt-0">💡 휴업·장해급여 자동 계산기</h3>
-          <p className="mb-4 text-sm text-slate-700">
-            최근 3개월 급여와 요양 일수, 예상 장해등급을 입력하면 복잡한 최저보상기준과 등급별 일수를 모두 적용하여 산재 보험금을 정확히 계산합니다.
-          </p>
-          <Link aria-label="Navigation link" href="/tools/labor/industrial-accident" className="inline-block bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
-            산재보험급여 계산기 가기
-          </Link>
-        </div>
+      <h2>5. 사업주가 거부해도</h2>
+      <p>
+        산재 신청은 근로자 등이 할 수 있으며, 사업주 날인이 필수라고 오해하는 경우가 많습니다. 협조가 없어도
+        청구·조사 절차가 진행될 수 있습니다. 다만 경위·목격자·CCTV 등 사실관계 입증 책임은 여전히 중요합니다.
+      </p>
 
-        <h2>3. 산재 보상과 민사 손해배상의 관계</h2>
-        <p>
-          산재보험은 '무과실 책임주의'로 신속한 보상을 목적으로 하지만, 피해액의 100%를 채워주지는 않습니다 (예: 휴업급여 70%만 인정, 위자료 없음).
-        </p>
-        <p>
-          따라서 산재 보상금으로 커버되지 않는 부분(나머지 30%의 휴업손해, 정신적 고통에 대한 위자료, 산재 장해급여를 초과하는 일실수입 등)은 회사를 상대로 <strong>별도의 민사 손해배상(근재보험 청구 등)</strong>을 통해 받아내야 합니다. 
-          단, 이중 보상을 막기 위해 산재 공단에서 이미 받은 돈은 민사 손해배상 청구액에서 공제(손익상계)됩니다.
-        </p>
+      <h2>6. 산재와 민사상 손해배상</h2>
+      <p>
+        산재보험 급여를 받아도, 사업주의 안전배려의무 위반 등이 있으면 민사상 추가 손해배상 청구가 문제 될 수
+        있습니다. 반대로 산재로 받은 금액을 민사 손해에서 공제하는 구조도 있습니다. 중복 배상이 아니라
+        <strong>정산·공제</strong> 관점으로 접근해야 합니다.
+      </p>
 
-        <h2>마치며</h2>
-        <p>
-          산재 처리는 회사가 허락해주거나 대신 해주는 것이 아닙니다. 근로자 본인(또는 유족)이 직접 근로복지공단에 신청하는 것입니다. 
-          회사가 공상 처리를 유도하며 은폐하려 하더라도, 심각한 부상일수록 향후 장해 보상 등을 위해 반드시 산재 처리를 진행해야 합니다.
-        </p>
-      </article>
-    </main>
+      <h2>7. 청구 전 체크리스트</h2>
+      <ol>
+        <li>사고 일시·장소·목격자 기록</li>
+        <li>초진 기록, 진단서, 영상 CD</li>
+        <li>근로계약·급여명세 (평균임금)</li>
+        <li>출퇴근·업무 지시 자료</li>
+        <li>요양·휴업·장해 중 필요한 급여 종류 선택</li>
+        <li>근로복지공단 관할·제출 서류 목록 확인</li>
+      </ol>
+
+      <h2>8. 자주 하는 실수</h2>
+      <ul>
+        <li>개인 실비보험만 처리하고 산재 기한을 놓침</li>
+        <li>공상 합의서에 민·형사 청구 포기 조항을 싸인</li>
+        <li>취업 사실을 숨긴 채 휴업급여 수령</li>
+        <li>장해 평가 전 의무기록을 누락</li>
+      </ul>
+
+      <h2>9. 정리</h2>
+      <p>
+        산재는 속도(초기 기록)와 정확성(임금·의료)이 결과 금액을 좌우합니다. 휴업급여로 당장의 소득을 보전하고,
+        종결 후 장해를 놓치지 않으며, 필요하면 민사 쟁점을 별도로 검토하세요. 계산기는 평균임금·급여 규모를
+        가늠하는 참고용입니다.
+      </p>
+    </GuideShell>
   );
 }

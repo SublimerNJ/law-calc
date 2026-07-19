@@ -203,8 +203,8 @@ export default function FinePenaltyPage() {
             )}
 
             {result.finalAmount === 0 && result.violation.note && (
-              <div className="mb-3 p-3 rounded-lg bg-blue-50 border border-blue-200">
-                <p className="text-sm text-blue-600">이 위반 항목은 범칙금/과태료가 없는 형사처벌 대상입니다. 납부 금액이 없습니다.</p>
+              <div className="mb-3 p-3 rounded-lg bg-teal-50 border border-blue-200">
+                <p className="text-sm text-teal-800">이 위반 항목은 범칙금/과태료가 없는 형사처벌 대상입니다. 납부 금액이 없습니다.</p>
               </div>
             )}
 

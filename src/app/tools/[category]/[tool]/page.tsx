@@ -1,124 +1,41 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import CalculatorLayout from '@/components/ui/CalculatorLayout';
-import { TOOLS, CATEGORIES, getToolByRoute } from '@/lib/tools-data';
+import { TOOLS, getToolByRoute } from '@/lib/tools-data';
 
 interface PageProps {
   params: Promise<{ category: string; tool: string }>;
 }
 
+/**
+ * Fallback dynamic route.
+ * All production calculators have dedicated static pages under tools/{category}/{tool}/.
+ * Anything that only matches this catch-all should 404 — never serve "coming soon" thin pages
+ * (those hurt AdSense content quality signals).
+ */
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category, tool: toolSlug } = await params;
   const tool = getToolByRoute(`/tools/${category}/${toolSlug}`);
-
   if (!tool) {
-    return { title: '페이지를 찾을 수 없습니다' };
+    return { title: '페이지를 찾을 수 없습니다', robots: { index: false, follow: false } };
   }
-
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
-  const fullUrl = `${BASE_URL}${tool.route}`;
-  const desc = tool.longDescription || `${tool.description} - 무료 온라인 법률 계산기`;
-
+  // Prefer dedicated static routes; if this fallback is hit, still avoid soft-404 thin content indexing
   return {
-    title: `${tool.name} | 법률 계산기`,
-    description: desc,
-    keywords: tool.keywords?.join(', '),
-    alternates: {
-      canonical: fullUrl,
-    },
-    openGraph: {
-      title: `${tool.name} | 법률 계산기`,
-      description: desc,
-      type: 'website',
-      url: fullUrl,
-      siteName: 'law-calc.kr',
-      locale: 'ko_KR',
-      images: [`${BASE_URL}/og-image.png`],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${tool.name} | 법률 계산기`,
-      description: desc,
-      images: [`${BASE_URL}/og-image.png`],
-    },
+    title: tool.name,
+    robots: { index: false, follow: true },
   };
 }
 
 export function generateStaticParams() {
-  return TOOLS.map((tool) => {
-    const parts = tool.route.split('/');
-    return {
-      category: parts[2],
-      tool: parts[3],
-    };
-  });
+  // Do not pre-render fallback shells for tools that already have static pages.
+  return [];
 }
 
-export default async function ToolPage({ params }: PageProps) {
+export default async function ToolFallbackPage({ params }: PageProps) {
   const { category, tool: toolSlug } = await params;
   const tool = getToolByRoute(`/tools/${category}/${toolSlug}`);
-
-  if (!tool) {
+  // Always 404 — dedicated pages own all real tools. This prevents thin "준비 중" pages.
+  if (tool || !TOOLS.length) {
     notFound();
   }
-
-  const categoryData = CATEGORIES.find((c) => c.id === category);
-
-  if (!categoryData) {
-    notFound();
-  }
-
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: tool.name,
-    description: tool.longDescription || tool.description,
-    url: `${BASE_URL}${tool.route}`,
-    applicationCategory: 'FinanceApplication',
-    operatingSystem: 'Web',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'KRW',
-    },
-  };
-
-  const faqJsonLd = tool.faqItems && tool.faqItems.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: tool.faqItems.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  } : null;
-
-  return (
-    <CalculatorLayout tool={tool} category={categoryData}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
-      )}
-      <div className="premium-card p-8 text-center">
-        <div className="text-4xl mb-4">{tool.icon}</div>
-        <p className="text-slate-600 text-sm">
-          이 계산기는 준비 중입니다
-        </p>
-        <p className="text-gray-600 text-xs mt-2">
-          곧 정확한 계산 기능을 제공해 드리겠습니다
-        </p>
-      </div>
-    </CalculatorLayout>
-  );
+  notFound();
 }

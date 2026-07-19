@@ -220,7 +220,7 @@ export default function CapitalGainsTaxPage() {
     inputMode: 'numeric' as const,
     value: value ? parseInt(value).toLocaleString('ko-KR') : '',
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => setter(e.target.value.replace(/[^0-9]/g, '')),
-    className: 'w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none',
+    className: 'w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none',
   });
 
   const assetOptions: { value: AssetType; label: string }[] = [
@@ -252,7 +252,7 @@ export default function CapitalGainsTaxPage() {
               type="date"
               value={acquisitionDate}
               onChange={e => setAcquisitionDate(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
           <div>
@@ -261,7 +261,7 @@ export default function CapitalGainsTaxPage() {
               type="date"
               value={transferDate}
               onChange={e => setTransferDate(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
         </div>
@@ -309,7 +309,7 @@ export default function CapitalGainsTaxPage() {
                   value={residenceYears}
                   onChange={e => setResidenceYears(e.target.value.replace(/[^0-9]/g, ''))}
                   placeholder="예: 3"
-                  className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
                 />
                 <p className="text-xs text-gray-500 mt-1">거주 2년부터 4%/년 추가 공제, 최대 40% (보유+거주 합산 최대 80%)</p>
               </div>
@@ -353,8 +353,8 @@ export default function CapitalGainsTaxPage() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
 
           {result.gain <= 0 && (
-            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
-              <p className="text-sm text-blue-600">양도차익이 없거나 손실이 발생한 경우 양도소득세가 부과되지 않습니다.</p>
+            <div className="mb-4 p-3 rounded-lg bg-teal-50 border border-blue-200">
+              <p className="text-sm text-teal-800">양도차익이 없거나 손실이 발생한 경우 양도소득세가 부과되지 않습니다.</p>
             </div>
           )}
 
@@ -365,7 +365,7 @@ export default function CapitalGainsTaxPage() {
           )}
 
           {result.surchargeNote && (
-            <div className="mb-4 p-3 rounded-lg bg-blue-600/10 border border-[#f59e0b]/30">
+            <div className="mb-4 p-3 rounded-lg bg-teal-700/10 border border-[#f59e0b]/30">
               <p className="text-sm text-[#f59e0b]">{result.surchargeNote}</p>
             </div>
           )}

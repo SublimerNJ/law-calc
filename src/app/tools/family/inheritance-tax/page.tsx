@@ -116,7 +116,7 @@ export default function InheritanceTaxPage() {
             value={displayValue(grossEstate)}
             onChange={handleNumberInput(setGrossEstate)}
             placeholder="예: 1,000,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {grossEstate && <p className="text-xs text-gray-500 mt-1">{displayValue(grossEstate)}원</p>}
         </div>
@@ -141,7 +141,7 @@ export default function InheritanceTaxPage() {
             value={displayValue(funeralExpenses)}
             onChange={handleNumberInput(setFuneralExpenses)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -153,7 +153,7 @@ export default function InheritanceTaxPage() {
             value={displayValue(debts)}
             onChange={handleNumberInput(setDebts)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -213,7 +213,7 @@ export default function InheritanceTaxPage() {
                 <p className="text-lg text-slate-900">{parseInput(grossEstate) > 0 ? ((result.tax / parseInput(grossEstate)) * 100).toFixed(2) : '0'}%</p>
                 <p className="text-xs text-gray-500">총 재산 대비</p>
               </div>
-              <div className="p-3 rounded-lg bg-[#1a1025]" style={{ borderLeft: `3px solid ${category.color}` }}>
+              <div className="p-3 rounded-lg bg-[#1a1025]" style={{ borderTop: '2px solid #0f766e' }}>
                 <p className="text-xs text-slate-600 mb-1">세후 상속재산</p>
                 <p className="text-lg font-bold" style={{ color: category.color }}>{formatNumber(Math.max(0, parseInput(grossEstate) - parseInput(debts) - result.tax))}원</p>
               </div>

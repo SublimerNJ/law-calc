@@ -113,7 +113,7 @@ export default function PropertyDivisionPage() {
             value={getDisplayValue(totalAssets)}
             onChange={handleNumberInput(setTotalAssets)}
             placeholder="예: 500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {totalAssets && (
             <p className="text-xs text-gray-500 mt-1">
@@ -130,7 +130,7 @@ export default function PropertyDivisionPage() {
             value={getDisplayValue(claimantAssets)}
             onChange={handleNumberInput(setClaimantAssets)}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -142,7 +142,7 @@ export default function PropertyDivisionPage() {
             value={getDisplayValue(opponentAssets)}
             onChange={handleNumberInput(setOpponentAssets)}
             placeholder="비워두면 자동 계산 (총재산 - 청구인 명의)"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -155,7 +155,7 @@ export default function PropertyDivisionPage() {
             value={contribution}
             onChange={e => setContribution(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="20~80"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <div className="mt-2 p-3 rounded-lg bg-white border border-slate-200 glassmorphism glass-panel">
             <p className="text-xs text-slate-600 mb-1">기여도 참고 (판례 기준)</p>
@@ -176,7 +176,7 @@ export default function PropertyDivisionPage() {
             value={marriageYears}
             onChange={e => setMarriageYears(e.target.value.replace(/[^0-9]/g, ''))}
             placeholder="예: 15"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">참고 정보 (법원 판단에 영향)</p>
         </div>

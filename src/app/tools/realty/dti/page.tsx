@@ -98,7 +98,7 @@ export default function DtiPage() {
             value={annualIncome ? parseInt(annualIncome).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setAnnualIncome)}
             placeholder="예: 60,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {annualIncome && (
             <p className="text-xs text-gray-500 mt-1">
@@ -115,7 +115,7 @@ export default function DtiPage() {
             value={monthlyMortgage ? parseInt(monthlyMortgage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyMortgage)}
             placeholder="예: 1,500,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyMortgage && (
             <p className="text-xs text-gray-500 mt-1">
@@ -132,7 +132,7 @@ export default function DtiPage() {
             value={monthlyOtherInterest ? parseInt(monthlyOtherInterest).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setMonthlyOtherInterest)}
             placeholder="예: 200,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {monthlyOtherInterest && parseInt(monthlyOtherInterest) > 0 && (
             <p className="text-xs text-gray-500 mt-1">
@@ -146,7 +146,7 @@ export default function DtiPage() {
           <select
             value={region}
             onChange={e => setRegion(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           >
             {REGIONS.map(r => (
               <option key={r.value} value={r.value}>{r.label} (DTI {r.limit}%)</option>

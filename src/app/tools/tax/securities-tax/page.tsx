@@ -89,7 +89,7 @@ export default function SecuritiesTaxPage() {
           <select
             value={marketType}
             onChange={e => { setMarketType(e.target.value as MarketType); setResult(null); }}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           >
             {MARKETS.map(m => (
               <option key={m.value} value={m.value}>
@@ -107,7 +107,7 @@ export default function SecuritiesTaxPage() {
             value={amount ? parseInt(amount).toLocaleString('ko-KR') : ''}
             onChange={handleAmountChange}
             placeholder="예: 100,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {amount && (
             <p className="text-xs text-gray-500 mt-1">{parseInt(amount).toLocaleString('ko-KR')}원</p>
@@ -163,8 +163,8 @@ export default function SecuritiesTaxPage() {
             </p>
           </div>
 
-          <div className="mb-4 p-3 rounded-lg bg-blue-500/10 border border-blue-500/30">
-            <p className="text-sm text-blue-600">
+          <div className="mb-4 p-3 rounded-lg bg-teal-500/10 border border-blue-500/30">
+            <p className="text-sm text-teal-800">
               2026년 기준: 코스피 증권거래세 0.05% + 농어촌특별세 0.15%, 코스닥·K-OTC 0.20%, 코넥스 0.10%, 비상장 0.35%
             </p>
           </div>

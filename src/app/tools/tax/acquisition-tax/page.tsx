@@ -157,7 +157,7 @@ export default function AcquisitionTaxPage() {
             value={price ? parseInt(price).toLocaleString('ko-KR') : ''}
             onChange={handlePriceChange}
             placeholder="예: 500,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           {price && (
             <p className="text-xs text-gray-500 mt-1">
@@ -282,7 +282,7 @@ export default function AcquisitionTaxPage() {
               <p className="text-xs text-slate-600 mb-1">실효 부담률</p>
               <p className="text-lg text-slate-900">{(result.total / result.acquisitionPrice * 100).toFixed(2)}%</p>
             </div>
-            <div className="p-3 rounded-lg bg-white glassmorphism glass-panel" style={{ borderLeft: `3px solid ${category.color}` }}>
+            <div className="p-3 rounded-lg bg-white glassmorphism glass-panel" style={{ borderTop: '2px solid #0f766e' }}>
               <p className="text-xs text-slate-600 mb-1">총 매입비용 (취득가 + 세금)</p>
               <p className="text-lg font-bold" style={{ color: category.color }}>
                 {formatNumber(result.acquisitionPrice + result.total)}원

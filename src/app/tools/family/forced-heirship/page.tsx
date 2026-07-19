@@ -164,7 +164,7 @@ export default function ForcedHeirshipPage() {
             value={displayValue(estateAtDeath)}
             onChange={handleNumberInput(setEstateAtDeath)}
             placeholder="예: 1,000,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -179,7 +179,7 @@ export default function ForcedHeirshipPage() {
             value={displayValue(giftsWithinYear)}
             onChange={handleNumberInput(setGiftsWithinYear)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -191,7 +191,7 @@ export default function ForcedHeirshipPage() {
             value={displayValue(debts)}
             onChange={handleNumberInput(setDebts)}
             placeholder="선택 입력"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 
@@ -225,7 +225,7 @@ export default function ForcedHeirshipPage() {
             value={statutorySharePct}
             onChange={e => setStatutorySharePct(e.target.value)}
             placeholder="예: 42.86"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">
             <a aria-label="Link" href="/tools/family/legal-inheritance" className="text-[#ec4899] underline hover:opacity-80 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법정상속분 계산기</a>로 먼저 확인하세요
@@ -240,7 +240,7 @@ export default function ForcedHeirshipPage() {
             value={displayValue(actualReceived)}
             onChange={handleNumberInput(setActualReceived)}
             placeholder="수증재산 + 상속받은 금액"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
 

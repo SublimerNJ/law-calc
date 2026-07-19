@@ -1,111 +1,124 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import GuideShell from '@/components/guides/GuideShell';
 
 export const metadata: Metadata = {
-  title: '변호사보수 소송비용 산입의 원칙과 실무적 이해 | law-calc.kr',
-  description: '소송에서 이겼을 때 상대방에게 변호사 비용을 얼마나 청구할 수 있는지, 대법원 규칙과 소송비용 확정 절차를 상세히 안내합니다.',
+  title: '변호사보수 소송비용 산입: 한도액·일부승소·확정결정 실무',
+  description:
+    '승소 시 상대방에게 청구 가능한 변호사보수 산입 한도, 실비 원칙, 일부 승소 비율, 소송비용액 확정결정 신청과 증빙 준비 방법을 실무 순서로 안내합니다.',
+  alternates: { canonical: 'https://law-calc.kr/guides/how-to-calculate-attorney-fee' },
 };
 
 export default function AttorneyFeeGuide() {
-  const schemaLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: '변호사보수 소송비용 산입의 원칙과 실무적 이해',
-    datePublished: '2026-04-08',
-    author: {
-      '@type': 'Organization',
-      name: 'law-calc.kr 법률 데이터 분석팀'
-    }
-  };
-
   return (
-    <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
-      <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link aria-label="Navigation link" href="/guides" className="text-blue-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
-        <span className="text-slate-400">/</span>
-        <span className="text-slate-600">소송/법원</span>
-      </div>
+    <GuideShell
+      title="변호사보수 소송비용 산입의 원칙과 실무적 이해"
+      category="소송/법원"
+      accentClass="text-teal-900"
+      ctaBgClass="bg-teal-800 hover:bg-teal-900"
+      datePublished="2026-04-08"
+      dateModified="2026-07-19"
+      description="변호사보수 소송비용 산입 한도와 확정결정 실무 가이드"
+      path="/guides/how-to-calculate-attorney-fee"
+      toolHref="/tools/court/attorney-fee"
+      toolLabel="변호사보수 산입 계산기 열기"
+    >
+      <p>
+        &quot;이기면 변호사 비용도 전부 받는 거죠?&quot; 민사소송을 앞둔 당사자가 가장 자주 하는 질문입니다.
+        답은 <strong>전부가 아니라, 규칙이 정한 한도 안에서의 일부</strong>인 경우가 대부분입니다. 착수금·성공보수로
+        실제 지출한 금액과, 패소자에게 청구할 수 있는 <em>산입액</em>은 다른 개념입니다.
+      </p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-        변호사보수 소송비용 산입의 원칙과 실무적 이해
-      </h1>
-      
-      <div className="flex items-center gap-4 text-sm text-slate-500 mb-10 pb-8 border-b border-slate-200">
-        <span className="font-medium text-slate-700">작성자: law-calc.kr 법률 데이터 분석팀</span>
-        <span>|</span>
-        <span>최종 업데이트: 2026년 4월 8일</span>
-      </div>
+      <h2>1. 소송비용 패소자 부담의 원칙</h2>
+      <p>
+        민사소송법은 소송비용을 패소한 당사자가 부담한다는 원칙을 두고 있습니다. 인지대·송달료·감정료·번역료
+        등과 함께, 변호사 보수도 일정한 범위에서 소송비용에 산입될 수 있습니다. 다만 변호사 보수는 당사자 간
+        약정으로 자유롭게 정해지므로, 그대로 전액 상대방에게 전가되면 남소와 과도한 부담이 생길 수 있습니다.
+      </p>
 
-      <article className="prose prose-slate prose-lg max-w-none">
-        <p>
-          "소송에서 이기면 변호사 비용도 다 돌려받을 수 있나요?" 민사소송 상담 시 의뢰인들이 가장 많이 묻는 질문입니다. 
-          결론부터 말씀드리면 <strong>"일부는 맞고 일부는 틀리다"</strong>입니다.
-        </p>
+      <h2>2. 산입 한도: 왜 &apos;천장&apos;이 있는가</h2>
+      <p>
+        대법원 규칙 <strong>『변호사보수의 소송비용 산입에 관한 규칙』</strong>은 소송목적의 값(소가) 구간별로
+        산입 한도액을 정합니다. 실제 지급액과 한도액 중 <strong>적은 금액</strong>이 원칙적 기준이 됩니다
+        (실비 보상).
+      </p>
+      <p>예를 들어 소가 5,000만 원 구간에서 한도 산식이 적용되어 한도가 440만 원으로 산출되었다고 가정하면:</p>
+      <ul>
+        <li>실제 변호사비 500만 원 지급 → 산입 가능액은 한도 440만 원 쪽을 보게 됨</li>
+        <li>실제 변호사비 300만 원 지급 → 한도 이내이므로 300만 원 기준</li>
+      </ul>
+      <p>
+        소가가 클수록 한도 비율이 체감되는 구조라, &quot;억대 소송이니 수천만 원 변호사비를 그대로 받는다&quot;는
+        기대는 빗나가기 쉽습니다. 정확한 구간 계산은 계산기로 확인하되, 최신 규칙 개정 여부도 함께 보세요.
+      </p>
 
-        <h2>소송비용 패소자 부담의 원칙</h2>
-        <p>
-          민사소송법 제98조는 "소송비용은 패소한 당사자가 부담한다"고 규정하고 있습니다. 
-          따라서 전부 승소했다면 내가 지출한 소송비용(인지대, 송달료, 감정료, 변호사 보수 등)을 상대방에게 청구할 수 있는 것은 사실입니다.
-        </p>
+      <h2>3. 심급마다 따로 본다</h2>
+      <p>
+        1심에서 이기고 항소심·상고심이 이어지면, 변호사 보수 산입은 심급별로 달라질 수 있습니다. 각 심급에서
+        변호사를 선임했는지, 실제 지급 증빙이 있는지가 중요합니다. &quot;1심 한도 × 3&quot;처럼 단순 합산하면
+        안 됩니다.
+      </p>
 
-        <h2>변호사 보수는 왜 전액을 돌려받지 못할까?</h2>
-        <p>
-          당사자가 변호사에게 착수금 1,000만 원, 성공보수 1,000만 원 등 총 2,000만 원을 지급했다고 가정해 봅시다. 
-          이 금액을 전부 패소자에게 청구할 수 있다면, 돈이 많은 사람이 무조건 비싼 변호사를 선임하여 상대방에게 금전적 타격을 가하는 이른바 '남소(소송 남용)'와 '패소자의 과도한 경제적 파탄' 문제가 발생합니다.
-        </p>
-        <p>
-          이를 방지하기 위해 대법원은 <strong>『변호사보수의 소송비용 산입에 관한 규칙』</strong>을 제정하여, 
-          소송목적의 값(소가) 구간별로 상대방에게 청구할 수 있는 변호사 보수의 <strong>'상한선(한도액)'</strong>을 엄격히 규정하고 있습니다.
-        </p>
+      <h2>4. 일부 승소·상계: 청구를 키우면 비용도 커진다</h2>
+      <p>
+        1억 원을 청구해 6,000만 원만 인용되면, 법원은 소송비용 부담 비율을 정하는 경우가 많습니다. 예:
+        &quot;소송비용 중 40%는 원고, 60%는 피고 부담&quot;. 이때는 각자가 지출한 비용을 비율에 따라 정산하는
+        구조가 됩니다.
+      </p>
+      <p>
+        <strong>실무 함정:</strong> 승소 가능성을 무시하고 청구액을 과도하게 올리면, 패소 부분 비율만큼 본인이
+        비용을 떠안을 수 있습니다. 소가 책정은 권리 범위뿐 아니라 비용 전략이기도 합니다.
+      </p>
 
-        <h2>산입 한도액 계산 원리</h2>
-        <p>
-          소가가 5,000만 원인 사건의 경우 산입 한도액은 다음과 같이 계산됩니다:
-        </p>
-        <ul>
-          <li>2,000만 원까지: 200만 원</li>
-          <li>나머지 3,000만 원(5천만 - 2천만)에 대하여 8% 적용: 240만 원</li>
-          <li><strong>총 한도액: 440만 원</strong></li>
-        </ul>
-        <p>
-          만약 이 사건에서 변호사에게 실제로 500만 원을 지급했다면 한도액인 440만 원까지만 돌려받을 수 있고, 
-          실제로 300만 원만 지급했다면 한도액 이내이므로 300만 원만 돌려받을 수 있습니다. 
-          (실비 보상의 원칙)
-        </p>
+      <h2>5. 판결 확정 ≠ 자동 입금: 소송비용액 확정결정</h2>
+      <p>
+        본안 판결이 확정되어도 상대방이 알아서 변호사비를 송금하는 경우는 드뭅니다. 승소 당사자는 보통 제1심
+        수소법원에 <strong>소송비용액 확정결정</strong>을 신청합니다. 결정이 확정되면 집행권원으로서 강제집행의
+        기초가 될 수 있습니다.
+      </p>
+      <h3>신청 시 챙길 증빙</h3>
+      <ul>
+        <li>위임계약서, 영수증, 세금계산서, 현금영수증, 이체 확인서</li>
+        <li>판결문·확정증명, 소송비용 부담 관련 주문 내용</li>
+        <li>인지·송달료 등 기타 소송비용 내역</li>
+      </ul>
+      <p>
+        &quot;구두로 성공보수 주기로 했다&quot; 수준의 증빙은 인정 범위가 좁아질 수 있습니다. 지급 시점과 금액이
+        문서에 남는 것이 중요합니다.
+      </p>
 
-        <div className="bg-blue-50 border border-blue-100 p-6 rounded-xl my-8">
-          <h3 className="text-blue-800 mt-0">💡 관련 도구로 바로 확인하기</h3>
-          <p className="mb-4 text-sm text-slate-700">
-            복잡한 구간별 이율을 직접 계산하실 필요 없이, 소가만 입력하면 대법원 최신 규칙이 적용된 산입 한도액을 즉시 확인할 수 있습니다.
-          </p>
-          <Link aria-label="Navigation link" href="/tools/court/attorney-fee" className="inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
-            변호사보수 소송비용산입 계산기 가기
-          </Link>
-        </div>
+      <h2>6. 지급명령·조정·화해와의 관계</h2>
+      <p>
+        본안 소송이 아닌 지급명령·조정 절차에서도 비용 구조가 달라집니다. 조정 성립·화해 조항에서 소송비용
+        부담을 어떻게 정했는지가 우선하는 경우가 많습니다. 합의서에 &quot;비용은 각자 부담&quot;이라고 써 두면
+        산입 논의를 스스로 포기한 결과가 될 수 있으니 문구를 꼼꼼히 보세요.
+      </p>
 
-        <h2>일부 승소의 경우 주의사항</h2>
-        <p>
-          1억 원을 청구했는데 6,000만 원만 승소(인용) 판결을 받았다면, 법원은 판결문 주문에 
-          <em>"소송비용 중 40%는 원고가, 60%는 피고가 부담한다"</em>는 식으로 비율을 정해줍니다.
-        </p>
-        <p>
-          이때는 각자가 지출한 총 소송비용을 이 비율에 따라 상계(정산)하는 복잡한 절차를 거쳐야 하므로, 
-          청구 취지를 무리하게 높게 잡는 것은 결국 자신이 부담할 소송비용을 늘리는 결과가 될 수 있음을 명심해야 합니다.
-        </p>
+      <h2>7. 실무 체크리스트</h2>
+      <ol>
+        <li>소가(청구 취지 금액)를 확정하고 산입 한도를 계산한다.</li>
+        <li>실제 지급액 증빙을 심급별로 모은다.</li>
+        <li>판결 주문의 소송비용 부담 비율을 확인한다.</li>
+        <li>확정 후 비용액 확정결정 신청 기한·관할을 확인한다.</li>
+        <li>일부 승소라면 상계 시뮬레이션을 해 본다.</li>
+        <li>강제집행 가능성을 보고 실익을 판단한다 (상대 재산 유무).</li>
+      </ol>
 
-        <h2>소송비용액 확정결정 신청</h2>
-        <p>
-          판결이 확정되었다고 해서 상대방이 알아서 변호사 비용을 입금해 주는 경우는 거의 없습니다. 
-          제1심 법원에 <strong>'소송비용액 확정결정'</strong>을 별도로 신청하여 결정문을 받아야만, 
-          그 결정문을 집행권원으로 하여 상대방의 재산에 강제집행을 할 수 있습니다. 
-          이때 변호사에게 실제 지급했다는 세금계산서, 현금영수증, 무통장입금 내역 등이 반드시 증빙으로 첨부되어야 합니다.
-        </p>
-      </article>
-    </main>
+      <h2>8. 자주 하는 질문</h2>
+      <p>
+        <strong>성공보수도 산입되나?</strong> 실제 지급과 증빙, 규칙 한도, 법원의 판단에 따릅니다. 약정만 있고
+        미지급이면 산입이 어려울 수 있습니다.
+      </p>
+      <p>
+        <strong>본인소송(변호사 없음)인데?</strong> 변호사 보수 산입 자체가 문제되지 않거나 범위가 달라질 수
+        있습니다. 인지·송달료 등 다른 비용은 별도입니다.
+      </p>
+
+      <h2>9. 정리</h2>
+      <p>
+        변호사 비용 회수는 &quot;이겼다&quot;는 사실만으로 끝나지 않습니다. <strong>한도 × 실비 × 부담 비율 ×
+        확정결정 × 집행</strong>의 5단계를 거쳐야 합니다. 소송 전에는 산입 한도를 계산해 기대치를 조정하고, 소송
+        중에는 증빙을 남기며, 확정 후에는 결정 신청을 미루지 마세요.
+      </p>
+    </GuideShell>
   );
 }

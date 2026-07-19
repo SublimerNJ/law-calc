@@ -1,113 +1,117 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import GuideShell from '@/components/guides/GuideShell';
 
 export const metadata: Metadata = {
-  title: '민사조정과 정식 소송의 차이점 및 비용 비교 | law-calc.kr',
-  description: '민사조정 제도의 실무적 장점, 소송 대비 1/5 수준의 인지대, 확정판결과 동일한 강력한 효력에 대해 안내합니다.',
+  title: '민사조정 vs 소송: 비용·효력·절차 선택 실무',
+  description:
+    '민사조정과 정식 소송의 인지대·송달료·기간·효력 차이, 조정 전치, 불성립 시 이행, 어떤 분쟁에 조정이 유리한지 실무 기준으로 비교합니다.',
+  alternates: { canonical: 'https://law-calc.kr/guides/civil-mediation-vs-lawsuit' },
 };
 
 export default function CivilMediationGuide() {
-  const schemaLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: '민사조정과 정식 소송의 차이점 및 비용 비교',
-    datePublished: '2026-04-08',
-    author: {
-      '@type': 'Organization',
-      name: 'law-calc.kr 민사법 데이터 분석팀'
-    }
-  };
-
   return (
-    <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
-      <div className="mb-6 flex items-center gap-2 text-sm">
-        <Link aria-label="Navigation link" href="/guides" className="text-blue-600 hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법률 가이드</Link>
-        <span className="text-slate-400">/</span>
-        <span className="text-slate-600">소송/법원</span>
-      </div>
+    <GuideShell
+      title="민사조정과 정식 소송의 차이점 및 비용 비교"
+      category="소송/법원"
+      accentClass="text-teal-900"
+      ctaBgClass="bg-teal-800 hover:bg-teal-900"
+      datePublished="2026-04-08"
+      dateModified="2026-07-19"
+      description="민사조정과 소송의 비용·효력 비교 실무 가이드"
+      path="/guides/civil-mediation-vs-lawsuit"
+      toolHref="/tools/court/civil-mediation"
+      toolLabel="민사조정 비용 계산기 열기"
+    >
+      <p>
+        이웃 간 소음, 임대차 보증금, 소액 대여금, 계속적 거래 대금… 법정까지 가기 전에 &quot;한 번 맞춰 볼 수
+        있을까&quot; 하는 사건에는 <strong>민사조정</strong>이 먼저 거론됩니다. 반대로 증거가 명확하고 상대가
+        합의 의사가 전혀 없다면 조정이 시간만 끌 수도 있습니다. 이 글은 비용·효력·절차 관점에서 조정과 소송을
+        비교합니다.
+      </p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-        민사조정과 정식 소송의 차이점 및 비용 비교
-      </h1>
-      
-      <div className="flex items-center gap-4 text-sm text-slate-500 mb-10 pb-8 border-b border-slate-200">
-        <span className="font-medium text-slate-700">작성자: law-calc.kr 민사법 데이터 분석팀</span>
-        <span>|</span>
-        <span>최종 업데이트: 2026년 4월 8일</span>
-      </div>
+      <h2>1. 한 줄 비교</h2>
+      <ul>
+        <li>
+          <strong>소송:</strong> 판결로 권리·의무를 확정. 비용·시간·대립 강도가 상대적으로 큼.
+        </li>
+        <li>
+          <strong>조정:</strong> 합의(또는 조정에 갈음하는 결정)로 분쟁을 정리. 초기 인지가 소송보다 낮고, 성립
+          시 재판상 화해와 같은 강력한 효력.
+        </li>
+      </ul>
 
-      <article className="prose prose-slate prose-lg max-w-none">
-        <p>
-          돈을 돌려받거나 손해를 배상받기 위해 무조건 정식 소송(민사소송)부터 제기하는 것이 정답일까요? 
-          소송은 기본적으로 수개월에서 수년이 걸리며 막대한 변호사 비용과 스트레스를 동반합니다. 
-          이럴 때 가장 현실적인 대안이 되는 것이 바로 <strong>'민사조정'</strong> 제도입니다.
-        </p>
+      <h2>2. 비용: 인지대·송달료 구조</h2>
+      <p>
+        조정신청 인지액은 일반적으로 정식 소송 인지액의 <strong>1/5</strong> 수준으로 설계되어 있습니다. 송달료
+        예납 횟수도 소송보다 적은 경우가 많습니다. 다만 조정이 불성립되어 소송으로 넘어가면, 이미 낸 조정 인지를
+        소송 인지에 충당하는 구조가 있어 &quot;완전히 버린 돈&quot;은 아닌 경우가 많습니다.
+      </p>
+      <p>
+        전자소송 이용 시 인지 감액 혜택이 있는 절차도 있으니, 관할·사건 유형에 맞는 최신 기준을 확인하세요.
+        대략 비용은 계산기로 가늠하고, 최종 납부는 법원 안내를 따릅니다.
+      </p>
 
-        <h2>1. 민사조정 제도의 핵심: "판결이 아닌 타협"</h2>
-        <p>
-          민사소송이 판사가 법에 따라 누구 말이 맞는지 엄격하게 승패를 가리는 과정이라면, 
-          민사조정은 판사나 조정위원회의 중재 아래 양 당사자가 양보와 타협으로 원만하게 합의를 도출하는 과정입니다. 
-          비공개로 진행되어 비밀이 유지되며, 감정 대립을 최소화할 수 있습니다.
-        </p>
+      <h2>3. 효력: 합의가 &apos;종이&apos;로 끝나지 않으려면</h2>
+      <p>
+        조정이 성립하거나, 법원의 조정에 갈음하는 결정에 적법하게 확정되면 <strong>재판상 화해와 동일한
+        효력</strong>을 갖는 것이 원칙입니다. 즉, 약속 불이행 시 별도 본안 없이 강제집행을 검토할 수 있는 길이
+        열립니다. 사적인 합의서만 쓰고 끝내는 경우와 집행력이 다릅니다.
+      </p>
+      <p>
+        반대로 조정이 불성립하거나 이의로 효력이 깨지면, 사건은 소송·심판 절차로 이어질 수 있습니다. &quot;조정
+        한번 받아봤다&quot;는 사실만으로 권리가 자동 확정되지는 않습니다.
+      </p>
 
-        <h2>2. 소송 대비 파격적인 비용 절감</h2>
-        <p>
-          민사조정의 가장 큰 매력은 <strong>비용</strong>입니다.
-        </p>
-        <ul>
-          <li><strong>인지대:</strong> 정식 민사소송을 제기할 때 납부하는 수수료(인지대)의 정확히 <strong>1/5 (20%)</strong> 수준입니다.</li>
-          <li><strong>송달료:</strong> 소송의 절반 수준인 당사자 1인당 5회분만 예납하면 됩니다.</li>
-        </ul>
-        <p>
-          예를 들어 청구금액이 1억 원일 때 일반 소송의 인지대는 약 45만 원이지만, 조정 신청은 약 9만 원에 불과합니다. 
-          전자소송을 이용하면 여기서 10%가 추가로 할인됩니다.
-        </p>
+      <h2>4. 언제 조정이 유리한가</h2>
+      <ul>
+        <li>당사자 관계가 계속될 가능성이 있는 경우 (거래·이웃·임대차)</li>
+        <li>사실관계는 어느 정도 인정하면서 금액·이행 방법만 다투는 경우</li>
+        <li>빠른 종결과 비용 절감이 우선인 경우</li>
+        <li>증거는 있으나 판결까지 갈 실익(상대 자력)이 불확실한 경우</li>
+      </ul>
+      <h3>조정이 불리할 수 있는 경우</h3>
+      <ul>
+        <li>상대가 시간을 끄는 전략만 쓰는 경우</li>
+        <li>권리관계 확정이 시효·등기·강제집행에 필수인 경우</li>
+        <li>형사·행정 이슈와 복잡하게 얽힌 경우</li>
+      </ul>
 
-        <div className="bg-blue-50 border border-blue-100 p-6 rounded-xl my-8">
-          <h3 className="text-blue-800 mt-0">💡 소송과 조정 비용을 비교해 보세요</h3>
-          <p className="mb-4 text-sm text-slate-700">
-            청구금액(소가)만 입력하면 정식 소송과 민사조정의 인지대, 송달료 차이를 명확하게 비교해 드립니다.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link aria-label="Navigation link" href="/tools/court/civil-mediation" className="inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">
-              민사조정 비용 계산기
-            </Link>
-            <Link aria-label="Navigation link" href="/tools/court/lawsuit-cost" className="inline-block bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] glassmorphism glass-panel">
-              일반 소송비용 계산기
-            </Link>
-          </div>
-        </div>
+      <h2>5. 가사사건 조정 전치와의 구분</h2>
+      <p>
+        이혼 등 가사사건은 원칙적으로 조정 전치 구조가 적용되는 영역이 있습니다. 일반 민사조정과 창구·관할·비용
+        체계가 다를 수 있으므로, 가사 사건은 가사 절차 기준으로 따로 보아야 합니다.
+      </p>
 
-        <h2>3. 확정판결과 동일한 강력한 효력</h2>
-        <p>
-          "타협이라니, 나중에 상대방이 마음을 바꿔 돈을 안 주면 어떡하나요?"라는 걱정을 하실 수 있습니다.
-        </p>
-        <p>
-          하지만 조정기일에서 양 당사자가 합의하여 <strong>'조정이 성립'</strong>되거나, 합의가 안 되어 판사가 내린 <strong>'조정에 갈음하는 결정(강제조정)'</strong>에 대해 2주 내에 이의를 제기하지 않으면, 
-          그 결정문은 대법원 확정판결과 <strong>100% 동일한 효력</strong>을 갖습니다. 상대방이 약속한 날짜에 돈을 주지 않으면 곧바로 통장이나 부동산을 압류(강제집행)할 수 있습니다.
-        </p>
+      <h2>6. 조정 준비 실무: 가서 말만 하면 되나</h2>
+      <p>조정도 &quot;감정 싸움&quot;이 되면 비용 절감 효과가 사라집니다. 최소한 아래를 준비하세요.</p>
+      <ol>
+        <li>청구 금액의 근거 (계약서, 입금내역, 손해 산정표)</li>
+        <li>양보 가능 구간 (최선 / 수용 / 결렬 라인)</li>
+        <li>이행 방법 (일시금, 분할, 담보, 이행 지체 시 조치)</li>
+        <li>비용 부담 조항을 어떻게 쓸지</li>
+      </ol>
 
-        <h2>4. 조정이 결렬되면 어떻게 되나요?</h2>
-        <p>
-          상대방이 끝까지 조정에 불출석하거나, 강제조정 결정에 이의를 제기하면 조정은 불성립됩니다. 
-          하지만 이 경우 사건은 자동으로 '정식 민사소송'으로 전환됩니다.
-        </p>
-        <p>
-          이때 신청인은 처음 냈던 조정 인지대를 뺀 나머지 4/5의 인지대만 추가로 납부하면 되므로, 
-          결과적으로 <strong>조정을 먼저 거쳤다고 해서 금전적으로 손해 보는 것은 전혀 없습니다.</strong>
-        </p>
+      <h2>7. 소송으로 갈 때 비용 전략</h2>
+      <p>
+        조정이 깨져 소송으로 가면 인지·송달료·변호사 보수 산입·감정료 등이 본격화됩니다. 소가를 어떻게 잡는지,
+        청구를 여러 개로 나눌지, 지급명령이 가능한 금전채권인지도 함께 설계해야 합니다. 관련해서는 소송비용·지급명령
+        계산기를 함께 쓰면 초기 자금 계획을 세우기 쉽습니다.
+      </p>
 
-        <h2>결론</h2>
-        <p>
-          이웃 간의 분쟁, 층간소음, 임대차 보증금, 소규모 대여금 등 서로 어느 정도 타협의 여지가 있는 사안이라면, 
-          막대한 비용과 시간을 들여 소송으로 직행하기 전에 민사조정 제도를 적극 활용해 보시길 권장합니다.
-        </p>
-      </article>
-    </main>
+      <h2>8. 체크리스트</h2>
+      <ul>
+        <li>상대 연락·주소가 정확한가 (송달 가능 여부)</li>
+        <li>시효·제척기간이 임박하지 않았는가</li>
+        <li>합의 후 집행 가능성(자력)을 봤는가</li>
+        <li>조항 문구에 이행기·지연손해·비용이 들어갔는가</li>
+      </ul>
+
+      <h2>9. 정리</h2>
+      <p>
+        민사조정은 &quot;싼 소송 대체재&quot;이면서 동시에 &quot;성립 시 강력한 집행권원&quot;입니다. 비용만 보고
+        고르지 말고, 합의 가능성·시간·집행 실익을 같이 보세요. 합의가 어려우면 처음부터 소송·지급명령을 선택하는
+        편이 나을 수도 있습니다.
+      </p>
+    </GuideShell>
   );
 }

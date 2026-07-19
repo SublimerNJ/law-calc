@@ -96,7 +96,7 @@ export default function MaternityLeavePage() {
 
   const tabClass = (active: boolean) =>
     `flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-      active ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+      active ? 'seg-on' : 'seg-off'
     }`;
 
   return (
@@ -131,7 +131,7 @@ export default function MaternityLeavePage() {
             value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange}
             placeholder="예: 2,500,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-blue-600 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">2026 고용보험 상한: 월 {formatNumber(MATERNITY_UPPER)}원 / 최저임금 기준: 월 {formatNumber(MIN_WAGE_MONTHLY)}원</p>
         </div>
@@ -141,7 +141,7 @@ export default function MaternityLeavePage() {
 
         <button aria-label="Action button"
           onClick={handleCalculate}
-          className="w-full bg-blue-600 hover:bg-[#d97706] text-white font-semibold py-3 rounded-lg transition-colors"
+          className="w-full bg-teal-700 hover:bg-teal-900 text-white font-semibold py-3 rounded-lg transition-colors"
         >
           계산하기
         </button>
