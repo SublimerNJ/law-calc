@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
@@ -228,7 +229,7 @@ export default function ForcedHeirshipPage() {
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
           <p className="text-xs text-gray-500 mt-1">
-            <a aria-label="Link" href="/tools/family/legal-inheritance" className="text-[#ec4899] underline hover:opacity-80 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법정상속분 계산기</a>로 먼저 확인하세요
+            <Link href="/tools/family/inheritance-order" className="text-[#ec4899] underline hover:opacity-80 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]">법정상속분 계산기</Link>로 먼저 확인하세요
           </p>
         </div>
 

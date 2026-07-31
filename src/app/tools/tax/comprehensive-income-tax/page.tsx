@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { ActionInsight } from '@/components/ui/ActionInsight';
-import { actionData } from '@/lib/action-data';
+
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 
 const tool = TOOLS.find(t => t.id === 'comprehensive-income-tax')!;

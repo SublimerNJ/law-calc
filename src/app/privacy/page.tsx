@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-slate-900 mb-4">제1조 (개인정보의 처리 목적)</h2>
           <p>
-            law-calc.kr (이하 "본 사이트")은 법률 계산기 서비스 제공을 목적으로 운영됩니다. 
+            law-calc.kr (이하 &quot;본 사이트&quot;)은 법률 계산기 서비스 제공을 목적으로 운영됩니다.
             본 사이트는 <strong>이용자의 민감한 개인정보를 별도로 수집하거나 데이터베이스에 저장하지 않습니다.</strong> 
             모든 계산은 이용자의 브라우저 내에서 클라이언트 사이드 스크립트(JavaScript)를 통해 처리되며, 
             입력된 금액, 소득, 사실관계 등의 데이터는 서버로 전송되거나 기록되지 않습니다.

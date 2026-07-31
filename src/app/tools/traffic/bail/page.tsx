@@ -59,7 +59,7 @@ function calculateBail(
   const assetBased = Math.round(assets * severityFactor);
 
   // Use the higher of base or asset-based
-  let amount = Math.max(baseBail, assetBased);
+  const amount = Math.max(baseBail, assetBased);
 
   // Prior record multiplier
   const priorMultiplier = priorRecord === 'two-plus' ? 2.0 : priorRecord === 'one' ? 1.5 : 1.0;

@@ -17,7 +17,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xl font-bold text-slate-900 mb-4">제1조 (목적)</h2>
           <p>
-            본 약관은 <strong>law-calc.kr</strong> (이하 "서비스")이 제공하는 모든 법률 계산기 및 
+            본 약관은 <strong>law-calc.kr</strong> (이하 &quot;서비스&quot;)이 제공하는 모든 법률 계산기 및
             법률 정보 콘텐츠의 이용 조건, 서비스 운영자와 이용자의 권리, 의무, 면책 사항을 명확히 규정함을 목적으로 합니다. 
             이용자가 본 서비스에 접속하고 이용함으로써 본 약관에 전적으로 동의한 것으로 간주합니다.
           </p>
@@ -30,7 +30,7 @@ export default function TermsPage() {
             바탕으로 한 <strong>일반적인 정보 제공 및 참고 목적</strong>으로만 제공됩니다.
           </p>
           <ul className="list-disc list-inside space-y-2 text-red-950 bg-red-50/50 p-6 rounded-xl border border-red-100">
-            <li>본 서비스의 결과물은 어떠한 경우에도 대한변호사협회 등에 등록된 전문 변호사, 노무사, 세무사 등의 <strong>'법률 자문(Legal Advice)'</strong>을 대체할 수 없습니다.</li>
+            <li>본 서비스의 결과물은 어떠한 경우에도 대한변호사협회 등에 등록된 전문 변호사, 노무사, 세무사 등의 <strong>&apos;법률 자문(Legal Advice)&apos;</strong>을 대체할 수 없습니다.</li>
             <li>소송 제기, 합의, 세금 신고, 계약 체결 등 법적 구속력이 발생하는 중대한 결정 전에는 <strong>반드시 유자격 전문가와 직접 상담</strong>하시기 바랍니다.</li>
           </ul>
         </section>
