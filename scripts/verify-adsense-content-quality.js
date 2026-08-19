@@ -35,6 +35,16 @@ if (qualitySrc.includes('2024년 기준 코스피 0.03') || qualitySrc.includes(
 if (parentalMeta.includes('상한 월 150만') || parentalMeta.includes('사후지급금(25%)')) {
   failures.push('parental-leave metadata still describes the old 150만/25% rule');
 }
+const parentalPage = read('src/app/tools/labor/parental-leave/page.tsx');
+if (parentalPage.includes('monthlyWage * 0.8') || parentalPage.includes('PARENTAL_RATE = 0.8')) {
+  failures.push('parental-leave still applies 80% to all months; 시행령 제95조 is 100% for months 1-6');
+}
+if (!parentalPage.includes('month <= 6 ? 1 : 0.8')) {
+  failures.push('parental-leave missing 1-6 months 100% / 7+ months 80% rate split');
+}
+if (data.includes('통상임금의 80%에 기간별 상한')) {
+  failures.push('tools-data parental-leave longDescription still says 80% for all months');
+}
 const maternityMeta = read('src/app/tools/labor/maternity-leave/layout.tsx');
 if (maternityMeta.includes('월 210만 원')) {
   failures.push('maternity-leave metadata still says 210만 while code uses 220만');

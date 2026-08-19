@@ -17,14 +17,18 @@ function parseAmount(s: string): number {
   return isNaN(v) ? 0 : v;
 }
 
-// 2026 rates
-const PENSION_RATE = 0.0475; // each side (2026년 인상: 4.5→4.75%)
-const PENSION_CAP = 6_370_000; // monthly salary cap (2026년 상한: 617→637만원)
-const HEALTH_RATE = 0.03595; // each side (2026년 인상: 3.545→3.595%)
-const LONGTERM_RATE = 0.1314; // of health insurance premium (2026년: 약 13.14%)
+// 원문 대조 2026-08-19
+// 국민연금: 법률 제20903호 부칙 제4조 제1항 제1호 — 2026년 각 1만분의 475
+// 국민연금 상한: 코드 상수(고시 별도). 본문 제88조 종국 요율은 1천분의 65이나 2026년은 부칙 특례.
+// 건강보험: 국민건강보험법 시행령 제44조 — 직장 보험료율 1만분의 719(노사 합산 7.19%, 각 3.595%)
+// 장기요양: 노인장기요양보험법 시행령 제4조 100만분의 9,448 ÷ 건보 7.19% = 13.14%(건보료 대비)
+const PENSION_RATE = 0.0475;
+const PENSION_CAP = 6_370_000;
+const HEALTH_RATE = 0.03595;
+const LONGTERM_RATE = 0.1314;
 const EMPLOYMENT_EMPLOYEE = 0.009;
 const EMPLOYMENT_EMPLOYER = 0.0115; // 150인 미만: 실업급여 0.9% + 고용안정·직업능력개발 0.25%
-const INDUSTRIAL_RATE = 0.0147; // manufacturing average
+const INDUSTRIAL_RATE = 0.0147; // 업종 평균 참고치. 산재요율은 사업장별로 다름.
 
 interface InsuranceRow {
   name: string;

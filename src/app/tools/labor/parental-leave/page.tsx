@@ -8,16 +8,14 @@ import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 const tool = TOOLS.find(t => t.id === 'parental-leave')!;
 const category = CATEGORIES.find(c => c.id === 'labor')!;
 
-// 고용보험법 제73조, 동법 시행령 제95조 (2025.1.1 시행 기준)
-// 육아휴직급여: 통상임금의 80%, 기간별 상한 차등
-// 1~3개월: 상한 월 250만원
-// 4~6개월: 상한 월 200만원
-// 7개월~: 상한 월 160만원
-// 하한: 월 70만원 (전 기간 동일)
-// 사후지급금 폐지 — 전액 즉시 지급
-// 한부모/장애아동: 첫 3개월 상한 월 300만원
-const PARENTAL_RATE = 0.8;
+// 고용보험법 시행령 제95조·제95조의3 (시행 2026.7.1., 대통령령 제36472호)
+// 일반: 1~3개월 통상임금 100%(상한 250만), 4~6개월 100%(상한 200만), 7개월~ 80%(상한 160만). 하한 70만.
+// 한부모(제95조의3 제3항): 1~3개월 100%(상한 300만), 4~6개월 100%(상한 200만), 7개월~ 80%(상한 160만).
 const PARENTAL_LOWER = 700_000;
+
+function getParentalRate(month: number): number {
+  return month <= 6 ? 1 : 0.8;
+}
 
 function getParentalUpper(month: number, isSingleParent: boolean): number {
   if (isSingleParent && month <= 3) return 3_000_000;
@@ -32,7 +30,7 @@ function calcMonthlyBenefit(
   isSingleParent: boolean
 ): number {
   const upper = getParentalUpper(month, isSingleParent);
-  const raw = monthlyWage * PARENTAL_RATE;
+  const raw = monthlyWage * getParentalRate(month);
   return Math.min(Math.max(raw, PARENTAL_LOWER), upper);
 }
 
@@ -74,7 +72,7 @@ export default function ParentalLeavePage() {
 
     for (let m = 1; m <= months; m++) {
       const amount = calcMonthlyBenefit(w, m, isSingleParent);
-      const rate = PARENTAL_RATE;
+      const rate = getParentalRate(m);
       monthly.push({ month: m, rate, amount });
       totalBenefit += amount;
     }
@@ -125,7 +123,7 @@ export default function ParentalLeavePage() {
           <div className="flex gap-4">
             {[
               { value: 'normal' as const, label: '일반' },
-              { value: 'single' as const, label: '한부모가족/장애아동 (첫 3개월 상한 300만원, 시행령 제95조제3항)' },
+              { value: 'single' as const, label: '한부모가족(시행령 제95조의3 제3항, 첫 3개월 상한 300만 원)' },
             ].map(opt => (
               <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
                 <input
@@ -194,14 +192,13 @@ export default function ParentalLeavePage() {
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-1">계산식</p>
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 mb-3 whitespace-pre-wrap glassmorphism glass-panel">
-{`1~3개월: 월 통상임금 × 80% (상한 250만원, 하한 70만원)
-4~6개월: 월 통상임금 × 80% (상한 200만원, 하한 70만원)
-7개월~: 월 통상임금 × 80% (상한 160만원, 하한 70만원)
-한부모/장애아동: 첫 3개월 상한 300만원
-사후지급금 없음: 전액 즉시 지급으로 계산`}
+{`1~3개월: 월 통상임금 100% (상한 250만 원, 한부모 300만 원, 하한 70만 원)
+4~6개월: 월 통상임금 100% (상한 200만 원, 하한 70만 원)
+7개월~: 월 통상임금 80% (상한 160만 원, 하한 70만 원)
+근거: 고용보험법 시행령 제95조·제95조의3 (시행 2026.7.1.)`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 고용보험법 제73조, 시행령 제95조 | 이 계산기 기간별 상한 250·200·160만 원
+              법적 근거: 고용보험법 시행령 제95조·제95조의3 원문 대조 (시행 2026.7.1., 대통령령 제36472호)
             </p>
           </div>
         </div>
