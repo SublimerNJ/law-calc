@@ -79,7 +79,7 @@ export default function ParentalLeavePage() {
       totalBenefit += amount;
     }
 
-    // 2024.1.1 개정: 사후지급금 제도 폐지, 전액 즉시 지급
+    // 사후지급금 없음: 전액 즉시 지급으로 계산
     const totalDeferred = 0;
     const totalImmediate = totalBenefit;
 
@@ -164,7 +164,7 @@ export default function ParentalLeavePage() {
           </div>
 
           <div className="mb-4 p-3 bg-green-50 rounded-lg">
-            <p className="text-xs text-green-700">※ 2024.1.1 개정: 사후지급금 제도 폐지 — 급여 전액 매월 즉시 지급</p>
+            <p className="text-xs text-green-700">※ 사후지급금 없음 — 이 계산기는 급여 전액을 매월 즉시 지급으로 계산합니다</p>
           </div>
 
           <div className="mt-4">
@@ -198,10 +198,10 @@ export default function ParentalLeavePage() {
 4~6개월: 월 통상임금 × 80% (상한 200만원, 하한 70만원)
 7개월~: 월 통상임금 × 80% (상한 160만원, 하한 70만원)
 한부모/장애아동: 첫 3개월 상한 300만원
-2024.1.1 개정: 사후지급금 제도 폐지, 전액 즉시 지급`}
+사후지급금 없음: 전액 즉시 지급으로 계산`}
             </pre>
             <p className="text-xs text-gray-500">
-              법적 근거: 고용보험법 제73조(육아휴직급여), 동법 시행령 제95조 | 2024.1.1 개정 기준
+              법적 근거: 고용보험법 제73조, 시행령 제95조 | 이 계산기 기간별 상한 250·200·160만 원
             </p>
           </div>
         </div>

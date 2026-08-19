@@ -26,8 +26,22 @@ if (data.includes('<strong>4. 실무 활용 예시</strong>')) {
 if (data.includes('상한 월 150만') || data.includes('사후지급금(25%)')) {
   failures.push('stale parental-leave 150만/사후지급금 copy remains in tools-data.ts');
 }
+if (data.includes('2025년 최저임금은 시간급 10,030') || data.includes('코스피 0.03%') || data.includes('건강보험 3.545%')) {
+  failures.push('stale 2024/2025 rate copy remains in tools-data.ts');
+}
+if (qualitySrc.includes('2024년 기준 코스피 0.03') || qualitySrc.includes('시간급 10,030원입니다')) {
+  failures.push('stale rate copy remains in tool-quality.ts');
+}
 if (parentalMeta.includes('상한 월 150만') || parentalMeta.includes('사후지급금(25%)')) {
   failures.push('parental-leave metadata still describes the old 150만/25% rule');
+}
+const maternityMeta = read('src/app/tools/labor/maternity-leave/layout.tsx');
+if (maternityMeta.includes('월 210만 원')) {
+  failures.push('maternity-leave metadata still says 210만 while code uses 220만');
+}
+const securitiesMeta = read('src/app/tools/tax/securities-tax/layout.tsx');
+if (securitiesMeta.includes('코스피 0.03%')) {
+  failures.push('securities-tax metadata still uses 2024 rates');
 }
 if (rootLayout.includes('/og-image.png')) {
   failures.push('root layout still points OG image at missing /og-image.png');

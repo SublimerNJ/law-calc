@@ -105,7 +105,7 @@ export default function WeeklyHolidayPayPage() {
             inputMode="numeric"
             value={hourlyWage ? parseInt(hourlyWage).toLocaleString('ko-KR') : ''}
             onChange={handleNumberChange(setHourlyWage)}
-            placeholder="예: 10,030"
+            placeholder="예: 10,320"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
         </div>
