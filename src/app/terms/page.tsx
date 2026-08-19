@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '이용약관 (Terms of Service) | law-calc.kr 법률 계산기',
   description: 'law-calc.kr 법률 계산기 서비스의 이용약관 및 법적 면책 조항을 규정합니다.',
+  alternates: { canonical: 'https://law-calc.kr/terms' },
 };
 
 export default function TermsPage() {
@@ -10,7 +11,7 @@ export default function TermsPage() {
     <main className="max-w-4xl mx-auto px-4 py-24 sm:py-32">
       <div className="mb-12 border-b border-slate-200 pb-8">
         <h1 className="text-3xl font-bold text-slate-900 mb-4">이용약관 (Terms of Service)</h1>
-        <p className="text-sm text-slate-500">최종 수정일: 2026년 4월 8일</p>
+        <p className="text-sm text-slate-500">최종 수정일: 2026년 8월 19일</p>
       </div>
 
       <div className="space-y-12 text-slate-700 text-[15px] leading-relaxed">

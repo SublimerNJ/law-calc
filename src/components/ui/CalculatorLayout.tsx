@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Tool, Category } from '@/lib/tools-data';
 import { TOOLS } from '@/lib/tools-data';
+import { TOOL_QUALITY } from '@/lib/tool-quality';
 
 interface CalculatorLayoutProps {
   tool: Tool;
@@ -11,8 +12,9 @@ interface CalculatorLayoutProps {
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 
 export default function CalculatorLayout({ tool, category, children }: CalculatorLayoutProps) {
-  const reviewer = tool.expertReviewer || 'law-calc.kr 편집팀 (법령·판례 근거 공개)';
-  const reviewedAt = tool.updatedAt || '2026-07-19';
+  const quality = TOOL_QUALITY[tool.id];
+  const reviewer = 'law-calc.kr 편집팀 (작성·자료 확인)';
+  const reviewedAt = quality?.reviewedAt || tool.updatedAt || '2026-08-19';
 
   const nextSteps = [
     `${tool.name} 입력값을 계약서·명세서·고지서 등 원본 서류와 다시 대조하세요.`,
@@ -52,54 +54,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
   };
 
   const guides = relatedGuides[category.id] ?? relatedGuides.misc;
-  // 2026-04 일괄 생성본의 4~6번 문단은 여러 계산기에서 동일하게 반복됐고,
-  // 일부는 바로 앞 계산기의 설명을 잘못 이어받았다. 공개 페이지에는 도구별 고유 설명만 노출한다.
-  const focusedGuide = tool.extendedGuide
-    ?.split('<strong>4. 실무 활용 예시</strong>')[0]
-    .trim();
-
-  const qualityContexts: Record<
-    string,
-    { inputs: string[]; scenario: string }
-  > = {
-    court: {
-      inputs: ['청구금액·소가와 심급', '당사자 수와 전자소송 이용 여부', '실제 납부·지급 증빙과 판결 주문'],
-      scenario: '소송·조정·지급명령 중 어떤 절차를 택할지 결정하기 전에 초기 비용과 회수 가능한 범위를 비교할 때 사용합니다.',
-    },
-    family: {
-      inputs: ['혼인·상속 등 기준일과 가족관계', '소득·재산·채무의 실제 금액', '법원 기준표·법정비율과 예외 사유'],
-      scenario: '협의나 조정 전에 쟁점 금액의 범위를 정리하고, 누락된 가족관계·재산 항목을 찾는 준비 자료로 사용합니다.',
-    },
-    labor: {
-      inputs: ['근로계약서상 임금과 실제 지급 내역', '입사·퇴사일 및 소정근로시간', '상여금·수당·휴업 등 산입 조건'],
-      scenario: '급여명세서와 근로계약서를 대조해 미지급 가능성을 1차 점검하고, 노동청 상담 전 사실관계를 정리할 때 사용합니다.',
-    },
-    tax: {
-      inputs: ['취득·양도·신고 기준일', '과세표준과 실제 필요경비', '공제·감면 요건 및 보유·거주 기간'],
-      scenario: '신고 전에 적용 가능한 공제와 누락 비용을 점검하는 사전 추정에 사용하며, 최종 세액은 국세청 또는 세무 전문가와 확인합니다.',
-    },
-    realty: {
-      inputs: ['계약서상 보증금·차임·거래금액', '계약·취득·반환 기준일', '지역·주택 수·대출 조건 등 적용 요건'],
-      scenario: '계약서와 금융기관 자료를 바탕으로 거래비용·대출비율·반환 지연의 영향을 비교할 때 사용합니다.',
-    },
-    traffic: {
-      inputs: ['사고·적발 기준일과 사실관계', '소득·치료기간·과실비율 등 객관 자료', '행정처분·형사절차에 적용되는 최신 기준'],
-      scenario: '보험사·수사기관과 대화하기 전에 금액과 절차의 대략적인 범위를 이해하는 참고 자료로 사용합니다.',
-    },
-    debt: {
-      inputs: ['원금과 약정이율', '변제기·기산일·종료일', '중간 변제액과 법정이율 변경 시점'],
-      scenario: '내용증명·지급명령·소송을 준비하며 기간별 원금과 이자를 분리해 청구 초안을 검산할 때 사용합니다.',
-    },
-    damages: {
-      inputs: ['손해 발생일과 책임 비율', '치료비·소득·후유장해 등 증빙 금액', '기왕증·과실상계·중간 지급 내역'],
-      scenario: '합의 제안이나 손해배상 청구 전에 손해 항목을 빠짐없이 분류하고 보수적인 범위를 잡을 때 사용합니다.',
-    },
-    misc: {
-      inputs: ['사건·계약의 정확한 기준일', '원본 문서에 적힌 금액과 당사자 정보', '중단·정지·예외 사유와 최신 법령'],
-      scenario: '기관 상담이나 법률상담 전에 핵심 날짜·금액·요건을 한 장으로 정리하는 점검 도구로 사용합니다.',
-    },
-  };
-  const qualityContext = qualityContexts[category.id] ?? qualityContexts.misc;
+  const focusedGuide = tool.extendedGuide?.trim();
 
   const schemaLd = {
     '@context': 'https://schema.org',
@@ -222,62 +177,69 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
               </article>
             )}
 
+            {quality && (
             <section className="rounded-2xl border border-stone-200 bg-white p-6 sm:p-8 shadow-[var(--shadow-card)]">
               <h2 className="text-xl font-bold text-zinc-900 mb-5">계산 기준과 검산 방법</h2>
-              <div className="grid gap-6 sm:grid-cols-2">
+              <div className="space-y-6">
                 <div>
-                  <h3 className="text-sm font-bold text-zinc-900 mb-2">계산 기준</h3>
-                  <p className="text-sm text-zinc-700 leading-relaxed">
-                    {tool.longDescription || tool.description}
-                  </p>
-                  {tool.legalCitations && tool.legalCitations.length > 0 && (
-                    <p className="mt-3 text-xs text-zinc-500 leading-relaxed">
-                      이 페이지는 {tool.legalCitations.join(' · ')}을 주요 기준으로 삼습니다. 법령·고시 개정일과
-                      실제 사건의 기준일이 다르면 계산 결과도 달라질 수 있습니다.
-                    </p>
-                  )}
+                  <h3 className="text-sm font-bold text-zinc-900 mb-2">이 계산기가 쓰는 공식</h3>
+                  <p className="text-sm text-zinc-700 leading-relaxed">{quality.formula}</p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-zinc-900 mb-2">입력값 검증</h3>
+                  <h3 className="text-sm font-bold text-zinc-900 mb-2">입력값 정의</h3>
                   <ul className="list-disc list-inside space-y-1.5 text-sm text-zinc-700">
-                    {qualityContext.inputs.map((input) => (
+                    {quality.inputs.map((input) => (
                       <li key={input}>{input}</li>
                     ))}
                   </ul>
                 </div>
-              </div>
-              <div className="mt-6 border-t border-stone-100 pt-5">
-                <h3 className="text-sm font-bold text-zinc-900 mb-2">실무 활용 맥락</h3>
-                <p className="text-sm text-zinc-700 leading-relaxed">
-                  <strong>{tool.name}</strong>는 {qualityContext.scenario}
-                </p>
-                {tool.faqItems?.[0] && (
-                  <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
-                    먼저 확인할 질문: “{tool.faqItems[0].question}” 아래 FAQ의 답과 본인 서류의 조건이 일치하는지
-                    비교하세요.
-                  </p>
-                )}
+                <div>
+                  <h3 className="text-sm font-bold text-zinc-900 mb-2">숫자 예시</h3>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {quality.examples.map((example) => (
+                      <article key={example.title} className="rounded-xl border border-stone-100 bg-stone-50 p-4">
+                        <h4 className="text-sm font-semibold text-zinc-900 mb-2">{example.title}</h4>
+                        <p className="text-sm text-zinc-600 leading-relaxed mb-2">{example.setup}</p>
+                        <p className="text-sm text-zinc-800 leading-relaxed">{example.result}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-zinc-900 mb-2">결과가 달라지는 조건</h3>
+                  <ul className="list-disc list-inside space-y-1.5 text-sm text-zinc-700">
+                    {quality.edges.map((edge) => (
+                      <li key={edge}>{edge}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </section>
+            )}
 
             {tool.legalCitations && tool.legalCitations.length > 0 && (
               <section className="rounded-2xl border border-teal-100 bg-teal-50/50 p-5">
                 <h2 className="text-sm font-bold text-zinc-900 mb-3">참고 법령 및 근거</h2>
                 <ul className="list-disc list-inside space-y-1.5 text-sm text-zinc-700">
-                  {tool.legalCitations.map((citation, idx) => (
-                    <li key={idx}>{citation}</li>
+                  {(quality?.sources ?? []).map((source) => (
+                    <li key={source.url + source.label}>
+                      <a
+                        href={source.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-teal-800 hover:underline"
+                      >
+                        {source.label}
+                      </a>
+                    </li>
+                  ))}
+                  {(tool.legalCitations ?? []).map((citation, idx) => (
+                    <li key={`cite-${idx}`}>{citation}</li>
                   ))}
                 </ul>
                 <p className="mt-3 text-xs text-zinc-500">
-                  조문 원문:{' '}
-                  <a
-                    href="https://www.law.go.kr/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-teal-800 hover:underline"
-                  >
-                    국가법령정보센터
-                  </a>
+                  조문 원문은 위 링크와 국가법령정보센터에서 시행일을 확인해 주세요. 이 계산기의 상수는 코드에
+                  적힌 기준일이 우선입니다.
                 </p>
               </section>
             )}

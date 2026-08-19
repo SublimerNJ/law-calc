@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '개인정보처리방침 (Privacy Policy) | law-calc.kr 법률 계산기',
   description: 'law-calc.kr 법률 계산기의 개인정보처리방침입니다. 구글 애드센스 쿠키 및 광고 게재에 대한 안내를 포함합니다.',
+  alternates: { canonical: 'https://law-calc.kr/privacy' },
 };
 
 export default function PrivacyPage() {
@@ -10,7 +11,7 @@ export default function PrivacyPage() {
     <main className="max-w-4xl mx-auto px-4 py-24 sm:py-32">
       <div className="mb-12 border-b border-slate-200 pb-8">
         <h1 className="text-3xl font-bold text-slate-900 mb-4">개인정보처리방침 (Privacy Policy)</h1>
-        <p className="text-sm text-slate-500">최종 수정일: 2026년 4월 8일</p>
+        <p className="text-sm text-slate-500">최종 수정일: 2026년 8월 19일</p>
       </div>
 
       <div className="space-y-12 text-slate-700 text-[15px] leading-relaxed">
@@ -49,11 +50,15 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="text-xl font-bold text-slate-900 mb-4">제4조 (개인정보의 제3자 제공 및 위탁)</h2>
-          <p>
-            본 사이트는 회원가입을 받지 않으며 식별 가능한 개인정보를 보유하지 않으므로, 
-            어떠한 개인정보도 제3자에게 제공하거나 위탁하지 않습니다. 단, 범죄 수사 목적으로 법령에 규정된 절차와 방법에 따라 
-            수사기관의 요구가 있는 경우에는 예외로 합니다.
+          <p className="mb-3">
+            계산기에 입력한 금액·기간·사실관계는 본 사이트 서버에 저장하지 않으며, 운영자가 그 입력값을 제3자에게 넘기지 않습니다.
+            다만 아래 제3자는 서비스 이용 과정에서 접속정보·쿠키를 독자적으로 처리할 수 있습니다.
           </p>
+          <ul className="list-disc list-inside space-y-2 text-slate-600 bg-slate-50 p-6 rounded-xl border border-slate-100">
+            <li>Google AdSense: 광고 게재·측정용 쿠키, 웹 비콘, 기기·브라우저 정보</li>
+            <li>Google Analytics: 환경변수로 측정 ID가 설정된 경우에만 로드되며, IP·브라우저·방문 페이지 등 이용 기록을 수집할 수 있습니다</li>
+            <li>수사기관이 법령에 따른 절차로 요구하는 경우</li>
+          </ul>
         </section>
 
         <section>

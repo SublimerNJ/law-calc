@@ -15,7 +15,7 @@ export default function EditorialPolicyPage() {
     <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
       <div className="mb-10 border-b border-slate-200 pb-8">
         <h1 className="text-3xl font-bold text-slate-900 mb-4">편집 및 데이터 검증 정책</h1>
-        <p className="text-lg text-slate-600">Editorial &amp; Verification Policy · 최종 업데이트 2026-07-19</p>
+        <p className="text-lg text-slate-600">Editorial &amp; Verification Policy · 최종 업데이트 2026-08-19</p>
       </div>
 
       <div className="space-y-10 text-slate-700 text-[15px] leading-relaxed">

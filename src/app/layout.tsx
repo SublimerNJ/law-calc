@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     url: BASE_URL,
     siteName: 'law-calc.kr',
     locale: 'ko_KR',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'law-calc.kr 법률 계산기' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'law-calc.kr 법률 계산기' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: '법률 계산기 | 55개 무료 법률 도구',
     description: '대한민국 법령 기준 55개 무료 법률 계산기',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
