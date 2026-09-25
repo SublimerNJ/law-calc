@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "verify:adsense": "node scripts/verify-adsense-content-quality.js",
-    "audit:live": "python3 scripts/audit-live-duplication.py"
+    "audit:live": "python3 scripts/audit-live-duplication.py",
+    "ratchet:adsense": "node scripts/adsense-ratchet.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit cross-page text duplication on a deployed (or local) law-calc build.
+r"""Audit cross-page text duplication on a deployed (or local) law-calc build.
 
 Fetches every URL in <base>/sitemap.xml, extracts the visible text inside
 <main>...</main>, splits it into lines and reports:
