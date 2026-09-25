@@ -101,6 +101,49 @@ for (const id of toolIds) {
   formulas.add(q.formula);
 }
 
+// --- Template-marker guardrails -------------------------------------------
+// scripts/build-adsense-quality.py used to stamp the same sentence skeletons
+// onto every calculator ("<name> 기본 검산", "<name>에 넣는 ...", ...). AdSense
+// treats these as low-value boilerplate, so any remaining marker fails.
+const TEMPLATE_MARKERS = [
+  { label: 'example title "... 기본 검산"', re: / 기본 검산"/, field: (q) => (q.examples || []).map((ex) => `${ex.title}"`) },
+  { label: 'example title "... 조건 변경"', re: / 조건 변경"/, field: (q) => (q.examples || []).map((ex) => `${ex.title}"`) },
+  { label: 'edge "...의 일반론을 본인 사안에 그대로 대입하면 안 됩니다"', re: /의 일반론을 본인 사안에 그대로 대입하면 안 됩니다/, field: (q) => q.edges || [] },
+  { label: 'input "<name>에 넣는 ..." (category-shared input list)', re: /에 넣는 /, field: (q) => q.inputs || [] },
+];
+
+// Raw-text check (independent of the vm parse) so a parse regression can't hide markers.
+for (const { label, re } of TEMPLATE_MARKERS) {
+  const globalRe = new RegExp(re.source, 'g');
+  const hits = (qualitySrc.match(globalRe) || []).length;
+  if (hits) failures.push(`template marker remains in tool-quality.ts source: ${label} x${hits}`);
+}
+
+// Per-tool breakdown so later tasks can track progress by id.
+if (TOOL_QUALITY && typeof TOOL_QUALITY === 'object') {
+  for (const { label, re, field } of TEMPLATE_MARKERS) {
+    const ids = Object.keys(TOOL_QUALITY).filter((id) => field(TOOL_QUALITY[id]).some((text) => re.test(text)));
+    if (ids.length) failures.push(`template marker "${label}": ${ids.length} tools -> ${ids.join(', ')}`);
+  }
+
+  // Worked examples must be concrete: every example setup needs at least one digit.
+  const numberless = [];
+  for (const [id, q] of Object.entries(TOOL_QUALITY)) {
+    const bad = (q.examples || []).filter((ex) => !/\d/.test(ex.setup || '')).length;
+    if (bad) numberless.push(`${id}(${bad})`);
+  }
+  if (numberless.length) {
+    failures.push(`examples whose setup has no digit: ${numberless.length} tools -> ${numberless.join(', ')}`);
+  }
+}
+
+// Raw-text cross-check of the same rule, as written in the plan.
+let rawNumberless = 0;
+for (const m of qualitySrc.matchAll(/setup: "((?:[^"\\]|\\.)*)"/g)) {
+  if (!/\d/.test(m[1])) rawNumberless += 1;
+}
+if (rawNumberless) failures.push(`example setups without numbers (raw source scan): ${rawNumberless}`);
+
 if (failures.length) {
   console.error('AdSense content quality verification failed:');
   for (const failure of failures) console.error(`- ${failure}`);
