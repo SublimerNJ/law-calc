@@ -5,6 +5,85 @@ const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const failures = [];
 
+// --- Normalization rule (shared with scripts/audit-live-duplication.py) ------
+// Template sentences differ only by the calculator name, a quoted FAQ title or
+// a number, so exact-string comparison misses them. Before comparing across
+// tools, apply IN THIS ORDER:
+//   1. the tool's own name (tools-data.ts `name:` / page <h1>)  -> <N>
+//   2. /「[^」]*」|"[^"]*"|“[^”]*”/g  (quoted span)             -> 「Q」
+//   3. /\d+/g                        (digit run)               -> #
+// then collapse whitespace. Name goes first because names contain digits
+// ("4대보험료 계산기").
+const QUOTE_RE = /「[^」]*」|"[^"]*"|“[^”]*”/g;
+const DIGIT_RE = /\d+/g;
+const MIN_DUP_TOOLS = 3;
+
+function normalizeForTool(text, name) {
+  let t = String(text);
+  if (name) t = t.split(name).join('<N>');
+  return t.replace(QUOTE_RE, '「Q」').replace(DIGIT_RE, '#').replace(/\s+/g, ' ').trim();
+}
+
+function toolStrings(q) {
+  return [
+    ...(q.inputs || []),
+    ...(q.edges || []),
+    ...(q.limits || []),
+    ...(q.examples || []).flatMap((ex) => [ex.title, ex.setup, ex.result]),
+    q.formula,
+  ].filter((t) => typeof t === 'string' && t.trim());
+}
+
+function findCrossToolDuplicates(quality, names, minTools = MIN_DUP_TOOLS) {
+  const byKey = new Map();
+  for (const [id, q] of Object.entries(quality)) {
+    for (const text of new Set(toolStrings(q).map((t) => normalizeForTool(t, names[id])))) {
+      if (!byKey.has(text)) byKey.set(text, []);
+      byKey.get(text).push(id);
+    }
+  }
+  return [...byKey.entries()]
+    .filter(([, ids]) => ids.length >= minTools)
+    .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+}
+
+function selfTest() {
+  const fixture = {};
+  const names = {};
+  [['a', '퇴직금 계산기', 1], ['b', '연차수당 계산기', 2], ['c', '실업급여 계산기', 30]].forEach(([id, name, n], i) => {
+    names[id] = name;
+    fixture[id] = {
+      formula: `${id} 고유 공식 설명 ${'가나다'.repeat(i + 1)}`,
+      inputs: [`${name}에 넣는 금액`, '소정근로시간', `${id} 고유 입력`],
+      edges: [`${name} 결과는 입력 기준일이 법령 개정일과 다르면 바로 어긋납니다.`, `「질문 ${id}?」의 일반론을 ${n}건 사안에 그대로 대입하면 안 됩니다.`],
+      limits: [`${name} 결과는 법원·과세관청·고용센터가 인정하는 확정 금액이 아닙니다.`],
+      examples: [{ title: `${name} 계산 예시 ${n}`, setup: `월 ${n * 100}만 원, ${id} 고유 조건`, result: `${id} 결과` }],
+    };
+  });
+  const found = new Map(findCrossToolDuplicates(fixture, names));
+  const expect = [
+    '<N> 결과는 입력 기준일이 법령 개정일과 다르면 바로 어긋납니다.',
+    '<N> 결과는 법원·과세관청·고용센터가 인정하는 확정 금액이 아닙니다.',
+    '「Q」의 일반론을 #건 사안에 그대로 대입하면 안 됩니다.',
+    '<N> 계산 예시 #',
+    '<N>에 넣는 금액',
+    '소정근로시간',
+  ];
+  let ok = true;
+  for (const key of expect) {
+    const hit = found.has(key) && found.get(key).length === 3;
+    ok = ok && hit;
+    console.log(`${hit ? 'PASS' : 'FAIL'}  normalized cross-tool duplicate detected: ${key}`);
+  }
+  const leaked = [...found.keys()].filter((k) => k.includes('고유'));
+  ok = ok && leaked.length === 0;
+  console.log(`${leaked.length ? 'FAIL' : 'PASS'}  tool-unique strings not flagged ${leaked.join(' | ')}`);
+  console.log(`SELF-TEST ${ok ? 'OK' : 'FAILED'}`);
+  process.exit(ok ? 0 : 1);
+}
+
+if (process.argv.includes('--self-test')) selfTest();
+
 function read(rel) {
   return fs.readFileSync(path.join(root, rel), 'utf8');
 }
@@ -134,6 +213,28 @@ if (TOOL_QUALITY && typeof TOOL_QUALITY === 'object') {
   }
   if (numberless.length) {
     failures.push(`examples whose setup has no digit: ${numberless.length} tools -> ${numberless.join(', ')}`);
+  }
+}
+
+// Generic cross-tool rule: any title/input/edge/limit/example/formula string
+// that normalizes to the same key in >= MIN_DUP_TOOLS tools is template copy.
+// Inputs are checked regardless of length (short shared items like
+// "소정근로시간" are category boilerplate too).
+if (TOOL_QUALITY && typeof TOOL_QUALITY === 'object') {
+  const toolNames = Object.fromEntries(
+    [...data.matchAll(/^\s+id: "([^"]+)",\s*\n\s+name: "([^"]+)"/gm)].map((m) => [m[1], m[2]]),
+  );
+  const unnamed = toolIds.filter((id) => !toolNames[id]);
+  if (unnamed.length) failures.push(`tools-data.ts name not found for: ${unnamed.join(', ')}`);
+  const dups = findCrossToolDuplicates(TOOL_QUALITY, toolNames);
+  if (dups.length) {
+    const LIST_CAP = 40;
+    failures.push(`normalized strings repeated in >= ${MIN_DUP_TOOLS} tools: ${dups.length} (<N>=tool name, 「Q」=quote, #=digits)`);
+    for (const [key, ids] of dups.slice(0, LIST_CAP)) {
+      const shown = key.length > 90 ? `${key.slice(0, 87)}...` : key;
+      failures.push(`  x${ids.length} ${shown}  [${ids.slice(0, 5).join(', ')}${ids.length > 5 ? ', ...' : ''}]`);
+    }
+    if (dups.length > LIST_CAP) failures.push(`  ... ${dups.length - LIST_CAP} more`);
   }
 }
 
