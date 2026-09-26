@@ -5,7 +5,7 @@
 
 ## Phase A — 신뢰 훼손 제거
 
-- [ ] A0. vitest 설치(`npm i -D vitest`), `"test": "vitest run"` 스크립트 추가, `src/lib/calc/` 폴더와 첫 테스트 1개로 동작 확인
+- [x] A0. vitest 설치(`npm i -D vitest`), `"test": "vitest run"` 스크립트 추가, `src/lib/calc/` 폴더와 첫 테스트 1개로 동작 확인 (commit 18866bf)
 - [ ] A1-1. bail: 형사소송법 제94조 원문 대조 → 보석 청구권자 목록 수정(`src/lib/tools-data.ts:1102` FAQ, JSON-LD 동일 데이터 확인). 폐지된 '호주' 삭제
 - [ ] A1-2. rent-conversion: 주택임대차보호법 시행령 제9조·상가건물 임대차보호법 시행령 제5조 원문 대조, 한국은행 기준금리 공시값 확인. 기준금리를 적용일과 함께 상수 1곳으로, 상가 산식(배수) 테스트 고정 (`page.tsx:181,234`)
 - [ ] A1-3. child-support: 서울가정법원 양육비산정기준표 최신 공식본 대조, 판본 표기 정정(`page.tsx:309` "2025 개정"), 대표 셀 5개 이상 테스트 고정
