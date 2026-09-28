@@ -4,9 +4,19 @@ import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+import {
+  CURRENT_BASE_RATE,
+  HOUSING_ANNUAL_CAP,
+  HOUSING_RATE_ADDEND,
+  calculateHousingLegalRate,
+  jeonseToWolse,
+  wolseToJeonse,
+} from '@/lib/calc/rent-conversion';
 
 const tool = TOOLS.find(t => t.id === 'rent-conversion')!;
 const category = CATEGORIES.find(c => c.id === 'realty')!;
+const currentHousingLegalRate = calculateHousingLegalRate(CURRENT_BASE_RATE.value);
+const housingRateDescription = `법정 상한: 한국은행 기준금리 ${CURRENT_BASE_RATE.value.toFixed(2)}% (${CURRENT_BASE_RATE.effectiveDate} 적용) + ${HOUSING_RATE_ADDEND.toFixed(2)}%p와 연 ${HOUSING_ANNUAL_CAP}% 중 낮은 비율 = ${currentHousingLegalRate.toFixed(2)}%`;
 
 type Mode = 'jeonse-to-wolse' | 'wolse-to-jeonse';
 
@@ -24,7 +34,7 @@ export default function RentConversionPage() {
   const [jeonse, setJeonse] = useState('');
   const [deposit, setDeposit] = useState('');
   const [wolse, setWolse] = useState('');
-  const [conversionRate, setConversionRate] = useState('4.50');
+  const [conversionRate, setConversionRate] = useState(currentHousingLegalRate.toFixed(2));
   const [result, setResult] = useState<Result | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
@@ -68,7 +78,7 @@ export default function RentConversionPage() {
         setWarning('전세금이 10억원을 초과합니다. 입력값을 확인해주세요.');
       }
 
-      const monthly = Math.floor((jeonseVal - (isNaN(depositVal) ? 0 : depositVal)) * (rateVal / 100) / 12);
+      const monthly = jeonseToWolse(jeonseVal, isNaN(depositVal) ? 0 : depositVal, rateVal);
       setResult({ mode, amount: monthly });
     } else {
       const depositVal = parseInt(deposit, 10);
@@ -84,7 +94,7 @@ export default function RentConversionPage() {
         setWarning('월세가 1,000만원을 초과합니다. 입력값을 확인해주세요.');
       }
 
-      const jeonseAmount = Math.floor((isNaN(depositVal) ? 0 : depositVal) + wolseVal * 12 / (rateVal / 100));
+      const jeonseAmount = wolseToJeonse(isNaN(depositVal) ? 0 : depositVal, wolseVal, rateVal);
       setResult({ mode, amount: jeonseAmount });
     }
   };
@@ -178,7 +188,7 @@ export default function RentConversionPage() {
             onChange={e => setConversionRate(e.target.value.replace(/[^0-9.]/g, ''))}
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
-          <p className="text-xs text-gray-500 mt-1">법정 상한 전환율: 한국은행 기준금리(2.50%) + 2%p = 4.50% (주택임대차보호법 시행령 제9조)</p>
+          <p className="text-xs text-gray-500 mt-1">{housingRateDescription} (주택임대차보호법 시행령 제9조)</p>
         </div>
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
@@ -231,7 +241,7 @@ export default function RentConversionPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 주택임대차보호법 제7조의2, 동법 시행령 제9조 | 법정 상한: 기준금리(2.50%) + 2%p = 4.50%
+              법적 근거: 주택임대차보호법 제7조의2, 동법 시행령 제9조 | {housingRateDescription}
             </p>
           </div>
 
