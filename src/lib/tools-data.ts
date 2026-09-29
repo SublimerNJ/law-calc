@@ -197,7 +197,7 @@ export const TOOLS: Tool[] = [
     id: "child-support",
     name: "양육비 계산기",
     expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
-    updatedAt: "2026-08-19",
+    updatedAt: "2026-09-29",
     legalCitations: [
       "민법 제837조 (이혼과 자자의 양육책임)",
       "서울가정법원 양육비 산정기준표"

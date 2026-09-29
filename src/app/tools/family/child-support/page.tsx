@@ -4,90 +4,19 @@ import { useState } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+import {
+  CHILD_SUPPORT_AGE_OPTIONS,
+  CHILD_SUPPORT_INCOME_BRACKETS,
+  CHILD_SUPPORT_SOURCE_URL,
+  calculateChildSupport,
+  getStandardChildSupport,
+  type AgeGroup,
+  type ChildCount,
+  type ChildSupportResult,
+} from '@/lib/calc/child-support';
 
 const tool = TOOLS.find(t => t.id === 'child-support')!;
 const category = CATEGORIES.find(c => c.id === 'family')!;
-
-type ChildCount = '1' | '2' | '3';
-type AgeGroup = 'infant' | 'elementary' | 'teen';
-
-function getBasePerChild(combinedIncome: number): number {
-  // combinedIncome in 만원
-  if (combinedIncome < 200) return 400_000;
-  if (combinedIncome < 400) return 600_000;
-  if (combinedIncome < 600) return 800_000;
-  if (combinedIncome < 800) return 1_000_000;
-  if (combinedIncome < 1000) return 1_200_000;
-  if (combinedIncome < 1500) return 1_400_000;
-  return 1_600_000;
-}
-
-// 양육비 산정기준표: 2인 자녀 4인가구 기준 1인당 평균양육비
-// 자녀 1인: 1.065배 가산 (6.5% 증가)
-// 자녀 2인: 기준표 그대로 (×2 = 2인분)
-// 자녀 3인: 0.783배 감산 (21.7% 감소, ×3 = 3인분)
-function getMultiChildTotal(childCount: ChildCount, basePerChild: number): number {
-  switch (childCount) {
-    case '1': return Math.floor(basePerChild * 1.065);
-    case '2': return basePerChild * 2;
-    case '3': return Math.floor(basePerChild * 0.783) * 3;
-  }
-}
-
-function getAgeFactor(age: AgeGroup): number {
-  switch (age) {
-    case 'infant': return 0.9;
-    case 'elementary': return 1.0;
-    case 'teen': return 1.1;
-  }
-}
-
-const INCOME_TABLE = [
-  { max: 200, label: '200만원 미만', amount: 400_000 },
-  { max: 400, label: '200~400만원', amount: 600_000 },
-  { max: 600, label: '400~600만원', amount: 800_000 },
-  { max: 800, label: '600~800만원', amount: 1_000_000 },
-  { max: 1000, label: '800~1,000만원', amount: 1_200_000 },
-  { max: 1500, label: '1,000~1,500만원', amount: 1_400_000 },
-  { max: Infinity, label: '1,500만원 이상', amount: 1_600_000 },
-];
-
-interface ChildSupportResult {
-  monthlyTotal: number;
-  noncustodialPayment: number;
-  custodialPayment: number;
-  combinedIncome: number;
-  noncustodialShare: number;
-  basePerChild: number;
-  incomeTableIdx: number;
-  ageFactor: number;
-  multiChildFactor: number;
-}
-
-function calculateChildSupport(
-  childCount: ChildCount,
-  custodialIncome: number,
-  noncustodialIncome: number,
-  ageGroup: AgeGroup,
-): ChildSupportResult {
-  const combinedIncome = custodialIncome + noncustodialIncome;
-  const basePerChild = getBasePerChild(combinedIncome);
-  const totalBase = getMultiChildTotal(childCount, basePerChild);
-  const ageFactor = getAgeFactor(ageGroup);
-  const monthlyTotal = Math.floor(totalBase * ageFactor);
-
-  const noncustodialShare = combinedIncome > 0
-    ? noncustodialIncome / combinedIncome
-    : 0.5;
-
-  const noncustodialPayment = Math.floor(monthlyTotal * noncustodialShare);
-  const custodialPayment = monthlyTotal - noncustodialPayment;
-
-  const incomeTableIdx = INCOME_TABLE.findIndex(t => combinedIncome < t.max);
-  const multiChildFactor = childCount === '1' ? 1.065 : childCount === '2' ? 2.0 : 2.349;
-
-  return { monthlyTotal, noncustodialPayment, custodialPayment, combinedIncome, noncustodialShare, basePerChild, incomeTableIdx: incomeTableIdx >= 0 ? incomeTableIdx : INCOME_TABLE.length - 1, ageFactor: getAgeFactor(ageGroup), multiChildFactor };
-}
 
 function formatNumber(n: number): string {
   return n.toLocaleString('ko-KR');
@@ -99,17 +28,11 @@ const CHILD_COUNT_LABELS: Record<ChildCount, string> = {
   '3': '3명 이상',
 };
 
-const AGE_LABELS: Record<AgeGroup, string> = {
-  infant: '영유아 (0~6세)',
-  elementary: '초등 (7~12세)',
-  teen: '중고등 (13~18세)',
-};
-
 export default function ChildSupportPage() {
   const [childCount, setChildCount] = useState<ChildCount>('1');
   const [custodialIncome, setCustodialIncome] = useState('');
   const [noncustodialIncome, setNoncustodialIncome] = useState('');
-  const [ageGroup, setAgeGroup] = useState<AgeGroup>('elementary');
+  const [ageGroup, setAgeGroup] = useState<AgeGroup>('6-8');
   const [result, setResult] = useState<ChildSupportResult | null>(null);
   const [error, setError] = useState('');
   const [warning, setWarning] = useState('');
@@ -152,7 +75,12 @@ export default function ChildSupportPage() {
       setWarning('소득 합산이 3,000만원을 초과합니다. 입력 단위(만원)를 확인해주세요.');
     }
 
-    setResult(calculateChildSupport(childCount, ci, ni, ageGroup));
+    setResult(calculateChildSupport({
+      childCount,
+      custodialIncome: ci,
+      noncustodialIncome: ni,
+      ageGroup,
+    }));
   };
 
   return (
@@ -203,13 +131,13 @@ export default function ChildSupportPage() {
         <div className="mb-6">
           <label className="block text-sm text-slate-600 mb-2">자녀 나이대 <span className="text-red-500">*</span></label>
           <div className="flex flex-col gap-2">
-            {(Object.entries(AGE_LABELS) as [AgeGroup, string][]).map(([key, label]) => (
-              <label key={key} className="flex items-center gap-2 cursor-pointer">
+            {CHILD_SUPPORT_AGE_OPTIONS.map(({ value, label }) => (
+              <label key={value} className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="radio"
                   name="ageGroup"
-                  checked={ageGroup === key}
-                  onChange={() => setAgeGroup(key)}
+                  checked={ageGroup === value}
+                  onChange={() => setAgeGroup(value)}
                   className="accent-[#ec4899]"
                 />
                 <span className="text-sm text-slate-600">{label}</span>
@@ -273,11 +201,10 @@ export default function ChildSupportPage() {
           <div className="mb-4">
             <p className="text-sm text-slate-600 mb-2">산출 근거</p>
             <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
-{`합산소득: ${formatNumber(result.combinedIncome)}만원 → 1인당 기준: ${formatNumber(result.basePerChild)}원
-자녀수 배율: ×${result.multiChildFactor}
-나이 배율: ×${result.ageFactor}
+{`합산소득: ${formatNumber(result.combinedIncome)}만원 → 기준표 1인당: ${formatNumber(result.standardPerChild)}원
+자녀 수: ${result.childCountValue}명
 
-월 양육비 = ${formatNumber(result.basePerChild)} × ${result.multiChildFactor} × ${result.ageFactor} = ${formatNumber(result.monthlyTotal)}원
+월 양육비 참고 합계 = ${formatNumber(result.standardPerChild)} × ${result.childCountValue} = ${formatNumber(result.monthlyTotal)}원
 비양육자 부담 = ${formatNumber(result.monthlyTotal)} × ${(result.noncustodialShare * 100).toFixed(1)}% = ${formatNumber(result.noncustodialPayment)}원`}
             </pre>
           </div>
@@ -292,11 +219,11 @@ export default function ChildSupportPage() {
                 </tr>
               </thead>
               <tbody>
-                {INCOME_TABLE.map((row, i) => (
+                {CHILD_SUPPORT_INCOME_BRACKETS.map((row, i) => (
                   <tr key={i} className={`border-b border-slate-200/50 ${i === result.incomeTableIdx ? 'bg-[#ec4899]/10' : ''}`}>
                     <td className="py-2 text-slate-600">{row.label}</td>
                     <td className="py-2 text-right" style={{ color: i === result.incomeTableIdx ? category.color : '#9ca3af' }}>
-                      {formatNumber(row.amount)}원
+                      {formatNumber(getStandardChildSupport(ageGroup, row.min))}원
                     </td>
                   </tr>
                 ))}
@@ -306,10 +233,11 @@ export default function ChildSupportPage() {
 
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs text-gray-500">
-              법적 근거: 민법 제837조, 가사소송법 제2조, 서울가정법원 양육비산정기준표(2025 개정)
+              법적 근거: 민법 제837조, 가사소송법 제2조, 서울가정법원 양육비산정기준표(2021년 공표·2022. 3. 1. 시행)
             </p>
             <p className="text-xs text-gray-500 mt-1">
-              본 계산기는 참고용이며, 실제 법원 결정과 다를 수 있습니다.
+              기준표는 양육자녀 2인 4인가구의 자녀 1인 평균입니다. 자녀 수·거주지역·재산·치료비·교육비 등 가산·감산 요소는 법원이 별도로 판단하므로, 본 계산기는 같은 연령 자녀의 단순 합계만 참고로 표시합니다.{' '}
+              <a href={CHILD_SUPPORT_SOURCE_URL} target="_blank" rel="noopener noreferrer" className="underline">서울가정법원 공식 원문</a>
             </p>
           </div>
         </div>
