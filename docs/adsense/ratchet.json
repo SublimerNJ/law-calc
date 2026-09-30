@@ -1,9 +1,9 @@
 {
-  "sourceNormalizedRepeats": 42,
+  "sourceNormalizedRepeats": 39,
   "sourceExamplesWithoutDigits": 89,
-  "sourceMarkerHits": 198,
+  "sourceMarkerHits": 194,
   "sourceOtherFailures": 0,
-  "localNormalizedRepeats": 68,
+  "localNormalizedRepeats": 65,
   "liveNormalizedRepeats": 68,
-  "updatedAt": "2026-09-29"
+  "updatedAt": "2026-09-30"
 }
