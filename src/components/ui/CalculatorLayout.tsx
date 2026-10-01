@@ -13,7 +13,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 
 export default function CalculatorLayout({ tool, category, children }: CalculatorLayoutProps) {
   const quality = TOOL_QUALITY[tool.id];
-  const isChecklist = tool.id === 'defamation';
+  const isChecklist = tool.id === 'defamation' || tool.id === 'alimony';
   const reviewer = 'law-calc.kr 편집팀 (작성·자료 확인)';
   const reviewedAt = quality?.reviewedAt || tool.updatedAt || '2026-08-19';
 
