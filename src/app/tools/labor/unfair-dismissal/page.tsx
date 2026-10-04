@@ -1,283 +1,234 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import Link from 'next/link';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
-import { ActionInsight } from '@/components/ui/ActionInsight';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+import {
+  calculateUnfairDismissalWage,
+  type UnfairDismissalWageResult,
+} from '@/lib/calc/unfair-dismissal';
 
-const tool = TOOLS.find(t => t.id === 'unfair-dismissal')!;
-const category = CATEGORIES.find(c => c.id === 'labor')!;
+const tool = TOOLS.find((item) => item.id === 'unfair-dismissal')!;
+const category = CATEGORIES.find((item) => item.id === 'labor')!;
+const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 
-function formatNumber(n: number): string {
-  return n.toLocaleString('ko-KR');
+function formatNumber(value: number): string {
+  return value.toLocaleString('ko-KR');
 }
 
-interface Result {
-  dismissalDays: number;
-  dailyAvgWage: number;
-  grossCompensation: number;
-  interimDeduction: number;
-  netCompensation: number;
+function parseMoney(value: string): number {
+  return parseInt(value.replace(/[^0-9]/g, ''), 10) || 0;
+}
+
+function calculateCalendarDays(startDate: string, endDate: string): number {
+  const start = new Date(`${startDate}T00:00:00`);
+  const end = new Date(`${endDate}T00:00:00`);
+  return Math.round((end.getTime() - start.getTime()) / MILLISECONDS_PER_DAY);
 }
 
 export default function UnfairDismissalPage() {
-  const [monthlyWage, setMonthlyWage] = useState('');
-  const [useDate, setUseDate] = useState(true);
+  const [dailyAverageWage, setDailyAverageWage] = useState('');
   const [dismissalDate, setDismissalDate] = useState('');
-  const [reinstatementDate, setReinstatementDate] = useState('');
-  const [dismissalMonths, setDismissalMonths] = useState('');
-  const [interimIncome, setInterimIncome] = useState('');
-  const [result, setResult] = useState<Result | null>(null);
+  const [calculationEndDate, setCalculationEndDate] = useState('');
+  const [result, setResult] = useState<UnfairDismissalWageResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [warning, setWarning] = useState<string | null>(null);
 
   const handleCalculate = () => {
     setError(null);
-    setWarning(null);
 
-    const wage = parseInt(monthlyWage.replace(/,/g, ''), 10);
-    if (!wage || wage <= 0) {
-      setError('퇴직 전 3개월 평균 월임금을 입력해주세요.');
+    const dailyWage = parseMoney(dailyAverageWage);
+    if (!dailyWage) {
+      setError('계산에 사용할 1일 기준 임금을 입력해주세요.');
       setResult(null);
       return;
     }
 
-    if (wage > 100_000_000) {
-      setWarning('월임금이 1억원을 초과합니다. 입력값을 확인해주세요.');
+    if (!dismissalDate || !calculationEndDate) {
+      setError('해고일과 계산 종료일을 모두 입력해주세요.');
+      setResult(null);
+      return;
     }
 
-    let days: number;
-    if (useDate) {
-      if (!dismissalDate || !reinstatementDate) {
-        setError('해고 시작일과 판정/복직 예상일을 모두 입력해주세요.');
-        setResult(null);
-        return;
-      }
-      const start = new Date(dismissalDate);
-      const end = new Date(reinstatementDate);
-      days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-      if (days <= 0) {
-        setError('판정/복직 예상일이 해고 시작일보다 앞설 수 없습니다.');
-        setResult(null);
-        return;
-      }
-    } else {
-      const months = parseFloat(dismissalMonths);
-      if (!months || months <= 0) {
-        setError('해고 경과 개월수를 입력해주세요.');
-        setResult(null);
-        return;
-      }
-      days = Math.round(months * 30);
+    const dismissalDays = calculateCalendarDays(dismissalDate, calculationEndDate);
+    if (dismissalDays <= 0) {
+      setError('계산 종료일은 해고일보다 뒤인 날짜를 입력해주세요.');
+      setResult(null);
+      return;
     }
 
-    const dailyAvgWage = Math.floor((wage * 12) / 365);
-    const grossCompensation = dailyAvgWage * days;
-    const interim = parseInt((interimIncome || '0').replace(/,/g, ''), 10) || 0;
-    const netCompensation = Math.max(0, grossCompensation - interim);
-
-    setResult({
-      dismissalDays: days,
-      dailyAvgWage,
-      grossCompensation,
-      interimDeduction: interim,
-      netCompensation,
-    });
+    setResult(
+      calculateUnfairDismissalWage({
+        dailyAverageWage: dailyWage,
+        dismissalDays,
+      }),
+    );
   };
 
-  const handleNumberChange = (setter: (v: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(e.target.value.replace(/[^0-9]/g, ''));
-  };
+  const handleMoneyChange = (setter: (value: string) => void) =>
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setter(event.target.value.replace(/[^0-9]/g, ''));
+    };
 
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-2">임금상당액 입력</h2>
+        <p className="text-sm text-slate-600 leading-relaxed mb-4">
+          근로기준법 제30조의 해고기간 임금상당액을, 입력한 1일 기준 임금과 기간으로 계산합니다.
+          위로금·추가 금전보상·중간수입 공제·해고예고수당·퇴직금은 계산하지 않습니다.
+        </p>
 
-        {/* Monthly wage */}
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">퇴직 전 3개월 평균 월임금 (원) *</label>
+          <label className="block text-sm text-slate-600 mb-2" htmlFor="unfair-dismissal-daily-wage">
+            1일 기준 임금 (원) *
+          </label>
           <input
+            id="unfair-dismissal-daily-wage"
             type="text"
             inputMode="numeric"
-            value={monthlyWage ? parseInt(monthlyWage).toLocaleString('ko-KR') : ''}
-            onChange={handleNumberChange(setMonthlyWage)}
-            placeholder="예: 3,000,000"
+            value={dailyAverageWage ? formatNumber(parseMoney(dailyAverageWage)) : ''}
+            onChange={handleMoneyChange(setDailyAverageWage)}
+            placeholder="예: 100,000"
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
           />
+          <p className="text-xs text-gray-500 mt-2">
+            근로기준법상 평균임금은 사유 발생 전 3개월 임금 총액을 그 기간의 총일수로 나누어 산정합니다.
+            사건에 적용할 1일 기준 임금을 확인해 입력하세요.
+          </p>
         </div>
 
-        {/* Date or months toggle */}
-        <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">해고기간 입력 방식</label>
-          <div className="flex gap-2">
-            <button aria-label="Action button"
-              onClick={() => setUseDate(true)}
-              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-                useDate ? 'seg-on' : 'seg-off'
-              }`}
-            >
-              날짜 입력
-            </button>
-            <button aria-label="Action button"
-              onClick={() => setUseDate(false)}
-              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-                !useDate ? 'seg-on' : 'seg-off'
-              }`}
-            >
-              개월수 입력
-            </button>
-          </div>
-        </div>
-
-        {useDate ? (
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <label className="block text-sm text-slate-600 mb-2">해고 시작일 *</label>
-              <input
-                type="date"
-                value={dismissalDate}
-                onChange={e => setDismissalDate(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
-              />
-            </div>
-            <div>
-              <label className="block text-sm text-slate-600 mb-2">판정/복직 예상일 *</label>
-              <input
-                type="date"
-                value={reinstatementDate}
-                onChange={e => setReinstatementDate(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
-              />
-            </div>
-          </div>
-        ) : (
-          <div className="mb-4">
-            <label className="block text-sm text-slate-600 mb-2">해고 경과 개월수 *</label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div>
+            <label className="block text-sm text-slate-600 mb-2" htmlFor="unfair-dismissal-start-date">
+              해고일 *
+            </label>
             <input
-              type="text"
-              inputMode="numeric"
-              value={dismissalMonths}
-              onChange={e => setDismissalMonths(e.target.value.replace(/[^0-9.]/g, ''))}
-              placeholder="예: 6"
+              id="unfair-dismissal-start-date"
+              type="date"
+              value={dismissalDate}
+              onChange={(event) => setDismissalDate(event.target.value)}
               className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
             />
           </div>
-        )}
-
-        {/* Interim income (optional) */}
-        <div className="mb-6">
-          <label className="block text-sm text-slate-600 mb-2">중간수입 (다른 직장 수입, 선택사항)</label>
-          <input
-            type="text"
-            inputMode="numeric"
-            value={interimIncome ? parseInt(interimIncome).toLocaleString('ko-KR') : ''}
-            onChange={handleNumberChange(setInterimIncome)}
-            placeholder="예: 5,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
-          />
+          <div>
+            <label className="block text-sm text-slate-600 mb-2" htmlFor="unfair-dismissal-end-date">
+              계산 종료일(판정일·복직일 등) *
+            </label>
+            <input
+              id="unfair-dismissal-end-date"
+              type="date"
+              value={calculationEndDate}
+              onChange={(event) => setCalculationEndDate(event.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
+            />
+          </div>
         </div>
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
-        {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button aria-label="Action button"
+        <button
+          type="button"
           onClick={handleCalculate}
           className="w-full bg-teal-700 hover:bg-teal-900 text-white font-semibold py-3 rounded-lg transition-colors"
         >
-          계산하기
+          임금상당액 계산하기
         </button>
       </div>
 
       {result && (
-        <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+        <section className="premium-card p-6" aria-live="polite">
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">임금상당액 계산 결과</h2>
 
           <div className="bg-white rounded-xl p-5 mb-4 text-center glassmorphism glass-panel">
-            <p className="text-sm text-slate-600 mb-1">보상금 예상액</p>
-            <p className="text-3xl font-bold text-[#f59e0b]">{formatNumber(result.netCompensation)}원</p>
-            {result.netCompensation === 0 && (
-              <p className="text-sm text-yellow-500 mt-2">중간수입이 임금상당액 이상으로 보상금이 발생하지 않습니다.</p>
-            )}
+            <p className="text-sm text-slate-600 mb-1">입력 기간 임금상당액</p>
+            <p className="text-3xl font-bold text-[#0f766e]">{formatNumber(result.wageEquivalent)}원</p>
           </div>
 
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600">해고기간</span>
+              <span className="text-slate-600">1일 기준 임금</span>
+              <span className="text-slate-900">{formatNumber(result.dailyAverageWage)}원</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-600">입력 해고기간</span>
               <span className="text-slate-900">{formatNumber(result.dismissalDays)}일</span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-slate-600">1일 평균임금</span>
-              <span className="text-slate-900">{formatNumber(result.dailyAvgWage)}원</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-slate-600">임금상당액 (총액)</span>
-              <span className="text-slate-900">{formatNumber(result.grossCompensation)}원</span>
-            </div>
-            {result.interimDeduction > 0 && (
-              <div className="flex justify-between text-sm">
-                <span className="text-slate-600">중간수입 공제액</span>
-                <span className="text-red-600">-{formatNumber(result.interimDeduction)}원</span>
-              </div>
-            )}
           </div>
 
           <div className="mt-6 pt-4 border-t border-slate-200">
             <p className="text-sm font-semibold text-slate-600 mb-2">계산식</p>
             <pre className="font-mono text-xs text-slate-600 bg-white rounded-lg p-3 whitespace-pre-wrap glassmorphism glass-panel">
-{`1일 평균임금: ${formatNumber(result.dailyAvgWage)}원
-× 미복직일수: ${formatNumber(result.dismissalDays)}일
-= 임금상당액: ${formatNumber(result.grossCompensation)}원
-- 중간수입: ${formatNumber(result.interimDeduction)}원
-= 보상금 예상액: ${formatNumber(result.netCompensation)}원`}
+{`1일 기준 임금: ${formatNumber(result.dailyAverageWage)}원
+× 입력 해고기간: ${formatNumber(result.dismissalDays)}일
+= 입력 기간 임금상당액: ${formatNumber(result.wageEquivalent)}원`}
             </pre>
           </div>
 
           <div className="mt-4 p-4 bg-slate-100/50 rounded-lg glassmorphism glass-panel">
             <p className="text-xs text-slate-600 leading-relaxed">
-              <strong className="text-slate-600">법적 근거:</strong> 근로기준법 제28조(부당해고 구제신청, 3개월 이내), 제30조(구제명령 등), 제33조(이행강제금)
+              <strong className="text-slate-600">법적 근거:</strong> 근로기준법 제2조 제1항 제6호(평균임금),
+              제28조(부당해고등의 구제신청), 제30조 제3항·제4항(임금 상당액에 해당하는 금품의 지급명령).
             </p>
           </div>
-        </div>
+        </section>
       )}
 
-      {result !== null && (
-        <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">부당해고 구제 신청 방법</h2>
-          <div className="space-y-3">
-            {[
-              { step: '1', title: '구제신청서 작성', desc: '해고일로부터 3개월 이내에 지방노동위원회에 신청 (근로기준법 제28조, 상시 5인 이상 사업장 적용)' },
-              { step: '2', title: '필요 서류', desc: '근로계약서, 급여명세서, 해고통보서, 재직증명서 등' },
-              { step: '3', title: '심판 진행', desc: '신청 후 60일 이내 판정 (조사→심문→판정)' },
-              { step: '4', title: '판정 결과', desc: '복직명령 또는 금전보상명령 (사용자 불이행 시 이행강제금)' },
-              { step: '5', title: '불복 시', desc: '중앙노동위원회 재심 → 행정소송 가능' },
-            ].map(item => (
-              <div key={item.step} className="flex gap-3 items-start">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: category.color, color: '#fff' }}>
-                  {item.step}
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-slate-600">{item.title}</p>
-                  <p className="text-xs text-gray-500">{item.desc}</p>
-                </div>
+      <section className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">부당해고 구제신청 확인사항</h2>
+        <div className="space-y-3">
+          {[
+            {
+              step: '1',
+              title: '신청 기간',
+              desc: '부당해고가 있었던 날부터 3개월 이내에 관할 지방노동위원회에 구제를 신청해야 합니다(근로기준법 제28조).',
+            },
+            {
+              step: '2',
+              title: '서면 통지',
+              desc: '해고사유와 해고시기를 서면으로 통지했는지 확인하세요(근로기준법 제27조).',
+            },
+            {
+              step: '3',
+              title: '자료 준비',
+              desc: '근로계약서, 임금명세서, 해고 통지서, 출퇴근·업무 자료를 해고일과 임금 항목별로 보전하세요.',
+            },
+            {
+              step: '4',
+              title: '금전보상 신청',
+              desc: '원직복직을 원하지 않는 경우 금전보상명령을 신청할 수 있지만, 추가 금품의 액수는 사건 자료와 노동위원회 판단에 따라 달라집니다.',
+            },
+          ].map((item) => (
+            <div key={item.step} className="flex gap-3 items-start">
+              <span
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+                style={{ backgroundColor: category.color, color: '#fff' }}
+              >
+                {item.step}
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-slate-600">{item.title}</p>
+                <p className="text-xs text-gray-500">{item.desc}</p>
               </div>
-            ))}
-          </div>
-          <p className="text-xs text-gray-500 mt-4">문의: 고용노동부 (국번 없이 1350) | 노동위원회 (www.nlrc.go.kr)</p>
+            </div>
+          ))}
         </div>
-      )}
-
-      {result !== null && (
-        <ActionInsight calculatorId="unfair-dismissal" amount={result.grossCompensation} />
-      )}
+        <p className="text-xs text-gray-500 mt-4">
+          중앙노동위원회 공식 안내: 노동위원회 온라인사건신청에서 절차와 서식을 확인하세요.
+        </p>
+      </section>
 
       <div className="premium-card p-4 mt-4">
         <p className="text-sm text-slate-600">
-          <strong className="text-slate-900">해고예고를 받지 못하셨나요?</strong> 해고예고수당(30일분 통상임금)은 부당해고 보상금과 별개입니다.
-          해고 30일 전 예고 없이 해고된 경우 해고예고수당도 청구할 수 있습니다.
+          <strong className="text-slate-900">해고예고수당을 확인하려면?</strong> 해고예고수당은 임금상당액과
+          별도 쟁점입니다. 해고 30일 전 예고 여부와 통상임금 자료를 따로 확인하세요.
         </p>
-        <Link aria-label="Navigation link" href="/tools/labor/dismissal-notice" className="mt-2 inline-block text-sm font-medium hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]" style={{ color: category.color }}>
+        <Link
+          aria-label="Navigation link"
+          href="/tools/labor/dismissal-notice"
+          className="mt-2 inline-block text-sm font-medium hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]"
+          style={{ color: category.color }}
+        >
           → 해고예고수당 계산기로 이동
         </Link>
       </div>

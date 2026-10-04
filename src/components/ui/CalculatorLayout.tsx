@@ -14,6 +14,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 export default function CalculatorLayout({ tool, category, children }: CalculatorLayoutProps) {
   const quality = TOOL_QUALITY[tool.id];
   const isChecklist = tool.id === 'defamation' || tool.id === 'alimony' || tool.id === 'bail';
+  const isWageEquivalent = tool.id === 'unfair-dismissal';
   const reviewer = 'law-calc.kr 편집팀 (작성·자료 확인)';
   const reviewedAt = quality?.reviewedAt || tool.updatedAt || '2026-08-19';
 
@@ -26,19 +27,25 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
       ? '보석 요건 확인은 구속·청구·조건 관련 자료를 정리하기 위한 참고 자료입니다. 보석 청구 전에는 담당 변호인과 사실관계를 점검하세요.'
       : isChecklist
         ? '점검표는 사실과 증거를 정리하기 위한 참고 자료입니다. 청구·신고·소송 전에는 자격 있는 전문가와 사실관계를 점검하세요.'
-        : '계산 결과는 1차 추정치입니다. 청구·신고·소송 전에는 자격 있는 전문가와 사실관계를 점검하세요.',
+        : isWageEquivalent
+          ? '이 결과는 입력한 기준 임금과 기간으로 계산한 임금상당액 참고값입니다. 구제신청 전에는 실제 임금 자료와 해고기간을 점검하세요.'
+          : '계산 결과는 1차 추정치입니다. 청구·신고·소송 전에는 자격 있는 전문가와 사실관계를 점검하세요.',
   ];
 
   const pitfalls = [
     tool.id === 'bail'
-      ? '보석 요건 확인 표시를 개별 사건의 허가·담보·석방 결론으로 단정하는 경우'
-      : isChecklist
-        ? `${tool.name} 확인 표시를 개별 사건의 허가·책임·처분 결론으로 단정하는 경우`
+    ? '보석 요건 확인 표시를 개별 사건의 허가·담보·석방 결론으로 단정하는 경우'
+    : isChecklist
+      ? `${tool.name} 확인 표시를 개별 사건의 허가·책임·처분 결론으로 단정하는 경우`
+      : isWageEquivalent
+        ? `${tool.name} 결과를 노동위원회가 명할 금품의 확정액으로 단정하는 경우`
         : `${tool.name} 결과를 개별 사건의 확정 금액·확정 처분으로 단정하는 경우`,
     tool.id === 'bail'
-      ? '보석허가결정문과 사건 기록을 확인하지 않고 일반적인 요건만으로 결론을 내리는 경우'
-      : isChecklist
-        ? '게시물 원문·전파 범위·실제 피해를 확인하지 않고 선택값만으로 결론을 내리는 경우'
+    ? '보석허가결정문과 사건 기록을 확인하지 않고 일반적인 요건만으로 결론을 내리는 경우'
+    : isChecklist
+      ? '게시물 원문·전파 범위·실제 피해를 확인하지 않고 선택값만으로 결론을 내리는 경우'
+      : isWageEquivalent
+        ? '1일 기준 임금·해고일·계산 종료일을 실제 임금 자료와 다르게 넣는 경우'
         : '입력 기준일·기간·공제 요건을 실제 사실관계와 다르게 넣는 경우',
     tool.faqItems?.[0]
       ? `FAQ의 일반 설명("${tool.faqItems[0].question}")을 본인 사안의 결론으로 그대로 적용하는 경우`
@@ -298,6 +305,11 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
                     <>
                       이 점검표는 <strong className="text-zinc-800">사건 기록을 정리하기 위한 참고 자료</strong>입니다. 실제
                       허가·책임·절차 결과는 사실관계와 법원 판단에 따라 달라질 수 있습니다.
+                    </>
+                  ) : isWageEquivalent ? (
+                    <>
+                      이 계산은 <strong className="text-zinc-800">입력한 1일 기준 임금과 기간으로 산출한 참고값</strong>입니다. 실제
+                      임금상당액과 금전보상명령의 내용은 임금 자료, 해고기간과 노동위원회 판단에 따라 달라질 수 있습니다.
                     </>
                   ) : (
                     <>

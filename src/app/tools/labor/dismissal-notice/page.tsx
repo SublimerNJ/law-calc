@@ -204,11 +204,11 @@ export default function DismissalNoticePage() {
 
       <div className="premium-card p-4 mt-4">
         <p className="text-sm text-slate-600">
-          <strong className="text-slate-900">부당해고를 당하셨나요?</strong> 해고예고수당과 부당해고 보상금은 다릅니다.
-          부당해고 시 받을 수 있는 보상금은 별도 계산이 필요합니다.
+          <strong className="text-slate-900">부당해고를 당하셨나요?</strong> 해고예고수당과 부당해고 기간의 임금상당액은 별개입니다.
+          부당해고 기간의 임금상당액은 별도 계산이 필요합니다.
         </p>
         <Link aria-label="Navigation link" href="/tools/labor/unfair-dismissal" className="mt-2 inline-block text-sm font-medium hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]" style={{ color: category.color }}>
-          → 부당해고 보상금 계산기로 이동
+          → 부당해고 임금상당액 계산기로 이동
         </Link>
       </div>
     </CalculatorLayout>
