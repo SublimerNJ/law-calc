@@ -13,7 +13,7 @@
 - [x] A2-2. alimony: 근거 없는 하드코딩 위자료 금액표·예상 범위 제거, 공식 판례의 종합 고려 원칙에 따른 판단요소·증거 점검표로 전환 (commit be59429)
 - [x] A2-3. bail: 보석금 금액표 근거 확인. 근거 없으면 금액 출력 제거, 도구 이름·설명을 '보석 요건 확인' 성격으로 변경 (commit faf809e)
 - [x] A2-4. medical-malpractice: 금액 산출 근거 분리(재산상 손해 입력 합계와 입력 책임비율 반영액만 계산, 위자료·개호비·장해 정액 추정 제거) (commit 237ba24)
-- [ ] A2-5. unfair-dismissal: 임금상당액(산식 있음)만 계산, 근거 없는 보상 추정 제거
+- [x] A2-5. unfair-dismissal: 임금상당액(산식 있음)만 계산, 근거 없는 보상 추정 제거 (commit 1c9ee88)
 - [ ] A2-6. accident-settlement: 자동차보험 약관 기준 등 공식 기준 있는 항목만 계산, 출처 표기 (GSC 수요 2위, 삭제 금지)
 - [ ] A2-7. damages-general: 산식 있는 항목만 계산 (GSC 수요 3위, 삭제 금지)
 - [ ] A3. 운영 표기 정리(실명·도메인 메일 없음): "편집팀" → 실제 체계에 맞게 "개인 운영"으로 통일(about, CalculatorLayout 바이라인, GuideShell, JSON-LD author/publisher). 법률 자격 없음·정정 절차 유지
