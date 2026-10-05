@@ -4,15 +4,15 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 const PATH = '/tools/traffic/accident-settlement';
 
 export const metadata: Metadata = {
-  title: '교통사고 합의금 계산기 - 무료 계산',
-  description: '교통사고처리특례법 및 자동차손해배상보장법에 따라 과실비율·치료비·위자료·일실수입·후유장해를 종합해 교통사고 합의금 예상액을 계산합니다. 대법원 손해배상 산정 기준을 반영합니다.',
-  keywords: ['교통사고 합의금', '교통사고 위자료', '과실비율 계산', '교통사고 보상금', '자동차보험 합의', '치료비 배상', '교통사고처리특례법'],
+  title: '교통사고 합의금 계산기 - 대인배상Ⅰ 한도 참고',
+  description: '자동차손해배상 보장법 시행령의 상해·후유장애급별 책임보험금 한도와 확인된 인적 손해액을 비교합니다. 사건별 합의금·위자료·과실비율은 계산하지 않습니다.',
+  keywords: ['교통사고 합의금', '자동차보험 대인배상Ⅰ', '교통사고 상해급수', '후유장애급수', '책임보험금 한도', '자동차손해배상 보장법 시행령'],
   alternates: {
     canonical: `${BASE_URL}${PATH}`,
   },
   openGraph: {
-    title: '교통사고 합의금 계산기 | law-calc.kr',
-    description: '교통사고처리특례법 및 자동차손해배상보장법에 따라 과실비율·치료비·위자료·일실수입·후유장해를 종합해 교통사고 합의금 예상액을 계산합니다. 대법원 손해배상 산정 기준을 반영합니다.',
+    title: '교통사고 합의금 계산기 | 대인배상Ⅰ 한도 참고 | law-calc.kr',
+    description: '자동차손해배상 보장법 시행령의 상해·후유장애급별 책임보험금 한도와 확인된 인적 손해액을 비교합니다. 사건별 합의금·위자료·과실비율은 계산하지 않습니다.',
     type: 'website',
     url: `${BASE_URL}${PATH}`,
     siteName: 'law-calc.kr',
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '교통사고 합의금 계산기 | law-calc.kr',
-    description: '교통사고처리특례법 및 자동차손해배상보장법에 따라 과실비율·치료비·위자료·일실수입·후유장해를 종합해 교통사고 합의금 예상액을 계산합니다. 대법원 손해배상 산정 기준을 반영합니다.',
+    title: '교통사고 합의금 계산기 | 대인배상Ⅰ 한도 참고 | law-calc.kr',
+    description: '자동차손해배상 보장법 시행령의 상해·후유장애급별 책임보험금 한도와 확인된 인적 손해액을 비교합니다. 사건별 합의금·위자료·과실비율은 계산하지 않습니다.',
   },
   robots: {
     index: true,
