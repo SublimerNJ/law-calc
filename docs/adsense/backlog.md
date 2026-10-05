@@ -14,7 +14,7 @@
 - [x] A2-3. bail: 보석금 금액표 근거 확인. 근거 없으면 금액 출력 제거, 도구 이름·설명을 '보석 요건 확인' 성격으로 변경 (commit faf809e)
 - [x] A2-4. medical-malpractice: 금액 산출 근거 분리(재산상 손해 입력 합계와 입력 책임비율 반영액만 계산, 위자료·개호비·장해 정액 추정 제거) (commit 237ba24)
 - [x] A2-5. unfair-dismissal: 임금상당액(산식 있음)만 계산, 근거 없는 보상 추정 제거 (commit 1c9ee88)
-- [ ] A2-6. accident-settlement: 자동차보험 약관 기준 등 공식 기준 있는 항목만 계산, 출처 표기 (GSC 수요 2위, 삭제 금지)
+- [x] A2-6. accident-settlement: 자동차손해배상 보장법 시행령 별표 1·2의 상해·후유장애급별 책임보험금 한도와 확인된 인적 손해액만 비교하고, 사건별 위자료·일실수입·향후치료비·과실비율 추정을 제거. 공식 출처 표기 (GSC 수요 2위, 삭제 금지; commit 8d279c7)
 - [ ] A2-7. damages-general: 산식 있는 항목만 계산 (GSC 수요 3위, 삭제 금지)
 - [ ] A3. 운영 표기 정리(실명·도메인 메일 없음): "편집팀" → 실제 체계에 맞게 "개인 운영"으로 통일(about, CalculatorLayout 바이라인, GuideShell, JSON-LD author/publisher). 법률 자격 없음·정정 절차 유지
 
