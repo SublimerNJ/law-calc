@@ -16,6 +16,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
   const isChecklist = tool.id === 'defamation' || tool.id === 'alimony' || tool.id === 'bail';
   const isWageEquivalent = tool.id === 'unfair-dismissal';
   const isInsuranceLimit = tool.id === 'accident-settlement';
+  const isDocumentedDamage = tool.id === 'damages-general';
   const reviewer = 'law-calc.kr 편집팀 (작성·자료 확인)';
   const reviewedAt = quality?.reviewedAt || tool.updatedAt || '2026-08-19';
 
@@ -32,7 +33,9 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
         ? '점검표는 사실과 증거를 정리하기 위한 참고 자료입니다. 청구·신고·소송 전에는 자격 있는 전문가와 사실관계를 점검하세요.'
         : isWageEquivalent
           ? '이 결과는 입력한 기준 임금과 기간으로 계산한 임금상당액 참고값입니다. 구제신청 전에는 실제 임금 자료와 해고기간을 점검하세요.'
-          : '계산 결과는 1차 추정치입니다. 청구·신고·소송 전에는 자격 있는 전문가와 사실관계를 점검하세요.',
+          : isDocumentedDamage
+            ? '이 결과는 자료로 확인된 재산상 손해액에 입력 과실비율을 적용한 참고값입니다. 증빙과 과실비율 판단 자료를 다시 대조하세요.'
+            : '계산 결과는 1차 추정치입니다. 청구·신고·소송 전에는 자격 있는 전문가와 사실관계를 점검하세요.',
   ];
 
   const pitfalls = [
@@ -44,7 +47,9 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
       ? `${tool.name} 확인 표시를 개별 사건의 허가·책임·처분 결론으로 단정하는 경우`
       : isWageEquivalent
         ? `${tool.name} 결과를 노동위원회가 명할 금품의 확정액으로 단정하는 경우`
-        : `${tool.name} 결과를 개별 사건의 확정 금액·확정 처분으로 단정하는 경우`,
+        : isDocumentedDamage
+          ? `${tool.name} 결과를 법원·조정기관이 인정할 손해액의 확정액으로 단정하는 경우`
+          : `${tool.name} 결과를 개별 사건의 확정 금액·확정 처분으로 단정하는 경우`,
     tool.id === 'bail'
     ? '보석허가결정문과 사건 기록을 확인하지 않고 일반적인 요건만으로 결론을 내리는 경우'
     : isInsuranceLimit
@@ -53,7 +58,9 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
         ? '게시물 원문·전파 범위·실제 피해를 확인하지 않고 선택값만으로 결론을 내리는 경우'
         : isWageEquivalent
         ? '1일 기준 임금·해고일·계산 종료일을 실제 임금 자료와 다르게 넣는 경우'
-        : '입력 기준일·기간·공제 요건을 실제 사실관계와 다르게 넣는 경우',
+        : isDocumentedDamage
+          ? '증빙되지 않은 비용을 입력하거나 가정한 과실비율을 법원·조정기관의 판단으로 대신하는 경우'
+          : '입력 기준일·기간·공제 요건을 실제 사실관계와 다르게 넣는 경우',
     tool.faqItems?.[0]
       ? `FAQ의 일반 설명("${tool.faqItems[0].question}")을 본인 사안의 결론으로 그대로 적용하는 경우`
       : '일반적인 안내 문구를 본인 사안의 결론으로 그대로 적용하는 경우',

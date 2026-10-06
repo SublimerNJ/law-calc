@@ -1,231 +1,209 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import CalculatorLayout from '@/components/ui/CalculatorLayout';
-import { ActionInsight } from '@/components/ui/ActionInsight';
-import { TOOLS, CATEGORIES } from '@/lib/tools-data';
+import { CATEGORIES, TOOLS } from '@/lib/tools-data';
+import {
+  calculateGeneralDamages,
+  type GeneralDamagesResult,
+} from '@/lib/calc/damages-general';
 
-const tool = TOOLS.find(t => t.id === 'damages-general')!;
-const category = CATEGORIES.find(c => c.id === 'damages')!;
+const tool = TOOLS.find((item) => item.id === 'damages-general')!;
+const category = CATEGORIES.find((item) => item.id === 'damages')!;
 
-function formatNumber(n: number): string {
-  return n.toLocaleString('ko-KR');
+function formatNumber(value: number): string {
+  return value.toLocaleString('ko-KR');
+}
+
+function parseMoney(value: string): number {
+  return parseInt(value.replace(/[^0-9]/g, ''), 10) || 0;
 }
 
 export default function DamagesGeneralPage() {
-  const [propertyDamage, setPropertyDamage] = useState('');
+  const [documentedDamage, setDocumentedDamage] = useState('');
   const [faultRatio, setFaultRatio] = useState('');
-  const [includeConsolation, setIncludeConsolation] = useState(false);
-  const [consolationType, setConsolationType] = useState<'death' | 'severe' | 'custom'>('severe');
-  const [customConsolation, setCustomConsolation] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
-  const [result, setResult] = useState<{
-    adjustedProperty: number;
-    consolation: number;
-    total: number;
-  } | null>(null);
-
-  const getConsolationBase = (): number => {
-    if (consolationType === 'death') return 100_000_000;
-    if (consolationType === 'severe') return 30_000_000;
-    return parseInt(customConsolation.replace(/[^0-9]/g, ''), 10) || 0;
-  };
+  const [result, setResult] = useState<GeneralDamagesResult | null>(null);
 
   const handleCalculate = () => {
     setError(null);
     setWarning(null);
-    const property = parseInt(propertyDamage.replace(/[^0-9]/g, ''), 10) || 0;
-    const fault = parseFloat(faultRatio) || 0;
 
-    // INPUT-02: 재산손해액 필수
-    if (!propertyDamage || property <= 0) {
-      setError('재산상 손해액을 입력해주세요.');
+    const damage = parseMoney(documentedDamage);
+    const fault = Number(faultRatio || 0);
+
+    if (!documentedDamage.trim() || damage <= 0) {
+      setError('자료로 확인된 재산상 손해액을 입력해주세요.');
       setResult(null);
       return;
     }
-    // INPUT-03: 100억 초과 경고
-    if (property > 10_000_000_000) {
-      setWarning('재산손해액이 100억원을 초과합니다. 입력값을 확인해주세요.');
-    }
-    // 과실비율 범위 검증
-    if (fault < 0 || fault > 100) {
-      setError('과실비율은 0~100 사이 숫자를 입력해주세요.');
+    if (!Number.isFinite(fault) || fault < 0 || fault > 100) {
+      setError('입력 과실비율은 0~100 사이 숫자여야 합니다.');
       setResult(null);
       return;
     }
-
-    const adjustedProperty = Math.floor(property * (1 - fault / 100));
-    let consolation = 0;
-    if (includeConsolation) {
-      consolation = Math.floor(getConsolationBase() * (1 - fault / 100));
+    if (damage > 10_000_000_000) {
+      setWarning('입력 손해액이 100억원을 초과합니다. 원본 자료와 입력값을 확인해주세요.');
     }
-    const total = adjustedProperty + consolation;
 
-    setResult({ adjustedProperty, consolation, total });
+    setResult(
+      calculateGeneralDamages({
+        documentedDamage: damage,
+        faultRatio: fault,
+      }),
+    );
   };
 
-  const handleNumberChange = (setter: (v: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(e.target.value.replace(/[^0-9]/g, ''));
+  const handleMoneyChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setDocumentedDamage(event.target.value.replace(/[^0-9]/g, ''));
   };
 
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 정보 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-2">확인된 손해 입력</h2>
+        <p className="text-sm text-slate-600 leading-relaxed mb-4">
+          영수증·수리비 명세서·소득자료 등으로 확인된 재산상 손해액에 입력한 과실비율만 적용합니다.
+          위자료·개호비·장해 등 사건별 판단이 필요한 항목은 산출하지 않습니다.
+        </p>
 
         <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">재산상 손해액 (치료비 + 일실이익 + 기타, 원) *</label>
+          <label className="block text-sm text-slate-600 mb-2" htmlFor="damages-general-documented-damage">
+            확인된 재산상 손해액 (치료비·수리비·일실이익 등, 원) *
+          </label>
           <input
+            id="damages-general-documented-damage"
             type="text"
             inputMode="numeric"
-            value={propertyDamage ? parseInt(propertyDamage).toLocaleString('ko-KR') : ''}
-            onChange={handleNumberChange(setPropertyDamage)}
+            value={documentedDamage ? formatNumber(parseMoney(documentedDamage)) : ''}
+            onChange={handleMoneyChange}
             placeholder="예: 10,000,000"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none glassmorphism glass-panel"
           />
-          {propertyDamage && (
-            <p className="text-xs text-gray-500 mt-1">{parseInt(propertyDamage).toLocaleString('ko-KR')}원</p>
-          )}
+          <p className="text-xs text-gray-500 mt-1">
+            동일한 비용을 여러 항목에 중복 입력하지 말고, 이미 지급받은 금액은 별도로 대조하세요.
+          </p>
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm text-slate-600 mb-2">피해자 과실비율 (%)</label>
+        <div className="mb-6">
+          <label className="block text-sm text-slate-600 mb-2" htmlFor="damages-general-fault-ratio">
+            입력 과실비율 (%)
+          </label>
           <input
+            id="damages-general-fault-ratio"
             type="text"
             inputMode="decimal"
             value={faultRatio}
-            onChange={(e) => setFaultRatio(e.target.value.replace(/[^0-9.]/g, ''))}
-            placeholder="0 ~ 100"
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
+            onChange={(event) => setFaultRatio(event.target.value.replace(/[^0-9.]/g, ''))}
+            placeholder="0 ~ 100 (없으면 0)"
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#f97316] focus:outline-none glassmorphism glass-panel"
           />
+          <p className="text-xs text-gray-500 mt-1">
+            이 값은 사용자가 입력하는 가정값입니다. 법원이나 기관이 사고자료로 정하는 과실비율을 대신하지 않습니다.
+          </p>
         </div>
-
-        <div className="mb-4">
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={includeConsolation}
-              onChange={(e) => setIncludeConsolation(e.target.checked)}
-              className="accent-[#f97316]"
-            />
-            <span className="text-sm text-slate-600">위자료 청구 포함</span>
-          </label>
-        </div>
-
-        {includeConsolation && (
-          <div className="mb-4 ml-6">
-            <label className="block text-sm text-slate-600 mb-2">위자료 기준액</label>
-            <select
-              value={consolationType}
-              onChange={(e) => setConsolationType(e.target.value as 'death' | 'severe' | 'custom')}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none mb-2 glassmorphism glass-panel"
-            >
-              <option value="death">사망 (1억원)</option>
-              <option value="severe">중상해 (3,000만원)</option>
-              <option value="custom">직접 입력</option>
-            </select>
-            {consolationType === 'custom' && (
-              <input
-                type="text"
-                inputMode="numeric"
-                value={customConsolation ? parseInt(customConsolation).toLocaleString('ko-KR') : ''}
-                onChange={handleNumberChange(setCustomConsolation)}
-                placeholder="위자료 기준액 입력"
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-teal-700 focus:outline-none glassmorphism glass-panel"
-              />
-            )}
-          </div>
-        )}
 
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
         {warning && <p className="text-orange-500 text-sm mb-3">{warning}</p>}
 
-        <button aria-label="Action button"
+        <button
+          type="button"
           onClick={handleCalculate}
           className="w-full py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: category.color }}
         >
-          계산하기
+          재산상 손해 참고액 계산하기
         </button>
       </div>
 
       {result !== null && (
-        <div className="premium-card p-6">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">계산 결과</h2>
+        <section className="premium-card p-6" aria-live="polite">
+          <h2 className="text-lg font-semibold text-slate-900 mb-4">재산상 손해 참고 결과</h2>
 
-          {result.total === 0 && (
-            <div className="mb-4 p-3 rounded-lg bg-teal-50 border border-blue-200">
-              <p className="text-sm text-teal-800">총 배상액이 0원으로 계산되었습니다. 과실비율 또는 손해항목을 확인해주세요.</p>
+          <div className="space-y-3 mb-4">
+            <div className="flex justify-between gap-4">
+              <span className="text-sm text-slate-600">확인된 재산상 손해액</span>
+              <span className="text-slate-900">{formatNumber(result.documentedDamage)}원</span>
             </div>
-          )}
-
-          <div className="mb-4">
-            <p className="text-sm text-slate-600 mb-1">재산상 손해 (과실상계 후)</p>
-            <p className="text-2xl font-bold" style={{ color: category.color }}>
-              {formatNumber(result.adjustedProperty)}원
-            </p>
+            <div className="flex justify-between gap-4">
+              <span className="text-sm text-slate-600">입력 과실비율 반영 차감액</span>
+              <span className="text-slate-900">{formatNumber(result.faultReduction)}원</span>
+            </div>
           </div>
 
-          {includeConsolation && (
-            <div className="mb-4">
-              <p className="text-sm text-slate-600 mb-1">위자료 (과실상계 후)</p>
-              <p className="text-xl font-bold" style={{ color: category.color }}>
-                {formatNumber(result.consolation)}원
-              </p>
-            </div>
-          )}
-
-          <div className="mb-4 pt-4 border-t border-slate-200">
-            <p className="text-sm text-slate-600 mb-1">총 배상액</p>
+          <div className="border-t border-slate-200 pt-4">
+            <p className="text-sm text-slate-600 mb-1">과실상계 후 재산상 손해 참고액</p>
             <p className="text-3xl font-bold" style={{ color: category.color }}>
-              {formatNumber(result.total)}원
+              {formatNumber(result.adjustedDamage)}원
             </p>
-          </div>
-
-          <div className="mb-4">
-            <p className="text-sm text-slate-600 mb-2">계산식</p>
-            <pre className="text-xs text-slate-600 bg-white p-3 rounded-lg whitespace-pre-wrap font-mono glassmorphism glass-panel">
-{`재산손해 = ${formatNumber(parseInt(propertyDamage) || 0)} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.adjustedProperty)}원${includeConsolation ? `\n위자료 = ${formatNumber(getConsolationBase())} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.consolation)}원` : ''}
-총 배상액 = ${formatNumber(result.adjustedProperty)}${includeConsolation ? ` + ${formatNumber(result.consolation)}` : ''} = ${formatNumber(result.total)}원`}
-            </pre>
           </div>
 
           <div className="mt-4 pt-4 border-t border-slate-200">
-            <p className="text-xs text-gray-500">
-              법적 근거: 민법 제750조(불법행위의 내용), 제751조(재산 이외의 손해배상), 제393조(손해배상의 범위) 및 제396조(과실상계) 준용(제763조)
+            <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
+            <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 whitespace-pre-wrap glassmorphism glass-panel">
+{`확인된 재산상 손해액 × (1 - 입력 과실비율) = 과실상계 후 참고액
+${formatNumber(result.documentedDamage)} × (1 - ${faultRatio || 0}%) = ${formatNumber(result.adjustedDamage)}원`}
+            </pre>
+            <p className="text-xs text-gray-500 mt-3">
+              이 결과는 입력한 자료와 과실비율 가정으로 계산한 참고액입니다. 법원·조정기관의 손해 인정 범위,
+              과실비율, 위자료·개호비·장해 판단은 포함하지 않습니다.
             </p>
           </div>
-        </div>
+        </section>
       )}
 
-      <div className="premium-card p-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">손해배상 청구 절차</h2>
-        <ol className="space-y-3">
-          <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>1</span>
-            <span className="text-sm text-slate-600">내용증명으로 배상 요구</span>
-          </li>
-          <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>2</span>
-            <span className="text-sm text-slate-600">합의 불성립 시 민사소송 제기</span>
-          </li>
-          <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>3</span>
-            <span className="text-sm text-slate-600">소멸시효: 손해 및 가해자를 안 날부터 3년, 불법행위일부터 10년 (민법 제766조)</span>
-          </li>
-          <li className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900" style={{ backgroundColor: '#f97316' }}>4</span>
-            <span className="text-sm text-slate-600">소송비용: 인지대 + 변호사 비용 별도</span>
-          </li>
-        </ol>
-      </div>
-
-      {result !== null && (
-        <div className="mt-6">
-          <ActionInsight calculatorId="damages-general" amount={result.total} />
+      <section className="premium-card p-6 mt-4">
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산에 포함하지 않는 항목</h2>
+        <ul className="space-y-3 text-sm text-slate-600">
+          <li>민법 제751조의 재산 이외 손해인 위자료는 사건별 사정을 정액표로 환산하지 않습니다.</li>
+          <li>개호비·장해·향후 손해의 인정 여부와 범위는 의료자료·소득자료·감정 등 별도 검토가 필요합니다.</li>
+          <li>제조물 결함, 인과관계, 책임 주체와 실제 배상액은 이 계산기가 판단하지 않습니다.</li>
+          <li>입력 과실비율은 사고자료에 따른 법원·조정기관의 판단과 다를 수 있습니다.</li>
+        </ul>
+        <div className="mt-4 pt-4 border-t border-slate-200 text-xs text-gray-500 space-y-2">
+          <p>
+            공식 원문:{' '}
+            <a
+              href="https://www.law.go.kr/법령/민법/제750조"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-800 hover:underline"
+            >
+              민법 제750조(불법행위의 내용)
+            </a>{' '}
+            ·{' '}
+            <a
+              href="https://www.law.go.kr/법령/민법/제763조"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-800 hover:underline"
+            >
+              제763조(준용규정)
+            </a>
+          </p>
+          <p>
+            과실상계 원문:{' '}
+            <a
+              href="https://www.law.go.kr/법령/민법/제396조"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-800 hover:underline"
+            >
+              민법 제396조(과실상계)
+            </a>{' '}
+            · 손해 범위:{' '}
+            <a
+              href="https://www.law.go.kr/법령/민법/제393조"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-800 hover:underline"
+            >
+              제393조(손해배상의 범위)
+            </a>
+          </p>
         </div>
-      )}
+      </section>
     </CalculatorLayout>
   );
 }
