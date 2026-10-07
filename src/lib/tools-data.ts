@@ -45,7 +45,7 @@ export const TOOLS: Tool[] = [
   {
     id: "attorney-fee",
     name: "변호사보수 소송비용산입 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민사소송법 제109조 (변호사의 보수와 소송비용)",
@@ -70,7 +70,7 @@ export const TOOLS: Tool[] = [
   {
     id: "lawsuit-cost",
     name: "소송비용 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민사소송 등 인지법 제2조 (소장)",
@@ -96,7 +96,7 @@ export const TOOLS: Tool[] = [
   {
     id: "payment-order",
     name: "지급명령 비용 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민사소송법 제462조 (적용의 요건)",
@@ -121,7 +121,7 @@ export const TOOLS: Tool[] = [
   {
     id: "civil-mediation",
     name: "민사조정 비용 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민사조정법 제2조 및 제29조",
@@ -152,7 +152,7 @@ export const TOOLS: Tool[] = [
     route: "/tools/court/family-court",
     longDescription: "가사소송법에 따른 이혼·친권·양육권·상속 등 가사소송과 가사비송 신청 시 인지대와 송달료를 계산합니다. 가사소송은 가사소송법 및 가사소송규칙에 따른 별도 비용 체계가 적용됩니다.",
     keywords: ["가사소송 비용", "이혼소송 인지대", "가사비송 비용", "양육권 소송 비용", "친권 소송", "상속 소송 비용", "가사소송법"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "가사소송법 제2조 (가사사건의 종류)", "가사소송수수료규칙 제2조"
@@ -171,7 +171,7 @@ export const TOOLS: Tool[] = [
   {
     id: "alimony",
     name: "이혼 위자료 판단요소 점검",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-10-01",
     legalCitations: [
       "민법 제806조 (약혼해제와 손해배상청구권)",
@@ -197,7 +197,7 @@ export const TOOLS: Tool[] = [
   {
     id: "child-support",
     name: "양육비 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-09-29",
     legalCitations: [
       "민법 제837조 (이혼과 자자의 양육책임)",
@@ -222,7 +222,7 @@ export const TOOLS: Tool[] = [
   {
     id: "property-division",
     name: "재산분할 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민법 제839조의2 (재산분할청구권)",
@@ -247,7 +247,7 @@ export const TOOLS: Tool[] = [
   {
     id: "inheritance-tax",
     name: "상속세·증여세 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "상속세 및 증여세법 제13조 (상속세 과세가액)",
@@ -272,7 +272,7 @@ export const TOOLS: Tool[] = [
   {
     id: "forced-heirship",
     name: "유류분 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민법 제1112조 (유류분의 권리자와 유류분)",
@@ -303,7 +303,7 @@ export const TOOLS: Tool[] = [
     route: "/tools/family/inheritance-order",
     longDescription: "민법 제1000조~제1010조에 따라 상속인의 순위(직계비속→직계존속→형제자매→4촌 이내 방계혈족)와 법정상속분을 판별합니다. 배우자의 가산 상속분(50% 가산) 및 대습상속 규정도 반영합니다.",
     keywords: ["상속순위 확인", "법정상속분", "상속인 순위", "배우자 상속분", "대습상속", "민법 1000조", "상속 계산"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민법 제1000조 (상속의 순위)", "민법 제1009조 (법정상속분)"
@@ -322,7 +322,7 @@ export const TOOLS: Tool[] = [
   {
     id: "severance-pay",
     name: "퇴직금 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "근로자퇴직급여 보장법 제4조 및 제8조 (퇴직금제도의 설정 등)",
@@ -353,7 +353,7 @@ export const TOOLS: Tool[] = [
     route: "/tools/labor/dismissal-notice",
     longDescription: "근로기준법 제26조에 따라 사용자가 해고 30일 전 예고를 하지 않은 경우 지급해야 할 해고예고수당(통상임금 30일분)을 계산합니다. 일용직·단기 근로자 등 예고 예외 대상 여부도 함께 확인할 수 있습니다.",
     keywords: ["해고예고수당", "해고예고 미이행", "해고예고 계산", "근로기준법 26조", "즉시해고 수당", "30일 해고예고", "해고 통보"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "근로기준법 제26조 (해고의 예고)", "근로기준법 제35조 (해고예고의 적용 예외)"
@@ -370,7 +370,7 @@ export const TOOLS: Tool[] = [
   {
     id: "annual-leave-pay",
     name: "연차수당 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "근로기준법 제60조 (연차 유급휴가)",
@@ -395,7 +395,7 @@ export const TOOLS: Tool[] = [
   {
     id: "overtime-pay",
     name: "연장근로수당 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "근로기준법 제56조 (연장·야간 및 휴일 근로)",
@@ -426,7 +426,7 @@ export const TOOLS: Tool[] = [
     route: "/tools/labor/weekly-holiday-pay",
     longDescription: "근로기준법 제55조 및 시행령 제30조에 따라 1주 15시간 이상 근무하고 소정근로일을 개근한 근로자에게 발생하는 주휴수당을 계산합니다. 아르바이트·파트타임 근로자도 요건 충족 시 청구 가능합니다.",
     keywords: ["주휴수당 계산", "주휴수당 발생 조건", "알바 주휴수당", "주 15시간 주휴", "근로기준법 55조", "유급 주휴일", "주휴수당 청구"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "근로기준법 제55조 (휴일)", "근로기준법 시행령 제30조"
@@ -443,7 +443,7 @@ export const TOOLS: Tool[] = [
   {
     id: "minimum-wage-check",
     name: "최저임금 위반 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "최저임금법 제6조 (최저임금의 효력)",
@@ -468,7 +468,7 @@ export const TOOLS: Tool[] = [
   {
     id: "unfair-dismissal",
     name: "부당해고 임금상당액 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-10-04",
     legalCitations: [
       "근로기준법 제2조 제1항 제6호 (평균임금)",
@@ -502,7 +502,7 @@ export const TOOLS: Tool[] = [
     route: "/tools/labor/industrial-accident",
     longDescription: "산업재해보상보험법에 따라 업무상 재해 근로자가 받을 수 있는 요양급여·휴업급여(평균임금의 70%)·장해급여(1~14등급)·유족급여 등 각종 산재보험급여를 계산합니다.",
     keywords: ["산재보험급여 계산", "산재 장해등급 보상금", "휴업급여 계산", "산재보험법", "업무상 재해 보상", "산재 유족급여", "근로복지공단"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "산업재해보상보험법 제37조 (업무상의 재해의 인정 기준)", "산업재해보상보험법 제52조 (휴업급여)"
@@ -525,7 +525,7 @@ export const TOOLS: Tool[] = [
     route: "/tools/labor/maternity-leave",
     longDescription: "근로기준법 제74조 및 고용보험법 제75조에 따라 출산전후휴가(90일, 다태아 120일) 중 고용보험에서 지급되는 급여와 사업주 부담분을 계산합니다. 통상임금과 고용보험 상한액(이 계산기 기준 월 220만 원, 2026.1.1.)을 반영합니다.",
     keywords: ["출산휴가급여 계산", "출산전후휴가 급여", "고용보험 출산급여", "출산휴가 90일", "출산급여 상한액", "근로기준법 74조", "출산휴가 사업주 부담"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "근로기준법 제74조 (임산부의 보호)", "고용보험법 제75조 (출산전후휴가 급여 등)"
@@ -548,7 +548,7 @@ export const TOOLS: Tool[] = [
     route: "/tools/labor/parental-leave",
     longDescription: "고용보험법 시행령 제95조(시행 2026.7.1.)에 따라 육아휴직급여를 계산합니다. 1~3개월은 월 통상임금 100%(상한 250만 원), 4~6개월은 100%(상한 200만 원), 7개월 이후는 80%(상한 160만 원), 하한은 전 기간 70만 원입니다. 한부모는 같은 시행령 제95조의3 제3항(첫 3개월 상한 300만 원)을 적용합니다.",
     keywords: ["육아휴직급여 계산", "육아휴직 100%", "고용보험 육아휴직", "육아휴직 상한액", "시행령 제95조", "한부모 육아휴직", "아빠 육아휴직"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "고용보험법 시행령 제95조 (육아휴직 급여)", "고용보험법 시행령 제95조의3 제3항 (한부모)"
@@ -565,7 +565,7 @@ faqItems: [
   {
     id: "unemployment-benefit",
     name: "실업급여 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "고용보험법 제40조 (구직급여의 수급 요건)",
@@ -596,7 +596,7 @@ faqItems: [
     route: "/tools/labor/shutdown-allowance",
     longDescription: "근로기준법 제46조에 따라 사용자의 귀책사유로 휴업하는 경우 지급해야 하는 평균임금의 70% 이상 휴업수당을 계산합니다. 평균임금의 70%가 통상임금을 초과하는 경우 통상임금을 기준으로 합니다.",
     keywords: ["휴업수당 계산", "사용자 귀책 휴업", "근로기준법 46조", "휴업수당 평균임금 70%", "공장 휴업 수당", "경영상 휴업 수당", "휴업수당 지급 기준"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "근로기준법 제46조 (휴업수당)", "근로기준법 시행령 제26조"
@@ -615,7 +615,7 @@ faqItems: [
   {
     id: "capital-gains-tax",
     name: "양도소득세 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "소득세법 제89조 (비과세 양도소득)",
@@ -640,7 +640,7 @@ faqItems: [
   {
     id: "comprehensive-income-tax",
     name: "종합소득세 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "소득세법 제4조 (소득의 구분)",
@@ -671,7 +671,7 @@ faqItems: [
     route: "/tools/tax/acquisition-tax",
     longDescription: "지방세법 제11조에 따라 부동산 취득 시 납부해야 하는 취득세(1~12%)를 계산합니다. 주택 수·취득가액·조정대상지역 여부에 따른 중과세율과 농어촌특별세·지방교육세까지 합산하여 실부담액을 산출합니다.",
     keywords: ["취득세 계산", "부동산 취득세", "주택 취득세율", "취득세 중과", "다주택 취득세", "조정대상지역 취득세", "지방세법 취득세"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "지방세법 제11조 (부동산 취득의 세율)", "지방세법 제13조의2 (법인 등 및 다주택자의 취득세 중과)"
@@ -694,7 +694,7 @@ faqItems: [
     route: "/tools/tax/comprehensive-property-tax",
     longDescription: "종합부동산세법 및 지방세법에 따라 매년 6월 1일 기준 부동산 보유자에게 부과되는 재산세(지방세)와 종합부동산세(국세)를 계산합니다. 공시가격·공정시장가액비율·세율·재산세 중복분 공제를 모두 반영합니다.",
     keywords: ["종합부동산세 계산", "재산세 계산", "종부세 계산기", "부동산 보유세", "공시가격 종부세", "1세대 1주택 종부세", "종합부동산세법"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "종합부동산세법 제7조 (납세의무자)", "지방세법 제104조 (재산세)"
@@ -717,7 +717,7 @@ faqItems: [
     route: "/tools/tax/registration-tax",
     longDescription: "지방세법 제23조 이하에 따라 부동산 등기·법인 설립·면허 취득 시 납부해야 하는 등록면허세를 계산합니다. 소유권 이전등기(취득가액의 0.2~2%), 근저당 설정등기(채권금액의 0.24%) 등을 지원합니다.",
     keywords: ["등록면허세 계산", "등기 세금", "소유권 이전 등록세", "근저당 등록세", "법인 설립 등록세", "지방세법 등록면허세", "등기 비용"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "지방세법 제24조 (납세의무자)", "지방세법 제28조 (세율)"
@@ -740,7 +740,7 @@ faqItems: [
     route: "/tools/tax/vat",
     longDescription: "부가가치세법에 따라 공급가액과 세액을 분리 계산하거나 역산합니다. 일반과세자(10%), 간이과세자 업종별 부가율, 영세율(0%) 적용 여부, 매입세액 공제를 통한 납부세액 산출을 지원합니다.",
     keywords: ["부가가치세 계산", "VAT 계산기", "공급가액 세금", "부가세 역산", "간이과세자 부가세", "매입세액 공제", "부가가치세법"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "부가가치세법 제29조 (과세표준)", "부가가치세법 제38조 (공제하는 매입세액)"
@@ -763,7 +763,7 @@ faqItems: [
     route: "/tools/tax/securities-tax",
     longDescription: "증권거래세법에 따라 주권(주식)의 양도·거래 시 부과되는 증권거래세를 계산합니다. 이 계산기는 2026.1.1. 코드 기준으로 코스피 0.05%+농특세 0.15%, 코스닥 0.20%, 코넥스 0.10%, 비상장 0.35%를 적용합니다.",
     keywords: ["증권거래세 계산", "주식 거래세", "코스피 거래세", "코스닥 거래세", "증권거래세법", "주식 매도 세금", "비상장주식 거래세"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "증권거래세법 제8조 (세율)", "농어촌특별세법 제5조 (세율)"
@@ -786,7 +786,7 @@ faqItems: [
     route: "/tools/tax/year-end-tax",
     longDescription: "소득세법 제137조에 따라 근로소득자의 연간 급여·각종 공제항목을 입력하면 연말정산 예상 환급액 또는 추가 납부액을 계산합니다. 인적공제·의료비·교육비·신용카드·주택자금 공제 등을 모두 반영합니다.",
     keywords: ["연말정산 계산기", "연말정산 환급액", "소득공제 계산", "세액공제 계산", "근로소득세 환급", "13월의 월급", "연말정산 미리보기"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "소득세법 제59조의4 (특별세액공제)", "조세특례제한법 제126조의2 (신용카드 등 사용금액 소득공제)"
@@ -809,7 +809,7 @@ faqItems: [
     route: "/tools/tax/four-insurances",
     longDescription: "국민건강보험법·국민연금법·고용보험법·산업재해보상보험법에 따라 근로자와 사업주가 각각 부담하는 4대 사회보험료(건강보험·국민연금·고용보험·산재보험)를 월급 기준으로 계산합니다.",
     keywords: ["4대보험료 계산", "건강보험료 계산", "국민연금 보험료", "고용보험료 계산", "산재보험료", "4대보험 사업주 부담", "급여에서 공제되는 보험료"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "국민연금법 제88조 (보험료의 산정)", "건강보험법 제73조 (보험료의 산정)"
@@ -832,7 +832,7 @@ faqItems: [
     route: "/tools/tax/rent-tax-credit",
     longDescription: "소득세법 제59조의4 제4항에 따라 무주택 세대주 근로자·종합소득자가 납부한 월세에 대해 총급여 5,500만 원 이하 17%, 7,000만 원 이하 15% 세액공제(한도 연 1,000만 원)를 계산합니다.",
     keywords: ["월세 세액공제 계산", "월세 세금 환급", "월세 공제 조건", "무주택 월세 공제", "소득세법 59조", "연말정산 월세", "월세 공제 한도"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "소득세법 제59조의4 제4항 (월세 세액공제)"
@@ -851,7 +851,7 @@ faqItems: [
   {
     id: "deposit-return",
     name: "임대차 보증금 반환 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "주택임대차보호법 제3조의3 (임차권등기명령)",
@@ -882,7 +882,7 @@ faqItems: [
     route: "/tools/realty/rent-conversion",
     longDescription: "주택임대차보호법 제7조의2 및 동법 시행령 제9조에 따른 전월세 전환율을 계산합니다. 법정 상한은 한국은행 기준금리+2%p와 연 10% 중 낮은 비율이며, 2026년 8월 27일 기준금리 연 3.00%를 적용하면 연 5.00%입니다.",
     keywords: ["전월세 전환율 계산", "전세 월세 전환", "월세 전환 계산기", "전환율 상한", "주택임대차보호법 7조", "보증금 월세 환산", "전세 월세 비교"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-09-28",
     legalCitations: [
       "주택임대차보호법 제7조의2 (월차임 전환 시 산정률의 제한)",
@@ -900,7 +900,7 @@ faqItems: [
   {
     id: "brokerage-fee",
     name: "중개보수 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "공인중개사법 제32조 (중개보수 등)",
@@ -931,7 +931,7 @@ faqItems: [
     route: "/tools/realty/subscription-score",
     longDescription: "주택공급에 관한 규칙 제51조 가점제 기준에 따라 무주택기간(최대 32점)·부양가족 수(최대 35점)·청약통장 가입기간(최대 17점)을 합산한 총 84점 만점의 청약가점을 계산합니다.",
     keywords: ["청약가점 계산기", "주택청약 가점", "청약 당첨 확률", "무주택 기간 점수", "부양가족 청약", "청약통장 가입기간", "주택공급규칙 51조"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "주택공급에 관한 규칙 제51조 (일반공급 가점제 기준)"
@@ -954,7 +954,7 @@ faqItems: [
     route: "/tools/realty/dsr",
     longDescription: "금융위원회 가계대출 규제에 따라 연간 총부채원리금상환액을 연소득으로 나눈 DSR(총부채원리금상환비율)을 계산합니다. 규제지역 주택담보대출 DSR 40% 한도(1금융권 기준)를 기준으로 대출 가능액을 산출합니다.",
     keywords: ["DSR 계산기", "총부채원리금상환비율", "DSR 40%", "주택담보대출 한도", "대출 가능금액", "금융위원회 DSR 규제", "소득 대비 대출"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "금융위원회 가계부채 관리방안 (DSR 규제)"
@@ -977,7 +977,7 @@ faqItems: [
     route: "/tools/realty/ltv",
     longDescription: "한국은행·금융위원회 주택담보대출 규제에 따라 주택 공시가격 대비 대출 가능 금액 비율(LTV)을 계산합니다. 투기과열지구 40%, 조정대상지역 50%, 비규제지역 70% 등 지역·주택 유형별 한도를 반영합니다.",
     keywords: ["LTV 계산기", "담보인정비율", "주택담보대출 한도", "LTV 70%", "투기과열지구 LTV", "아파트 담보대출", "주택 대출 한도"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "금융위원회 은행업감독규정 별표 (주택담보대출 LTV 기준)"
@@ -1000,7 +1000,7 @@ faqItems: [
     route: "/tools/realty/dti",
     longDescription: "연간 주택담보대출 원리금 상환액에 기타 대출 이자를 합산한 금액을 연소득으로 나눈 DTI(총부채상환비율)를 계산합니다. 규제지역 DTI 40~50% 한도를 기준으로 주택담보대출 가능액을 산출합니다.",
     keywords: ["DTI 계산기", "총부채상환비율", "DTI 40%", "주택담보대출 소득비율", "대출 소득 기준", "DTI DSR 차이", "주택대출 한도 계산"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "금융위원회 은행업감독규정 (DTI 산정 기준)"
@@ -1019,7 +1019,7 @@ faqItems: [
   {
     id: "accident-settlement",
     name: "교통사고 합의금 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-10-05",
     legalCitations: [
       "자동차손해배상 보장법 시행령 제3조 (책임보험금 등)",
@@ -1049,7 +1049,7 @@ faqItems: [
     route: "/tools/traffic/drunk-driving",
     longDescription: "도로교통법 제44조·제148조의2에 따라 혈중알코올농도(BAC) 구간별 처벌 기준(면허 정지·취소·형사처벌)과 윤창호법(2019년 개정) 적용 후 강화된 처벌 내용을 확인합니다.",
     keywords: ["음주운전 처벌", "혈중알코올농도 처벌", "음주운전 면허취소", "음주운전 벌금", "윤창호법", "도로교통법 148조", "음주측정 기준"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "도로교통법 제44조 (술에 취한 상태에서의 운전 금지)", "도로교통법 제148조의2 (벌칙)"
@@ -1072,7 +1072,7 @@ faqItems: [
     route: "/tools/traffic/fine-penalty",
     longDescription: "도로교통법 및 교통사고처리특례법에 따른 속도위반·신호위반·불법주정차 등 교통법규 위반별 범칙금·과태료·벌점을 계산합니다. 즉결심판·통고처분 기준과 감경 요건도 안내합니다.",
     keywords: ["교통 벌금 계산기", "속도위반 과태료", "신호위반 범칙금", "교통위반 벌점", "과태료 범칙금 차이", "도로교통법 벌금", "불법주정차 과태료"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "도로교통법 제156조 (벌칙)", "도로교통법 제160조 (과태료)"
@@ -1095,7 +1095,7 @@ faqItems: [
     route: "/tools/traffic/bail",
     longDescription: "형사소송법 제94조부터 제104조까지에 따라 보석을 청구할 수 있는 사람, 필요적 보석의 예외, 법원이 정할 조건과 고려사항, 조건 위반에 따른 취소·담보 절차를 확인합니다. 이 도구는 사건별 보석금이나 허가 가능성을 판단하거나 금액을 산출하지 않습니다.",
     keywords: ["형사 보석 요건", "보석 허가 청구", "보석 불허 사유", "구속 피고인 보석", "형사소송법 94조", "보석 조건", "보석 청구 절차"],
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-10-02",
     legalCitations: [
       "형사소송법 제94조 (보석의 청구)",
@@ -1117,7 +1117,7 @@ faqItems: [
   {
     id: "late-payment",
     name: "지연손해금 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민법 제379조 (법정이율)",
@@ -1148,7 +1148,7 @@ faqItems: [
     route: "/tools/debt/loan-interest",
     longDescription: "민법 제598조 소비대차 및 이자제한법에 따라 대여원금·약정이율·기간을 입력해 이자액과 원리금 합계를 계산합니다. 최고이자율(연 20%)·복리 제한 규정도 반영합니다.",
     keywords: ["대여금 이자 계산기", "사인간 이자 계산", "이자제한법 최고이자율", "소비대차 이자", "원리금 계산", "대출 이자 계산", "이자제한법 20%"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "이자제한법 제2조 (이자의 최고한도)", "민법 제598조 (소비대차의 의의)"
@@ -1171,7 +1171,7 @@ faqItems: [
     route: "/tools/debt/unjust-enrichment",
     longDescription: "민법 제741조 부당이득 반환청구권에 따라 법률상 원인 없이 취득한 이익의 반환액을 계산합니다. 악의 수익자(연 5% 이상 이자 가산)와 선의 수익자의 반환 범위 차이도 안내합니다.",
     keywords: ["부당이득 반환", "부당이득 계산기", "민법 741조", "잘못 송금 반환", "이중지급 반환", "부당이득 이자", "법률상 원인 없이"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민법 제741조 (부당이득의 내용)", "민법 제748조 (수익자의 반환범위)"
@@ -1196,7 +1196,7 @@ faqItems: [
     route: "/tools/damages/damages-general",
     longDescription: "민법 제750조 불법행위에서 자료로 확인된 치료비·수리비·일실이익 등 재산상 손해액에 입력 과실비율을 적용한 참고액을 계산합니다. 위자료·개호비·장해 등 사건별 판단 항목은 산출하지 않습니다.",
     keywords: ["손해배상 계산기", "재산상 손해 계산", "불법행위 손해배상", "민법 750조", "과실상계", "치료비 손해", "수리비 손해"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-10-06",
     legalCitations: [
       "민법 제750조 (불법행위의 내용)", "민법 제763조 — 불법행위 손해배상 준용"
@@ -1213,7 +1213,7 @@ faqItems: [
   {
     id: "defamation",
     name: "명예훼손 손해배상 결정요소 점검표",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-09-30",
     legalCitations: [
       "민법 제751조 (재산 이외의 손해의 배상)",
@@ -1244,7 +1244,7 @@ faqItems: [
     route: "/tools/damages/medical-malpractice",
     longDescription: "의료사고에서 자료로 확인할 기지출 치료비·향후 치료비·일실수입을 입력하고, 사용자가 정한 책임비율을 적용한 재산상 손해 참고액을 계산합니다. 위자료·개호비·장해·인과관계는 사건별 판단이므로 계산하지 않습니다.",
     keywords: ["의료사고 손해배상", "의료사고 치료비", "의료사고 일실수입", "의료분쟁 조정", "한국의료분쟁조정중재원", "의료과실 배상"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-10-03",
     legalCitations: [
       "민법 제750조·제751조·제763조 (불법행위 손해배상)",
@@ -1268,7 +1268,7 @@ faqItems: [
     route: "/tools/damages/lost-income",
     longDescription: "대법원 판례(호프만 계수법 또는 라이프니츠 계수법)에 따라 사고로 인한 가동능력 상실 기간 동안의 일실수입을 현가로 환산합니다. 노동능력상실률(맥브라이드 기준)과 가동연령(만 65세)을 반영합니다.",
     keywords: ["일실수입 계산기", "손해배상 일실수입", "호프만 계수", "라이프니츠 계수", "노동능력상실률", "맥브라이드 기준", "가동연령 65세"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민법 제763조 (준용규정)", "대법원 2019. 2. 21. 선고 2018다248909 전원합의체 판결 (가동연령 65세 상향)"
@@ -1287,7 +1287,7 @@ faqItems: [
   {
     id: "statute-of-limitations",
     name: "소멸시효 계산기",
-    expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+    expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "민법 제162조 (채권, 재산권의 소멸시효)",
@@ -1318,7 +1318,7 @@ faqItems: [
     route: "/tools/misc/public-defender",
     longDescription: "형사소송법 제33조 및 국선변호인의 선정 등에 관한 규칙에 따른 국선변호인 선정 요건(필요적·재정적 자격)을 확인합니다. 사형·무기 등 중형 사건의 필요적 국선변호 규정도 안내합니다.",
     keywords: ["국선변호사 자격", "국선변호인 신청", "형사소송법 33조", "국선변호 요건", "빈곤 변호인", "필요적 국선변호", "국선변호 신청 방법"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "형사소송법 제33조 (국선변호인)", "국선변호인의 선정 등에 관한 규칙"
@@ -1341,7 +1341,7 @@ faqItems: [
     route: "/tools/misc/legal-aid",
     longDescription: "법률구조법에 따라 대한법률구조공단이 제공하는 무료 법률상담·소송 대리·형사 변호 지원 대상 여부를 소득·재산 기준(기준 중위소득 125% 이하)으로 확인합니다.",
     keywords: ["법률구조공단 지원", "무료 법률상담", "법률구조 대상", "소송 무료 지원", "법률구조법", "기준 중위소득 법률지원", "저소득 법률서비스"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "법률구조법 제2조 (정의)", "법률구조법 제7조 (구조대상자)"
@@ -1364,7 +1364,7 @@ faqItems: [
     route: "/tools/misc/certified-letter",
     longDescription: "우편법 시행규칙에 따른 내용증명 우편 작성 방법을 안내하고, 보증금 반환 요구·계약 해제 통보·채권 청구 등 목적에 맞는 내용증명 초안 작성을 지원합니다. 소멸시효 중단 효력도 확인합니다.",
     keywords: ["내용증명 작성", "내용증명 양식", "내용증명 효력", "내용증명 발송 방법", "채권 청구 내용증명", "계약 해제 통보", "소멸시효 중단"],
-        expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)",
+        expertReviewer: "개인 운영 (작성·자료 확인)",
     updatedAt: "2026-08-19",
     legalCitations: [
       "우편법 시행규칙 제46조 (내용증명우편물의 취급)", "민법 제174조 (최고와 시효중단)"

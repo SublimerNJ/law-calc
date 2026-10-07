@@ -108,7 +108,7 @@ export default function GuidesPage() {
         <h1 className="text-3xl font-bold text-slate-900 mb-3">법률 가이드</h1>
         <p className="text-slate-600 leading-relaxed max-w-2xl">
           계산기만으로는 부족한 절차·시효·실무 함정을 장문으로 정리합니다. 모든 글은 참고용 일반 정보이며 개별
-          자문을 대체하지 않습니다. 작성·검토: law-calc.kr 편집팀 · 최종 갱신 2026-07-19
+          자문을 대체하지 않습니다. 작성·검토: 개인 운영 · 최종 갱신 2026-07-19
         </p>
       </div>
 

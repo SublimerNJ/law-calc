@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   other: {
     'naver-site-verification': process.env.NEXT_PUBLIC_NAVER_VERIFICATION || '',
   },
-  authors: [{ name: 'law-calc.kr 편집팀', url: 'https://law-calc.kr/about' }],
-  creator: 'law-calc.kr',
-  publisher: 'law-calc.kr',
+  authors: [{ name: '개인 운영', url: 'https://law-calc.kr/about' }],
+  creator: '개인 운영',
+  publisher: '개인 운영',
   robots: {
     index: true,
     follow: true,

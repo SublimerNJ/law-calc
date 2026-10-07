@@ -17,7 +17,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
   const isWageEquivalent = tool.id === 'unfair-dismissal';
   const isInsuranceLimit = tool.id === 'accident-settlement';
   const isDocumentedDamage = tool.id === 'damages-general';
-  const reviewer = 'law-calc.kr 편집팀 (작성·자료 확인)';
+  const reviewer = '개인 운영 (작성·자료 확인)';
   const reviewedAt = quality?.reviewedAt || tool.updatedAt || '2026-08-19';
 
   const nextSteps = [
@@ -103,7 +103,7 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
         inLanguage: 'ko-KR',
         isAccessibleForFree: true,
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
-        publisher: { '@type': 'Organization', name: 'law-calc.kr', url: BASE_URL },
+        publisher: { '@type': 'Organization', name: '개인 운영', url: BASE_URL },
       },
       {
         '@type': 'BreadcrumbList',

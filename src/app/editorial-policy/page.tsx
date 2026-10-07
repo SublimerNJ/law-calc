@@ -80,7 +80,7 @@ export default function EditorialPolicyPage() {
         <section>
           <h2 className="text-xl font-bold text-slate-900 mb-4">4. 자격·표현에 대한 정직성</h2>
           <p className="mb-3">
-            law-calc.kr 편집팀은 <strong>법률사무소가 아니며</strong>, 페이지에 허구의 &quot;자문 변호사
+            개인 운영자는 <strong>법률사무소가 아니며</strong>, 페이지에 허구의 &quot;자문 변호사
             팀&quot;·&quot;공인노무사 자문단&quot; 등을 내세우지 않습니다. 자격 명칭이 필요한 자문은 이용자가
             별도로 전문가에게 받아야 합니다.
           </p>

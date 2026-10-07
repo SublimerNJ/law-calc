@@ -21,14 +21,14 @@ export default function Home() {
         inLanguage: 'ko-KR',
         publisher: {
           '@type': 'Organization',
-          name: 'law-calc.kr',
+          name: '개인 운영',
           url: BASE_URL,
           email: 'sublimernj@gmail.com',
         },
       },
       {
         '@type': 'Organization',
-        name: 'law-calc.kr',
+        name: '개인 운영',
         url: BASE_URL,
         email: 'sublimernj@gmail.com',
       },

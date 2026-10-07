@@ -40,12 +40,12 @@ export default function GuideShell({
         inLanguage: 'ko-KR',
         author: {
           '@type': 'Organization',
-          name: 'law-calc.kr 편집팀',
+          name: '개인 운영',
           url: `${BASE_URL}/about`,
         },
         publisher: {
           '@type': 'Organization',
-          name: 'law-calc.kr',
+          name: '개인 운영',
           url: BASE_URL,
         },
         mainEntityOfPage: `${BASE_URL}${path}`,
@@ -81,7 +81,7 @@ export default function GuideShell({
       </h1>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-500 mb-8 pb-6 border-b border-stone-200">
-        <span className="font-medium text-zinc-700">law-calc.kr 편집팀</span>
+        <span className="font-medium text-zinc-700">개인 운영</span>
         <span className="text-stone-300">|</span>
         <span>게시 {datePublished}</span>
         <span className="text-stone-300">|</span>

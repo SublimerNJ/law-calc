@@ -43,7 +43,7 @@ export default function AboutPage() {
               명의의 자문을 판매·대행하지 않습니다.
             </p>
             <p>
-              <strong>콘텐츠 책임:</strong> law-calc.kr 편집팀이 공개 법령·규칙·고시를 기준으로 계산 로직과 가이드를
+              <strong>콘텐츠 책임:</strong> 개인 운영자가 공개 법령·규칙·고시를 기준으로 계산 로직과 가이드를
               작성·갱신합니다.
             </p>
             <p>

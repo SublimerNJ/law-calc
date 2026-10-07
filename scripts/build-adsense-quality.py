@@ -359,7 +359,11 @@ def patch_stale_copy(text: str) -> str:
     text = text.replace('updatedAt: "2026-07-19"', 'updatedAt: "2026-08-19"')
     text = text.replace(
         'expertReviewer: "law-calc.kr 편집팀 (법령·판례 근거 공개)"',
+        'expertReviewer: "개인 운영 (작성·자료 확인)"',
+    )
+    text = text.replace(
         'expertReviewer: "law-calc.kr 편집팀 (작성·자료 확인)"',
+        'expertReviewer: "개인 운영 (작성·자료 확인)"',
     )
     return text
 
