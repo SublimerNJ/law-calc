@@ -1,5 +1,14 @@
 # law-calc 일일 작업 일지
 
+## 2026-10-07
+- 완료: A3 운영 표기 정리 — about, CalculatorLayout 바이라인, GuideShell, 메타데이터·JSON-LD author/publisher와 도구 데이터의 "편집팀" 표기를 "개인 운영"으로 통일. 법률 자격 없음·정정 절차·기존 sublimernj@gmail.com 연락처는 유지함 (commit fc49c07)
+- 법령 대조: 해당 없음(운영 주체 표기 변경)
+- TDD·검증: 계산 로직 변경 없음. Vitest 10개 파일·39개 테스트, lint, TypeScript, build 통과. 로컬 /about·가이드·계산기 응답에서 "개인 운영" 표시와 "편집팀" 부재 확인.
+- ratchet: sourceNormalizedRepeats 34→34, sourceExamplesWithoutDigits 81→81, sourceMarkerHits 170→170, localNormalizedRepeats 60→60, liveNormalizedRepeats 68→68
+- 배포: 미확인·미배포 (https://law-calc.kr, `verify:adsense` 기존 템플릿 마커·34개 정규화 중복 FAIL, `audit:live` 실서버 64개 정규화 중복 FAIL으로 push하지 않음)
+- 게이트: G1 ✗(2026-12-25 전) G2 ✗(최근 3개월 187클릭·최근 28일 73클릭, 월 1,000×2개월 미충족) G3 ✗(64.2%, 120/187) G4 ✓(A1·A2 법령·재량 금액 항목 완료, [?] 0) G5 ✗(`verify:adsense` FAIL·소스 정규화 중복 34개, `audit:live` FAIL·실서버 정규화 중복 64개) G6 ✗(changelog 없음·최근 3개월 각 4회 실제 변경 근거 없음)
+- 막힌 점/다음 할 일: 기존 템플릿 중복이 G5를 계속 막아 push하지 않음. 다음 backlog 항목은 B1-1 CalculatorLayout 공통 반복 문구 정리. 사용자 결정 필요 사항 없음.
+
 ## 2026-10-06
 - 완료: A2-7 damages-general — 자료로 확인된 치료비·수리비·일실이익 등 재산상 손해액에 입력 과실비율만 적용하는 순수 함수·테스트·페이지로 개편. 위자료·개호비·장해·제조물 결함·인과관계·실제 배상액 추정을 제거하고 민법 공식 원문 링크를 표기함 (commit 3fdddc1)
 - 법령 대조: 국가법령정보센터 민법 [시행 2026. 3. 17.] 제750조·제393조·제396조·제751조·제763조 본문·부칙 목록과 제조물책임법 [시행 2018. 4. 19.] 제3조 본문·부칙을 직접 확인. 불법행위 손해배상·손해 범위·과실상계·재산 이외 손해·준용 구조를 확인했으나 사건별 위자료 정액표·과실비율 자동 산식은 확인되지 않아 계산에서 제외함.

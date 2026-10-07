@@ -16,7 +16,7 @@
 - [x] A2-5. unfair-dismissal: 임금상당액(산식 있음)만 계산, 근거 없는 보상 추정 제거 (commit 1c9ee88)
 - [x] A2-6. accident-settlement: 자동차손해배상 보장법 시행령 별표 1·2의 상해·후유장애급별 책임보험금 한도와 확인된 인적 손해액만 비교하고, 사건별 위자료·일실수입·향후치료비·과실비율 추정을 제거. 공식 출처 표기 (GSC 수요 2위, 삭제 금지; commit 8d279c7)
 - [x] A2-7. damages-general: 자료로 확인된 치료비·수리비·일실이익 등 재산상 손해액에 입력 과실비율만 적용. 위자료·개호비·장해·제조물 결함·인과관계·실제 배상액 추정 제거, 공식 민법 원문 표기 (commit 3fdddc1)
-- [ ] A3. 운영 표기 정리(실명·도메인 메일 없음): "편집팀" → 실제 체계에 맞게 "개인 운영"으로 통일(about, CalculatorLayout 바이라인, GuideShell, JSON-LD author/publisher). 법률 자격 없음·정정 절차 유지
+- [x] A3. 운영 표기 정리(실명·도메인 메일 없음): "편집팀" → 실제 체계에 맞게 "개인 운영"으로 통일(about, CalculatorLayout 바이라인, GuideShell, JSON-LD author/publisher). 법률 자격 없음·정정 절차 유지 (commit fc49c07)
 
 ## Phase B — 템플릿 제거
 
