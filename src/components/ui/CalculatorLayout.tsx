@@ -2,6 +2,11 @@ import Link from 'next/link';
 import type { Tool, Category } from '@/lib/tools-data';
 import { TOOLS } from '@/lib/tools-data';
 import { TOOL_QUALITY } from '@/lib/tool-quality';
+import {
+  buildCalculatorDisclaimer,
+  getDistinctQualityEdges,
+  getDistinctQualityExamples,
+} from './calculator-layout-content';
 
 interface CalculatorLayoutProps {
   tool: Tool;
@@ -14,57 +19,9 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 export default function CalculatorLayout({ tool, category, children }: CalculatorLayoutProps) {
   const quality = TOOL_QUALITY[tool.id];
   const isChecklist = tool.id === 'defamation' || tool.id === 'alimony' || tool.id === 'bail';
-  const isWageEquivalent = tool.id === 'unfair-dismissal';
-  const isInsuranceLimit = tool.id === 'accident-settlement';
-  const isDocumentedDamage = tool.id === 'damages-general';
-  const reviewer = '개인 운영 (작성·자료 확인)';
   const reviewedAt = quality?.reviewedAt || tool.updatedAt || '2026-08-19';
-
-  const nextSteps = [
-    `${tool.name} 입력값을 계약서·명세서·고지서 등 원본 서류와 다시 대조하세요.`,
-    tool.legalCitations?.[0]
-      ? `적용 근거(${tool.legalCitations[0]})가 본인 사안에 해당하는지 국가법령정보센터에서 현행 조문을 확인하세요.`
-      : '적용 법령이 현행 기준인지 국가법령정보센터(law.go.kr)에서 확인하세요.',
-    tool.id === 'bail'
-      ? '보석 요건 확인은 구속·청구·조건 관련 자료를 정리하기 위한 참고 자료입니다. 보석 청구 전에는 담당 변호인과 사실관계를 점검하세요.'
-      : isInsuranceLimit
-        ? '이 결과는 자동차손해배상 보장법 시행령상 대인배상Ⅰ 책임보험금 한도와 입력 손해액을 비교한 참고값입니다. 급수와 손해자료를 원본과 대조하세요.'
-        : isChecklist
-        ? '점검표는 사실과 증거를 정리하기 위한 참고 자료입니다. 청구·신고·소송 전에는 자격 있는 전문가와 사실관계를 점검하세요.'
-        : isWageEquivalent
-          ? '이 결과는 입력한 기준 임금과 기간으로 계산한 임금상당액 참고값입니다. 구제신청 전에는 실제 임금 자료와 해고기간을 점검하세요.'
-          : isDocumentedDamage
-            ? '이 결과는 자료로 확인된 재산상 손해액에 입력 과실비율을 적용한 참고값입니다. 증빙과 과실비율 판단 자료를 다시 대조하세요.'
-            : '계산 결과는 1차 추정치입니다. 청구·신고·소송 전에는 자격 있는 전문가와 사실관계를 점검하세요.',
-  ];
-
-  const pitfalls = [
-    tool.id === 'bail'
-    ? '보석 요건 확인 표시를 개별 사건의 허가·담보·석방 결론으로 단정하는 경우'
-    : isInsuranceLimit
-      ? '대인배상Ⅰ 책임보험금 한도 참고값을 전체 합의금이나 보험사의 확정 지급액으로 단정하는 경우'
-      : isChecklist
-      ? `${tool.name} 확인 표시를 개별 사건의 허가·책임·처분 결론으로 단정하는 경우`
-      : isWageEquivalent
-        ? `${tool.name} 결과를 노동위원회가 명할 금품의 확정액으로 단정하는 경우`
-        : isDocumentedDamage
-          ? `${tool.name} 결과를 법원·조정기관이 인정할 손해액의 확정액으로 단정하는 경우`
-          : `${tool.name} 결과를 개별 사건의 확정 금액·확정 처분으로 단정하는 경우`,
-    tool.id === 'bail'
-    ? '보석허가결정문과 사건 기록을 확인하지 않고 일반적인 요건만으로 결론을 내리는 경우'
-    : isInsuranceLimit
-      ? '진단서의 급수나 손해자료를 확인하지 않고 입력값만으로 책임보험금이나 손해액을 단정하는 경우'
-      : isChecklist
-        ? '게시물 원문·전파 범위·실제 피해를 확인하지 않고 선택값만으로 결론을 내리는 경우'
-        : isWageEquivalent
-        ? '1일 기준 임금·해고일·계산 종료일을 실제 임금 자료와 다르게 넣는 경우'
-        : isDocumentedDamage
-          ? '증빙되지 않은 비용을 입력하거나 가정한 과실비율을 법원·조정기관의 판단으로 대신하는 경우'
-          : '입력 기준일·기간·공제 요건을 실제 사실관계와 다르게 넣는 경우',
-    tool.faqItems?.[0]
-      ? `FAQ의 일반 설명("${tool.faqItems[0].question}")을 본인 사안의 결론으로 그대로 적용하는 경우`
-      : '일반적인 안내 문구를 본인 사안의 결론으로 그대로 적용하는 경우',
-  ];
+  const qualityExamples = quality ? getDistinctQualityExamples(tool, quality) : [];
+  const qualityEdges = quality ? getDistinctQualityEdges(tool, quality) : [];
 
   const relatedGuides: Record<string, { href: string; label: string }[]> = {
     court: [
@@ -163,24 +120,6 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
           <p className="text-sm text-zinc-500 mt-1.5 max-w-2xl">{tool.description}</p>
         </header>
 
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 text-xs text-zinc-600 bg-white border border-stone-200 px-4 py-2.5 rounded-xl">
-          <span>
-            <strong className="text-zinc-800">작성·검토:</strong> {reviewer}
-          </span>
-          <span className="text-stone-300">|</span>
-          <span>
-            <strong className="text-zinc-800">검토일:</strong> {reviewedAt}
-          </span>
-          <span className="text-stone-300">|</span>
-          <Link href="/editorial-policy" className="text-teal-800 font-medium hover:underline">
-            검증 정책
-          </Link>
-          <span className="text-stone-300">|</span>
-          <Link href="/about" className="text-teal-800 font-medium hover:underline">
-            운영 주체
-          </Link>
-        </div>
-
         {tool.longDescription && (
           <section className="mb-8 rounded-2xl border border-stone-200 bg-white p-5 shadow-[var(--shadow-card)]">
             <h2 className="text-base font-bold text-zinc-900 mb-2">이 계산기가 하는 일</h2>
@@ -231,12 +170,13 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
                     ))}
                   </ul>
                 </div>
+                {qualityExamples.length > 0 && (
                 <div>
                   <h3 className="text-sm font-bold text-zinc-900 mb-2">
                     {isChecklist ? '검토 예시' : '숫자 예시'}
                   </h3>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    {quality.examples.map((example) => (
+                    {qualityExamples.map((example) => (
                       <article key={example.title} className="rounded-xl border border-stone-100 bg-stone-50 p-4">
                         <h4 className="text-sm font-semibold text-zinc-900 mb-2">{example.title}</h4>
                         <p className="text-sm text-zinc-600 leading-relaxed mb-2">{example.setup}</p>
@@ -245,14 +185,17 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
                     ))}
                   </div>
                 </div>
+                )}
+                {qualityEdges.length > 0 && (
                 <div>
                   <h3 className="text-sm font-bold text-zinc-900 mb-2">결과가 달라지는 조건</h3>
                   <ul className="list-disc list-inside space-y-1.5 text-sm text-zinc-700">
-                    {quality.edges.map((edge) => (
+                    {qualityEdges.map((edge) => (
                       <li key={edge}>{edge}</li>
                     ))}
                   </ul>
                 </div>
+                )}
               </div>
             </section>
             )}
@@ -277,10 +220,6 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
                     <li key={`cite-${idx}`}>{citation}</li>
                   ))}
                 </ul>
-                <p className="mt-3 text-xs text-zinc-500">
-                  조문 원문은 위 링크와 국가법령정보센터에서 시행일을 확인해 주세요. 이 계산기의 상수는 코드에
-                  적힌 기준일이 우선입니다.
-                </p>
               </section>
             )}
 
@@ -307,52 +246,9 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
             )}
 
             <section className="grid gap-4">
-              <div className="rounded-2xl border border-stone-200 bg-white p-5">
-                <h2 className="text-lg font-bold text-zinc-900 mb-3">결과 해석 시 주의점</h2>
-                <p className="text-sm text-zinc-600 leading-relaxed mb-3">
-                  {tool.id === 'bail' ? (
-                    <>
-                      이 점검표는 <strong className="text-zinc-800">보석 청구 관련 기록을 정리하기 위한 참고 자료</strong>입니다. 실제
-                      석방·조건·담보 결과는 사건 기록과 법원 판단에 따라 달라질 수 있습니다.
-                    </>
-                  ) : isChecklist ? (
-                    <>
-                      이 점검표는 <strong className="text-zinc-800">사건 기록을 정리하기 위한 참고 자료</strong>입니다. 실제
-                      허가·책임·절차 결과는 사실관계와 법원 판단에 따라 달라질 수 있습니다.
-                    </>
-                  ) : isInsuranceLimit ? (
-                    <>
-                      이 계산은 <strong className="text-zinc-800">대인배상Ⅰ 책임보험금 법정 한도와 입력 손해액을 비교한 참고값</strong>입니다. 전체
-                      합의금·보험사의 지급액·법원 인정액을 확정하지 않습니다.
-                    </>
-                  ) : isWageEquivalent ? (
-                    <>
-                      이 계산은 <strong className="text-zinc-800">입력한 1일 기준 임금과 기간으로 산출한 참고값</strong>입니다. 실제
-                      임금상당액과 금전보상명령의 내용은 임금 자료, 해고기간과 노동위원회 판단에 따라 달라질 수 있습니다.
-                    </>
-                  ) : (
-                    <>
-                      계산 결과는 <strong className="text-zinc-800">의사결정 보조용 1차 추정치</strong>입니다. 실제
-                      금액·절차 결과는 사실관계와 관할 기관 판단에 따라 달라질 수 있습니다.
-                    </>
-                  )}
-                </p>
-                <ul className="list-disc list-inside space-y-1.5 text-sm text-zinc-700">
-                  {pitfalls.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5">
-                <h2 className="text-lg font-bold text-zinc-900 mb-3">실무 다음 단계</h2>
-                <ol className="list-decimal list-inside space-y-1.5 text-sm text-zinc-700">
-                  {nextSteps.map((step) => (
-                    <li key={step}>{step}</li>
-                  ))}
-                </ol>
-              </div>
-
+              <p className="rounded-xl border border-stone-200 bg-stone-100/80 p-4 text-xs text-zinc-600 leading-relaxed">
+                {buildCalculatorDisclaimer(tool, reviewedAt)}
+              </p>
               <div className="rounded-2xl border border-stone-200 bg-white p-5">
                 <h2 className="text-base font-bold text-zinc-900 mb-3">관련 자료</h2>
                 <div className="flex flex-wrap gap-2">
@@ -399,16 +295,6 @@ export default function CalculatorLayout({ tool, category, children }: Calculato
               </div>
             )}
           </aside>
-        </div>
-
-        <div className="mt-10 rounded-xl border border-stone-200 bg-stone-100/80 p-4">
-          <p className="text-xs text-zinc-500 leading-relaxed">
-            <strong className="text-zinc-700">면책:</strong> {tool.id === 'bail' ? '보석 요건 확인표와 가이드는' : isChecklist ? '점검표와 가이드는' : '계산 결과와 가이드는'} 참고 정보이며 법률·노무·세무
-            자문을 대체하지 않습니다. 문의:{' '}
-            <a href="mailto:sublimernj@gmail.com" className="text-teal-800 hover:underline">
-              sublimernj@gmail.com
-            </a>
-          </p>
         </div>
 
         <div className="mt-8 text-center">
