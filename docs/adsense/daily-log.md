@@ -1,5 +1,14 @@
 # law-calc 일일 작업 일지
 
+## 2026-10-08
+- 완료: B1-1 CalculatorLayout 공통 반복 문구 정리 — 결과 해석 주의점·실무 다음 단계·조문 원문 안내·반복 바이라인을 도구별 한 줄 면책으로 통합하고, FAQ와 겹치는 quality 예시·조건을 한 번만 노출함 (commit 674ea16)
+- 법령 대조: 해당 없음(공통 레이아웃·중복 콘텐츠 정리)
+- TDD·검증: RED(공통 콘텐츠 모듈·FAQ 조건 필터 미존재) → GREEN. Vitest 11개 파일·42개 테스트, lint, TypeScript, build 통과. 로컬 72개 sitemap 페이지를 오류 없이 받아 대표 계산기에서 면책 1개·FAQ 질문 1개와 제거 문구 부재 확인.
+- ratchet: sourceNormalizedRepeats 34→34, sourceExamplesWithoutDigits 81→81, sourceMarkerHits 170→170, localNormalizedRepeats 60→48, liveNormalizedRepeats 68→68
+- 배포: 미확인·미배포 (https://law-calc.kr, `verify:adsense`와 `audit:live` 실패로 push하지 않음)
+- 게이트: G1 ✗(2026-12-25 전) G2 ✗(최근 3개월 187클릭·최근 28일 73클릭, 월 1,000×2개월 미충족) G3 ✗(64.2%, 120/187) G4 ✓(A1·A2 완료, `[?]` 0개, 재량 금액 추정 0개) G5 ✗(`verify:adsense` FAIL·source 정규화 중복 34개·template marker 170개, 로컬 정규화 중복 48개, `audit:live` FAIL·실서버 64개) G6 ✗(changelog 없음·최근 3개월 각 4회 실제 콘텐츠 변경 없음)
+- 막힌 점/다음 할 일: 기존 `tool-quality.ts` 템플릿 마커·공통 quality 문구가 G5를 계속 막음. 다음 backlog 항목은 B1-2 `/tools` 및 분야별 허브 페이지 생성. 사용자 결정 필요 사항 없음.
+
 ## 2026-10-07
 - 완료: A3 운영 표기 정리 — about, CalculatorLayout 바이라인, GuideShell, 메타데이터·JSON-LD author/publisher와 도구 데이터의 "편집팀" 표기를 "개인 운영"으로 통일. 법률 자격 없음·정정 절차·기존 sublimernj@gmail.com 연락처는 유지함 (commit fc49c07)
 - 법령 대조: 해당 없음(운영 주체 표기 변경)
