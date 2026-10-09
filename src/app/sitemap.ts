@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
-import { TOOLS } from '@/lib/tools-data';
+import { CATEGORIES, TOOLS } from '@/lib/tools-data';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 const REVIEW_DATE = new Date('2026-08-19T00:00:00+09:00');
+const HUB_REVIEW_DATE = new Date('2026-10-09T00:00:00+09:00');
 
 export default function sitemap(): MetadataRoute.Sitemap {
  const toolUrls: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
@@ -11,6 +12,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
  changeFrequency: 'monthly' as const,
  priority: 0.8,
  }));
+
+ const hubPages: MetadataRoute.Sitemap = [
+ { url: `${BASE_URL}/tools`, lastModified: HUB_REVIEW_DATE, changeFrequency: 'weekly' as const, priority: 0.9 },
+ ...CATEGORIES.map((category) => ({
+   url: `${BASE_URL}/tools/${category.id}`,
+   lastModified: HUB_REVIEW_DATE,
+   changeFrequency: 'weekly' as const,
+   priority: 0.85,
+ })),
+ ];
 
  const staticPages: MetadataRoute.Sitemap = [
  { url: `${BASE_URL}/about`, lastModified: REVIEW_DATE, changeFrequency: 'monthly' as const, priority: 0.6 },
@@ -39,6 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
  priority: 1.0,
  },
  ...staticPages,
+ ...hubPages,
  ...toolUrls,
  ];
 }

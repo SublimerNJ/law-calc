@@ -40,7 +40,7 @@ export default function Header() {
                     {CATEGORIES.map((cat) => (
                       <Link
                         key={cat.id}
-                        href={`/#${cat.id}`}
+                        href={`/tools/${cat.id}`}
                         className="block px-4 py-2 text-sm text-zinc-700 hover:bg-stone-50 hover:text-teal-900 transition-colors"
                       >
                         <span className="font-medium">{cat.name}</span>
@@ -52,7 +52,7 @@ export default function Header() {
             </div>
 
             <Link
-              href="/"
+              href="/tools"
               className="px-3 py-2 text-sm font-medium text-zinc-700 hover:text-teal-800 rounded-lg hover:bg-white/70 transition-colors"
             >
               전체 도구
@@ -85,7 +85,7 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden absolute left-0 right-0 top-16 border-b border-stone-200 bg-[#f7f7f5] px-4 py-4 shadow-sm">
             <div className="flex flex-col gap-1 mb-4">
-              <Link href="/" onClick={() => setIsMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-800 hover:bg-white">
+              <Link href="/tools" onClick={() => setIsMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-800 hover:bg-white">
                 전체 도구
               </Link>
               <Link href="/guides" onClick={() => setIsMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-800 hover:bg-white">
@@ -102,7 +102,7 @@ export default function Header() {
               {CATEGORIES.map((cat) => (
                 <Link
                   key={cat.id}
-                  href={`/#${cat.id}`}
+                  href={`/tools/${cat.id}`}
                   onClick={() => setIsMenuOpen(false)}
                   className="px-3 py-2.5 rounded-[8px] text-sm font-medium text-zinc-800 hover:bg-white"
                 >

@@ -22,7 +22,7 @@ export default function Footer() {
               <div key={cat.id}>
                 <p className="text-sm font-semibold text-zinc-900 mb-2">{cat.name}</p>
                 <Link
-                  href={`/#${cat.id}`}
+                  href={`/tools/${cat.id}`}
                   className="text-sm text-zinc-500 hover:text-teal-800 transition-colors"
                 >
                   도구 보기
