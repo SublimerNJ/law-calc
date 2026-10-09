@@ -1,5 +1,14 @@
 # law-calc 일일 작업 일지
 
+## 2026-10-09
+- 완료: B1-2 `/tools` 디렉터리와 9개 분야별 `/tools/<category>` 허브를 추가하고, 분야별 선택 기준·입력자료 설명·계산기 연결을 직접 작성함. Header/Footer의 분야 링크와 sitemap에도 반영함 (commit 32f87c1)
+- 법령 대조: 해당 없음(새 허브 정보 구조·콘텐츠 연결 작업; 법령 수치 변경 없음)
+- TDD·검증: RED(`category-hubs` 모듈 부재) → GREEN. Vitest 12개 파일·44개 테스트, lint, build 통과. 로컬 sitemap 82개 URL·새 허브 10개 응답·오류 0개, 알 수 없는 분야 404 확인.
+- ratchet: sourceNormalizedRepeats 34→34, sourceExamplesWithoutDigits 81→81, sourceMarkerHits 170→170, localNormalizedRepeats 48→48, liveNormalizedRepeats 68→68
+- 배포: 미확인·미배포 (https://law-calc.kr, `verify:adsense` FAIL·`audit:live` FAIL으로 push하지 않음)
+- 게이트: G1 ✗(2026-12-25 전) G2 ✗(최근 3개월 187클릭·최근 28일 73클릭, 월 1,000×2개월 미충족) G3 ✗(64.2%, 120/187) G4 ✓(A1·A2 완료, `[?]` 0개, 재량 금액 추정 0개) G5 ✗(`verify:adsense` FAIL·소스 정규화 중복 34개·template marker 170개, 로컬 정규화 중복 48개, `audit:live` FAIL·실서버 정규화 중복 64개) G6 ✗(changelog 없음·최근 3개월 각 4회 실제 콘텐츠 변경 없음)
+- 막힌 점/다음 할 일: 기존 `tool-quality.ts` 템플릿 마커·공통 quality 문구가 G5를 계속 막음. 다음 backlog 항목은 B1-3 `/changelog` 페이지 생성. 사용자 결정 필요 사항 없음.
+
 ## 2026-10-08
 - 완료: B1-1 CalculatorLayout 공통 반복 문구 정리 — 결과 해석 주의점·실무 다음 단계·조문 원문 안내·반복 바이라인을 도구별 한 줄 면책으로 통합하고, FAQ와 겹치는 quality 예시·조건을 한 번만 노출함 (commit 674ea16)
 - 법령 대조: 해당 없음(공통 레이아웃·중복 콘텐츠 정리)
