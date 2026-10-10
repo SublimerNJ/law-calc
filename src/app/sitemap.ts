@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { CATEGORIES, TOOLS } from '@/lib/tools-data';
+import { CHANGELOG_LAST_MODIFIED } from '@/lib/changelog';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 const REVIEW_DATE = new Date('2026-08-19T00:00:00+09:00');
@@ -29,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
  { url: `${BASE_URL}/privacy`, lastModified: REVIEW_DATE, changeFrequency: 'monthly' as const, priority: 0.3 },
  { url: `${BASE_URL}/terms`, lastModified: REVIEW_DATE, changeFrequency: 'monthly' as const, priority: 0.3 },
  { url: `${BASE_URL}/editorial-policy`, lastModified: REVIEW_DATE, changeFrequency: 'monthly' as const, priority: 0.5 },
+ { url: `${BASE_URL}/changelog`, lastModified: new Date(`${CHANGELOG_LAST_MODIFIED}T00:00:00+09:00`), changeFrequency: 'monthly' as const, priority: 0.5 },
  { url: `${BASE_URL}/guides`, lastModified: REVIEW_DATE, changeFrequency: 'weekly' as const, priority: 0.7 },
  { url: `${BASE_URL}/guides/how-to-calculate-attorney-fee`, lastModified: REVIEW_DATE, changeFrequency: 'monthly' as const, priority: 0.6 },
  { url: `${BASE_URL}/guides/civil-mediation-vs-lawsuit`, lastModified: REVIEW_DATE, changeFrequency: 'monthly' as const, priority: 0.6 },

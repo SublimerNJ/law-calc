@@ -50,6 +50,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/changelog" className="hover:text-teal-800">
+                  변경 이력
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="hover:text-teal-800">
                   문의
                 </Link>
