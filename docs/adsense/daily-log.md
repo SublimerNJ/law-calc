@@ -1,5 +1,14 @@
 # law-calc 일일 작업 일지
 
+## 2026-10-10
+- 완료: B1-3 `/changelog` 페이지와 실제 변경 기록 데이터 추가. 2026-08-19 육아휴직급여 시행령 제95조 수치 변경부터 2026-10-09 분야별 허브까지 실제 Git 커밋 14개와 공식 출처를 날짜·변경 전후 범위·커밋 링크로 공개하고, sitemap·푸터에 연결함 (commit 5685f86)
+- 법령 대조: 해당 없음(오늘 새 법령 수치 변경 없음; 기존 Phase A 대조 기록과 `docs/adsense/law-verification.md`의 공식 출처를 변경 이력에 연결함)
+- TDD·검증: RED(`src/lib/changelog.ts` 모듈 부재) → GREEN. Vitest 13개 파일·48개 테스트, lint, build 통과. 로컬 `/changelog`·`/sitemap.xml`·`/tools` 200, `/tools/no-such-category` 404, changelog 14개 기록·sitemap `/changelog` 포함 확인.
+- ratchet: sourceNormalizedRepeats 34→34, sourceExamplesWithoutDigits 81→81, sourceMarkerHits 170→170, localNormalizedRepeats 48→48, liveNormalizedRepeats 68→68
+- 배포: 미확인·미배포 (https://law-calc.kr, `verify:adsense` 기존 template marker·소스 중복 FAIL, `audit:live` 실서버 정규화 중복 64개 FAIL으로 push하지 않음)
+- 게이트: G1 ✗(2026-12-25 전) G2 ✗(최근 3개월 187클릭·최근 28일 73클릭, 월 1,000×2개월 미충족) G3 ✗(64.2%, 120/187) G4 ✓(법령 `[?]` 0개·재량 금액 추정 0개) G5 ✗(`verify:adsense` FAIL·소스 정규화 중복 34개·template marker 170개, `audit:live` FAIL·실서버 정규화 중복 64개) G6 ✗(changelog 실제 변경 2026-08 1회·2026-09 4회·2026-10 9회로 8월 기준 미달)
+- 막힌 점/다음 할 일: 기존 `tool-quality.ts` 템플릿 중복이 G5를 계속 차단함. 다음 backlog는 B2-01 `lost-income` 재작성. 사용자 결정 필요 사항 없음.
+
 ## 2026-10-09
 - 완료: B1-2 `/tools` 디렉터리와 9개 분야별 `/tools/<category>` 허브를 추가하고, 분야별 선택 기준·입력자료 설명·계산기 연결을 직접 작성함. Header/Footer의 분야 링크와 sitemap에도 반영함 (commit 32f87c1)
 - 법령 대조: 해당 없음(새 허브 정보 구조·콘텐츠 연결 작업; 법령 수치 변경 없음)

@@ -22,7 +22,7 @@
 
 - [x] B1-1. CalculatorLayout 공통 반복 문구(결과 해석 주의점, 실무 다음 단계, 조문 원문 안내, 바이라인 등)를 페이지당 면책 1줄로 통합. FAQ 중복 노출 제거 (commit 674ea16)
 - [x] B1-2. `/tools` 및 `/tools/<category>` 허브 페이지 생성(분야별 직접 작성 설명, 계산기 선택 기준). sitemap 반영 (commit 32f87c1)
-- [ ] B1-3. `/changelog` 페이지 생성, git 이력의 실제 수치 변경(육아휴직 시행령 제95조 등)과 Phase A 수정 기록
+- [x] B1-3. `/changelog` 페이지 생성, git 이력의 실제 수치 변경(육아휴직 시행령 제95조 등)과 Phase A 수정 기록 (commit 5685f86)
 - [ ] B2-01. lost-income 재작성 (GSC 클릭 1위: 호프만/라이프니츠 단계별 산식, 판례 인용, 검산 예시 함수 렌더링)
 - [ ] B2-02. accident-settlement 재작성
 - [ ] B2-03. damages-general 재작성
