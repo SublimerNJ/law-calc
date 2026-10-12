@@ -1020,7 +1020,7 @@ faqItems: [
     id: "accident-settlement",
     name: "교통사고 합의금 계산기",
     expertReviewer: "개인 운영 (작성·자료 확인)",
-    updatedAt: "2026-10-05",
+    updatedAt: "2026-10-12",
     legalCitations: [
       "자동차손해배상 보장법 시행령 제3조 (책임보험금 등)",
       "자동차손해배상 보장법 시행령 별표 1·별표 2 (상해·후유장애 책임보험금 한도)",

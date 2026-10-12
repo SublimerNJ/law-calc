@@ -5,6 +5,8 @@ import CalculatorLayout from '@/components/ui/CalculatorLayout';
 import { TOOLS, CATEGORIES } from '@/lib/tools-data';
 import {
   calculateAccidentInsuranceLimit,
+  calculateAccidentSettlementVerificationExample,
+  getAccidentGradeLimit,
   type AccidentInsuranceLimitResult,
 } from '@/lib/calc/accident-settlement';
 
@@ -26,6 +28,10 @@ export default function AccidentSettlementPage() {
   const [error, setError] = useState<string | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
   const [result, setResult] = useState<AccidentInsuranceLimitResult | null>(null);
+
+  const verificationExample = calculateAccidentSettlementVerificationExample();
+  const injuryGradeOptions = Array.from({ length: 14 }, (_, index) => index + 1);
+  const disabilityGradeOptions = Array.from({ length: 14 }, (_, index) => index + 1);
 
   const handleCalculate = () => {
     setError(null);
@@ -70,11 +76,10 @@ export default function AccidentSettlementPage() {
   return (
     <CalculatorLayout tool={tool} category={category}>
       <div className="premium-card p-6 mb-4">
-        <h2 className="text-lg font-semibold text-slate-900 mb-2">대인배상Ⅰ 한도 참고 입력</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-2">확인된 손해와 법정 한도 입력</h2>
         <p className="text-sm text-slate-600 leading-relaxed mb-4">
-          치료비·소득손실 등 자료로 확인된 인적 손해액과 진단서의 급수를 입력하면
-          자동차손해배상 보장법 시행령상 책임보험금 한도 안의 참고액을 계산합니다.
-          사건별 합의금이나 위자료를 추정하지 않습니다.
+          먼저 영수증·진료비 자료·소득자료로 확인한 인적 손해액을 합산하고, 진단서와 의료자료에서 상해급수와 후유장애급수를 확인하세요.
+          이 화면은 자동차손해배상 보장법 시행령 제3조의 대인배상Ⅰ 책임보험금 한도와 입력 손해액을 비교하며, 사건별 합의금을 예측하지 않습니다.
         </p>
 
         <div className="mb-4">
@@ -106,9 +111,9 @@ export default function AccidentSettlementPage() {
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           >
             <option value="">진단서 기준 상해급수를 선택하세요</option>
-            {Array.from({ length: 14 }, (_, index) => index + 1).map((grade) => (
+            {injuryGradeOptions.map((grade) => (
               <option key={grade} value={grade}>
-                {grade}급
+                {grade}급 · {formatNumber(getAccidentGradeLimit('injury', grade))}원
               </option>
             ))}
           </select>
@@ -124,10 +129,10 @@ export default function AccidentSettlementPage() {
             onChange={(event) => setDisabilityGrade(event.target.value)}
             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:border-[#ef4444] focus:outline-none glassmorphism glass-panel"
           >
-            <option value="0">없음</option>
-            {Array.from({ length: 14 }, (_, index) => index + 1).map((grade) => (
+            <option value="0">없음 · 0원</option>
+            {disabilityGradeOptions.map((grade) => (
               <option key={grade} value={grade}>
-                {grade}급
+                {grade}급 · {formatNumber(getAccidentGradeLimit('disability', grade))}원
               </option>
             ))}
           </select>
@@ -149,9 +154,46 @@ export default function AccidentSettlementPage() {
         </button>
       </div>
 
+      <section className="premium-card p-6 mb-4">
+        <h2 className="text-lg font-semibold text-slate-900 mb-3">함수로 다시 계산한 합산 검산</h2>
+        <p className="text-sm text-slate-600 leading-relaxed mb-4">
+          아래 예시는 문장에 적어 둔 금액을 복사하지 않고, 입력 폼과 같은 순수 함수에 다시 넣어 렌더링합니다.
+          상해 1급과 후유장애 1급을 함께 확인한 경우에 대인배상Ⅰ 한도가 어떻게 합산되는지 보여 줍니다.
+        </p>
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+          <p className="font-semibold text-slate-900 mb-3">
+            확인된 인적 손해액 {formatNumber(verificationExample.input.documentedDamage)}원 · 상해 {verificationExample.input.injuryGrade}급 · 후유장애 {verificationExample.input.disabilityGrade}급
+          </p>
+          <dl className="grid gap-3 sm:grid-cols-2">
+            <div>
+              <dt className="text-xs text-slate-500">별표 1 상해 한도</dt>
+              <dd className="font-medium">{formatNumber(verificationExample.result.injuryLimit)}원</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-slate-500">별표 2 후유장애 한도</dt>
+              <dd className="font-medium">{formatNumber(verificationExample.result.disabilityLimit)}원</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-slate-500">합산 책임보험금 한도</dt>
+              <dd className="font-medium">{formatNumber(verificationExample.result.totalLimit)}원</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-slate-500">입력 손해액과 비교한 한도 내 참고액</dt>
+              <dd className="font-medium">{formatNumber(verificationExample.result.payableWithinLiabilityLimit)}원</dd>
+            </div>
+          </dl>
+          <p className="text-xs text-slate-500 mt-3">
+            초과분: {formatNumber(verificationExample.result.excessDamage)}원 · 실제 지급액이나 전체 합의금이 아닌 법정 한도 비교값입니다.
+          </p>
+        </div>
+      </section>
+
       {result !== null && (
         <section className="premium-card p-6" aria-live="polite">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">대인배상Ⅰ 책임보험금 한도 참고 결과</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-2">계산 결과 · 한도 비교</h2>
+          <p className="text-sm text-slate-600 leading-relaxed mb-4">
+            상해 한도와 후유장애 한도를 먼저 분리한 다음 합산하고, 확인된 손해액과 작은 금액을 한도 내 참고액으로 표시합니다.
+          </p>
 
           <div className="space-y-3 mb-4">
             <div className="flex justify-between gap-4">
@@ -159,11 +201,13 @@ export default function AccidentSettlementPage() {
               <span className="text-slate-900">{formatNumber(result.documentedDamage)}원</span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="text-sm text-slate-600">상해급별 책임보험금 한도</span>
+              <span className="text-sm text-slate-600">상해 {result.injuryGrade}급 책임보험금 한도</span>
               <span className="text-slate-900">{formatNumber(result.injuryLimit)}원</span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="text-sm text-slate-600">후유장애급별 책임보험금 한도</span>
+              <span className="text-sm text-slate-600">
+                후유장애 {result.disabilityGrade === 0 ? '없음' : `${result.disabilityGrade}급`} 책임보험금 한도
+              </span>
               <span className="text-slate-900">{formatNumber(result.disabilityLimit)}원</span>
             </div>
             <div className="flex justify-between gap-4 border-t border-slate-200 pt-3">
@@ -187,11 +231,13 @@ export default function AccidentSettlementPage() {
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-xs font-semibold text-slate-600 mb-2">계산식</p>
             <pre className="text-xs font-mono text-slate-600 bg-white rounded p-2 whitespace-pre-wrap glassmorphism glass-panel">
-{`상해급별 한도 + 후유장애급별 한도 = 책임보험금 합산 한도
-min(입력 인적 손해액, 책임보험금 합산 한도) = 한도 내 참고액`}
+{`1단계: 별표 1 상해급별 한도 + 별표 2 후유장애급별 한도
+2단계: 두 한도금액의 합산 = 책임보험금 합산 한도
+3단계: min(확인된 인적 손해액, 합산 한도) = 한도 내 참고액
+초과분 = max(0, 확인된 인적 손해액 - 합산 한도)`}
             </pre>
             <p className="text-xs text-gray-500 mt-3">
-              이 결과는 대인배상Ⅰ의 법정 한도와 입력 손해액만 비교한 참고값입니다. 대인배상Ⅱ, 대물배상,
+              시행령 제3조 제1항 제2호·제3호는 부상·후유장애의 책임보험금을 각 별표 한도와 실제 손해액의 관계로 정하고, 제2항 제2호는 부상 후 후유장애가 생긴 경우 두 금액을 합산하도록 합니다. 대인배상Ⅱ, 대물배상,
               자기신체사고, 형사합의, 과실비율 및 보험사의 실제 지급 판단은 포함하지 않습니다.
             </p>
           </div>
@@ -199,12 +245,13 @@ min(입력 인적 손해액, 책임보험금 합산 한도) = 한도 내 참고�
       )}
 
       <section className="premium-card p-6 mt-4">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">계산에 포함하지 않는 항목</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">입력 전 확인할 자료와 제외 범위</h2>
         <ul className="space-y-3 text-sm text-slate-600">
-          <li>입원·통원 일수만으로 위자료를 정액 산정하지 않습니다.</li>
-          <li>일실수입·휴업손해·향후치료비는 소득, 치료 필요성, 증빙과 사건별 기준이 필요하므로 자동 추정하지 않습니다.</li>
-          <li>과실비율은 사고 상황별 공식 인정기준과 증거를 대조해야 하며, 이 화면에서 임의의 비율을 정하지 않습니다.</li>
-          <li>상해급수와 후유장애급수는 진단서와 의료 판단을 기준으로 확인하세요.</li>
+          <li>손해액은 진료비·영수증·소득자료 등으로 실제 발생과 금액을 확인한 인적 손해만 합산하고, 같은 비용을 여러 번 넣지 마세요.</li>
+          <li>상해급수는 사고 경위로 추측하지 말고 진단서와 별표 1의 상해 내용을 대조해 입력하세요.</li>
+          <li>후유장애는 치료 후 증상이 고정되고 의료자료로 확인된 경우에만 별표 2의 급수를 입력하세요. 확인되지 않으면 없음으로 둡니다.</li>
+          <li>입원·통원 일수만으로 위자료를 정액 산정하거나 일실수입·휴업손해·향후치료비를 자동 추정하지 않습니다.</li>
+          <li>과실비율, 대인배상Ⅱ·대물배상, 형사합의 및 보험사의 실제 지급 판단은 사고자료·약관·별도 절차를 확인해야 합니다.</li>
         </ul>
         <div className="mt-4 pt-4 border-t border-slate-200 text-xs text-gray-500 space-y-2">
           <p>

@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { calculateAccidentInsuranceLimit } from './accident-settlement';
+import {
+  calculateAccidentInsuranceLimit,
+  calculateAccidentSettlementVerificationExample,
+  getAccidentGradeLimit,
+} from './accident-settlement';
 
 describe('calculateAccidentInsuranceLimit', () => {
   it('caps documented damage at the statutory injury-grade limit', () => {
@@ -11,6 +15,8 @@ describe('calculateAccidentInsuranceLimit', () => {
       }),
     ).toEqual({
       documentedDamage: 1_000_000,
+      injuryGrade: 14,
+      disabilityGrade: 0,
       injuryLimit: 500_000,
       disabilityLimit: 0,
       totalLimit: 500_000,
@@ -28,6 +34,8 @@ describe('calculateAccidentInsuranceLimit', () => {
       }),
     ).toEqual({
       documentedDamage: 200_000_000,
+      injuryGrade: 1,
+      disabilityGrade: 1,
       injuryLimit: 30_000_000,
       disabilityLimit: 150_000_000,
       totalLimit: 180_000_000,
@@ -45,6 +53,8 @@ describe('calculateAccidentInsuranceLimit', () => {
 
     expect(result).toEqual({
       documentedDamage: 5_000_000,
+      injuryGrade: 12,
+      disabilityGrade: 0,
       injuryLimit: 1_200_000,
       disabilityLimit: 0,
       totalLimit: 1_200_000,
@@ -53,6 +63,31 @@ describe('calculateAccidentInsuranceLimit', () => {
     });
     expect(Object.keys(result)).not.toContain('hospitalizationSolatium');
     expect(Object.keys(result)).not.toContain('lostWages');
+  });
+
+  it('exposes the statutory amount for every grade shown in the form', () => {
+    expect(getAccidentGradeLimit('injury', 1)).toBe(30_000_000);
+    expect(getAccidentGradeLimit('injury', 14)).toBe(500_000);
+    expect(getAccidentGradeLimit('disability', 1)).toBe(150_000_000);
+    expect(getAccidentGradeLimit('disability', 14)).toBe(10_000_000);
+    expect(getAccidentGradeLimit('disability', 0)).toBe(0);
+  });
+
+  it('keeps the page verification example tied to the pure calculation', () => {
+    const example = calculateAccidentSettlementVerificationExample();
+
+    expect(example.input).toEqual({
+      documentedDamage: 200_000_000,
+      injuryGrade: 1,
+      disabilityGrade: 1,
+    });
+    expect(example.result).toMatchObject({
+      injuryLimit: 30_000_000,
+      disabilityLimit: 150_000_000,
+      totalLimit: 180_000_000,
+      payableWithinLiabilityLimit: 180_000_000,
+      excessDamage: 20_000_000,
+    });
   });
 
   it('treats invalid damage and grade values as zero rather than estimating them', () => {
@@ -64,6 +99,8 @@ describe('calculateAccidentInsuranceLimit', () => {
       }),
     ).toEqual({
       documentedDamage: 0,
+      injuryGrade: 0,
+      disabilityGrade: 0,
       injuryLimit: 0,
       disabilityLimit: 0,
       totalLimit: 0,
