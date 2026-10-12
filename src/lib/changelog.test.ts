@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { CHANGELOG_ENTRIES, CHANGELOG_LAST_MODIFIED, getChangelogEntry } from './changelog';
 
 const EXPECTED_COMMITS = [
+  '5f3b281',
   '32f87c1',
   '674ea16',
   'fc49c07',
@@ -21,7 +22,7 @@ const EXPECTED_COMMITS = [
 describe('changelog records', () => {
   it('keeps the reviewed changes in reverse chronological order with their real commits', () => {
     expect(CHANGELOG_ENTRIES.map((entry) => entry.commit)).toEqual(EXPECTED_COMMITS);
-    expect(CHANGELOG_LAST_MODIFIED).toBe('2026-10-10');
+    expect(CHANGELOG_LAST_MODIFIED).toBe('2026-10-12');
 
     for (const entry of CHANGELOG_ENTRIES) {
       expect(entry.date).toMatch(/^2026-\d{2}-\d{2}$/);

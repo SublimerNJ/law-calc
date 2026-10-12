@@ -15,7 +15,7 @@ export interface ChangelogEntry {
 
 const REPOSITORY_URL = 'https://github.com/SublimerNJ/law-calc';
 
-export const CHANGELOG_LAST_MODIFIED = '2026-10-10';
+export const CHANGELOG_LAST_MODIFIED = '2026-10-12';
 
 const commitSource = (commit: string): ChangelogSource => ({
   label: `Git 커밋 ${commit}`,
@@ -23,6 +23,24 @@ const commitSource = (commit: string): ChangelogSource => ({
 });
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
+  {
+    date: '2026-10-12',
+    title: '교통사고 책임보험 한도 계산기를 검산 흐름으로 재작성했습니다',
+    summary: '사건별 합의금을 추정하는 대신, 법정 급별 한도와 확인된 인적 손해를 어떤 순서로 대조하는지 입력·검산·결과 화면에 분리해 표시했습니다.',
+    changes: [
+      '상해·후유장애 1~14급 선택지에 국가법령정보센터 별표의 한도금액을 함께 표시했습니다.',
+      '상해 한도와 후유장애 한도를 합산하는 예시를 같은 순수 계산 함수로 다시 계산해 화면에 렌더링했습니다.',
+      '손해액·급수 자료를 확인하는 순서와 위자료·일실수입·과실비율·전체 합의금 추정 제외 범위를 구분했습니다.',
+    ],
+    commit: '5f3b281',
+    commitUrl: `${REPOSITORY_URL}/commit/5f3b281`,
+    sources: [
+      commitSource('5f3b281'),
+      { label: '자동차손해배상 보장법 시행령 국가법령정보센터', href: 'https://www.law.go.kr/LSW/lsInfoP.do?lsId=004594&ancYnChk=0' },
+      { label: '자동차손해배상 보장법 시행령 별표 1 PDF', href: 'https://www.law.go.kr/LSW/flDownload.do?gubun=&flSeq=169111681&bylClsCd=110201' },
+      { label: '자동차손해배상 보장법 시행령 별표 2 PDF', href: 'https://www.law.go.kr/LSW/flDownload.do?gubun=&flSeq=169111793&bylClsCd=110201' },
+    ],
+  },
   {
     date: '2026-10-09',
     title: '분야별 계산기 허브를 추가했습니다',

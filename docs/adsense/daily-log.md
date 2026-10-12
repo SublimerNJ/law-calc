@@ -1,5 +1,14 @@
 # law-calc 일일 작업 일지
 
+## 2026-10-12
+- 완료: B2-02 `accident-settlement` 재작성 — 상해·후유장애 1~14급 선택지에 별표 한도금액을 표시하고, 상해·후유장애 한도 합산·초과분을 순수 함수로 다시 계산하는 검산 예시와 자료 확인 순서를 추가함. 계산 결과는 선택 등급을 결과 객체에 보존해 입력 변경 후에도 표시가 어긋나지 않게 함 (commit 5f3b281)
+- 법령 대조: 자동차손해배상 보장법 시행령 현행 본문·부칙 [시행 2026. 9. 15.] 제3조와 별표 1·2 PDF를 국가법령정보센터에서 다시 직접 열어 대조. 1~14급 한도 및 부상 후 후유장애 한도 합산 구조를 확인하고 `law-verification.md`에 기록함.
+- TDD·검증: RED(등급별 한도 조회·함수 검산 예시 export 부재) → GREEN. `npx vitest run` 14개 파일·54개 테스트, `npm run lint`, `npm run build`, `git diff --check` 통과. 로컬 `/tools/traffic/accident-settlement`·`/sitemap.xml` 200 및 검산 예시·등급별 금액·sitemap lastmod 원문 확인.
+- ratchet: sourceNormalizedRepeats 34→34, sourceExamplesWithoutDigits 81→81, sourceMarkerHits 170→170, localNormalizedRepeats 48→48, liveNormalizedRepeats 68→68
+- 배포: 미확인·미배포 (https://law-calc.kr, `verify:adsense` 기존 template marker·소스 정규화 중복 FAIL, `audit:live` 실서버 정규화 중복 64개 FAIL으로 push하지 않음)
+- 게이트: G1 ✗(2026-12-25 전) G2 ✗(최근 3개월 179클릭·최근 28일 66클릭, 월 1,000×2개월 미충족) G3 ✗(62.6%, 112/179) G4 ✓(backlog 법령 `[?]` 0개·재량 금액 추정 0개) G5 ✗(`verify:adsense` FAIL·소스 정규화 중복 34개·template marker 170개, `audit:live` FAIL·실서버 정규화 중복 64개) G6 ✗(2026-08 1회·2026-09 4회·2026-10 11회 실제 콘텐츠 변경으로 8월 기준 미달)
+- 막힌 점/다음 할 일: 기존 `tool-quality.ts` 공통 템플릿 marker·중복이 G5를 계속 차단함. 다음 backlog는 B2-03 `damages-general` 재작성. 사용자 결정 필요 사항 없음.
+
 ## 2026-10-11
 - 완료: B2-01 `lost-income` 재작성 — 기존 인라인 계산을 순수 함수·테스트로 분리하고, 호프만식(월 단리·240 상한)과 라이프니츠식(월 복리)을 선택해 치료·취업불능 기간과 치료 후 노동능력상실분을 단계별로 계산하도록 개편함. 소득·가동연한·치료기간·상실률·과실비율의 입력 설명, 공식 판례 출처, 관련 계산기 링크와 함수 호출로 렌더링되는 검산 예시를 추가함 (commit 164e8ce)
 - 법령 대조: 민법 제763조 및 부칙 [시행 2026. 3. 17.], 대법원 2018다248909(가동연한), 94다30065(호프만 계수 240 상한), 89다카27949(생계비 3분의 1), 국가법령정보센터의 호프만·라이프니츠 적용 판결 원문을 직접 확인하고 `law-verification.md`에 기록함.

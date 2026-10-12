@@ -24,7 +24,7 @@
 - [x] B1-2. `/tools` 및 `/tools/<category>` 허브 페이지 생성(분야별 직접 작성 설명, 계산기 선택 기준). sitemap 반영 (commit 32f87c1)
 - [x] B1-3. `/changelog` 페이지 생성, git 이력의 실제 수치 변경(육아휴직 시행령 제95조 등)과 Phase A 수정 기록 (commit 5685f86)
 - [x] B2-01. lost-income 재작성 (GSC 클릭 1위: 호프만/라이프니츠 단계별 산식, 판례 인용, 검산 예시 함수 렌더링) (commit 164e8ce)
-- [ ] B2-02. accident-settlement 재작성
+- [x] B2-02. accident-settlement 재작성 (commit 5f3b281)
 - [ ] B2-03. damages-general 재작성
 - [ ] B2-04. forced-heirship 재작성
 - [ ] B2-05. attorney-fee 재작성
