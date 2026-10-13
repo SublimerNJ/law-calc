@@ -3,25 +3,26 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://law-calc.kr';
 const PATH = '/tools/damages/damages-general';
 const DESCRIPTION =
-  '자료로 확인된 치료비·수리비·일실이익 등 재산상 손해에 입력 과실비율을 적용한 참고액을 계산합니다. 위자료·개호비·장해는 산출하지 않습니다.';
+  '기지출 치료비·수리비·자료로 확인된 일실이익을 항목별로 합산하고 입력 과실비율을 적용한 재산상 손해 참고액을 계산합니다. 위자료·개호비·장해는 산출하지 않습니다.';
 
 export const metadata: Metadata = {
-  title: '손해배상 재산상 손해 계산기 - law-calc.kr',
+  title: '손해배상 재산상 손해 항목별 계산기 - law-calc.kr',
   description: DESCRIPTION,
   keywords: [
     '손해배상 계산기',
-    '재산상 손해 계산',
+    '재산상 손해 항목별 계산',
     '불법행위 손해배상',
     '민법 750조',
     '과실상계',
     '치료비 손해',
     '수리비 손해',
+    '일실이익 자료',
   ],
   alternates: {
     canonical: `${BASE_URL}${PATH}`,
   },
   openGraph: {
-    title: '손해배상 재산상 손해 계산기 | law-calc.kr',
+    title: '손해배상 재산상 손해 항목별 계산기 | law-calc.kr',
     description: DESCRIPTION,
     type: 'website',
     url: `${BASE_URL}${PATH}`,
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '손해배상 재산상 손해 계산기 | law-calc.kr',
+    title: '손해배상 재산상 손해 항목별 계산기 | law-calc.kr',
     description: DESCRIPTION,
   },
   robots: {
