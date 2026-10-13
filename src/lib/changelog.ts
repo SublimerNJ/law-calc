@@ -15,7 +15,7 @@ export interface ChangelogEntry {
 
 const REPOSITORY_URL = 'https://github.com/SublimerNJ/law-calc';
 
-export const CHANGELOG_LAST_MODIFIED = '2026-10-12';
+export const CHANGELOG_LAST_MODIFIED = '2026-10-13';
 
 const commitSource = (commit: string): ChangelogSource => ({
   label: `Git 커밋 ${commit}`,
@@ -23,6 +23,23 @@ const commitSource = (commit: string): ChangelogSource => ({
 });
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
+  {
+    date: '2026-10-13',
+    title: '일반 손해배상 계산기를 자료별 검산 흐름으로 재작성했습니다',
+    summary: '한 번에 손해액을 추정하지 않고 치료비·수리비·일실이익·기타 확인액을 나눠 입력해 중복을 확인한 뒤, 입력 과실비율만 적용하도록 화면과 계산 함수를 정리했습니다.',
+    changes: [
+      '네 가지 재산상 손해 항목을 같은 순수 계산 함수로 합산하고 과실상계 후 참고액을 계산합니다.',
+      '페이지 검산 예시도 입력 함수의 결과를 다시 렌더링해 7,000,000원 합계·20% 차감·5,600,000원 참고액을 확인합니다.',
+      '위자료·개호비·장해·제조물 결함·인과관계·이미 지급된 금액을 자동 추정·공제하지 않는 범위를 자료 확인 순서와 함께 표시했습니다.',
+    ],
+    commit: '2972124',
+    commitUrl: `${REPOSITORY_URL}/commit/2972124`,
+    sources: [
+      commitSource('2972124'),
+      { label: '민법 제750조 국가법령정보센터', href: 'https://www.law.go.kr/법령/민법/제750조' },
+      { label: '민법 제763조 국가법령정보센터', href: 'https://www.law.go.kr/법령/민법/제763조' },
+    ],
+  },
   {
     date: '2026-10-12',
     title: '교통사고 책임보험 한도 계산기를 검산 흐름으로 재작성했습니다',
