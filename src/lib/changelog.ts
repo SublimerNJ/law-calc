@@ -15,7 +15,7 @@ export interface ChangelogEntry {
 
 const REPOSITORY_URL = 'https://github.com/SublimerNJ/law-calc';
 
-export const CHANGELOG_LAST_MODIFIED = '2026-10-13';
+export const CHANGELOG_LAST_MODIFIED = '2026-10-14';
 
 const commitSource = (commit: string): ChangelogSource => ({
   label: `Git 커밋 ${commit}`,
@@ -23,6 +23,24 @@ const commitSource = (commit: string): ChangelogSource => ({
 });
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
+  {
+    date: '2026-10-14',
+    title: '유류분 계산기를 현행 민법·자료 대조 흐름으로 재작성했습니다',
+    summary: '상속 개시 당시 재산·산입 근거를 확인한 증여·채무·법정상속분·실제 취득액을 분리 입력해 유류분 부족액 참고값을 검산하도록 계산기와 설명을 바꿨습니다.',
+    changes: [
+      '민법 제1113조의 기초재산 구조와 현행 제1112조의 직계비속·배우자 2분의 1, 직계존속 3분의 1을 순수 함수와 테스트로 고정했습니다.',
+      '형제자매 유류분 삭제, 제1114조의 증여 산입 범위, 제1115조 개정의 적용례와 제1117조 기간을 자료 점검 순서에 반영했습니다.',
+      '검산 예시는 같은 함수로 90,000,000원 기초재산·22,500,000원 유류분·12,500,000원 부족액 참고값을 렌더링하고, 반환청구 통보 템플릿을 제거했습니다.',
+    ],
+    commit: 'ce07e9e',
+    commitUrl: `${REPOSITORY_URL}/commit/ce07e9e`,
+    sources: [
+      commitSource('ce07e9e'),
+      { label: '민법 제1112조 국가법령정보센터', href: 'https://www.law.go.kr/법령/민법/제1112조' },
+      { label: '민법 제1113조·제1115조 국가법령정보센터', href: 'https://www.law.go.kr/법령/민법/제1113조' },
+      { label: '민법 2026년 개정문·부칙', href: 'https://www.law.go.kr/LSW/lsRvsDocListP.do?lsId=001706&chrClsCd=010202&lsRvsGubun=all' },
+    ],
+  },
   {
     date: '2026-10-13',
     title: '일반 손해배상 계산기를 자료별 검산 흐름으로 재작성했습니다',

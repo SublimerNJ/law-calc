@@ -26,7 +26,7 @@
 - [x] B2-01. lost-income 재작성 (GSC 클릭 1위: 호프만/라이프니츠 단계별 산식, 판례 인용, 검산 예시 함수 렌더링) (commit 164e8ce)
 - [x] B2-02. accident-settlement 재작성 (commit 5f3b281)
 - [x] B2-03. damages-general 재작성 (commit 2972124)
-- [ ] B2-04. forced-heirship 재작성
+- [x] B2-04. forced-heirship 재작성 (commit ce07e9e)
 - [ ] B2-05. attorney-fee 재작성
 - [ ] B2-06. registration-tax 재작성
 - [ ] B2-07. drunk-driving 재작성
