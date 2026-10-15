@@ -35,6 +35,8 @@
 
 ## 4. 검증 게이트 (전부 통과해야 push)
 
+> **push 게이트는 아래 4개뿐이다.** `verify:adsense`·`audit:live`(G5)는 **재신청 판정용**이지 push 조건이 아니다. 템플릿이 남아 있는 동안 G5는 계속 FAIL이며, 그래도 아래 4개가 통과하면 반드시 push한다. 개선이 배포되지 않으면 구글이 변화를 볼 수 없다(2026-09-27~10-15에 이 오해로 24커밋이 미배포됨).
+
 ```bash
 npx vitest run            # vitest 설치 후
 npm run lint
