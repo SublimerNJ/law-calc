@@ -1,5 +1,14 @@
 # law-calc 일일 작업 일지
 
+## 2026-10-15
+- 완료: B2-05 `attorney-fee` 재작성 — 민사소송법 제109조와 변호사보수 규칙 제3조~제6조·별표를 기준으로 한 심급의 산입 한도를 계산하고, 본안·가압류·가처분·절차상 감액·실제 지급보수액·판결문상 부담비율을 분리함 (commit 4953df7)
+- 법령 대조: 국가법령정보센터 민사소송법 제109조 [시행 2026. 10. 2.] 본문, 변호사보수의 소송비용 산입에 관한 규칙 [시행 2020. 12. 28.] 본문·부칙·별표 PDF를 직접 확인. 별표 8개 구간·제3조 제2항의 가압류·가처분 2분의 1·제5조 감액·제6조 재량 조정 범위를 반영함.
+- TDD·검증: RED(계산 모듈 부재) → GREEN. `npx vitest run` 16개 파일·66개 테스트, `npm run lint`, `npm run build`, `git diff --check` 통과. `verify:adsense`는 기존 공통 템플릿으로 FAIL, `audit:live`는 실서버 정규화 중복 64개로 FAIL.
+- ratchet: sourceNormalizedRepeats 34→34, sourceExamplesWithoutDigits 79→77, sourceMarkerHits 166→162, localNormalizedRepeats 48→48, liveNormalizedRepeats 68→68
+- 배포: 미확인·미배포 (`verify:adsense`·`audit:live` 실패로 push하지 않음) — URL: https://law-calc.kr/tools/court/attorney-fee
+- 게이트: G1 ✗(2026-12-25 전) G2 ✗(최근 3개월 179클릭·최근 28일 66클릭) G3 ✗(62.6%, 112/179) G4 ✓(backlog 법령 `[?]` 0개·재량 금액 추정 0개) G5 ✗(`verify:adsense` FAIL·소스 정규화 중복 34개·marker 162개, `audit:live` FAIL·실서버 정규화 중복 64개) G6 ✗(2026-08 1회·2026-09 4회·2026-10 13회)
+- 막힌 점/다음 할 일: 기존 `tool-quality.ts` 공통 템플릿과 실서버 중복이 G5를 계속 차단함. 다음 backlog는 B2-06 `registration-tax` 재작성. 사용자 결정 필요 사항 없음.
+
 ## 2026-10-14
 - 완료: B2-04 `forced-heirship` 재작성 — 현행 민법 제1112조~제1118조와 제1008조에 맞춰 상속 개시 당시 재산·산입 근거를 확인한 증여·채무·법정상속분·실제 취득액을 분리 입력하고, 유류분 부족액 참고값을 순수 함수로 검산하도록 개편함 (commit ce07e9e)
 - 법령 대조: 국가법령정보센터 민법 [시행 2026. 3. 17.] [법률 제21454호] 본문·부칙과 제1008조·제1112조~제1118조를 직접 확인. 형제자매 제4호 삭제, 제1113조·제1114조의 산입 구조, 제1115조 가액 지급 청구와 부칙 제3조 적용례, 제1116조·제1117조·제1118조를 반영함.

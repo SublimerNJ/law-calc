@@ -15,7 +15,7 @@ export interface ChangelogEntry {
 
 const REPOSITORY_URL = 'https://github.com/SublimerNJ/law-calc';
 
-export const CHANGELOG_LAST_MODIFIED = '2026-10-14';
+export const CHANGELOG_LAST_MODIFIED = '2026-10-15';
 
 const commitSource = (commit: string): ChangelogSource => ({
   label: `Git 커밋 ${commit}`,
@@ -23,6 +23,24 @@ const commitSource = (commit: string): ChangelogSource => ({
 });
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
+  {
+    date: '2026-10-15',
+    title: '변호사보수 산입 계산기를 규칙 별표와 사건 유형별 검산 흐름으로 재작성했습니다',
+    summary: '민사소송법 제109조와 변호사보수 규칙의 별표 기준액을 한 심급 단위로 계산하고, 실제 지급보수액·가압류·가처분·절차상 감액·판결문상 부담비율을 분리해 검산하도록 계산기와 설명을 바꿨습니다.',
+    changes: [
+      '2026. 10. 2. 시행 민사소송법 제109조와 2020. 12. 28. 시행 규칙 제3조~제6조·별표의 8개 구간을 순수 함수와 6개 테스트로 고정했습니다.',
+      '가압류·가처분에서 변론 또는 심문을 거친 경우의 2분의 1, 전부자백·무변론·이행권고결정의 감액 사유를 별도 입력으로 분리했습니다.',
+      '실제 지급보수액과 판결문상 상대방 부담비율만 참고액에 반영하고, 승소 여부·법원 재량 조정·최종 소송비용액은 자동 추정하지 않도록 범위를 정리했습니다.',
+    ],
+    commit: '4953df7',
+    commitUrl: `${REPOSITORY_URL}/commit/4953df7`,
+    sources: [
+      commitSource('4953df7'),
+      { label: '민사소송법 제109조 국가법령정보센터', href: 'https://www.law.go.kr/법령/민사소송법/제109조' },
+      { label: '변호사보수의 소송비용 산입에 관한 규칙 본문·부칙', href: 'https://www.law.go.kr/LSW/lsInfoP.do?lsId=005866' },
+      { label: '변호사보수 규칙 별표 PDF', href: 'https://www.law.go.kr/LSW/flDownload.do?gubun=&flSeq=91732731&bylClsCd=110201' },
+    ],
+  },
   {
     date: '2026-10-14',
     title: '유류분 계산기를 현행 민법·자료 대조 흐름으로 재작성했습니다',
