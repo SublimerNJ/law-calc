@@ -28,7 +28,7 @@
 - [x] B2-03. damages-general 재작성 (commit 2972124)
 - [x] B2-04. forced-heirship 재작성 (commit ce07e9e)
 - [x] B2-05. attorney-fee 재작성 — 민사소송법 제109조·변호사보수 규칙 제3조~제6조·별표, 사건 유형·실제 보수액·부담비율을 분리한 참고 계산 (commit 4953df7)
-- [ ] B2-06. registration-tax 재작성
+- [x] B2-06. registration-tax 재작성 — 지방세법 제23·27·28·34·151조 대조, 취득 원인 일반 등기 제외, 저당권·영리법인·지점·면허 지원 (commit f6b738c)
 - [ ] B2-07. drunk-driving 재작성
 - [ ] B2-08. overtime-pay 재작성
 - [ ] B2-09. defamation 재작성
