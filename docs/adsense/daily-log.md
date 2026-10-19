@@ -5,7 +5,7 @@
 - 법령 대조: 지방세법 [시행 2026. 7. 1.] [법률 제21308호] 본문·부칙, 제23조·제27조·제28조·제34조·제151조를 국가법령정보센터에서 확인. 등록분 지방교육세 20%, 면허분 교육세 제외, 대도시 중과와 지점 정액 및 영리법인 최저세액을 반영함.
 - TDD·검증: 3개 계산 오류(일반 저당권의 6,000원 최저액, 면허분 지방교육세, 대도시 지점 3배 누락)를 실패 테스트로 확인한 뒤 수정. `npx vitest run` 17개 파일·74개 테스트, `npm run lint`, `npm run build`, `git diff --check` 통과. 빌드된 HTML에서 지원 유형 4개·취득원인 등기 제외·이전 오류 문구 부재를 확인.
 - ratchet: sourceNormalizedRepeats 34→34, sourceExamplesWithoutDigits 77→75, sourceMarkerHits 162→159, localNormalizedRepeats 48→48, liveNormalizedRepeats 48→48 (PASS)
-- 배포: 확인 대기 — https://law-calc.kr/tools/tax/registration-tax
+- 배포: 확인 (2026-10-19, HTTP 200·최신 UI/카피·클라이언트 청크 재조회) — https://law-calc.kr/tools/tax/registration-tax
 - 게이트: G1 ✗(2026-12-25 전) G2 ✗(최근 28일 66클릭·최근 3개월 172클릭) G3 ✗(113/172, 65.7%) G4 ✓(미확인 법령 항목·재량 금액 추정 없음) G5 ✗(`verify:adsense` 소스 정규화 중복 34개·`audit:live` 실서버 48개) G6 ✗(2026-08 1회·2026-09 4회·2026-10 14회; 8월 기준 미달)
 - 막힌 점/다음 할 일: 공통 템플릿으로 G5 미충족. 법령 검토 요청·색인 요청은 하지 않음.
 
